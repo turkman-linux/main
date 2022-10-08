@@ -19,4 +19,13 @@ index:
     - cd ../ && rm -rf ymp  &>/dev/null
     - bash update.sh
  
-
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - echo "Index release"
+  release:
+    tag_name: '$CI_COMMIT_TAG'
+    description: '$CI_COMMIT_TAG'
