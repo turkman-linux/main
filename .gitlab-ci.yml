@@ -19,3 +19,8 @@ index:
     - ldconfig  &>/dev/null
     - cd ../ && rm -rf ymp  &>/dev/null
     - bash update.sh
+
+pages:
+  stage: deploy
+  script:
+    - mv output public
