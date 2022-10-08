@@ -1,2 +1,21 @@
-# The Docker image that will be used to build your app
-image: busybox
+# sulix gitlab CI repo checker.
+image: debian:testing
+
+index:
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - output
+
+  stage: build
+  script:
+    - apt update &>/dev/null
+    - apt full-upgrade -y  &>/dev/null
+    - apt install meson gcc valac git --no-install-recommends -y  &>/dev/null
+    - apt install libarchive-dev libreadline-dev libcurl4-openssl-dev libbrotli-dev ca-certificates --no-install-recommends -y  &>/dev/null
+    - git clone https://gitlab.com/sulix/devel/sources/ymp.git ymp && cd ymp  &>/dev/null
+    - meson build -Dlibbrotli=false --prefix=/usr --libdir=/lib  &>/dev/null
+    - ninja -C build install  &>/dev/null
+    - ldconfig  &>/dev/null
+    - cd ../ && rm -rf ymp  &>/dev/null
+    - bash update.sh
