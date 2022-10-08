@@ -13,8 +13,9 @@ index:
     - apt install meson gcc valac git --no-install-recommends -y
     - apt install libarchive-dev libreadline-dev libcurl4-openssl-dev libbrotli-dev ca-certificates --no-install-recommends -y
     - git clone https://gitlab.com/sulix/devel/sources/ymp.git ymp && cd ymp
-    - meson build -Dlibbrotli=false --prefix=/usr
+    - meson build -Dlibbrotli=false --prefix=/usr --libdir=/lib
     - ninja -C build install
+    - ldconfig
     - cd ../ && rm -rf ymp
     - bash update.sh
  
