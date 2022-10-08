@@ -20,3 +20,15 @@ index:
     - cd ../ && rm -rf ymp  &>/dev/null
     - bash update.sh
 
+
+pages:
+  stage: deploy
+  need:
+    - index
+  script:
+    - echo "Deploying"
+  artifacts:
+    paths:
+      - output
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
