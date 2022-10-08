@@ -1,0 +1,6 @@
+#!/bin/busybox ash
+/bin/busybox mkdir -p /var/lib/ymp/sysconf/busybox/
+if /bin/busybox [ ! -f /var/lib/ymp/sysconf/busybox/postinstall.done ] ; then
+    /bin/busybox --install -s /bin
+    /bin/busybox date > /var/lib/ymp/sysconf/busybox.postinst.done
+fi

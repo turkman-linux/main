@@ -1,0 +1,37 @@
+#!/bin/bash
+name=busybox
+version=1.35.0
+release=1
+url='https://busybox.net'
+description='BusyBox is a software suite that provides several Unix utilities in a single executable file.'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+arch=(x86_64)
+depends=(glibc)
+source=("https://busybox.net/downloads/busybox-$version.tar.bz2"
+        "busybox.sysconf"
+        
+)
+md5sums=("585949b1dd4292b604b7d199866e9913"
+         "SKIP"
+)
+
+cd $name-$version
+
+setup(){
+    make defconfig
+    sed -i "s|.*CONFIG_STATIC_LIBGCC .*|CONFIG_STATIC_LIBGCC=y|" .config
+    sed -i "s|.*CONFIG_STATIC .*|CONFIG_STATIC=y|" .config
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    mkdir -p ${DESTDIR}/bin/ ${DESTDIR}/etc/
+    install busybox ${DESTDIR}/bin/busybox
+    install busybox.sysconf ${DESTDIR}/etc/sysconf.d/busybox
+}
+
