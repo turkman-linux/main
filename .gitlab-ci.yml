@@ -2,7 +2,7 @@
 image: debian:testing
 
 index:
-  stage: index
+  stage: build
   script:
     - apt update
     - apt full-upgrade -y
