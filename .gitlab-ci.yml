@@ -3,6 +3,7 @@ image: debian:testing
 
 index:
   artifacts:
+    expire_in: 1 day
     paths:
       - output
 
