@@ -3,6 +3,9 @@ image: debian:testing
 
 pages:
   stage: deploy
+  artifacts:
+    paths:
+    - public
   script:
     - apt update &>/dev/null
     - apt full-upgrade -y  &>/dev/null
