@@ -1,0 +1,30 @@
+#!/bin/bash
+name=zlib
+release=1
+version=1.2.13
+url='https://zlib.net'
+description='A compression/decompression library'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('zlib')
+source=("https://zlib.net/zlib-$version.tar.gz")
+md5sums=('9b8aa094c4e5765dabf4da391f00d15c')
+arch=(x86_64)
+
+if [[ -d "$name-$version" ]] ; then
+    cd "$name-$version"
+fi
+
+setup(){
+    ./configure \
+        --prefix=/usr \
+        --libdir=/lib \
+        --shared
+}
+build(){
+    make
+}
+package(){
+    make install \
+        pkgconfigdir="/usr/lib/pkgconfig"
+}
