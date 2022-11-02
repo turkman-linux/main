@@ -1,0 +1,25 @@
+#!/bin/bash
+name=dash
+version=0.5.11
+release=1
+depends=()
+ver=$version+git20210903+057cd650a4ed-8
+source=(https://salsa.debian.org/debian/dash/-/archive/debian/$ver/dash-debian-$ver.zip)
+md5sums=(fa7d340bd8968e10f8097667cfdd1c18)
+
+cd $name-debian-$ver
+
+setup(){
+    ./autogen.sh
+    ./configure --prefix=/usr \
+    --libdir=/lib \
+    --bindir=/bin
+}
+build(){
+    make -j$(nproc)
+}
+
+package(){
+    make install
+    ln -s dash ${DESTDIR}/bin/sh
+}

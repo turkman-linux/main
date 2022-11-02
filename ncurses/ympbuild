@@ -1,0 +1,53 @@
+#!/bin/bash
+name=ncurses
+version=6.3
+release=1
+source=(https://invisible-mirror.net/archives/$name/$name-$version.tar.gz)
+md5sums=(a2736befde5fee7d2b7eb45eb281cdbe)
+depends=(glibc)
+so_ver=6
+cd $name-$version
+
+setup(){
+    # prefix is / libdir is /lib/ncurses
+    ./configure --prefix=/usr \
+        --enable-widec \
+        --enable-pc-files \
+        --mandir=/usr/share/man \
+        --with-cxx-binding \
+        --with-cxx-shared \
+        --with-manpage-format=normal \
+        --libdir=/lib \
+        --with-shared \
+        --with-versioned-syms \
+        --with-xterm-kbs=del \
+        --without-ada
+}
+
+build(){
+    make -j$(nproc)
+}
+
+package(){
+    make install -j$(nproc)
+
+    for lib in ncurses ncurses++ form panel menu; do
+        printf "INPUT(-l%sw)\n" "${lib}" > "$DESTDIR/lib/lib${lib}.so"
+        ln -sv ${lib}w.pc "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc"
+    done
+    ln -s libncurses.so.6 "$DESTDIR/lib/libtinfo.so.${so_ver}"
+
+    # some packages look for -lcurses during build
+    printf 'INPUT(-lncursesw)\n' > "$DESTDIR/lib/libcursesw.so"
+    ln -sv libncurses.so "$DESTDIR/lib/libcurses.so"
+
+    # tic and ticinfo functionality is built in by default
+    # make sure that anything linking against it links against libncursesw.so instead
+    for lib in tic tinfo; do
+        printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib/lib${lib}.so"
+        if ! ls $DESTDIR/lib/lib${lib}.so.${so_ver} ; then
+            ln -sv libncursesw.so.${so_ver} "$DESTDIR/lib/lib${lib}.so.${so_ver}"
+            ln -sv ncursesw.pc "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc"
+        fi
+    done
+}
