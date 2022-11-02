@@ -30,8 +30,8 @@ build(){
 }
 
 package(){
-    mkdir -p ${DESTDIR}/bin/ ${DESTDIR}/etc/
+    mkdir -p ${DESTDIR}/bin/ ${DESTDIR}/etc/sysconf.d
     install busybox ${DESTDIR}/bin/busybox
-    install busybox.sysconf ${DESTDIR}/etc/sysconf.d/busybox
+    install ../busybox.sysconf ${DESTDIR}/etc/sysconf.d/busybox
 }
 
