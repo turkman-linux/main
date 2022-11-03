@@ -18,7 +18,7 @@ fi
 setup(){
     ./configure \
         --prefix=/usr \
-        --libdir=/lib \
+        --libdir=/lib64 \
         --shared
 }
 build(){
@@ -26,5 +26,5 @@ build(){
 }
 package(){
     make install \
-        pkgconfigdir="/usr/lib/pkgconfig"
+        pkgconfigdir="/usr/lib64/pkgconfig"
 }

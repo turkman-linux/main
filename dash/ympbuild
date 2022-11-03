@@ -12,7 +12,7 @@ cd $name-debian-$ver
 setup(){
     ./autogen.sh
     ./configure --prefix=/usr \
-    --libdir=/lib \
+    --libdir=/lib64 \
     --bindir=/bin
 }
 build(){
