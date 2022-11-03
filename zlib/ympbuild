@@ -18,7 +18,7 @@ fi
 setup(){
     ./configure \
         --prefix=/usr \
-        --libdir=/lib64 \
+        --libdir=/lib64/zlib \
         --shared
 }
 build(){
@@ -27,4 +27,7 @@ build(){
 package(){
     make install \
         pkgconfigdir="/usr/lib64/pkgconfig"
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
+    echo "/lib64/zlib/" > ${DESTDIR}/etc/ld.so.conf.d/zlib.conf
+
 }
