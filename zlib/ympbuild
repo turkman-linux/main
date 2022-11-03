@@ -10,23 +10,23 @@ license=('zlib')
 source=("https://zlib.net/zlib-$version.tar.gz")
 md5sums=('9b8aa094c4e5765dabf4da391f00d15c')
 arch=(x86_64)
-
-if [[ -d "$name-$version" ]] ; then
-    cd "$name-$version"
-fi
+cd $name-$version
 
 setup(){
-    ./configure \
-        --prefix=/usr \
-        --libdir=/lib64/zlib \
-        --shared
+    ./configure --prefix=/usr --libdir=/lib64/zlib --shared
+    cd contrib/minizip
+    autoreconf -fvi
+	./configure --prefix=/usr --libdir=/lib64/zlib
 }
 build(){
-    make
+    make -j$(nproc)
+    cd contrib/minizip
+    make -j$(nproc)
 }
 package(){
-    make install \
-        pkgconfigdir="/usr/lib64/pkgconfig"
+    make install pkgconfigdir="/usr/lib64/pkgconfig"
+    cd contrib/minizip
+    make install pkgconfigdir="/usr/lib64/pkgconfig"
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/lib64/zlib/" > ${DESTDIR}/etc/ld.so.conf.d/zlib.conf
 
