@@ -6,54 +6,64 @@ source=(https://invisible-mirror.net/archives/$name/$name-$version.tar.gz)
 md5sums=(a2736befde5fee7d2b7eb45eb281cdbe)
 depends=(glibc)
 so_ver=6
+
 cd $name-$version
-unset CFLAGS
-unset CXXFLAGS
 
 setup(){
-    ./configure --prefix=/usr \
-        --libdir=/lib64 \
-		--without-ada \
-		--without-tests \
-		--disable-termcap \
-		--disable-rpath-hack \
-		--disable-stripping \
-		--with-pkg-config-libdir=/usr/lib64/pkgconfig \
-		--without-cxx-binding \
-		--with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo:/lib/terminfo:/usr/lib/terminfo" \
-		--enable-pc-files \
-		--with-shared \
-		--enable-widec
+    cp -prf ../$name-$version ../widec
+    opts=(--prefix=/usr
+          --libdir=/lib64/ncurses
+          --without-ada
+          --without-tests
+          --disable-termcap
+          --disable-rpath-hack
+          --disable-stripping
+          --with-pkg-config-libdir=/usr/lib64/pkgconfig
+          --without-cxx-binding
+          --with-termlib
+          --with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo:/lib/terminfo:/usr/lib/terminfo"
+          --enable-pc-files
+          --with-shared)
+    ./configure ${opts[@]}
+    cd ../widec
+    ./configure ${opts[@]} --enable-widec
 }
 
 build(){
+    cd ../widec
     make -j$(nproc)
+    cd ../$name-$version
+    make -j$(nproc)
+
 }
 
 package(){
-    make install
-
+    mkdir -p "$DESTDIR/lib64/ncurses/" "$DESTDIR/usr/lib64/pkgconfig/"
     for lib in ncurses ncurses++ form panel menu; do
-        printf "INPUT(-l%sw)\n" "${lib}" > "$DESTDIR/lib64/lib${lib}.so"
+        printf "INPUT(-l%sw)\n" "${lib}" > "$DESTDIR/lib64/ncurses/lib${lib}.so"
         ln -sv ${lib}w.pc "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc"
     done
-    ln -s libncurses.so.6 "$DESTDIR/lib64/libtinfo.so.${so_ver}"
-
     # some packages look for -lcurses during build
-    printf 'INPUT(-lncursesw)\n' > "$DESTDIR/lib64/libcursesw.so"
-    ln -sv libncurses.so "$DESTDIR/lib64/libcurses.so"
+    printf 'INPUT(-lncursesw)\n' > "$DESTDIR/lib64/ncurses/libcursesw.so"
+    ln -sv libncurses.so "$DESTDIR/lib64/ncurses/libcurses.so"
 
     # tic and ticinfo functionality is built in by default
     # make sure that anything linking against it links against libncursesw.so instead
     for lib in tic tinfo; do
-        printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib64/lib${lib}.so"
-        if ! ls $DESTDIR/lib64/lib${lib}.so.${so_ver} ; then
-            ln -sv libncursesw.so.${so_ver} "$DESTDIR/lib64/lib${lib}.so.${so_ver}"
+        printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib64/ncurses/lib${lib}.so"
+        if ! ls $DESTDIR/lib64/ncurses/lib${lib}.so.${so_ver} ; then
+            ln -sv libncursesw.so.${so_ver} "$DESTDIR/lib64/ncurses/lib${lib}.so.${so_ver}"
             ln -sv ncursesw.pc "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc"
         fi
     done
     # legacy binary support
     for lib in libncursesw libncurses libtinfo libpanelw libformw libmenuw ; do
-        ln -sv ${lib}.${so_ver} "$DESTDIR"/lib64/${lib}.5
+        ln -sv ${lib}.${so_ver} "$DESTDIR"/lib64/ncurses/${lib}.so.5
     done
+    cd ../widec
+    make -j$(nproc) install
+    cd ../$name-$version
+    make -j$(nproc) install
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
+    echo "/lib64/ncurses/" > ${DESTDIR}/etc/ld.so.conf.d/ncurses.conf
 }
