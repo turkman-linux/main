@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 find -type f | grep ympbuild | while read line ; do
     echo -e "\033[33;1m=>> BINARY BUILD START:\033[;0m $line"
     ymp build $(dirname $line) --verbose --no-source --ignore-dependency --allow-oem

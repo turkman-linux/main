@@ -2,8 +2,12 @@
 name=readline
 version=8.1
 release=1
-source=(https://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz)
-md5sums=(e9557dd5b1409f5d7b37ef717c64518e)
+source=(https://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz
+       inputrc
+       )
+md5sums=(e9557dd5b1409f5d7b37ef717c64518e
+         SKIP
+        )
 depends=(glibc)
 
 cd $name-$version
