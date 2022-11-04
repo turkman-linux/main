@@ -69,11 +69,7 @@ setup(){
     cd ..
 }
 build(){
-    bdirs=(glibc-build)
-    if use multilib ; then
-        bdirs+=(glibc32-build)
-    fi
-    for bdir in ${bdirs[@]} ; do
+    for bdir in glibc-build ${multilib:+glibc32-build} ; do
         if [[ -d $bdir ]] ; then
             make -C $bdir -O -j`nproc --all`
             make -C $bdir info
