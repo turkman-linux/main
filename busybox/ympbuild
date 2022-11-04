@@ -8,7 +8,6 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 arch=(x86_64)
-depends=(glibc)
 source=("https://busybox.net/downloads/busybox-$version.tar.bz2"
         "busybox.sysconf"
         
