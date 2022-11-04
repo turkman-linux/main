@@ -1,2 +1,4 @@
 #!/bin/sh
+mkdir -p /etc/ssl/local
+mkdir -p /etc/ssl/certs
 /usr/sbin/make-ca -g
