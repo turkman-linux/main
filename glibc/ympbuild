@@ -26,7 +26,6 @@ export CXXFLAGS="-O3 ${debug:+-g} -s -mno-tls-direct-seg-refs -mtune=generic -DS
 export CC=gcc
 export CXX=g++
 
-
 cd "$name-$version"
 setup(){
     opts=(
@@ -64,7 +63,11 @@ setup(){
     cd ..
 }
 build(){
-    for bdir in glibc32-build glibc-build ; do
+    bdirs=(glibc-build)
+    if use multilib ; then
+        bdirs+=(glibc32-build)
+    fi
+    for bdir in ${bdirs[@]} ; do
         if [[ -d $bdir ]] ; then
             cd $bdir
             make -O -j`nproc --all`
@@ -77,8 +80,13 @@ package(){
     # create symlink lib64 (gentoo compability)
     mkdir -p ${DESTDIR}/lib64
     ln -s lib64 ${DESTDIR}/lib
-    ln -s lib32 ${DESTDIR}/libx32
-    for bdir in glibc32-build glibc-build ; do
+    bdirs=(glibc-build)
+    if use multilib ; then
+        mkdir -p ${DESTDIR}/lib32
+        ln -s lib32 ${DESTDIR}/libx32
+        bdirs+=(glibc32-build)
+    fi
+    for bdir in ${bdirs[@]} ; do
         if [[ -d $bdir ]] ; then
             # install files
             cd $bdir
