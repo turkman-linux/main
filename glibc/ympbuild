@@ -75,10 +75,8 @@ build(){
     fi
     for bdir in ${bdirs[@]} ; do
         if [[ -d $bdir ]] ; then
-            cd $bdir
-            make -O -j`nproc --all`
-            make info
-            cd ..
+            make -C $bdir -O -j`nproc --all`
+            make -C $bdir info
         fi
     done
 }
@@ -86,18 +84,13 @@ package(){
     # create symlink lib64 (gentoo compability)
     mkdir -p ${DESTDIR}/lib64
     ln -s lib64 ${DESTDIR}/lib
-    bdirs=(glibc-build)
     if use multilib ; then
         mkdir -p ${DESTDIR}/lib32
         ln -s lib32 ${DESTDIR}/libx32
-        bdirs+=(glibc32-build)
     fi
-    for bdir in ${bdirs[@]} ; do
+    for bdir in glibc-build ${multilib:+glibc32-build} ; do
         if [[ -d $bdir ]] ; then
-            # install files
-            cd $bdir
-            make install  -j$(nproc --all)
-            # /usr support
+            make -C $bdir install  -j$(nproc --all)
         fi
     done
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/ ${DESTDIR}/etc/sysconf.d/
