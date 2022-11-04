@@ -1,0 +1,25 @@
+#!/bin/bash
+name=make-ca
+release=1
+version=1.10
+url='https://github.com/lfs-book/make-ca'
+description='Ssl certificates'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=(https://github.com/lfs-book/make-ca/releases/download/v1.10/make-ca-1.10.tar.xz
+        make-ca.sysconf)
+md5sums=('74f1ad16d7a086ac76e0424fd4dfe67b'
+         'SKIP')
+arch=(x86_64)
+
+cd "$name-$version"
+build(){
+    make
+}
+
+package(){
+    make install
+    mkdir -p "$DESTDIR"/etc/sysconf.d
+    install ../make-ca.sysconf "$DESTDIR"/etc/sysconf.d/
+}
