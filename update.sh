@@ -1,8 +1,10 @@
 #!/bin/bash
 find -type f | grep ympbuild | while read line ; do
     echo -e "\033[33;1m=>> SOURCE BUILD START:\033[;0m $line"
-    ymp build $(dirname $line) --verbose --no-binary --ignore-dependency --allow-oem
+    if ! ls $(dirname $line)/*.source.ymp ; then
+        ymp build $(dirname $line) --verbose --no-binary --ignore-dependency --allow-oem
         echo -e "\033[33;1m<<= SOURCE BUILD DONE:\033[;0m $line"
+    fi
 done
 [[ -d output ]] && rm -rf output
 mkdir -p output
