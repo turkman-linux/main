@@ -2,9 +2,10 @@
 set -e
 find -type f | grep ympbuild | sort -V | while read line ; do
     name=$(basename $(dirname $line))
+    path=$(realpath $(dirname $line))
     if ! find ./output/ -type f | grep "${name}_" | grep "$(uname -m).ymp$" 2>/dev/null ; then
         echo -e "\033[33;1m<<= BINARY BUILD DONE:\033[;0m $line"
-        ymp-build $(dirname $line) --verbose --no-source --ignore-dependency --allow-oem
+        ymp --sandbox --shared="$path" build "$path" --verbose --no-source --ignore-dependency --allow-oem
         echo -e "\033[33;1m<<= BINARY BUILD DONE:\033[;0m $line"
     fi
 done
