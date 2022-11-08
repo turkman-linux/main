@@ -10,6 +10,8 @@ license=('zlib')
 source=("https://zlib.net/zlib-$version.tar.gz")
 md5sums=('9b8aa094c4e5765dabf4da391f00d15c')
 arch=(x86_64)
+group=(system.base)
+
 cd $name-$version
 
 setup(){

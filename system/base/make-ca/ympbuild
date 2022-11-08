@@ -12,8 +12,10 @@ source=(https://github.com/lfs-book/make-ca/releases/download/v1.10/make-ca-1.10
 md5sums=('74f1ad16d7a086ac76e0424fd4dfe67b'
          'SKIP')
 arch=(x86_64)
+group=(system.base)
 
 cd "$name-$version"
+
 build(){
     make
 }

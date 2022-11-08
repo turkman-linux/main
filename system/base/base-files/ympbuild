@@ -10,6 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.com/sulix/devel/sources/base-files/-/archive/$version/base-files-$version.zip")
 md5sums=('009efca6fc8897379ac844b786bfb585')
 arch=(x86_64)
+group=(system.base)
 
 if [[ -d "$name-$version" ]] ; then
     cd "$name-$version"

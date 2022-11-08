@@ -6,6 +6,7 @@ source=(https://invisible-mirror.net/archives/$name/$name-$version.tar.gz)
 md5sums=(a2736befde5fee7d2b7eb45eb281cdbe)
 depends=(glibc)
 so_ver=6
+group=(system.base)
 
 cd $name-$version
 
