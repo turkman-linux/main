@@ -1,1 +1,1 @@
-# Sulix base packages
+# Sulix main packages
