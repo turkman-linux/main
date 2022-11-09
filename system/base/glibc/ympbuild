@@ -43,7 +43,6 @@ setup(){
         --enable-lock-elision
         --enable-multi-arch
         --enable-static-pie
-        --enable-static-nss
         --enable-stack-protector=all
         --enable-kernel=5.10.0
         --enable-stackguard-randomization
