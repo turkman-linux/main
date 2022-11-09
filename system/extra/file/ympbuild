@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+name=file
+release=1
+version=5.43
+url='https://www.darwinsys.com/file/'
+description="Identify a file's format by scanning binary data for patterns"
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+source=(http://ftp.astron.com/pub/file/file-5.43.tar.gz)
+md5sums=(8effd70da368210a6c6eece037f978eb)
+group=(system.extra)
+
+cd $name-$version
+
+setup(){
+    opts=(
+    	--prefix=/usr
+	--libdir=/usr/lib64
+	--enable-static
+	--enable-elf
+	--enable-elf-core
+    )
+    use_bzip2=--disable-bzlib
+    use_lzma=--disable-xzlib
+    use_zlib=--disable-zlib
+    use_seccomp=--disable-libseccomp
+    if use bzip2; then
+        use_bzip2=--enable-bzlib
+    fi
+    if use lzma; then
+        use_lzma=--enable-xzlib
+    fi
+    if use zlib; then
+        use_zlib=--enable-zlib
+    fi
+    if use seccomp; then
+        use_seccomp=--enable-libseccomp
+    fi
+    ./configure ${opts[@]} \
+    	$use_bzip2 \
+	$use_lzma \
+	$use_zlib \
+	$use_seccomp
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
