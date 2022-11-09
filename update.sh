@@ -16,5 +16,5 @@ find -type f | grep ympbuild | sort -V | while read line ; do
         echo -e "\033[33;1m<<= SOURCE BUILD DONE:\033[;0m $line"
     fi
 done
-ymp index output --allow-oem --verbose --move
+ymp index output --allow-oem --verbose --move --name="main"
 

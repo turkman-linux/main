@@ -55,6 +55,8 @@ setup(){
         export CXX="g++ -m32"
         mkdir glibc32-build
         cd glibc32-build
+        echo "slibdir=/lib32" >> configparms
+        echo "rtlddir=/lib32" >> configparms
         ../configure ${opts[@]} \
             --host=i686-pc-linux-gnu \
             --libdir=/lib32 \
@@ -65,7 +67,8 @@ setup(){
     export CXX="g++"
     mkdir glibc-build
     cd glibc-build
-    pwd
+    echo "slibdir=/lib64" >> configparms
+    echo "rtlddir=/lib64" >> configparms
     ../configure ${opts[@]} \
         --libdir=/lib64 \
         --libexecdir=/lib64/glibc
@@ -87,7 +90,7 @@ package(){
         mkdir -p ${DESTDIR}/lib32
         ln -s lib32 ${DESTDIR}/libx32
     fi
-    for bdir in glibc-build glibc32-build ; do
+    for bdir in glibc32-build glibc-build ; do
         if [[ -d $bdir ]] ; then
             make -C $bdir install  -j$(nproc --all)
         fi

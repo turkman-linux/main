@@ -18,4 +18,4 @@ find -type f | grep ympbuild | sort -V | while read line ; do
     fi
 done
 
-ymp index output --allow-oem --verbose --move
+ymp index output --allow-oem --verbose --move --name="main"
