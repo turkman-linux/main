@@ -12,7 +12,7 @@ find -type f | grep ympbuild | sort -V | while read line ; do
     path=$(realpath $(dirname $line))
     if ! find ./output/ -type f | grep "${name}_" | grep "$(uname -m).ymp$" 2>/dev/null ; then
         echo -e "\033[33;1m<<= BINARY BUILD DONE:\033[;0m $line"
-        ymp --sandbox --shared="$path" build "$path" --verbose --no-source --ignore-dependency --allow-oem
+        ymp --sandbox --shared="$path" build "$path" --verbose --no-source --ignore-dependency --use=all --allow-oem
         move_package
         echo -e "\033[33;1m<<= BINARY BUILD DONE:\033[;0m $line"
     fi
