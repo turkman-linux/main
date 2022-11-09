@@ -70,7 +70,7 @@ setup(){
     cd ..
 }
 build(){
-    for bdir in glibc-build ${multilib:+glibc32-build} ; do
+    for bdir in glibc-build glibc32-build ; do
         if [[ -d $bdir ]] ; then
             make -C $bdir -O -j`nproc --all`
             make -C $bdir info
@@ -85,7 +85,7 @@ package(){
         mkdir -p ${DESTDIR}/lib32
         ln -s lib32 ${DESTDIR}/libx32
     fi
-    for bdir in glibc-build ${multilib:+glibc32-build} ; do
+    for bdir in glibc-build glibc32-build ; do
         if [[ -d $bdir ]] ; then
             make -C $bdir install  -j$(nproc --all)
         fi
