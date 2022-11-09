@@ -14,8 +14,10 @@ source=('https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz'
         'x86_64-linux-gnu.conf'
         'glibc.sysconf'
         'reenable_DT_HASH.patch'
+        'locale-gen'
 )
 md5sums=('00e9b89e043340f688bc93ec03239b57'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -32,7 +34,7 @@ setup(){
     # Thx archlinux
     patch -Np1 -i "../reenable_DT_HASH.patch"
     opts=(
-        --prefix=/
+        --prefix=/usr
         --mandir=/share/man
         --infodir=/share/info
         --with-bugurl=http://gitlab.com/sulix/main/issues
@@ -41,6 +43,7 @@ setup(){
         --enable-lock-elision
         --enable-multi-arch
         --enable-static-pie
+        --enable-static-nss
         --enable-stack-protector=all
         --enable-kernel=5.10.0
         --enable-stackguard-randomization
@@ -65,8 +68,8 @@ setup(){
     cd glibc-build
     pwd
     ../configure ${opts[@]} \
-        --libdir=/lib \
-        --libexecdir=/lib/glibc
+        --libdir=/lib64 \
+        --libexecdir=/lib64/glibc
     cd ..
 }
 build(){
@@ -90,7 +93,7 @@ package(){
             make -C $bdir install  -j$(nproc --all)
         fi
     done
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/ ${DESTDIR}/etc/sysconf.d/
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/ ${DESTDIR}/etc/sysconf.d/ ${DESTDIR}/bin
     install ../ld.so.conf ${DESTDIR}/etc/ld.so.conf
     install ../usr-support.conf ${DESTDIR}/etc/ld.so.conf.d/
     install ../x86_64-linux-gnu.conf ${DESTDIR}/etc/ld.so.conf.d/
@@ -98,5 +101,7 @@ package(){
     rm -f ${DESTDIR}/etc/ld.so.cache
     # install sysconf trigger
     install ../glibc.sysconf ${DESTDIR}/etc/sysconf.d/glibc
+    # install extra tools
+    install ../locale-gen ${DESTDIR}/bin/locale-gen
 
 }

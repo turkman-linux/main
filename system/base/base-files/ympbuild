@@ -8,7 +8,7 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://gitlab.com/sulix/devel/sources/base-files/-/archive/$version/base-files-$version.zip")
-md5sums=('009efca6fc8897379ac844b786bfb585')
+md5sums=('3f58695b0babbca2691a8bbcadd2d131')
 arch=(x86_64)
 group=(system.base)
 
