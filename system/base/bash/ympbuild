@@ -18,7 +18,7 @@ setup(){
         --without-bash-malloc
 }
 build(){
-    make -j$(nproc)
+    make 
 }
 
 package(){
