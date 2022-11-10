@@ -7,14 +7,14 @@ description='Base system files'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://gitlab.com/sulix/devel/sources/base-files/-/archive/$version/base-files-$version.zip")
-md5sums=('3f58695b0babbca2691a8bbcadd2d131')
+source=("https://gitlab.com/sulix/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
+        "base-files.sysconf")
+md5sums=('cd0c378da701d2eb8f6ee5e2b59d55e4'
+         'SKIP')
 arch=(x86_64)
 group=(system.base)
 
-if [[ -d "$name-$version" ]] ; then
-    cd "$name-$version"
-fi
+cd "$name-$version"
 
 package(){
     mkdir -p ${DESTDIR}/etc/sysconf.d
