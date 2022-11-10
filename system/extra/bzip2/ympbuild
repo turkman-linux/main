@@ -30,8 +30,8 @@ package(){
     ln -sf bzip2 "${DESTDIR}"/usr/bin/bunzip2
     ln -sf bzip2 "${DESTDIR}"/usr/bin/bzcat
 
-    cp -a libbz2.a "${DESTDIR}"/usr/lib64/
-    cp -a $name-shared/libbz2.so* "${DESTDIR}"/usr/lib64
+    install -m755 libbz2.a "${DESTDIR}"/usr/lib64/
+    install -m755 $name-shared/libbz2.so* "${DESTDIR}"/usr/lib64
     ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so
     ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1
 
