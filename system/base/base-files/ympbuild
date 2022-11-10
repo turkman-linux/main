@@ -17,5 +17,7 @@ if [[ -d "$name-$version" ]] ; then
 fi
 
 package(){
+    mkdir -p ${DESTDIR}/etc/sysconf.d
     make install
+    install ../base-files.sysconf  ${DESTDIR}/etc/sysconf.d/base-files
 }

@@ -1,0 +1,21 @@
+#!/bin/sh
+if [ ! -d /data/user/root ]; then
+    cat /etc/passwd.d/* > /etc/passwd
+    mkdir /data/user/root -p
+    mkdir /data/log -p
+    mkdir -p /kernel/modules
+    mkdir -p /kernel/firmware
+    mkdir -p /usr/lib64
+    chown root /data/user/root
+    chmod 700 /data/user/root
+    ln -s data/user/root /root
+    ln -s ../run /var/run
+    ln -s ../data /data/data
+    ln -s ../tmp /data/tmp
+    ln -s ../data/log /var/log
+    ln -s ../kernel/modules /lib/modules
+    ln -s ../kernel/firmware /lib/firmare
+    ln -s ../lib64 /usr/lib
+else
+    exit 0
+fi
