@@ -8,16 +8,21 @@ email=' aliriza.keskin@pardus.org.tr'
 maintainer=' aliriza'
 license=('BSD-3-Clause')
 source=('https://github.com/p11-glue/p11-kit/releases/download/0.24.1/p11-kit-0.24.1.tar.xz')
-depends=(libtasn1 libffi)
+depends=(libtasn1)
 makedepends=( )
 md5sums=('67b2539bdca6b4bedaeecc12864d2796')
 arch=('x86_64')
 group=(system.extra)
+uses=(libffi lto)
+libffi_depends=(libffi)
 
 cd $name-$version
 
 setup(){
-    meson setup build -Dtrust_paths=/etc/ssl/certs/ca-certificates.crt
+    meson setup build --prefix=/usr \
+        $(use_opt lto "-Db_lto=true" "-Db_lto=false") \
+        $(use_opt libffi "-Dlibffi=enabled" "-Dlibffi=disabled") \
+        -Dtrust_paths=/etc/ssl/certs/ca-certificates.crt
 }
 
 build(){
