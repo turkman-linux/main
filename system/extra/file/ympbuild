@@ -11,6 +11,9 @@ md5sums=(8effd70da368210a6c6eece037f978eb)
 group=(system.extra)
 uses=(bzip2 lzma zlib seccomp)
 zlib_depends=(zlib)
+lzma_depends=(xz-utils)
+bzip2_depends=(bzip2)
+seccomp_depends=(libseccomp)
 
 cd $name-$version
 
@@ -22,27 +25,11 @@ setup(){
 	--enable-elf
 	--enable-elf-core
     )
-    use_bzip2=--disable-bzlib
-    use_lzma=--disable-xzlib
-    use_zlib=--disable-zlib
-    use_seccomp=--disable-libseccomp
-    if use bzip2; then
-        use_bzip2=--enable-bzlib
-    fi
-    if use lzma; then
-        use_lzma=--enable-xzlib
-    fi
-    if use zlib; then
-        use_zlib=--enable-zlib
-    fi
-    if use seccomp; then
-        use_seccomp=--enable-libseccomp
-    fi
     ./configure ${opts[@]} \
-    	$use_bzip2 \
-	$use_lzma \
-	$use_zlib \
-	$use_seccomp
+	$(use_opt zlib --enable-zlib --disable-zlib) \
+	$(use_opt lzma --enable-xzlib --disable-xzlib) \
+	$(use_opt bzip2 --enable-bzlib --disable-bzlib) \
+	$(use_opt seccomp --enable-libseccomp --disable-libseccomp)
 }
 
 build(){
