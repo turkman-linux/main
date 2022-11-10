@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+name=bzip2
+version=1.0.8
+release=1
+url='https://sourceware.org/bzip2'
+description='lzma compression utilities and library'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+source=('https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz'
+	'make.patch')
+md5sums=('67e051268d0c475ea773822f7500d0e5'
+	 'SKIP')
+group=(system.extra)
+
+cd $name-$version
+
+setup(){
+    patch -Np1 -i "../make.patch"
+}
+build(){
+    make -j`nproc`
+}
+package(){
+    make install PREFIX=/usr LIBDIR=/usr/lib64
+}

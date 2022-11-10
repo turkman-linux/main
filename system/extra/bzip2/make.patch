@@ -1,0 +1,141 @@
+diff --git a/Makefile b/Makefile
+index f8a1772..abc3a34 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,13 +18,16 @@ SHELL=/bin/sh
+ CC=gcc
+ AR=ar
+ RANLIB=ranlib
+-LDFLAGS=
+ 
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS+=-Wall -Winline $(BIGFILES) $(CPPFLAGS)
+ 
+ # Where you want it installed when you do 'make install'
+ PREFIX=/usr/local
++BINDIR=$(PREFIX)/bin
++LIBDIR=$(PREFIX)/lib
++INCDIR=$(PREFIX)/include
++MANDIR=$(PREFIX)/share/man
+ 
+ 
+ OBJS= blocksort.o  \
+@@ -35,7 +38,7 @@ OBJS= blocksort.o  \
+       decompress.o \
+       bzlib.o
+ 
+-all: libbz2.a bzip2 bzip2recover test
++all: libbz2.a bzip2 bzip2recover
+ 
+ bzip2: libbz2.a bzip2.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bzip2 bzip2.o -L. -lbz2
+@@ -44,13 +47,8 @@ bzip2recover: bzip2recover.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bzip2recover bzip2recover.o
+ 
+ libbz2.a: $(OBJS)
+-	rm -f libbz2.a
+-	$(AR) cq libbz2.a $(OBJS)
+-	@if ( test -f $(RANLIB) -o -f /usr/bin/ranlib -o \
+-		-f /bin/ranlib -o -f /usr/ccs/bin/ranlib ) ; then \
+-		echo $(RANLIB) libbz2.a ; \
+-		$(RANLIB) libbz2.a ; \
+-	fi
++	$(AR) -rc libbz2.a $(OBJS)
++	$(RANLIB) $@
+ 
+ check: test
+ test: bzip2
+@@ -70,43 +68,42 @@ test: bzip2
+ 	@cat words3
+ 
+ install: bzip2 bzip2recover
+-	if ( test ! -d $(PREFIX)/bin ) ; then mkdir -p $(PREFIX)/bin ; fi
+-	if ( test ! -d $(PREFIX)/lib ) ; then mkdir -p $(PREFIX)/lib ; fi
+-	if ( test ! -d $(PREFIX)/man ) ; then mkdir -p $(PREFIX)/man ; fi
+-	if ( test ! -d $(PREFIX)/man/man1 ) ; then mkdir -p $(PREFIX)/man/man1 ; fi
+-	if ( test ! -d $(PREFIX)/include ) ; then mkdir -p $(PREFIX)/include ; fi
+-	cp -f bzip2 $(PREFIX)/bin/bzip2
+-	cp -f bzip2 $(PREFIX)/bin/bunzip2
+-	cp -f bzip2 $(PREFIX)/bin/bzcat
+-	cp -f bzip2recover $(PREFIX)/bin/bzip2recover
+-	chmod a+x $(PREFIX)/bin/bzip2
+-	chmod a+x $(PREFIX)/bin/bunzip2
+-	chmod a+x $(PREFIX)/bin/bzcat
+-	chmod a+x $(PREFIX)/bin/bzip2recover
+-	cp -f bzip2.1 $(PREFIX)/man/man1
+-	chmod a+r $(PREFIX)/man/man1/bzip2.1
+-	cp -f bzlib.h $(PREFIX)/include
+-	chmod a+r $(PREFIX)/include/bzlib.h
+-	cp -f libbz2.a $(PREFIX)/lib
+-	chmod a+r $(PREFIX)/lib/libbz2.a
+-	cp -f bzgrep $(PREFIX)/bin/bzgrep
+-	ln -s -f $(PREFIX)/bin/bzgrep $(PREFIX)/bin/bzegrep
+-	ln -s -f $(PREFIX)/bin/bzgrep $(PREFIX)/bin/bzfgrep
+-	chmod a+x $(PREFIX)/bin/bzgrep
+-	cp -f bzmore $(PREFIX)/bin/bzmore
+-	ln -s -f $(PREFIX)/bin/bzmore $(PREFIX)/bin/bzless
+-	chmod a+x $(PREFIX)/bin/bzmore
+-	cp -f bzdiff $(PREFIX)/bin/bzdiff
+-	ln -s -f $(PREFIX)/bin/bzdiff $(PREFIX)/bin/bzcmp
+-	chmod a+x $(PREFIX)/bin/bzdiff
+-	cp -f bzgrep.1 bzmore.1 bzdiff.1 $(PREFIX)/man/man1
+-	chmod a+r $(PREFIX)/man/man1/bzgrep.1
+-	chmod a+r $(PREFIX)/man/man1/bzmore.1
+-	chmod a+r $(PREFIX)/man/man1/bzdiff.1
+-	echo ".so man1/bzgrep.1" > $(PREFIX)/man/man1/bzegrep.1
+-	echo ".so man1/bzgrep.1" > $(PREFIX)/man/man1/bzfgrep.1
+-	echo ".so man1/bzmore.1" > $(PREFIX)/man/man1/bzless.1
+-	echo ".so man1/bzdiff.1" > $(PREFIX)/man/man1/bzcmp.1
++	mkdir -p $(DESTDIR)$(BINDIR)
++	mkdir -p $(DESTDIR)$(LIBDIR)
++	mkdir -p $(DESTDIR)$(MANDIR)/man1
++	mkdir -p $(DESTDIR)$(INCDIR)
++	cp -f bzip2 $(DESTDIR)$(BINDIR)/bzip2
++	cp -f bzip2 $(DESTDIR)$(BINDIR)/bunzip2
++	cp -f bzip2 $(DESTDIR)$(BINDIR)/bzcat
++	cp -f bzip2recover $(DESTDIR)$(BINDIR)/bzip2recover
++	chmod a+x $(DESTDIR)$(BINDIR)/bzip2
++	chmod a+x $(DESTDIR)$(BINDIR)/bunzip2
++	chmod a+x $(DESTDIR)$(BINDIR)/bzcat
++	chmod a+x $(DESTDIR)$(BINDIR)/bzip2recover
++	cp -f bzip2.1 $(DESTDIR)$(MANDIR)/man1
++	chmod a+r $(DESTDIR)$(MANDIR)/man1/bzip2.1
++	cp -f bzlib.h $(DESTDIR)$(INCDIR)
++	chmod a+r $(DESTDIR)$(INCDIR)/bzlib.h
++	cp -f libbz2.a $(DESTDIR)$(LIBDIR)
++	chmod a+r $(DESTDIR)$(LIBDIR)/libbz2.a
++	cp -f bzgrep $(DESTDIR)$(BINDIR)/bzgrep
++	ln -s -f bzgrep $(DESTDIR)$(BINDIR)/bzegrep
++	ln -s -f bzgrep $(DESTDIR)$(BINDIR)/bzfgrep
++	chmod a+x $(DESTDIR)$(BINDIR)/bzgrep
++	cp -f bzmore $(DESTDIR)$(BINDIR)/bzmore
++	ln -s -f bzmore $(DESTDIR)$(BINDIR)/bzless
++	chmod a+x $(DESTDIR)$(BINDIR)/bzmore
++	cp -f bzdiff $(DESTDIR)$(BINDIR)/bzdiff
++	ln -s -f bzdiff $(DESTDIR)$(BINDIR)/bzcmp
++	chmod a+x $(DESTDIR)$(BINDIR)/bzdiff
++	cp -f bzgrep.1 bzmore.1 bzdiff.1 $(DESTDIR)$(MANDIR)/man1
++	chmod a+r $(DESTDIR)$(MANDIR)/man1/bzgrep.1
++	chmod a+r $(DESTDIR)$(MANDIR)/man1/bzmore.1
++	chmod a+r $(DESTDIR)$(MANDIR)/man1/bzdiff.1
++	echo ".so man1/bzgrep.1" > $(DESTDIR)$(MANDIR)/man1/bzegrep.1
++	echo ".so man1/bzgrep.1" > $(DESTDIR)$(MANDIR)/man1/bzfgrep.1
++	echo ".so man1/bzmore.1" > $(DESTDIR)$(MANDIR)/man1/bzless.1
++	echo ".so man1/bzdiff.1" > $(DESTDIR)$(MANDIR)/man1/bzcmp.1
+ 
+ clean: 
+ 	rm -f *.o libbz2.a bzip2 bzip2recover \
+diff --git a/Makefile-libbz2_so b/Makefile-libbz2_so
+index fb0f230..f064a68 100644
+--- a/Makefile-libbz2_so
++++ b/Makefile-libbz2_so
+@@ -24,7 +24,7 @@
+ SHELL=/bin/sh
+ CC=gcc
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-fpic -fPIC -Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS+=-fpic -fPIC -Wall -Winline $(BIGFILES) $(CPPFLAGS)
+ 
+ OBJS= blocksort.o  \
+       huffman.o    \
