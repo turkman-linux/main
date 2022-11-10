@@ -24,6 +24,7 @@ md5sums=('00e9b89e043340f688bc93ec03239b57'
          'SKIP'
          'SKIP'
 )
+uses=(multilib)
 group=(system.base)
 
 export CFLAGS="-O3 ${debug:+-g} -s -mno-tls-direct-seg-refs -mtune=generic -DSULIX"

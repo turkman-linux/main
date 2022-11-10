@@ -9,6 +9,8 @@ maintainer='kurth4cker'
 source=(http://ftp.astron.com/pub/file/file-5.43.tar.gz)
 md5sums=(8effd70da368210a6c6eece037f978eb)
 group=(system.extra)
+uses=(bzip2 lzma zlib seccomp)
+zlib_depends=(zlib)
 
 cd $name-$version
 
