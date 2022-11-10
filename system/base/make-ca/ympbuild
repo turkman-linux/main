@@ -17,11 +17,13 @@ group=(system.base)
 cd "$name-$version"
 
 build(){
+    sed -i "s|/usr/bin/|/bin/|g" make-ca
+    sed -i "s|/usr/bin/|/bin/|g" copy-trust-modifications
     make
 }
 
 package(){
-    make install
+    make install SBINDIR="/sbin/"
     mkdir -p "$DESTDIR"/etc/sysconf.d
-    install ../make-ca.sysconf "$DESTDIR"/etc/sysconf.d/
+    install ../make-ca.sysconf "$DESTDIR"/etc/sysconf.d/make-ca
 }
