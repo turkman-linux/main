@@ -2,5 +2,5 @@
 if [ ! -d /etc/ssl/local ] ; then
     mkdir -p /etc/ssl/local
     mkdir -p /etc/ssl/certs
-    /usr/sbin/make-ca -g
+    /sbin/make-ca -g
 fi

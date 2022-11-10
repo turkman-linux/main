@@ -17,8 +17,8 @@ group=(system.base)
 cd "$name-$version"
 
 build(){
-    sed -i "s|/usr/bin/|/bin/|g" make-ca
-    sed -i "s|/usr/bin/|/bin/|g" copy-trust-modifications
+    sed -i "s|/usr/bin/cut|/bin/cut|g" make-ca
+    sed -i "s|/usr/bin/md5sum|/bin/md5sum|g" make-ca
     make
 }
 
