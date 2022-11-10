@@ -6,20 +6,39 @@ url='https://sourceware.org/bzip2'
 description='lzma compression utilities and library'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
-source=('https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz'
-	'make.patch')
-md5sums=('67e051268d0c475ea773822f7500d0e5'
-	 'SKIP')
+source=('https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz')
+md5sums=('67e051268d0c475ea773822f7500d0e5')
 group=(system.extra)
 
 cd $name-$version
 
 setup(){
-    patch -Np1 -i "../make.patch"
+    true
 }
 build(){
-    make -j`nproc`
+    export CFLAGS="-Winline -D_FILE_OFFSET_BITS=64 ${CFLAGS}"
+    make -e -j`nproc` bzip2 bzip2recover libbz2.a
+
+    make -f Makefile-libbz2_so clean
+    make -j`nproc` -f Makefile-libbz2_so all CFLAGS="-fpic -fPIC ${CFLAGS}"
 }
 package(){
-    make install PREFIX=/usr LIBDIR=/usr/lib64
+    install -dm755 ${DESTDIR}/usr/{bin,lib64,include,share/man/man1}
+
+    install -m755 bzip2 "${DESTDIR}"/usr/bin/bzip2
+    install -m755 bzip2recover bzdiff bzgrep bzmore "${DESTDIR}"/usr/bin
+    ln -sf bzip2 "${DESTDIR}"/usr/bin/bunzip2
+    ln -sf bzip2 "${DESTDIR}"/usr/bin/bzcat
+
+    cp -a libbz2.a "${DESTDIR}"/usr/lib64/
+    cp -a libbz2.so* "${DESTDIR}"/usr/lib64
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1
+
+    install -m644 bzlib.h "${DESTDIR}"/usr/include/
+
+    install -m644 bzip2.1 "${DESTDIR}"/usr/share/man/man1/
+    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bunzip2.1
+    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzcat.1
+    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzip2recover.1
 }
