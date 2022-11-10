@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name=xz-utils
+version=5.2.7
+homepage='https://tukaani.org/xz/'
+description='lzma compression utilities'
+maintainer='kurth4cker'
+email='kurth4cker@tutanota.com'
+license=('GPLv2+')
+source=('https://tukaani.org/xz/xz-5.2.7.tar.gz')
+md5sums=('66f82a9fa24623f5ea8a9ee6b4f808e2')
+group=(system.extra)
+uses=(doc nls)
+
+cd xz-$version
+
+setup(){
+    ./configure --prefix=/usr \
+	--libdir=/usr/lib64 \
+	--enable-static \
+	--enable-shared \
+	$(use_opt doc --enable-doc --disable-doc) \
+	$(use_opt nls --enable-nls --disable-nls)
+}
+build(){
+    make -j$(nproc)
+}
+package(){
+    make install -j$(nproc)
+}
