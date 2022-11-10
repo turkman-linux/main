@@ -6,7 +6,7 @@ url='https://sourceware.org/bzip2'
 description='lzma compression utilities and library'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
-source=('https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz')
+source=("https://sourceware.org/pub/bzip2/bzip2-${version}.tar.gz")
 md5sums=('67e051268d0c475ea773822f7500d0e5')
 group=(system.extra)
 
