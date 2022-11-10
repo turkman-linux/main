@@ -1,18 +1,18 @@
 #!/bin/bash
-name=libffi
+name=libtasn
 release=1
-version=3.4.4
+version=4.19.0
 url='https://gitlab.com/sulinos/devel/ymp'
-description='A portable foreign-function interface library. '
+description='Manage ASN.1 structures'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=('https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz')
-md5sums=('0da1a5ed7786ac12dcbaf0d499d8a049') # replace this
+source=('https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz')
+md5sums=('f701ab57eb8e7d9c105b2cd5d809b29a') # replace this
 arch=(x86_64)
-group=(system.base)
+group=(system.extra)
 
-cd "$name-$version"
+cd "libtasn1-$version"
 
 setup(){
     ./configure --prefix=/usr \
