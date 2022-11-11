@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='musl'
+release='1'
+version='1.2.3'
+url='https://example.org'
+description='the musl c library (libc) implementation'
+email=' aliriza.keskin@pardus.org.tr'
+maintainer=' aliriza'
+license=('MIT')
+source=('https://musl.libc.org/releases/musl-1.2.3.tar.gz')
+depends=( )
+makedepends=( )
+md5sums=('a507ae4f7f20bcfe566d8eb65c1af73e')
+arch=('x86_64')
+
+cd $name-$version
+unset CFLAGS
+unset CXXFLAGS
+setup(){
+    ./configure --prefix=/usr/lib64/musl \
+        --exec-prefix=/usr \
+        --enable-wrapper=all \
+        --enable-debug \
+        --syslibdir=/lib64 \
+        --libdir=/lib64/musl \
+        --includedir=/usr/include/musl
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
