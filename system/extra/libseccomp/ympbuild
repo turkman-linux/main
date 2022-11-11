@@ -19,7 +19,7 @@ setup(){
 	--enable-static \
 	--enable-shared \
 	--disable-silent-rules \
-	--disable-python
+	--disable-python \
 	--disable-code-coverage
 }
 build(){
