@@ -7,10 +7,12 @@ description='the musl c library (libc) implementation'
 email=' aliriza.keskin@pardus.org.tr'
 maintainer=' aliriza'
 license=('MIT')
-source=('https://musl.libc.org/releases/musl-1.2.3.tar.gz')
+source=('https://musl.libc.org/releases/musl-1.2.3.tar.gz'
+        'ldconfig')
 depends=( )
 makedepends=( )
-md5sums=('a507ae4f7f20bcfe566d8eb65c1af73e')
+md5sums=('a507ae4f7f20bcfe566d8eb65c1af73e'
+         'SKIP')
 arch=('x86_64')
 group=(system.musl)
 
@@ -23,7 +25,7 @@ setup(){
         --enable-wrapper=all \
         --enable-debug \
         --syslibdir=/lib64 \
-        --libdir=/lib64/musl \
+        --libdir=/usr/lib64/musl \
         --includedir=/usr/include/musl
 }
 
@@ -33,5 +35,21 @@ build(){
 
 package(){
     make install -j`nproc`
+    # Alpine linux like LDSO
+    local LDSO=$(make -f Makefile --eval "$(echo -e 'print-ldso:\n\t@echo $$(basename $(LDSO_PATHNAME))')" print-ldso)
+	mv -f "$DESTDIR"/usr/lib64/musl/libc.so "$DESTDIR"/lib64/"$LDSO"
+	ln -sf "$LDSO" "$DESTDIR"/lib64/libc.musl-$(uname -m).so.1
+	ln -sf ../../../lib64/"$LDSO" "$DESTDIR"/usr/lib64/musl/libc.so
+	# Glibc compability symlink
+	for i in libc.so.6 libcrypt.so.1 libm.so.6 libpthread.so.0 librt.so.1 libutil.so.1; do
+		ln -sf libc.so "$DESTDIR/usr/lib64/musl/$i"
+	done
+	# ldd
+	cat >>"$DESTDIR"/usr/bin/musl-ldd <<-EOF
+	#!/bin/busybox sh
+	exec /usr/lib64/musl/libc.so --list "\$@"
+	EOF
+    chmod 755 "$DESTDIR"/usr/bin/musl-ldd
+    install ../ldconfig "$DESTDIR"/usr/bin/musl-ldconfig
 }
 
