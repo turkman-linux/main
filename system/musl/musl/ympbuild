@@ -12,6 +12,7 @@ depends=( )
 makedepends=( )
 md5sums=('a507ae4f7f20bcfe566d8eb65c1af73e')
 arch=('x86_64')
+group=(system.musl)
 
 cd $name-$version
 unset CFLAGS
