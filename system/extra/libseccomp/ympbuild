@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+name=libseccomp
+version=2.5.4
+release=1
+homepage='https://github.com/seccomp/libseccomp'
+description='high level interface to linux seccomp filter'
+maintainer='kurth4cker'
+email='kurth4cker@tutanota.com'
+license=('LGPL-2.1')
+source=("https://github.com/seccomp/libseccomp/releases/download/v${version}/libseccomp-${version}.tar.gz")
+md5sums=('74008bb33234e0c2a0d998e7bee5c625')
+group=(system.extra)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+	--libdir=/usr/lib64 \
+	--enable-static \
+	--enable-shared \
+	--disable-silent-rules \
+	--disable-python
+	--disable-code-coverage
+}
+build(){
+    make -j$(nproc)
+}
+package(){
+    make install -j$(nproc)
+}
