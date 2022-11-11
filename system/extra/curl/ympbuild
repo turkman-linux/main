@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+name='curl'
+release='1'
+version='7.86.0'
+url='https://example.org'
+description='An URL retrieval utility and library'
+email=' parduscix@yandex.ru'
+maintainer=' sulincix'
+license=('MIT')
+source=('https://curl.se/download/curl-7.86.0.zip')
+depends=(zlib openssl)
+makedepends=( )
+md5sums=('76bca98cadf12ecd71acd31bf171c27d')
+arch=('x86_64')
+uses=(gnutls)
+gnutls_depends=(gnutls)
+
+cd $name-$version
+
+prepare(){
+    if use gnutls ; then
+        cp -r ../$name-$version ../curl-gnutls
+    fi
+}
+
+setup(){
+    opts=(
+        --prefix=/usr
+        --libdir=/usr/lib64
+        --disable-ldap
+        --disable-ldaps
+        -disable-versioned-symbols
+    )
+    ./configure ${opts[@]} --with-openssl
+    if use gnutls ; then
+        cd ../curl-gnutls
+        ./configure ${opts[@]} --without-openssl --with-gnutls
+    fi
+}
+
+build(){
+    make -j`nproc`
+    if use gnutls ; then
+        cd ../curl-gnutls
+        make -C lib -j`nproc`
+    fi
+}
+
+package(){
+    if use gnutls ; then
+        cd ../curl-gnutls
+        make install -j`nproc`
+        mv "${DESTDIR}"/usr/lib64/libcurl{,-gnutls}.so.4.8.0
+        mv "${DESTDIR}"/usr/lib64/libcurl{,-gnutls}.a
+        mv "${DESTDIR}"/usr/lib64/pkgconfig/libcurl{,-gnutls}.pc
+        sed -i "s/-lcurl/-lcurl-gnutls/g" "${DESTDIR}"/usr/lib64/pkgconfig/libcurl-gnutls.pc
+        ln -s libcurl-gnutls.so.4 "${DESTDIR}"/usr/lib64/libcurl-gnutls.so
+        for ver in 3 4 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
+            ln -s libcurl-gnutls.so.4.8.0 "${DESTDIR}"/usr/lib64/libcurl-gnutls.so.${ver}
+        done
+    fi
+    cd ../$name-$version
+    make install -j`nproc`
+    for ver in 3 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
+        ln -s libcurl.so.4.8.0 "${DESTDIR}"/usr/lib64/libcurl.so.${ver}
+    done
+}
+
