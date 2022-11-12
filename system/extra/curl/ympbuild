@@ -12,6 +12,7 @@ depends=(zlib openssl)
 makedepends=( )
 md5sums=('76bca98cadf12ecd71acd31bf171c27d')
 arch=('x86_64')
+group=(system.extra)
 
 uses=(gnutls zlib libssh)
 uses_extra=(zstd brotli libidn2)
