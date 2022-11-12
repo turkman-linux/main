@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+name='gnutls'
+release='1'
+version='3.7.8'
+url='https://example.org'
+description='The GnuTLS Transport Layer Security Library'
+email=' parduscix@yandex.ru'
+maintainer=' sulincix'
+license=('GplV2')
+source=('https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.8.tar.xz')
+depends=( )
+makedepends=( )
+md5sums=('c7b749bae243c341e6be717baf7ffbad')
+arch=('x86_64')
+
+uses_extra=(zstd brotli libidn2)
+brotli_depends=(brotli)
+zstd_depends=(zstd)
+libidn2_depends=(libind2)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+    --libdir=/usr/lib64 \
+    --disable-guile \
+    --enable-ssl3-support \
+    --enable-openssl-compatibility \
+    --with-included-unistring \
+    --with-included-libtasn1 \
+    $(use_opt zstd --with-zstd --without-zstd) \
+    $(use_opt brotli --with-brotli --without-brotli) \
+    $(use_opt libidn2 --with-libidn2 --without-libidn2)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
