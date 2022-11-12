@@ -26,7 +26,6 @@ setup(){
           --disable-rpath-hack
           --disable-stripping
           --with-pkg-config-libdir=/usr/lib64/pkgconfig
-          --without-cxx-binding
           --with-termlib
           --with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo:/lib/terminfo:/usr/lib/terminfo"
           --enable-pc-files
@@ -65,7 +64,7 @@ package(){
     done
     # legacy binary support
     for lib in libncursesw libncurses libtinfo libpanelw libformw libmenuw ; do
-        ln -sv ${lib}.${so_ver} "$DESTDIR"/lib64/ncurses/${lib}.so.5
+        ln -sv ${lib}.so.${so_ver} "$DESTDIR"/lib64/ncurses/${lib}.so.5
     done
     cd ../widec
     make -j$(nproc) install
