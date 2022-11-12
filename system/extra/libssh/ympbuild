@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name=libssh
+version=0.10.4
+release=1
+url='https://libssh.org'
+description='C library implenting the SSHv2 protocol on client and server side'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+depends=()
+source=("https://www.libssh.org/files/0.10/libssh-${version}.tar.xz")
+md5sums=('cb2e47ac2de59eefa31a57ae53b44363')
+license=('LGPL-2.1' 'BSD')
+
+setup() {
+    opts=(
+	-DCMAKE_INSTALL_PREFIX=/usr
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib64
+	-DCMAKE_BUILD_TYPE=Release
+	-DWITH_EXAMPLES=NO
+    )
+    cmake -S $name-$version -B build-static -DBUILD_SHARED_LIBS=NO ${opts[@]}
+    cmake -S $name-$version -B build-shared -DBUILD_SHARED_LIBS=YES ${opts[@]}
+}
+build() {
+    make -C build-static -j$(nproc)
+    make -C build-shared -j$(nproc)
+}
+package() {
+    make -C build-static install
+    make -C build-shared install
+}
