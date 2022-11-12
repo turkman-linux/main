@@ -12,8 +12,17 @@ depends=(zlib openssl)
 makedepends=( )
 md5sums=('76bca98cadf12ecd71acd31bf171c27d')
 arch=('x86_64')
-uses=(gnutls)
+
+uses=(gnutls zlib libssh)
+uses_extra=(zstd brotli libidn2)
+
 gnutls_depends=(gnutls)
+zlib_depends=(zlib)
+libssh_depends=(libssh)
+
+brotli_depends=(brotli)
+zstd_depends=(zstd)
+libidn2_depends=(libind2)
 
 cd $name-$version
 
@@ -29,7 +38,18 @@ setup(){
         --libdir=/usr/lib64
         --disable-ldap
         --disable-ldaps
-        -disable-versioned-symbols
+        --disable-versioned-symbols
+        --enable-doh
+        --enable-ftp
+        --enable-ipv6
+        --with-ca-path=/etc/ssl/certs
+        --enable-threaded-resolverl
+        --enable-websockets
+        $(use_opt zstd --with-zstd --without-zstd)
+        $(use_opt zlib --with-zlib --without-zlib)
+        $(use_opt brotli --with-brotli --without-brotli)
+        $(use_opt libssh --with-libssh --without-libssh)
+        $(use_opt libidn2 --with-libidn2 --without-libidn2)
     )
     ./configure ${opts[@]} --with-openssl
     if use gnutls ; then
