@@ -11,21 +11,30 @@ source=("https://www.libssh.org/files/0.10/libssh-${version}.tar.xz")
 md5sums=('cb2e47ac2de59eefa31a57ae53b44363')
 license=('LGPL-2.1' 'BSD')
 
+depends=(openssl)
+uses=(server sftp zlib)
+zlib_depends=(zlib)
+
 setup() {
-    opts=(
-	-DCMAKE_INSTALL_PREFIX=/usr
-	-DCMAKE_INSTALL_LIBDIR=/usr/lib64
-	-DCMAKE_BUILD_TYPE=Release
-	-DWITH_EXAMPLES=NO
-    )
-    cmake -S $name-$version -B build-static -DBUILD_SHARED_LIBS=NO ${opts[@]}
-    cmake -S $name-$version -B build-shared -DBUILD_SHARED_LIBS=YES ${opts[@]}
+    cmake -S $name-$version -B build \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib64 \
+	-DWITH_EXAMPLES=NO \
+	-DBUILD_SHARED_LIBS=YES \
+	-DBUILD_STATIC_LIB=YES \
+	-DWITH_NACL=OFF \
+	-DWITH_GCRYPT=OFF \
+	-DWITH_MBETLS=OFF \
+	-DWITH_GSSAPI=OFF \
+	-DWITH_PCAP=OFF \
+	-DWITH_SERVER=$(use_opt server ON OFF) \
+	-DWITH_SFTP=$(use_opt sftp ON OFF) \
+	-DWITH_ZLIB=$(use_opt zlib ON OFF)
 }
 build() {
-    make -C build-static -j$(nproc)
-    make -C build-shared -j$(nproc)
+    make -C build -j$(nproc)
 }
 package() {
-    make -C build-static install
-    make -C build-shared install
+    make -C build install
+    install build/src/libssh.a ${DESTDIR}/usr/lib64/
 }
