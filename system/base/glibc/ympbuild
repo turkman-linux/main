@@ -36,12 +36,13 @@ setup(){
     patch -Np1 -i "../reenable_DT_HASH.patch"
     opts=(
         --prefix=/usr
-        --mandir=/share/man
-        --infodir=/share/info
+        --mandir=/usr/share/man
+        --infodir=/usr/share/info
         --with-bugurl=http://gitlab.com/sulix/main/issues
         --enable-add-ons
         --enable-bind-now
         --enable-lock-elision
+        --enable-cet
         --enable-multi-arch
         --enable-static-pie
         --enable-stack-protector=all
@@ -71,6 +72,7 @@ setup(){
     echo "slibdir=/lib64" >> configparms
     echo "rtlddir=/lib64" >> configparms
     ../configure ${opts[@]} \
+        --host=x86_64-pc-linux-gnu \
         --libdir=/lib64 \
         --libexecdir=/lib64/glibc
     cd ..
