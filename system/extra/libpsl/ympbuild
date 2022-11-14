@@ -8,10 +8,11 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=('https://github.com/rockdaboot/libpsl/releases/download/0.21.1/libpsl-0.21.1.tar.gz')
-depends=( )
+depends=(libidn2)
 makedepends=( )
 md5sums=('ad40b970dcb5117d559b62a1e0d8d827')
 arch=('x86_64')
+group=(system.extra)
 
 cd $name-$version
 
