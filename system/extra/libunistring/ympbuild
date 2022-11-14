@@ -27,5 +27,7 @@ build(){
 
 package(){
     make install -j`nproc`
+    ln -s libunistring.so ${DESTDIR}/usr/lib64/libunistring.so.2
+    ln -s libunistring.so ${DESTDIR}/usr/lib64/libunistring.so.2.2.0
 }
 
