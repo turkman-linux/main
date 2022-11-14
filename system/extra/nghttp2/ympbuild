@@ -13,22 +13,20 @@ makedepends=( )
 md5sums=('d8c534bbdd84297afa4f6576896a3d76')
 arch=('x86_64')
 group=(system.extra python)
-uses=(libxml2 python)
+uses=(libxml2)
 libxml2_depends=(libxml2)
-python_depends=(python)
 
 cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
-		--without-neverbleed \
-		--without-jemalloc \
-		--disable-examples \
-		--enable-static \
-		--enable-app \
-        $(use_opt libxml2 --with-libxml2 --without-libxml2) \
-		$(use_opt python --enable-python-bindings --disable-python-bindings)
+        --without-neverbleed \
+        --without-jemalloc \
+        --disable-examples \
+        --enable-static \
+        --enable-lib-only\
+        $(use_opt libxml2 --with-libxml2 --without-libxml2)
 }
 
 build(){
@@ -37,7 +35,5 @@ build(){
 
 package(){
     make install -j`nproc`
-    mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
-    rmdir ${DESTDIR}/usr/lib/
 }
 

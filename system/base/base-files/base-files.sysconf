@@ -6,6 +6,7 @@ if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
     mkdir -p /kernel/modules
     mkdir -p /kernel/firmware
     mkdir -p /usr/lib64
+    mkdir -p /usr/lib32
     chown root /data/user/root
     chmod 700 /data/user/root
     ln -s data/user/root /root
@@ -15,7 +16,8 @@ if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
     ln -s ../data/log /var/log
     ln -s ../kernel/modules /lib/modules
     ln -s ../kernel/firmware /lib/firmare
-    ln -s ../lib64 /usr/lib
+    ln -s ./lib64 /usr/lib
+    ln -s ./lib32 /usr/libx32
     date > /var/lib/ymp/sysconf/base-files/postinstall.done
     touch /etc/passwd
 fi
