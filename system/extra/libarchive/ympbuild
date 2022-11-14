@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+name=libarchive
+version=3.6.1
+release=1
+url='https://www.libarchive.org'
+description='Multi-format archive and compression library'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+source=("https://www.libarchive.org/downloads/libarchive-${version}.tar.xz")
+md5sums=('9465f7995649c9ea84854a7fd8c76f30')
+license=('BSD')
+group=(system.extra)
+
+uses=(bzip2 lzma)
+depends=(openssl zlib)
+bzip2_depends=(bzip2)
+lzma_depends=(xz-utils)
+
+cd $name-$version
+
+setup() {
+    ./configure --prefix=/usr \
+	--libdir=/usr/lib64 \
+	--enable-static \
+	--enable-shared \
+	--without-nettle \
+	--without-xml2 \
+	--without-expat \
+	--without-zstd \
+	--without-lz4 \
+	--without-libb2 \
+	--without-iconv \
+	--without-cng \
+	$(use_opt bzip2 --with-bz2lib --without-bz2lib) \
+	$(use_opt lzma --with-lzma --without-lzma) \
+	--disable-acl \
+	--enable-xattr
+}
+build() {
+    make -j$(nproc)
+}
+package() {
+    make -j$(nproc) install
+}
