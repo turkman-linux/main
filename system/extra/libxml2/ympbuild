@@ -33,5 +33,7 @@ build(){
 
 package(){
     make install -j`nproc`
+    mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
+    rmdir ${DESTDIR}/usr/lib/
 }
 
