@@ -15,8 +15,10 @@ source=('https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz'
         'glibc.sysconf'
         'reenable_DT_HASH.patch'
         'locale-gen'
+        'revdep-rebuild'
 )
 md5sums=('00e9b89e043340f688bc93ec03239b57'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -108,5 +110,6 @@ package(){
     install ../glibc.sysconf ${DESTDIR}/etc/sysconf.d/glibc
     # install extra tools
     install ../locale-gen ${DESTDIR}/bin/locale-gen
+    install ../revdep-rebuild ${DESTDIR}/bin/revdep-rebuild
 
 }

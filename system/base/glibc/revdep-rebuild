@@ -1,0 +1,20 @@
+#!/bin/bash
+export LANG=C
+export LC_ALL=C
+check(){
+    file="$1"
+    echo -en "\033[2K\rChecking: $file"
+    ldd $file |& grep "not found" | tr -s " " | cut -f1 -d" " | while read missing ; do
+       echo -en "\033[2K\r"
+       echo -e "\033[31;1m$file\033[;0m => $missing"
+    done | sort | uniq
+}
+
+find /lib64 /lib32 /lib /usr/lib /usr/lib64 /usr/lib32 -type f |& grep ".so$" | while read file; do
+    check $file
+done
+
+find /bin /sbin /usr/bin/ /usr/sbin -type f |& while read file; do
+    check $file
+done
+echo -en "\033[2K\r"
