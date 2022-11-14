@@ -10,6 +10,7 @@ depends=()
 source=("https://www.libssh.org/files/0.10/libssh-${version}.tar.xz")
 md5sums=('cb2e47ac2de59eefa31a57ae53b44363')
 license=('LGPL-2.1' 'BSD')
+group=(system.extra)
 
 depends=(openssl)
 uses=(server sftp zlib)
@@ -24,7 +25,7 @@ setup() {
 	-DBUILD_STATIC_LIB=YES \
 	-DWITH_NACL=OFF \
 	-DWITH_GCRYPT=OFF \
-	-DWITH_MBETLS=OFF \
+	-DWITH_MBEDTLS=OFF \
 	-DWITH_GSSAPI=OFF \
 	-DWITH_PCAP=OFF \
 	-DWITH_SERVER=$(use_opt server ON OFF) \
