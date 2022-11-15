@@ -1,6 +1,14 @@
 #!/bin/sh
-mkdir -p /var/lib/ymp/sysconf/base-files/
+touch /etc/passwd
+cat /etc/passwd.d/* | sed "s/#.*//g"| while read line ; do
+    if [ -z "${line}" ] ; then
+        : skip empty line
+    elif ! grep "^${line}$" /etc/passwd > /dev/null ; then
+        echo "${line}" >> /etc/passwd
+    fi
+done
 if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
+    mkdir -p /var/lib/ymp/sysconf/base-files/
     mkdir /data/user/root -p
     mkdir /data/log -p
     mkdir -p /kernel/modules
@@ -19,12 +27,4 @@ if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
     ln -s ./lib64 /usr/lib
     ln -s ./lib32 /usr/libx32
     date > /var/lib/ymp/sysconf/base-files/postinstall.done
-    touch /etc/passwd
 fi
-cat /etc/passwd.d/* | sed "s/#.*//g"| while read line ; do
-    if [ -z "${line}" ] ; then
-        : skip empty line
-    elif ! grep "^${line}$" /etc/passwd > /dev/null ; then
-        echo "${line}" >> /etc/passwd
-    fi
-done
