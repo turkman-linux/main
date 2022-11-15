@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='nettle'
+release='1'
+version='3.8'
+url='https://www.lysator.liu.se/~nisse/nettle'
+description='A low-level cryptographic library'
+email=' parduscix@yandex.ru'
+maintainer=' sulincix'
+license=('GPLv2')
+source=('https://ftp.gnu.org/gnu/nettle/nettle-3.8.tar.gz')
+depends=(gmp)
+makedepends=( )
+md5sums=('77eca50d6bb7c6ed34275466f669f62e')
+group=(system.extra)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

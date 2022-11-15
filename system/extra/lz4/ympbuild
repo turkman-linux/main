@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='lz4'
+release='1'
+version='1.9.4'
+url='https://lz4.github.io/lz4/'
+description='Extremely fast compression algorithm'
+email=' parduscix@yandex.ru'
+maintainer=' sulincix'
+license=('GPLv2')
+source=('https://github.com/lz4/lz4/archive/refs/tags/v1.9.4.tar.gz')
+depends=( )
+makedepends=( )
+md5sums=('e9286adb64040071c5e23498bf753261')
+group=(system.extra)
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    make -j`nproc` PREFIX=/usr
+}
+
+package(){
+    make install -j`nproc` PREFIX=/usr
+    mv ${DESTDIR}/usr/{lib,lib64}
+}
+
