@@ -11,6 +11,7 @@ source=('https://mirror.rabisu.com/savannah-nongnu/acl/acl-2.3.1.tar.gz')
 depends=(attr)
 makedepends=( )
 md5sums=('3cecb80cb0a52a0b273e6698ba642263')
+group=(system.extra)
 arch=('x86_64')
 
 cd $name-$version

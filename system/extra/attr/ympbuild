@@ -11,6 +11,7 @@ source=('https://mirror.rabisu.com/savannah-nongnu/attr/attr-2.5.1.tar.gz')
 depends=( )
 makedepends=( )
 md5sums=('ac1c5a7a084f0f83b8cace34211f64d8')
+group=(system.extra)
 arch=('x86_64')
 
 cd $name-$version
