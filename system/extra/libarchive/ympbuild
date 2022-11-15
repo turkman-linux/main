@@ -11,10 +11,18 @@ md5sums=('9465f7995649c9ea84854a7fd8c76f30')
 license=('BSD')
 group=(system.extra)
 
-uses=(bzip2 lzma)
+uses=(bzip2 lzma iconv acl)
+uses_extra=(blake2 expat lz4 lzo nettle zstd)
 depends=(openssl zlib)
 bzip2_depends=(bzip2)
 lzma_depends=(xz-utils)
+acl_depends=(acl)
+blake2_depends=(libb2)
+expat_depends=(expat)
+lz4_depends=(lz4)
+lzo_depends=(lzo)
+nettle_depends=(nettle)
+zstd_depends=(zstd)
 
 cd $name-$version
 
@@ -23,18 +31,17 @@ setup() {
 	--libdir=/usr/lib64 \
 	--enable-static \
 	--enable-shared \
-	--without-nettle \
-	--without-xml2 \
-	--without-expat \
-	--without-zstd \
-	--without-lz4 \
-	--without-libb2 \
-	--without-iconv \
-	--without-cng \
+	--enable-xattr \
+	$(use_opt iconv --with-iconv --without-iconv) \
 	$(use_opt bzip2 --with-bz2lib --without-bz2lib) \
 	$(use_opt lzma --with-lzma --without-lzma) \
-	--disable-acl \
-	--enable-xattr
+	$(use_opt acl --enable-acl --disable-acl) \
+	$(use_opt nettle --with-nettle --without-nettle) \
+	$(use_opt expat --without-xml2 --with-xml2) \
+	$(use_opt zstd --with-zstd --without-zstd) \
+	$(use_opt lz4 --with_lz4 --without-lz4) \
+	$(use_opt blake2 --with-libb2 --without-libb2) \
+	--without-cng
 }
 build() {
     make -j$(nproc)
