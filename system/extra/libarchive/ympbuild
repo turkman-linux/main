@@ -11,14 +11,14 @@ md5sums=('9465f7995649c9ea84854a7fd8c76f30')
 license=('BSD')
 group=(system.extra)
 
-uses=(bzip2 lzma iconv acl)
-uses_extra=(blake2 expat lz4 lzo nettle zstd)
+uses=(bzip2 lzma iconv acl lz4 lzo)
+uses_extra=(blake2 libxml2 nettle zstd expat )
 depends=(openssl zlib)
 bzip2_depends=(bzip2)
 lzma_depends=(xz-utils)
 acl_depends=(acl)
 blake2_depends=(libb2)
-expat_depends=(expat)
+libxml2_depends=(libxml2)
 lz4_depends=(lz4)
 lzo_depends=(lzo)
 nettle_depends=(nettle)
@@ -37,9 +37,10 @@ setup() {
 	$(use_opt lzma --with-lzma --without-lzma) \
 	$(use_opt acl --enable-acl --disable-acl) \
 	$(use_opt nettle --with-nettle --without-nettle) \
-	$(use_opt expat --without-xml2 --with-xml2) \
+	$(use_opt libxml2 --with-xml2 --without-xml2) \
+	$(use_opt expat --with-expat --without-expat) \
 	$(use_opt zstd --with-zstd --without-zstd) \
-	$(use_opt lz4 --with_lz4 --without-lz4) \
+	$(use_opt lz4 --with-lz4 --without-lz4) \
 	$(use_opt blake2 --with-libb2 --without-libb2) \
 	--without-cng
 }
