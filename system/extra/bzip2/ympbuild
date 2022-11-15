@@ -16,6 +16,8 @@ setup(){
     mkdir -p $name-shared
     cp *.c *.h $name-shared
     cp Makefile-libbz2_so $name-shared/Makefile
+    cd $name-shared
+    patch -Np1 < ../../makefile.patch
 }
 build(){
     export CFLAGS="-Winline -D_FILE_OFFSET_BITS=64 ${CFLAGS}"
@@ -31,9 +33,10 @@ package(){
     ln -sf bzip2 "${DESTDIR}"/usr/bin/bzcat
 
     install -m755 libbz2.a "${DESTDIR}"/usr/lib64/
-    install -m755 $name-shared/libbz2.so* "${DESTDIR}"/usr/lib64
+    install -m755 $name-shared/libbz2.so.${version} "${DESTDIR}"/usr/lib64
     ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so
     ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1.0
 
     install -m644 bzlib.h "${DESTDIR}"/usr/include/
 
