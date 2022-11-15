@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+name='acl'
+release='1'
+version='2.3.1'
+url='https://mirror.rabisu.com/savannah-nongnu/acl'
+description='The acl package contains utilities to administer Access Control Lists'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('LGPL')
+source=('https://mirror.rabisu.com/savannah-nongnu/acl/acl-2.3.1.tar.gz')
+depends=(attr)
+makedepends=( )
+md5sums=('3cecb80cb0a52a0b273e6698ba642263')
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
