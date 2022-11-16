@@ -13,6 +13,7 @@ makedepends=( )
 md5sums=('73bafd0af874439dcdb9fc063b6fb069')
 arch=('x86_64')
 group=(system.devel)
+uses_extra=(langs)
 
 cd $name-$version
 export CFLAGS="-O2 -s"
@@ -40,7 +41,7 @@ setup(){
       --disable-fixed-point
       --disable-libstdcxx-pch
       --enable-plugin
-      --enable-languages=c,c++,fortran,go,objc,obj-c++
+      --enable-languages=c,c++$(use_opt langs ",fortran,go,objc,obj-c++" "")
       --enable-multilib
       --enable-shared
       --without-zstd
