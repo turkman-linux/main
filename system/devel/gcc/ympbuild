@@ -61,9 +61,11 @@ build(){
 package(){
     cd build
     make install -j`nproc`
+    mkdir -p ${DESTDIR}/usr/lib64/
     # move lib to lib64
-    mv ${DESTDIR}/usr/{lib,lib64}
+    cp -prf ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
+    rm -rf ${DESTDIR}/usr/lib/
     # strip all binaries for minimize size
-    find ${DESTDIR} -type f -exec strip {} \; || true
+    find ${DESTDIR} -type f -exec strip {} \; 2>/dev/null || true
 }
 
