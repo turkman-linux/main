@@ -7,10 +7,10 @@ description='GNU Compiler Collection'
 email=' parduscix@yandex.ru'
 maintainer=' sulincix'
 license=('GPLv3')
-source=('https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.gz')
+source=('https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz')
 depends=(zlib)
 makedepends=( )
-md5sums=('d7644b494246450468464ffc2c2b19c3')
+md5sums=('73bafd0af874439dcdb9fc063b6fb069')
 arch=('x86_64')
 group=(system.devel)
 
@@ -24,7 +24,7 @@ prepare(){
     # tar permissions and owners is not supported by ymp sandbox.
     # we remove broken source and extract again without permission and owners
     rm -rf $name-$version
-    tar --no-same-owner --no-same-permissions -xvf $name-$version.tar.gz
+    tar --no-same-owner --no-same-permissions -xvf $name-$version.tar.xz
 }
 
 setup(){
