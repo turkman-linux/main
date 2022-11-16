@@ -16,7 +16,7 @@ group=(system.library python)
 uses=(libxml2)
 libxml2_depends=(libxml2)
 
-cd $name-$version
+cd nghttp2-$version
 
 setup(){
     ./configure --prefix=/usr \
