@@ -15,8 +15,8 @@ arch=('x86_64')
 group=(system.devel)
 
 cd $name-$version
-unset CFLAGS
-unset CXXFLAGS
+export CFLAGS="-O2 -s"
+export CXXFLAGS="-O2 -s"
 unset LDFLAGS
 
 prepare(){
