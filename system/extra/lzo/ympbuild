@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='lzo'
+release='1'
+version='2.10'
+url='https://www.oberhumer.com/opensource/lzo/'
+description='Portable lossless data compression library'
+email=' parduscix@yandex.ru'
+maintainer=' sulincix'
+license=('GPL')
+source=('https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz')
+depends=( )
+makedepends=( )
+md5sums=('39d3f3f9c55c87b1e5d6888e1420f4b5')
+arch=('x86_64')
+group=(system.extra)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+
+build(){
+    make -j`nproc`
+    gcc $CXXFLAGS $CFLAGS -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minilzo.c
+    gcc $LDFLAGS -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
+}
+
+package(){
+    make install -j`nproc`
+    install -m 755 libminilzo.so.0 "${DESTDIR}"/usr/lib64
+    install -p -m 644 minilzo/minilzo.h ${DESTDIR}/usr/include/lzo
+    ln -s libminilzo.so.0 "${DESTDIR}"/usr/lib64/libminilzo.so
+}
+
