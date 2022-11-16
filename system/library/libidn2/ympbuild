@@ -12,7 +12,7 @@ depends=(libunistring)
 makedepends=( )
 md5sums=('a12109804fc9c5d7fb31f068c66655b8')
 arch=('x86_64')
-group=(system.extra)
+group=(system.library)
 
 cd $name-$version
 

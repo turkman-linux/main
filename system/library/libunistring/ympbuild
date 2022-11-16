@@ -12,7 +12,7 @@ depends=( )
 makedepends=( )
 md5sums=('0dfba19989ae06b8e7a49a7cd18472a1')
 arch=('x86_64')
-group=(system.extra)
+group=(system.library)
 
 cd $name-$version
 

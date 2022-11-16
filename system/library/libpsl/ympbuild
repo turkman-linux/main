@@ -12,7 +12,7 @@ depends=(libidn2)
 makedepends=( )
 md5sums=('ad40b970dcb5117d559b62a1e0d8d827')
 arch=('x86_64')
-group=(system.extra)
+group=(system.library)
 
 cd $name-$version
 

@@ -10,7 +10,7 @@ license=('GPLv3')
 source=('https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz')
 md5sums=('f701ab57eb8e7d9c105b2cd5d809b29a') # replace this
 arch=(x86_64)
-group=(system.extra)
+group=(system.library)
 
 cd "libtasn1-$version"
 

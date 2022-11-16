@@ -9,7 +9,7 @@ email='kurth4cker@tutanota.com'
 license=('LGPL-2.1')
 source=("https://github.com/seccomp/libseccomp/releases/download/v${version}/libseccomp-${version}.tar.gz")
 md5sums=('74008bb33234e0c2a0d998e7bee5c625')
-group=(system.extra)
+group=(system.library)
 
 cd $name-$version
 

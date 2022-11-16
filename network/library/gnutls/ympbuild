@@ -12,7 +12,7 @@ depends=( )
 makedepends=( )
 md5sums=('c7b749bae243c341e6be717baf7ffbad')
 arch=('x86_64')
-group=(system.extra)
+group=(network.library)
 
 uses_extra=(zstd brotli libidn2)
 

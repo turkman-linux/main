@@ -8,14 +8,14 @@ email=' parduscix@yandex.ru'
 maintainer=' sulincix'
 license=('MIT')
 source=('https://curl.se/download/curl-7.86.0.zip')
-depends=(zlib openssl)
+depends=(zlib openssl libnghttp2)
 makedepends=( )
 md5sums=('76bca98cadf12ecd71acd31bf171c27d')
 arch=('x86_64')
 group=(system.extra)
 
-uses=(gnutls zlib libssh)
-uses_extra=(zstd brotli libidn2)
+uses=(zlib libssh)
+uses_extra=(zstd brotli libidn2 gnutls)
 
 gnutls_depends=(gnutls)
 zlib_depends=(zlib)

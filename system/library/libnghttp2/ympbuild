@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='nghttp2'
+name='libnghttp2'
 release='1'
 version='1.51.0'
 url='https://github.com/nghttp2/nghttp2'
@@ -12,7 +12,7 @@ depends=( )
 makedepends=( )
 md5sums=('d8c534bbdd84297afa4f6576896a3d76')
 arch=('x86_64')
-group=(system.extra python)
+group=(system.library python)
 uses=(libxml2)
 libxml2_depends=(libxml2)
 
