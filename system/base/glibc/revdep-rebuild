@@ -10,7 +10,7 @@ check(){
     done | sort | uniq
 }
 
-find /lib64 /lib32 /lib /usr/lib /usr/lib64 /usr/lib32 -type f |& grep ".so$" | while read file; do
+find /lib64 /lib32 /lib /usr/lib /usr/lib64 /usr/lib32 -type f |& while read file; do
     check $file
 done
 

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+name='gcc'
+release='1'
+version='12.2.0'
+url='https://ftp.gnu.org/gnu/gcc/'
+description='GNU Compiler Collection'
+email=' parduscix@yandex.ru'
+maintainer=' sulincix'
+license=('GPLv3')
+source=('https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.gz')
+depends=(zlib)
+makedepends=( )
+md5sums=('d7644b494246450468464ffc2c2b19c3')
+arch=('x86_64')
+group=(system.devel)
+
+cd $name-$version
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+
+prepare(){
+    cd ..
+    # tar permissions and owners is not supported by ymp sandbox.
+    # we remove broken source and extract again without permission and owners
+    rm -rf $name-$version
+    tar --no-same-owner --no-same-permissions -xvf $name-$version.tar.gz
+}
+
+setup(){
+    options=(
+      --prefix=/usr
+      --libdir=/usr/lib64
+      --libexecdir=/usr/lib64
+      --mandir=/usr/share/man
+      --infodir=/usr/share/info
+      --with-pkgversion="Sulix"
+      --with-bugurl=https://gitlab.com/groups/sulix/-/issues
+      --disable-checking
+      --disable-fixed-point
+      --disable-libstdcxx-pch
+      --enable-plugin
+      --enable-languages=c,c++,fortran,go,objc,obj-c++
+      --enable-multilib
+      --enable-shared
+      --without-zstd
+      --with-system-zlib
+      --disable-nls
+    )
+    mkdir build
+    cd build
+    ../configure ${options[@]}
+}
+
+build(){
+    cd build
+    make -j`nproc`
+}
+
+package(){
+    cd build
+    make install -j`nproc`
+}
+
