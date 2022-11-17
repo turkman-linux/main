@@ -13,6 +13,7 @@ makedepends=( )
 md5sums=('73bafd0af874439dcdb9fc063b6fb069')
 arch=('x86_64')
 group=(system.devel)
+uses=(multilib)
 uses_extra=(langs)
 
 cd $name-$version
@@ -31,8 +32,8 @@ prepare(){
 setup(){
     options=(
       --prefix=/usr
-      --libdir=/usr/lib
-      --libexecdir=/usr/lib
+      --libdir=/usr/lib64
+      --libexecdir=/usr/libexec
       --mandir=/usr/share/man
       --infodir=/usr/share/info
       --with-pkgversion="Sulix"
@@ -41,8 +42,10 @@ setup(){
       --disable-fixed-point
       --disable-libstdcxx-pch
       --enable-plugin
+      --enable-lto
       --enable-languages=c,c++$(use_opt langs ",fortran,go,objc,obj-c++" "")
-      --enable-multilib
+      $(use_opt multilib "--enable-multilib" "")
+      $(use_opt multilib "--enable-multiarch" "")
       --enable-shared
       --without-zstd
       --with-system-zlib
@@ -62,9 +65,10 @@ package(){
     cd build
     make install -j`nproc`
     mkdir -p ${DESTDIR}/usr/lib64/
-    # move lib to lib64
-    cp -prf ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
-    rm -rf ${DESTDIR}/usr/lib/
+    if use multilib ; then
+        # move lib to lib64
+        mv ${DESTDIR}/usr/{lib,lib32}
+    fi
     # strip all binaries for minimize size
     find ${DESTDIR} -type f -exec strip {} \; 2>/dev/null || true
 }
