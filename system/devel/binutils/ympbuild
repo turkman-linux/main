@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+name='binutils'
+release='1'
+version='2.39'
+url='https://ftp.gnu.org/gnu/binutils/'
+description='A set of programs to assemble and manipulate binary and object files'
+email=' aliriza.keskin@pardus.org.tr'
+maintainer=' aliriza'
+license=('GPLv3')
+source=('https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz')
+depends=( )
+makedepends=( )
+md5sums=('f7e986ae9ff06405cafb2e585ee36d27')
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    ../configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --disable-nls \
+        --enable-cet \
+        --enable-default-execstack=no \
+        --enable-deterministic-archives \
+        --enable-gold \
+        --enable-install-libiberty \
+        --enable-jansson \
+        --enable-ld=default \
+        --enable-pgo-build=lto \
+        --enable-plugins \
+        --enable-relro \
+        --enable-shared \
+        --enable-targets=x86_64-pep,bpf-unknown-none \
+        --enable-threads \
+        --disable-gdb \
+        --disable-gdbserver \
+        --disable-libdecnumber \
+        --disable-readline \
+        --disable-sim \
+        --disable-werror \
+        --with-debuginfod \
+        --with-pic \
+        --with-system-zlib
+}
+
+build(){
+    cd build
+    make
+}
+
+package(){
+    cd build
+    make install -j`nproc`
+}
+
