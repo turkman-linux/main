@@ -69,7 +69,5 @@ package(){
         # move lib to lib64
         mv ${DESTDIR}/usr/{lib,lib32}
     fi
-    # strip all binaries for minimize size
-    find ${DESTDIR} -type f -exec strip {} \; 2>/dev/null || true
 }
 
