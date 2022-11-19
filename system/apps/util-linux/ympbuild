@@ -31,7 +31,9 @@ setup(){
 	--disable-makeinstall-chown \
 	--disable-makeinstall-setuid \
 	--without-systemd \
-	$(use_opt python --with-python --without-python)
+	$(use_opt python --with-python --without-python) \
+	-disable-pylibmount \
+	--disable-raw # FIXME
 }
 
 build(){
