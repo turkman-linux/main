@@ -11,6 +11,9 @@ source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-l
 depends=(libcap-ng udev)
 md5sums=('cd11456f4ddd31f7fbfdd9488c0c0d02')
 arch=('x86_64')
+group=(system.apps)
+uses_extra=(python)
+python_depends=(python)
 
 cd $name-$version
 
@@ -26,7 +29,9 @@ setup(){
 	--disable-login \
 	--disable-sulogin \
 	--disable-makeinstall-chown \
-	--disable-makeinstall-setuid
+	--disable-makeinstall-setuid \
+	--without-systemd \
+	$(use_opt python --with-python --without-python)
 }
 
 build(){
