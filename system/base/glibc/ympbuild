@@ -8,6 +8,7 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 arch=(x86_64)
+dontstrip="31"
 source=('https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz'
         'ld.so.conf'
         'usr-support.conf'
