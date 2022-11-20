@@ -44,7 +44,7 @@ setup(){
         --enable-ftp
         --enable-ipv6
         --with-ca-path=/etc/ssl/certs
-        --with-ca-bundle=/etc/ssl/certs/cert.pem
+        --with-ca-bundle=/etc/ssl/cert.pem
         --enable-threaded-resolverl
         --enable-websockets
         $(use_opt zstd --with-zstd --without-zstd)
