@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+name='util-linux'
+release='1'
+version='2.38.1'
+url='https://en.wikipedia.org/wiki/Util-linux'
+description='Various useful Linux utilities'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('GPLv3' 'GPLv2' 'LPGL-2.1' 'BSD-4' 'MIT')
+source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-${version}.tar.xz")
+depends=(libcap-ng udev)
+md5sums=('cd11456f4ddd31f7fbfdd9488c0c0d02')
+arch=('x86_64')
+group=(system.apps)
+uses_extra=(python)
+python_depends=(python)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+	--libdir=/usr/lib64 \
+	--bindir=/usr/bin \
+	--enable-shared \
+	--enable-static \
+	--disable-su \
+	--disable-runuser \
+	--disable-chfn-chsh \
+	--disable-login \
+	--disable-sulogin \
+	--disable-makeinstall-chown \
+	--disable-makeinstall-setuid \
+	--without-systemd \
+	$(use_opt python --with-python --without-python) \
+	-disable-pylibmount \
+	--disable-raw # FIXME
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
