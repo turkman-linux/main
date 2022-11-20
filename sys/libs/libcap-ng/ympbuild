@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libcap-ng'
+release='1'
+version='0.8.3'
+url='https://github.com/stevegrubb/libcap-ng/releases'
+description='A library for Linux that makes using posix capabilities easy'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('LGPL2.1')
+source=('https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v0.8.3.zip')
+depends=( )
+makedepends=( )
+md5sums=('4332df17c41730e487ed3a45af958e7a')
+group=(sys.libs)
+uses=()
+uses_extra=(python)
+python_depends=(python)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        $(use_opt python --with-python --without-python) \
+        $(use_opt python --with-python3 --without-python3)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

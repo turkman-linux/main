@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='glib'
+release='1'
+version='2.75.0'
+url='https://download.gnome.org/sources/glib/'
+description='Low-level core library that forms the basis for projects such as GTK+ and GNOME.'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=('https://download.gnome.org/sources/glib/2.75/glib-2.75.0.tar.xz')
+depends=(libffi util-linux libpcre2 zlib)
+makedepends=( )
+md5sums=('6ac05ed98272c0a1927fbf1e32ebab8c')
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --default-library both \
+        -D glib_debug=disabled \
+        -D selinux=disabled \
+        -D sysprof=disabled
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
