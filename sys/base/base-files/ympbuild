@@ -1,0 +1,23 @@
+#!/bin/bash
+name=base-files
+release=1
+version=1
+url='https://gitlab.com/sulix/devel/sources/base-files'
+description='Base system files'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://gitlab.com/sulix/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
+        "base-files.sysconf")
+md5sums=('1a7f97c99b2ba940d91faade186f4b3f'
+         'SKIP')
+arch=(x86_64)
+group=(sys.base)
+
+cd "$name-$version"
+
+package(){
+    mkdir -p ${DESTDIR}/etc/sysconf.d
+    make install
+    install ../base-files.sysconf  ${DESTDIR}/etc/sysconf.d/base-files
+}

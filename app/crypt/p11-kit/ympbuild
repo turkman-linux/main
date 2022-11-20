@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='p11-kit'
+release='1'
+version='0.24.1'
+url='https://github.com/p11-glue/p11-kit'
+description='Library for loading and sharing PKCS#11 modules'
+email=' aliriza.keskin@pardus.org.tr'
+maintainer=' aliriza'
+license=('BSD-3-Clause')
+source=('https://github.com/p11-glue/p11-kit/releases/download/0.24.1/p11-kit-0.24.1.tar.xz')
+depends=(libtasn1)
+makedepends=( )
+md5sums=('67b2539bdca6b4bedaeecc12864d2796')
+arch=('x86_64')
+group=(app.crypt)
+uses=(libffi lto)
+libffi_depends=(libffi)
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        $(use_opt lto "-Db_lto=true" "-Db_lto=false") \
+        $(use_opt libffi "-Dlibffi=enabled" "-Dlibffi=disabled") \
+        -Dtrust_paths=/etc/ssl/certs/ca-certificates.crt
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja install -C build
+}
+

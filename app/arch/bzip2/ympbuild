@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+name=bzip2
+version=1.0.8
+release=1
+url='https://sourceware.org/bzip2'
+description='lzma compression utilities and library'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+source=("https://sourceware.org/pub/bzip2/bzip2-${version}.tar.gz"
+        'makefile.patch')
+md5sums=('67e051268d0c475ea773822f7500d0e5'
+         'SKIP')
+group=(app.arch)
+
+cd $name-$version
+
+setup(){
+    mkdir -p $name-shared
+    cp *.c *.h $name-shared
+    cp Makefile-libbz2_so $name-shared/Makefile
+    cd $name-shared
+    patch -Np1 < ../../makefile.patch
+}
+build(){
+    export CFLAGS="-Winline -D_FILE_OFFSET_BITS=64 ${CFLAGS}"
+    make -e -j$(nproc) bzip2recover libbz2.a
+    make -j$(nproc) -C $name-shared CFLAGS="-fpic -fPIC ${CFLAGS}"
+}
+package(){
+    install -dm755 ${DESTDIR}/usr/{bin,lib64,include,share/man/man1}
+
+    install -m755 $name-shared/bzip2-shared "${DESTDIR}"/usr/bin/bzip2
+    install -m755 bzip2recover bzdiff bzgrep bzmore "${DESTDIR}"/usr/bin
+    ln -sf bzip2 "${DESTDIR}"/usr/bin/bunzip2
+    ln -sf bzip2 "${DESTDIR}"/usr/bin/bzcat
+
+    install -m755 libbz2.a "${DESTDIR}"/usr/lib64/
+    install -m755 $name-shared/libbz2.so.${version} "${DESTDIR}"/usr/lib64
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1.0
+
+    install -m644 bzlib.h "${DESTDIR}"/usr/include/
+
+    install -m644 bzip2.1 "${DESTDIR}"/usr/share/man/man1/
+    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bunzip2.1
+    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzcat.1
+    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzip2recover.1
+}

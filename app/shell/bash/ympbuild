@@ -1,0 +1,32 @@
+#!/bin/bash
+name=bash
+version=5.1
+release=1
+url='https://www.gnu.org/software/bash/'
+description="Bash is the GNU Project's shell—the Bourne Again SHell."
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+arch=(x86_64)
+depends=(readline ncurses)
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+md5sums=(bb91a17fd6c9032c26d0b2b78b50aff5)
+group=(app.shell)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/lib64 \
+        --bindir=/bin \
+  	--with-curses \
+        --enable-readline \
+        --without-bash-malloc
+}
+build(){
+    make 
+}
+
+package(){
+    make DESTDIR=${DESTDIR} install
+}

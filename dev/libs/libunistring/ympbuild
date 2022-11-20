@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libunistring'
+release='1'
+version='1.1'
+url='https://www.gnu.org/software/libunistring/'
+description='Library for manipulating Unicode strings and C strings'
+email=' parduscix@yandex.ru'
+maintainer=' sulincix'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/libunistring/libunistring-$version.tar.xz")
+depends=( )
+makedepends=( )
+md5sums=('0dfba19989ae06b8e7a49a7cd18472a1')
+arch=('x86_64')
+group=(dev.libs)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+    ln -s libunistring.so ${DESTDIR}/usr/lib64/libunistring.so.2
+    ln -s libunistring.so ${DESTDIR}/usr/lib64/libunistring.so.2.2.0
+}
+
