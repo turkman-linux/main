@@ -34,7 +34,9 @@ build(){
 
 package(){
     make install -j`nproc`
-    mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
-    rmdir ${DESTDIR}/usr/lib/
+    if [ -d ${DESTDIR}/usr/lib ] ; then
+        mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
+        rmdir ${DESTDIR}/usr/lib/
+    fi
 }
 
