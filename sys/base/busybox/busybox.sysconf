@@ -4,5 +4,5 @@ if /bin/busybox [ ! -f /var/lib/ymp/sysconf/busybox/postinstall.done ] ; then
     /bin/busybox --install -s /bin
     /bin/busybox install /bin/busybox /bin/su
     /bin/busybox chmod u+s /bin/su
-    /bin/busybox date > /var/lib/ymp/sysconf/busybox.postinst.done
+    /bin/busybox date > /var/lib/ymp/sysconf/busybox/postinstall.done
 fi

@@ -1,0 +1,8 @@
+#!/bin/sh
+current=$(date +%s -r /usr/share/glib-2.0/schemas/)
+touch /var/lib/ymp/sysconf/glib/update.date
+last=$(cat /var/lib/ymp/sysconf/glib/update.date)
+if [ "$current" != "$last" ] ; then
+    glib-compile-schemas /usr/share/glib-2.0/schemas/
+    echo "$current" > /var/lib/ymp/sysconf/glib/update.date
+fi
