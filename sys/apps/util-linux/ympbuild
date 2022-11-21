@@ -8,12 +8,13 @@ email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 license=('GPLv3' 'GPLv2' 'LPGL-2.1' 'BSD-4' 'MIT')
 source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-${version}.tar.xz")
-depends=(libcap-ng udev)
+depends=(libcap-ng)
 md5sums=('cd11456f4ddd31f7fbfdd9488c0c0d02')
 arch=('x86_64')
 group=(sys.apps)
-uses_extra=(python)
+uses_extra=(python udev)
 python_depends=(python)
+udev_depends=(eudev)
 
 cd $name-$version
 
@@ -30,10 +31,14 @@ setup(){
 	--disable-sulogin \
 	--disable-makeinstall-chown \
 	--disable-makeinstall-setuid \
-	--without-systemd \
-	$(use_opt python --with-python --without-python) \
 	-disable-pylibmount \
-	--disable-raw # FIXME
+	--disable-raw \ # FIXME
+	--without-systemd \
+	--without-libuser \
+	--without-utempter \
+	--without-econf \
+	$(use_opt python --with-python --without-python) \
+	$(use_opt udev --with-udev --without-udev)
 }
 
 build(){
