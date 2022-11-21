@@ -31,8 +31,8 @@ setup(){
 	--disable-sulogin \
 	--disable-makeinstall-chown \
 	--disable-makeinstall-setuid \
-	-disable-pylibmount \
-	--disable-raw \ # FIXME
+	--disable-pylibmount \
+	--disable-raw \
 	--without-systemd \
 	--without-libuser \
 	--without-utempter \
