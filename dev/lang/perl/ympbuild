@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+name='perl'
+release='1'
+version='5.36.0'
+url='https://www.cpan.org/src/'
+description='A highly capable, feature-rich programming language'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://www.cpan.org/src/5.0/perl-5.36.0.tar.gz')
+depends=( )
+makedepends=( )
+md5sums=('68a2683bb79979c26ec57876abb7f303')
+uses=()
+group=(dev.lang)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    _baseversion="${version%.*}"
+    ./Configure -des -Dusethreads -Duseshrplib -Doptimize="${CFLAGS}" \
+        -Dprefix=/usr -Dvendorprefix=/usr \
+        -Dprivlib=/usr/share/perl5/core_perl \
+        -Darchlib=/usr/lib64/perl5/$_baseversion/core_perl \
+        -Dsitelib=/usr/share/perl5/site_perl \
+        -Dsitearch=/usr/lib64/perl5/$_baseversion/site_perl \
+        -Dvendorlib=/usr/share/perl5/vendor_perl \
+        -Dvendorarch=/usr/lib64/perl5/$_baseversion/vendor_perl \
+        -Dscriptdir=/usr/bin/core_perl \
+        -Dsitescript=/usr/bin/site_perl \
+        -Dvendorscript=/usr/bin/vendor_perl \
+        -Dinc_version_list=none \
+        -Dman1ext=1perl -Dman3ext=3perl $(use_opt x86_86 -Dcccdlflags='-fPIC' "") \
+        -Dlddlflags="-shared ${LDFLAGS}" -Dldflags="${LDFLAGS}"
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
