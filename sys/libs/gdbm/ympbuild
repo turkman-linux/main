@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='gdbm'
+release='1'
+version='1.23'
+url='https://www.gnu.org.ua/software/gdbm/download.html'
+description=' Standard GNU database libraries'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://ftp.gnu.org/gnu/gdbm/gdbm-1.23.tar.gz')
+depends=( )
+makedepends=( )
+md5sums=('8551961e36bf8c70b7500d255d3658ec')
+uses=()
+group=(sys.libs)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --enable-libgdbm-compat
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
