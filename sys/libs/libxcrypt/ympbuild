@@ -12,6 +12,8 @@ depends=( )
 makedepends=( )
 md5sums=('d83b7bb334c4daf4e64a253b78f320da')
 uses=()
+# override glibc libcrypt
+replaces=('/usr/include/crypt.h')
 group=(sys.libs)
 arch=('x86_64')
 
