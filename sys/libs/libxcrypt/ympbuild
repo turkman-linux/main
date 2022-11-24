@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+name='libxcrypt'
+release='1'
+version='4.4.33'
+url='https://example.org'
+description='Modern library for one-way hashing of passwords'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://github.com/besser82/libxcrypt/releases/download/v4.4.33/libxcrypt-4.4.33.tar.xz')
+depends=( )
+makedepends=( )
+md5sums=('d83b7bb334c4daf4e64a253b78f320da')
+uses=()
+group=(sys.libs)
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    cp -rf ../$name-$version ../$name-compat
+}
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --enable-hashes=strong,glibc \
+        --enable-obsolete-api=glibc
+    cd ../$name-compat
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --enable-hashes=strong,glibc \
+        --enable-obsolete-api=no
+}
+
+build(){
+    make -j`nproc`
+    cd ../$name-compat
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+    cd ../$name-compat
+    make install -j`nproc`
+
+}
+
