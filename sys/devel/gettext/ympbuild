@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+name='gettext'
+release='1'
+version='0.21.1'
+url='https://gnu.org/software/gettext'
+description='GNU locale utilities'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/gettext/gettext-${version}.tar.xz")
+depends=( )
+makedepends=( )
+md5sums=('27fcc8a42dbc8f334f23a08f1f2fe00a')
+uses=(bzip2 lzma)
+bzip2_depends=(bzip2)
+lzma_depends=(xz-utils)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+	--enable-shared \
+	--enable-static \
+	--disable-java \
+	--without-emacs \
+	--without-cvs \
+	--without-included-regex \
+	--without-included-libxml \
+        --without-git \
+	$(use_opt bzip2 --with-bzip2 --without-bzip2) \
+	$(use_opt lzma --with-xz --without-xz)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
