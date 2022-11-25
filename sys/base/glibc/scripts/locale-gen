@@ -13,6 +13,7 @@ fi
 
 # Remove all old locale dir and locale-archive before generating new
 # locale data.
+mkdir -p /usr/lib64/locale/
 rm -rf /usr/lib64/locale/locale-archive || true
 
 umask 022

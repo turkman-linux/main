@@ -10,15 +10,17 @@ license=('GPLv3')
 arch=(x86_64)
 dontstrip="31"
 source=('https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz'
-        'ld.so.conf'
-        'usr-support.conf'
-        'x86_64-linux-gnu.conf'
-        'glibc.sysconf'
-        'reenable_DT_HASH.patch'
-        'locale-gen'
-        'revdep-rebuild'
+        'ld.conf/ld.so.conf'
+        'ld.conf/usr-support.conf'
+        'ld.conf/x86_64-linux-gnu.conf'
+        'data/glibc.sysconf'
+        'data/reenable_DT_HASH.patch'
+        'scripts/locale-gen'
+        'scripts/revdep-rebuild'
+        'data/tr_TR'
 )
 md5sums=('00e9b89e043340f688bc93ec03239b57'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -112,5 +114,7 @@ package(){
     # install extra tools
     install ../locale-gen ${DESTDIR}/bin/locale-gen
     install ../revdep-rebuild ${DESTDIR}/bin/revdep-rebuild
+    # replace buggy turkish format with better one
+    install ../tr_TR ${DESTDIR}/usr/share/i18n/locales/tr_TR
 
 }

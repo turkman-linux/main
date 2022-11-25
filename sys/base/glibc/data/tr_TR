@@ -1,0 +1,239 @@
+comment_char %
+escape_char /
+
+% This file is part of the GNU C Library and contains locale data.
+% The Free Software Foundation does not claim any copyright interest
+% in the locale data contained in this file.  The foregoing does not
+% affect the license of the GNU C Library as a whole.  It does not
+% exempt you from the conditions of the license if your use would
+% otherwise be governed by that license.
+
+% Turkish Language Locale for Turkey
+% Source: RAP
+% Address: Sankt Jo//rgens Alle 8
+%    DK-1615 Ko//benhavn V, Danmark
+% Contact: Keld Simonsen
+% Email: Keld.Simonsen@dkuug.dk
+% Tel: +45 - 31226543
+% Fax: +45 - 33256543
+% Language: tr
+% Territory: TR
+% Revision: 4.4
+% Date: 1997-03-18
+% Application: general
+% Users: general
+
+% Corrections by:
+%   1998-01-11T15:54:39
+%   Onur Tolga Sehitoglu <onur@ceng.metu.edu.tr>,
+%   Dept. of Comp. Eng. METU/Ankara   Turkey
+%   2004-05-29T15:13
+%   Deniz Akkus Kanca <deniz@arayan.com>
+%   2004-10-30T10:28:35
+%   Nilg<U00FC>n Belma Bug<U00FC>ner <nilgun@belgeler.org>
+
+LC_IDENTIFICATION
+title      "Turkish locale for Turkey"
+source     "RAP"
+address    "Sankt J<U00F8>rgens Alle 8, DK-1615 K<U00F8>benhavn V, Danmark"
+contact    ""
+email      "bug-glibc-locales@gnu.org"
+tel        ""
+fax        ""
+language   "Turkish"
+territory  "Turkey"
+revision   "1.0"
+date       "2021-09-27"
+
+category "i18n:2012";LC_IDENTIFICATION
+category "i18n:2012";LC_CTYPE
+category "i18n:2012";LC_COLLATE
+category "i18n:2012";LC_TIME
+category "i18n:2012";LC_NUMERIC
+category "i18n:2012";LC_MONETARY
+category "i18n:2012";LC_MESSAGES
+category "i18n:2012";LC_PAPER
+category "i18n:2012";LC_NAME
+category "i18n:2012";LC_ADDRESS
+category "i18n:2012";LC_TELEPHONE
+category "i18n:2012";LC_MEASUREMENT
+END LC_IDENTIFICATION
+
+LC_COLLATE
+copy "iso14651_t1"
+
+% CLDR collation rules for Turkish:
+% (see: https://unicode.org/cldr/trac/browser/trunk/common/collation/tr.xml)
+%
+% &C<ç<<<Ç
+% &G<ğ<<<Ğ
+% &[before 1]i<ı<<<I
+% &i<<<İ
+% &O<ö<<<Ö
+% &S<ş<<<Ş
+% &U<ü<<<Ü
+%
+% And CLDR also lists the following
+% index characters:
+% (see: https://unicode.org/cldr/trac/browser/trunk/common/main/tr.xml)
+%
+% <exemplarCharacters type="index">[A B C Ç D E F G H I İ J K L M N O Ö P Q R S Ş T U Ü V W X Y Z]</exemplarCharacters>
+%
+% The following rules implement the same order for glibc.
+
+collating-symbol <c-cedilla>
+collating-symbol <g-breve>
+collating-symbol <i-dotless>
+collating-symbol <i-dot>
+collating-symbol <o-diaresis>
+collating-symbol <s-cedilla>
+collating-symbol <u-diaresis>
+
+reorder-after <RES-1>
+<CAP>
+<MIN>
+
+reorder-after <AFTER-C>
+<c-cedilla>
+reorder-after <AFTER-G>
+<g-breve>
+reorder-after <BEFORE-I>
+<i-dotless>
+reorder-after <AFTER-O>
+<o-diaresis>
+reorder-after <AFTER-S>
+<s-cedilla>
+reorder-after <AFTER-U>
+<u-diaresis>
+
+<U00E7> <c-cedilla>;<BASE>;<MIN>;IGNORE % ç
+<U00C7> <c-cedilla>;<BASE>;<CAP>;IGNORE % Ç
+<U011F> <g-breve>;<BASE>;<MIN>;IGNORE % ğ
+<U011E> <g-breve>;<BASE>;<CAP>;IGNORE % Ğ
+<U0131> <i-dotless>;<BASE>;<MIN>;IGNORE % ı
+<U0049> <i-dotless>;<BASE>;<CAP>;IGNORE % I
+<U0069> <S0069>;<BASE>;<MIN>;IGNORE % i
+<U0130> <S0069>;<BASE>;<CAP>;IGNORE % İ
+<U00F6> <o-diaresis>;<BASE>;<MIN>;IGNORE % ö
+<U00D6> <o-diaresis>;<BASE>;<CAP>;IGNORE % Ö
+<U015F> <s-cedilla>;<BASE>;<MIN>;IGNORE % ş
+<U015E> <s-cedilla>;<BASE>;<CAP>;IGNORE % Ş
+<U00FC> <u-diaresis>;<BASE>;<MIN>;IGNORE % ü
+<U00DC> <u-diaresis>;<BASE>;<CAP>;IGNORE % Ü
+
+reorder-end
+
+END LC_COLLATE
+
+LC_CTYPE
+copy "en_GB"
+END LC_CTYPE
+
+LC_MESSAGES
+yesexpr "^[+1yYeE]"
+noexpr  "^[-0nNhH]"
+yesstr  "evet"
+nostr   "hay<U0131>r"
+END LC_MESSAGES
+
+LC_MONETARY
+% ISO-4217 (2004-10-25): TRY 949 2
+int_curr_symbol           "TRY "
+% TL
+currency_symbol           "<U20BA>"
+mon_decimal_point         ","
+mon_thousands_sep         "."
+mon_grouping              3;3
+positive_sign             ""
+negative_sign             "-"
+int_frac_digits           2
+frac_digits               2
+p_cs_precedes             0
+p_sep_by_space            1
+n_cs_precedes             0
+n_sep_by_space            1
+p_sign_posn               1
+n_sign_posn               1
+END LC_MONETARY
+
+LC_NUMERIC
+decimal_point             ","
+thousands_sep             "."
+grouping                  3;3
+END LC_NUMERIC
+
+LC_TIME
+abday   "Paz";"Pzt";"Sal";/
+        "<U00C7>r<U015F>";"Pr<U015F>";"Cum";"Cts"
+day     "Pazar";/
+	"Pazartesi";/
+	"Sal<U0131>";/
+	"<U00C7>ar<U015F>amba";/
+	"Per<U015F>embe";/
+	"Cuma";/
+	"Cumartesi"
+abmon   "Oca";"<U015E>ub";/
+	"Mar";"Nis";/
+        "May";"Haz";/
+        "Tem";"A<U011F>u";/
+        "Eyl";"Eki";/
+	"Kas";"Ara"
+mon     "Ocak";/
+	"<U015E>ubat";/
+	"Mart";/
+	"Nisan";/
+	"May<U0131>s";/
+        "Haziran";/
+        "Temmuz";/
+	"A<U011F>ustos";/
+        "Eyl<U00FC>l";/
+        "Ekim";/
+	"Kas<U0131>m";/
+	"Aral<U0131>k"
+d_t_fmt  "%a %d %b %Y %T"
+date_fmt "%a %d %b %Y %T %Z"
+d_fmt   "%m//%d//%Y"
+t_fmt   "%T"
+am_pm   "<U00D6><U00D6>";"<U00D6>S"
+t_fmt_ampm "%I:%M:%S %p"
+week 7;19971130;1
+first_weekday 2
+END LC_TIME
+
+LC_PAPER
+copy "i18n"
+END LC_PAPER
+
+LC_TELEPHONE
+tel_int_fmt    "+%c %a %l"
+int_prefix     "90"
+int_select     "00"
+END LC_TELEPHONE
+
+LC_MEASUREMENT
+copy "i18n"
+END LC_MEASUREMENT
+
+LC_NAME
+name_fmt    "%d%t%g%t%m%t%f"
+name_gen    "Say<U0131>n"
+name_mr     "Bay"
+name_mrs    "Bayan"
+name_miss   "Bayan"
+name_ms     "Bayan"
+END LC_NAME
+
+LC_ADDRESS
+postal_fmt    "%f%N%a%N%d%N%b%N%s %h %e %r%N%z %T%N%c%N"
+country_name "T<U00FC>rkiye"
+country_post	"TR"
+country_car	"TR"
+country_isbn	975
+country_num	792
+country_ab2	"TR"
+country_ab3	"TUR"
+lang_name	"T<U00FC>rk<U00E7>e"
+lang_term	"tur"
+lang_lib	"tur"
+lang_ab		"tr"
+END LC_ADDRESS
