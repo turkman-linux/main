@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='m4'
+release='1'
+version='1.4.19'
+url='https://gnu.org/software/m4'
+description='GNU macro processor'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('GPLv3')
+source=('https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz')
+depends=( )
+makedepends=( )
+md5sums=('0d90823e1426f1da2fd872df0311298d')
+uses=(nls)
+nls_depends=(gettext)
+arch=('x86_64')
+group=(sys.devel)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+		--enable-changeword \
+		$(use_opt nls --enable-nls --disable-nls)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
