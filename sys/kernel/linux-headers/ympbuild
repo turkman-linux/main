@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+name='linux-headers'
+release='1'
+version='6.0.9'
+url='https://cdn.kernel.org/pub/linux/kernel/'
+description='Linux kernel headers'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$version.tar.xz")
+depends=( )
+makedepends=( )
+md5sums=('3de364bdbacd2115950cc3dd94157ab6')
+uses=()
+arch=('x86_64')
+group=(sys.kernel)
+
+cd linux-$version
+
+package(){
+	make headers_install INSTALL_HDR_PATH="${DESTDIR}/usr"
+
+}
+
