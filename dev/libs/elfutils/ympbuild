@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+name='elfutils'
+release='1'
+version='0.188'
+url='https://sourceware.org/elfutils/'
+description='Libraries/utilities to handle ELF objects (drop in replacement for libelf)'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('GPLv3' 'GPLv2' 'LGPLv3')
+source=("https://sourceware.org/elfutils/ftp/${version}/elfutils-${version}.tar.bz2")
+depends=( )
+makedepends=( )
+md5sums=('efb25a91873b2eec4df9f31e6a4f4e5c')
+uses=(bzip2 lzma nls)
+uses_extra=(zstd)
+arch=('x86_64')
+group=(dev.libs)
+bzip2_depends=(bzip2)
+lzma_depends=(xz-utils)
+nls_depends=(gettext)
+zstd_depends=(zstd)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+		--enable-shared \
+		--enable-static \
+		--disable-debuginfod \
+		--disable-libdebuginfod \
+		--disable-thread-safety \
+		--disable-valgrind \
+		$(use_opt nls --enable-nls --disable-nls) \
+		--program-prefix="eu-" \
+		$(use_opt bzip2 --with-bzlib --without-bzlib) \
+		$(use_opt lzma --with-lzma --without-lzma) \
+		$(use_opt zstd --with-zstd --without-zstd)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
