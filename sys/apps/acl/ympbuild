@@ -7,7 +7,7 @@ description='The acl package contains utilities to administer Access Control Lis
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('LGPL')
-source=('https://mirror.rabisu.com/savannah-nongnu/acl/acl-2.3.1.tar.gz')
+source=("https://mirror.rabisu.com/savannah-nongnu/acl/acl-${version}.tar.gz")
 depends=(attr)
 makedepends=( )
 md5sums=('3cecb80cb0a52a0b273e6698ba642263')
@@ -28,4 +28,3 @@ build(){
 package(){
     make install -j`nproc`
 }
-
