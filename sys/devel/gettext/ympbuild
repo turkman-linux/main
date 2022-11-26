@@ -21,16 +21,16 @@ cd $name-$version
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
-	--enable-shared \
-	--enable-static \
-	--disable-java \
-	--without-emacs \
-	--without-cvs \
-	--without-included-regex \
-	--without-included-libxml \
+        --enable-shared \
+        --enable-static \
+        --disable-java \
+        --without-emacs \
+        --without-cvs \
+        --without-included-regex \
+        --without-included-libxml \
         --without-git \
-	$(use_opt bzip2 --with-bzip2 --without-bzip2) \
-	$(use_opt lzma --with-xz --without-xz)
+        $(use_opt bzip2 --with-bzip2 --without-bzip2) \
+        $(use_opt lzma --with-xz --without-xz)
 }
 
 build(){
