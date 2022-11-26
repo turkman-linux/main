@@ -7,13 +7,14 @@ description='Yerli ve Milli Package manager'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=('https://gitlab.com/sulix/devel/sources/ymp/-/archive/1.0/ymp-${version}.tar.gz')
+source=("https://gitlab.com/sulix/devel/sources/ymp/-/archive/${version}/ymp-${version}.tar.gz")
 depends=(glib bash make-ca)
 makedepends=()
 md5sums=('241db615b0887b7255bb656170c657ed')
 uses=(curl libarchive)
 curl_depends=(curl)
 libarchive_depends=(libarchive)
+group=(sys.apps)
 arch=('x86_64')
 
 cd $name-$version
