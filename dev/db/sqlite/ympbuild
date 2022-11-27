@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+name='sqlite'
+release='1'
+version='3.40.0'
+url='https://example.org'
+description='A C library that implements an SQL database engine'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+srcver=3400000
+source=("https://sqlite.org/2022/sqlite-autoconf-$srcver.tar.gz")
+depends=(zlib readline)
+makedepends=( )
+md5sums=('c833d61da768a116fa16d910f43cfd9a')
+uses=()
+group=(dev.db)
+arch=('x86_64')
+
+cd $name-autoconf-$srcver
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --enable-fts3 \
+	--enable-fts4 \
+	--enable-fts5 \
+	--enable-rtree \
+        CPPFLAGS="-DSQLITE_ENABLE_FTS3=1            \
+                  -DSQLITE_ENABLE_FTS4=1            \
+                  -DSQLITE_ENABLE_COLUMN_METADATA=1 \
+                  -DSQLITE_ENABLE_UNLOCK_NOTIFY=1   \
+                  -DSQLITE_ENABLE_DBSTAT_VTAB=1     \
+                  -DSQLITE_SECURE_DELETE=1          \
+                  -DSQLITE_ENABLE_FTS3_TOKENIZER=1"
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

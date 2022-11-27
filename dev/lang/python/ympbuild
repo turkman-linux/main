@@ -8,11 +8,14 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('custom')
 source=("https://www.python.org/ftp/python/$version/Python-$version.tar.xz")
-depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' )
+depends=('bzip2' 'gdbm'  'libnsl' 'libxcrypt' 'openssl' 'zlib' 'sqlite')
 makedepends=( )
 md5sums=('e92356b012ed4d0e09675131d39b1bde')
-uses=()
+uses=(expat ffi)
+ffi_depends=('libffi')
+expat_depends=('expat')
 arch=('x86_64')
+group=(dev.lang)
 
 export CFLAGS="-O2 -s"
 export CXXFLAGS="-O2 -s"
@@ -25,8 +28,8 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
         --enable-shared      \
-        --with-system-expat  \
-        --with-system-ffi    \
+        $(use_opt expat --with-system-expat "") \
+        $(use_opt ffi   --with-system-ffi   "") \
         --enable-optimizations
 }
 
