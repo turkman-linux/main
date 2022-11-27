@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='expat'
+release='1'
+version='2.5.0'
+url='https://github.com/libexpat/libexpat'
+description='An XML parser library'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-$version.tar.xz")
+depends=( )
+makedepends=( )
+md5sums=('ac6677b6d1b95d209ab697ce8b688704')
+uses=()
+arch=('x86_64')
+group=(dev.libs)
+
+cd $name-$version
+
+setup(){
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib64 \
+        -DCMAKE_BUILD_TYPE=None \
+        -DEXPAT_BUILD_DOCS=false \
+        -W no-dev \
+        -B build
+}
+
+build(){
+    make -C build
+}
+
+package(){
+    make install -C build
+}
+
