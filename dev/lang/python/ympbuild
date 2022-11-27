@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='python'
+release='1'
+version='3.10.8'
+url='https://example.org'
+description='Next generation of the python high-level scripting language'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('custom')
+source=("https://www.python.org/ftp/python/$version/Python-$version.tar.xz")
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' )
+makedepends=( )
+md5sums=('e92356b012ed4d0e09675131d39b1bde')
+uses=()
+arch=('x86_64')
+
+export CFLAGS="-O2 -s"
+export CXXFLAGS="-O2 -s"
+
+
+cd Python-$version
+
+setup(){
+
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --enable-shared      \
+        --with-system-expat  \
+        --with-system-ffi    \
+        --enable-optimizations
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
