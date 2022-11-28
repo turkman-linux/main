@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libtool'
+release='1'
+version='2.4.6'
+url='https://www.gnu.org/software/libtool/'
+description='GNU Libtool - The GNU Portable Library Tool'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftpmirror.gnu.org/libtool/libtool-$version.tar.gz")
+depends=( )
+makedepends=( )
+md5sums=('addf44b646ddb4e3919805aa88fa7c5e')
+uses=()
+arch=('x86_64')
+group=(sys.devel)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
