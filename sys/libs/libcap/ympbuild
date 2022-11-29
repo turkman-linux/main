@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='libcap'
+release='1'
+version='2.66'
+url='https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/'
+description='POSIX 1003.1e capabilities'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.xz")
+depends=(pam)
+makedepends=( )
+md5sums=('00afd6e13bc94b2543b1a70770bdb41f')
+uses=()
+group=(sys.libs)
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+      make DYNAMIC=yes KERNEL_HEADERS=/usr/include lib=lib64 prefix=/usr
+}
+
+package(){
+      make RAISE_SETFCAP=no lib=lib64 prefix=/usr install
+}
+

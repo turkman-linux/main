@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/coreutils/coreutils-$version.tar.xz")
-depends=( )
+depends=(acl attr gmp libcap)
 makedepends=( )
 md5sums=('8b1ca4e018a7dce9bb937faec6618671')
 uses=(openssl)
@@ -27,7 +27,7 @@ setup(){
         --libexecdir=/usr/libexec \
         --enable-largefile \
         --enable-single-binary=symlinks \
-        --enable-install-program=arch \
+        --enable-no-install-program=groups,hostname,kill,uptime \
         $(use_opt openssl --with-openssl --without-openssl)
 
 }
