@@ -7,8 +7,8 @@ description='Ssl certificates'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=(https://github.com/lfs-book/make-ca/releases/download/v1.10/make-ca-1.10.tar.xz
-        make-ca.sysconf)
+source=("https://github.com/lfs-book/make-ca/releases/download/v1.10/make-ca-${version}.tar.xz
+        make-ca.sysconf")
 md5sums=('74f1ad16d7a086ac76e0424fd4dfe67b'
          'SKIP')
 depends=(p11-kit)
