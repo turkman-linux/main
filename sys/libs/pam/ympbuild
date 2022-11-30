@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/linux-pam/linux-pam/releases/download/v$version/Linux-PAM-$version.tar.xz")
-depends=(libtirpc libxcrypt)
+depends=(libtirpc libxcrypt libnsl)
 makedepends=( )
 md5sums=('895e8adfa14af334f679bbeb28503f66')
 uses=()
@@ -19,7 +19,9 @@ cd Linux-PAM-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64
+        --sbindir=/sbin \
+        --libdir=/lib64/pam \
+        --enable-securedir=/lib64/security
 }
 
 build(){
@@ -28,5 +30,10 @@ build(){
 
 package(){
     make install -j`nproc`
+    # remove systemd stuff
+    rm -rf ${DESTDIR}/usr/lib/systemd/
+    # ld.so.conf
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
+    echo "/lib64/ncurses/" > ${DESTDIR}/etc/ld.so.conf.d/pam.conf
 }
 
