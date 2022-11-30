@@ -21,7 +21,11 @@ setup(){
     ./configure --prefix=/usr \
         --sbindir=/sbin \
         --libdir=/lib64/pam \
-        --enable-securedir=/lib64/security
+        --enable-securedir=/lib64/security \
+        --enable-static \
+        --enable-shared \
+        --disable-selinux \
+        --disable-nls
 }
 
 build(){
@@ -35,5 +39,6 @@ package(){
     # ld.so.conf
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/lib64/ncurses/" > ${DESTDIR}/etc/ld.so.conf.d/pam.conf
+    mv ${DESTDIR}/lib64/pam/pkgconfig ${DESTDIR}/lib64/pkgconfig
 }
 
