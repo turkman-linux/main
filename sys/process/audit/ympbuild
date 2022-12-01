@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+name='audit'
+release='1'
+version='3.0.9'
+url='https://people.redhat.com/sgrubb/audit/'
+description='Package description missing'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/linux-audit/audit-userspace/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=( )
+md5sums=('a8a7d513b4a6506e8ab624715df7f901')
+uses=(libcap_ng)
+uses_extra=(python)
+python_depends=(python)
+libcap_ng_depends=(libcap-ng)
+arch=('x86_64')
+
+cd audit-userspace-$version
+
+setup(){
+    autoreconf -fv --install
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --disable-zos-remote \
+        --disable-listener \
+        --disable-systemd \
+        --disable-gssapi-krb5 \
+        $(use_opt python --with-python3 --without-python3) \
+        $(use_opt python --with-python --without-python) \
+        $(use_opt libcap_ng --with-libcap-ng=yes --with-libcap-ng=no)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
