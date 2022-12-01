@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+name='pkgconf'
+release='1'
+version='1.9.3'
+url='https://github.com/pkgconf/pkgconf/tags'
+description='Package compiler and linker metadata toolkit'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/pkgconf/pkgconf/archive/refs/tags/pkgconf-$version.tar.gz"
+        "x86_64-pc-linux-gnu.personality"
+        "i686-pc-linux-gnu.personality"
+)
+depends=( )
+makedepends=( )
+md5sums=('eb873bebfdf2d89f50e8f1a7608ebdab'
+         'SKIP'
+         'SKIP')
+uses=()
+arch=('x86_64')
+group=(dev.u/tmp/ymp-build/51ff6e98a7d42ef4776b04e0496805a9til)
+cd $name-$name-$version
+
+setup(){
+    sh ./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+    ln -s pkgconf ${DESTDIR}/usr/bin/pkg-config
+    install -Dt "${DESTDIR}/usr/share/pkgconfig/personality.d" -m644 \
+    ../i686-pc-linux-gnu.personality \
+    ../x86_64-pc-linux-gnu.personality
+}
+
