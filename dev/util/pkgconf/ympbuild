@@ -18,7 +18,7 @@ md5sums=('eb873bebfdf2d89f50e8f1a7608ebdab'
          'SKIP')
 uses=()
 arch=('x86_64')
-group=(dev.u/tmp/ymp-build/51ff6e98a7d42ef4776b04e0496805a9til)
+group=(dev.util)
 cd $name-$name-$version
 
 setup(){
