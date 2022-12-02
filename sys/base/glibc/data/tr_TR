@@ -8,7 +8,7 @@ escape_char /
 % exempt you from the conditions of the license if your use would
 % otherwise be governed by that license.
 
-% Turkish Language Locale for Turkey
+% Turkish Language Locale for Turkiye
 % Source: RAP
 % Address: Sankt Jo//rgens Alle 8
 %    DK-1615 Ko//benhavn V, Danmark
@@ -26,14 +26,14 @@ escape_char /
 % Corrections by:
 %   1998-01-11T15:54:39
 %   Onur Tolga Sehitoglu <onur@ceng.metu.edu.tr>,
-%   Dept. of Comp. Eng. METU/Ankara   Turkey
+%   Dept. of Comp. Eng. METU/Ankara   Turkiye
 %   2004-05-29T15:13
 %   Deniz Akkus Kanca <deniz@arayan.com>
 %   2004-10-30T10:28:35
 %   Nilg<U00FC>n Belma Bug<U00FC>ner <nilgun@belgeler.org>
 
 LC_IDENTIFICATION
-title      "Turkish locale for Turkey"
+title      "Turkish locale for Turkiye"
 source     "RAP"
 address    "Sankt J<U00F8>rgens Alle 8, DK-1615 K<U00F8>benhavn V, Danmark"
 contact    ""
@@ -41,7 +41,7 @@ email      "bug-glibc-locales@gnu.org"
 tel        ""
 fax        ""
 language   "Turkish"
-territory  "Turkey"
+territory  "Turkiye"
 revision   "1.0"
 date       "2021-09-27"
 
@@ -133,7 +133,7 @@ LC_MESSAGES
 yesexpr "^[+1yYeE]"
 noexpr  "^[-0nNhH]"
 yesstr  "evet"
-nostr   "hay<U0131>r"
+nostr   "hayir"
 END LC_MESSAGES
 
 LC_MONETARY
@@ -164,37 +164,37 @@ END LC_NUMERIC
 
 LC_TIME
 abday   "Paz";"Pzt";"Sal";/
-        "<U00C7>r<U015F>";"Pr<U015F>";"Cum";"Cts"
+        "Crs";"Prs";"Cum";"Cts"
 day     "Pazar";/
 	"Pazartesi";/
-	"Sal<U0131>";/
-	"<U00C7>ar<U015F>amba";/
-	"Per<U015F>embe";/
+	"Sali";/
+	"Carsamba";/
+	"Persembe";/
 	"Cuma";/
 	"Cumartesi"
-abmon   "Oca";"<U015E>ub";/
+abmon   "Oca";"Sub";/
 	"Mar";"Nis";/
         "May";"Haz";/
-        "Tem";"A<U011F>u";/
+        "Tem";"Agu";/
         "Eyl";"Eki";/
 	"Kas";"Ara"
 mon     "Ocak";/
-	"<U015E>ubat";/
+	"Subat";/
 	"Mart";/
 	"Nisan";/
-	"May<U0131>s";/
+	"Mayis";/
         "Haziran";/
         "Temmuz";/
-	"A<U011F>ustos";/
-        "Eyl<U00FC>l";/
+	"Agustos";/
+        "Eylul";/
         "Ekim";/
-	"Kas<U0131>m";/
-	"Aral<U0131>k"
+	"Kasim";/
+	"Aralik"
 d_t_fmt  "%a %d %b %Y %T"
 date_fmt "%a %d %b %Y %T %Z"
 d_fmt   "%m//%d//%Y"
 t_fmt   "%T"
-am_pm   "<U00D6><U00D6>";"<U00D6>S"
+am_pm   "OO";"OS"
 t_fmt_ampm "%I:%M:%S %p"
 week 7;19971130;1
 first_weekday 2
@@ -216,7 +216,7 @@ END LC_MEASUREMENT
 
 LC_NAME
 name_fmt    "%d%t%g%t%m%t%f"
-name_gen    "Say<U0131>n"
+name_gen    "Sayin"
 name_mr     "Bay"
 name_mrs    "Bayan"
 name_miss   "Bayan"
@@ -225,14 +225,14 @@ END LC_NAME
 
 LC_ADDRESS
 postal_fmt    "%f%N%a%N%d%N%b%N%s %h %e %r%N%z %T%N%c%N"
-country_name "T<U00FC>rkiye"
+country_name "Turkiye"
 country_post	"TR"
 country_car	"TR"
 country_isbn	975
 country_num	792
 country_ab2	"TR"
 country_ab3	"TUR"
-lang_name	"T<U00FC>rk<U00E7>e"
+lang_name	"Turkce"
 lang_term	"tur"
 lang_lib	"tur"
 lang_ab		"tr"

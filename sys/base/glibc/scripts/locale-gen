@@ -28,6 +28,7 @@ is_entry_ok() {
 }
 
 echo "Generating locales..."
+touch /etc/locale.gen
 while read locale charset; do \
 	case $locale in \#*) continue;; "") continue;; esac; \
 	is_entry_ok || continue

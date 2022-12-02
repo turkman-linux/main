@@ -4,3 +4,4 @@
 /bin/busybox chmod +x -R /sbin
 /bin/busybox chmod +x -R /usr/bin
 /bin/busybox chmod +x -R /usr/sbin
+/bin/busybox chmod +x -R /usr/libexec
