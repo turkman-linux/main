@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+name='shadow'
+release='1'
+version='4.13'
+url='https://github.com/shadow-maint/shadow/releases'
+description='Password and account management tool suite with support for shadow files and PAM'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/shadow-maint/shadow/releases/download/$version/shadow-$version.tar.xz"
+        "useradd.defaults"
+        "shadow.sysconf")
+depends=(pam libxcrypt acl attr)
+makedepends=( )
+md5sums=('b1ab01b5462ddcf43588374d57bec123'
+         'SKIP'
+         'SKIP')
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fiv
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/shadow \
+        --bindir=/usr/bin \
+        --sbindir=/usr/sbin \
+        --disable-account-tools-setuid \
+        --with-fcaps \
+        --with-libpam \
+        --without-group-name-max-length \
+        --with-bcrypt \
+        --with-yescrypt \
+        --without-selinux
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+    install -vDm 600 ../useradd.defaults "${DESTDIR}/etc/default/useradd"
+    install -vDm 755 ../shadow.sysconf ${DESTDIR}/etc/sysconf.d/shadow
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
+    echo "/usr/lib64/shadow/" > ${DESTDIR}/etc/ld.so.conf.d/shadow.conf
+}
+
