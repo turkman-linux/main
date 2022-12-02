@@ -19,6 +19,7 @@ md5sums=('b1ab01b5462ddcf43588374d57bec123'
          'SKIP')
 uses=()
 arch=('x86_64')
+group=(sys.apps)
 
 cd $name-$version
 
