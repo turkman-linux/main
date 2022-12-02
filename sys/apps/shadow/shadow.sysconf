@@ -15,3 +15,11 @@ fi
 if ! grep "^root:" /etc/group >/dev/null ; then
     echo "root:x:0:root" >> /etc/group
 fi
+
+if [ ! -f /etc/shadow ] ; then
+    echo "root:*::0:::::" > /etc/shadow
+    chmod 600 /etc/shadow
+    chown root /etc/shadow
+    chgrp root /etc/shadow
+fi
+
