@@ -5,3 +5,12 @@
 /bin/busybox chmod +x -R /usr/bin
 /bin/busybox chmod +x -R /usr/sbin
 /bin/busybox chmod +x -R /usr/libexec
+
+# Call locale-gen
+current=$(date +%s -r /etc/locale.gen)
+touch /var/lib/ymp/sysconf/glib/update.date
+last=$(cat /var/lib/ymp/sysconf/glibc/update.date)
+if [ "$current" != "$last" ] ; then
+    /bin/locale-gen
+    echo "$current" > /var/lib/ymp/sysconf/glibc/update.date
+fi
