@@ -28,5 +28,7 @@ package(){
 
     install -Dt "${DESTDIR}/usr/share/bash-completion/completions" -m644 data/shell-completions/bash/*
     install -Dt "${DESTDIR}/usr/share/zsh/site-functions" -m644 data/shell-completions/zsh/*
+    # fix hardcoded interpreter location
+    sed -i "1s|.*|#!/usr/bin/env python3|g" "${DESTDIR}/usr/bin/meson"
 }
 
