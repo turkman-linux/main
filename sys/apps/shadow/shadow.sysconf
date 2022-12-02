@@ -6,16 +6,6 @@ if [ ! -f /var/lib/ymp/sysconf/shadow/postinstall.done ] ; then
     touch /etc/group
     date > /var/lib/ymp/sysconf/shadow/postinstall.done
 fi
-if ! grep "^users:" /etc/group >/dev/null ; then
-    echo "users:x:100:" >> /etc/group
-fi
-if ! grep "^wheel:" /etc/group >/dev/null ; then
-    echo "wheel:x:10:root" >> /etc/group
-fi
-if ! grep "^root:" /etc/group >/dev/null ; then
-    echo "root:x:0:root" >> /etc/group
-fi
-
 if [ ! -f /etc/shadow ] ; then
     echo "root:*::0:::::" > /etc/shadow
     chmod 600 /etc/shadow

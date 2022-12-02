@@ -9,7 +9,7 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://gitlab.com/sulix/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
         "base-files.sysconf")
-md5sums=('1a7f97c99b2ba940d91faade186f4b3f'
+md5sums=('0941492e4e45975adcffc440a72b469f'
          'SKIP')
 arch=(x86_64)
 group=(sys.base)

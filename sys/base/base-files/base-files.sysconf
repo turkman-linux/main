@@ -7,6 +7,13 @@ cat /etc/passwd.d/* | sed "s/#.*//g"| while read line ; do
         echo "${line}" >> /etc/passwd
     fi
 done
+cat /etc/group.d/* | sed "s/#.*//g"| while read line ; do
+    if [ -z "${line}" ] ; then
+        : skip empty line
+    elif ! grep "^${line}$" /etc/group > /dev/null ; then
+        echo "${line}" >> /etc/group
+    fi
+done
 if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
     mkdir -p /var/lib/ymp/sysconf/base-files/
     mkdir /data/user/root -p
