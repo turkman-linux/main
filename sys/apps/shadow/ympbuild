@@ -24,9 +24,11 @@ setup(){
     autoreconf -fiv
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/shadow \
+        --sysconfdir=/etc \
         --bindir=/usr/bin \
         --sbindir=/usr/sbin \
         --disable-account-tools-setuid \
+        --without-sssd \
         --with-fcaps \
         --with-libpam \
         --without-group-name-max-length \

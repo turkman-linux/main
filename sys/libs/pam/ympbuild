@@ -38,7 +38,7 @@ package(){
     rm -rf ${DESTDIR}/usr/lib/systemd/
     # ld.so.conf
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/lib64/ncurses/" > ${DESTDIR}/etc/ld.so.conf.d/pam.conf
+    echo "/lib64/pam/" > ${DESTDIR}/etc/ld.so.conf.d/pam.conf
     mv ${DESTDIR}/lib64/pam/pkgconfig ${DESTDIR}/lib64/pkgconfig
 }
 
