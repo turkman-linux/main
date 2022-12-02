@@ -9,10 +9,12 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/shadow-maint/shadow/releases/download/$version/shadow-$version.tar.xz"
         "useradd.defaults"
-        "shadow.sysconf")
+        "shadow.sysconf"
+        "system-auth")
 depends=(pam libxcrypt acl attr)
 makedepends=( )
 md5sums=('b1ab01b5462ddcf43588374d57bec123'
+         'SKIP'
          'SKIP'
          'SKIP')
 uses=()
@@ -44,6 +46,7 @@ build(){
 package(){
     make install -j`nproc`
     install -vDm 600 ../useradd.defaults "${DESTDIR}/etc/default/useradd"
+    install -vDm 600 ../system-auth "${DESTDIR}/etc/pam.d/system-auth"
     install -vDm 755 ../shadow.sysconf ${DESTDIR}/etc/sysconf.d/shadow
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/shadow/" > ${DESTDIR}/etc/ld.so.conf.d/shadow.conf
