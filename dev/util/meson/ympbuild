@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='meson'
+release='1'
+version='0.64.1'
+url='https://github.com/mesonbuild/meson'
+description='High productivity build system'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/mesonbuild/meson/releases/download/$version/meson-$version.tar.gz")
+depends=(python python-setuptools)
+makedepends=( )
+md5sums=('9f260adfcbc66ed2e15047c6eb98e503')
+uses=()
+group=(dev.util)
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    python setup.py build
+}
+
+package(){
+    python setup.py install --root="${DESTDIR}" --optimize=1 --skip-build
+    install -d "${DESTDIR}/usr/share/vim/vimfiles"
+    cp -rt "${DESTDIR}/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*/
+
+    install -Dt "${DESTDIR}/usr/share/bash-completion/completions" -m644 data/shell-completions/bash/*
+    install -Dt "${DESTDIR}/usr/share/zsh/site-functions" -m644 data/shell-completions/zsh/*
+}
+
