@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='cmake'
+release='1'
+version='3.25.1'
+url='https://example.org'
+description='A cross-platform open-source make system'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version.tar.gz")
+depends=( )
+makedepends=( )
+md5sums=('521a03b1c36412463eda0348bebf4765')
+uses=()
+uses_extra=(qt)
+group=(dev.util)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./bootstrap --prefix=/usr \
+        --no-system-libs \
+        $(use_opt qt --qt-gui --no-qt-gui) \
+        --parallel=`nproc`
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
