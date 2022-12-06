@@ -34,5 +34,6 @@ package(){
     ln -s libminilzo.so.0 "${DESTDIR}"/usr/lib64/lzo/libminilzo.so
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/lzo/" > ${DESTDIR}/etc/ld.so.conf.d/lzo.conf
+    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

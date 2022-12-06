@@ -40,5 +40,6 @@ package(){
     ../x86_64-pc-linux-gnu.personality
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/pkgconf/" > ${DESTDIR}/etc/ld.so.conf.d/pkgconf.conf
+    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

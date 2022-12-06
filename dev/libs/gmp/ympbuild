@@ -30,5 +30,6 @@ package(){
     make install -j`nproc`
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/gmp/" > ${DESTDIR}/etc/ld.so.conf.d/gmp.conf
+    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

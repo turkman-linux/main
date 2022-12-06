@@ -42,4 +42,5 @@ package(){
     make install -j`nproc`
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/magic/" > ${DESTDIR}/etc/ld.so.conf.d/magic.conf
+    mv ${DESTDIR}/usr/lib64/{magic/pkgconfig,}
 }

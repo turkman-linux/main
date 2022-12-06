@@ -37,5 +37,6 @@ package(){
     install ../glib.sysconf ${DESTDIR}/etc/sysconf.d/glib
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/glib2.0/" > ${DESTDIR}/etc/ld.so.conf.d/glib.conf
+    mv ${DESTDIR}/usr/lib64/{glib2.0/pkgconfig,}
 }
 

@@ -34,5 +34,6 @@ package(){
     make install -j`nproc`
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libpcre2/" > ${DESTDIR}/etc/ld.so.conf.d/libpcre2.conf
+    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

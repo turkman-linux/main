@@ -42,5 +42,6 @@ package(){
     install_man_docs  -j`nproc`
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/openssl/" > ${DESTDIR}/etc/ld.so.conf.d/openssl.conf
+    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

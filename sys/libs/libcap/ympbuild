@@ -25,5 +25,6 @@ package(){
     make RAISE_SETFCAP=no lib=lib64/libcap prefix=/usr install
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libcap/" > ${DESTDIR}/etc/ld.so.conf.d/libcap.conf
+    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 
