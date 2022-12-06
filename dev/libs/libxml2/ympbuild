@@ -38,6 +38,7 @@ package(){
         mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
         rmdir ${DESTDIR}/usr/lib/
     fi
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libxml2/" > ${DESTDIR}/etc/ld.so.conf.d/libxml2.conf
 }
 

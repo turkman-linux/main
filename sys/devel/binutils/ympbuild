@@ -55,6 +55,7 @@ build(){
 package(){
     cd build
     make install -j`nproc`
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/binutils/" > ${DESTDIR}/etc/ld.so.conf.d/binutils.conf
 }
 

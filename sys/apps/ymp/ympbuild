@@ -37,6 +37,7 @@ build(){
 
 package(){
     ninja -C build install
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/lib64/ymp/" > ${DESTDIR}/etc/ld.so.conf.d/ymp.conf
 }
 

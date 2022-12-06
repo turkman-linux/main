@@ -35,6 +35,7 @@ package(){
     ninja -C build install
     mkdir -p ${DESTDIR}/etc/sysconf.d/
     install ../glib.sysconf ${DESTDIR}/etc/sysconf.d/glib
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/glib2.0/" > ${DESTDIR}/etc/ld.so.conf.d/glib.conf
 }
 

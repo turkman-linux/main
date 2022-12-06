@@ -38,5 +38,6 @@ build() {
 package() {
     make -C build install
     install build/src/libssh.a ${DESTDIR}/usr/lib64/libssh/
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libssh/" > ${DESTDIR}/etc/ld.so.conf.d/libssh.conf
 }

@@ -45,6 +45,7 @@ package(){
     make install -j`nproc`
     cd ../$name-compat
     make install -j`nproc`
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libxcrypt/" > ${DESTDIR}/etc/ld.so.conf.d/libxcrypt.conf
 
 }

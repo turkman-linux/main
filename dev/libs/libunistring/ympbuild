@@ -29,6 +29,7 @@ package(){
     make install -j`nproc`
     ln -s libunistring.so ${DESTDIR}/usr/lib64/libunistring/libunistring.so.2
     ln -s libunistring.so ${DESTDIR}/usr/lib64/libunistring/libunistring.so.2.2.0
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libunistring/" > ${DESTDIR}/etc/ld.so.conf.d/libunistring.conf
 }
 

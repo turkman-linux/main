@@ -23,5 +23,6 @@ build(){
 }
 package(){
     make -j`nproc` install
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libtasn1/" > ${DESTDIR}/etc/ld.so.conf.d/libtasn1.conf
 }

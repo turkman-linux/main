@@ -24,6 +24,7 @@ package(){
     make install -j`nproc` PREFIX=/usr
     mkdir -p ${DESTDIR}/usr/lib64
     mv ${DESTDIR}/usr/{lib,lib64/lz4}
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/lz4/" > ${DESTDIR}/etc/ld.so.conf.d/lz4.conf
 }
 

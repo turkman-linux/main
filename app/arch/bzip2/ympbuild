@@ -46,5 +46,6 @@ package(){
     ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bunzip2.1
     ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzcat.1
     ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzip2recover.1
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/bzip2/" > ${DESTDIR}/etc/ld.so.conf.d/bzip2.conf
 }

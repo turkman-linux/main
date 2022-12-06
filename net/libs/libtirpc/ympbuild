@@ -29,6 +29,7 @@ build(){
 
 package(){
     make install -j`nproc`
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/libtirpc/" > ${DESTDIR}/etc/ld.so.conf.d/libtirpc.conf
 }
 

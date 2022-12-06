@@ -40,6 +40,7 @@ build(){
 
 package(){
     make install -j`nproc`
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/sqlite/" > ${DESTDIR}/etc/ld.so.conf.d/sqlite.conf
 }
 

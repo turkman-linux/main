@@ -86,6 +86,7 @@ package(){
     for ver in 3 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
         ln -s libcurl.so.4.8.0 "${DESTDIR}"/usr/lib64/curl/libcurl.so.${ver}
     done
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/curl/" > ${DESTDIR}/etc/ld.so.conf.d/curl.conf
 }
 

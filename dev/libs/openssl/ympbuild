@@ -40,6 +40,7 @@ package(){
     install_sw \
     install_ssldirs \
     install_man_docs  -j`nproc`
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/openssl/" > ${DESTDIR}/etc/ld.so.conf.d/openssl.conf
 }
 

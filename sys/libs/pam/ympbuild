@@ -36,8 +36,6 @@ package(){
     make install -j`nproc`
     # remove systemd stuff
     rm -rf ${DESTDIR}/usr/lib/systemd/
-    # ld.so.conf
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     mv ${DESTDIR}/lib64/pam/pkgconfig ${DESTDIR}/lib64/pkgconfig
 }
 

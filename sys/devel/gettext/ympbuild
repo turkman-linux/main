@@ -39,6 +39,7 @@ build(){
 
 package(){
     make install -j`nproc`
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/lib64/gettext/" > ${DESTDIR}/etc/ld.so.conf.d/gettext.conf
 }
 

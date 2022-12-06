@@ -32,6 +32,7 @@ build(){
 
 package(){
     make install -C build
+    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/usr/lib64/expat/" > ${DESTDIR}/etc/ld.so.conf.d/expat.conf
 }
 
