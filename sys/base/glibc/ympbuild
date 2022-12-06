@@ -119,8 +119,8 @@ package(){
     # remove unused languages
     for l in ku hy ; do
         rm -rf ${DESTDIR}/usr/lib/locale/${i}_*
-        rm -rf ${DESTDIR/usr/share/locale/${i}_*
-        rm -rf ${DESTDIR/usr/share/i18n/locales/${i}_*
+        rm -rf ${DESTDIR}/usr/share/locale/${i}_*
+        rm -rf ${DESTDIR}/usr/share/i18n/locales/${i}_*
     done
 
 
