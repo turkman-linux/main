@@ -6,7 +6,6 @@ move_package(){
         mv $line output
     done
 }
-
 find -type f | grep ympbuild | sort -V | while read line ; do
     name=$(basename $(dirname $line))
     path=$(realpath $(dirname $line))

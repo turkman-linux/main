@@ -11,7 +11,7 @@ find -type f | grep ympbuild | sort -V | while read line ; do
     path=$(realpath $(dirname $line))
     if ! find ./output/ -type f | grep "${name}_" | grep "source.ymp$" &>/dev/null ; then
         echo -e "\033[33;1m=>> SOURCE BUILD START:\033[;0m $line"
-        ymp --sandbox --shared="$path" build "$path" --no-binary --ignore-dependency --use=all --allow-oem --ignore-ssl --verbose --debug
+        ymp --sandbox --shared="$path" build "$path" --no-binary --ignore-dependency --use=all --allow-oem --verbose || exit 1
         move_source
         echo -e "\033[33;1m<<= SOURCE BUILD DONE:\033[;0m $line"
     fi
