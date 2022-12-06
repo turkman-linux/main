@@ -22,7 +22,7 @@ cd $name-$version
 setup(){
     opts=(
     	--prefix=/usr
-	--libdir=/usr/lib64
+	--libdir=/usr/lib64/magic
 	--enable-static
 	--enable-elf
 	--enable-elf-core
@@ -40,4 +40,5 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/magic/" > ${DESTDIR}/etc/ld.so.conf.d/magic.conf
 }

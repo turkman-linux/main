@@ -28,7 +28,7 @@ cd $name-$version
 
 setup() {
     ./configure --prefix=/usr \
-	--libdir=/usr/lib64 \
+	--libdir=/usr/lib64/libarchive \
 	--enable-static \
 	--enable-shared \
 	--enable-xattr \
@@ -49,4 +49,5 @@ build() {
 }
 package() {
     make -j$(nproc) install
+    echo "/usr/lib64/libarchive/" > ${DESTDIR}/etc/ld.so.conf.d/libarchive.conf
 }

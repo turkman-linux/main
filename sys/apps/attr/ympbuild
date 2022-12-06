@@ -18,7 +18,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64
+        --libdir=/usr/lib64/attr
 }
 
 build(){
@@ -27,5 +27,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/attr/" > ${DESTDIR}/etc/ld.so.conf.d/attr.conf
 }
 

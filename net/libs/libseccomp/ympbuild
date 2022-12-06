@@ -15,7 +15,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-	--libdir=/usr/lib64 \
+	--libdir=/usr/lib64/libseccomp \
 	--enable-static \
 	--enable-shared \
 	--disable-silent-rules \
@@ -27,4 +27,5 @@ build(){
 }
 package(){
     make install -j$(nproc)
+    echo "/usr/lib64/libseccomp/" > ${DESTDIR}/etc/ld.so.conf.d/libseccomp.conf
 }

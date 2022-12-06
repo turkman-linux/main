@@ -20,7 +20,7 @@ cd $name-autoconf-$srcver
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64 \
+        --libdir=/usr/lib64/sqlite \
         --enable-fts3 \
 	--enable-fts4 \
 	--enable-fts5 \
@@ -40,5 +40,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/sqlite/" > ${DESTDIR}/etc/ld.so.conf.d/sqlite.conf
 }
 

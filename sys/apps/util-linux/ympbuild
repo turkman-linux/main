@@ -20,7 +20,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-	--libdir=/usr/lib64 \
+	--libdir=/usr/lib64/util-linux \
 	--bindir=/usr/bin \
 	--enable-shared \
 	--enable-static \
@@ -47,5 +47,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/util-linux/" > ${DESTDIR}/etc/ld.so.conf.d/util-linux.conf
 }
 

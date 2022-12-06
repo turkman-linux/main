@@ -18,7 +18,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-	--libdir=/usr/lib64 \
+	--libdir=/usr/lib64/gmp \
 	$(use_opt cxx --enable-cxx --disable-cxx)
 }
 
@@ -28,5 +28,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/gmp/" > ${DESTDIR}/etc/ld.so.conf.d/gmp.conf
 }
 

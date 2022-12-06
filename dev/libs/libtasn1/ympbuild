@@ -16,11 +16,12 @@ cd "libtasn1-$version"
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/lib64
+        --libdir=/usr/lib64/libtasn1
 }
 build(){
     make -j`nproc`
 }
 package(){
     make -j`nproc` install
+    echo "/usr/lib64/libtasn1/" > ${DESTDIR}/etc/ld.so.conf.d/libtasn1.conf
 }

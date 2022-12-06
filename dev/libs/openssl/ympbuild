@@ -23,7 +23,7 @@ cd $name-$version
 setup(){
     ./Configure --prefix=/usr \
         --openssldir=/etc/ssl \
-        --libdir=lib64 \
+        --libdir=lib64/openssl \
         shared linux-x86_64
 }
 
@@ -40,5 +40,6 @@ package(){
     install_sw \
     install_ssldirs \
     install_man_docs  -j`nproc`
+    echo "/usr/lib64/openssl/" > ${DESTDIR}/etc/ld.so.conf.d/openssl.conf
 }
 

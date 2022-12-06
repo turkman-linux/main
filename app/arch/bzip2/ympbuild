@@ -27,18 +27,18 @@ build(){
     make -j$(nproc) -C $name-shared CFLAGS="-fpic -fPIC ${CFLAGS}"
 }
 package(){
-    install -dm755 ${DESTDIR}/usr/{bin,lib64,include,share/man/man1}
+    install -dm755 ${DESTDIR}/usr/{bin,lib64/bzip2,include,share/man/man1}
 
     install -m755 $name-shared/bzip2-shared "${DESTDIR}"/usr/bin/bzip2
     install -m755 bzip2recover bzdiff bzgrep bzmore "${DESTDIR}"/usr/bin
     ln -sf bzip2 "${DESTDIR}"/usr/bin/bunzip2
     ln -sf bzip2 "${DESTDIR}"/usr/bin/bzcat
 
-    install -m755 libbz2.a "${DESTDIR}"/usr/lib64/
-    install -m755 $name-shared/libbz2.so.${version} "${DESTDIR}"/usr/lib64
-    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so
-    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1
-    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1.0
+    install -m755 libbz2.a "${DESTDIR}"/usr/lib64/bzip2/
+    install -m755 $name-shared/libbz2.so.${version} "${DESTDIR}"/usr/lib64/bzip2
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/bzip2/libbz2.so
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/bzip2/libbz2.so.1
+    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/bzip2/libbz2.so.1.0
 
     install -m644 bzlib.h "${DESTDIR}"/usr/include/
 
@@ -46,4 +46,5 @@ package(){
     ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bunzip2.1
     ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzcat.1
     ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzip2recover.1
+    echo "/usr/lib64/bzip2/" > ${DESTDIR}/etc/ld.so.conf.d/bzip2.conf
 }

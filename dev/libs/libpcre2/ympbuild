@@ -19,7 +19,7 @@ cd pcre2-$version
 
 setup(){
     ./configure --prefix=/usr \
-    	--libdir=/usr/lib64 \
+    	--libdir=/usr/lib64/libpcre2 \
 	--enable-shared \
 	--enable-static \
 	$(use_opt zlib --enable-pcre2grep-libz --disable-pcre2grep-libz) \
@@ -32,5 +32,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/libpcre2/" > ${DESTDIR}/etc/ld.so.conf.d/libpcre2.conf
 }
 

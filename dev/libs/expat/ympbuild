@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib64 \
+        -DCMAKE_INSTALL_LIBDIR=lib64/expat \
         -DCMAKE_BUILD_TYPE=None \
         -DEXPAT_BUILD_DOCS=false \
         -W no-dev \
@@ -32,5 +32,6 @@ build(){
 
 package(){
     make install -C build
+    echo "/usr/lib64/expat/" > ${DESTDIR}/etc/ld.so.conf.d/expat.conf
 }
 

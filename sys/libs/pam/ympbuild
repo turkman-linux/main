@@ -20,7 +20,7 @@ cd Linux-PAM-$version
 setup(){
     ./configure --prefix=/usr \
         --sbindir=/sbin \
-        --libdir=/lib64/pam \
+        --libdir=/lib64 \
         --enable-securedir=/lib64/security \
         --enable-static \
         --enable-shared \
@@ -38,7 +38,6 @@ package(){
     rm -rf ${DESTDIR}/usr/lib/systemd/
     # ld.so.conf
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/lib64/pam/" > ${DESTDIR}/etc/ld.so.conf.d/pam.conf
     mv ${DESTDIR}/lib64/pam/pkgconfig ${DESTDIR}/lib64/pkgconfig
 }
 

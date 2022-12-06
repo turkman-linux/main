@@ -17,7 +17,7 @@ cd xz-$version
 
 setup(){
     ./configure --prefix=/usr \
-	--libdir=/usr/lib64 \
+	--libdir=/usr/lib64/xz-utils \
 	--enable-static \
 	--enable-shared \
 	$(use_opt doc --enable-doc --disable-doc) \
@@ -28,4 +28,5 @@ build(){
 }
 package(){
     make install -j$(nproc)
+    echo "/usr/lib64/xz-utils/" > ${DESTDIR}/etc/ld.so.conf.d/xz-utils.conf
 }

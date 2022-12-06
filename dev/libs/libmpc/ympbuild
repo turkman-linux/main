@@ -18,7 +18,7 @@ cd mpc-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64
+        --libdir=/usr/lib64/libmpc
 }
 
 build(){
@@ -27,5 +27,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/libmpc/" > ${DESTDIR}/etc/ld.so.conf.d/libmpc.conf
 }
 

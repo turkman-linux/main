@@ -20,7 +20,7 @@ cd nghttp2-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64 \
+        --libdir=/usr/lib64/libnghttp2 \
         --without-neverbleed \
         --without-jemalloc \
         --disable-examples \
@@ -35,5 +35,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    echo "/usr/lib64/libnghttp2/" > ${DESTDIR}/etc/ld.so.conf.d/libnghttp2.conf
 }
 

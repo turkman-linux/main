@@ -24,7 +24,7 @@ setup(){
     ./autogen.sh
     ./configure --prefix=/usr \
     --with-history \
-    --libdir=/usr/lib64 \
+    --libdir=/usr/lib64/libxml2 \
     $(use_opt python --with-python --without-python)
 }
 
@@ -38,5 +38,6 @@ package(){
         mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
         rmdir ${DESTDIR}/usr/lib/
     fi
+    echo "/usr/lib64/libxml2/" > ${DESTDIR}/etc/ld.so.conf.d/libxml2.conf
 }
 

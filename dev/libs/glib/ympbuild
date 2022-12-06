@@ -20,7 +20,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64 \
+        --libdir=/usr/lib64/glib2.0 \
         --default-library both \
         -D glib_debug=disabled \
         -D selinux=disabled \
@@ -35,5 +35,6 @@ package(){
     ninja -C build install
     mkdir -p ${DESTDIR}/etc/sysconf.d/
     install ../glib.sysconf ${DESTDIR}/etc/sysconf.d/glib
+    echo "/usr/lib64/glib2.0/" > ${DESTDIR}/etc/ld.so.conf.d/glib.conf
 }
 

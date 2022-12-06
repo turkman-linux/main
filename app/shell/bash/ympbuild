@@ -19,7 +19,7 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/lib64 \
         --bindir=/bin \
-  	--with-curses \
+        --with-curses \
         --enable-readline \
         --without-bash-malloc
 }
