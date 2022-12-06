@@ -36,6 +36,5 @@ package(){
     make install -j`nproc`
     # remove systemd stuff
     rm -rf ${DESTDIR}/usr/lib/systemd/
-    mv ${DESTDIR}/lib64/pam/pkgconfig ${DESTDIR}/lib64/pkgconfig
 }
 
