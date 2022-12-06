@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.savannah.nongnu.org/releases/acl/acl-$version.tar.xz")
 depends=(attr)
 makedepends=( )
-md5sums=('3cecb80cb0a52a0b273e6698ba642263')
+md5sums=('95ce715fe09acca7c12d3306d0f076b2')
 group=(sys.apps)
 arch=('x86_64')
 
