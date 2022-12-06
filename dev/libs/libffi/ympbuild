@@ -16,13 +16,11 @@ cd "$name-$version"
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/libffi
+        --libdir=/usr/lib64/
 }
 build(){
     make -j`nproc`
 }
 package(){
     make -j`nproc` install
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/libffi/" > ${DESTDIR}/etc/ld.so.conf.d/libffi.conf
 }
