@@ -25,7 +25,7 @@ if [ "$1" != "" ] ; then
     ln -s 2to3-$version /usr/bin/2to3
     ln -s pip$version /usr/bin/pip3
     ln -s pip$version /usr/bin/pip
-    ln -s libpython$version.so /usr/lib64/libpython3.so
+    ln -s libpython3.so.$version /usr/lib64/libpython3.so
     ln -s python-$version.pc /usr/lib64/pkgconfig/python3.pc
     ln -s python-$version-embed.pc /usr/lib64/pkgconfig/python3-embed.pc
     

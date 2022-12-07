@@ -47,8 +47,7 @@ package(){
     done
     rm -f ${DESTDIR}/usr/lib64/pkgconfig/python3.pc
     rm -f ${DESTDIR}/usr/lib64/pkgconfig/python3-embed.pc
-    # remove symlink and move file
-    rm -f ${DESTDIR}/usr/lib64/libpython3.10.so
-    mv ${DESTDIR}/usr/lib64/libpython3.10.so ${DESTDIR}/usr/lib64/libpython3.so
+    # move libpython3.so file
+    mv ${DESTDIR}/usr/lib64/libpython3.so ${DESTDIR}/usr/lib64/libpython3.so.3.10
 }
 
