@@ -1,0 +1,8 @@
+include /usr/share/nano/*.nanorc
+include /usr/share/nano/extra/*.nanorc
+set constantshow
+set matchbrackets "(<[{)>]}"
+set multibuffer
+set smarthome
+set tabsize 2
+set nonewlines

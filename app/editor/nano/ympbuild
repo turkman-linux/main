@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='nano'
+release='1'
+version='7.0'
+url='https://www.nano-editor.org/download.php'
+description='Pico editor clone with enhancements'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://www.nano-editor.org/dist/v7/nano-$version.tar.xz"
+        "nanorc")
+depends=(file zlib ncurses bzip2)
+makedepends=()
+md5sums=('32faafd9da9ee75feda8423d5744ee4d'
+         'SKIP')
+uses=(nanorc)
+arch=('x86_64')
+group=(app.editor)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        $(use_arg nanorc --enable-color --disable-color )\
+        $(use_arg nanorc --enable-nanorc --disable-nanorc )\
+        --enable-multibuffer
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+    mkdir -p ${DESTDIR}/etc/
+    install ../nanorc ${DESTDIR}/etc/nanorc
+}
+
