@@ -20,13 +20,14 @@ setup(){
     cp -prf ../$name-$version ../widec
     opts=(--prefix=/usr
           --libdir=/lib64/ncurses
+          --with-pkg-config-libdir=/usr/lib64/pkgconfig
           --without-ada
           --without-tests
           --disable-termcap
           --disable-rpath-hack
           --disable-stripping
-          --with-pkg-config-libdir=/usr/lib64/pkgconfig
           --with-termlib
+          --with-progs
           --with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo:/lib/terminfo:/usr/lib/terminfo"
           --enable-pc-files
           --with-shared)
@@ -70,6 +71,8 @@ package(){
     make -j$(nproc) install
     cd ../$name-$version
     make -j$(nproc) install
+    # fix lib64/ncurses
+    sed "s/^Libs:/& -L\$\{libdir\}/" -i "$DESTDIR"/usr/lib64/pkgconfig/*.pc
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
     echo "/lib64/ncurses/" > ${DESTDIR}/etc/ld.so.conf.d/ncurses.conf
 }
