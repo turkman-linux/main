@@ -1,43 +1,22 @@
 #!/usr/bin/env bash
 name='python'
 release='1'
-version='3.10.8'
-url='https://www.python.org/downloads/'
-description='Next generation of the python high-level scripting language'
-email='parduscix@yandex.ru'
-maintainer='sulincix'
-license=('custom')
-source=("https://www.python.org/ftp/python/$version/Python-$version.tar.xz")
-depends=('bzip2' 'gdbm'  'libnsl' 'libxcrypt' 'openssl' 'zlib' 'sqlite')
-makedepends=( )
-md5sums=('e92356b012ed4d0e09675131d39b1bde')
-uses=(expat ffi)
-ffi_depends=('libffi')
-expat_depends=('expat')
-arch=('x86_64')
+version='3.10'
+url='https://gitlab.com/sulix'
+description='Python meta package'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('pydefault')
+depends=(python3.10)
+makedepends=()
+md5sums=('SKIP')
+uses=()
 group=(dev.lang)
-
-export CFLAGS="-O2 -s"
-export CXXFLAGS="-O2 -s"
-
-
-cd Python-$version
-
-setup(){
-
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64 \
-        --enable-shared      \
-        $(use_opt expat --with-system-expat "") \
-        $(use_opt ffi   --with-system-ffi   "") \
-        --enable-optimizations
-}
-
-build(){
-    make -j`nproc`
-}
+arch=('x86_64')
 
 package(){
-    make install -j`nproc`
+    mkdir -p ${DESTDIR}/usr/bin/
+    install pydefault ${DESTDIR}/usr/bin/
 }
 

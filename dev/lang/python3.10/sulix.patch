@@ -1,0 +1,13 @@
+--- a/Lib/site.py 2019-09-06 23:59:43.080736298 +0300
++++ b/Lib/site.py 2019-09-07 00:01:05.134165490 +0300
+@@ -337,7 +337,8 @@
+         libdirs = [sys.platlibdir]
+         if sys.platlibdir != "lib":
+             libdirs.append("lib")
++        sitepackages.insert(0, os.path.join(prefix, "share", "python3"))
++        sitepackages.insert(0, os.path.join(prefix, "lib", "python3"))
+-
+         if os.sep == '/':
+             for libdir in libdirs:
+                 path = os.path.join(prefix, libdir,
+

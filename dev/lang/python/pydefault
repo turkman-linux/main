@@ -1,0 +1,27 @@
+#!/bin/sh
+if [ "$1" != "" ] ; then
+    version="$1"
+    if [ ! -f /usr/bin/python$version ] ; then
+        exit 1
+    fi
+    if [ -L /usr/bin/python3 ] ; then
+        rm -f /usr/bin/pydoc3
+        rm -f /usr/bin/python3
+        rm -f /usr/bin/python
+        rm -f /usr/bin/idle3
+        rm -f /usr/bin/python3-config
+        rm -f /usr/bin/2to3
+        rm -f /usr/bin/pip3
+        rm -f /usr/bin/pip
+    fi
+    ln -s pydoc$version /usr/bin/pydoc3
+    ln -s python$version /usr/bin/python3
+    ln -s python$version /usr/bin/python
+    ln -s idle$version /usr/bin/idle3
+    ln -s python$version-config /usr/bin/python3-config
+    ln -s 2to3-$version /usr/bin/2to3
+    ln -s pip$version /usr/bin/pip3
+    ln -s pip$version /usr/bin/pip
+else
+    exit 1
+fi
