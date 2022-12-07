@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libXdmcp'
+release='1'
+version='1.1.4'
+url='https://gitlab.freedesktop.org/xorg/lib/libXdmcp'
+description='X.Org X Display Manager Control Protocol library'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('MIT')
+source=("https://www.x.org/releases/individual/lib/libXdmcp-${version}.tar.xz")
+depends=(xorg-proto)
+makedepends=( )
+md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+uses=()
+arch=('x86_64')
+group=(x11.libs)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --enable-shared \
+        --enable-static \
+        --without-xmlto \
+        --without-xsltproc \
+        --without-fop \
+        --disable-unit-tests
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
