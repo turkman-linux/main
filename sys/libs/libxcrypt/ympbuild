@@ -25,12 +25,12 @@ prepare(){
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/lib64 \
+        --libdir=/usr/lib64 \
         --enable-hashes=strong,glibc \
         --enable-obsolete-api=glibc
     cd ../$name-compat
     ./configure --prefix=/usr \
-        --libdir=/lib64 \
+        --libdir=/usr/lib64 \
         --enable-hashes=strong,glibc \
         --enable-obsolete-api=no
 }

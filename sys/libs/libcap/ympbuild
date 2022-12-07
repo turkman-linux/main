@@ -22,6 +22,6 @@ build(){
 }
 
 package(){
-    make RAISE_SETFCAP=no lib=lib64/libcap prefix=/usr install
+    make RAISE_SETFCAP=no lib=lib64 prefix=/usr install
 }
 
