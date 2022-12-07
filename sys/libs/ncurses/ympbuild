@@ -10,7 +10,7 @@ license=('MIT')
 arch=(x86_64)
 source=(https://invisible-mirror.net/archives/$name/$name-$version.tar.gz)
 md5sums=(a2736befde5fee7d2b7eb45eb281cdbe)
-depends=(glibc)
+depends=()
 so_ver=6
 group=(sys.libs)
 
@@ -20,7 +20,6 @@ setup(){
     cp -prf ../$name-$version ../widec
     opts=(--prefix=/usr
           --libdir=/lib64
-          --with-pkg-config-libdir=/lib64/pkgconfig
           --without-ada
           --without-tests
           --disable-termcap
@@ -45,27 +44,27 @@ build(){
 }
 
 package(){
-    mkdir -p "$DESTDIR/lib64/ncurses/" "$DESTDIR/usr/lib64/pkgconfig/"
+    mkdir -p "$DESTDIR/lib64/" "$DESTDIR/usr/lib64/pkgconfig/"
     for lib in ncurses ncurses++ form panel menu; do
-        printf "INPUT(-l%sw)\n" "${lib}" > "$DESTDIR/lib64/ncurses/lib${lib}.so"
+        printf "INPUT(-l%sw)\n" "${lib}" > "$DESTDIR/lib64/lib${lib}.so"
         ln -sv ${lib}w.pc "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc"
     done
     # some packages look for -lcurses during build
-    printf 'INPUT(-lncursesw)\n' > "$DESTDIR/lib64/ncurses/libcursesw.so"
-    ln -sv libncurses.so "$DESTDIR/lib64/ncurses/libcurses.so"
+    printf 'INPUT(-lncursesw)\n' > "$DESTDIR/lib64/libcursesw.so"
+    ln -sv libncurses.so "$DESTDIR/lib64/libcurses.so"
 
     # tic and ticinfo functionality is built in by default
     # make sure that anything linking against it links against libncursesw.so instead
     for lib in tic tinfo; do
-        printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib64/ncurses/lib${lib}.so"
-        if ! ls $DESTDIR/lib64/ncurses/lib${lib}.so.${so_ver} ; then
-            ln -sv libncursesw.so.${so_ver} "$DESTDIR/lib64/ncurses/lib${lib}.so.${so_ver}"
+        printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib64/lib${lib}.so"
+        if ! ls $DESTDIR/lib64/lib${lib}.so.${so_ver} ; then
+            ln -sv libncursesw.so.${so_ver} "$DESTDIR/lib64/lib${lib}.so.${so_ver}"
             ln -sv ncursesw.pc "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc"
         fi
     done
     # legacy binary support
     for lib in libncursesw libncurses libtinfo libpanelw libformw libmenuw ; do
-        ln -sv ${lib}.so.${so_ver} "$DESTDIR"/lib64/ncurses/${lib}.so.5
+        ln -sv ${lib}.so.${so_ver} "$DESTDIR"/lib64/${lib}.so.5
     done
     cd ../widec
     make -j$(nproc) install
