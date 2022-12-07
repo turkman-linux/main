@@ -22,7 +22,6 @@ build(){
 
 package(){
     make install -j`nproc` PREFIX=/usr
-    mkdir -p ${DESTDIR}/usr/lib64
     mv ${DESTDIR}/usr/{lib,lib64}
 }
 
