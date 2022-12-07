@@ -22,7 +22,6 @@ build(){
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --optimize=1 --skip-build
-    mv ${DESTDIR}/usr/lib{,64}
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
 }
 

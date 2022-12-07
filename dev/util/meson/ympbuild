@@ -22,7 +22,7 @@ build(){
 }
 
 package(){
-    python setup.py install --root="${DESTDIR}" --optimize=1 --skip-build
+    python setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
     install -d "${DESTDIR}/usr/share/vim/vimfiles"
     cp -rt "${DESTDIR}/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*/
 
@@ -30,6 +30,5 @@ package(){
     install -Dt "${DESTDIR}/usr/share/zsh/site-functions" -m644 data/shell-completions/zsh/*
     # fix hardcoded interpreter location
     sed -i "1s|.*|#!/usr/bin/env python3|g" "${DESTDIR}/usr/bin/meson"
-    mv ${DESTDIR}/usr/lib{,64}
 }
 
