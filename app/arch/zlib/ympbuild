@@ -15,10 +15,10 @@ group=(app.arch)
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr --libdir=/lib64/zlib --shared
+    ./configure --prefix=/usr --libdir=/lib64 --shared
     cd contrib/minizip
     autoreconf -fvi
-	./configure --prefix=/usr --libdir=/lib64/zlib
+	./configure --prefix=/usr --libdir=/lib64
 }
 build(){
     make -j$(nproc)
@@ -29,7 +29,4 @@ package(){
     make install pkgconfigdir="/usr/lib64/pkgconfig"
     cd contrib/minizip
     make install pkgconfigdir="/usr/lib64/pkgconfig"
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/lib64/zlib/" > ${DESTDIR}/etc/ld.so.conf.d/zlib.conf
-
 }

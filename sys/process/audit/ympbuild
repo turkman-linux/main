@@ -22,7 +22,7 @@ cd audit-userspace-$version
 setup(){
     autoreconf -fv --install
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/audit \
+        --libdir=/usr/lib64 \
         --disable-zos-remote \
         --disable-listener \
         --disable-systemd \
@@ -38,8 +38,5 @@ build(){
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/audit/" > ${DESTDIR}/etc/ld.so.conf.d/audit.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

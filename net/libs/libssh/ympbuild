@@ -19,7 +19,7 @@ zlib_depends=(zlib)
 setup() {
     cmake -S $name-$version -B build \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_INSTALL_LIBDIR=/usr/lib64/libssh \
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib64 \
 	-DWITH_EXAMPLES=NO \
 	-DBUILD_SHARED_LIBS=YES \
 	-DBUILD_STATIC_LIB=YES \
@@ -37,8 +37,5 @@ build() {
 }
 package() {
     make -C build install
-    install build/src/libssh.a ${DESTDIR}/usr/lib64/libssh/
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/libssh/" > ${DESTDIR}/etc/ld.so.conf.d/libssh.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
+    install build/src/libssh.a ${DESTDIR}/usr/lib64/
 }

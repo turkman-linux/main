@@ -19,8 +19,8 @@ cd $name-$version
 setup(){
     cp -prf ../$name-$version ../widec
     opts=(--prefix=/usr
-          --libdir=/lib64/ncurses
-          --with-pkg-config-libdir=/usr/lib64/pkgconfig
+          --libdir=/lib64
+          --with-pkg-config-libdir=/lib64/pkgconfig
           --without-ada
           --without-tests
           --disable-termcap
@@ -71,8 +71,4 @@ package(){
     make -j$(nproc) install
     cd ../$name-$version
     make -j$(nproc) install
-    # fix lib64/ncurses
-    sed "s/^Libs:/& -L\$\{libdir\}/" -i "$DESTDIR"/usr/lib64/pkgconfig/*.pc
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/lib64/ncurses/" > ${DESTDIR}/etc/ld.so.conf.d/ncurses.conf
 }

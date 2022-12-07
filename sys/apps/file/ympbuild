@@ -22,10 +22,10 @@ cd $name-$version
 setup(){
     opts=(
     	--prefix=/usr
-	--libdir=/usr/lib64/magic
-	--enable-static
-	--enable-elf
-	--enable-elf-core
+        --libdir=/usr/lib64
+        --enable-static
+        --enable-elf
+        --enable-elf-core
     )
     ./configure ${opts[@]} \
 	$(use_opt zlib --enable-zlib --disable-zlib) \
@@ -40,7 +40,4 @@ build(){
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/magic/" > ${DESTDIR}/etc/ld.so.conf.d/magic.conf
-    mv ${DESTDIR}/usr/lib64/{magic/pkgconfig,}
 }

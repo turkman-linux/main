@@ -24,7 +24,7 @@ cd $name-$name-$version
 setup(){
     sh ./autogen.sh
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/pkgconf \
+        --libdir=/usr/lib64 \
         --with-pkg-config-dir=/usr/share/pkgconfig:/usr/lib64/pkgconfig:/lib64/pkgconfig
 }
 
@@ -38,8 +38,5 @@ package(){
     install -Dt "${DESTDIR}/usr/share/pkgconfig/personality.d" -m644 \
     ../i686-pc-linux-gnu.personality \
     ../x86_64-pc-linux-gnu.personality
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/pkgconf/" > ${DESTDIR}/etc/ld.so.conf.d/pkgconf.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

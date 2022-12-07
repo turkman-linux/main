@@ -20,7 +20,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/lib64/gettext \
+        --libdir=/lib64 \
         --enable-shared \
         --enable-static \
         --disable-java \
@@ -39,7 +39,5 @@ build(){
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/lib64/gettext/" > ${DESTDIR}/etc/ld.so.conf.d/gettext.conf
 }
 

@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/hello
+        --libdir=/usr/lib64
 }
 
 build(){
@@ -28,6 +28,4 @@ build(){
 
 package(){
     make install
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/hello/" > ${DESTDIR}/etc/ld.so.conf.d/hello.conf
 }

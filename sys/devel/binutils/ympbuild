@@ -23,7 +23,7 @@ setup(){
     mkdir build
     cd build
     ../configure --prefix=/usr \
-        --libdir=/usr/lib64/binutils \
+        --libdir=/usr/lib64 \
         --disable-nls \
         --disable-werror \
         --enable-cet \
@@ -55,7 +55,5 @@ build(){
 package(){
     cd build
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/binutils/" > ${DESTDIR}/etc/ld.so.conf.d/binutils.conf
 }
 

@@ -26,7 +26,7 @@ cd $name-$version
 setup(){
     autoreconf -fiv
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/shadow \
+        --libdir=/usr/lib64 \
         --sysconfdir=/etc \
         --bindir=/usr/bin \
         --sbindir=/usr/sbin \
@@ -49,7 +49,5 @@ package(){
     install -vDm 600 ../useradd.defaults "${DESTDIR}/etc/default/useradd"
     install -vDm 600 ../system-auth "${DESTDIR}/etc/pam.d/system-auth"
     install -vDm 755 ../shadow.sysconf ${DESTDIR}/etc/sysconf.d/shadow
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/shadow/" > ${DESTDIR}/etc/ld.so.conf.d/shadow.conf
 }
 

@@ -36,7 +36,7 @@ prepare(){
 setup(){
     opts=(
         --prefix=/usr
-        --libdir=/usr/lib64/curl
+        --libdir=/usr/lib64
         --disable-ldap
         --disable-ldaps
         --disable-versioned-symbols
@@ -72,22 +72,19 @@ package(){
     if use gnutls ; then
         cd ../curl-gnutls
         make install -j`nproc`
-        mv "${DESTDIR}"/usr/lib64/curl/libcurl{,-gnutls}.so.4.8.0
-        mv "${DESTDIR}"/usr/lib64/curl/libcurl{,-gnutls}.a
-        mv "${DESTDIR}"/usr/lib64/curl/pkgconfig/libcurl{,-gnutls}.pc
+        mv "${DESTDIR}"/usr/lib64/libcurl{,-gnutls}.so.4.8.0
+        mv "${DESTDIR}"/usr/lib64/libcurl{,-gnutls}.a
+        mv "${DESTDIR}"/usr/lib64/pkgconfig/libcurl{,-gnutls}.pc
         sed -i "s/-lcurl/-lcurl-gnutls/g" "${DESTDIR}"/usr/lib64/pkgconfig/libcurl-gnutls.pc
-        ln -s libcurl-gnutls.so.4 "${DESTDIR}"/usr/lib64/curl/libcurl-gnutls.so
+        ln -s libcurl-gnutls.so.4 "${DESTDIR}"/usr/lib64/libcurl-gnutls.so
         for ver in 3 4 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
-            ln -s libcurl-gnutls.so.4.8.0 "${DESTDIR}"/usr/lib64/curl/libcurl-gnutls.so.${ver}
+            ln -s libcurl-gnutls.so.4.8.0 "${DESTDIR}"/usr/lib64/libcurl-gnutls.so.${ver}
         done
     fi
     cd ../$name-$version
     make install -j`nproc`
     for ver in 3 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
-        ln -s libcurl.so.4.8.0 "${DESTDIR}"/usr/lib64/curl/libcurl.so.${ver}
+        ln -s libcurl.so.4.8.0 "${DESTDIR}"/usr/lib64/libcurl.so.${ver}
     done
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/curl/" > ${DESTDIR}/etc/ld.so.conf.d/curl.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

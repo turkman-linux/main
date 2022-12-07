@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/lib64/readline
+        --libdir=/lib64
 }
 
 build(){
@@ -27,8 +27,6 @@ build(){
 }
 
 package(){
-    make SHLIB_LIBS="-L/tools/lib -lncursesw" DESTDIR="$DESTDIR" install pkgconfigdir="/usr/lib64/pkgconfig"
+    make SHLIB_LIBS="-L/tools/lib -lncursesw" DESTDIR="$DESTDIR" install pkgconfigdir="/lib64/pkgconfig"
     install -Dm644 ../inputrc "$DESTDIR"/etc/inputrc
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/lib64/readline/" > ${DESTDIR}/etc/ld.so.conf.d/readline.conf
 }

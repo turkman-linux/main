@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/libtool
+        --libdir=/usr/lib64
 }
 
 build(){
@@ -28,7 +28,5 @@ build(){
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/libtool/" > ${DESTDIR}/etc/ld.so.conf.d/libtool.conf
 }
 

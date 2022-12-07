@@ -18,7 +18,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/lzo
+        --libdir=/usr/lib64
 }
 
 build(){
@@ -29,11 +29,8 @@ build(){
 
 package(){
     make install -j`nproc`
-    install -m 755 libminilzo.so.0 "${DESTDIR}"/usr/lib64/lzo
+    install -m 755 libminilzo.so.0 "${DESTDIR}"/usr/lib64
     install -p -m 644 minilzo/minilzo.h ${DESTDIR}/usr/include/lzo
-    ln -s libminilzo.so.0 "${DESTDIR}"/usr/lib64/lzo/libminilzo.so
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/lzo/" > ${DESTDIR}/etc/ld.so.conf.d/lzo.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
+    ln -s libminilzo.so.0 "${DESTDIR}"/usr/lib64/libminilzo.so
 }
 

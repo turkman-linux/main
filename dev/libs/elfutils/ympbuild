@@ -23,7 +23,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/elfutils \
+        --libdir=/usr/lib64 \
 		--enable-shared \
 		--enable-static \
 		--disable-debuginfod \
@@ -43,8 +43,5 @@ build(){
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/elfutils/" > ${DESTDIR}/etc/ld.so.conf.d/elfutils.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

@@ -20,11 +20,11 @@ cd $name-autoconf-$srcver
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/sqlite \
+        --libdir=/usr/lib64 \
         --enable-fts3 \
-	--enable-fts4 \
-	--enable-fts5 \
-	--enable-rtree \
+        --enable-fts4 \
+        --enable-fts5 \
+        --enable-rtree \
         CPPFLAGS="-DSQLITE_ENABLE_FTS3=1            \
                   -DSQLITE_ENABLE_FTS4=1            \
                   -DSQLITE_ENABLE_COLUMN_METADATA=1 \
@@ -40,8 +40,5 @@ build(){
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/sqlite/" > ${DESTDIR}/etc/ld.so.conf.d/sqlite.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

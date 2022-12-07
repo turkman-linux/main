@@ -18,16 +18,12 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/acl
+        --libdir=/usr/lib64
 }
-https://gitlab.com/sulix/packages/binary-repo
 build(){
     make -j`nproc`
 }
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/acl/" > ${DESTDIR}/etc/ld.so.conf.d/acl.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }

@@ -22,7 +22,7 @@ cd $name-$version
 setup(){
     ./autogen.sh
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/libcap-ng \
+        --libdir=/usr/lib64 \
         $(use_opt python --with-python --without-python) \
         $(use_opt python --with-python3 --without-python3)
 }
@@ -33,8 +33,5 @@ build(){
 
 package(){
     make install -j`nproc`
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/usr/lib64/libcap-ng/" > ${DESTDIR}/etc/ld.so.conf.d/libcap-ng.conf
-    mv ${DESTDIR}/usr/lib64/{$name/pkgconfig,}
 }
 

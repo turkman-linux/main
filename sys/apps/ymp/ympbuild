@@ -21,7 +21,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/lib64/ymp \
+        --libdir=/lib64 \
         --bindir=/bin \
         -Dshared=true \
         -Dstatic=false \
@@ -37,7 +37,5 @@ build(){
 
 package(){
     ninja -C build install
-    mkdir -p ${DESTDIR}/etc/ld.so.conf.d/
-    echo "/lib64/ymp/" > ${DESTDIR}/etc/ld.so.conf.d/ymp.conf
 }
 
