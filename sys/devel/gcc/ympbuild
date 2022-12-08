@@ -67,7 +67,9 @@ package(){
     mkdir -p ${DESTDIR}/usr/lib64/
     if use multilib ; then
         # move lib to lib64
-        mv ${DESTDIR}/usr/{lib,lib32}
+        if [ -d ${DESTDIR}/usr/lib && ! -d ${DESTDIR}/usr/lib32 ] ; then
+            mv ${DESTDIR}/usr/{lib,lib32}
+        fi
     fi
 }
 
