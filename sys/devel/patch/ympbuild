@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='patch'
+release='1'
+version='2.7.6'
+url='https://ftp.gnu.org/gnu/patch/'
+description='A utility to apply patch files to original sources'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/patch/patch-$version.tar.xz")
+depends=(attr)
+makedepends=()
+md5sums=('78ad9937e4caadcba1526ef1853730d5')
+uses=()
+group=(sys.devel)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

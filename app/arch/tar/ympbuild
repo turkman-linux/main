@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='tar'
+release='1'
+version='1.34'
+url='https://ftp.gnu.org/gnu/tar/'
+description='Utility used to store, backup, and transport files'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/tar/tar-$version.tar.xz")
+depends=(acl attr)
+makedepends=()
+md5sums=('9a08d29a9ac4727130b5708347c0f5cf')
+uses=()
+group=(ap.arch)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

@@ -18,9 +18,6 @@ group=(sys.apps)
 
 cd $name-$version
 
-#fix for ymp sandbox
-export FORCE_UNSAFE_CONFIGURE=1
-
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
