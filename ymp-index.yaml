@@ -1,0 +1,2419 @@
+index:
+  name: main
+  package:
+    name: acl
+    version: 2.3.1
+    release: 1
+    description: The acl package contains utilities to administer Access Control Lists
+    group:
+      - sys.apps
+    depends:
+      - attr
+    archive-hash: 553fd98c966069a41dbf6e3f6aeb5b1a37ab06ab
+    arch: x86_64
+    archive-size: 339811
+    md5sum: 63bfe5a0cde0d53cf6fc3b303101cc93
+    size: 342393
+    uri: /a/acl/acl_2.3.1_1_x86_64.ymp
+
+  source:
+    name: acl
+    version: 2.3.1
+    release: 1
+    description: The acl package contains utilities to administer Access Control Lists
+    depends:
+      - attr
+    archive:
+      - https://download.savannah.nongnu.org/releases/acl/acl-2.3.1.tar.xz
+    group:
+      - sys.apps
+    md5sum: 062ee2d84f0790fb89d7ca9aef63ff57
+    size: 356873
+    uri: /a/acl/acl_2.3.1_1_source.ymp
+
+  package:
+    name: automake
+    version: 1.16
+    release: 1
+    description: A GNU tool for automatically configuring source code
+    group:
+      - sys.devel
+    depends:
+      - autoconf
+    archive-hash: 0abe7851ba4bf1adfbe2166ea8a3138fbc0a014d
+    arch: x86_64
+    archive-size: 757421
+    md5sum: c25e7f49d8b6ce0324ea803bc6f9d046
+    size: 762477
+    uri: /a/automake/automake_1.16_1_x86_64.ymp
+
+  source:
+    name: automake
+    version: 1.16
+    release: 1
+    description: A GNU tool for automatically configuring source code
+    depends:
+      - autoconf
+    archive:
+      - https://ftp.gnu.org/gnu/automake/automake-1.16.tar.xz
+    group:
+      - sys.devel
+    md5sum: 0107a1da8c3aa691f75b80b0938fb53c
+    size: 1536088
+    uri: /a/automake/automake_1.16_1_source.ymp
+
+  package:
+    name: autoconf
+    version: 2.71
+    release: 1
+    description: A GNU tool for automatically configuring source code
+    group:
+      - sys.devel
+    archive-hash: 4035f386833240d3d4e457b12e524542e80b8003
+    arch: x86_64
+    archive-size: 987057
+    md5sum: cbd4c176b017ac7e8fc000b175dcf869
+    size: 990148
+    uri: /a/autoconf/autoconf_2.71_1_x86_64.ymp
+
+  source:
+    name: autoconf
+    version: 2.71
+    release: 1
+    description: A GNU tool for automatically configuring source code
+    archive:
+      - https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.xz
+    group:
+      - sys.devel
+    md5sum: 76e6f42dceff96e4c07cad723b18a034
+    size: 1293740
+    uri: /a/autoconf/autoconf_2.71_1_source.ymp
+
+  source:
+    name: audit
+    version: 3.0.9
+    release: 1
+    description: Package description missing
+    archive:
+      - https://github.com/linux-audit/audit-userspace/archive/refs/tags/v3.0.9.tar.gz
+    use-flags:
+      - libcap_ng
+    libcap_ng-depends:
+      - libcap-ng
+    python-depends:
+      - python
+    md5sum: 72386cf10d03ebec147781a9344ee3f5
+    size: 595126
+    uri: /a/audit/audit_3.0.9_1_source.ymp
+
+  package:
+    name: audit
+    version: 3.0.9
+    release: 1
+    description: Package description missing
+    depends:
+      - libcap-ng
+    archive-hash: 05e1558860da9541e7fe92227fa104f2f4afa958
+    arch: x86_64
+    archive-size: 1319824
+    md5sum: 006f4bbe8a35d28536d1ab374b671a49
+    size: 1325024
+    uri: /a/audit/audit_3.0.9_1_x86_64.ymp
+
+  package:
+    name: attr
+    version: 2.5.1
+    release: 1
+    description: The attr package contains utilities to administer the extended attributes on filesystem objects.
+    group:
+      - sys.apps
+    archive-hash: b76dc6fbbe85e0d6a39eb7da1afb70cb751c2621
+    arch: x86_64
+    archive-size: 126890
+    md5sum: 8ae04af968802da980b6dd499eacf3b8
+    size: 128729
+    uri: /a/attr/attr_2.5.1_1_x86_64.ymp
+
+  source:
+    name: attr
+    version: 2.5.1
+    release: 1
+    description: The attr package contains utilities to administer the extended attributes on filesystem objects. 
+    archive:
+      - https://mirror.rabisu.com/savannah-nongnu/attr/attr-2.5.1.tar.gz
+    group:
+      - sys.apps
+    md5sum: de70b064f5a858d0722e197e6c6aecf1
+    size: 466775
+    uri: /a/attr/attr_2.5.1_1_source.ymp
+
+  package:
+    name: libcap-ng
+    version: 0.8.3
+    release: 1
+    description: A library for Linux that makes using posix capabilities easy
+    group:
+      - sys.libs
+    archive-hash: 8e0757d6dac1b99223af87fd18b8f12f0597c5a6
+    arch: x86_64
+    archive-size: 104535
+    md5sum: b48cca56568e6e3ea1b85b33262d04d8
+    size: 106516
+    uri: /libc/libcap-ng/libcap-ng_0.8.3_1_x86_64.ymp
+
+  source:
+    name: libcap-ng
+    version: 0.8.3
+    release: 1
+    description: A library for Linux that makes using posix capabilities easy
+    archive:
+      - https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v0.8.3.zip
+    group:
+      - sys.libs
+    use-flags:
+    python-depends:
+      - python
+    md5sum: 850f7c2aa36f352d30614ba38830f552
+    size: 99232
+    uri: /libc/libcap-ng/libcap-ng_0.8.3_1_source.ymp
+
+  source:
+    name: libcap
+    version: 2.66
+    release: 1
+    description: POSIX 1003.1e capabilities
+    depends:
+      - pam
+    archive:
+      - https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.66.tar.xz
+    group:
+      - sys.libs
+    md5sum: 77b22ade23c95f3fbce1b0540a057173
+    size: 182746
+    uri: /libc/libcap/libcap_2.66_1_source.ymp
+
+  package:
+    name: libcap
+    version: 2.66
+    release: 1
+    description: POSIX 1003.1e capabilities
+    group:
+      - sys.libs
+    depends:
+      - pam
+    archive-hash: ce456747c44c133a010e7218f0fc5801b6979025
+    arch: x86_64
+    archive-size: 934375
+    md5sum: 96d5fb930b5cf529c253eec36f0e2939
+    size: 935108
+    uri: /libc/libcap/libcap_2.66_1_x86_64.ymp
+
+  source:
+    name: libpsl
+    version: 0.21.1
+    release: 1
+    description: C library for the Public Suffix List
+    depends:
+      - libidn2
+    archive:
+      - https://github.com/rockdaboot/libpsl/releases/download/0.21.1/libpsl-0.21.1.tar.gz
+    group:
+      - net.libs
+    md5sum: 0ccb53497c5c3e863d54b7135f0e5f5a
+    size: 9147748
+    uri: /libp/libpsl/libpsl_0.21.1_1_source.ymp
+
+  package:
+    name: libpsl
+    version: 0.21.1
+    release: 1
+    description: C library for the Public Suffix List
+    group:
+      - net.libs
+    depends:
+      - libidn2
+    archive-hash: 81332de65bbf40696d277c0aa671148f19a9f4a1
+    arch: x86_64
+    archive-size: 164667
+    md5sum: 032439fa75cf882f27235a1c039766c1
+    size: 165725
+    uri: /libp/libpsl/libpsl_0.21.1_1_x86_64.ymp
+
+  source:
+    name: libpcre2
+    version: 10.40
+    release: 1
+    description: Perl-compatible regular expression library
+    archive:
+      - https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.40/pcre2-10.40.tar.gz
+    group:
+      - dev.libs
+    use-flags:
+      - zlib
+      - bzip2
+    zlib-depends:
+      - zlib
+    bzip2-depends:
+      - bzip2
+    md5sum: 3a29936d74c57889ee34e7dd81c7387e
+    size: 2354507
+    uri: /libp/libpcre2/libpcre2_10.40_1_source.ymp
+
+  package:
+    name: libpcre2
+    version: 10.40
+    release: 1
+    description: Perl-compatible regular expression library
+    group:
+      - dev.libs
+    depends:
+      - zlib
+      - bzip2
+    archive-hash: 19c324f0be7bc400bbe5a4fafc6394e01f377d61
+    arch: x86_64
+    archive-size: 2019014
+    md5sum: 5c00471f3838db740d5dbd97a7dcd55a
+    size: 2027023
+    uri: /libp/libpcre2/libpcre2_10.40_1_x86_64.ymp
+
+  package:
+    name: libtool
+    version: 2.4.6
+    release: 1
+    description: GNU Libtool - The GNU Portable Library Tool
+    group:
+      - sys.devel
+    archive-hash: e2325292bd5883262175fdb72fa71797ed7d68dd
+    arch: x86_64
+    archive-size: 786124
+    md5sum: ffadb58d4b5197b8a54f1d6b844d9a2f
+    size: 789107
+    uri: /libt/libtool/libtool_2.4.6_1_x86_64.ymp
+
+  source:
+    name: libtool
+    version: 2.4.6
+    release: 1
+    description: GNU Libtool - The GNU Portable Library Tool
+    archive:
+      - https://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
+    group:
+      - sys.devel
+    md5sum: bd1b976b804ddea4cd64cb1395db8246
+    size: 1806017
+    uri: /libt/libtool/libtool_2.4.6_1_source.ymp
+
+  package:
+    name: libtirpc
+    version: 1.3.3
+    release: 1
+    description: Transport Independent RPC library (SunRPC replacement)
+    group:
+      - net.libs
+    archive-hash: f128c23946b03295334d9af07244bf33abee0d55
+    arch: x86_64
+    archive-size: 1048954
+    md5sum: 30cb17313de0d17030e1aab8471b100a
+    size: 1051480
+    uri: /libt/libtirpc/libtirpc_1.3.3_1_x86_64.ymp
+
+  source:
+    name: libtirpc
+    version: 1.3.3
+    release: 1
+    description: Transport Independent RPC library (SunRPC replacement)
+    archive:
+      - https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.3.tar.bz2
+    group:
+      - net.libs
+    md5sum: 5972bdd608babf634fb1bbdfe384f0fa
+    size: 563780
+    uri: /libt/libtirpc/libtirpc_1.3.3_1_source.ymp
+
+  package:
+    name: libtasn1
+    version: 4.19.0
+    release: 1
+    description: Manage ASN.1 structures
+    group:
+      - dev.libs
+    archive-hash: edc251338beb44001e165720b3d05fd5e86988cf
+    arch: x86_64
+    archive-size: 392504
+    md5sum: 6e04be43016429592e499194f9cac1ed
+    size: 395008
+    uri: /libt/libtasn1/libtasn1_4.19.0_1_x86_64.ymp
+
+  source:
+    name: libtasn1
+    version: 4.19.0
+    release: 1
+    description: Manage ASN.1 structures
+    archive:
+      - https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
+    group:
+      - dev.libs
+    md5sum: 98c587a011455c4cc4f8fc32a91682f2
+    size: 1783209
+    uri: /libt/libtasn1/libtasn1_4.19.0_1_source.ymp
+
+  source:
+    name: gnutls
+    version: 3.7.8
+    release: 1
+    description: The GnuTLS Transport Layer Security Library
+    archive:
+      - https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.8.tar.xz
+    group:
+      - net.libs
+    use-flags:
+    zstd-depends:
+      - zstd
+    brotli-depends:
+      - brotli
+    libidn2-depends:
+      - libind2
+    md5sum: 678091e9787d53b347f82caddf3bb7e8
+    size: 6032299
+    uri: /g/gnutls/gnutls_3.7.8_1_source.ymp
+
+  package:
+    name: gnutls
+    version: 3.7.8
+    release: 1
+    description: The GnuTLS Transport Layer Security Library
+    group:
+      - net.libs
+    archive-hash: eb407a520e93a905079f768b531d984978f1e6b6
+    arch: x86_64
+    archive-size: 2964017
+    md5sum: d80d4827399a87e78f7f73141e8e02bb
+    size: 2994508
+    uri: /g/gnutls/gnutls_3.7.8_1_x86_64.ymp
+
+  package:
+    name: gettext
+    version: 0.21.1
+    release: 1
+    description: GNU locale utilities
+    depends:
+      - libunistring
+      - bzip2
+      - xz-utils
+    archive-hash: ee1f1876d086a926414c70f667149d1a7d6f024c
+    arch: x86_64
+    archive-size: 9965942
+    md5sum: e362b4386fe775fa247a3e589715aabb
+    size: 10017096
+    uri: /g/gettext/gettext_0.21.1_1_x86_64.ymp
+
+  source:
+    name: gettext
+    version: 0.21.1
+    release: 1
+    description: GNU locale utilities
+    depends:
+      - libunistring
+    archive:
+      - https://ftp.gnu.org/gnu/gettext/gettext-0.21.1.tar.xz
+    use-flags:
+      - bzip2
+      - lzma
+    bzip2-depends:
+      - bzip2
+    lzma-depends:
+      - xz-utils
+    md5sum: 5c4ade6a12e2c4dbfc40803e9e62168e
+    size: 10058795
+    uri: /g/gettext/gettext_0.21.1_1_source.ymp
+
+  package:
+    name: glibc
+    version: 2.36
+    release: 1
+    description: GNU libc library
+    group:
+      - sys.base
+    archive-hash: 53b95e1543b06c9ee2dbe8a09c03e7045ef70a2b
+    arch: x86_64
+    archive-size: 24852236
+    md5sum: ab7469e45dd9547e6300e26207f26258
+    size: 24648049
+    uri: /g/glibc/glibc_2.36_1_x86_64.ymp
+
+  source:
+    name: glibc
+    version: 2.36
+    release: 1
+    description: GNU libc library
+    archive:
+      - https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz
+      - ld.conf/ld.so.conf
+      - ld.conf/usr-support.conf
+      - ld.conf/x86_64-linux-gnu.conf
+      - data/glibc.sysconf
+      - data/reenable_DT_HASH.patch
+      - scripts/locale-gen
+      - scripts/revdep-rebuild
+      - data/tr_TR
+    group:
+      - sys.base
+    use-flags:
+      - multilib
+    md5sum: 67d8a1680506033a139a7ef134b58624
+    size: 18632409
+    uri: /g/glibc/glibc_2.36_1_source.ymp
+
+  source:
+    name: gcc
+    version: 12.2.0
+    release: 1
+    description: GNU Compiler Collection
+    depends:
+      - binutils
+      - libmpc
+      - zlib
+    archive:
+      - https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
+    group:
+      - sys.devel
+    use-flags:
+      - multilib
+    md5sum: be62f809e5bd66591ebe256eb925126f
+    size: 84672435
+    uri: /g/gcc/gcc_12.2.0_1_source.ymp
+
+  package:
+    name: gcc
+    version: 12.2.0
+    release: 1
+    description: GNU Compiler Collection
+    group:
+      - sys.devel
+    depends:
+      - binutils
+      - libmpc
+      - zlib
+    archive-hash: e8f6956030b7b47935a836da2e36c33feb3ec305
+    arch: x86_64
+    archive-size: 118117674
+    md5sum: 0fcdb3bdd8bb2ab06ccff59efbc0d9da
+    size: 117409444
+    uri: /g/gcc/gcc_12.2.0_1_x86_64.ymp
+
+  package:
+    name: gdbm
+    version: 1.23
+    release: 1
+    description: Standard GNU database libraries
+    group:
+      - sys.libs
+    archive-hash: 82203a6acaa6c7f997e879a330f4d8d749fde625
+    arch: x86_64
+    archive-size: 695325
+    md5sum: 29e5d3954916b0e1879792d8e82403bb
+    size: 696559
+    uri: /g/gdbm/gdbm_1.23_1_x86_64.ymp
+
+  source:
+    name: gdbm
+    version: 1.23
+    release: 1
+    description:  Standard GNU database libraries
+    archive:
+      - https://ftp.gnu.org/gnu/gdbm/gdbm-1.23.tar.gz
+    group:
+      - sys.libs
+    md5sum: 0721b5791b1466991f6eaefc05c0d5dd
+    size: 1116708
+    uri: /g/gdbm/gdbm_1.23_1_source.ymp
+
+  package:
+    name: glib
+    version: 2.75.0
+    release: 1
+    description: Low-level core library that forms the basis for projects such as GTK+ and GNOME.
+    depends:
+      - libffi
+      - util-linux
+      - libpcre2
+      - zlib
+    archive-hash: cab7dfff869edd6ed17630834130e6b18c84125b
+    arch: x86_64
+    archive-size: 27961612
+    md5sum: 879f1822f8c47f25f9af5387cc39fdb6
+    size: 27959195
+    uri: /g/glib/glib_2.75.0_1_x86_64.ymp
+
+  source:
+    name: glib
+    version: 2.75.0
+    release: 1
+    description: Low-level core library that forms the basis for projects such as GTK+ and GNOME.
+    depends:
+      - libffi
+      - util-linux
+      - libpcre2
+      - zlib
+    archive:
+      - https://download.gnome.org/sources/glib/2.75/glib-2.75.0.tar.xz
+      - glib.sysconf
+    md5sum: 6702eae0dd14bb7a21007d49eaeee27a
+    size: 5221841
+    uri: /g/glib/glib_2.75.0_1_source.ymp
+
+  package:
+    name: gmp
+    version: 6.2.1
+    release: 1
+    description: Library for arbitrary-precision arithmetic on different type of numbers
+    group:
+      - dev.libs
+    depends:
+      - gcc
+    archive-hash: f5c443d68b5d1792b8c3355c30a35728a48d084b
+    arch: x86_64
+    archive-size: 2894164
+    md5sum: f68e6a866a890409b1e179a56a2998ce
+    size: 2895058
+    uri: /g/gmp/gmp_6.2.1_1_x86_64.ymp
+
+  source:
+    name: gmp
+    version: 6.2.1
+    release: 1
+    description: Library for arbitrary-precision arithmetic on different type of numbers
+    archive:
+      - https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz
+    group:
+      - dev.libs
+    use-flags:
+      - cxx
+    cxx-depends:
+      - gcc
+    md5sum: cce21943efb191ad35612f84001062ef
+    size: 2029024
+    uri: /g/gmp/gmp_6.2.1_1_source.ymp
+
+  source:
+    name: meson
+    version: 0.64.1
+    release: 1
+    description: High productivity build system
+    depends:
+      - python
+      - setuptools
+    archive:
+      - https://github.com/mesonbuild/meson/releases/download/0.64.1/meson-0.64.1.tar.gz
+    group:
+      - dev.util
+    md5sum: 1e8f647d37c553ef7df4c88b73438ccf
+    size: 2070994
+    uri: /m/meson/meson_0.64.1_1_source.ymp
+
+  package:
+    name: meson
+    version: 0.64.1
+    release: 1
+    description: High productivity build system
+    group:
+      - dev.util
+    depends:
+      - python
+      - setuptools
+    archive-hash: 74ac1a843904000475990858c2fdbc698835f497
+    arch: x86_64
+    archive-size: 756390
+    md5sum: 1ffac3a7630af3a0f41840516ad87653
+    size: 765234
+    uri: /m/meson/meson_0.64.1_1_x86_64.ymp
+
+  source:
+    name: musl
+    version: 1.2.3
+    release: 1
+    description: the musl c library (libc) implementation
+    archive:
+      - https://musl.libc.org/releases/musl-1.2.3.tar.gz
+      - ldconfig
+    group:
+      - dev.libs
+    md5sum: a12e6bb4c5b27b48e3c3bf24b53e607c
+    size: 1056242
+    uri: /m/musl/musl_1.2.3_1_source.ymp
+
+  package:
+    name: musl
+    version: 1.2.3
+    release: 1
+    description: the musl c library (libc) implementation
+    group:
+      - dev.libs
+    archive-hash: 41e3cdb50b2418d5c08f967ed160ea0f9955a814
+    arch: x86_64
+    archive-size: 3668783
+    md5sum: 286ded7b4f943710c93770b9789c18ca
+    size: 3673619
+    uri: /m/musl/musl_1.2.3_1_x86_64.ymp
+
+  package:
+    name: make
+    version: 4.4
+    release: 1
+    description: GNU make utility to maintain groups of programs
+    group:
+      - sys.devel
+    archive-hash: cc21db6305f09b3499217dcd2be6346a6d5b1522
+    arch: x86_64
+    archive-size: 736586
+    md5sum: 001d10e02b9f5f8d68f494730dea8d7e
+    size: 737788
+    uri: /m/make/make_4.4_1_x86_64.ymp
+
+  source:
+    name: make
+    version: 4.4
+    release: 1
+    description: GNU make utility to maintain groups of programs
+    archive:
+      - https://ftp.gnu.org/gnu/make/make-4.4.tar.gz
+    group:
+      - sys.devel
+    md5sum: 0855f44a0a255189cb8ba5f621134261
+    size: 2308356
+    uri: /m/make/make_4.4_1_source.ymp
+
+  package:
+    name: make-ca
+    version: 1.10
+    release: 1
+    description: Ssl certificates
+    group:
+      - app.misc
+    depends:
+      - p11-kit
+    archive-hash: 917e8a0f235d5c6b0ef43c8fd71a22dd65a82239
+    arch: x86_64
+    archive-size: 11824
+    md5sum: 8a3d91409db928e1992b1b7af272d1ac
+    size: 12880
+    uri: /m/make-ca/make-ca_1.10_1_x86_64.ymp
+
+  source:
+    name: make-ca
+    version: 1.10
+    release: 1
+    description: Ssl certificates
+    depends:
+      - p11-kit
+    archive:
+      - https://github.com/lfs-book/make-ca/releases/download/v1.10/make-ca-1.10.tar.xz
+      - make-ca.sysconf
+    group:
+      - app.misc
+    md5sum: 9e330c7a8f12a9356d448d8c46d7d464
+    size: 32654
+    uri: /m/make-ca/make-ca_1.10_1_source.ymp
+
+  package:
+    name: mpfr
+    version: 4.1.0
+    release: 1
+    description: multiple precision floating-point computation
+    group:
+      - dev.libs
+    depends:
+      - gmp
+    archive-hash: 30e1c8ea5ecd67033aa7c93b410c727b42135097
+    arch: x86_64
+    archive-size: 4623099
+    md5sum: da0f89124c0d417edab26b8302231bf9
+    size: 4614427
+    uri: /m/mpfr/mpfr_4.1.0_1_x86_64.ymp
+
+  source:
+    name: mpfr
+    version: 4.1.0
+    release: 1
+    description: multiple precision floating-point computation
+    depends:
+      - gmp
+    archive:
+      - https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz
+    group:
+      - dev.libs
+    md5sum: 57bd5fadc0595b9145283bc65571b511
+    size: 1526999
+    uri: /m/mpfr/mpfr_4.1.0_1_source.ymp
+
+  package:
+    name: m4
+    version: 1.4.19
+    release: 1
+    description: GNU macro processor
+    group:
+      - sys.devel
+    depends:
+      - gettext
+    archive-hash: 60cdafde8a32c0036d2fd4842f090c887d2c7608
+    arch: x86_64
+    archive-size: 268840
+    md5sum: 076ab791dd714934058b3323c4bb0a6c
+    size: 270365
+    uri: /m/m4/m4_1.4.19_1_x86_64.ymp
+
+  source:
+    name: m4
+    version: 1.4.19
+    release: 1
+    description: GNU macro processor
+    archive:
+      - https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz
+    group:
+      - sys.devel
+    use-flags:
+      - nls
+    nls-depends:
+      - gettext
+    md5sum: be157f30d8edcb24d7ccc8465dc9ef19
+    size: 1656481
+    uri: /m/m4/m4_1.4.19_1_source.ymp
+
+  package:
+    name: lz4
+    version: 1.9.4
+    release: 1
+    description: Extremely fast compression algorithm
+    group:
+      - app.arch
+    archive-hash: 0db8565265b3c79c80a2d7af7890050ebb71a658
+    arch: x86_64
+    archive-size: 1439548
+    md5sum: befa2ae15d8f4c31d87ca5a51ea58239
+    size: 1434780
+    uri: /l/lz4/lz4_1.9.4_1_x86_64.ymp
+
+  source:
+    name: lz4
+    version: 1.9.4
+    release: 1
+    description: Extremely fast compression algorithm
+    archive:
+      - https://github.com/lz4/lz4/archive/refs/tags/v1.9.4.tar.gz
+    group:
+      - app.arch
+    md5sum: 08b34976d7d7605e6d55a6c600fc4665
+    size: 353967
+    uri: /l/lz4/lz4_1.9.4_1_source.ymp
+
+  source:
+    name: linux-headers
+    version: 6.0.9
+    release: 1
+    description: Linux kernel headers
+    archive:
+      - https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.9.tar.xz
+    group:
+      - sys.kernel
+    md5sum: 2223da4c2b533dea5c014ae83b420e9f
+    size: 133953318
+    uri: /l/linux-headers/linux-headers_6.0.9_1_source.ymp
+
+  package:
+    name: linux-headers
+    version: 6.0.9
+    release: 1
+    description: Linux kernel headers
+    group:
+      - sys.kernel
+    archive-hash: 3d04742f7be7f4046c830cf244ee5d96a553357c
+    arch: x86_64
+    archive-size: 1670478
+    md5sum: 32c6deff3855b087dbde678329a5d552
+    size: 1702419
+    uri: /l/linux-headers/linux-headers_6.0.9_1_x86_64.ymp
+
+  package:
+    name: lzo
+    version: 2.10
+    release: 1
+    description: Portable lossless data compression library
+    group:
+      - app.arch
+    archive-hash: b994d47f92ac21c8cc8bc9f2b3ad7bde687ced25
+    arch: x86_64
+    archive-size: 725684
+    md5sum: 5726393849cd415fb8f9ca25f67a6787
+    size: 727545
+    uri: /l/lzo/lzo_2.10_1_x86_64.ymp
+
+  source:
+    name: lzo
+    version: 2.10
+    release: 1
+    description: Portable lossless data compression library
+    archive:
+      - https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
+    group:
+      - app.arch
+    md5sum: 169332a723acd2c2d44713141824bcdd
+    size: 601083
+    uri: /l/lzo/lzo_2.10_1_source.ymp
+
+  source:
+    name: libmpc
+    version: 1.2.1
+    release: 1
+    description: Library for the arithmetic of complex numbers with arbitrarily high precision
+    depends:
+      - mpfr
+    archive:
+      - https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz
+    group:
+      - dev.libs
+    md5sum: 51b35ff98c5956be07dffeae496e9a84
+    size: 833931
+    uri: /libm/libmpc/libmpc_1.2.1_1_source.ymp
+
+  package:
+    name: libmpc
+    version: 1.2.1
+    release: 1
+    description: Library for the arithmetic of complex numbers with arbitrarily high precision
+    group:
+      - dev.libs
+    depends:
+      - mpfr
+    archive-hash: c315bb0aff87d1076ef7dd11e5b839b6e6de908b
+    arch: x86_64
+    archive-size: 593180
+    md5sum: 6e39fffc027ad6103f8178f6f1112aeb
+    size: 593988
+    uri: /libm/libmpc/libmpc_1.2.1_1_x86_64.ymp
+
+  package:
+    name: tar
+    version: 1.34
+    release: 1
+    description: Utility used to store, backup, and transport files
+    group:
+      - ap.arch
+    depends:
+      - acl
+      - attr
+    archive-hash: 6c5fa093b2e7fb13d1140de25c0e4f2b2e697329
+    arch: x86_64
+    archive-size: 1272978
+    md5sum: 9570103c1e03cbd3488db728584fb414
+    size: 1272528
+    uri: /t/tar/tar_1.34_1_x86_64.ymp
+
+  source:
+    name: tar
+    version: 1.34
+    release: 1
+    description: Utility used to store, backup, and transport files
+    depends:
+      - acl
+      - attr
+    archive:
+      - https://ftp.gnu.org/gnu/tar/tar-1.34.tar.xz
+    group:
+      - ap.arch
+    md5sum: 1ec9fbd9efc101b1e7b04957a4984a65
+    size: 2227825
+    uri: /t/tar/tar_1.34_1_source.ymp
+
+  source:
+    name: libxml2
+    version: 2.10.3
+    release: 1
+    description: XML parser and toolkit
+    depends:
+      - zlib
+      - xz-utils
+    archive:
+      - https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.3/libxml2-v2.10.3.tar.gz
+    group:
+      - dev.libs
+    use-flags:
+    python-depends:
+      - python
+    md5sum: e71f589b0711c3b4d129bb70dc6d0702
+    size: 3777269
+    uri: /libx/libxml2/libxml2_2.10.3_1_source.ymp
+
+  package:
+    name: libxml2
+    version: 2.10.3
+    release: 1
+    description: XML parser and toolkit
+    group:
+      - dev.libs
+    depends:
+      - zlib
+      - xz-utils
+    archive-hash: 71f1b8417cbf3ddb66c3c8319048a9d678166313
+    arch: x86_64
+    archive-size: 1070860
+    md5sum: c58cbe09272cee0e965e2c447f107887
+    size: 1070095
+    uri: /libx/libxml2/libxml2_2.10.3_1_x86_64.ymp
+
+  source:
+    name: libxcrypt
+    version: 4.4.33
+    release: 1
+    description: Modern library for one-way hashing of passwords
+    archive:
+      - https://github.com/besser82/libxcrypt/releases/download/v4.4.33/libxcrypt-4.4.33.tar.xz
+    group:
+      - sys.libs
+    replaces:
+      - /usr/include/crypt.h
+    md5sum: 674b854058be677f50d394093f8d2fd5
+    size: 624953
+    uri: /libx/libxcrypt/libxcrypt_4.4.33_1_source.ymp
+
+  package:
+    name: libxcrypt
+    version: 4.4.33
+    release: 1
+    description: Modern library for one-way hashing of passwords
+    replaces:
+      - /usr/include/crypt.h
+    group:
+      - sys.libs
+    archive-hash: 912ea496f94e4cd3122dbf17f4007e872843b5a4
+    arch: x86_64
+    archive-size: 767800
+    md5sum: 0cc3b4ee532c15819b76ab714946fed0
+    size: 762150
+    uri: /libx/libxcrypt/libxcrypt_4.4.33_1_x86_64.ymp
+
+  package:
+    name: libidn2
+    version: 2.3.4
+    release: 1
+    description: Libidn2 is a free software implementation of IDNA2008, Punycode and Unicode TR46
+    group:
+      - net.dns
+    depends:
+      - libunistring
+    archive-hash: b80364648b21c6753f46b3b4c022763c4c76c877
+    arch: x86_64
+    archive-size: 542243
+    md5sum: e2565d6305c61291027505fd731d89ed
+    size: 541885
+    uri: /libi/libidn2/libidn2_2.3.4_1_x86_64.ymp
+
+  source:
+    name: libidn2
+    version: 2.3.4
+    release: 1
+    description: Libidn2 is a free software implementation of IDNA2008, Punycode and Unicode TR46
+    depends:
+      - libunistring
+    archive:
+      - https://ftp.gnu.org/gnu/libidn/libidn2-2.3.4.tar.gz
+    group:
+      - net.dns
+    md5sum: baf9bbe001937d47bb78e9dbff8877ff
+    size: 2071151
+    uri: /libi/libidn2/libidn2_2.3.4_1_source.ymp
+
+  package:
+    name: libunistring
+    version: 1.1
+    release: 1
+    description: Library for manipulating Unicode strings and C strings
+    group:
+      - dev.libs
+    archive-hash: 40c0478cac92e9c2400e513a8a2f9662cc9eae6c
+    arch: x86_64
+    archive-size: 4898230
+    md5sum: 52a70b80ad74d5787e29e725629554b5
+    size: 4888579
+    uri: /libu/libunistring/libunistring_1.1_1_x86_64.ymp
+
+  source:
+    name: libunistring
+    version: 1.1
+    release: 1
+    description: Library for manipulating Unicode strings and C strings
+    archive:
+      - https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz
+    group:
+      - dev.libs
+    md5sum: 5b63000fd94df26253f0212047bdb1d6
+    size: 2399495
+    uri: /libu/libunistring/libunistring_1.1_1_source.ymp
+
+  source:
+    name: ymp
+    version: 1.0
+    release: 1
+    description: Yerli ve Milli Package manager
+    depends:
+      - glib
+      - bash
+      - make-ca
+    archive:
+      - https://gitlab.com/sulix/devel/sources/ymp/-/archive/1.0/ymp-1.0.tar.gz
+    group:
+      - sys.apps
+    use-flags:
+      - curl
+      - libarchive
+    curl-depends:
+      - curl
+    libarchive-depends:
+      - libarchive
+    md5sum: 9ab226cf654cf2264f2a46f5d35041ff
+    size: 858354
+    uri: /y/ymp/ymp_1.0_1_source.ymp
+
+  package:
+    name: ymp
+    version: 1.0
+    release: 1
+    description: Yerli ve Milli Package manager
+    group:
+      - sys.apps
+    depends:
+      - glib
+      - bash
+      - make-ca
+      - curl
+      - libarchive
+    archive-hash: 4ef1c75572fadc94af9d6c801841273d6184099d
+    arch: x86_64
+    archive-size: 178391
+    md5sum: 4ea000a8d5735f8fcddb0b2032d550db
+    size: 177225
+    uri: /y/ymp/ymp_1.0_1_x86_64.ymp
+
+  source:
+    name: hello
+    version: 2.12
+    release: 1
+    description: Hello world Package
+    archive:
+      - https://ftp.gnu.org/gnu/hello/hello-2.12.tar.gz
+    group:
+      - app.misc
+    md5sum: bb21da217f3a3ca22425f5071bfd1945
+    size: 1017777
+    uri: /h/hello/hello_2.12_1_source.ymp
+
+  package:
+    name: hello
+    version: 2.12
+    release: 1
+    description: Hello world Package
+    group:
+      - app.misc
+    archive-hash: 257493df99a12a113c392fff7de60e76a2777739
+    arch: x86_64
+    archive-size: 46559
+    md5sum: 84b21ae5b1b271a8deb8e9ca0f7f62cd
+    size: 48740
+    uri: /h/hello/hello_2.12_1_x86_64.ymp
+
+  source:
+    name: readline
+    version: 8.1
+    release: 1
+    description: GNU readline library
+    depends:
+      - glibc
+    archive:
+      - https://ftp.gnu.org/pub/gnu/readline/readline-8.1.tar.gz
+      - inputrc
+    group:
+      - sys.apps
+    md5sum: bceabbd4c80dd4ce0761b57c1654090d
+    size: 2995396
+    uri: /r/readline/readline_8.1_1_source.ymp
+
+  package:
+    name: readline
+    version: 8.1
+    release: 1
+    description: GNU readline library
+    group:
+      - sys.apps
+    depends:
+      - glibc
+    archive-hash: 57ee6ac7f45855c351d9c24e28034c9b48705671
+    arch: x86_64
+    archive-size: 1584855
+    md5sum: c4e17cb29a6da8db324877bee744d91b
+    size: 1585097
+    uri: /r/readline/readline_8.1_1_x86_64.ymp
+
+  package:
+    name: dash
+    version: 0.5.11
+    release: 1
+    description: The Debian Almquist Shell (dash) is a POSIX-compliant shell derived from ash.
+    replaces:
+      - /bin/sh
+    group:
+      - app.shell
+    archive-hash: db756754b6e2524247d643f6211086b59e3297a4
+    arch: x86_64
+    archive-size: 78936
+    md5sum: dfd5d6e2bc1186bda598cb0e37c1a174
+    size: 79715
+    uri: /d/dash/dash_0.5.11_1_x86_64.ymp
+
+  source:
+    name: dash
+    version: 0.5.11
+    release: 1
+    description: The Debian Almquist Shell (dash) is a POSIX-compliant shell derived from ash. 
+    archive:
+      - https://salsa.debian.org/debian/dash/-/archive/debian/0.5.11+git20210903+057cd650a4ed-8/dash-debian-0.5.11+git20210903+057cd650a4ed-8.zip
+    group:
+      - app.shell
+    replaces:
+      - /bin/sh
+    md5sum: b2ebdb56079392dd0bc5e7514accac06
+    size: 292422
+    uri: /d/dash/dash_0.5.11_1_source.ymp
+
+  source:
+    name: diffutils
+    version: 3.8
+    release: 1
+    description: Utility programs used for creating patch files
+    depends:
+      - bash
+    archive:
+      - https://ftp.gnu.org/gnu/diffutils/diffutils-3.8.tar.xz
+    group:
+      - sys.apps
+    md5sum: f1b617a2f15e4955770de0f98a2d80cd
+    size: 1586642
+    uri: /d/diffutils/diffutils_3.8_1_source.ymp
+
+  package:
+    name: diffutils
+    version: 3.8
+    release: 1
+    description: Utility programs used for creating patch files
+    group:
+      - sys.apps
+    depends:
+      - bash
+    archive-hash: 23d8ce648fdb369df31ed15e9591b1abb1976ef8
+    arch: x86_64
+    archive-size: 540191
+    md5sum: 78d028629ddb0bf5f9873b74040c9a52
+    size: 539513
+    uri: /d/diffutils/diffutils_3.8_1_x86_64.ymp
+
+  package:
+    name: zlib
+    version: 1.2.13
+    release: 1
+    description: A compression/decompression library
+    group:
+      - app.arch
+    archive-hash: 17752ab0727e1da03947c6a891d3da1fc05b762a
+    arch: x86_64
+    archive-size: 678502
+    md5sum: 284ecaa3ec1d398a902ac97e9801951e
+    size: 679948
+    uri: /z/zlib/zlib_1.2.13_1_x86_64.ymp
+
+  source:
+    name: zlib
+    version: 1.2.13
+    release: 1
+    description: A compression/decompression library
+    archive:
+      - https://zlib.net/zlib-1.2.13.tar.gz
+    group:
+      - app.arch
+    md5sum: 3c77e135a0b326cf5f341ca2f52c2a6d
+    size: 1496678
+    uri: /z/zlib/zlib_1.2.13_1_source.ymp
+
+  package:
+    name: openssl
+    version: 1.1.1s
+    release: 1
+    description: Package description missing
+    group:
+      - dev.libs
+    archive-hash: 5172eae5614e86f4d5ec1d8919b01969d9378fd1
+    arch: x86_64
+    archive-size: 16771437
+    md5sum: 0efb8977baf4e69e9f3c3b890958511f
+    size: 16803395
+    uri: /o/openssl/openssl_1.1.1s_1_x86_64.ymp
+
+  source:
+    name: openssl
+    version: 1.1.1s
+    release: 1
+    description: Package description missing
+    archive:
+      - https://www.openssl.org/source/openssl-1.1.1s.tar.gz
+      - https://curl.haxx.se/ca/cacert.pem
+      - update-certdata.sh
+    group:
+      - dev.libs
+    md5sum: 7b8f175075b664fc19ca5f7df4a091b8
+    size: 9972305
+    uri: /o/openssl/openssl_1.1.1s_1_source.ymp
+
+  package:
+    name: libarchive
+    version: 3.6.1
+    release: 1
+    description: Multi-format archive and compression library
+    group:
+      - app.arch
+    depends:
+      - openssl
+      - zlib
+      - bzip2
+      - xz-utils
+      - acl
+      - lz4
+      - lzo
+    archive-hash: 466e6f50bf7c0bbc34f9b3f546b26995a0860580
+    arch: x86_64
+    archive-size: 4941104
+    md5sum: 8435751e6ec22e42f38676051d9cb936
+    size: 4937634
+    uri: /liba/libarchive/libarchive_3.6.1_1_x86_64.ymp
+
+  source:
+    name: libarchive
+    version: 3.6.1
+    release: 1
+    description: Multi-format archive and compression library
+    depends:
+      - openssl
+      - zlib
+    archive:
+      - https://www.libarchive.org/downloads/libarchive-3.6.1.tar.xz
+    group:
+      - app.arch
+    use-flags:
+      - bzip2
+      - lzma
+      - iconv
+      - acl
+      - lz4
+      - lzo
+    bzip2-depends:
+      - bzip2
+    lzma-depends:
+      - xz-utils
+    acl-depends:
+      - acl
+    lz4-depends:
+      - lz4
+    lzo-depends:
+      - lzo
+    blake2-depends:
+      - libb2
+    libxml2-depends:
+      - libxml2
+    nettle-depends:
+      - nettle
+    zstd-depends:
+      - zstd
+    md5sum: 8bb2568a18a0fecac5a1a9b35069fa4e
+    size: 5244147
+    uri: /liba/libarchive/libarchive_3.6.1_1_source.ymp
+
+  source:
+    name: curl
+    version: 7.86.0
+    release: 1
+    description: An URL retrieval utility and library
+    depends:
+      - zlib
+      - openssl
+      - libnghttp2
+      - libpsl
+    archive:
+      - https://curl.se/download/curl-7.86.0.zip
+    group:
+      - net.misc
+    use-flags:
+      - zlib
+      - libssh
+    zlib-depends:
+      - zlib
+    libssh-depends:
+      - libssh
+    zstd-depends:
+      - zstd
+    brotli-depends:
+      - brotli
+    libidn2-depends:
+      - libind2
+    gnutls-depends:
+      - gnutls
+    md5sum: e0222c2e26c49b1bcf604c765802ad63
+    size: 5873207
+    uri: /c/curl/curl_7.86.0_1_source.ymp
+
+  package:
+    name: curl
+    version: 7.86.0
+    release: 1
+    description: An URL retrieval utility and library
+    group:
+      - net.misc
+    depends:
+      - zlib
+      - openssl
+      - libnghttp2
+      - libpsl
+      - zlib
+      - libssh
+    archive-hash: 8e01973885cb2bae0bdc8780f71465c50edf5ef2
+    arch: x86_64
+    archive-size: 5508461
+    md5sum: b11da395db6df79ed896ae715a24055a
+    size: 5524307
+    uri: /c/curl/curl_7.86.0_1_x86_64.ymp
+
+  source:
+    name: coreutils
+    version: 9.1
+    release: 1
+    description: The basic file, shell and text manipulation utilities of the GNU operating system
+    depends:
+      - acl
+      - attr
+      - gmp
+      - libcap
+    archive:
+      - https://ftp.gnu.org/gnu/coreutils/coreutils-9.1.tar.xz
+    group:
+      - sys.apps
+    use-flags:
+      - openssl
+    openssl-depends:
+      - openssl
+    md5sum: 4665a2754cb9fc600c2cd7ef9c9a432e
+    size: 5715124
+    uri: /c/coreutils/coreutils_9.1_1_source.ymp
+
+  package:
+    name: coreutils
+    version: 9.1
+    release: 1
+    description: The basic file, shell and text manipulation utilities of the GNU operating system
+    group:
+      - sys.apps
+    depends:
+      - acl
+      - attr
+      - gmp
+      - libcap
+      - openssl
+    archive-hash: 4701e14f2391079463957756dcd6418e005134c5
+    arch: x86_64
+    archive-size: 4319339
+    md5sum: a85949e70bd60906447be7f3a798c460
+    size: 4321919
+    uri: /c/coreutils/coreutils_9.1_1_x86_64.ymp
+
+  package:
+    name: cmake
+    version: 3.25.1
+    release: 1
+    description: A cross-platform open-source make system
+    group:
+      - dev.util
+    archive-hash: f914ad4da47b66c5c8c42af35b7ee3c6e1f1d540
+    arch: x86_64
+    archive-size: 19836751
+    md5sum: 4c9c4bc80ef51eb346ebd6953b241d6a
+    size: 19914041
+    uri: /c/cmake/cmake_3.25.1_1_x86_64.ymp
+
+  source:
+    name: cmake
+    version: 3.25.1
+    release: 1
+    description: A cross-platform open-source make system
+    archive:
+      - https://github.com/Kitware/CMake/releases/download/v3.25.1/cmake-3.25.1.tar.gz
+    group:
+      - dev.util
+    use-flags:
+    md5sum: 8de8fce9216d5f747646e5a232252e4b
+    size: 10535728
+    uri: /c/cmake/cmake_3.25.1_1_source.ymp
+
+  source:
+    name: libssh
+    version: 0.10.4
+    release: 1
+    description: C library implenting the SSHv2 protocol on client and server side
+    depends:
+      - openssl
+    archive:
+      - https://www.libssh.org/files/0.10/libssh-0.10.4.tar.xz
+    group:
+      - net.libs
+    use-flags:
+      - server
+      - sftp
+      - zlib
+    zlib-depends:
+      - zlib
+    md5sum: 91d18c5cbcebbd36b7e7402fa1a7efac
+    size: 556370
+    uri: /libs/libssh/libssh_0.10.4_1_source.ymp
+
+  package:
+    name: libssh
+    version: 0.10.4
+    release: 1
+    description: C library implenting the SSHv2 protocol on client and server side
+    group:
+      - net.libs
+    depends:
+      - openssl
+      - zlib
+    archive-hash: f978a11320db66af42e44099684821721ef4d4db
+    arch: x86_64
+    archive-size: 2224646
+    md5sum: 2dd5aac806a632c397ce0189549db8fe
+    size: 2225055
+    uri: /libs/libssh/libssh_0.10.4_1_x86_64.ymp
+
+  source:
+    name: libseccomp
+    version: 2.5.4
+    release: 1
+    description: high level interface to linux seccomp filter
+    archive:
+      - https://github.com/seccomp/libseccomp/releases/download/v2.5.4/libseccomp-2.5.4.tar.gz
+    group:
+      - net.libs
+    md5sum: 0cd655821534e97f59ffce883719944f
+    size: 636539
+    uri: /libs/libseccomp/libseccomp_2.5.4_1_source.ymp
+
+  package:
+    name: libseccomp
+    version: 2.5.4
+    release: 1
+    description: high level interface to linux seccomp filter
+    group:
+      - net.libs
+    archive-hash: 41ef2fb95408476166320f08b1e3a3b10ba2ef8d
+    arch: x86_64
+    archive-size: 484767
+    md5sum: 1ff0a4bbfb92eb2ba960cf936ae60aa3
+    size: 486068
+    uri: /libs/libseccomp/libseccomp_2.5.4_1_x86_64.ymp
+
+  source:
+    name: file
+    version: 5.43
+    release: 1
+    description: Identify a file's format by scanning binary data for patterns
+    archive:
+      - http://ftp.astron.com/pub/file/file-5.43.tar.gz
+    group:
+      - sys.apps
+    use-flags:
+      - bzip2
+      - lzma
+      - zlib
+      - seccomp
+    bzip2-depends:
+      - bzip2
+    lzma-depends:
+      - xz-utils
+    zlib-depends:
+      - zlib
+    seccomp-depends:
+      - libseccomp
+    md5sum: a147c5d029177c9f964af73bfd851b9c
+    size: 1163990
+    uri: /f/file/file_5.43_1_source.ymp
+
+  package:
+    name: file
+    version: 5.43
+    release: 1
+    description: Identify a file's format by scanning binary data for patterns
+    group:
+      - sys.apps
+    depends:
+      - bzip2
+      - xz-utils
+      - zlib
+      - libseccomp
+    archive-hash: 35d243d604b1fb56eeb98a0fadaef9f63845dfea
+    arch: x86_64
+    archive-size: 1233951
+    md5sum: 8e6197bb65b3c1d0ff88dfeaeec0c51b
+    size: 1223150
+    uri: /f/file/file_5.43_1_x86_64.ymp
+
+  package:
+    name: nettle
+    version: 3.8
+    release: 1
+    description: A low-level cryptographic library
+    group:
+      - dev.libs
+    depends:
+      - gmp
+    archive-hash: 89e6cdd46c083b2f3d5551a808f9ccdfe575fbc7
+    arch: x86_64
+    archive-size: 11953980
+    md5sum: 0cd435970bbeb1785c3e25f6c67974ba
+    size: 11914279
+    uri: /n/nettle/nettle_3.8_1_x86_64.ymp
+
+  source:
+    name: nettle
+    version: 3.8
+    release: 1
+    description: A low-level cryptographic library
+    depends:
+      - gmp
+    archive:
+      - https://ftp.gnu.org/gnu/nettle/nettle-3.8.tar.gz
+    group:
+      - dev.libs
+    md5sum: 58acb898461788f57e284f56c1fac91d
+    size: 2403214
+    uri: /n/nettle/nettle_3.8_1_source.ymp
+
+  source:
+    name: ncurses
+    version: 6.3
+    release: 1
+    description: System V Release 4.0 curses emulation library
+    archive:
+      - https://invisible-mirror.net/archives/ncurses/ncurses-6.3.tar.gz
+    group:
+      - sys.libs
+    md5sum: fb6e5ceae59c4a0f3c36acce1c89c456
+    size: 3578053
+    uri: /n/ncurses/ncurses_6.3_1_source.ymp
+
+  package:
+    name: ncurses
+    version: 6.3
+    release: 1
+    description: System V Release 4.0 curses emulation library
+    group:
+      - sys.libs
+    archive-hash: 3476b717bb2fa521f066617d214ac5441696b7d4
+    arch: x86_64
+    archive-size: 19416197
+    md5sum: 9c6c9b6b889ceba5f77b5edec7a16e03
+    size: 19481299
+    uri: /n/ncurses/ncurses_6.3_1_x86_64.ymp
+
+  source:
+    name: ninja
+    version: 1.11.1
+    release: 1
+    description: Small build system with a focus on speed
+    makedepends:
+      - python
+    depends:
+      - gcc
+    archive:
+      - https://github.com/ninja-build/ninja/archive/refs/tags/v1.11.1.zip
+    group:
+      - dev.util
+    md5sum: cb7befdcd5d20600e34057a6ea81128f
+    size: 302543
+    uri: /n/ninja/ninja_1.11.1_1_source.ymp
+
+  package:
+    name: ninja
+    version: 1.11.1
+    release: 1
+    description: Small build system with a focus on speed
+    group:
+      - dev.util
+    depends:
+      - gcc
+    archive-hash: 2a02547cb24672ef46f5f276feb0ff06067ff5d8
+    arch: x86_64
+    archive-size: 111400
+    md5sum: 4218d3c3a933a6ed3cc256e6d5198dc9
+    size: 112114
+    uri: /n/ninja/ninja_1.11.1_1_x86_64.ymp
+
+  source:
+    name: nano
+    version: 7.0
+    release: 1
+    description: Pico editor clone with enhancements
+    archive:
+      - https://www.nano-editor.org/dist/v7/nano-7.0.tar.xz
+      - nanorc
+    group:
+      - app.editor
+    use-flags:
+      - nanorc
+    md5sum: 5032eb8b97af06d160950fdddd30ea81
+    size: 1600406
+    uri: /n/nano/nano_7.0_1_source.ymp
+
+  package:
+    name: nano
+    version: 7.0
+    release: 1
+    description: Pico editor clone with enhancements
+    group:
+      - app.editor
+    archive-hash: 292fc034210cc5a806890d52db69938fe6332410
+    arch: x86_64
+    archive-size: 991017
+    md5sum: 76b87d2ce03f9040d495f2607b1e8535
+    size: 992569
+    uri: /n/nano/nano_7.0_1_x86_64.ymp
+
+  source:
+    name: xz-utils
+    version: 5.2.7
+    release: 1
+    description: lzma compression utilities
+    archive:
+      - https://tukaani.org/xz/xz-5.2.7.tar.gz
+    group:
+      - app.arch
+    use-flags:
+      - doc
+      - nls
+    md5sum: 27e2fa71d715c9ad45f2409306a4d7c5
+    size: 2101515
+    uri: /x/xz-utils/xz-utils_5.2.7_1_source.ymp
+
+  package:
+    name: xz-utils
+    version: 5.2.7
+    release: 1
+    description: lzma compression utilities
+    group:
+      - app.arch
+    archive-hash: 42735ee3e1a862fd346e664a41a449644ae66848
+    arch: x86_64
+    archive-size: 1313424
+    md5sum: f12f4ab770d55c27afdaf44690e2e149
+    size: 1316005
+    uri: /x/xz-utils/xz-utils_5.2.7_1_x86_64.ymp
+
+  source:
+    name: elfutils
+    version: 0.188
+    release: 1
+    description: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+    archive:
+      - https://sourceware.org/elfutils/ftp/0.188/elfutils-0.188.tar.bz2
+    group:
+      - dev.libs
+    use-flags:
+      - bzip2
+      - lzma
+      - nls
+    bzip2-depends:
+      - bzip2
+    lzma-depends:
+      - xz-utils
+    zstd-depends:
+      - zstd
+    md5sum: a2b0b67b724da2a740ac9f629899c2c6
+    size: 9107322
+    uri: /e/elfutils/elfutils_0.188_1_source.ymp
+
+  package:
+    name: elfutils
+    version: 0.188
+    release: 1
+    description: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+    group:
+      - dev.libs
+    depends:
+      - bzip2
+      - xz-utils
+    archive-hash: ad5a919afab077b075bbd99061329b272e186a75
+    arch: x86_64
+    archive-size: 6902126
+    md5sum: 9fe7d9531d70583791eb097b1e353fc8
+    size: 6890281
+    uri: /e/elfutils/elfutils_0.188_1_x86_64.ymp
+
+  source:
+    name: expat
+    version: 2.5.0
+    release: 1
+    description: An XML parser library
+    archive:
+      - https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.xz
+    group:
+      - dev.libs
+    md5sum: cfe349b3996c5f74bb79fa45d449c9e4
+    size: 461789
+    uri: /e/expat/expat_2.5.0_1_source.ymp
+
+  package:
+    name: expat
+    version: 2.5.0
+    release: 1
+    description: An XML parser library
+    group:
+      - dev.libs
+    archive-hash: 456c058705f811a8bdeddd6ec6d2c2f64924f031
+    arch: x86_64
+    archive-size: 119148
+    md5sum: 932f6fd86beaf3c9e56a8bc07702c30c
+    size: 119992
+    uri: /e/expat/expat_2.5.0_1_x86_64.ymp
+
+  package:
+    name: libnghttp2
+    version: 1.51.0
+    release: 1
+    description: Package description missing
+    group:
+      - net.libs
+    depends:
+      - libxml2
+    archive-hash: 163b2619634b4593916ee4a65ceea82bcab7b1c8
+    arch: x86_64
+    archive-size: 967777
+    md5sum: 8e1022e59baca3d70b50967888b4ce27
+    size: 966338
+    uri: /libn/libnghttp2/libnghttp2_1.51.0_1_x86_64.ymp
+
+  source:
+    name: libnghttp2
+    version: 1.51.0
+    release: 1
+    description: Package description missing
+    archive:
+      - https://github.com/nghttp2/nghttp2/releases/download/v1.51.0/nghttp2-1.51.0.tar.gz
+    group:
+      - net.libs
+    use-flags:
+      - libxml2
+    libxml2-depends:
+      - libxml2
+    md5sum: fef65724d9d576ccf327f81e2772f8bc
+    size: 5112615
+    uri: /libn/libnghttp2/libnghttp2_1.51.0_1_source.ymp
+
+  source:
+    name: libnsl
+    version: 2.0.0
+    release: 1
+    description: Public client interface library for NIS(YP)
+    depends:
+      - libtirpc
+    archive:
+      - https://github.com/thkukuk/libnsl/releases/download/v2.0.0/libnsl-2.0.0.tar.xz
+    group:
+      - net.libs
+    md5sum: 4787085caa5a0e3ebdfc39c9f4d3cee8
+    size: 285578
+    uri: /libn/libnsl/libnsl_2.0.0_1_source.ymp
+
+  package:
+    name: libnsl
+    version: 2.0.0
+    release: 1
+    description: Public client interface library for NIS(YP)
+    group:
+      - net.libs
+    depends:
+      - libtirpc
+    archive-hash: 9ce65111aa780041847f370fa6860b432750c500
+    arch: x86_64
+    archive-size: 136933
+    md5sum: 6dd74e884e83e8fd8c5f34b9d6e5e946
+    size: 138211
+    uri: /libn/libnsl/libnsl_2.0.0_1_x86_64.ymp
+
+  source:
+    name: bash
+    version: 5.1
+    release: 1
+    description: Bash is the GNU Project's shell—the Bourne Again SHell.
+    depends:
+      - readline
+      - ncurses
+    archive:
+      - https://ftp.gnu.org/gnu/bash/bash-5.1.tar.gz
+    group:
+      - app.shell
+    md5sum: 4dde5a1737eb3464da52d7dce14c12db
+    size: 10454386
+    uri: /b/bash/bash_5.1_1_source.ymp
+
+  package:
+    name: bash
+    version: 5.1
+    release: 1
+    description: Bash is the GNU Project's shell—the Bourne Again SHell.
+    group:
+      - app.shell
+    depends:
+      - readline
+      - ncurses
+    archive-hash: b8ac235a4f82deb5186eda08432629b99d8303fe
+    arch: x86_64
+    archive-size: 2884582
+    md5sum: 710e6ff71ea8e0b7b160ec74bc7d30dd
+    size: 2886990
+    uri: /b/bash/bash_5.1_1_x86_64.ymp
+
+  package:
+    name: busybox
+    version: 1.35.0
+    release: 1
+    description: BusyBox is a software suite that provides several Unix utilities in a single executable file.
+    group:
+      - sys.base
+    archive-hash: 3491f42b6df5ad2647c47a85f6007225c3e0c138
+    arch: x86_64
+    archive-size: 1250613
+    md5sum: 9cc57be505d833ee6b860fdf212c3192
+    size: 1248883
+    uri: /b/busybox/busybox_1.35.0_1_x86_64.ymp
+
+  source:
+    name: busybox
+    version: 1.35.0
+    release: 1
+    description: BusyBox is a software suite that provides several Unix utilities in a single executable file.
+    archive:
+      - https://busybox.net/downloads/busybox-1.35.0.tar.bz2
+      - busybox.sysconf
+    group:
+      - sys.base
+    md5sum: a5b2cdee762614a46929869a7d8167dd
+    size: 2446436
+    uri: /b/busybox/busybox_1.35.0_1_source.ymp
+
+  source:
+    name: binutils
+    version: 2.39
+    release: 1
+    description: A set of programs to assemble and manipulate binary and object files
+    depends:
+      - zlib
+    archive:
+      - https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
+    group:
+      - sys.devel
+    md5sum: 954b3997a1aae9075ca79f255d9c94ec
+    size: 25176455
+    uri: /b/binutils/binutils_2.39_1_source.ymp
+
+  package:
+    name: binutils
+    version: 2.39
+    release: 1
+    description: A set of programs to assemble and manipulate binary and object files
+    group:
+      - sys.devel
+    depends:
+      - zlib
+    archive-hash: 91f3f0d828adafd8ab0cfd53011e18aec4b2f422
+    arch: x86_64
+    archive-size: 35158748
+    md5sum: 824f1c966ddbe4ad8fab1780f205fa7a
+    size: 34855613
+    uri: /b/binutils/binutils_2.39_1_x86_64.ymp
+
+  source:
+    name: base-files
+    version: 1
+    release: 1
+    description: Base system files
+    archive:
+      - https://gitlab.com/sulix/devel/sources/base-files/-/archive/1/base-files-1.zip
+      - base-files.sysconf
+    group:
+      - sys.base
+    md5sum: 73f78dd9fcbb2193fa521aac6499cc3c
+    size: 15252
+    uri: /b/base-files/base-files_1_1_source.ymp
+
+  package:
+    name: base-files
+    version: 1
+    release: 1
+    description: Base system files
+    group:
+      - sys.base
+    archive-hash: 7083e7a2f48e942faf208da64b3b3d7c83968cd8
+    arch: x86_64
+    archive-size: 1266
+    md5sum: 71b3c32417e4fd2130bf24dc6666acbd
+    size: 2469
+    uri: /b/base-files/base-files_1_1_x86_64.ymp
+
+  package:
+    name: bzip2
+    version: 1.0.8
+    release: 1
+    description: lzma compression utilities and library
+    group:
+      - app.arch
+    archive-hash: f9659e376074c033c4dd1870695ba979772fc507
+    arch: x86_64
+    archive-size: 285626
+    md5sum: 05bd31015f9c9361a4666e7585b26eeb
+    size: 286677
+    uri: /b/bzip2/bzip2_1.0.8_1_x86_64.ymp
+
+  source:
+    name: bzip2
+    version: 1.0.8
+    release: 1
+    description: lzma compression utilities and library
+    archive:
+      - https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
+      - makefile.patch
+    group:
+      - app.arch
+    md5sum: 9cb88389a1b6618ec6e6ab2c7b6a1be4
+    size: 809084
+    uri: /b/bzip2/bzip2_1.0.8_1_source.ymp
+
+  package:
+    name: libffi
+    version: 3.4.4
+    release: 1
+    description: A portable foreign-function interface library.
+    group:
+      - dev.libs
+    archive-hash: 3f16c6619250dc837a510b32567e4121fe67b9b8
+    arch: x86_64
+    archive-size: 252811
+    md5sum: d80f60a8c9abe10f9a6d9c6eaa995b4d
+    size: 253983
+    uri: /libf/libffi/libffi_3.4.4_1_x86_64.ymp
+
+  source:
+    name: libffi
+    version: 3.4.4
+    release: 1
+    description: A portable foreign-function interface library. 
+    archive:
+      - https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz
+    group:
+      - dev.libs
+    md5sum: 3ef204c8b0e1316c71c61c1b92110308
+    size: 1363389
+    uri: /libf/libffi/libffi_3.4.4_1_source.ymp
+
+  package:
+    name: util-linux
+    version: 2.38.1
+    release: 1
+    description: Various useful Linux utilities
+    group:
+      - sys.apps
+    depends:
+      - libcap-ng
+    archive-hash: ffc40cbe0d2e8a86641d5321242ec83ee84c8948
+    arch: x86_64
+    archive-size: 12442543
+    md5sum: bfe17ec2a0dec74872f5724423118572
+    size: 12426293
+    uri: /u/util-linux/util-linux_2.38.1_1_x86_64.ymp
+
+  source:
+    name: util-linux
+    version: 2.38.1
+    release: 1
+    description: Various useful Linux utilities
+    depends:
+      - libcap-ng
+    archive:
+      - https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.xz
+    group:
+      - sys.apps
+    use-flags:
+    python-depends:
+      - python
+    udev-depends:
+      - eudev
+    md5sum: 8fda1d5e3fbd40b500a0d8da5ddc43f5
+    size: 7499494
+    uri: /u/util-linux/util-linux_2.38.1_1_source.ymp
+
+  package:
+    name: shadow
+    version: 4.13
+    release: 1
+    description: Password and account management tool suite with support for shadow files and PAM
+    group:
+      - sys.apps
+    depends:
+      - pam
+      - libxcrypt
+      - acl
+      - attr
+    archive-hash: ba60ef44c6eafd6ee3b648242d754f0de7a9e54a
+    arch: x86_64
+    archive-size: 2157304
+    md5sum: 5ad11311a73b470cd4a4bbfe57c64be2
+    size: 2153578
+    uri: /s/shadow/shadow_4.13_1_x86_64.ymp
+
+  source:
+    name: shadow
+    version: 4.13
+    release: 1
+    description: Password and account management tool suite with support for shadow files and PAM
+    depends:
+      - pam
+      - libxcrypt
+      - acl
+      - attr
+    archive:
+      - https://github.com/shadow-maint/shadow/releases/download/4.13/shadow-4.13.tar.xz
+      - useradd.defaults
+      - shadow.sysconf
+      - system-auth
+    group:
+      - sys.apps
+    md5sum: ee89098e8374e805da03b159e3278b84
+    size: 1765685
+    uri: /s/shadow/shadow_4.13_1_source.ymp
+
+  package:
+    name: setuptools
+    version: 65.6.3
+    release: 1
+    description: Easily download, build, install, upgrade, and uninstall Python packages
+    group:
+      - dev.python
+    depends:
+      - python
+    archive-hash: 96ba99e27d471faa2e6cee89c7dc5951a3853ea3
+    arch: x86_64
+    archive-size: 1134770
+    md5sum: 899f0ce9e10bd60a15cb2b7828e648bb
+    size: 1142661
+    uri: /s/setuptools/setuptools_65.6.3_1_x86_64.ymp
+
+  source:
+    name: setuptools
+    version: 65.6.3
+    release: 1
+    description: Easily download, build, install, upgrade, and uninstall Python packages
+    depends:
+      - python
+    archive:
+      - https://files.pythonhosted.org/packages/b6/21/cb9a8d0b2c8597c83fce8e9c02884bce3d4951e41e807fc35791c6b23d9a/setuptools-65.6.3.tar.gz
+    group:
+      - dev.python
+    md5sum: 720d7fb53b48ec97c920167560f746a4
+    size: 2619042
+    uri: /s/setuptools/setuptools_65.6.3_1_source.ymp
+
+  source:
+    name: sqlite
+    version: 3.40.0
+    release: 1
+    description: A C library that implements an SQL database engine
+    depends:
+      - zlib
+      - readline
+    archive:
+      - https://sqlite.org/2022/sqlite-autoconf-3400000.tar.gz
+    group:
+      - dev.db
+    md5sum: 2311b4cead414f5fc7db1a9a48557c89
+    size: 3099364
+    uri: /s/sqlite/sqlite_3.40.0_1_source.ymp
+
+  package:
+    name: sqlite
+    version: 3.40.0
+    release: 1
+    description: A C library that implements an SQL database engine
+    group:
+      - dev.db
+    depends:
+      - zlib
+      - readline
+    archive-hash: d7cce4976691f6838f197d58e79026a5a052a5a7
+    arch: x86_64
+    archive-size: 6505325
+    md5sum: 0d60acf10b8262316f2e1a2da50e3de9
+    size: 6503774
+    uri: /s/sqlite/sqlite_3.40.0_1_x86_64.ymp
+
+  package:
+    name: python
+    version: 3.10
+    release: 1
+    description: Python meta package
+    group:
+      - dev.lang
+    depends:
+      - python3.10
+    archive-hash: 86c657eac8a3eeb7c82fb5cd93917f369a7e9b1c
+    arch: x86_64
+    archive-size: 348
+    md5sum: d84221cf802587675531138e67c2a9ab
+    size: 1201
+    uri: /p/python/python_3.10_1_x86_64.ymp
+
+  source:
+    name: python
+    version: 3.10
+    release: 1
+    description: Python meta package
+    depends:
+      - python3.10
+    archive:
+      - pydefault
+    group:
+      - dev.lang
+    md5sum: 27f303073c071bfd79f39c3be79e9b0e
+    size: 1138
+    uri: /p/python/python_3.10_1_source.ymp
+
+  package:
+    name: patch
+    version: 2.7.6
+    release: 1
+    description: A utility to apply patch files to original sources
+    group:
+      - sys.devel
+    depends:
+      - attr
+    archive-hash: 518fd5ed11dfabfbe59c7eaaaa837b38a3c8cd7d
+    arch: x86_64
+    archive-size: 100699
+    md5sum: 86e9ae1eb364251e9235744743ce6d00
+    size: 101293
+    uri: /p/patch/patch_2.7.6_1_x86_64.ymp
+
+  source:
+    name: patch
+    version: 2.7.6
+    release: 1
+    description: A utility to apply patch files to original sources
+    depends:
+      - attr
+    archive:
+      - https://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz
+    group:
+      - sys.devel
+    md5sum: 1ff9e6b1daeee76208ee9ff0dfc16a12
+    size: 785026
+    uri: /p/patch/patch_2.7.6_1_source.ymp
+
+  source:
+    name: pkgconf
+    version: 1.9.3
+    release: 1
+    description: Package compiler and linker metadata toolkit
+    archive:
+      - https://github.com/pkgconf/pkgconf/archive/refs/tags/pkgconf-1.9.3.tar.gz
+      - x86_64-pc-linux-gnu.personality
+      - i686-pc-linux-gnu.personality
+    group:
+      - dev.util
+    md5sum: 22cfdc50915357062f396de17f951727
+    size: 117216
+    uri: /p/pkgconf/pkgconf_1.9.3_1_source.ymp
+
+  package:
+    name: pkgconf
+    version: 1.9.3
+    release: 1
+    description: Package compiler and linker metadata toolkit
+    group:
+      - dev.util
+    archive-hash: 428020c899b04b8d094b366909617128687871c3
+    arch: x86_64
+    archive-size: 345364
+    md5sum: a8e2de88b17ad9cecdea7a47d7e40a46
+    size: 346838
+    uri: /p/pkgconf/pkgconf_1.9.3_1_x86_64.ymp
+
+  package:
+    name: p11-kit
+    version: 0.24.1
+    release: 1
+    description: Library for loading and sharing PKCS
+    group:
+      - app.crypt
+    depends:
+      - libtasn1
+      - libffi
+    archive-hash: 1c8ef688b9f94125c476f87bffc90cfb4190a7c9
+    arch: x86_64
+    archive-size: 806582
+    md5sum: c2c02b0b2171c78fd8da11d76e481372
+    size: 768432
+    uri: /p/p11-kit/p11-kit_0.24.1_1_x86_64.ymp
+
+  source:
+    name: p11-kit
+    version: 0.24.1
+    release: 1
+    description: Library for loading and sharing PKCS#11 modules
+    depends:
+      - libtasn1
+    archive:
+      - https://github.com/p11-glue/p11-kit/releases/download/0.24.1/p11-kit-0.24.1.tar.xz
+    group:
+      - app.crypt
+    use-flags:
+      - libffi
+      - lto
+    libffi-depends:
+      - libffi
+    md5sum: 9f9a496c736f6e44e58b5cb2f561cb8a
+    size: 839765
+    uri: /p/p11-kit/p11-kit_0.24.1_1_source.ymp
+
+  source:
+    name: python3.10
+    version: 3.10.8
+    release: 1
+    description: Next generation of the python high-level scripting language
+    depends:
+      - bzip2
+      - gdbm
+      - libnsl
+      - libxcrypt
+      - openssl
+      - zlib
+      - sqlite
+    archive:
+      - https://www.python.org/ftp/python/3.10.8/Python-3.10.8.tar.xz
+      - sulix.patch
+    group:
+      - dev.lang
+      - python
+    use-flags:
+      - expat
+      - ffi
+    expat-depends:
+      - expat
+    ffi-depends:
+      - libffi
+    md5sum: 6061e18bddd6fd4104590e21e953137a
+    size: 19624901
+    uri: /p/python3.10/python3.10_3.10.8_1_source.ymp
+
+  package:
+    name: python3.10
+    version: 3.10.8
+    release: 1
+    description: Next generation of the python high-level scripting language
+    group:
+      - dev.lang
+      - python
+    depends:
+      - bzip2
+      - gdbm
+      - libnsl
+      - libxcrypt
+      - openssl
+      - zlib
+      - sqlite
+      - expat
+      - libffi
+    archive-hash: a72823ec54d698b4ce420e4250cb088cfd65dabb
+    arch: x86_64
+    archive-size: 23111335
+    md5sum: 395e6764e8486158194446a8be8f5f9c
+    size: 23066849
+    uri: /p/python3.10/python3.10_3.10.8_1_x86_64.ymp
+
+  source:
+    name: perl
+    version: 5.36.0
+    release: 1
+    description: A highly capable, feature-rich programming language
+    depends:
+      - gdbm
+      - libxcrypt
+      - libnsl
+    archive:
+      - https://www.cpan.org/src/5.0/perl-5.36.0.tar.gz
+    group:
+      - dev.lang
+    md5sum: 9c1ea9fd3076090a71c96157eab24913
+    size: 19979488
+    uri: /p/perl/perl_5.36.0_1_source.ymp
+
+  package:
+    name: perl
+    version: 5.36.0
+    release: 1
+    description: A highly capable, feature-rich programming language
+    group:
+      - dev.lang
+    depends:
+      - gdbm
+      - libxcrypt
+      - libnsl
+    archive-hash: d2983fe7e157c8d58e0d4c8e39568feb750be948
+    arch: x86_64
+    archive-size: 19179399
+    md5sum: 7e93dffbfc7930b68b83d5e86bf8865b
+    size: 18906184
+    uri: /p/perl/perl_5.36.0_1_x86_64.ymp
+
+  source:
+    name: pam
+    version: 1.5.2
+    release: 1
+    description: PAM (Pluggable Authentication Modules) library
+    depends:
+      - libtirpc
+      - libxcrypt
+      - libnsl
+    archive:
+      - https://github.com/linux-pam/linux-pam/releases/download/v1.5.2/Linux-PAM-1.5.2.tar.xz
+    group:
+      - sys.libs
+    md5sum: fe576c8b8c0f6a9ffa6adf838544c525
+    size: 990290
+    uri: /p/pam/pam_1.5.2_1_source.ymp
+
+  package:
+    name: pam
+    version: 1.5.2
+    release: 1
+    description: PAM (Pluggable Authentication Modules) library
+    group:
+      - sys.libs
+    depends:
+      - libtirpc
+      - libxcrypt
+      - libnsl
+    archive-hash: 28e86af9568a7a62b9d552ef308ae5dbff05ecc7
+    arch: x86_64
+    archive-size: 1866194
+    md5sum: aff6f384fe5a1663cac0bbb0f916c99c
+    size: 1874159
+    uri: /p/pam/pam_1.5.2_1_x86_64.ymp
+
