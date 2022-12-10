@@ -1,33 +1,27 @@
 #!/bin/sh
+rmln(){
+    if [ -L "$2" ] ; then
+        rm -f "$2"
+    fi
+    ln -s "$1" "$2"
+}
 if [ "$1" != "" ] ; then
     version="$1"
-    if [ ! -f /usr/bin/python$version ] ; then
+    if [ "$version" == "" ] || [ ! -f /usr/bin/python$version ] ; then
+        echo "Python version is not available: $1"
         exit 1
     fi
-    if [ -L /usr/bin/python3 ] ; then
-        rm -f /usr/bin/pydoc3
-        rm -f /usr/bin/python3
-        rm -f /usr/bin/python
-        rm -f /usr/bin/idle3
-        rm -f /usr/bin/python3-config
-        rm -f /usr/bin/2to3
-        rm -f /usr/bin/pip3
-        rm -f /usr/bin/pip
-        rm -f /usr/lib64/libpython3.so
-        rm -f /usr/lib64/pkgconfig/python3.pc
-        rm -f  /usr/lib64/pkgconfig/python3-embed.pc
-    fi
-    ln -s pydoc$version /usr/bin/pydoc3
-    ln -s python$version /usr/bin/python3
-    ln -s python$version /usr/bin/python
-    ln -s idle$version /usr/bin/idle3
-    ln -s python$version-config /usr/bin/python3-config
-    ln -s 2to3-$version /usr/bin/2to3
-    ln -s pip$version /usr/bin/pip3
-    ln -s pip$version /usr/bin/pip
-    ln -s libpython3.so.$version /usr/lib64/libpython3.so
-    ln -s python-$version.pc /usr/lib64/pkgconfig/python3.pc
-    ln -s python-$version-embed.pc /usr/lib64/pkgconfig/python3-embed.pc
+    rmln pydoc$version /usr/bin/pydoc3
+    rmln python$version /usr/bin/python3
+    rmln python$version /usr/bin/python
+    rmln idle$version /usr/bin/idle3
+    rmln python$version-config /usr/bin/python3-config
+    rmln 2to3-$version /usr/bin/2to3
+    rmln pip$version /usr/bin/pip3
+    rmln pip$version /usr/bin/pip
+    rmln libpython3.so.$version /usr/lib64/libpython3.so
+    rmln python-$version.pc /usr/lib64/pkgconfig/python3.pc
+    rmln python-$version-embed.pc /usr/lib64/pkgconfig/python3-embed.pc
     
 else
     exit 1
