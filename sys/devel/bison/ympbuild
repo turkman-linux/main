@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='bison'
+release='1'
+version='3.8.2'
+url='https://ftp.gnu.org/gnu/bison/'
+description='The GNU general-purpose parser generator'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/bison/bison-$version.tar.xz")
+depends=()
+makedepends=()
+md5sums=('c28f119f405a2304ff0a7ccdcc629713')
+uses=()
+group=(sys.devel)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
