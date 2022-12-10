@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='xorg-proto'
+name='xorgproto'
 release='1'
 version='2022.2'
 url='https://gitlab.freedesktop.org/xorg/proto/xorgproto'
@@ -9,13 +9,13 @@ maintainer='kurth4cker'
 license=('MIT')
 source=("https://www.x.org/releases/individual/proto/xorgproto-${version}.tar.xz")
 depends=()
-makedepends=()
+makedepends=(util-macros)
 md5sums=('3fdb11d75f7023db273f7b3e34b58338')
 uses=()
 arch=('x86_64')
 group=(x11.base)
 
-cd xorgproto-$version
+cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
@@ -31,4 +31,3 @@ build(){
 package(){
     make install -j`nproc`
 }
-
