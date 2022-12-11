@@ -8,7 +8,7 @@ email='queryvs@example.com'
 maintainer='queryvs'
 license=('GPLv2')
 source=("http://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2")
-depends=(gpm libgcrypt zlib tcl)
+depends=(ncurses xxd)
 makedepends=()
 md5sums=('a28acac9c6bfd2c14af33140d38e3dce'
          'SKIP')
@@ -18,6 +18,8 @@ group=(app.editor)
 cd $name-$version
 
 setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
 }
 
 build(){
