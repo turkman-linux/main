@@ -2,14 +2,14 @@
 name='libXdmcp'
 release='1'
 version='1.1.4'
-url='https://gitlab.freedesktop.org/xorg/lib/libXdmcp'
+url='https://xorg.freedesktop.org'
 description='X.Org X Display Manager Control Protocol library'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 license=('MIT')
 source=("https://www.x.org/releases/individual/lib/libXdmcp-${version}.tar.xz")
-depends=(xorgproto)
-makedepends=( )
+depends=()
+makedepends=(util-macros xorgproto)
 md5sums=('0b4056a282c1e14323d5daef8fb5345d')
 uses=()
 arch=('x86_64')
