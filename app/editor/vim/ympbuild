@@ -8,18 +8,34 @@ email='queryvs@example.com'
 maintainer='queryvs'
 license=('GPLv2')
 source=("http://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2")
-depends=(ncurses xxd)
+depends=(ncurses)
 makedepends=()
 md5sums=('a28acac9c6bfd2c14af33140d38e3dce'
          'SKIP')
 arch=('x86_64')
 group=(app.editor)
 
-cd $name-$version
+cd ${name}${version/\./}
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        --enable-cscope \
+        --enable-multibyte \
+        --with-ex-name=vim-ex \
+        --with-view-name=vim-view \
+        --disable-canberra \
+        --disable-sodium \
+        --disable-acl \
+        --disable-perlinterp \
+        --disable-pythoninterp \
+        --disable-rubyinterp \
+        --disable-netbeans \
+        --disable-gpm \
+        --disable-xim \
+        --disable-gui \
+        --disable-nls \
+        --without-x
 }
 
 build(){
