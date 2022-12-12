@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+name='git'
+release='1'
+version='2.9.5'
+url='https://mirrors.edge.kernel.org/pub/software/scm/git/'
+description='the fast distributed version control system'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://mirrors.edge.kernel.org/pub/software/scm/git/git-$version.tar.xz")
+depends=(curl openssl zlib)
+makedepends=()
+md5sums=('b3162dfbc456d46720b09c95cbdaf8af')
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+cat > config.mak <<EOF
+NO_GETTEXT=YesPlease
+NO_SVN_TESTS=YesPlease
+NO_TCLTK=YesPlease
+NO_EXPAT=YesPlease
+NO_NSEC=YesPlease
+NO_PYTHON=YesPlease
+NO_PERL=YesPlease
+NO_SYS_POLL_H=1
+NO_INSTALL_HARDLINKS=1
+EOF
+}
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        ac_cv_lib_curl_curl_global_init=yes \
+        ac_cv_snprintf_returns_bogus=no \
+        ac_cv_fread_reads_directories=yes
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
