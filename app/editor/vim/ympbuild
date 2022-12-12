@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='vim'
+release='1'
+version='9.0'
+url='http://ftp.vim.org/pub/vim/unix/'
+description='free and open-source, screen-based text editor program'
+email='queryvs@example.com'
+maintainer='queryvs'
+license=('GPLv2')
+source=("http://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2")
+depends=(ncurses xxd)
+makedepends=()
+md5sums=('a28acac9c6bfd2c14af33140d38e3dce'
+         'SKIP')
+arch=('x86_64')
+group=(app.editor)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
