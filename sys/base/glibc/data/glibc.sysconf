@@ -8,7 +8,7 @@
 
 # Call locale-gen
 current=$(date +%s -r /etc/locale.gen)
-touch /var/lib/ymp/sysconf/glib/update.date
+touch /var/lib/ymp/sysconf/glibc/update.date
 last=$(cat /var/lib/ymp/sysconf/glibc/update.date)
 if [ "$current" != "$last" ] ; then
     /bin/locale-gen
