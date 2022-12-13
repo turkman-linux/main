@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='vala'
+release='1'
+version='0.56.3'
+url='https://wiki.gnome.org/Projects/Vala'
+description='Compiler for the GObject type system'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("http://download.gnome.org/sources/vala/0.56/vala-$version.tar.xz")
+depends=(glib gcc)
+makedepends=()
+md5sums=('9d6d0ca3b5403509ead5e6f2a45c61bb')
+uses=()
+uses_extra=(doc)
+arch=('x86_64')
+doc_depends=(graphviz)
+group=(dev.lang)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        $(use_opt doc --enable-valadoc --disable-valadoc)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
