@@ -48,14 +48,6 @@ setup(){
       --with-system-zlib
       --disable-nls
     )
-    if use multilib ; then
-        mkdir build-lib32
-        cd build-lib32
-        ../configure ${options[@]} \
-            --libdir=/usr/lib32 \
-            --target=i686-pc-linux-gnu
-        cd ..
-    fi
     mkdir build
     cd build
     ../configure ${options[@]} \
@@ -66,21 +58,11 @@ setup(){
 }
 
 build(){
-    if use multilib ; then
-        cd build-lib32
-        make -j`nproc`
-        cd ..
-    fi
     cd build
     make -j`nproc`
 }
 
 package(){
-    if use multilib ; then
-        cd build-lib32
-        make install -j`nproc`
-        cd ..
-    fi
     cd build
     make install -j`nproc`
     mkdir -p ${DESTDIR}/usr/lib64/
