@@ -68,12 +68,13 @@ package(){
     mkdir -p ${DESTDIR}/usr/lib64/
     if use multilib ; then
         # move lib to lib64
-        if [ -d ${DESTDIR}/usr/lib && ! -d ${DESTDIR}/usr/lib32 ] ; then
+        if [ -d ${DESTDIR}/usr/lib ] && [ ! -d ${DESTDIR}/usr/lib32 ] ; then
             mv ${DESTDIR}/usr/{lib,lib32}
         fi
     fi
     ln -s gcc ${DESTDIR}/usr/bin/cc
     ln -s g++ ${DESTDIR}/usr/bin/cxx
+    mkdir -p ${DESTDIR}/lib64/cpp
     ln -s ../usr/bin/cpp ${DESTDIR}/lib64/cpp
 }
 
