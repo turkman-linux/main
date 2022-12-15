@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='grep'
+release='1'
+version='3.8'
+url='https://ftp.gnu.org/gnu/grep/'
+description='GNU regular expression matcher'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/grep/grep-$version.tar.xz")
+depends=(libpcre2)
+makedepends=()
+md5sums=('dc6e4d18d4659e6e7552fc4a183c8ac9')
+uses=()
+group=(sys.apps)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
