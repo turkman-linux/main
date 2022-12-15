@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+name='bc'
+release='1'
+version='1.07'
+url='https://ftp.gnu.org/gnu/bc/'
+description='Handy console-based calculator utility'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/bc/bc-$version.tar.gz"
+        "https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-devel/bc/files/bc-1.07.1-no-ed-its-sed.patch")
+depends=()
+makedepends=()
+md5sums=('e91638a947beadabf4d7770bdbb3d512'
+         'a7bdd642f30ae47ee5bcbcf3f65e061b')
+group=(sys.devel)
+uses=()
+uses_extra=(static)
+arch=('x86_64')
+
+cd $name-$version
+
+if use static ; then
+    export CFLAGS="-static"
+fi
+
+prepare(){
+    patch -Np1 -i ../bc-1.07.1-no-ed-its-sed.patch
+}
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install -j`nproc`
+}
+

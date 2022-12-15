@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='findutils'
+release='1'
+version='4.9.0'
+url='https://ftp.gnu.org/gnu/findutils/'
+description='GNU utilities for finding files'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/findutils/findutils-$version.tar.xz")
+depends=()
+makedepends=()
+md5sums=('4a4a547e888a944b2f3af31d789a1137')
+uses=()
+group=(sys.apps)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
