@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://salsa.debian.org/debian/fakechroot/-/archive/debian/$version/fakechroot-debian-$version.tar.gz")
-depends=()
+depends=(coreutils)
 makedepends=()
 md5sums=('06afa6380221e51a3afdbcf4632f1b53')
 uses=()
@@ -36,6 +36,6 @@ build(){
 package(){
     make install -j`nproc`
     mkdir -p "${DESTDIR}"/etc/ld.so.conf.d/
-    echo '/usr/lib/libfakeroot/fakechroot/' > "${DESTDIR}"/etc/ld.so.conf.d/fakechroot.conf
+    echo '/usr/lib/fakechroot/' > "${DESTDIR}"/etc/ld.so.conf.d/fakechroot.conf
 }
 
