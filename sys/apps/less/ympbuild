@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='less'
+release='1'
+version='608'
+url='https://ftp.gnu.org/gnu/less'
+description='Excellent text file viewer'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/less/less-$version.tar.gz")
+depends=(ncurses)
+makedepends=()
+md5sums=('1cdec714569d830a68f4cff11203cdba')
+uses=(pcre2)
+pcre2_depends=(libpcre2)
+group=(sys.apps)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --sysconfdir=/etc \
+        $(use_opt pcre2 "--with-regex=pcre2" "--without-pcre2")
+}
+
+build(){
+    make
+}
+
+package(){
+    make DESTDIR=${DESTDIR}
+}
+

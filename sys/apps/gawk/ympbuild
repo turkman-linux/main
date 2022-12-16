@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='gawk'
+release='1'
+version='5.2.1'
+url='https://example.org'
+description='GNU awk pattern-matching language'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/gawk/gawk-$version.tar.xz")
+depends=(mpfr readline)
+makedepends=()
+md5sums=('02956bc5d117a7437bb4f7039f23b964')
+uses=()
+group=(sys.apps)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --without-libsigsegv
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

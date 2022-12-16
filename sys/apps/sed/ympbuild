@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='sed'
+release='1'
+version='4.9'
+url='https://ftp.gnu.org/gnu/sed/'
+description='Super-useful stream editor'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/sed/sed-$version.tar.xz")
+depends=(acl)
+makedepends=()
+md5sums=('6aac9b2dbafcd5b7a67a8a9bcb8036c3')
+uses=()
+arch=('x86_64')
+group=(sys.apps)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
