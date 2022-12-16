@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gzip'
+release='1'
+version='1.12'
+url='https://ftp.gnu.org/gnu/gzip'
+description='Standard GNU compressor'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/gzip/gzip-$version.zip")
+depends=()
+makedepends=()
+md5sums=('a8a12bb7efcdc73af08a584a0bcf8f3f')
+uses=()
+group=(app.arch)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

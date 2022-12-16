@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='fakeroot'
+release='1'
+version='1.30.1-1'
+url='https://salsa.debian.org/clint/fakeroot/-/tags'
+description='A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://salsa.debian.org/clint/fakeroot/-/archive/debian/$version/fakeroot-debian-$version.tar.gz")
+depends=(sed util-linux)
+makedepends=()
+md5sums=('840f91cde585b509f2b408df5e0a14fb')
+uses=()
+group=(sys.apps)
+arch=('x86_64')
+
+cd $name-debian-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --with-ipc=sysv
+}
+
+build(){
+    make
+    cd doc
+    po4a -k 0 --rm-backups --variable 'srcdir=../doc/' po4a/po4a.cfg
+}
+
+package(){
+    make install
+}
+

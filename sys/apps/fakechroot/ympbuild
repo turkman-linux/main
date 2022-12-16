@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='fakechroot'
+release='1'
+version='2.20.1+ds-8'
+url='https://salsa.debian.org/debian/fakechroot/-/tags'
+description='Provide a faked chroot environment without requiring root privileges'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://salsa.debian.org/debian/fakechroot/-/archive/debian/$version/fakechroot-debian-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('06afa6380221e51a3afdbcf4632f1b53')
+uses=()
+group=(sys.apps)
+arch=('x86_64')
+
+cd $name-debian-$version
+
+prepare(){
+    for file in ./debian/patches/*.patch ; do
+        patch -Np1 -i $file
+    done
+}
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install -j`nproc`
+}
+
