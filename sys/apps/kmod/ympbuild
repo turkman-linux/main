@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+name='kmod'
+release='1'
+version='30'
+url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
+description='library and tools for managing linux kernel modules'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git/snapshot/kmod-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('0ed271b9bf76af8925734af566572f76')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    # skip building gtk doc
+    touch libkmod/docs/gtk-doc.make
+}
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/lib64/ \
+        --bindir=/bin
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+    mkdir -p ${DESTDIR}/usr/bin
+    for tool in {ins,ls,rm,dep}mod mod{probe,info}; do
+    ln -s ../../bin/kmod "${DESTDIR}/usr/bin/$tool"
+  done
+}
+

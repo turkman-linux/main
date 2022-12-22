@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='which'
+release='1'
+version='2.21'
+url='https://carlowood.github.io/which/'
+description='Prints out location of specified executables that are in your path'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://carlowood.github.io/which/which-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('097ff1a324ae02e0a3b0369f07a7544a')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
