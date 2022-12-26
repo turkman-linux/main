@@ -1,0 +1,12 @@
+tty:x:5:
+dialout:x:20:
+kmem:x:15:
+input:x:104:
+video:x:44:
+audio:x:29:
+lp:x:7:
+disk:x:6:
+cdrom:x:24:
+tape:x:26:
+kvm:x:105:
+

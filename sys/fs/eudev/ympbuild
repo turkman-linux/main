@@ -8,10 +8,14 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/eudev-project/eudev/releases/download/v$version/eudev-$version.tar.gz"
-        "eudev.openrc")
+        "eudev.openrc"
+        "eudev.groups"
+        "eudev.sysconf")
 depends=(kmod)
 makedepends=()
 md5sums=('417ba948335736d4d81874fba47a30f7'
+         'SKIP'
+         'SKIP'
          'SKIP')
 group=(sys.fs)
 uses=()
@@ -45,5 +49,11 @@ package(){
     # OpenRC service
     install -Dm755 ../eudev.openrc \
 		${DESTDIR}/etc/init.d/eudev
+    # group.d
+    install -Dm755 ../eudev.groups \
+		${DESTDIR}/etc/group.d/eudev
+    # sysconf
+    install -Dm755 ../eudev.sysconf \
+		${DESTDIR}/etc/sysconf.d/eudev
 }
 

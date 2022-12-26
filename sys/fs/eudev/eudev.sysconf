@@ -1,0 +1,6 @@
+#!/bin/sh
+udevadm hwdb --update
+if [ -S /run/udev/control ]; then
+	udevadm control --reload
+fi
+
