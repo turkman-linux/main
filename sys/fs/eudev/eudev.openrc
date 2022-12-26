@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+NAME="udevd"
+DAEMON="/sbin/udevd"
+DAEMON_ARGS="--daemon"
+
+depend()
+{
+	need localmount
+	keyword -vserver -lxc
+}
+
+start()
+{
+    ebegin "Starting eudev"
+    # start udev daemon
+	start-stop-daemon --start \
+	     --name $NAME \
+	     --exec $DAEMON \
+	     --quiet -- \
+	     ${DAEMON_ARGS}
+	 eend $? "Failed start udevd daemon"
+	 # start udevadm trigger
+	 udevadm trigger --type=subsystems --action=add
+	 udevadm trigger --type=devices --action=add
+	 eend $? "Failed trigger udevadm"
+	 # start udevadm settle
+	 udevadm settle
+	 eend $? "Failed settle udevadm"
+}
+
+stop()
+{
+	return 0
+}
+
+# vim:ts=4
+

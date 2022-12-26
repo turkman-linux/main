@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+name='eudev'
+release='1'
+version='3.2.11'
+url='https://github.com/eudev-project/eudev/releases'
+description='Linux dynamic and persistent device naming support (aka userspace devfs)'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/eudev-project/eudev/releases/download/v$version/eudev-$version.tar.gz"
+        "eudev.openrc")
+depends=()
+makedepends=()
+md5sums=('417ba948335736d4d81874fba47a30f7'
+         'SKIP')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --sysconfdir=/etc \
+        --exec-prefix=/ \
+        --bindir=/bin \
+        --with-rootprefix=/ \
+        --libdir=/lib64/ \
+        --with-rootrundir=/run \
+		--with-rootlibexecdir=/lib64/udev \
+		--enable-split-usr \
+		--disable-selinux \
+		--enable-kmod
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+    # Fix symlinks
+    rm -f ${DESTDIR}/sbin/udevadm
+    ln -s ../bin/udevadm ${DESTDIR}/sbin/udevadm
+    ln -s ../../lib64/udev/rules.d ${DESTDIR}/etc/udev/rules.d
+    ln -s ../../etc/udev/hwdb.d ${DESTDIR}/lib64/udev/hwdb.d
+    # OpenRC service
+    install -Dm755 ${DESTDIR}/eudev.openrc \
+		${DESTDIR}/etc/init.d/eudev
+}
+
