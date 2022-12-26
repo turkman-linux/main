@@ -42,10 +42,8 @@ package(){
     # Fix symlinks
     rm -f ${DESTDIR}/sbin/udevadm
     ln -s ../bin/udevadm ${DESTDIR}/sbin/udevadm
-    ln -s ../../lib64/udev/rules.d ${DESTDIR}/etc/udev/rules.d
-    ln -s ../../etc/udev/hwdb.d ${DESTDIR}/lib64/udev/hwdb.d
     # OpenRC service
-    install -Dm755 ${DESTDIR}/eudev.openrc \
+    install -Dm755 ../eudev.openrc \
 		${DESTDIR}/etc/init.d/eudev
 }
 
