@@ -9,7 +9,7 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/eudev-project/eudev/releases/download/v$version/eudev-$version.tar.gz"
         "eudev.openrc")
-depends=()
+depends=(kmod)
 makedepends=()
 md5sums=('417ba948335736d4d81874fba47a30f7'
          'SKIP')
