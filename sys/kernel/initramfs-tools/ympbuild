@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='initramfs-tools'
+release='1'
+version='0.142'
+url='https://salsa.debian.org/kernel-team/initramfs-tools'
+description='Initial ramdisk system from debian'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://salsa.debian.org/kernel-team/initramfs-tools/-/archive/v$version/initramfs-tools-v$version.tar.gz"
+        "remove-zstd.patch")
+depends=(eudev coreutils)
+makedepends=()
+md5sums=('a3765010fe0fc6a71fe900a798b759ea'
+         'SKIP')
+uses=()
+group=(sys.kernel)
+arch=('x86_64')
+
+cd $name-v$version
+
+prepare(){
+    patch -Np1 < ../remove-zstd.patch
+}
+
+package(){
+    cat debian/*.install | sed "s/\t/ /g" | tr -s " " | while read line ; do
+        file=$(echo $line | cut -f1 -d" ")
+        target=$(echo $line | cut -f2 -d" ")
+        mkdir -p ${DESTDIR}/$target
+        cp -prvf $file ${DESTDIR}/$target/
+    done
+    # install mkinitramfs
+    cp -pvf mkinitramfs ${DESTDIR}/usr/sbin/mkinitramfs
+    sed -i "s/@BUSYBOX_PACKAGES@/busybox/g" ${DESTDIR}/usr/sbin/mkinitramfs
+    sed -i "s/@BUSYBOX_MIN_VERSION@/1.22.0/g" ${DESTDIR}/usr/sbin/mkinitramfs
+    # Remove debian stuff
+    rm -rvf ${DESTDIR}/etc/kernel
+}
+
