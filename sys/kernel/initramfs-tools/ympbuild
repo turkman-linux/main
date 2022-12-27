@@ -8,10 +8,12 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://salsa.debian.org/kernel-team/initramfs-tools/-/archive/v$version/initramfs-tools-v$version.tar.gz"
-        "remove-zstd.patch")
+        "remove-zstd.patch"
+        "non-debian.patch")
 depends=(eudev coreutils)
 makedepends=()
 md5sums=('a3765010fe0fc6a71fe900a798b759ea'
+         'SKIP'
          'SKIP')
 uses=()
 group=(sys.kernel)
@@ -21,6 +23,7 @@ cd $name-v$version
 
 prepare(){
     patch -Np1 < ../remove-zstd.patch
+    patch -Np1 < ../non-debian.patch
 }
 
 package(){

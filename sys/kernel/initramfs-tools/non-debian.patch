@@ -1,0 +1,40 @@
+diff --git a/mkinitramfs b/mkinitramfs
+index df1b940..e38aea9 100755
+--- a/mkinitramfs
++++ b/mkinitramfs
+@@ -284,7 +284,21 @@ __TMPCPIOGZ="$(mktemp "${TMPDIR:-/var/tmp}/mkinitramfs-OL_XXXXXX")" || exit 1
+ __TMPMAINCPIO="$(mktemp "${TMPDIR:-/var/tmp}/mkinitramfs-MAIN_XXXXXX")" || exit 1
+ __TMPEARLYCPIO="$(mktemp "${TMPDIR:-/var/tmp}/mkinitramfs-FW_XXXXXX")" || exit 1
+ 
+-DPKG_ARCH=$(dpkg --print-architecture)
++DPKG_ARCH=$(get_dpkg_arch)
++
++get_dpkg_arch(){
++    case `uname -m` in
++        x86_64)
++          echo amd64
++          ;;
++        i686)
++          echo i386
++          ;;
++        aarch64)
++          echo arm64
++          ;;
++    esac
++}
+ 
+ # Export environment for hook scripts.
+ #
+diff --git a/update-initramfs b/update-initramfs
+index 746a6c1..0047670 100755
+--- a/update-initramfs
++++ b/update-initramfs
+@@ -167,7 +167,7 @@ run_bootloader()
+ ro_boot_check()
+ {
+ 	# check irrelevant inside of a chroot
+-	if [ ! -r /proc/mounts ] || ischroot; then
++	if [ ! -r /proc/mounts ] || [ `stat -c %d:%i /proc/$$/root/` == `stat -c %d:%i /` ]; then
+ 		return 0
+ 	fi
+ 
