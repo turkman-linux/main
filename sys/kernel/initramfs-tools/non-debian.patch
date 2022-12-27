@@ -1,5 +1,18 @@
+diff --git a/hooks/resume b/hooks/resume
+index 8ff84dd..439fe18 100755
+--- a/hooks/resume
++++ b/hooks/resume
+@@ -50,7 +50,7 @@ report_verbose "Configuration sets RESUME=$RESUME"
+ # Try to autodetect the RESUME partition, using biggest swap device that
+ # is not ephemeral.  We need to be able to read the listed swap partitions.
+ resume_auto=
+-if ! ischroot && [ -r /proc/swaps ]; then
++if ! [ `stat -c %d:%i /proc/$$/root/` == `stat -c %d:%i /` ] && [ -r /proc/swaps ]; then
+ 	# shellcheck disable=SC2013
+ 	for resume_auto in $(grep ^/dev/ /proc/swaps | sort -rnk3 | cut -d " " -f 1); do
+ 		report_verbose "Checking swap device $resume_auto"
 diff --git a/mkinitramfs b/mkinitramfs
-index df1b940..e38aea9 100755
+index df1b940..bdd71e4 100755
 --- a/mkinitramfs
 +++ b/mkinitramfs
 @@ -284,7 +284,21 @@ __TMPCPIOGZ="$(mktemp "${TMPDIR:-/var/tmp}/mkinitramfs-OL_XXXXXX")" || exit 1
@@ -7,8 +20,6 @@ index df1b940..e38aea9 100755
  __TMPEARLYCPIO="$(mktemp "${TMPDIR:-/var/tmp}/mkinitramfs-FW_XXXXXX")" || exit 1
  
 -DPKG_ARCH=$(dpkg --print-architecture)
-+DPKG_ARCH=$(get_dpkg_arch)
-+
 +get_dpkg_arch(){
 +    case `uname -m` in
 +        x86_64)
@@ -22,6 +33,8 @@ index df1b940..e38aea9 100755
 +          ;;
 +    esac
 +}
++
++DPKG_ARCH=$(get_dpkg_arch)
  
  # Export environment for hook scripts.
  #

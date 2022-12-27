@@ -24,7 +24,7 @@ index aa561bd..bf80786 100644
  # COMPRESSLEVEL=3
  
 diff --git a/mkinitramfs b/mkinitramfs
-index df1b940..e9ab814 100755
+index df1b940..166bffb 100755
 --- a/mkinitramfs
 +++ b/mkinitramfs
 @@ -188,7 +188,6 @@ lzma)	kconfig_sym=CONFIG_RD_LZMA ;;
@@ -43,15 +43,18 @@ index df1b940..e9ab814 100755
  #gzip|xz|bzip2|lzma|lzop included
  *)
  	# We're not using a compression level by default
-@@ -227,7 +225,6 @@ gzip)	# If we're doing a reproducible build, use gzip -n
+@@ -227,10 +225,6 @@ gzip)	# If we're doing a reproducible build, use gzip -n
  	fi
  	;;
  lz4)	compress="lz4 ${compresslevel} -l" ;;
 -zstd)	compress="zstd -q ${compresslevel}"
+-	# If we're not doing a reproducible build, enable multithreading
+-	test -z "${SOURCE_DATE_EPOCH}" && compress="$compress -T0"
+-	;;
+ xz)	compress="xz ${compresslevel} --check=crc32"
  	# If we're not doing a reproducible build, enable multithreading
- 	test -z "${SOURCE_DATE_EPOCH}" && compress="$compress -T0"
- 	;;
-@@ -426,12 +423,6 @@ find "${DESTDIR}/${MODULESDIR}" -name '*.ko.*' | while read -r ko; do
+ 	test -z "${SOURCE_DATE_EPOCH}" && compress="$compress --threads=0"
+@@ -426,12 +420,6 @@ find "${DESTDIR}/${MODULESDIR}" -name '*.ko.*' | while read -r ko; do
  		fi
  		xz -d "${ko}"
  		;;
