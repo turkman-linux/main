@@ -46,6 +46,7 @@ setup(){
       --enable-default-ssp
       --disable-symvers
       --enable-languages=c,c++$(use_opt langs ",fortran,go,objc,obj-c++,jit" "")
+      --enable-host-shared
       --enable-shared
       --without-zstd
       --disable-nls
