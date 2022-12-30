@@ -8,12 +8,13 @@ email=' parduscix@yandex.ru'
 maintainer=' sulincix'
 license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-${version}.tar.xz")
-depends=(binutils libmpc zlib)
+depends=(binutils libmpc zlib linux-headers)
 makedepends=( )
 md5sums=('73bafd0af874439dcdb9fc063b6fb069')
 arch=('x86_64')
 group=(sys.devel)
-uses=(multilib langs)
+uses=(multilib)
+uses_extra=(langs)
 
 cd $name-$version
 export CFLAGS="-O2 -s"
@@ -44,7 +45,6 @@ setup(){
       --enable-__cxa_atexit
       --enable-default-pie
       --enable-default-ssp
-      --disable-symvers
       --enable-languages=c,c++$(use_opt langs ",fortran,go,objc,obj-c++,jit" "")
       --enable-host-shared
       --enable-shared
