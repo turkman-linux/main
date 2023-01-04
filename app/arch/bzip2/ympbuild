@@ -11,7 +11,7 @@ source=("https://sourceware.org/pub/bzip2/bzip2-${version}.tar.gz"
 md5sums=('67e051268d0c475ea773822f7500d0e5'
          'SKIP')
 group=(app.arch)
-
+arch=(x86_64)
 cd $name-$version
 
 setup(){

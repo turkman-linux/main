@@ -16,6 +16,7 @@ zlib_depends=(zlib)
 lzma_depends=(xz-utils)
 bzip2_depends=(bzip2)
 seccomp_depends=(libseccomp)
+arch=(x86_64)
 
 cd $name-$version
 

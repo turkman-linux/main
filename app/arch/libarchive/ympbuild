@@ -23,6 +23,7 @@ lz4_depends=(lz4)
 lzo_depends=(lzo)
 nettle_depends=(nettle)
 zstd_depends=(zstd)
+arch=(x86_64)
 
 cd $name-$version
 
