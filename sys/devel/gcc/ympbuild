@@ -35,19 +35,28 @@ setup(){
       --libexecdir=/usr/libexec
       --mandir=/usr/share/man
       --infodir=/usr/share/info
-      --with-pkgversion="Sulix"
-      --with-bugurl=https://gitlab.com/groups/sulix/-/issues
-      --enable-checking=release
-      --disable-fixed-point
-      --disable-libstdcxx-pch
-      --enable-plugin
-      --enable-lto
+      --enable-languages=c,c++$(use_opt langs ",fortran,go,objc,obj-c++,jit" "")
+      --with-linker-hash-style=gnu
+      --with-system-zlib
       --enable-__cxa_atexit
+      --enable-cet=auto
+      --enable-checking=release
+      --enable-clocale=gnu
       --enable-default-pie
       --enable-default-ssp
-      --enable-languages=c,c++$(use_opt langs ",fortran,go,objc,obj-c++,jit" "")
-      --enable-host-shared
+      --enable-gnu-indirect-function
+      --enable-gnu-unique-object
+      --enable-libstdcxx-backtrace
+      --enable-link-serialization=1
+      --enable-linker-build-id
+      --enable-lto
+      --enable-multilib
+      --enable-plugin
       --enable-shared
+      --enable-threads=posix
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-werror
       --without-zstd
       --disable-nls
     )
