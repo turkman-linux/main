@@ -10,7 +10,7 @@ license=('GPLv2+')
 source=("https://tukaani.org/xz/xz-${version}.tar.gz")
 md5sums=('66f82a9fa24623f5ea8a9ee6b4f808e2')
 group=(app.arch)
-
+arch=(x86_64)
 uses=(doc nls)
 
 cd xz-$version

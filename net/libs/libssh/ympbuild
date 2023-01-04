@@ -11,7 +11,7 @@ source=("https://www.libssh.org/files/0.10/libssh-${version}.tar.xz")
 md5sums=('cb2e47ac2de59eefa31a57ae53b44363')
 license=('LGPL-2.1' 'BSD')
 group=(net.libs)
-
+arch=(x86_64)
 depends=(openssl)
 uses=(server sftp zlib)
 zlib_depends=(zlib)

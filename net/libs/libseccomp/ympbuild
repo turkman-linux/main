@@ -10,6 +10,7 @@ license=('LGPL-2.1')
 source=("https://github.com/seccomp/libseccomp/releases/download/v${version}/libseccomp-${version}.tar.gz")
 md5sums=('74008bb33234e0c2a0d998e7bee5c625')
 group=(net.libs)
+arch=(x86_64)
 
 cd $name-$version
 
