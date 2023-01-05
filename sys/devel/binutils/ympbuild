@@ -34,25 +34,27 @@ setup(){
     set -x
     ../configure --prefix=/usr \
         --libdir=/usr/lib64 \
-        $(use_opt x86_64 '--enable-targets=x86_64-pep' '') \
-        $(use_opt multilib '--enable-multilib' '--disable-multilib') \
-        --enable-deterministic-archives \
-        --enable-gold \
-        --enable-lto \
-        --enable-threads \
-        --enable-ld=default \
-        --enable-plugins \
-        --disable-werror \
-        --disable-gdb \
-        --disable-nls \
-        --disable-readline \
-        --disable-gprof \
-        --with-mmap \
-        --disable-nls \
-        --enable-install-libiberty \
-        --enable-shared \
-        --with-pic \
-        --with-system-zlib
+          --enable-cet \
+          --enable-default-execstack=no \
+          --enable-deterministic-archives \
+          --enable-gold \
+          --enable-install-libiberty \
+          --enable-ld=default \
+          --enable-new-dtags \
+          --enable-pgo-build=lto \
+          --enable-plugins \
+          --enable-relro \
+          --enable-shared \
+          $(use_opt x86_64 --enable-targets=x86_64-pep "") \
+          --enable-threads \
+          --disable-gdb \
+          --disable-gdbserver \
+          --disable-libdecnumber \
+          --disable-readline \
+          --disable-sim \
+          --disable-werror \
+          --with-pic \
+          --with-system-zlib
 }
 
 build(){
