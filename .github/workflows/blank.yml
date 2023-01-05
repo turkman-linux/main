@@ -19,12 +19,13 @@ jobs:
                 image: registry.gitlab.com/sulix/devel/assets/docker-images
                 options: -v ${{ github.workspace }}:/root -v /output:/root/output
                 run: |
-                    set -ex
+                    set -e
                     cd /root
                     ymp repo --update
                     ymp it bash --no-emerge
                     find -type f | grep ympbuild | sort -V | while read line ; do
                         cd $(dirname $line)
+                        echo $PWD
                         ymp build --no-binary --ignore-dependency --no-processbar .
                         mv *.ymp /root/output
                         cd /root
