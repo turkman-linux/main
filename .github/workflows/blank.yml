@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+    compile:
+        name: Update source packages
+        runs-on: ubuntu-latest
+        steps:
+          - name: Check out the repo
+            uses: actions/checkout@v2
+          - name: Run the build process with Docker
+            uses: addnab/docker-run-action@v3
+            with:
+                image: registry.gitlab.com/sulix/devel/assets/docker-images
+                options: -v ${{ github.workspace }}:/root -v /output:/root/output
+                run: |
+                    set -ex
+                    cd /root
+                    ymp repo --update
+                    ymp it bash --no-emerge
+                    find -type f | grep ympbuild | sort -V | while read line ; do
+                        cd $(dirname $line)
+                        ymp build --no-binary --ignore-dependency --no-processbar .
+                        mv *.ymp /root/output
+                        cd /root
+                    done
+                    ymp repo --index output --name=main
+
+          - uses: "marvinpinto/action-automatic-releases@latest"
+            with:
+                repo_token: "${{ secrets.GITHUB_TOKEN }}"
+                automatic_release_tag: "current"
+                prerelease: false
+                title: "Latest release"
+                files: |
+                  /output/*
+

@@ -19,7 +19,8 @@ cd $name-$version
 setup(){
     ./configure --prefix=/usr \
 	--libdir=/usr/lib64 \
-	$(use_opt cxx --enable-cxx --disable-cxx)
+	$(use_opt cxx --enable-cxx --disable-cxx) \
+	--enable-fat
 }
 
 build(){
