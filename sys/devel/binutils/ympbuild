@@ -37,6 +37,9 @@ setup(){
           --enable-cet \
           --enable-default-execstack=no \
           --enable-deterministic-archives \
+          --disable-compressed-debug-sections \
+          --disable-silent-rules \
+	      --enable-obsolete \
           --enable-gold \
           --enable-install-libiberty \
           --enable-ld=default \
@@ -45,7 +48,9 @@ setup(){
           --enable-plugins \
           --enable-relro \
           --enable-shared \
-          $(use_opt x86_64 --enable-targets=x86_64-pep "") \
+          $(use_opt x86_64 --enable-targets=x86_64-linux-gnu,x86_64-linux-gnux32,x86_64-pep ) \
+          $(use_opt x86_64 --disable-x86-used-note )\
+          --with-gold-ldflags=-static-libstdc++ \
           --enable-threads \
           --disable-gdb \
           --disable-gdbserver \
