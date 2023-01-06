@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='xcb-proto'
+release='2'
+version='1.15.2'
+url='https://xcb.freedesktop.org/'
+description='X C-language Bindings protocol headers'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('MIT')
+source=("https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-${version}.tar.xz")
+depends=( )
+makedepends=(python libxml2)
+md5sums=('d2251b01927c2fbe92dc540f9536b430')
+uses=()
+arch=('x86_64')
+group=(x11.base)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}

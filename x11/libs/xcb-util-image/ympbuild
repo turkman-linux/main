@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='xcb-util-image'
+release='1'
+version='0.4.1'
+url='https://xcb.freedesktop.org'
+description='X C-language Bindings sample implementations'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('MIT')
+source=("https://www.x.org/releases/individual/xcb/xcb-util-image-${version}.tar.xz")
+depends=(libxcb xcb-util)
+makedepends=(xorgproto util-macros)
+md5sums=('a67bfac2eff696170259ef1f5ce1b611')
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+	--enable-shared \
+	--enable-static \
+	--disable-devel-docs \
+	--without-doxygen
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}

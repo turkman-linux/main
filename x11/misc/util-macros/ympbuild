@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='util-macros'
+release='1'
+version='1.19.3'
+url='https://gitlab.freedesktop.org/xorg/util/macros'
+description='X.Org autotools utility macros'
+email='kurth4cker@tutanota.com'
+maintainer='kurth4cker'
+license=('MIT')
+source=("https://www.x.org/releases/individual/util/util-macros-${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('66cb74d4a0120a06e32c3b01c29417d8')
+arch=('x86_64')
+group=(x11.misc)
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
