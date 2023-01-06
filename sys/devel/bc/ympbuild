@@ -9,7 +9,7 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/bc/bc-$version.tar.gz"
         "https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-devel/bc/files/bc-1.07.1-no-ed-its-sed.patch")
-depends=()
+depends=(readline)
 makedepends=()
 md5sums=('e91638a947beadabf4d7770bdbb3d512'
          'a7bdd642f30ae47ee5bcbcf3f65e061b')
@@ -24,13 +24,19 @@ if use static ; then
     export CFLAGS="-static"
 fi
 
+export PATH=$PATH:$HOME
+
 prepare(){
+    echo "#!/bin/sh" > $HOME/makeinfo
+    echo "printf 'makeinfo (GNU texinfo) 5.2\n'" >> $HOME/makeinfo
+    chmod +x $HOME/makeinfo
     patch -Np1 -i ../bc-1.07.1-no-ed-its-sed.patch
 }
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        --with-readline
 }
 
 build(){
