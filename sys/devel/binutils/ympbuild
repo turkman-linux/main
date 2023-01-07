@@ -39,7 +39,7 @@ setup(){
           --enable-deterministic-archives \
           --disable-compressed-debug-sections \
           --disable-silent-rules \
-	      --enable-obsolete \
+          --enable-obsolete \
           --enable-gold \
           --enable-install-libiberty \
           --enable-ld=default \
