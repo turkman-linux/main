@@ -15,6 +15,8 @@ group=(sys.apps)
 uses=()
 arch=('x86_64')
 
+export PATH=$HOME:$PATH
+
 cd $name-$version
 
 prepare(){
@@ -27,6 +29,9 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/lib64/ \
         --bindir=/bin
+   # remove xsltproc dependency
+   rm -f man/Makefile
+   echo -e "all:\ninstall:" > man/Makefile
 }
 
 build(){
@@ -37,7 +42,7 @@ package(){
     make install -j`nproc`
     mkdir -p ${DESTDIR}/usr/bin
     for tool in {ins,ls,rm,dep}mod mod{probe,info}; do
-    ln -s ../../bin/kmod "${DESTDIR}/usr/bin/$tool"
+        ln -s ../../bin/kmod "${DESTDIR}/usr/bin/$tool"
   done
 }
 
