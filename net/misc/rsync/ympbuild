@@ -16,10 +16,13 @@ uses=()
 uses_extra=(zstd xxhash)
 arch=('x86_64')
 
+unset CFLAGS
+unset CXXFLAGS
+
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
+     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
         --with-included-popt \
         --with-included-zlib \
