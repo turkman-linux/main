@@ -1,0 +1,14 @@
+check:
+  image: debian:testing
+  stage: build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - build
+  script: |
+        set -e
+        find -type f -iname ympbuild | while read line ; do
+            echo "Check $line"
+            bash -n $line
+        done
+
