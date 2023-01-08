@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='rsync'
+release='1'
+version='3.2.7'
+url='https://example.org'
+description='Package description missing'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://download.samba.org/pub/rsync/src/rsync-3.2.7.tar.gz')
+depends=()
+makedepends=()
+md5sums=('f216f350ef56b9ba61bc313cb6ec2ed6')
+group=()
+uses=()
+uses_extra=(zstd xxhash)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	$(use_opt zstd --enable-zstd --disable-zstd) \
+    	$(use_opt xxhash --enable-xxhash --disable-xxhash)
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
