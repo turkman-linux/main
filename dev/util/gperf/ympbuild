@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gperf'
+release='1'
+version='3.1'
+url='https://ftp.gnu.org/gnu/gperf/'
+description='A perfect hash function generator'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/gperf/gperf-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('9e251c0a618ad0824b51117d5d9db87e')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
