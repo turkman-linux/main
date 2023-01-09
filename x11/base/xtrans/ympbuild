@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='xtrans'
+release='1'
+version='1.4.0'
+url='https://example.org'
+description='Package xtrans'
+email='bayramk@gmail.com'
+maintainer='bayramkarahan'
+license=('GPLv3')
+source=("https://www.x.org/archive//individual/lib/xtrans-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('0d8fe8de9eb7e733711835d139f906dc')
+group=(x11.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
