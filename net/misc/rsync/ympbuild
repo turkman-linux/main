@@ -2,25 +2,30 @@
 name='rsync'
 release='1'
 version='3.2.7'
-url='https://example.org'
-description='Package description missing'
+url='https://rsync.samba.org/'
+description='File transfer program to keep remote files into sync'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=('https://download.samba.org/pub/rsync/src/rsync-3.2.7.tar.gz')
-depends=()
+depends=(acl openssl)
 makedepends=()
 md5sums=('f216f350ef56b9ba61bc313cb6ec2ed6')
-group=()
+group=(net.misc)
 uses=()
 uses_extra=(zstd xxhash)
 arch=('x86_64')
 
+unset CFLAGS
+unset CXXFLAGS
+
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
+     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
+        --with-included-popt \
+        --with-included-zlib \
 	$(use_opt zstd --enable-zstd --disable-zstd) \
     	$(use_opt xxhash --enable-xxhash --disable-xxhash)
 }
