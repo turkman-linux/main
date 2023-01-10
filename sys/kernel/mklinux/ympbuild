@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+name='mklinux'
+release='1'
+version='20210110'
+url='https://gitlab.com/sulix/devel/sources/mklinux'
+description='kernel builder'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.com/sulix/devel/sources/mklinux/-/archive/$version/mklinux-20210110.zip")
+depends=(findutils file tar elfutils gcc binutils bison flex make kmod rsync)
+makedepends=()
+md5sums=('4b52b460a7c36237c84d1f96d25dc8f1')
+group=(sys.kernel)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+package(){
+    bash mklinux.sh -g -o $DESTDIR
+}
+
