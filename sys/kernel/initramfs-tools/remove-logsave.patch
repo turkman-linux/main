@@ -1,0 +1,20 @@
+diff --git a/scripts/functions b/scripts/functions
+index ae11b96..ec4e793 100644
+--- a/scripts/functions
++++ b/scripts/functions
+@@ -496,13 +496,13 @@ _checkfs_once()
+ 	then
+ 		log_begin_msg "Will now check $NAME file system"
+ 		# shellcheck disable=SC2086
+-		logsave -a -s $FSCK_LOGFILE fsck $spinner $force $fix -V -t "$TYPE" "$DEV"
++		fsck $spinner $force $fix -V -t "$TYPE" "$DEV" >> $FSCK_LOGFILE
+ 		FSCKCODE=$?
+ 		log_end_msg
+ 	else
+ 		log_begin_msg "Checking $NAME file system"
+ 		# shellcheck disable=SC2086
+-		logsave -a -s $FSCK_LOGFILE fsck $spinner $force $fix -T -t "$TYPE" "$DEV"
++		fsck $spinner $force $fix -T -t "$TYPE" "$DEV" >> $FSCK_LOGFILE
+ 		FSCKCODE=$?
+ 		log_end_msg
+ 	fi
