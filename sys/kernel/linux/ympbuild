@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name='linux'
+release='1'
+version='6.1.4'
+url='https://cdn.kernel.org/pub/linux/kernel/'
+description='Linux kernel'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv2')
+source=()
+depends=( )
+makedepends=(mklinux)
+md5sums=('3de364bdbacd2115950cc3dd94157ab6')
+uses=()
+arch=('x86_64')
+group=(sys.kernel)
+
+package(){
+    # install kernel (archlinux kerhel config used)
+    ALLOWROOT=1 bash mklinux -i -o "$DESTDIR" -t linux \
+     -c "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config" -y 1 \
+     -v $version
+    # remove headers (for fix conflict with linux-headers)
+    rm -rf ${DESTDIR}/usr/include
+}
+
