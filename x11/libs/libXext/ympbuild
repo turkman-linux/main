@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libXext'
+release='1'
+version='1.3.5'
+url='https://example.org'
+description='Package libXext'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://www.x.org/archive/individual/lib/libXext-1.3.5.tar.xz')
+depends=(libX11 xorgproto)
+makedepends=()
+md5sums=('964942427fcc5a9fa0539661421857c8')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

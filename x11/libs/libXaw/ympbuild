@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libXaw'
+release='1'
+version='1.0.14'
+url='https://example.org'
+description='Package libXaw'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://www.x.org/archive/individual/lib/libXaw-1.0.14.tar.gz')
+depends=(libXext libXt libXmu libXpm)
+makedepends=()
+md5sums=('4df0c6a9a3a0639ce321ab4886f7f0fd')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
