@@ -14,6 +14,8 @@ md5sums=('3de364bdbacd2115950cc3dd94157ab6')
 uses=()
 arch=('x86_64')
 group=(sys.kernel)
+# Kernel module strip make garbage it.
+dontstrip="31"
 
 package(){
     # install kernel (archlinux kerhel config used)

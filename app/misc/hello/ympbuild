@@ -13,7 +13,7 @@ makedepends=( )
 md5sums=('SKIP')
 arch=(x86_64)
 group=(app.misc)
-dontstrip="1"
+dontstrip="31"
 
 cd $name-$version
 
