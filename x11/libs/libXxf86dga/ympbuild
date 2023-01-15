@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='libXxf86dga'
 release='1'
-version='1.1.4'
+version='1.1.6'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package libXxf86dga'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+source=("https://www.x.org/archive/individual/lib/libXxf86dga-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('f88c63c9be40f3a51d9c22159858c2d5')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

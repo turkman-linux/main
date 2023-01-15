@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='libpciaccess'
 release='1'
-version='1.1.4'
+version='0.17'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package libpciaccess'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+source=("https://www.x.org/archive/individual/lib/libpciaccess-$version.tar.xz")
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('1466cf950c914ad2db1dbb76c9a724db')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

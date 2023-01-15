@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='libfontenc'
 release='1'
-version='1.1.4'
+version='1.1.7'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package libfontencg'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+source=('https://www.x.org/archive/individual/lib/libfontenc-$version.tar.xz')
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('6d3f1b15bb5b0bb71ae9f0a5103c1fc4')
 group=(x11.libs)
 uses=()
 arch=('x86_64')
