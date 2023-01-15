@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='libdmx'
 release='1'
 version='1.1.4'
 url='https://example.org'
-description='Package libXdmcp'
-email='bayramk@gmail.com'
+description='Package libdmx'
+email='bayramkk@gmail.com'
 maintainer='bk'
-license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+license=('GPLv3'
+source=("https://www.x.org/archive/individual/lib/libdmx-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('bf40bddfe658d224a5574ea249583f9e')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

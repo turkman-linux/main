@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='libXfixes'
 release='1'
-version='1.1.4'
+version='6.0.0'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package libXfixes'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+source=("https://www.x.org/archive/individual/lib/libXfixes-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('efe99ef5c971d0ad12cdc9e0c78e5f38')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

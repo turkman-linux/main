@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='pixman'
 release='1'
-version='1.1.4'
+version='0.42.2'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package pixman'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+source=("https://www.x.org/archive/individual/lib/pixman-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('a0f6ab8a1d8e0e2cd80e935525e2a864')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='libXi'
 release='1'
-version='1.1.4'
+version='1.8'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package libXi'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
-depends=()
+source=('https://www.x.org/archive/individual/lib/libXi-$version.tar.gz')
+depends=(libxfixes)
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('8367decb1b9c2a1517d11261b6e977e4')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

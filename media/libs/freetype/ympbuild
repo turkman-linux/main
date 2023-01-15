@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='freetype'
 release='1'
-version='1.1.4'
+version='2.9.1'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package freetype'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+source=("https://download.savannah.gnu.org/releases/freetype/freetype-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
-group=(x11.libs)
+md5sums=('3adb0e35d3c100c456357345ccfa8056')
+group=(media.libs)
 uses=()
 arch=('x86_64')
 

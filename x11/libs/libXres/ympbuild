@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='libXres'
 release='1'
-version='1.1.4'
+version='1.2.2'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package libXresg'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
-depends=()
+source=("https://www.x.org/archive/individual/lib/libXres-$version.tar.xz")
+depends=(libX11 libXext xorgproto)
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('66c9e9e01b0b53052bb1d02ebf8d7040')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

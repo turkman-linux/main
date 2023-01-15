@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libXdmcp'
+name='hsakmt'
 release='1'
-version='1.1.4'
+version='1.0.0'
 url='https://example.org'
-description='Package libXdmcp'
+description='Package hsakt'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXdmcp-$version.tar.xz")
+source=("https://www.x.org/archive/individual/lib/hsakmt-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('0b4056a282c1e14323d5daef8fb5345d')
+md5sums=('9beb20104e505300daf541266c4c3c3d')
 group=(x11.libs)
 uses=()
 arch=('x86_64')
