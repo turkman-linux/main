@@ -29,7 +29,9 @@ copy_exec /bin/udevadm    /bin
 cp -a /sbin/udevadm $DESTDIR/sbin/udevadm
 
 mkdir -p $DESTDIR/etc/udev
-cp -p /etc/udev/udev.conf $DESTDIR/etc/udev/
+if [ -f /etc/udev/udev.conf ] ; then
+    cp -p /etc/udev/udev.conf $DESTDIR/etc/udev/
+fi
 
 mkdir -p $DESTDIR/lib/udev/rules.d/
 for rules in 50-udev-default.rules 60-persistent-storage.rules \
@@ -60,7 +62,9 @@ YES|yes|Yes|Y|y)
   ;;
 esac
 
-cp /lib/udev/hotplug.functions $DESTDIR/lib/udev/
+if [ -f /lib/udev/hotplug.functions ] ; then
+    cp /lib/udev/hotplug.functions $DESTDIR/lib/udev/
+fi
 for program in ata_id scsi_id; do
   copy_exec /lib/udev/$program /lib/udev
 done

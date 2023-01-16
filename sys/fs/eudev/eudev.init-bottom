@@ -17,7 +17,3 @@ udevadm control --exit
 # move the /dev tmpfs to the rootfs
 mount -n -o move /dev ${rootmnt}/dev
 
-# create a temporary symlink to the final /dev for other initramfs scripts
-nuke /dev
-ln -s ${rootmnt}/dev /dev
-
