@@ -17,6 +17,7 @@ start()
         ip link set ${DEVICE##*/} up
         [ ${DEVICE##*/} != lo ] && udhcpc -b -i ${DEVICE##*/}
     done
+    return 0
 }
 
 stop()
