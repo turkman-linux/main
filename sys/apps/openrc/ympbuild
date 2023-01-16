@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+name='openrc'
+release='1'
+version='0.46'
+url='https://github.com/OpenRC/openrc'
+description='The OpenRC init system'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip")
+depends=()
+makedepends=()
+md5sums=('8b74d3db544b496f6bb33d2648db5d2f')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build \
+        -Dzsh-completions=true \
+		-Dbash-completions=true \
+		-Dpam=true \
+		-Dsplit-usr=false \
+		-Dpkgconfig=true \
+		-Dselinux="disabled" \
+		--default-library=both \
+		--prefix=/ \
+		--libdir=/usr/lib \
+		--libexecdir=/lib \
+		--bindir=/bin \
+		--sbindir=/sbin
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+    # fix absolute symlink
+    rm ${DESTDIR}//etc/init.d/functions.sh
+    ln -s ../../lib/rc/sh/functions.sh ${DESTDIR}/etc/init.d/functions.sh
+}
+
