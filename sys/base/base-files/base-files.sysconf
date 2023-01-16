@@ -28,6 +28,7 @@ if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
     ln -s ../run /var/run
     ln -s ../data /data/data
     ln -s ../tmp /data/tmp
+    ln -s ../tmp /var/tmp
     ln -s ../data/log /var/log
     ln -s ../kernel/modules /lib/modules
     ln -s ../kernel/firmware /lib/firmare
