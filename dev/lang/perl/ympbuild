@@ -41,5 +41,6 @@ build(){
 
 package(){
     make install -j`nproc`
+    rm -f ${DESTDIR}/*[0-9]
 }
 
