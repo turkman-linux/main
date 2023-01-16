@@ -21,16 +21,8 @@ setup(){
     meson setup build \
         -Dzsh-completions=true \
 		-Dbash-completions=true \
-		-Dpam=true \
-		-Dsplit-usr=false \
-		-Dpkgconfig=true \
-		-Dselinux="disabled" \
-		--default-library=both \
-		--prefix=/ \
-		--libdir=/usr/lib \
-		--libexecdir=/lib \
-		--bindir=/bin \
-		--sbindir=/sbin
+		-Dpam=false \
+		-Dpkgconfig=true
 }
 
 build(){
@@ -39,7 +31,14 @@ build(){
 
 package(){
     ninja -C build install
+    # install default inittab
+    install support/sysvinit/inittab ${DESTDIR}/etc/inittab
     # fix absolute symlink
+    for file in ${DESTDIR}/etc/runlevels/*/* ; do
+        link=$(readlink $file)
+        rm -f $file
+        ln -s ../../..$link $file
+    done
     rm ${DESTDIR}//etc/init.d/functions.sh
     ln -s ../../lib/rc/sh/functions.sh ${DESTDIR}/etc/init.d/functions.sh
 }
