@@ -11,8 +11,12 @@ arch=(x86_64)
 source=("https://busybox.net/downloads/busybox-$version.tar.bz2"
         "files/busybox.sysconf"
         "files/busybox.initramfs"
+        "files/udhcpc.openrc"
+        "files/udhcpc.script"
 )
 md5sums=("585949b1dd4292b604b7d199866e9913"
+         "SKIP"
+         "SKIP"
          "SKIP"
          "SKIP"
 )
@@ -36,5 +40,9 @@ package(){
     install ../busybox.sysconf ${DESTDIR}/etc/sysconf.d/busybox
     install ../busybox.initramfs ${DESTDIR}/usr/share/initramfs-tools/hooks/zz-busybox
     echo "BUSYBOXDIR=/bin" > ${DESTDIR}/usr/share/initramfs-tools/conf-hooks.d/busybox
+    # install udhcpc script and service
+    mkdir -p ${DESTDIR}/usr/share/udhcpc/ ${DESTDIR}/etc/init.d/
+    install ../udhcpc.script ${DESTDIR}/usr/share/udhcpc/default.script
+    install ../udhcpc.openrc ${DESTDIR}/etc/init.d/udhcpc
 }
 

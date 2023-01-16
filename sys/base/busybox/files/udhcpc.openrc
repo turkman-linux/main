@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+NAME="udhcpc"
+
+depend()
+{
+	need localmount
+	keyword -vserver -lxc
+}
+
+start()
+{
+    ebegin "Starting busybox networking"
+    for DEVICE in /sys/class/net/* ; do
+        ip link set ${DEVICE##*/} up
+        [ ${DEVICE##*/} != lo ] && udhcpc -b -i ${DEVICE##*/}
+    done
+}
+
+stop()
+{
+	return 0
+}
+
+# vim:ts=4
+
