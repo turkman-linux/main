@@ -11,6 +11,9 @@ case "$1" in
     ;;
 esac
 
+# busybox mdev
+mdev -s
+
 if [ -w /sys/kernel/uevent_helper ]; then
 	echo > /sys/kernel/uevent_helper
 fi
