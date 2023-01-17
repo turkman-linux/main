@@ -119,6 +119,7 @@ package(){
         rm -rf ${DESTDIR}/usr/share/locale/${i}_*
         rm -rf ${DESTDIR}/usr/share/i18n/locales/${i}_*
     done
-
+    # fix ldd shebang
+    sed -i "s|#!/bin/bash|#!/bin/sh|g" ${DESTDIR}/usr/bin/ldd
 
 }
