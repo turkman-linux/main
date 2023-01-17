@@ -10,10 +10,12 @@ license=('GPLv3')
 source=("https://salsa.debian.org/kernel-team/initramfs-tools/-/archive/v$version/initramfs-tools-v$version.tar.gz"
         "remove-zstd.patch"
         "non-debian.patch"
-        "remove-logsave.patch")
-depends=(eudev coreutils)
+        "remove-logsave.patch"
+        "initramfs-tools.sysconf")
+depends=(eudev coreutils findutils)
 makedepends=()
 md5sums=('a3765010fe0fc6a71fe900a798b759ea'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -42,5 +44,8 @@ package(){
     sed -i "s/@BUSYBOX_MIN_VERSION@/1.22.0/g" ${DESTDIR}/usr/sbin/mkinitramfs
     # Remove debian stuff
     rm -rvf ${DESTDIR}/etc/kernel
+    # install sysconf
+    mkdir -p ${DESTDIR}/etc/sysconf.d
+    install ../initramfs-tools.sysconf ${DESTDIR}/etc/sysconf.d/initramfs-tools
 }
 

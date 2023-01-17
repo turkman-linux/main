@@ -1,0 +1,11 @@
+#!/bin/sh
+if [ ! -f /var/lib/ymp/sysconf/openrc/postinst.done ] ; then
+    echo "Creating openrc runlevels"
+    for level in boot default nonetwork shutdown sysinit ; do
+        mkdir -p /etc/runlevels/$level
+    done
+    ln -s agetty /etc/init.d/agetty.tty1
+    rc-update add agetty.tty1 boot
+    touch /etc/fstab
+    touch /var/lib/ymp/sysconf/openrc/postinst.done
+fi

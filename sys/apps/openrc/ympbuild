@@ -7,10 +7,12 @@ description='The OpenRC init system'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip")
+source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
+    "openrc.sysconf")
 depends=()
 makedepends=()
-md5sums=('8b74d3db544b496f6bb33d2648db5d2f')
+md5sums=('8b74d3db544b496f6bb33d2648db5d2f'
+    'SKIP')
 group=()
 uses=()
 arch=('x86_64')
@@ -31,15 +33,18 @@ build(){
 
 package(){
     ninja -C build install
-    # install default inittab
-    install support/sysvinit/inittab ${DESTDIR}/etc/inittab
-    # fix absolute symlink
-    for file in ${DESTDIR}/etc/runlevels/*/* ; do
-        link=$(readlink $file)
-        rm -f $file
-        ln -s ../../..$link $file
-    done
+    # disable all services
+    rm -f ${DESTDIR}/etc/runlevels/*/*
     rm ${DESTDIR}//etc/init.d/functions.sh
     ln -s ../../lib/rc/sh/functions.sh ${DESTDIR}/etc/init.d/functions.sh
+    # install sysconf script
+    mkdir -p ${DESTDIR}/etc/sysconf.d/
+    install ../openrc.sysconf ${DESTDIR}/etc/sysconf.d/openrc
+    mkdir -p ${DESTDIR}/etc/group.d
+    mkdir -p ${DESTDIR}/etc/passwd.d
+    echo "uucp:x:14:" > ${DESTDIR}/etc/group.d/uucp
+    echo "uucp:x:10:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
+    # symlink init
+    ln -s openrc-init ${DESTDIR}/sbin/init
 }
 
