@@ -29,7 +29,10 @@ mountroot()
 
 mount_top()
 {
-	:
+	modprobe iso9660
+	modprobe squashfs
+	modprobe hfsplus
+	modprobe ext4
 }
 
 mount_premount()
@@ -55,7 +58,7 @@ mount_bottom()
 	mkdir -p ${rootmnt}/
 	mkdir -p /source/ # lower
 	mount $root ${rootmnt}/ 2> /dev/null
-	mount ${rootmnt}/live/airootfs.sfs /source/ 2> /dev/null
+	mount ${rootmnt}/live/filesystem.squashfs /source/ 2> /dev/null
 	mount -t overlay -o lowerdir=/source/,upperdir=/donkey/a/,workdir=/donkey/b overlay /live_root
 	mount -t tmpfs -o size=100% none /donkey/a
 	mount -t tmpfs -o size=100% none /donkey/b
