@@ -18,6 +18,7 @@ manual_add_modules "raid1"
 manual_add_modules "raid10"
 manual_add_modules "raid456"
 manual_add_modules 'nls'
+manual_add_modules 'nls_utf8'
 manual_add_modules 'overlayfs'
 manual_add_modules 'udf'
 manual_add_modules 'ext4'

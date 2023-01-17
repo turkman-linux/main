@@ -29,10 +29,26 @@ mountroot()
 
 mount_top()
 {
-	modprobe iso9660
-	modprobe squashfs
-	modprobe hfsplus
-	modprobe ext4
+	modprobe "cdrom"
+	modprobe "loop"
+	modprobe "dm-snapshot"
+	modprobe "overlay"
+	modprobe "isofs"
+	modprobe "squashfs"
+	modprobe "hfsplus"
+	modprobe "sr_mod"
+	modprobe "dm_mod"
+	modprobe "dm-raid"
+	modprobe "raid0"
+	modprobe "raid1"
+	modprobe "raid10"
+	modprobe "raid456"
+	modprobe 'nls'
+	modprobe 'nls_utf8'
+	modprobe 'overlayfs'
+	modprobe 'udf'
+	modprobe 'ext4'
+	modprobe 'usb-storage'
 }
 
 mount_premount()
