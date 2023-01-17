@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libdrm'
+release='1'
+version='2.4.114'
+url='https://example.org'
+description='Package description missing'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://dri.freedesktop.org/libdrm/libdrm-2.4.114.tar.xz')
+depends=(libpciaccess)
+makedepends=()
+md5sums=('07759750351465e5dd39f4fe40f000ea')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        -D udev=false \
+        -D etnaviv=disabled \
+        -D freedreno=disabled \
+        -D vc4=disabled \
+        -D valgrind=disabled \
+        -D install-test-programs=true
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
