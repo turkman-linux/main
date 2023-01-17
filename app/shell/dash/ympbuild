@@ -11,7 +11,6 @@ license=('GPLv2')
 depends=()
 arch=(x86_64)
 ver=$version+git20210903+057cd650a4ed-8
-replaces=("/bin/sh")
 source=(https://salsa.debian.org/debian/dash/-/archive/debian/$ver/dash-debian-$ver.zip)
 md5sums=(fa7d340bd8968e10f8097667cfdd1c18)
 group=(app.shell)
@@ -30,5 +29,4 @@ build(){
 
 package(){
     make install
-    ln -s dash ${DESTDIR}/bin/sh
 }
