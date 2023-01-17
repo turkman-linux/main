@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='live-boot'
+release='1'
+version='1.0'
+url='https://gitlab.com/sulix'
+description='initramfs tools live hooks'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('live-boot.script'
+        'live-boot.hook'
+       )
+depends=(initramfs-tools)
+makedepends=()
+md5sums=('SKIP'
+         'SKIP'
+        )
+group=()
+uses=()
+arch=('x86_64')
+
+package(){
+    mkdir -p ${DESTDIR}/etc/initramfs-tools/scripts/
+    mkdir -p ${DESTDIR}/usr/share/initramfs-tools/hooks/
+    install live-boot.script ${DESTDIR}/etc/initramfs-tools/scripts/live
+    install live-boot.hook ${DESTDIR}/usr/share/initramfs-tools/hooks/live
+}
+

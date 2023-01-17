@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+. /usr/share/initramfs-tools/hook-functions
+
+manual_add_modules "cdrom"
+manual_add_modules "loop"
+manual_add_modules "dm-snapshot"
+manual_add_modules "overlay"
+manual_add_modules "isofs"
+manual_add_modules "squashfs"
+manual_add_modules "hfsplus"
+manual_add_modules "sr_mod"
+manual_add_modules "dm_mod"
+manual_add_modules "dm-raid"
+manual_add_modules "raid0"
+manual_add_modules "raid1"
+manual_add_modules "raid10"
+manual_add_modules "raid456"
+manual_add_modules 'nls'
+manual_add_modules 'overlayfs'
+manual_add_modules 'udf'
+manual_add_modules 'ext4'
+manual_add_modules 'usb-storage'
