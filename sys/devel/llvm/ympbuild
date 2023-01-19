@@ -11,7 +11,7 @@ source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$version
 depends=(libffi xz-utils libxml2 zlib)
 makedepends=(git)
 md5sums=('69b637cfee09e3f5d2ec5cc16681cbe7')
-group=()
+group=(sys.devel)
 uses=()
 arch=('x86_64')
 
@@ -54,5 +54,6 @@ build(){
 package(){
     cd build
     ninja install
+    mv ${DESTDIR}/usr/lib{,64}
 }
 

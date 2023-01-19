@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+name='glslang'
+release='1'
+version='11.13.0'
+url='https://github.com/KhronosGroup/glslang'
+description='OpenGL and OpenGL ES shader front end and validator'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/KhronosGroup/glslang/archive/refs/tags/$version.tar.gz")
+depends=(gcc)
+makedepends=()
+md5sums=('d3821e60ef4a77159e63b7ba9bb17a54')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    cmake \
+      -Bbuild-shared \
+      -GNinja \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=None \
+      -DBUILD_SHARED_LIBS=ON
+    cmake \
+      -Bbuild-static \
+      -GNinja \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=None \
+      -DBUILD_SHARED_LIBS=OFF
+}
+
+build(){
+    ninja -Cbuild-shared
+    ninja -Cbuild-static
+}
+
+package(){
+    ninja -Cbuild-shared install
+    ninja -Cbuild-static install
+    cd "${DESTDIR}"/usr/lib64
+    for lib in *.so; do
+      ln -sf "${lib}" "${lib}.0"
+    done
+}
+
