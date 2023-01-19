@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-$version/mesa-mesa-$version.tar.gz")
-depends=(libdrm llvm)
+depends=(libva libvdpau libdrm llvm glslang wayland wayland-protocols)
 makedepends=()
 md5sums=('ed193340000a3f32946d490ea53aaddd')
 group=(media.libs)
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd $name-$name-$version
 
 setup(){
-    meson setup build --prefix=/usr
+    meson setup build --prefix=/usr \
         -D b_ndebug=true \
         -D b_lto=true \
         -D platforms=x11,wayland \
@@ -29,11 +29,11 @@ setup(){
         -D egl=enabled \
         -D gallium-extra-hud=true \
         -D gallium-nine=true \
-        -D gallium-omx=bellagio \
         -D gallium-opencl=icd \
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gallium-xa=enabled \
+        -D gallium-omx=bellagio \
         -D gallium-rusticl=true \
         -D rust_std=2021 \
         -D gbm=enabled \
