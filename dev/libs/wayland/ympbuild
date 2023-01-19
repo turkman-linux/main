@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='wayland'
+release='1'
+version='1.21.0'
+url='https://gitlab.freedesktop.org/wayland'
+description='Core Wayland window system code and protocol'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/wayland/wayland/-/archive/$version/wayland-$version.tar.gz")
+depends=(zlib expat libffi xz-utils libxml2)
+makedepends=()
+md5sums=('e7ae08bd1e4ba94905ffe409a1db393e')
+group=(dev.libs)
+uses=()
+uses_extra=(doc)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64 \
+        -Ddocumentation=$(use_opt doc true false)
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

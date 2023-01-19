@@ -15,6 +15,7 @@ group=(media.libs)
 uses=(wayland x11)
 arch=('x86_64')
 x11_depends=(libXext libXfixes)
+wayland_depends=(wayland)
 
 cd $name-$version
 
@@ -33,6 +34,7 @@ build(){
 
 package(){
     ninja -C build install
+    mkdir -p ${DESTDIR}/etc/
     echo "LIBVA_MESSAGING_LEVEL=1" > ${DESTDIR}/etc/libva.conf
 }
 
