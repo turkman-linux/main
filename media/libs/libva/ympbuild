@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libva'
+release='1'
+version='2.17.0'
+url='https://github.com/intel/libva'
+description='An implementation for VA-API (Video Acceleration API)'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/intel/libva/releases/download/$version/libva-$version.tar.bz2")
+depends=(libdrm libgl)
+makedepends=()
+md5sums=('727e7c76102b926c8411b8468fd194f5')
+group=(media.libs)
+uses=(wayland x11)
+arch=('x86_64')
+x11_depends=(libXext libXfixes)
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dwith_glx=yes \
+        -Dwith_x11=$(use_opt x11 yes no) \
+        -Dwith_wayland=$(use_opt wayland yes no)
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+    echo "LIBVA_MESSAGING_LEVEL=1" > ${DESTDIR}/etc/libva.conf
+}
+
