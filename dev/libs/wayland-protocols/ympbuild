@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='wayland-protocols'
+release='1'
+version='1.31'
+url='https://gitlab.freedesktop.org/wayland/wayland-protocols'
+description='Wayland protocol files'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/$version/downloads/wayland-protocols-$version.tar.xz")
+depends=()
+makedepends=()
+md5sums=('1584de13eb30a4d1f2cd06c08ee24354')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build \
+        --prefix=/usr \
+        -Ddefault_library=both
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
