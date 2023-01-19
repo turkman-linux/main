@@ -19,6 +19,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
+        -D default_library=both \
         -D udev=false \
         -D etnaviv=disabled \
         -D freedreno=disabled \

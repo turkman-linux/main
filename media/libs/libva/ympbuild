@@ -22,6 +22,7 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
+        -Ddefault_library=both \
         -Db_lto=true \
         -Dwith_glx=no \
         -Dwith_x11=$(use_opt x11 yes no) \

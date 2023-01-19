@@ -21,6 +21,7 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64 \
+        -Ddefault_library=both \
         -Ddocumentation=$(use_opt doc true false)
 }
 

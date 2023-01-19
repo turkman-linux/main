@@ -15,16 +15,21 @@ md5sums=('8b74d3db544b496f6bb33d2648db5d2f'
     'SKIP')
 group=()
 uses=()
+uses_extra=(pam)
+pam_depends=(pam)
 arch=('x86_64')
 
 cd $name-$version
 
 setup(){
     meson setup build \
+        --sysconfdir=/etc \
+        --prefix=/ \
+        -Ddefault_library=both \
         -Dzsh-completions=true \
-		-Dbash-completions=true \
-		-Dpam=false \
-		-Dpkgconfig=true
+        -Dbash-completions=true \
+        -Dpam=$(use_opt pam true false) \
+        -Dpkgconfig=true
 }
 
 build(){
@@ -32,6 +37,7 @@ build(){
 }
 
 package(){
+    export DESTDIR=${DESTDIR}//
     ninja -C build install
     # disable all services
     rm -f ${DESTDIR}/etc/runlevels/*/*
@@ -46,5 +52,8 @@ package(){
     echo "uucp:x:10:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
     # symlink init
     ln -s openrc-init ${DESTDIR}/sbin/init
+    # move /share to /usr/share
+    mkdir ${DESTDIR}/usr
+    mv ${DESTDIR}/{,usr}/share
 }
 

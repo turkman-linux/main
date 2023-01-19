@@ -19,6 +19,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
+        -Ddefault_library=both \
         --libdir=/usr/lib64 \
         -Ddri2=true
 }
