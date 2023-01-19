@@ -7,10 +7,10 @@ description='An implementation for VA-API (Video Acceleration API)'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/intel/libva/releases/download/$version/libva-$version.tar.bz2")
-depends=(libdrm libgl)
+source=("https://github.com/intel/libva/archive/$version.tar.gz")
+depends=(libdrm)
 makedepends=()
-md5sums=('727e7c76102b926c8411b8468fd194f5')
+md5sums=('0ac769fc61c2f7c1dd0916f12794549d')
 group=(media.libs)
 uses=(wayland x11)
 arch=('x86_64')
@@ -21,7 +21,8 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-        -Dwith_glx=yes \
+        -Db_lto=true \
+        -Dwith_glx=no \
         -Dwith_x11=$(use_opt x11 yes no) \
         -Dwith_wayland=$(use_opt wayland yes no)
 }
