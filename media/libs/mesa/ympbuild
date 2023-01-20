@@ -9,7 +9,7 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-$version/mesa-mesa-$version.tar.gz")
 depends=(libva libvdpau libdrm llvm glslang wayland wayland-protocols)
-makedepends=()
+makedepends=(git)
 md5sums=('ed193340000a3f32946d490ea53aaddd')
 group=(media.libs)
 uses=()
@@ -33,9 +33,6 @@ setup(){
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gallium-xa=enabled \
-        -D gallium-omx=bellagio \
-        -D gallium-rusticl=true \
-        -D rust_std=2021 \
         -D gbm=enabled \
         -D gles1=disabled \
         -D gles2=enabled \
@@ -49,6 +46,9 @@ setup(){
         -D microsoft-clc=disabled \
         -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
         -D valgrind=disabled
+        -D gallium-omx=bellagio \
+        -D gallium-rusticl=true \
+        -D rust_std=2021 \
 }
 
 build(){

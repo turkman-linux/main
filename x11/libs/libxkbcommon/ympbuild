@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='libxkbcommon'
+release='1'
+version='1.5.0'
+url='https://github.com/xkbcommon/libxkbcommon'
+description='keymap handling library for toolkits and window systems'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-$version.tar.gz")
+depends=(libxml2 libxcb)
+makedepends=()
+md5sums=('94123bad1ad88688134b91349b496c02')
+group=(x11.libs)
+uses=(wayland)
+wayland_depends=(wayland)
+arch=('x86_64')
+
+cd libxkbcommon-xkbcommon-$version
+
+setup(){
+    meson setup build \
+        --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Denable-docs=false \
+        -Denable-wayland=$(use_opt wayland true false)
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
