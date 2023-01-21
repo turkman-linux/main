@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='mtdev'
+release='1'
+version='1.1.6'
+url='https://bitmath.org/code/mtdev/'
+description='Multitouch Protocol Translation Library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://bitmath.org/code/mtdev/mtdev-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('add648e38e26167ecdf78f0cd527a672')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

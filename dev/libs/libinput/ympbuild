@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libinput'
+release='1'
+version='1.22.1'
+url='https://gitlab.freedesktop.org/libinput/libinput'
+description='Input device management and event handling library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/libinput/libinput/-/archive/$version/libinput-$version.tar.gz")
+depends=(eudev mtdev libevdev)
+makedepends=()
+md5sums=('d164313f9a92162df7af3505b6915c76')
+group=(dev.libs)
+uses=()
+uses_extra=(wacom)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dudev-dir=/lib64/udev \
+        -Dlibwacom=$(use_opt wacom true false) \
+        -Ddebug-gui=false \
+        -Dtests=false
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

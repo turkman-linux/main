@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libevdev'
+release='1'
+version='1.13.0'
+url='https://https://gitlab.freedesktop.org/libevdev/libevdev'
+description='Wrapper library for evdev devices'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/libevdev/libevdev/-/archive/libevdev-1.13.0/libevdev-libevdev-1.13.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('543bb8a1ea75720ed6cd6503614edeeb')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
