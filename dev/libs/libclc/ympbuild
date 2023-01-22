@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libclc'
+release='1'
+version='15.0.6'
+url='https://libclc.llvm.org/'
+description='Open source implementation of the library requirements of the OpenCL C programming language'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/libclc-$version.src.tar.xz")
+depends=(spirv-llvm-translator)
+makedepends=()
+md5sums=('5fd8548b294168c8fb55839bb16cccb3')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version.src
+
+setup(){
+    mkdir build && cd build
+    cmake .. -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build
+}
+

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+name='spirv-llvm-translator'
+release='1'
+version='14.0.0'
+url='https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
+description='Bi-directional translator between SPIR-V and LLVM IR'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v$version.tar.gz")
+depends=(spirv-tools)
+makedepends=()
+md5sums=('ae2b5b53e27bfbd700346db2d481c7d8')
+group=()
+uses=()
+arch=('x86_64')
+
+cd SPIRV-LLVM-Translator-$version
+
+setup(){
+    mkdir build && cd build
+    cmake .. \
+        -DBUILD_SHARED_LIBS=ON \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+        -DCMAKE_SKIP_RPATH=ON \
+        -DLLVM_INCLUDE_TESTS=ON \
+        -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
+        -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/ \
+        -Wno-dev
+}
+
+build(){
+    make -C build
+}
+
+package(){
+    make -C build install
+}
+
