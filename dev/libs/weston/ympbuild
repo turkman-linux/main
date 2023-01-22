@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='weston'
+release='1'
+version='11.0.1'
+url='https://gitlab.freedesktop.org/wayland/weston'
+description='A lightweight and functional Wayland compositor'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/wayland/weston/-/archive/$version/weston-$version.tar.gz")
+depends=(pixman libdrm)
+makedepends=()
+md5sums=('67ad4a73ed94c3fc9f7aaa3700d311fb')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
