@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+name='clang'
+release='1'
+version='15.0.7'
+url='https://github.com/llvm/llvm-project'
+description='The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=(
+    "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/clang-$version.src.tar.xz"
+    "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/clang-tools-extra-$version.src.tar.xz"
+    "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-$version.src.tar.xz"
+    "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/cmake-$version.src.tar.xz"
+)
+
+depends=(llvm)
+makedepends=()
+md5sums=(
+    'a6d0141e50b48f5e60c682277dac83b4'
+    '68b76dd37b263aca3a5132b5f8c23f80'
+    'c77db4c71e1eb267358204dffe2c6e10'
+    '5be9535f0b93cb6232d0171a8abb3137'
+)
+group=(sys.devel)
+uses=()
+arch=('x86_64')
+
+cd $name-$version.src
+
+prepare(){
+    mv ../cmake{-$version.src,}
+    mv ../clang-tools-extra-$version.src ../clang-$version.src/tools/extra
+}
+
+local cmake_args=(
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_DOCDIR=share/doc
+    -DCMAKE_SKIP_RPATH=ON
+    -DCLANG_DEFAULT_PIE_ON_LINUX=ON
+    -DCLANG_LINK_CLANG_DYLIB=ON
+    -DENABLE_LINKER_BUILD_ID=ON
+    -DLLVM_BUILD_DOCS=OFF
+    -DLLVM_BUILD_TESTS=ON
+    -DLLVM_ENABLE_RTTI=ON
+    -DLLVM_ENABLE_SPHINX=OFF
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit
+    -DLLVM_INCLUDE_DOCS=OFF
+    -DLLVM_LINK_LLVM_DYLIB=ON
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF
+    -DLLVM_MAIN_SRC_DIR="$(realpath ~/llvm-$version.src)"
+  )
+
+setup(){
+    mkdir build && cd build
+    cmake .. ${cmake_args[@]}
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
