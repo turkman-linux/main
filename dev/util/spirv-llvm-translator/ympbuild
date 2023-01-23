@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='spirv-llvm-translator'
 release='1'
-version='14.0.0'
+version='15.0.0'
 url='https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
 description='Bi-directional translator between SPIR-V and LLVM IR'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v$version.tar.gz")
+source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v$version/SPIRV-LLVM-Translator-$version.tar.gz")
 depends=(spirv-tools)
 makedepends=()
-md5sums=('ae2b5b53e27bfbd700346db2d481c7d8')
+md5sums=('19e3ee2fb84754602ec754c594b20a1d')
 group=()
 uses=()
 arch=('x86_64')
@@ -19,23 +19,20 @@ cd SPIRV-LLVM-Translator-$version
 
 setup(){
     mkdir build && cd build
-    cmake .. \
-        -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_BUILD_TYPE=Release \
+    cmake .. -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-        -DCMAKE_SKIP_RPATH=ON \
-        -DLLVM_INCLUDE_TESTS=ON \
+        -DBUILD_SHARED_LIBS=True \
+        -DLLVM_SPIRV_INCLUDE_TESTS=1 \
         -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
-        -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/ \
-        -Wno-dev
+        -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv
+
 }
 
 build(){
-    make -C build
+    ninja -C build
 }
 
 package(){
-    make -C build install
+    ninja -C build install
 }
 
