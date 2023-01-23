@@ -1,44 +1,55 @@
 #!/usr/bin/env bash
-name='llvm'
+name='llvm15'
 release='1'
-version='14.0.3'
+version='15.0.7'
 url='https://llvm.org'
 description='Low Level Virtual Machine'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-$version.src.tar.xz")
+source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-$version.src.tar.xz"
+        "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/cmake-$version.src.tar.xz")
 depends=(libffi xz-utils libxml2 zlib)
 makedepends=(git)
-md5sums=('69b637cfee09e3f5d2ec5cc16681cbe7')
+md5sums=('c77db4c71e1eb267358204dffe2c6e10'
+         '5be9535f0b93cb6232d0171a8abb3137')
 group=(sys.devel)
 uses=()
 arch=('x86_64')
 
-cd $name-$version.src
+cd llvm-$version.src
 
 export PYTHON=/usr/bin/python3
 
 cmake_args=(
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_INSTALL_DOCDIR=share/doc
-    -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_INSTALL_LIBDIR=lib64
-    -DCMAKE_SKIP_RPATH=ON
+    -DLLVM_APPEND_VC_REV=OFF
     -DLLVM_BINUTILS_INCDIR=/usr/include
     -DLLVM_BUILD_DOCS=OFF
+    -DLLVM_BUILD_EXAMPLES=OFF
+    -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON
     -DLLVM_BUILD_LLVM_DYLIB=ON
-    -DLLVM_BUILD_TESTS=ON
-    -DLLVM_ENABLE_BINDINGS=OFF
+    -DLLVM_BUILD_TESTS=OFF
+    -DLLVM_ENABLE_ASSERTIONS=OFF
+    -DLLVM_ENABLE_EH=ON
     -DLLVM_ENABLE_FFI=ON
+    -DLLVM_ENABLE_LIBCXX=OFF
+    -DLLVM_ENABLE_PIC=ON
     -DLLVM_ENABLE_RTTI=ON
     -DLLVM_ENABLE_SPHINX=OFF
+    -DLLVM_ENABLE_TERMINFO=ON
+    -DLLVM_ENABLE_ZLIB=ON
+    -DLLVM_ENABLE_ZSTD=OFF
     -DLLVM_INCLUDE_BENCHMARKS=OFF
+    -DLLVM_INCLUDE_EXAMPLES=OFF
     -DLLVM_INSTALL_UTILS=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
-    -DLLVM_USE_PERF=ON
 )
+
+prepare(){
+    mv ../cmake{-$version.src,}
+}
 
 setup(){
     mkdir build
