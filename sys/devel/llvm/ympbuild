@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='llvm15'
+name='llvm'
 release='1'
 version='15.0.7'
 url='https://llvm.org'
