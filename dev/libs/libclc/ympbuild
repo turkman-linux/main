@@ -28,6 +28,6 @@ build(){
 }
 
 package(){
-    ninja -C build
+    ninja -C build install
 }
 
