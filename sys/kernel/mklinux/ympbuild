@@ -2,12 +2,12 @@
 name='mklinux'
 release='1'
 version='20210110'
-url='https://gitlab.com/sulix/devel/sources/mklinux'
+url='https://gitlab.com/turkman/devel/sources/mklinux'
 description='kernel builder'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://gitlab.com/sulix/devel/sources/mklinux/-/archive/$version/mklinux-20210110.zip")
+source=("https://gitlab.com/turkman/devel/sources/mklinux/-/archive/$version/mklinux-20210110.zip")
 depends=(bc findutils file tar elfutils gcc binutils bison flex make kmod rsync)
 makedepends=()
 md5sums=('4b52b460a7c36237c84d1f96d25dc8f1')

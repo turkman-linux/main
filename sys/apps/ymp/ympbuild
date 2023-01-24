@@ -2,12 +2,12 @@
 name='ymp'
 release='1'
 version='1.0'
-url='https://gitlab.com/sulix/devel/sources/ymp'
+url='https://gitlab.com/turkman/devel/sources/ymp'
 description='Yerli ve Milli Package manager'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://gitlab.com/sulix/devel/sources/ymp/-/archive/${version}/ymp-${version}.tar.gz")
+source=("https://gitlab.com/turkman/devel/sources/ymp/-/archive/${version}/ymp-${version}.tar.gz")
 depends=(glib readline ncurses)
 makedepends=()
 md5sums=('0839f2586b138c6a5ef949e3c127de2d')

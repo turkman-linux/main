@@ -2,7 +2,7 @@
 name='python'
 release='1'
 version='3.10'
-url='https://gitlab.com/sulix'
+url='https://gitlab.com/turkman'
 description='Python meta package'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'

@@ -2,12 +2,12 @@
 name=base-files
 release=1
 version=1
-url='https://gitlab.com/sulix/devel/sources/base-files'
+url='https://gitlab.com/turkman/devel/sources/base-files'
 description='Base system files'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://gitlab.com/sulix/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
+source=("https://gitlab.com/turkman/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
         "base-files.sysconf")
 md5sums=('e57b8faa37d16c7f5f96be3fe112e68c'
          'SKIP')

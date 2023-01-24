@@ -32,8 +32,8 @@ md5sums=('00e9b89e043340f688bc93ec03239b57'
 uses=(multilib)
 group=(sys.base)
 
-export CFLAGS="-O2 ${debug:+-g} -s -mtune=generic -DSULIX"
-export CXXFLAGS="-O2 ${debug:+-g} -s -mtune=generic -DSULIX"
+export CFLAGS="-O2 ${debug:+-g} -s -mtune=generic -DTURKMAN"
+export CXXFLAGS="-O2 ${debug:+-g} -s -mtune=generic -DTURKMAN"
 
 cd "$name-$version"
 setup(){
@@ -43,7 +43,6 @@ setup(){
         --prefix=/usr
         --mandir=/usr/share/man
         --infodir=/usr/share/info
-        --with-bugurl=http://gitlab.com/sulix/main/issues
         --enable-bind-now
         --enable-cet
         --enable-kernel=5.10

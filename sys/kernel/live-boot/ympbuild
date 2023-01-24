@@ -2,7 +2,7 @@
 name='live-boot'
 release='1'
 version='1.0'
-url='https://gitlab.com/sulix'
+url='https://gitlab.com/turkman'
 description='initramfs tools live hooks'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
