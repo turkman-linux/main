@@ -3,12 +3,11 @@ name='libdatrie'
 release='1'
 version='0.2.13'
 url='https://linux.thai.net/projects/datrie'
-description='Implementation of double-array structure for representing trie, as proposed by Junichi Aoe.
-'
+description='Implementation of double-array structure for representing trie, as proposed by Junichi Aoe.'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://github.com/tlwg/libdatrie/releases/download/v0.2.13/libdatrie-0.2.13.tar.xz')
+source=("https://github.com/tlwg/libdatrie/releases/download/v$version/libdatrie-$version.tar.xz")
 depends=()
 makedepends=()
 md5sums=('e26b5aa008b5f3588ab38d2dce9e9325')

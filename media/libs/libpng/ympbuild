@@ -7,15 +7,15 @@ description='Portable Network Graphics library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://sourceforge.net/projects/libpng/files/latest/download')
-depends=()
+source=("https://salsa.debian.org/debian/libpng1.6/-/archive/debian/$version-2/libpng1.6-debian-$version-2.tar.gz")
+depends=(zlib)
 makedepends=()
-md5sums=('aa1ae92e172417039bda072b702f6326')
+md5sums=('f57191ff3cc3321b3733d71d00dfeaca')
 group=(media.libs)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd ${name}1.6-debian-$version-2
 
 setup(){
     ./configure --prefix=/usr \
