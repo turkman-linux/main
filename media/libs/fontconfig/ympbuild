@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='fontconfig'
+release='1'
+version='2.14.1'
+url='https://example.org'
+description='Package description missing'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://www.freedesktop.org/software/fontconfig/release/fontconfig-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('f3b930f329e66915e875b5aa498658ad')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+    # fix symlinks
+    for link in $(ls ${DESTDIR}/etc/fonts/conf.d/) ; do
+        if [[ -L ${DESTDIR}/etc/fonts/conf.d/$link ]] ; then
+            rm -f ${DESTDIR}/etc/fonts/conf.d/$link
+            ln -s ../../../usr/share/fontconfig/conf.avail/$link ${DESTDIR}/etc/fonts/conf.d/$link
+        fi
+    done
+}
+

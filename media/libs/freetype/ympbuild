@@ -12,14 +12,16 @@ depends=()
 makedepends=()
 md5sums=('3adb0e35d3c100c456357345ccfa8056')
 group=(media.libs)
-uses=()
+uses=(harfbuzz)
+harfbuzz_depends=(harfbuzz)
 arch=('x86_64')
 
 cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+    --with-harfbuzz=$(use_opt harfbuzz yes no)
 }
 
 build(){

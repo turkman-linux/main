@@ -19,7 +19,8 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ -Dimage-jpeg=false -Dimage-webp=false -Drenderer-gl=false \
+    -Dlauncher-logind=false
 }
 
 build(){

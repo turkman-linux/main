@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='pango'
+release='1'
+version='1.50.12'
+url='https://example.org'
+description='Internationalized text layout and rendering library'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.gnome.org/GNOME/pango/-/archive/1.50.12/pango-1.50.12.tar.gz')
+depends=(fribidi libthai harfbuzz cairo)
+makedepends=()
+md5sums=('66cec144bf9d69cf84819961ddd9d2f9')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

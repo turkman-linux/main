@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='harfbuzz'
+release='1'
+version='6.0.0'
+url='https://github.com/harfbuzz/harfbuzz'
+description='HarfBuzz text shaping engine'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('7c71bb68e5950f4eb9b7ace8be0de426')
+group=()
+uses=(freetype)
+freetype_depends=(freetype)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dfreetype=$(use_opt freetype enabled disabled)
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
