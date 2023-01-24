@@ -11,7 +11,7 @@ source=('https://files.pythonhosted.org/packages/95/7e/68018b70268fb4a2a605e2be4
 depends=(python)
 makedepends=()
 md5sums=('02f337b98aef11bd0fee9c5ae860173b')
-group=()
+group=(dev.python)
 uses=()
 arch=('x86_64')
 

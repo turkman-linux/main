@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='setuptools'
+name='py3-setuptools'
 release='1'
 version='65.6.3'
 url='https://pypi.org/project/setuptools/'
@@ -15,7 +15,7 @@ uses=()
 group=(dev.python)
 arch=('x86_64')
 
-cd $name-$version
+cd setuptools-$version
 
 build(){
     python3 setup.py build

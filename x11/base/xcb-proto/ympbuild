@@ -19,7 +19,9 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64
+        --libdir=/usr/lib64 \
+        --with-python_prefix=/usr/lib64/python3 \
+        --with-python_exec_prefix=/usr/lib64/python3
 }
 
 build(){
@@ -28,4 +30,7 @@ build(){
 
 package(){
     make install -j`nproc`
+    # Move files
+    mv ${DESTDIR}/usr/lib64/python3/lib/python*/site-packages/xcbgen ${DESTDIR}/usr/lib64/python3/xcbgen
+    rm -rf ${DESTDIR}/usr/lib64/python3/lib
 }
