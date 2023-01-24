@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libthai'
+release='1'
+version='0.1.29'
+url='https://github.com/tlwg/libthai'
+description='Package libthai'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/tlwg/libthai/releases/download/v0.1.29/libthai-0.1.29.tar.xz')
+depends=(libdatrie)
+makedepends=()
+md5sums=('c1fe8255d2bdfc5ea4f68dd9aff8b7f1')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
