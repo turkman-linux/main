@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-markupsafe'
+release='1'
+version='2.1.2'
+url='https://example.org'
+description='https://pypi.org/project/MarkupSafe'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://files.pythonhosted.org/packages/95/7e/68018b70268fb4a2a605e2be44ab7b4dd7ce7808adae6c5ef32e34f4b55a/MarkupSafe-2.1.2.tar.gz')
+depends=(python)
+makedepends=()
+md5sums=('02f337b98aef11bd0fee9c5ae860173b')
+group=()
+uses=()
+arch=('x86_64')
+
+cd MarkupSafe-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+

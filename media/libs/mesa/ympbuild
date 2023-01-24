@@ -14,6 +14,7 @@ md5sums=('ed193340000a3f32946d490ea53aaddd')
 group=(media.libs)
 uses=(wayland x11)
 wayland_depends=(wayland wayland-protocols)
+x11_depends=(libxshmfence libXxf86vm)
 arch=('x86_64')
 
 cd $name-$name-$version
@@ -39,18 +40,14 @@ setup(){
         -D gles2=enabled \
         -D glvnd=true \
         -D glx=dri \
-        -D libunwind=enabled \
         -D llvm=enabled \
-        -D lmsensors=enabled \
         -D osmesa=true \
         -D shared-glapi=enabled \
         -D microsoft-clc=disabled \
         -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
-        -D valgrind=disabled
-        -D gallium-omx=bellagio \
-        -D gallium-rusticl=true \
-        -D rust_std=2021 \
-        -Dzstd=false \
+        -D valgrind=disabled \
+        -D lmsensors=disabled \
+        -Dzstd=false
 
 }
 
