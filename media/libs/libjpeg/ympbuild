@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='libjpeg-turbo'
+release='1'
+version='2.1.4'
+url='MMX, SSE, and SSE2 SIMD accelerated JPEG library'
+description='https://libjpeg-turbo.org/'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/2.1.4.tar.gz')
+depends=()
+makedepends=()
+md5sums=('357dc26a802c34387512a42697846d16')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib64 ..
+}
+
+build(){
+    cd build
+    make -j`nproc`
+}
+
+package(){
+    cd build
+    make install -j`nproc`
+}
+

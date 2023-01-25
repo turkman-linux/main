@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='seatd'
+release='1'
+version='0.7.0'
+url='https://sr.ht/~kennylevinsen/seatd'
+description='Minimal seat management daemon and universal library'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/kennylevinsen/seatd/archive/refs/tags/0.7.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('922b8a4ca4dfdb1f43a294db9e77bcf7')
+group=(sys.outh)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
