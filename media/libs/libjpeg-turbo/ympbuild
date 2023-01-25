@@ -21,7 +21,8 @@ setup(){
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib64 ..
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib64 \
+        -DWITH_JPEG8=ON ..
 }
 
 build(){
