@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='lcms'
+release='1'
+version='2-2.14'
+url='https://example.org'
+description='Package description missing'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/mm2/Little-CMS/releases/download/lcms2.14/lcms2-2.14.tar.gz')
+depends=()
+makedepends=()
+md5sums=('7f7baa3e605c961b9301135105ee9a34')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

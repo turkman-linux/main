@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='wlroots'
+release='1'
+version='0.16.1'
+url='https://gitlab.freedesktop.org/wlroots/wlroots'
+description='Pluggable, composable, unopinionated modules for building a Wayland compositor'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.16.1/wlroots-0.16.1.tar.gz')
+depends=(seatd hwdata eudev libxkbcommon wayland)
+makedepends=()
+md5sums=('c6e2144108667d6c5b590f626aff7763')
+group=(gui.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
