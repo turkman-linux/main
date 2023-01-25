@@ -14,7 +14,7 @@ md5sums=('0ac769fc61c2f7c1dd0916f12794549d')
 group=(media.libs)
 uses=(wayland x11)
 arch=('x86_64')
-x11_depends=(libXext libXfixes)
+x11_depends=(libX11 libXext libXfixes)
 wayland_depends=(wayland)
 
 cd $name-$version

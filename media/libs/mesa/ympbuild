@@ -8,13 +8,13 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-$version/mesa-mesa-$version.tar.gz")
-depends=(libva libvdpau libdrm llvm glslang elfutils)
+depends=(libva libvdpau libdrm llvm glslang elfutils libclc py3-mako libglvnd)
 makedepends=(git)
 md5sums=('ed193340000a3f32946d490ea53aaddd')
 group=(media.libs)
 uses=(wayland x11)
 wayland_depends=(wayland wayland-protocols)
-x11_depends=(libxshmfence libXxf86vm)
+x11_depends=(libxshmfence libXxf86vm libXrandr)
 arch=('x86_64')
 
 cd $name-$name-$version
