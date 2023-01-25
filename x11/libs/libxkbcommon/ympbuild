@@ -13,7 +13,7 @@ makedepends=()
 md5sums=('94123bad1ad88688134b91349b496c02')
 group=(x11.libs)
 uses=(wayland)
-wayland_depends=(wayland)
+wayland_depends=(wayland-protocols wayland)
 arch=('x86_64')
 
 cd libxkbcommon-xkbcommon-$version
