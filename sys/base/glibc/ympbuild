@@ -96,7 +96,7 @@ package(){
     fi
     for bdir in glibc32-build glibc-build ; do
         if [[ -d $bdir ]] ; then
-            make -C $bdir install  -j$(nproc --all)
+            make -C $bdir install
         fi
     done
     mkdir -p ${DESTDIR}/etc/ld.so.conf.d/ ${DESTDIR}/etc/sysconf.d/ ${DESTDIR}/bin
