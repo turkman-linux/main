@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='xorg-server'
+release='1'
+version='21.1.6'
+url='https://www.x.org/wiki/'
+description='X.Org X servers'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://www.x.org/releases/individual/xserver/xorg-server-21.1.6.tar.xz')
+depends=(libepoxy libfontenc libxkbfile libXfont2 libxcvt mesa libX11 libdrm pixman)
+makedepends=()
+md5sums=('b3d9a66554b2fd72960ea0545a87ea80')
+group=(x11.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

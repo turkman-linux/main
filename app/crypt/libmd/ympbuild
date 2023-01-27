@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libmd'
+release='1'
+version='1.0.3'
+url='https://www.hadrons.org/software/libmd/'
+description='Message Digest functions from BSD systems'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://archive.hadrons.org/software/libmd/libmd-1.0.3.tar.xz')
+depends=()
+makedepends=()
+md5sums=('58f9a39d0a4296c7d2d59287d4f81cdf')
+group=(app.crypt)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make 
+}
+
+package(){
+    make install 
+}
+
