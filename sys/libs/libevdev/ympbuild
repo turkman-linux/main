@@ -11,7 +11,7 @@ source=('https://gitlab.freedesktop.org/libevdev/libevdev/-/archive/libevdev-1.1
 depends=()
 makedepends=()
 md5sums=('543bb8a1ea75720ed6cd6503614edeeb')
-group=()
+group=(sys.libs)
 uses=()
 arch=('x86_64')
 

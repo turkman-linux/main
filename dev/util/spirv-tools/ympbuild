@@ -11,7 +11,7 @@ source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v$version
 depends=(spirv-headers gcc)
 makedepends=()
 md5sums=('9f40d51201510d809dbabc48b076febc')
-group=()
+group=(dev.util)
 uses=()
 arch=('x86_64')
 

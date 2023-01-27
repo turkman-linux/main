@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='sway'
+release='1'
+version='1.8'
+url=''https://github.com/swaywm/sway
+description=='i3-compatible Wayland window manager'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/swaywm/sway/archive/refs/tags/1.8.zip")
+depends=(wlroots json-c)
+makedepends=()
+md5sums=('eaf1d5929dc3587c7345d2b8fd362c0a')
+group=(gui.wm)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

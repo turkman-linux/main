@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='foot'
+release='1'
+version='1.13.1'
+url='https://codeberg.org/dnkl/foot'
+description='Fast, lightweight and minimalistic Wayland terminal emulator'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://codeberg.org/dnkl/foot/archive/$version.tar.gz")
+depends=(wayland)
+makedepends=()
+md5sums=('af8dcc45e4a2c68282d46fce1910d313')
+group=(gui.apps)
+uses=()
+arch=('x86_64')
+
+cd $name
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

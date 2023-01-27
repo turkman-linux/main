@@ -11,7 +11,7 @@ source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v$version
 depends=(spirv-tools llvm)
 makedepends=()
 md5sums=('19e3ee2fb84754602ec754c594b20a1d')
-group=()
+group=(dev.util)
 uses=()
 arch=('x86_64')
 

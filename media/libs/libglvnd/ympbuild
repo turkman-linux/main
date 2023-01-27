@@ -11,7 +11,7 @@ source=("https://gitlab.freedesktop.org/glvnd/libglvnd/-/archive/v$version/libgl
 depends=(libXext)
 makedepends=()
 md5sums=('239b1799a2fb82ffe0902b6b7afd469b')
-group=()
+group=(media.libs)
 uses=()
 arch=('x86_64')
 

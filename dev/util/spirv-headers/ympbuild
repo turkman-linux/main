@@ -11,7 +11,7 @@ source=("https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/sdk-$ve
 depends=()
 makedepends=()
 md5sums=('da1982a5df290f7a76ff786af4587ffc')
-group=()
+group=(dev.util)
 uses=()
 arch=('x86_64')
 

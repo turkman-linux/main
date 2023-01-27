@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='xkeyboard-config'
+release='1'
+version='2.37'
+url='https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config'
+description='X keyboard configuration database'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/archive/xkeyboard-config-$version/xkeyboard-config-xkeyboard-config-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('01db3af4da0178c83e53afb9e47d9835')
+group=(x11.misc)
+uses=()
+arch=('x86_64')
+cd $name-$name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

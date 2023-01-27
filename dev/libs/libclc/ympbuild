@@ -11,7 +11,7 @@ source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$version
 depends=(spirv-llvm-translator)
 makedepends=()
 md5sums=('5fd8548b294168c8fb55839bb16cccb3')
-group=()
+group=(dev.libs)
 uses=()
 arch=('x86_64')
 

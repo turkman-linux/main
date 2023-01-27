@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='json-c'
+release='1'
+version='0.16-20220414'
+url='https://github.com/json-c/json-c'
+description='A JSON implementation in C'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/json-c/json-c/archive/refs/tags/json-c-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('4f3288a5f14e0e6abe914213f41234e0')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+    mkdir build && cd build
+    cmake .. \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build(){
+    make -C build
+}
+
+package(){
+    make install -C build
+}
+

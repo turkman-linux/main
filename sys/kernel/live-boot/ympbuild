@@ -15,7 +15,7 @@ makedepends=()
 md5sums=('SKIP'
          'SKIP'
         )
-group=()
+group=(sys.kernel)
 uses=()
 arch=('x86_64')
 

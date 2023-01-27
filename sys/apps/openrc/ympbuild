@@ -13,7 +13,7 @@ depends=()
 makedepends=()
 md5sums=('8b74d3db544b496f6bb33d2648db5d2f'
     'SKIP')
-group=()
+group=(sys.apps)
 uses=()
 uses_extra=(pam)
 pam_depends=(pam)
@@ -50,8 +50,6 @@ package(){
     mkdir -p ${DESTDIR}/etc/passwd.d
     echo "uucp:x:14:" > ${DESTDIR}/etc/group.d/uucp
     echo "uucp:x:10:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
-    # symlink init
-    ln -s openrc-init ${DESTDIR}/sbin/init
     # move /share to /usr/share
     mkdir ${DESTDIR}/usr
     mv ${DESTDIR}/{,usr}/share
