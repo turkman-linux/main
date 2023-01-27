@@ -18,19 +18,16 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    mkdir build
-    cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib64 ..
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64
 }
 
 build(){
-    cd build
-    make -j`nproc`
+    make
 }
 
 package(){
-    cd build
-    make install -j`nproc`
+    make install
 }
 
