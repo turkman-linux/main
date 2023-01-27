@@ -1,5 +1,4 @@
 #!/bin/sh
-mkdir -p /var/lib/ymp/sysconf/initramfs-tools/
 if [ ! -f /var/lib/ymp/sysconf/initramfs-tools/postinstall.done ] ; then
     touch /etc/initramfs-tools/modules
     mkdir -p /etc/initramfs-tools/scripts

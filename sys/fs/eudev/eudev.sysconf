@@ -1,5 +1,4 @@
 #!/bin/sh
-mkdir -p /var/lib/ymp/sysconf/eudev/
 if [ ! -f /var/lib/ymp/sysconf/eudev/postinst.done ] ; then
     udevadm hwdb --update
     date > /var/lib/ymp/sysconf/eudev/postinst.done

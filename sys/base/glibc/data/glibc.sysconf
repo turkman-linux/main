@@ -12,5 +12,5 @@ touch /var/lib/ymp/sysconf/glibc/update.date
 last=$(cat /var/lib/ymp/sysconf/glibc/update.date)
 if [ "$current" != "$last" ] ; then
     /bin/locale-gen
-    echo "$current" > /var/lib/ymp/sysconf/glibc/update.date
+    echo "$(date +%s -r /etc/locale.gen)" > /var/lib/ymp/sysconf/glibc/update.date
 fi
