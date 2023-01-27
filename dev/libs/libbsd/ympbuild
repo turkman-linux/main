@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='libbsd'
+release='1'
+version='0.11.7'
+url='https://libbsd.freedesktop.org/wiki/'
+description='Library to provide useful functions commonly found on BSD systems'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/libbsd/libbsd/-/archive/0.11.7/libbsd-0.11.7.tar.gz')
+depends=()
+makedepends=()
+md5sums=('833425f25755618f144161bbf188ef9d')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib64 ..
+}
+
+build(){
+    cd build
+    make -j`nproc`
+}
+
+package(){
+    cd build
+    make install -j`nproc`
+}
+

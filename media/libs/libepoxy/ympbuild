@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libepoxy'
+release='1'
+version='1.5.10'
+url='https://github.com/anholt/libepoxy'
+description='Library for handling OpenGL function pointer management'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/anholt/libepoxy/archive/refs/tags/1.5.10.tar.gz')
+depends=()
+makedepends=()
+md5sums=('f0730aad115c952e77591fcc805b1dc1')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build 
+}
+
+package(){
+    ninja -C build install
+}
+

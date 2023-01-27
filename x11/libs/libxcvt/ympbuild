@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libxcvt'
+release='1'
+version='0.1.2'
+url='https://gitlab.freedesktop.org/xorg/lib/libxcvt'
+description='X.Org xcvt library and cvt program'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/lib/libxcvt/-/archive/libxcvt-0.1.2/libxcvt-libxcvt-0.1.2.tar.gz')
+depends=()
+makedepends=()
+md5sums=('abeb66cb8954dd6bf65cfa88496a6059')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
