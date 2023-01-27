@@ -81,7 +81,7 @@ setup(){
 build(){
     for bdir in glibc-build glibc32-build ; do
         if [[ -d $bdir ]] ; then
-            make -C $bdir -O -j`nproc --all`
+            make -C $bdir all
             make -C $bdir info
         fi
     done
