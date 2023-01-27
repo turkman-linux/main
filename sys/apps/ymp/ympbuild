@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/ymp/-/archive/${version}/ymp-${version}.tar.gz")
 depends=(glib readline ncurses)
 makedepends=(vala)
-md5sums=('4d3a74ec5107b75bae167badf9654de5')
+md5sums=('f59b0cbbdd87116a358350c93ac59a22')
 uses=(curl libarchive)
 curl_depends=(curl)
 libarchive_depends=(libarchive)
@@ -18,15 +18,16 @@ group=(sys.apps)
 arch=('x86_64')
 
 cd $name-$version
+
+unset CFLAGS
+unset CXXFLAGS
+
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/lib64 \
-        --bindir=/bin \
-        -Dshared=true -Dstatic=false \
+        --libdir=/usr/lib64 \
         $(use_opt curl  -Dlibcurl=true -Dlibcurl=false) \
         $(use_opt libarchive -Dlibarchive=true -Dlibarchive=false) \
-        -Dlibbrotli=false \
-        -Dscripts=true
+        -Ddebug=true -Dshared=true -Dscripts=true -Dlibbrotli=false
 }
 
 build(){
