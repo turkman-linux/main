@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='xf86-video-intel'
+release='1'
+version='2.99.917'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel'
+description='X.Org driver for Intel cards'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://salsa.debian.org/xorg-team/driver/xserver-xorg-video-intel/-/archive/xserver-xorg-video-intel-2_2.99.917+git20210115-1/xserver-xorg-video-intel-xserver-xorg-video-intel-2_2.99.917+git20210115-1.tar.gz')
+depends=()
+makedepends=()
+md5sums=('65da7b24b5fe8ccaf94c387d81ecd623')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+_name=xserver-xorg-video-intel
+_version=2_2.99.917+git20210115-1
+
+cd ${_name}-${_name}-${_version}
+
+unset CFLAGS
+unset CXXFLAGS
+
+setup(){
+    autoreconf -vfi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --with-default-dri=3
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+
