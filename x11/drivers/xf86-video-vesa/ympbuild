@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-vesa'
+release='1'
+version='2.6.0'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa'
+description='Generic VESA video driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa/-/archive/xf86-video-vesa-2.6.0/xf86-video-vesa-xf86-video-vesa-2.6.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('a8f47591a028f7692cdc6a3244f6a689')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

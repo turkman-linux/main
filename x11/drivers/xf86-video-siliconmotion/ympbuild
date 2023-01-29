@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-siliconmotion'
+release='1'
+version='1.7.9'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-siliconmotion'
+description='Silicon Motion video driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-siliconmotion/-/archive/xf86-video-siliconmotion-1.7.9/xf86-video-siliconmotion-xf86-video-siliconmotion-1.7.9.tar.gz')
+depends=()
+makedepends=()
+md5sums=('e54fd7373b512d7e29697ffe5c4fe1bb')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

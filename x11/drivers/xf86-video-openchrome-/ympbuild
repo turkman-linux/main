@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='xf86-video-openchrome'
+release='1'
+version='0.6.0'
+url='https://www.freedesktop.org/wiki/Openchrome/'
+description='X.Org driver for VIA/S3G cardss'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://www.x.org/archive/individual/driver/xf86-video-openchrome-0.6.0.tar.gz')
+depends=(libXvMC)
+makedepends=()
+md5sums=('7c2975c01979e50c25d2f1872ae78edb')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

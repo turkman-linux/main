@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='xf86-video-intel'
+release='1'
+version='2.99.917'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel'
+description='X.Org driver for Intel cards'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/2.99.917/xf86-video-intel-2.99.917.tar.gz')
+depends=()
+makedepends=()
+md5sums=('d64f75756e20c39d94af45f12cfb5a7b')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

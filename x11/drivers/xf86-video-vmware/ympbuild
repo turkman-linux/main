@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-vmware'
+release='1'
+version='13.4.0'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware.git/'
+description='VMware SVGA video driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware/-/archive/xf86-video-vmware-13.4.0/xf86-video-vmware-xf86-video-vmware-13.4.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('6fcf466842c430a1901eafb7e71dae12')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

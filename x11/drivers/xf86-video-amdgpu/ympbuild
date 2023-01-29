@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-amdgpu'
+release='1'
+version='22.0.0'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu'
+description='Accelerated Open Source driver for AMDGPU cards'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu/-/archive/xf86-video-amdgpu-22.0.0/xf86-video-amdgpu-xf86-video-amdgpu-22.0.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('69886597f9672cd6f0eec93599e993c2')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

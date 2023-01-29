@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-nouveau'
+release='1'
+version='1.0.17'
+url='https://cgit.freedesktop.org/nouveau/xf86-video-nouveau'
+description='Accelerated Open Source driver for nVidia cards'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau/-/archive/xf86-video-nouveau-1.0.17/xf86-video-nouveau-xf86-video-nouveau-1.0.17.tar.gz')
+depends=()
+makedepends=()
+md5sums=('25bff83c14f949979026a691b8922b7b')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

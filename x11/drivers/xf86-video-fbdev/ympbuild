@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-fbdev'
+release='1'
+version='0.5.0'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-fbdev'
+description='video driver for framebuffer devic'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-fbdev/-/archive/xf86-video-fbdev-0.5.0/xf86-video-fbdev-xf86-video-fbdev-0.5.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('fb340818b4cb6554614f60e20570f102')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

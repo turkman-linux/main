@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-qxl'
+release='1'
+version='0.1.6'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-qxl'
+description='QEMU QXL paravirt video driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://www.x.org/releases/individual/driver/xf86-video-qxl-0.1.6.tar.xz')
+depends=(freetype spice-protocol)
+makedepends=()
+md5sums=('5d3a4ac0f6b21d62ff4e308717ff239f')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

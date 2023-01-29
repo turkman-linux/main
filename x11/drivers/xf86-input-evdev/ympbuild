@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-input-evdev'
+release='1'
+version='2.10.6'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev'
+description='Generic Linux input driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev/-/archive/xf86-input-evdev-2.10.6/xf86-input-evdev-xf86-input-evdev-2.10.6.tar.gz')
+depends=(mtdev libevdev eudev)
+makedepends=()
+md5sums=('ebbe135b06724c3d8319790561b442d9')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+    	./autogen.sh
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

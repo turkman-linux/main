@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-input-wacom'
+release='1'
+version='1.1.0'
+url='https://github.com/linuxwacom/xf86-input-wacom'
+description='Driver for Wacom tablets and drawing devices'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/linuxwacom/xf86-input-wacom/archive/refs/tags/xf86-input-wacom-1.1.0.tar.gz')
+depends=(libXi libXinerama)
+makedepends=()
+md5sums=('263cbd0340f8b62f0ce526d0a67916ee')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

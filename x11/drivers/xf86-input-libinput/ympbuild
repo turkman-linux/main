@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-input-libinput'
+release='1'
+version='1.2.1'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput'
+description='X.org input driver based on libinput'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput/-/archive/xf86-input-libinput-1.2.1/xf86-input-libinput-xf86-input-libinput-1.2.1.tar.gz')
+depends=(libinput)
+makedepends=()
+md5sums=('ed0dd2f3bad3b982341d9254473893cd')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

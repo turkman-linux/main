@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-geode'
+release='1'
+version='2.11.20'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-geode'
+description='AMD Geode GX2 and LX video driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-geode/-/archive/xf86-video-geode-2.11.20/xf86-video-geode-xf86-video-geode-2.11.20.tar.gz')
+depends=()
+makedepends=()
+md5sums=('92610d3d6ae3b66cebf0d995af57a2b2')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-input-synaptics'
+release='1'
+version='1.9.2'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-input-synaptics'
+description='Driver for Synaptics touchpads'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-input-synaptics/-/archive/xf86-input-synaptics-1.9.2/xf86-input-synaptics-xf86-input-synaptics-1.9.2.tar.gz')
+depends=(libXi)
+makedepends=()
+md5sums=('c698fbee2a938d40aec901fa2e5f1ea3')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

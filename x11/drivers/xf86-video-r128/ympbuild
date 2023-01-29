@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-r128'
+release='1'
+version='6.12.1'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-r128'
+description='ATI Rage128 video drive'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-r128/-/archive/xf86-video-r128-6.12.1/xf86-video-r128-xf86-video-r128-6.12.1.tar.gz')
+depends=()
+makedepends=()
+md5sums=('46cf8f9878982c4d3bcfa6cb14268771')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

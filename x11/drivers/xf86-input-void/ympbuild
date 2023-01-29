@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-input-void'
+release='1'
+version='1.4.2'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-input-void'
+description='null input driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-input-void/-/archive/xf86-input-void-1.4.2/xf86-input-void-xf86-input-void-1.4.2.tar.gz')
+depends=()
+makedepends=()
+md5sums=('90e26ef2ebe0a9c038acac3368e6677e')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

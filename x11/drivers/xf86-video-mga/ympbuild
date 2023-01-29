@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-mga'
+release='1'
+version='2.0.1'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-mga'
+description='Matrox video driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-mga/-/archive/xf86-video-mga-2.0.1/xf86-video-mga-xf86-video-mga-2.0.1.tar.gz')
+depends=()
+makedepends=()
+md5sums=('363a2f8b75feeb4563c6a3ffa735a562')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

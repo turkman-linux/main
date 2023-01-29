@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-video-omap'
+release='1'
+version='0.4.5'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-omap'
+description='OMAP video driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-omap/-/archive/xf86-video-omap-0.4.5/xf86-video-omap-xf86-video-omap-0.4.5.tar.gz')
+depends=()
+makedepends=()
+md5sums=('9e37feb542b52ad43370955a41356604')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+

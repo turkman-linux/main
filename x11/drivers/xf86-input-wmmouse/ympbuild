@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-input-vmmouse'
+release='1'
+version='13.2.0'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-input-vmmouse'
+description='VMWare mouse input driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.freedesktop.org/xorg/driver/xf86-input-vmmouse/-/archive/xf86-input-vmmouse-13.2.0/xf86-input-vmmouse-xf86-input-vmmouse-13.2.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('f4996b6ddcdb0416fdc38f958ebc788a')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make
+}
+
+package(){
+    make install
+}
+
