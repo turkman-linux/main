@@ -2,8 +2,8 @@
 name='libXres'
 release='1'
 version='1.2.2'
-url='https://example.org'
-description='Package libXresg'
+url='https://gitlab.freedesktop.org/xorg/lib/libXres.git/'
+description='X.Org XRes library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

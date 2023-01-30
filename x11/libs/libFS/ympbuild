@@ -2,12 +2,12 @@
 name='libFS'
 release='1'
 version='1.0.9'
-url='https://example.org'
-description='Package libFS'
+url='https://gitlab.freedesktop.org/xorg/lib/libFS'
+description='X.Org FS library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://www.x.org/archive/individual/lib/libFS-1.0.9.tar.xz')
+source=("https://www.x.org/archive/individual/lib/libFS-$version.tar.xz")
 depends=(xorgproto)
 makedepends=()
 md5sums=('742863a552ecd53cdb957b7b276213cc')

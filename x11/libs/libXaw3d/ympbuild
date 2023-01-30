@@ -2,8 +2,8 @@
 name='libXaw3d'
 release='1'
 version='1.6.4'
-url='https://example.org'
-description='Package libXaw3d'
+url='https://gitlab.freedesktop.org/xorg/lib/libXaw3d'
+description='X.Org Xaw3d library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

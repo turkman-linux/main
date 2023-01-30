@@ -2,12 +2,12 @@
 name='libnsl'
 release='1'
 version='2.0.0'
-url='https://example.org'
+url='https://github.com/thkukuk/libnsl'
 description='Public client interface library for NIS(YP)'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('LGPL2.1')
-source=('https://github.com/thkukuk/libnsl/releases/download/v2.0.0/libnsl-2.0.0.tar.xz')
+source=("https://github.com/thkukuk/libnsl/releases/download/v$version/libnsl-$version.tar.xz")
 depends=(libtirpc)
 makedepends=( )
 md5sums=('1e8c0615071ea13202452304de1eaab9')

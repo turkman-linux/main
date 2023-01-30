@@ -2,8 +2,8 @@
 name='libXcomposite'
 release='1'
 version='0.4.6'
-url='https://example.org'
-description='Package libXcomposite'
+url='https://gitlab.freedesktop.org/xorg/lib/libXcomposite'
+description='X.Org Xcomposite library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

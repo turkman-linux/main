@@ -2,7 +2,7 @@
 name='libxkbui'
 release='1'
 version='1.0.2'
-url='https://example.org'
+url='https://www.x.org/archive/individual/lib/'
 description='Package libxkbui'
 email='bayramk@gmail.com'
 maintainer='bk'

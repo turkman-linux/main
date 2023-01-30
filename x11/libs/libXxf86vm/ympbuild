@@ -2,8 +2,8 @@
 name='libXxf86vm'
 release='1'
 version='1.1.5'
-url='https://example.org'
-description='Package libXxf86vm'
+url='https://gitlab.freedesktop.org/xorg/lib/libXxf86vm.git/'
+description='X.Org Xxf86vm library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

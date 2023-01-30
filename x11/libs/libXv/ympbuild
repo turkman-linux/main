@@ -2,8 +2,8 @@
 name='libXv'
 release='1'
 version='1.0.12'
-url='https://example.org'
-description='Package libXv'
+url='https://gitlab.freedesktop.org/xorg/lib/libXv.git/'
+description='X.Org Xv library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

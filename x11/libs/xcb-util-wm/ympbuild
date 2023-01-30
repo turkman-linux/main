@@ -2,8 +2,8 @@
 name='xcb-util-wm'
 release='1'
 version='0.4.2'
-url='https://example.org'
-description='Package xcb-util-wm'
+url='https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git/'
+description='X C-language Bindings sample implementations'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

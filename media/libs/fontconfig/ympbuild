@@ -2,9 +2,9 @@
 name='fontconfig'
 release='1'
 version='2.14.1'
-url='https://example.org'
-description='Package description missing'
-email='bk@gmail.com'
+url='https://www.freedesktop.org/software/fontconfig/'
+description='Fontconfig is a library for configuring and customizing font access.'
+email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://www.freedesktop.org/software/fontconfig/release/fontconfig-$version.tar.gz")

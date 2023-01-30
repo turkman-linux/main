@@ -2,7 +2,7 @@
 name='hello'
 release='1'
 version='2.12'
-url='https://example.org'
+url='https://ftp.gnu.org/gnu/'
 description='Hello world Package'
 email='parduscix@yandex.ru'
 maintainer='sulincix'

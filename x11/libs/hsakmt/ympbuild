@@ -2,7 +2,7 @@
 name='hsakmt'
 release='1'
 version='1.0.0'
-url='https://example.org'
+url='https://www.x.org/archive/individual/lib/'
 description='Package hsakt'
 email='bayramk@gmail.com'
 maintainer='bk'

@@ -2,8 +2,8 @@
 name='libxshmfence'
 release='1'
 version='1.3.2'
-url='https://example.org'
-description='Package libxshmfence'
+url='https://gitlab.freedesktop.org/xorg/lib/libxshmfence.git/'
+description='Shared memory fences using futexes'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

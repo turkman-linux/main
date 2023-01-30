@@ -2,8 +2,8 @@
 name='libXi'
 release='1'
 version='1.8'
-url='https://example.org'
-description='Package libXi'
+url='https://gitlab.freedesktop.org/xorg/lib/libXi.git/'
+description='X.Org Xi library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

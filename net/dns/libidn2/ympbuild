@@ -2,12 +2,12 @@
 name='libidn2'
 release='1'
 version='2.3.4'
-url='https://example.org'
+url='https://www.gnu.org/software/libidn/'
 description='Libidn2 is a free software implementation of IDNA2008, Punycode and Unicode TR46'
 email=' parduscix@yandex.ru'
 maintainer=' sulincix'
 license=('GPLv3')
-source=('https://ftp.gnu.org/gnu/libidn/libidn2-2.3.4.tar.gz')
+source=("https://ftp.gnu.org/gnu/libidn/libidn2-$version.tar.gz")
 depends=(libunistring)
 makedepends=( )
 md5sums=('a12109804fc9c5d7fb31f068c66655b8')

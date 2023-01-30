@@ -2,8 +2,8 @@
 name='pixman'
 release='1'
 version='0.42.2'
-url='https://example.org'
-description='Package pixman'
+url='https://gitlab.freedesktop.org/pixman/pixman.git/'
+description='Low-level pixel manipulation routines'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

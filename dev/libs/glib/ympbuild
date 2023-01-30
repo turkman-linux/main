@@ -7,8 +7,8 @@ description='Low-level core library that forms the basis for projects such as GT
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=('https://download.gnome.org/sources/glib/2.75/glib-2.75.0.tar.xz'
-        'glib.sysconf')
+source=("https://download.gnome.org/sources/glib/2.75/glib-${version}.tar.xz"
+        "glib.sysconf")
 depends=(libffi util-linux libpcre2 zlib)
 makedepends=( )
 md5sums=('6ac05ed98272c0a1927fbf1e32ebab8c'

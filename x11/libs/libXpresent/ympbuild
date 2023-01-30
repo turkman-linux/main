@@ -2,8 +2,8 @@
 name='libXpresent'
 release='1'
 version='1.0.1'
-url='https://example.org'
-description='Package libXpresent'
+url='https://gitlab.freedesktop.org/xorg/lib/libXpresent.git/'
+description='X Present Extension C Library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

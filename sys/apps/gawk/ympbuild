@@ -2,7 +2,7 @@
 name='gawk'
 release='1'
 version='5.2.1'
-url='https://example.org'
+url='https://savannah.gnu.org/projects/gawk'
 description='GNU awk pattern-matching language'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'

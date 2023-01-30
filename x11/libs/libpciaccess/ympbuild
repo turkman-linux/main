@@ -2,8 +2,8 @@
 name='libpciaccess'
 release='1'
 version='0.17'
-url='https://example.org'
-description='Package libpciaccess'
+url='https://gitlab.freedesktop.org/xorg/lib/libpciaccess'
+description='Library providing generic access to the PCI bus and devices'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
