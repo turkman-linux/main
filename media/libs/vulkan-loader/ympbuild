@@ -33,10 +33,10 @@ setup(){
 }
 
 build(){
-    make -j`nproc` -C build
+    make $jobs -C build
 }
 
 package(){
-    make -C build install -j`nproc`
+    make -C build install $jobs
 }
 

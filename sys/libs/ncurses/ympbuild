@@ -37,9 +37,9 @@ setup(){
 
 build(){
     cd ../widec
-    make -j$(nproc)
+    make $jobs
     cd ../$name-$version
-    make -j$(nproc)
+    make $jobs
 
 }
 
@@ -67,7 +67,7 @@ package(){
         ln -sv ${lib}.so.${so_ver} "$DESTDIR"/lib64/${lib}.so.5
     done
     cd ../widec
-    make -j$(nproc) install
+    make $jobs install
     cd ../$name-$version
-    make -j$(nproc) install
+    make $jobs install
 }

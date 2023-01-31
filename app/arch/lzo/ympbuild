@@ -22,13 +22,13 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
     gcc $CXXFLAGS $CFLAGS -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minilzo.c
     gcc $LDFLAGS -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     install -m 755 libminilzo.so.0 "${DESTDIR}"/usr/lib64
     install -p -m 644 minilzo/minilzo.h ${DESTDIR}/usr/include/lzo
     ln -s libminilzo.so.0 "${DESTDIR}"/usr/lib64/libminilzo.so

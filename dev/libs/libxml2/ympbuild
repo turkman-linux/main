@@ -29,11 +29,11 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     if [ -d ${DESTDIR}/usr/lib ] ; then
         mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
         rmdir ${DESTDIR}/usr/lib/

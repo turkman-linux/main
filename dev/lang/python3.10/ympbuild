@@ -36,11 +36,11 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     # this symlinks provided by main python metapackage
     for bin in pydoc3 idle3 python3 python3-config pip3 2to3; do
         rm -f ${DESTDIR}/usr/bin/$bin

@@ -17,11 +17,11 @@ arch=('x86_64')
 cd $name-$version
 
 build(){
-    make -j`nproc` PREFIX=/usr
+    make $jobs PREFIX=/usr
 }
 
 package(){
-    make install -j`nproc` PREFIX=/usr
+    make install $jobs PREFIX=/usr
     mv ${DESTDIR}/usr/{lib,lib64}
 }
 

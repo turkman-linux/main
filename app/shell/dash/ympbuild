@@ -24,7 +24,7 @@ setup(){
     --bindir=/bin
 }
 build(){
-    make -j$(nproc)
+    make $jobs
 }
 
 package(){

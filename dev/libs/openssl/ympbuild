@@ -28,8 +28,8 @@ setup(){
 }
 
 build(){
-    make depend -j`nproc`
-    make -j`nproc`
+    make depend $jobs
+    make $jobs
 }
 
 package(){
@@ -39,6 +39,6 @@ package(){
     make DESTDIR="${DESTDIR}" \
     install_sw \
     install_ssldirs \
-    install_man_docs  -j`nproc`
+    install_man_docs  make $jobs
 }
 

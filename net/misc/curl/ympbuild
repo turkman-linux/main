@@ -61,17 +61,17 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
     if use gnutls ; then
         cd ../curl-gnutls
-        make -C lib -j`nproc`
+        make -C lib $jobs
     fi
 }
 
 package(){
     if use gnutls ; then
         cd ../curl-gnutls
-        make install -j`nproc`
+        make install $jobs
         mv "${DESTDIR}"/usr/lib64/libcurl{,-gnutls}.so.4.8.0
         mv "${DESTDIR}"/usr/lib64/libcurl{,-gnutls}.a
         mv "${DESTDIR}"/usr/lib64/pkgconfig/libcurl{,-gnutls}.pc
@@ -82,7 +82,7 @@ package(){
         done
     fi
     cd ../$name-$version
-    make install -j`nproc`
+    make install $jobs
     for ver in 3 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0; do
         ln -s libcurl.so.4.8.0 "${DESTDIR}"/usr/lib64/libcurl.so.${ver}
     done
