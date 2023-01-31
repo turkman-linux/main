@@ -27,6 +27,6 @@ build(){
 }
 
 package(){
-    make $jobs
+    make install $jobs
 }
 
