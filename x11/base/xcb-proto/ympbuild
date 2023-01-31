@@ -25,11 +25,11 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     # Move files
     mv ${DESTDIR}/usr/lib64/python3/lib/python*/site-packages/xcbgen ${DESTDIR}/usr/lib64/python3/xcbgen
     rm -rf ${DESTDIR}/usr/lib64/python3/lib

@@ -19,8 +19,8 @@ setup(){
         --libdir=/usr/lib64
 }
 build(){
-    make -j`nproc`
+    make $jobs
 }
 package(){
-    make -j`nproc` install
+    make $jobs install
 }

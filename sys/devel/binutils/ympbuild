@@ -70,6 +70,6 @@ build(){
 
 package(){
     cd build
-    make tooldir=/usr install -j`nproc`
+    make tooldir=/usr install $jobs
 }
 

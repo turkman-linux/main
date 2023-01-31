@@ -30,11 +30,11 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     # Alpine linux like LDSO
     local LDSO=$(make -f Makefile --eval "$(echo -e 'print-ldso:\n\t@echo $$(basename $(LDSO_PATHNAME))')" print-ldso)
 	mv -f "$DESTDIR"/usr/lib64/musl/libc.so "$DESTDIR"/lib64/"$LDSO"

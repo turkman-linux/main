@@ -46,8 +46,8 @@ setup() {
 	--without-cng
 }
 build() {
-    make -j$(nproc)
+    make $jobs
 }
 package() {
-    make -j$(nproc) install
+    make $jobs install
 }

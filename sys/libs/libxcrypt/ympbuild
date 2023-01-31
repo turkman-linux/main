@@ -36,14 +36,14 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
     cd ../$name-compat
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     cd ../$name-compat
-    make install -j`nproc`
+    make install $jobs
 }
 

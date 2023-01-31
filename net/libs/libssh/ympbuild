@@ -33,7 +33,7 @@ setup() {
 	-DWITH_ZLIB=$(use_opt zlib ON OFF)
 }
 build() {
-    make -C build -j$(nproc)
+    make -C build $jobs
 }
 package() {
     make -C build install

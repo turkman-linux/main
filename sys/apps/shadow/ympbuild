@@ -41,11 +41,11 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     install -vDm 600 ../useradd.defaults "${DESTDIR}/etc/default/useradd"
     install -vDm 600 ../system-auth "${DESTDIR}/etc/pam.d/system-auth"
     install -vDm 755 ../shadow.sysconf ${DESTDIR}/etc/sysconf.d/shadow

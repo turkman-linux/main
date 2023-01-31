@@ -29,11 +29,11 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     ln -s pkgconf ${DESTDIR}/usr/bin/pkg-config
     install -Dt "${DESTDIR}/usr/share/pkgconfig/personality.d" -m644 \
     ../i686-pc-linux-gnu.personality \

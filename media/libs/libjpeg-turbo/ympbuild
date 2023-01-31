@@ -27,11 +27,11 @@ setup(){
 
 build(){
     cd build
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
     cd build
-    make install -j`nproc`
+    make install $jobs
 }
 

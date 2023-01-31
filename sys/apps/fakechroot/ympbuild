@@ -34,7 +34,7 @@ build(){
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     mkdir -p "${DESTDIR}"/etc/ld.so.conf.d/
     echo '/usr/lib/fakechroot/' > "${DESTDIR}"/etc/ld.so.conf.d/fakechroot.conf
 }

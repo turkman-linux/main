@@ -48,6 +48,6 @@ build(){
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
 }
 

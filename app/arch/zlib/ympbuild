@@ -21,9 +21,9 @@ setup(){
 	./configure --prefix=/usr --libdir=/lib64
 }
 build(){
-    make -j$(nproc)
+    make $jobs
     cd contrib/minizip
-    make -j$(nproc)
+    make $jobs
 }
 package(){
     make install pkgconfigdir="/usr/lib64/pkgconfig"

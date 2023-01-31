@@ -35,11 +35,11 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
     mkdir -p ${DESTDIR}/usr/bin
     for tool in {ins,ls,rm,dep}mod mod{probe,info}; do
         ln -s kmod "${DESTDIR}/sbin/$tool"
