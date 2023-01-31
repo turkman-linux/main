@@ -21,7 +21,7 @@ jobs:
                 run: |
                     set -e
                     cd /root
-                    ymp repo --update
+                    ymp repo --update --ignore-gpg
                     ymp it bash --no-emerge
                     find -type f | grep ympbuild | sort -V | while read line ; do
                         cd $(dirname $line)
