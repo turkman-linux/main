@@ -2,8 +2,8 @@
 name='pango'
 release='1'
 version='1.50.12'
-url='https://example.org'
-description='Internationalized text layout and rendering library'
+url='https://metacpan.org/pod/Pango'
+description='Layout and render international text'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

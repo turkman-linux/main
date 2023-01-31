@@ -2,8 +2,8 @@
 name='xcb-util-keysyms'
 release='1'
 version='0.4.1'
-url='https://example.org'
-description='Package xcb-util-keysyms'
+url='https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms.git/g'
+description='X C-language Bindings sample implementations'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

@@ -2,8 +2,8 @@
 name='libXxf86dga'
 release='1'
 version='1.1.6'
-url='https://example.org'
-description='Package libXxf86dga'
+url='https://gitlab.freedesktop.org/xorg/lib/libXxf86dga.git/'
+description='X.Org Xxf86dga library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

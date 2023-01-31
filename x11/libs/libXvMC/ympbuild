@@ -2,8 +2,8 @@
 name='libXvMC'
 release='1'
 version='1.0.13'
-url='https://example.org'
-description='Package libXvMC'
+url='https://gitlab.freedesktop.org/xorg/lib/libXvMC.git/'
+description='X.Org XvMC library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

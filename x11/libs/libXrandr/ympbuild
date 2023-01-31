@@ -2,8 +2,8 @@
 name='libXrandr'
 release='1'
 version='1.5.3'
-url='https://example.org'
-description='Package libXrandr'
+url='https://gitlab.freedesktop.org/xorg/lib/libXrandr.git/'
+description='X.Org Xrandr library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

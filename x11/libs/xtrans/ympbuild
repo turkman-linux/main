@@ -2,8 +2,8 @@
 name='xtrans'
 release='1'
 version='1.4.0'
-url='https://example.org'
-description='Package xtrans'
+url='https://gitlab.freedesktop.org/xorg/lib/libxtrans.git/'
+description='X.Org xtrans library'
 email='bayramk@gmail.com'
 maintainer='bayramkarahan'
 license=('GPLv3')

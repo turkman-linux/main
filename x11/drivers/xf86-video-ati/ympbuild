@@ -7,8 +7,8 @@ description='ATI video driver'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati/-/archive/xf86-video-ati-19.1.0/xf86-video-ati-xf86-video-ati-19.1.0.tar.gz'
-        'xf86-video-ati-19.1.0-upstream_fixes-1.patch')
+source=("https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati/-/archive/xf86-video-ati-$version/xf86-video-ati-xf86-video-ati-$version.tar.gz"
+        "xf86-video-ati-19.1.0-upstream_fixes-1.patch")
 depends=()
 makedepends=()
 md5sums=('fd01d83507660e3be37fe679af822ce8'

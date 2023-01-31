@@ -2,12 +2,12 @@
 name='libdrm'
 release='1'
 version='2.4.114'
-url='https://example.org'
-description='Package description missing'
+url='https://gitlab.freedesktop.org/mesa/drm'
+description='X.Org libdrm library'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://dri.freedesktop.org/libdrm/libdrm-2.4.114.tar.xz')
+source=("https://dri.freedesktop.org/libdrm/libdrm-$version.tar.xz")
 depends=(libpciaccess)
 makedepends=()
 md5sums=('07759750351465e5dd39f4fe40f000ea')

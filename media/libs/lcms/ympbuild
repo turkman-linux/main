@@ -2,12 +2,12 @@
 name='lcms'
 release='1'
 version='2-2.14'
-url='https://example.org'
-description='Package description missing'
+url='http://www.littlecms.com/'
+description='A lightweight, speed optimized color management engine'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://github.com/mm2/Little-CMS/releases/download/lcms2.14/lcms2-2.14.tar.gz')
+source=("https://github.com/mm2/Little-CMS/releases/download/lcms2.14/lcms2-$version.tar.gz")
 depends=()
 makedepends=()
 md5sums=('7f7baa3e605c961b9301135105ee9a34')

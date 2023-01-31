@@ -2,8 +2,8 @@
 name='libXfont'
 release='1'
 version='1.5.4'
-url='https://example.org'
-description='Package libXfont'
+url='https://gitlab.freedesktop.org/xorg/lib/libXfixes.git/'
+description='X.Org Xfixes library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

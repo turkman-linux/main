@@ -2,8 +2,8 @@
 name='libXrender'
 release='1'
 version='0.9.11'
-url='https://example.org'
-description='Package libXrender'
+url='https://gitlab.freedesktop.org/xorg/lib/libXrender.git/'
+description='X.Org Xrender library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

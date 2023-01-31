@@ -2,8 +2,8 @@
 name='libXfixes'
 release='1'
 version='6.0.0'
-url='https://example.org'
-description='Package libXfixes'
+url='https://gitlab.freedesktop.org/xorg/lib/libXfixes.git/'
+description='X.Org Xfixes library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

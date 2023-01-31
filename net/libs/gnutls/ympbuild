@@ -2,12 +2,12 @@
 name='gnutls'
 release='1'
 version='3.7.8'
-url='https://example.org'
+url='https://www.gnupg.org/ftp/gcrypt/gnutls'
 description='The GnuTLS Transport Layer Security Library'
 email=' parduscix@yandex.ru'
 maintainer=' sulincix'
 license=('GplV2')
-source=('https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.8.tar.xz')
+source=("https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-$version.tar.xz")
 depends=( )
 makedepends=( )
 md5sums=('c7b749bae243c341e6be717baf7ffbad')

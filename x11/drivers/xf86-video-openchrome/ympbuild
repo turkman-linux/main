@@ -7,7 +7,7 @@ description='X.Org driver for VIA/S3G cardss'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://salsa.debian.org/xorg-team/driver/xserver-xorg-video-openchrome/-/archive/xserver-xorg-video-openchrome-1_0.6.0-5/xserver-xorg-video-openchrome-xserver-xorg-video-openchrome-1_0.6.0-5.tar.gz')
+source=("https://salsa.debian.org/xorg-team/driver/xserver-xorg-video-openchrome/-/archive/xserver-xorg-video-openchrome-1_$version-5/xserver-xorg-video-openchrome-xserver-xorg-video-openchrome-1_$version-5.tar.gz")
 depends=(libXvMC)
 makedepends=()
 md5sums=('2b4c2da2a2ca05314b552cf76d45c8e1')
@@ -16,7 +16,7 @@ uses=()
 arch=('x86_64')
 
 _name="xserver-xorg-video-openchrome"
-_version="1_0.6.0-5"
+_version="1_$version-5"
 
 cd ${_name}-${_name}-${_version}
 

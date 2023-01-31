@@ -2,8 +2,8 @@
 name='libXfont2'
 release='1'
 version='2.0.6'
-url='https://example.org'
-description='Package libXfont2'
+url='https://gitlab.freedesktop.org/xorg/lib/libXfont.git/'
+description='X.Org Xfont library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

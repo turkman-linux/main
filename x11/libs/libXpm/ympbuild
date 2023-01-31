@@ -2,12 +2,12 @@
 name='libXpm'
 release='1'
 version='3.5.14'
-url='https://example.org'
-description='Package dlibXpm'
+url='https://gitlab.freedesktop.org/xorg/lib/libXpm.git/'
+description='X.Org Xpm library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://www.x.org/archive/individual/lib/libXpm-3.5.14.tar.xz')
+source=("https://www.x.org/archive/individual/lib/libXpm-$version.tar.xz")
 depends=(libX11)
 makedepends=()
 md5sums=('8001c7e6d2727609da2a78d8e08a2977')

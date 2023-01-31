@@ -2,8 +2,8 @@
 name='libdmx'
 release='1'
 version='1.1.4'
-url='https://example.org'
-description='Package libdmx'
+url='https://gitlab.freedesktop.org/xorg/lib/libdmx'
+description='X.Org dmx library'
 email='bayramkk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

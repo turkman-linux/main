@@ -2,8 +2,8 @@
 name='libXinerama'
 release='1'
 version='1.1.5'
-url='https://example.org'
-description='Package libXinerama'
+url='https://gitlab.freedesktop.org/xorg/lib/libXinerama.git/'
+description='X.Org Xinerama library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

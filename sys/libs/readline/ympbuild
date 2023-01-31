@@ -8,8 +8,8 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPL')
 arch=(x86_64)
-source=(https://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz
-       inputrc)
+source=("https://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz"
+       "inputrc")
 md5sums=('e9557dd5b1409f5d7b37ef717c64518e'
          'SKIP')
 depends=()

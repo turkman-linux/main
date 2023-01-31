@@ -9,7 +9,7 @@ maintainer='sulincix'
 license=('GPLv3')
 arch=(x86_64)
 depends=(readline ncurses)
-source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+source=("https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz")
 md5sums=(bb91a17fd6c9032c26d0b2b78b50aff5)
 group=(app.shell)
 
