@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 name='spice-protocol'
 release='1'
-version='v0.14.4'
+version='0.14.4'
 url='https://gitlab.freedesktop.org/spice/spice-protocol'
 description='Headers defining the SPICE protocol'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/spice/spice-protocol/-/archive/v0.14.4/spice-protocol-${version}.tar.gz")
+source=("https://gitlab.freedesktop.org/spice/spice-protocol/-/archive/v${version}/spice-protocol-v${version}.tar.gz")
 depends=()
 makedepends=()
 md5sums=('e4c4651efba3bed061ec2e874aa22f21')
