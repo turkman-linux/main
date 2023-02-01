@@ -40,5 +40,6 @@ jobs:
                 prerelease: false
                 title: "Latest release"
                 files: |
-                  /output/*
+                  /output/*.yaml
+                  /output/*.ymp
 
