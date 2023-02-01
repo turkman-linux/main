@@ -31,6 +31,7 @@ jobs:
                         cd /root
                     done
                     ymp repo --index output --name=main
+                    rm ymp-index.yaml.asc
 
           - uses: "marvinpinto/action-automatic-releases@latest"
             with:
