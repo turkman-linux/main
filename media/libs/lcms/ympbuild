@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='lcms'
 release='1'
-version='2-2.14'
+version='2.14'
 url='http://www.littlecms.com/'
 description='A lightweight, speed optimized color management engine'
 email='bayramk@gmail.com'
