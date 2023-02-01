@@ -17,10 +17,22 @@ arch=('x86_64')
 
 cd $name-$version
 
+export PATH=$PATH:$HOME
+
+prepare(){
+    # create fake makeinfo
+    echo "#!/bin/sh" > $HOME/makeinfo
+    echo "printf 'makeinfo (GNU texinfo) 5.2\n'" >> $HOME/makeinfo
+    chmod +x $HOME/makeinfo
+}
+
 setup(){
     autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
+    # remove document build
+    rm -rf doc && mkdir doc
+    echo "all install:" > doc/Makefile
 }
 
 build(){
