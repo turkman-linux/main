@@ -68,9 +68,11 @@ package(){
     # tic and ticinfo functionality is built in by default
     # make sure that anything linking against it links against libncursesw.so instead
     for lib in tic tinfo; do
-        printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib64/lib${lib}.so"
-        if ! ls $DESTDIR/lib64/lib${lib}.so.${so_ver} ; then
-            ln -sv libncursesw.so.${so_ver} "$DESTDIR/lib64/lib${lib}.so.${so_ver}"
+        if ! ls "$DESTDIR/lib64/lib${lib}.so" ; then
+            printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib64/lib${lib}.so"
+            if ! ls $DESTDIR/lib64/lib${lib}.so.${so_ver} ; then
+                ln -sv libncursesw.so.${so_ver} "$DESTDIR/lib64/lib${lib}.so.${so_ver}"
+            fi
         fi
         if ! ls "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc" ; then
             ln -sv ncursesw.pc "$DESTDIR/usr/lib64/pkgconfig/${lib}.pc"

@@ -10,8 +10,8 @@ license=('GPLv3')
 source=("https://www.openssl.org/source/openssl-$version.tar.gz"
         "https://curl.haxx.se/ca/cacert.pem"
         "update-certdata.sh")
-depends=( )
-makedepends=( )
+depends=()
+makedepends=(coreutils)
 md5sums=('077f69d357758c7d6ef686f813e16f30'
          'SKIP'
          'SKIP')
