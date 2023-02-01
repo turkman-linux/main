@@ -20,6 +20,9 @@ group=(dev.libs)
 
 cd $name-$version
 
+# for pod2man
+export PATH=$PATH:/usr/bin/core_perl
+
 setup(){
     ./Configure --prefix=/usr \
         --openssldir=/etc/ssl \
@@ -39,6 +42,6 @@ package(){
     make DESTDIR="${DESTDIR}" \
     install_sw \
     install_ssldirs \
-    install_man_docs  make $jobs
+    install_man_docs  $jobs
 }
 

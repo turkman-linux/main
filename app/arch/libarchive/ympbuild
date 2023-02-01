@@ -27,6 +27,9 @@ arch=(x86_64)
 
 cd $name-$version
 
+unset CFLAGS
+unset CXXFLAGS
+
 setup() {
     ./configure --prefix=/usr \
 	--libdir=/usr/lib64 \
