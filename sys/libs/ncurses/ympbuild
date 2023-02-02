@@ -20,20 +20,19 @@ setup(){
     cp -prf ../$name-$version ../widec
     opts=(--prefix=/usr
           --libdir=/lib64
-          --without-ada
-          --without-tests
-          --disable-termcap
-          --disable-rpath-hack
-          --disable-stripping
-          --with-termlib
-          --with-progs
-          --with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo:/lib/terminfo:/usr/lib/terminfo"
           --enable-pc-files
+          --mandir=/usr/share/man
+          --with-manpage-format=normal
+          --with-shared
+          --with-xterm-kbs=del
+          --without-ada
           --with-pkg-config-libdir=/usr/lib64/pkgconfig
-          --with-shared)
+          )
     ./configure ${opts[@]}
     cd ../widec
-    ./configure ${opts[@]} --enable-widec
+    ./configure ${opts[@]} --enable-widec \
+         --with-cxx-binding \
+         --with-cxx-shared
 }
 
 build(){
@@ -67,7 +66,7 @@ package(){
 
     # tic and ticinfo functionality is built in by default
     # make sure that anything linking against it links against libncursesw.so instead
-    for lib in tic tinfo; do
+    for lib in tic tinfo tinfow ticw; do
         if ! ls "$DESTDIR/lib64/lib${lib}.so" ; then
             printf "INPUT(libncursesw.so.%s)\n" "${so_ver}" > "$DESTDIR/lib64/lib${lib}.so"
             if ! ls $DESTDIR/lib64/lib${lib}.so.${so_ver} ; then
