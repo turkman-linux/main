@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+name='xterm'
+release='1'
+version='378'
+url='https://invisible-island.net'
+description='Terminal Emulator for X Windows'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://invisible-island.net/archives/xterm/xterm-$version.tgz"
+        'xterm.desktop')
+depends=(libX11 ncurses util-linux libXt libXau libXinerama libXaw libXpm)
+makedepends=()
+md5sums=('35c75d1e5e1cc37c43d8f5f7db5c5dca'
+         'SKIP')
+group=(x11.terms)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--exec-prefix=/usr \
+		--with-app-defaults=/etc/X11/app-defaults \
+		--with-icondir=/usr/share/icons \
+		--with-icon-theme=yes \
+		--with-tty-group=tty \
+		--enable-warnings \
+		--enable-logging \
+		--enable-wide-chars \
+		--enable-luit \
+		--enable-256-color \
+		--disable-imake \
+		--enable-narrowproto \
+		--enable-exec-xterm \
+		--enable-dabbrev \
+		--enable-backarrow-is-erase \
+		--enable-sixel-graphics \
+		--with-utempter \
+		--with-desktop-category=System,TerminalEmulator
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs DESTDIR=${DESTDIR}
+    make install-ti $jobs DESTDIR=${DESTDIR}
+    mkdir -p "${DESTDIR}"/usr/share/applications
+    mkdir -p "${DESTDIR}"/usr/share/xgreeters
+    install {xterm,uxterm}.desktop "${DESTDIR}"/usr/share/applications/
+    install ../xterm.desktop "${DESTDIR}"/usr/share/xgreeters/
+}
+

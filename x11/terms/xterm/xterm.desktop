@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=XSession
+Exec=/usr/bin/xterm
+TryExec=/usr/bin/xterm
+DesktopNames=xterm
+Name=xterm
+Comment=xterm
