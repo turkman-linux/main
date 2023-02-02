@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xf86-input-mouse'
+release='1'
+version='1.9.4'
+url='https://gitlab.freedesktop.org/xorg/driver/xf86-input-mouse'
+description='Xorg mouse input driver'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/driver/xf86-input-mouse/-/archive/xf86-input-mouse-$version/xf86-input-mouse-xf86-input-mouse-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('2aedfe84bc3763d7d052c923cd1efe5b')
+group=(x11.drivers)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
