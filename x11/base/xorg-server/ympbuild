@@ -8,7 +8,9 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://www.x.org/releases/individual/xserver/xorg-server-$version.tar.xz")
-depends=(libmd libbsd libepoxy libfontenc libxkbfile libXfont2 libxcvt mesa libX11 libdrm pixman)
+depends=(libmd libbsd libepoxy libfontenc libxkbfile 
+         libXfont2 libxcvt mesa libX11 libdrm pixman font-util xcb-util-renderutil
+         xcb-util xcb-util-image xcb-util-wm xcb-util-keysyms)
 makedepends=()
 md5sums=('b3d9a66554b2fd72960ea0545a87ea80')
 group=(x11.base)
@@ -18,7 +20,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-   meson setup build--prefix=/usr \
+   meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -D ipv6=true \
         -D xvfb=true \
@@ -33,7 +35,7 @@ setup(){
         -D suid_wrapper=true \
         -D xkb_dir=/usr/share/X11/xkb \
         -D xkb_output_dir=/var/lib/xkb \
-        -D libunwind=true
+        -D libunwind=false
 }
 
 build(){
