@@ -18,15 +18,29 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+   meson setup build--prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -D ipv6=true \
+        -D xvfb=true \
+        -D xnest=true \
+        -D xcsecurity=true \
+        -D xorg=true \
+        -D xephyr=true \
+        -D glamor=true \
+        -D udev=true \
+        -D dtrace=false \
+        -D systemd_logind=false \
+        -D suid_wrapper=true \
+        -D xkb_dir=/usr/share/X11/xkb \
+        -D xkb_output_dir=/var/lib/xkb \
+        -D libunwind=true
 }
 
 build(){
-    make $jobs
+    ninja -C build
 }
 
 package(){
-    make install $jobs
+    ninja install -C build
 }
 
