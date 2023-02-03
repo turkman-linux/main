@@ -7,11 +7,11 @@ description='Library to provide useful functions commonly found on BSD systems'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/libbsd/libbsd/-/archive/0.11.7/libbsd-${version}.tar.gz")
+source=("https://libbsd.freedesktop.org/releases/libbsd-$version.tar.xz")
 depends=()
 makedepends=()
-md5sums=('833425f25755618f144161bbf188ef9d')
-group=()
+md5sums=('2c5e63b5bb7771bbe4f572c7788e0bb8')
+group=(dev.libs)
 uses=()
 arch=('x86_64')
 
