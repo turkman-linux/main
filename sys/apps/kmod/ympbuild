@@ -7,10 +7,10 @@ description='library and tools for managing linux kernel modules'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git/snapshot/kmod-$version.tar.gz")
+source=("https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz")
 depends=()
 makedepends=()
-md5sums=('0ed271b9bf76af8925734af566572f76')
+md5sums=('85202f0740a75eb52f2163c776f9b564')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
@@ -25,7 +25,6 @@ prepare(){
 }
 
 setup(){
-    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/lib64/ \
         --bindir=/sbin
