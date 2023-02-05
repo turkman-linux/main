@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xinit'
+release='1'
+version='1.4.2'
+url='https://gitlab.freedesktop.org/xorg/app/xinit'
+description='X Window System initializer xinit'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/app/xinit/-/archive/xinit-$version/xinit-xinit-1.4.2.tar.gz")
+depends=(xorg-macros xorgproto libX11)
+makedepends=()
+md5sums=('0855364c1c869679300d55e9dd57e2aa')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gtk-doc'
+release='1'
+version='1.33.2'
+url='https://gitlab.gnome.org/GNOME/gtk-doc.git/'
+description='GTK+ Documentation Generator'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/gtk-doc/-/archive/1.33.2/gtk-doc-$version.tar.gz")
+depends=(itstool)
+makedepends=()
+md5sums=('9d1196925cb053fba6b5559a8a6e22be')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
