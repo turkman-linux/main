@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ -f /var/lib/ymp/sysconf/xinit/postinstall.done ] ; then
+    mkdir -p /etc/X11/xinit/xinitrc.d /etc/skel/
+    touch /var/lib/ymp/sysconf/xinit/postinstall.done
+fi

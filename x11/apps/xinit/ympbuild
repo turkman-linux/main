@@ -7,10 +7,19 @@ description='X Window System initializer xinit'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/xorg/app/xinit/-/archive/xinit-$version/xinit-xinit-1.4.2.tar.gz")
+source=("https://gitlab.freedesktop.org/xorg/app/xinit/-/archive/xinit-$version/xinit-xinit-1.4.2.tar.gz"
+        "xinitrc"
+        "xserverrc"
+        "Xsession"
+        "xinit.sysconf"
+)
 depends=(xorg-macros xorgproto libX11)
 makedepends=()
-md5sums=('0855364c1c869679300d55e9dd57e2aa')
+md5sums=('0855364c1c869679300d55e9dd57e2aa'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 group=(x11.apps)
 uses=()
 arch=('x86_64')
@@ -18,16 +27,21 @@ arch=('x86_64')
 cd $name-$name-$version
 
 setup(){
-	./autogen.sh
+    autoreconf -vfi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        -sysconfdir=/etc
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
+    install -m755 -D ../xinitrc "$DESTDIR"/etc/X11/xinit/xinitrc
+    install -m755 -D ../Xsession "$DESTDIR"/etc/X11/xinit/Xsession
+    install -m755 ../xserverrc "$DESTDIR"/etc/X11/xinit/xserverrc
+    install -m755 -D ../xinit.sysconf "$DESTDIR"/etc/sysconf.d/xinit
 }
 
