@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+name='openssh'
+release='1'
+version='9.2p1'
+url='https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable'
+description='OpenBSD ssh server & client'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$version.tar.gz"
+        "sshd.initd"
+        "sshd.confd")
+depends=(zlib libxcrypt openssl libmd)
+makedepends=()
+md5sums=('f78b2acac4bb299629a8c58ddc3fac63'
+         'SKIP'
+         'SKIP')
+group=(net.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --sysconfdir=/etc/ssh \
+        --disable-strip \
+        --with-ssl-engine \
+        --with-privsep-user=nobody \
+        --with-pid-dir=/run \
+        --with-default-path='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs DESTDIR="${DESTDIR}"
+    install -m755 -D ../sshd.initd "$DESTDIR"/etc/init.d/sshd
+    install -m755 -D ../sshd.confd "$DESTDIR"/etc/conf.d/sshd
+}
+
