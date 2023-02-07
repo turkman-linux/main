@@ -32,5 +32,8 @@ build(){
 
 package(){
     make $jobs install
+    mkdir "$DESTDIR"/etc/{passwd.d,group.d}
+    echo "messagebus:x:109:" > "$DESTDIR"/etc/group.d/dbus
+    echo "messagebus:x:103:109::/nonexistent:/usr/sbin/nologin" > "$DESTDIR"/etc/passwd.d/dbus
 }
 
