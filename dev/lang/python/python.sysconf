@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ ! -L /usr/bin/python ] ; then
+    maxver=$(ls /usr/lib64 | grep "python3.[0-9]*" | sort | tail -n 1)
+    pydefault ${manver:6}
+fi

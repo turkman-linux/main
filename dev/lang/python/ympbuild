@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
 name='python'
 release='1'
-version='3.10'
+version='3.11'
 url='https://gitlab.com/turkman'
 description='Python meta package'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=('pydefault')
-depends=(python3.10)
+source=('pydefault' 'python.sysconf')
+depends=('python3.11|python3.10')
 makedepends=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 uses=()
 group=(dev.lang)
 arch=('x86_64')
 
 package(){
     mkdir -p ${DESTDIR}/usr/bin/
+    mkdir -p ${DESTDIR}/etc/sysconf.d
     install pydefault ${DESTDIR}/usr/bin/
+    install python.sysconf ${DESTDIR}/etc/sysconf.d/python
 }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-name='python3.10'
+name='python3.11'
 release='1'
-version='3.10.8'
+version='3.11.1'
 url='https://www.python.org/downloads/'
 description='Next generation of the python high-level scripting language'
 email='parduscix@yandex.ru'
@@ -11,7 +11,7 @@ source=("https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
        'turkman.patch')
 depends=('bzip2' 'gdbm'  'libnsl' 'libxcrypt' 'openssl' 'zlib' 'sqlite')
 makedepends=( )
-md5sums=('e92356b012ed4d0e09675131d39b1bde'
+md5sums=('4efe92adf28875c77d3b9b2e8d3bc44a'
          'SKIP')
 uses=(expat ffi)
 ffi_depends=('libffi')
@@ -51,6 +51,6 @@ package(){
     # remove unused file
     rm -f ${DESTDIR}/usr/share/man/man1/python3.1
     # move libpython3.so file
-    mv ${DESTDIR}/usr/lib64/libpython3.so ${DESTDIR}/usr/lib64/libpython3.so.3.10
+    mv ${DESTDIR}/usr/lib64/libpython3.so ${DESTDIR}/usr/lib64/libpython3.so.3.11
 }
 

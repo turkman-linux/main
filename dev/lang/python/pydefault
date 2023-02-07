@@ -22,7 +22,7 @@ if [ "$1" != "" ] ; then
     rmln libpython3.so.$version /usr/lib64/libpython3.so
     rmln python-$version.pc /usr/lib64/pkgconfig/python3.pc
     rmln python-$version-embed.pc /usr/lib64/pkgconfig/python3-embed.pc
-    
 else
+    echo "Usage: pydefault <python version>"
     exit 1
 fi
