@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='dbus'
+release='1'
+version='1.15.2'
+url='https://dbus.freedesktop.org/releases/dbus/'
+description='A message bus system, a simple way for applications to talk to each other'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz")
+depends=(audit expat libcap-ng)
+makedepends=()
+md5sums=('c56de960ea9031b92ee71aaa0e8e72c2')
+group=(sys.apps)
+uses=(x11)
+x11_depends=(libX11)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --localstatedir=/var \
+        --sysconfdir=/etc \
+        --with-system-pid-file=/run/dbus/dbus.pid
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make $jobs install
+}
+
