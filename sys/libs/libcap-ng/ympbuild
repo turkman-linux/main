@@ -8,19 +8,19 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('LGPL2.1')
 source=("https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v${version}.zip")
-depends=( )
-makedepends=( )
+depends=()
+makedepends=()
 md5sums=('4332df17c41730e487ed3a45af958e7a')
 group=(sys.libs)
-uses=()
-uses_extra=(python)
+uses=(python)
+uses_extra=()
 python_depends=(python)
 arch=('x86_64')
 
 cd $name-$version
 
 setup(){
-    ./autogen.sh
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
         $(use_opt python --with-python --without-python) \

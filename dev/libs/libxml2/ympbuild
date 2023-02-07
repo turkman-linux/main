@@ -11,8 +11,8 @@ source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.3/libxml2-v${ver
 depends=(zlib xz-utils)
 makedepends=()
 md5sums=('4a8bc66943dd13f7ff2ee8816b808969')
-uses=()
-uses_extra=(python)
+uses=(python)
+uses_extra=()
 python_depends=(python)
 arch=('x86_64')
 group=(dev.libs)
@@ -20,8 +20,7 @@ group=(dev.libs)
 cd $name-v$version
 
 setup(){
-    set -ex
-    ./autogen.sh
+    autoreconf -fvi
     ./configure --prefix=/usr \
     --with-history \
     --libdir=/usr/lib64 \
@@ -38,5 +37,7 @@ package(){
         mv ${DESTDIR}/usr/lib/* ${DESTDIR}/usr/lib64/
         rmdir ${DESTDIR}/usr/lib/
     fi
+    mkdir -p ${DESTDIR}/usr/lib64/python3/
+    mv ${DESTDIR}/usr/lib64/python*/site-packages/* ${DESTDIR}/usr/lib64/python3/
 }
 
