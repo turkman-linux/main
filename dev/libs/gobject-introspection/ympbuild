@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gobject-introspection'
+release='1'
+version='1.75.4'
+url='https://gitlab.gnome.org/GNOME/gobject-introspection.git/'
+description='Introspection system for GObject-based libraries '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/1.75.4/gobject-introspection-1.75.4.tar.gz')
+depends=()
+makedepends=()
+md5sums=('6c3c521e7bb9ed627f5096e3098293e5')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
