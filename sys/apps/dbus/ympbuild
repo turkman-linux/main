@@ -7,10 +7,16 @@ description='A message bus system, a simple way for applications to talk to each
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz")
+source=("https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz"
+        "dbus.sysconf"
+        "dbus.initd"
+        "dbus.confd")
 depends=(audit expat libcap-ng)
 makedepends=()
-md5sums=('c56de960ea9031b92ee71aaa0e8e72c2')
+md5sums=('c56de960ea9031b92ee71aaa0e8e72c2'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 group=(sys.apps)
 uses=(x11)
 x11_depends=(libX11)
@@ -23,7 +29,8 @@ setup(){
         --libdir=/usr/lib64/ \
         --localstatedir=/var \
         --sysconfdir=/etc \
-        --with-system-pid-file=/run/dbus/dbus.pid
+        --with-system-pid-file=/run/dbus/dbus.pid \
+        $(use_opt x11 --with-x --without-x)
 }
 
 build(){
@@ -32,8 +39,11 @@ build(){
 
 package(){
     make $jobs install
-    mkdir "$DESTDIR"/etc/{passwd.d,group.d}
+    mkdir "$DESTDIR"/etc/{passwd,group,sysconf,init,conf}.d
     echo "messagebus:x:109:" > "$DESTDIR"/etc/group.d/dbus
     echo "messagebus:x:103:109::/nonexistent:/usr/sbin/nologin" > "$DESTDIR"/etc/passwd.d/dbus
+    install ../dbus.sysconf "$DESTDIR"/etc/sysconf.d/dbus
+    install ../dbus.initd "$DESTDIR"/etc/init.d/dbus
+    install ../dbus.confd "$DESTDIR"/etc/conf.d/dbus
 }
 

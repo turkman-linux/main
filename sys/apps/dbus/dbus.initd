@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+name="System Message Bus"
+description="An IPC message bus daemo"
+
+extra_started_commands="reload"
+
+command="/usr/bin/dbus-daemon"
+command_args="--system"
+command_background="yes"
+pidfile="/run/$RC_SVCNAME.pid"
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+start_pre() {
+	mkdir -p /run/dbus
+	/usr/bin/dbus-uuidgen --ensure=/etc/machine-id
+}
+
+stop_post() {
+	[ ! -S /run/dbus/system_bus_socket ] || rm -f /run/dbus/system_bus_socket
+}
+
+reload() {
+	ebegin "Reloading $name configuration"
+	/usr/bin/dbus-send --print-reply --system --type=method_call \
+			--dest=org.freedesktop.DBus \
+			/ org.freedesktop.DBus.ReloadConfig > /dev/null
+	eend $?
+}
