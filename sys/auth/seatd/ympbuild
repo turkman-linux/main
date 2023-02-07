@@ -7,11 +7,13 @@ description='Minimal seat management daemon and universal library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://github.com/kennylevinsen/seatd/archive/refs/tags/$version.tar.gz")
+source=("https://github.com/kennylevinsen/seatd/archive/refs/tags/$version.tar.gz"
+        "seatd.initd")
 depends=()
 makedepends=()
-md5sums=('922b8a4ca4dfdb1f43a294db9e77bcf7')
-group=(sys.outh)
+md5sums=('922b8a4ca4dfdb1f43a294db9e77bcf7'
+         'SKIP')
+group=(sys.auth)
 uses=()
 arch=('x86_64')
 
@@ -28,5 +30,6 @@ build(){
 
 package(){
     ninja -C build install
+    install -m755 -D ../seatd.initd "$DESTDIR"/etc/init.d/seatd
 }
 
