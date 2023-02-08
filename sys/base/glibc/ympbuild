@@ -9,6 +9,7 @@ maintainer='sulincix'
 license=('GPLv3')
 arch=(x86_64)
 dontstrip="31"
+makedepends=(gawk)
 source=("https://ftp.gnu.org/gnu/glibc/glibc-${version}.tar.xz"
         'ld.conf/ld.so.conf'
         'ld.conf/usr-support.conf'
@@ -48,7 +49,6 @@ setup(){
         --enable-kernel=5.10
         --enable-multi-arch
         --enable-stack-protector=strong
-        --enable-static-nss
         --disable-crypt
         --disable-profile
         --disable-werror
