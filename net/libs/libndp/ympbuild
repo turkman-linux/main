@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libndp'
+release='1'
+version='1.8'
+url='https://github.com/jpirko/libndp'
+description='libndp Library for Neighbor Discovery Protocol '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/jpirko/libndp/archive/refs/tags/v$version.tar.gz")
+depends=(grep)
+makedepends=()
+md5sums=('9e449a5e4e63956ad25e69189bfb2fa4')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    	./autogen.sh
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
