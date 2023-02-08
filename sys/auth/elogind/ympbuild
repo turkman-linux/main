@@ -33,13 +33,15 @@ setup(){
         -Dudevrulesdir=/lib64/udev/rules.d \
         -Dcgroup-controller=elogind \
         -Dhalt-path=/sbin/halt \
-        -Drootlibexecdir=/usr/libexec/elogind \
         -Dreboot-path=/sbin/reboot \
+        -Dpoweroff-path=/sbin/poweroff \
+        -Drootlibexecdir=/usr/libexec/elogind \
         -Ddefault-hierarchy=hybrid \
         -Ddefault-kill-user-processes=false \
         -Dpam=true \
         -Dselinux=false \
         -Daudit=true \
+        -Defi=false \
         -Dpolkit=true
 }
 
@@ -52,7 +54,7 @@ package(){
 
     # Claim compatiblity with systemd and systemd-logind (thanks Alpine linux)
     ln -s libelogind.pc "$DESTDIR"/lib64/pkgconfig/libsystemd.pc
-    ln -s libelogind.pc "$DESTDIR"/lib64/pkgconfig/libsystemd-logind.pc
+    ln -s libelogind.pc "$DESTDIR"/lib64/pkgconfig/libsystemd-login.pc
     ln -s elogind "$DESTDIR"/usr/include/systemd
     # Extra compatiblity support
     ln -s libelogind.so.0 "$DESTDIR"/lib64/libsystemd.so.0
