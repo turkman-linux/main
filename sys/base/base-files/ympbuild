@@ -9,7 +9,7 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
         "base-files.sysconf")
-md5sums=('e57b8faa37d16c7f5f96be3fe112e68c'
+md5sums=('e1e41fe1398a3d97ef087289cfff7e78'
          'SKIP')
 arch=(x86_64)
 group=(sys.base)
