@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+name='elogind'
+release='1'
+version='246.10'
+url='https://github.com/elogind/elogind'
+description="he systemd project's logind, extracted to a standalone package"
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/elogind/elogind/archive/refs/tags/v$version.tar.gz"
+        "remove-polkit-gobject-1-check.patch"
+        "elogind.initd"
+        "systemd.pc")
+depends=(acl attr audit libcap-ng libcap dbus pam)
+makedepends=()
+md5sums=('32ab2201281f14738d9c045f3669c14d'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+group=(sys.auth)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    patch -Np1 -i ../remove-polkit-gobject-1-check.patch
+}
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/lib64/ \
+        -Dudevrulesdir=/lib64/udev/rules.d \
+        -Dcgroup-controller=elogind \
+        -Dhalt-path=/sbin/halt \
+        -Drootlibexecdir=/usr/libexec/elogind \
+        -Dreboot-path=/sbin/reboot \
+        -Ddefault-hierarchy=hybrid \
+        -Ddefault-kill-user-processes=false \
+        -Dpam=true \
+        -Dselinux=false \
+        -Daudit=true \
+        -Dpolkit=true
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+
+    # Claim compatiblity with systemd and systemd-logind (thanks Alpine linux)
+    ln -s libelogind.pc "$DESTDIR"/lib64/pkgconfig/libsystemd.pc
+    ln -s libelogind.pc "$DESTDIR"/lib64/pkgconfig/libsystemd-logind.pc
+    ln -s elogind "$DESTDIR"/usr/include/systemd
+    # Extra compatiblity support
+    ln -s libelogind.so.0 "$DESTDIR"/lib64/libsystemd.so.0
+    ln -s libelogind.so.0 "$DESTDIR"/lib64/libsystemd.so.0.35.0
+    ln -s pam_elogind.so "$DESTDIR"/lib64/security/pam_systemd.so
+    install ../systemd.pc "$DESTDIR"/lib64/pkgconfig/
+
+    # Install headers from elogind
+    install -Dm644 src/systemd/sd-id128.h "$DESTDIR"/usr/include/sd-id128.h
+    install -Dm644 src/systemd/_sd-common.h "$DESTDIR"/usr/include/_sd-common.h
+
+    # openrc service
+    mkdir -p "${DESTDIR}"/etc/init.d
+    install ../elogind.initd "${DESTDIR}"/etc/init.d/elogind
+}
+
