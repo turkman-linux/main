@@ -49,9 +49,13 @@ setup(){
         --enable-kernel=5.10
         --enable-multi-arch
         --enable-stack-protector=strong
+        --enable-stackguard-randomization
         --disable-crypt
         --disable-profile
         --disable-werror
+        --enable-static-pie
+        --enable-static-nss
+        --disable-nscd
 
     )
     if use multilib ; then
