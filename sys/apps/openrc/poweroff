@@ -1,0 +1,10 @@
+#!/bin/sh
+for arg in $@ ; do
+    if [ "$arg" == "-f" ] ; then
+        echo 1 > /proc/sys/kernel/sysrq
+        echo s > /proc/sysrq-trigger
+        echo u > /proc/sysrq-trigger
+        echo o > /proc/sysrq-trigger
+    fi
+done
+exec openrc-shutdown -p 0

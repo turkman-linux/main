@@ -8,10 +8,14 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
-    "openrc.sysconf")
+    "openrc.sysconf"
+    "reboot"
+    "poweroff")
 depends=()
 makedepends=()
 md5sums=('8b74d3db544b496f6bb33d2648db5d2f'
+    'SKIP'
+    'SKIP'
     'SKIP')
 group=(sys.apps)
 uses=()
@@ -51,7 +55,11 @@ package(){
     echo "uucp:x:14:" > ${DESTDIR}/etc/group.d/uucp
     echo "uucp:x:10:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
     # move /share to /usr/share
-    mkdir ${DESTDIR}/usr
+    mkdir -p ${DESTDIR}/usr ${DESTDIR}/sbin
     mv ${DESTDIR}/{,usr}/share
+    # reboot and poweroff script
+    install ../reboot ${DESTDIR}/sbin/reboot
+    install ../poweroff ${DESTDIR}/sbin/poweroff
+    ln -s openrc-shutdown ${DESTDIR}/sbin/shutdown
 }
 
