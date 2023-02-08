@@ -17,15 +17,16 @@ group=(net.libs)
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64 \
+        --default-library=both
 }
 
 build(){
-    make $jobs
+    ninja -C build
 }
 
 package(){
-    make install $jobs
+    ninja -C build install
 }
 
