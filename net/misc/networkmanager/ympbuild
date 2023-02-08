@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='networkmanager'
+release='1'
+version='1.40.12'
+url='https://gitlab.freedesktop.org/NetworkManager/NetworkManager'
+description='network management daemon'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/$version/NetworkManager-$version.tar.gz")
+depends=(libndp)
+makedepends=(libxslt gobject-introspection)
+md5sums=('9495b3b631194bdeb701acfe8240e073')
+group=()
+uses=()
+arch=('x86_64')
+
+cd NetworkManager-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dsession_tracking=no \
+        -Dselinux=false \
+        -Dpolkit=false \
+        -Dcrypto=nss \
+
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
