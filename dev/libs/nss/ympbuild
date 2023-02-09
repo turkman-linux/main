@@ -13,7 +13,7 @@ depends=(nspr)
 makedepends=(gyp)
 md5sums=('9bfacbd8a080b0aa0a7672ca643c440b'
          'SKIP')
-group=()
+group=(dev.libs)
 uses=()
 arch=('x86_64')
 
@@ -38,24 +38,24 @@ package(){
   local nsprver="$(pkg-config --modversion nspr)"
   local libdir=/usr/lib
 
-  sed nss/pkg/pkg-config/nss.pc.in \
+  sed pkg/pkg-config/nss.pc.in \
     -e "s,%libdir%,$libdir,g" \
     -e "s,%prefix%,/usr,g" \
     -e "s,%exec_prefix%,/usr/bin,g" \
     -e "s,%includedir%,/usr/include/nss,g" \
     -e "s,%NSPR_VERSION%,$nsprver,g" \
     -e "s,%NSS_VERSION%,$pkgver,g" |
-    install -Dm644 /dev/stdin "$pkgdir$libdir/pkgconfig/nss.pc"
+    install -Dm644 /dev/stdin "$DESTDIR$libdir/pkgconfig/nss.pc"
 
-  ln -s nss.pc "$pkgdir$libdir/pkgconfig/mozilla-nss.pc"
+  ln -s nss.pc "$DESTDIR$libdir/pkgconfig/mozilla-nss.pc"
 
-  install -Dt "$pkgdir$libdir" dist/Release/lib/*.so
+  install -Dt "$DESTDIR$libdir" ../dist/Release/lib/*.so
 
   local vmajor vminor vpatch
   { read vmajor; read vminor; read vpatch; } \
-    < <(awk '/#define.*NSS_V(MAJOR|MINOR|PATCH)/ {print $3}' nss/lib/nss/nss.h)
+    < <(awk '/#define.*NSS_V(MAJOR|MINOR|PATCH)/ {print $3}' lib/nss/nss.h)
 
-  sed nss/pkg/pkg-config/nss-config.in \
+  sed pkg/pkg-config/nss-config.in \
     -e "s,@libdir@,$libdir,g" \
     -e "s,@prefix@,/usr/bin,g" \
     -e "s,@exec_prefix@,/usr/bin,g" \
@@ -63,20 +63,15 @@ package(){
     -e "s,@MOD_MAJOR_VERSION@,$vmajor,g" \
     -e "s,@MOD_MINOR_VERSION@,$vminor,g" \
     -e "s,@MOD_PATCH_VERSION@,$vpatch,g" |
-    install -D /dev/stdin "$pkgdir/usr/bin/nss-config"
+    install -D /dev/stdin "$DESTDIR/usr/bin/nss-config"
 
-  install -Dt "$pkgdir/usr/bin" \
-    dist/Release/bin/{*util,shlibsign,signtool,signver,ssltap}
+  install -Dt "$DESTDIR/usr/bin" \
+    ../dist/Release/bin/{*util,shlibsign,signtool,signver,ssltap}
 
-  install -Dt "$pkgdir/usr/include/nss" -m644 dist/public/nss/*.h
+  install -Dt "$DESTDIR/usr/include/nss" -m644 ../dist/public/nss/*.h
 
-  install -Dt "$pkgdir/usr/share/man/man1" -m644 \
-    nss/doc/nroff/{*util,signtool,signver,ssltap}.1
+  install -Dt "DESTDIR/usr/share/man/man1" -m644 \
+    doc/nroff/{*util,signtool,signver,ssltap}.1
 
-  # Replace built-in trust with p11-kit connection
-  ln -s pkcs11/p11-kit-trust.so "$pkgdir$libdir/p11-kit-trust.so"
-  ln -sf p11-kit-trust.so "$pkgdir$libdir/libnssckbi.so"
-  install -Dm644 ca-bundle.trust.p11-kit \
-    "$pkgdir/usr/share/ca-certificates/trust-source/mozilla.trust.p11-kit"
 }
 
