@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='slang'
+release='1'
+version='2.3.3'
+url='https://www.jedsoft.org/releases/slang/'
+description='Multi-platform library designed to allow a developer to create robust software'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://www.jedsoft.org/releases/slang/slang-$version.tar.bz2")
+depends=(zlib)
+makedepends=()
+md5sums=('69015c8300088373eb65ffcc6ed4db8c')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

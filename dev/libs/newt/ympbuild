@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='newt'
+release='1'
+version='0.52.23'
+url='https://releases.pagure.org/newt'
+description="Redhat's Newt windowing toolkit development files"
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://releases.pagure.org/newt/newt-$version.tar.gz")
+depends=(slang popt)
+makedepends=(python)
+md5sums=('70aefeff0f3e9444a69dbdae9a931442')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+    # move python module directory
+    pyver=$(python -c 'import platform; print(".".join(platform.python_version().split(".")[0:2]))')
+    mv "$DESTDIR"/usr/lib64/python$pyver/site-packages "$DESTDIR"/usr/lib64/python3
+    rm -rvf "$DESTDIR"/usr/lib64/python3.*
+}
+
