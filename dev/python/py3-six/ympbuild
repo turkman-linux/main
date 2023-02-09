@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='py3-six'
+release='1'
+version='1.16.0'
+url='https://salsa.debian.org/python-team/packages/six'
+description='Python 2 and 3 compatibility library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://salsa.debian.org/python-team/packages/six/-/archive/debian/$version-5/six-debian-$version-5.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('bc3e3ae290356f4f6623ce03c9499956')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd six-debian-$version-5
+
+build(){
+    python setup.py build
+}
+
+package(){
+    python setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+
+}
+

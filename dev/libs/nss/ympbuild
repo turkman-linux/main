@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+name='nss'
+release='1'
+version='3.87'
+url='https://archive.mozilla.org/pub/security/nss/releases/'
+description='Network Security Service libraries'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://archive.mozilla.org/pub/security/nss/releases/NSS_3_87_RTM/src/nss-3.87.tar.gz"
+        "nss-3.87-standalone-1.patch")
+depends=(nspr)
+makedepends=(gyp)
+md5sums=('9bfacbd8a080b0aa0a7672ca643c440b'
+         'SKIP')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version/$name
+
+prepare(){
+    cd ..
+    patch -Np1 -i ../nss-3.87-standalone-1.patch
+}
+
+build(){
+  ./build.sh \
+    --target x64 \
+    --opt \
+    --enable-libpkix \
+    --system-sqlite \
+    --system-nspr \
+    --disable-tests
+}
+
+package(){
+  local nsprver="$(pkg-config --modversion nspr)"
+  local libdir=/usr/lib
+
+  sed nss/pkg/pkg-config/nss.pc.in \
+    -e "s,%libdir%,$libdir,g" \
+    -e "s,%prefix%,/usr,g" \
+    -e "s,%exec_prefix%,/usr/bin,g" \
+    -e "s,%includedir%,/usr/include/nss,g" \
+    -e "s,%NSPR_VERSION%,$nsprver,g" \
+    -e "s,%NSS_VERSION%,$pkgver,g" |
+    install -Dm644 /dev/stdin "$pkgdir$libdir/pkgconfig/nss.pc"
+
+  ln -s nss.pc "$pkgdir$libdir/pkgconfig/mozilla-nss.pc"
+
+  install -Dt "$pkgdir$libdir" dist/Release/lib/*.so
+
+  local vmajor vminor vpatch
+  { read vmajor; read vminor; read vpatch; } \
+    < <(awk '/#define.*NSS_V(MAJOR|MINOR|PATCH)/ {print $3}' nss/lib/nss/nss.h)
+
+  sed nss/pkg/pkg-config/nss-config.in \
+    -e "s,@libdir@,$libdir,g" \
+    -e "s,@prefix@,/usr/bin,g" \
+    -e "s,@exec_prefix@,/usr/bin,g" \
+    -e "s,@includedir@,/usr/include/nss,g" \
+    -e "s,@MOD_MAJOR_VERSION@,$vmajor,g" \
+    -e "s,@MOD_MINOR_VERSION@,$vminor,g" \
+    -e "s,@MOD_PATCH_VERSION@,$vpatch,g" |
+    install -D /dev/stdin "$pkgdir/usr/bin/nss-config"
+
+  install -Dt "$pkgdir/usr/bin" \
+    dist/Release/bin/{*util,shlibsign,signtool,signver,ssltap}
+
+  install -Dt "$pkgdir/usr/include/nss" -m644 dist/public/nss/*.h
+
+  install -Dt "$pkgdir/usr/share/man/man1" -m644 \
+    nss/doc/nroff/{*util,signtool,signver,ssltap}.1
+
+  # Replace built-in trust with p11-kit connection
+  ln -s pkcs11/p11-kit-trust.so "$pkgdir$libdir/p11-kit-trust.so"
+  ln -sf p11-kit-trust.so "$pkgdir$libdir/libnssckbi.so"
+  install -Dm644 ca-bundle.trust.p11-kit \
+    "$pkgdir/usr/share/ca-certificates/trust-source/mozilla.trust.p11-kit"
+}
+
