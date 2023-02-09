@@ -8,11 +8,11 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/$version/NetworkManager-$version.tar.gz")
-depends=(libndp)
+depends=(libndp nss)
 makedepends=(libxslt gobject-introspection)
 md5sums=('9495b3b631194bdeb701acfe8240e073')
-group=()
-uses=()
+group=(net.misc)
+uses=(ppp ovs)
 arch=('x86_64')
 
 cd NetworkManager-$version
@@ -21,10 +21,17 @@ setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -Dsession_tracking=no \
+        -Dsession_tracking_consolekit=false \
         -Dselinux=false \
         -Dpolkit=false \
         -Dcrypto=nss \
-
+        -Dsystemd_journal=false \
+        -Dsystemdsystemunitdir=no \
+        -Dqt=false \
+        -Dmodem_manager=false \
+        -Dppp=$(use_opt ppp true false) \
+        -Dovs=$(use_opt ovs true false) \
+        -Dtests=no
 }
 
 build(){
