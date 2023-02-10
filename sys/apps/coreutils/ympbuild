@@ -18,6 +18,8 @@ group=(sys.apps)
 
 cd $name-$version
 
+export CFLAGS='-static-libgcc -static-libstdc++ -fPIC'
+
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \

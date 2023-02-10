@@ -12,7 +12,6 @@ md5sums=('0b82665c4a92fd2ade7440c13fcaa42b')
 arch=('x86_64')
 group=(dev.libs)
 uses=(cxx)
-cxx_depends=(gcc)
 
 cd $name-$version
 

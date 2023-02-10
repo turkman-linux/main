@@ -11,12 +11,10 @@ source=("https://salsa.debian.org/kernel-team/initramfs-tools/-/archive/v$versio
         "patches/remove-zstd.patch"
         "patches/non-debian.patch"
         "patches/remove-logsave.patch"
-        "patches/no-coreutils.patch"
         "initramfs-tools.sysconf")
-depends=(eudev findutils)
+depends=(eudev findutils coreutils)
 makedepends=()
 md5sums=('a3765010fe0fc6a71fe900a798b759ea'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -30,8 +28,7 @@ cd $name-v$version
 prepare(){
     patch -Np1 < ../remove-zstd.patch
     patch -Np1 < ../remove-logsave.patch
-    patch -Np1 < ../non-debian.patch    
-    patch -Np1 < ../no-coreutils.patch
+    patch -Np1 < ../non-debian.patch
 }
 
 package(){
