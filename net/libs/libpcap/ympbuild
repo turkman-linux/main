@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libpcap'
+release='1'
+version='1.10.3'
+url='https://www.tcpdump.org/release/'
+description='A system-independent library for user-level network packet capture'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://www.tcpdump.org/release/libpcap-$version.tar.gz")
+depends=(dbus)
+makedepends=()
+md5sums=('c42fde2eb75a5075f19116f8c9768573')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

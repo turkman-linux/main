@@ -15,7 +15,13 @@ group=(net.misc)
 uses=(ppp ovs)
 arch=('x86_64')
 
+ppp_depends=(ppp)
+ovs_depends=(jansson)
+
 cd NetworkManager-$version
+
+unset CFLAGS
+unset CXXFLAGS
 
 setup(){
     meson setup build --prefix=/usr \
@@ -31,14 +37,15 @@ setup(){
         -Dmodem_manager=false \
         -Dppp=$(use_opt ppp true false) \
         -Dovs=$(use_opt ovs true false) \
+        -Dvapi=true \
         -Dtests=no
 }
 
 build(){
-    make $jobs
+    ninja -C build
 }
 
 package(){
-    make install $jobs
+    ninja -C build install
 }
 
