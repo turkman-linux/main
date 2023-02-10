@@ -1,5 +1,5 @@
 diff --git a/hook-functions b/hook-functions
-index 95bd584..1909e8d 100644
+index 95bd584..f18f1a8 100644
 --- a/hook-functions
 +++ b/hook-functions
 @@ -200,7 +200,7 @@ copy_file() {
@@ -7,7 +7,7 @@ index 95bd584..1909e8d 100644
  			# Create a relative link so it always points
  			# to the right place
 -			ln -rs "${DESTDIR}/${link_target}" "${DESTDIR}/${target}"
-+			ln -s "${DESTDIR}/${link_target}" "${DESTDIR}/${target}"
++			ln -s "${link_target}" "${DESTDIR}/${target}"
  		fi
  
  		# Copy the link target if it doesn't already exist
