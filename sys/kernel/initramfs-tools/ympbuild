@@ -8,13 +8,15 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://salsa.debian.org/kernel-team/initramfs-tools/-/archive/v$version/initramfs-tools-v$version.tar.gz"
-        "remove-zstd.patch"
-        "non-debian.patch"
-        "remove-logsave.patch"
+        "patches/remove-zstd.patch"
+        "patches/non-debian.patch"
+        "patches/remove-logsave.patch"
+        "patches/no-coreutils.patch"
         "initramfs-tools.sysconf")
-depends=(eudev coreutils findutils)
+depends=(eudev findutils)
 makedepends=()
 md5sums=('a3765010fe0fc6a71fe900a798b759ea'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -29,6 +31,7 @@ prepare(){
     patch -Np1 < ../remove-zstd.patch
     patch -Np1 < ../remove-logsave.patch
     patch -Np1 < ../non-debian.patch    
+    patch -Np1 < ../no-coreutils.patch
 }
 
 package(){
