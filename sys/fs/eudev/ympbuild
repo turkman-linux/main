@@ -70,5 +70,7 @@ package(){
         ${DESTDIR}/usr/share/initramfs-tools/scripts/init-top/udev
     install ../eudev.init-bottom \
         ${DESTDIR}/usr/share/initramfs-tools/scripts/init-bottom/udev
+    mkdir -p ${DESTDIR}/etc/udev/rules.d
+    touch ${DESTDIR}/etc/udev/rules.d/80-net-name-slot.rules
 }
 
