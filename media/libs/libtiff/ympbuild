@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libtiff'
+release='1'
+version='4.5.0'
+url='https://gitlab.com/libtiff/libtiff'
+description='Tag Image File Format (TIFF) library '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.com/libtiff/libtiff/-/archive/v$version/libtiff-v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('6e9b613cd83da5024b65fc9b80416833')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-v$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
