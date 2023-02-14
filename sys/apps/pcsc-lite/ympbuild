@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='pcsc-lite'
+release='1'
+version='1.9.9'
+url='https://pcsclite.apdu.fr/'
+description='Middleware to access a smart card using SCard API (PC/SC)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://pcsclite.apdu.fr/files/pcsc-lite-1.9.9.tar.bz2')
+depends=(elogind eudev)
+makedepends=()
+md5sums=('23db832115db702e902baccf21da13aa')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+export PATH=$PATH:/usr/bin/core_perl
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --disable-libsystemd
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

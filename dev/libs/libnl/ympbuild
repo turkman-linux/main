@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libnl'
+release='1'
+version='3.7.0'
+url='https://github.com/thom311'
+description='Netlink Library Suite '
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://github.com/thom311/libnl/releases/download/libnl3_7_0/libnl-3.7.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('b381405afd14e466e35d29a112480333')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

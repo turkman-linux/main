@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='wpa_supplicant'
+release='1'
+version='2.10'
+url='https://w1.fi/wpa_supplicant/'
+description='IEEE 802.1X/WPA supplicant for secure wireless transfers'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://w1.fi/releases/wpa_supplicant-2.10.tar.gz')
+depends=(dbus libnl openssl pcsc-lite readline)
+makedepends=()
+md5sums=('d26797fcb002898d4ee989179346e1cc')
+group=(net.wireless)
+uses=()
+arch=('x86_64')
+
+cd $name-$version/$name
+mv defconfig .config 
+
+#setup(){
+    #./configure --prefix=/usr \
+    #    --libdir=/usr/lib64/
+#}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+    install -D -m644 ./wpa_supplicant.conf $DESTDIR/etc/wpa_supplicant.conf
+}
+
