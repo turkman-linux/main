@@ -28,5 +28,7 @@ build(){
 
 package(){
     make install $jobs
+    # fix terminal cursor issue
+    echo -e "\033[?25h"
 }
 
