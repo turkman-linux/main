@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-markdown'
+release='1'
+version='3.4.1'
+url='https://github.com/Python-Markdown/markdown'
+description='A Python implementation of John Gruber’s Markdown with Extension support.'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://github.com/Python-Markdown/markdown/archive/refs/tags/$version.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('07073379f03ade96e1b78ad65545810e')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd markdown-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+

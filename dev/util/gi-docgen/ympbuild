@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/gi-docgen/-/archive/$version/gi-docgen-$version.tar.gz")
-depends=()
+depends=(py3-pygments)
 makedepends=()
 md5sums=('844e84610246501d3303ae9150d0cc24')
 group=(dev.util)
@@ -18,7 +18,6 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-	pip3 install jinja2 markdown markupsafe typogrify
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/
 }

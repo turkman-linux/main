@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-typogrify'
+release='1'
+version='2.0.7'
+url='https://github.com/mintchaos/typogrify'
+description='A set of Django template filters to make caring about typography on the web a bit easier.'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://github.com/mintchaos/typogrify/archive/refs/tags/$version.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('3648ed25e0121925b4c6b542fd1cfd45')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd typogrify-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+
