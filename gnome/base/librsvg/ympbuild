@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='librsvg'
+release='1'
+version='2.40.20'
+url='https://github.com/oaken-source/librsvg-og'
+description='Scalable Vector Graphics (SVG) rendering library '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
+depends=(libcroco gobject-introspection pango cairo fontconfig libX11 libXext libXrender libxcb)
+makedepends=()
+md5sums=('f5b9737a91d377a3eb47ab898dba681a')
+group=(gnome.base)
+uses=()
+arch=('x86_64')
+
+cd $name-og-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
