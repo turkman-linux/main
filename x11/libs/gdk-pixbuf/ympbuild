@@ -7,10 +7,10 @@ description='gdk-pixbuf Image loading library for GTK+ '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/$version/gdk-pixbuf-$version.tar.gz")
-depends=(libjpeg-turbo shared-mime-info gi-docgen)
+source=("https://download.gnome.org/sources/gdk-pixbuf/${version%.*}/gdk-pixbuf-$version.tar.xz")
+depends=(libjpeg-turbo shared-mime-info gi-docgen libtiff)
 makedepends=()
-md5sums=('d0d5dc2647a3104efe4d61765a792b5b')
+md5sums=('4a62f339cb1424693fba9bb7ffef8150')
 group=(x11.libs)
 uses=()
 arch=('x86_64')
@@ -18,9 +18,13 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-pip3 install docutils
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        -Dman=false \
+        -D builtin_loaders=all \
+        -D installed_tests=false \
+        -D tiff=enabled \
+        -D tests=false
 }
 
 build(){
