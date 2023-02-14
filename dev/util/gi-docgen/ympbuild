@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='gi-docgen'
+release='1'
+version='2023.1'
+url='https://gitlab.gnome.org/GNOME/gi-docgen'
+description=' A documentation generator for GObject-based libraries '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/gi-docgen/-/archive/$version/gi-docgen-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('844e84610246501d3303ae9150d0cc24')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	pip3 install jinja2 markdown markupsafe typogrify
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

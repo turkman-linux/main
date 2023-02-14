@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libcroco'
+release='1'
+version='0.6.13'
+url='https://gitlab.gnome.org/Archive/libcroco.git/'
+description='Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/Archive/libcroco/-/archive/$version/libcroco-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('4167b3767a86c6ebb24d8f44cbf8a922')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	./autogen.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
