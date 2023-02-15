@@ -8,21 +8,27 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 arch=(x86_64)
+group=(sys.base)
 source=("https://busybox.net/downloads/busybox-$version.tar.bz2"
         "files/busybox.sysconf"
         "files/busybox.initramfs"
         "files/udhcpc.openrc"
         "files/udhcpc.script"
+        "data-user.patch"
 )
 md5sums=("585949b1dd4292b604b7d199866e9913"
          "SKIP"
          "SKIP"
          "SKIP"
          "SKIP"
+         "SKIP"
 )
-group=(sys.base)
 
 cd $name-$version
+
+prepare(){
+    patch -Np1 -i ../data-user.patch
+}
 
 setup(){
     make defconfig

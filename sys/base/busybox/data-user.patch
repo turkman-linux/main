@@ -1,0 +1,13 @@
+diff --git a/loginutils/adduser.c b/loginutils/adduser.c
+index d3c795a..7ea29dc 100644
+--- a/loginutils/adduser.c
++++ b/loginutils/adduser.c
+@@ -227,7 +227,7 @@ int adduser_main(int argc UNUSED_PARAM, char **argv)
+ 	die_if_bad_username(pw.pw_name);
+ 	if (!pw.pw_dir) {
+ 		/* create string for $HOME if not specified already */
+-		pw.pw_dir = xasprintf("/home/%s", argv[0]);
++		pw.pw_dir = xasprintf("/data/user/%s", argv[0]);
+ 	}
+ 	pw.pw_passwd = (char *)"x";
+ 	if (opts & OPT_SYSTEM_ACCOUNT) {
