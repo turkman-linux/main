@@ -7,28 +7,39 @@ description='IEEE 802.1X/WPA supplicant for secure wireless transfers'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=('https://w1.fi/releases/wpa_supplicant-2.10.tar.gz')
+source=('https://w1.fi/releases/wpa_supplicant-2.10.tar.gz'
+    'config'
+    'wpa_supplicant.initd'
+    'wpa_supplicant.confd'
+)
 depends=(dbus libnl openssl pcsc-lite readline)
 makedepends=()
-md5sums=('d26797fcb002898d4ee989179346e1cc')
+md5sums=('d26797fcb002898d4ee989179346e1cc'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 group=(net.wireless)
 uses=()
 arch=('x86_64')
 
 cd $name-$version/$name
-mv defconfig .config 
 
-#setup(){
-    #./configure --prefix=/usr \
-    #    --libdir=/usr/lib64/
-#}
+export BINDIR=/usr/sbin
+export LIBDIR=/usr/lib
+
+setup(){
+    cat ../../config > .config
+}
 
 build(){
     make $jobs
 }
 
 package(){
-    make install $jobs
-    install -D -m644 ./wpa_supplicant.conf $DESTDIR/etc/wpa_supplicant.conf
+    make install $jobs 
+    install -Dm644 ./wpa_supplicant.conf $DESTDIR/etc/wpa_supplicant.conf
+    install -Dm755 ../../wpa_supplicant.initd $DESTDIR/etc/init.d/wpa_supplicant
+    install -Dm755 ../../wpa_supplicant.confd $DESTDIR/etc/conf.d/wpa_supplicant
 }
 
