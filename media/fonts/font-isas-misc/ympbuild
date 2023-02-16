@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='font-isas-misc'
+release='1'
+version='1.0.3'
+url='https://gitlab.freedesktop.org/xorg/font/isas-misc'
+description=' X.Org the Institute of Software, Academia Sinica (chinese) fonts '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/font/isas-misc/-/archive/font-isas-misc-$version/isas-misc-font-isas-misc-$version.tar.gz")
+depends=(bdftopcf font-util)
+makedepends=()
+md5sums=('f82dafdd0264ad14ed4491004170a438')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd isas-misc-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

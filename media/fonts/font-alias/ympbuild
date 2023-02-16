@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='font-alias'
+release='1'
+version='1.0.4'
+url='https://gitlab.freedesktop.org/xorg/font/alias'
+description='X.Org font aliases '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/font/alias/-/archive/font-alias-$version/alias-font-alias-$version.tar.gz")
+depends=(font-util)
+makedepends=()
+md5sums=('6064f8e43ec65b00a9bbd6949a009ae1')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd alias-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

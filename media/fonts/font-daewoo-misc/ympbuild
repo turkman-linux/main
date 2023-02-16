@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='font-daewoo-misc'
+release='1'
+version='1.0.3'
+url='https://gitlab.freedesktop.org/xorg/font/daewoo-misc'
+description='X.Org Daewoo fonts '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/font/daewoo-misc/-/archive/font-daewoo-misc-$version/daewoo-misc-font-daewoo-misc-$version.tar.gz")
+depends=(bdftopcf font-util)
+makedepends=()
+md5sums=('3acc0d992442e3a5d340084884f842b4')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd daewoo-misc-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
