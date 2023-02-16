@@ -8,7 +8,6 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
 source=('https://w1.fi/releases/wpa_supplicant-2.10.tar.gz'
-    'config'
     'wpa_supplicant.initd'
     'wpa_supplicant.confd'
     'wpa_cli.sh'
@@ -19,7 +18,6 @@ md5sums=('d26797fcb002898d4ee989179346e1cc'
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
 )
 group=(net.wireless)
 uses=()
@@ -27,11 +25,14 @@ arch=('x86_64')
 
 cd $name-$version/$name
 
-export BINDIR=/sbin
-export LIBDIR=/lib64
+unset CFLAGS
+unset CXXFLAGS
+
+export BINDIR=/usr/sbin
+export LIBDIR=/usr/lib64
 
 setup(){
-    cat ../../config > .config
+    cp defconfig .config
 }
 
 build(){
@@ -48,7 +49,7 @@ package(){
     install -Dm755 ../../wpa_supplicant.initd $DESTDIR/etc/init.d/wpa_supplicant
     install -Dm755 ../../wpa_supplicant.confd $DESTDIR/etc/conf.d/wpa_supplicant
     # stuff
-    install -Dm755 ./eapol_test $DESTDIR/sbin/eapol_test
+    install -Dm755 ./eapol_test $DESTDIR/$BINDIR/eapol_test
     install -Dm755 ../..//wpa_cli.sh $DESTDIR/etc/wpa_supplicant/wpa_cli.sh
 
     # dbus

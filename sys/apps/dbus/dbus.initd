@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
 name="System Message Bus"
-description="An IPC message bus daemo"
+description="An IPC message bus daemon"
 
 extra_started_commands="reload"
 
