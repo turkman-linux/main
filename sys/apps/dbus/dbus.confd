@@ -3,5 +3,3 @@
 # Additional arguments to pass to dbus-daemon.
 #command_args=
 
-# Uncomment to use process supervisor.
-#supervisor=supervise-daemon

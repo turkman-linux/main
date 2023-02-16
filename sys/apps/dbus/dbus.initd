@@ -4,8 +4,9 @@ description="An IPC message bus daemon"
 
 extra_started_commands="reload"
 
+supervisor=supervise-daemon
 command="/usr/bin/dbus-daemon"
-command_args="--system"
+command_args="--system --nofork --nopidfile --syslog-only ${command_args:-}"
 command_background="yes"
 pidfile="/run/$RC_SVCNAME.pid"
 
