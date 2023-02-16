@@ -8,14 +8,18 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/xorg/app/xinit/-/archive/xinit-$version/xinit-xinit-1.4.2.tar.gz"
-        "xinitrc"
-        "xserverrc"
-        "Xsession"
-        "xinit.sysconf"
+        "files/xinitrc"
+        "files/xserverrc"
+        "files/Xsession"
+        "files/xinit.sysconf"
+        "files/xinit.confd"
+        "files/xinit.initd"
 )
 depends=(xorg-macros xorgproto libX11)
 makedepends=()
 md5sums=('0855364c1c869679300d55e9dd57e2aa'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -43,5 +47,12 @@ package(){
     install -m755 -D ../Xsession "$DESTDIR"/etc/X11/xinit/Xsession
     install -m755 ../xserverrc "$DESTDIR"/etc/X11/xinit/xserverrc
     install -m755 -D ../xinit.sysconf "$DESTDIR"/etc/sysconf.d/xinit
+    install -m755 -D ../xinit.initd "$DESTDIR"/etc/init.d/xinit
+    install -m755 -D ../xinit.confd "$DESTDIR"/etc/conf.d/xinit
+    # allow local connections config
+    mkdir -p "$DESTDIR"/etc/X11/xinit/xinitrc.d
+    echo "#!/bin/sh" > "$DESTDIR"/etc/X11/xinit/xinitrc.d/10-local.sh
+    echo "xhost +local:" >> "$DESTDIR"/etc/X11/xinit/xinitrc.d/10-local.sh
+    chmod 754 "$DESTDIR"/etc/X11/xinit/xinitrc.d/10-local.sh
 }
 

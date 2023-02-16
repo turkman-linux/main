@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+name="xinit"
+description="X11 autologin service"
+
+start(){
+    exec /bin/busybox su - $USER -c "exec /usr/bin/startx"
+}
+
+depend()
+{
+        need dbus
+        provide gui display-manager getty
+}
