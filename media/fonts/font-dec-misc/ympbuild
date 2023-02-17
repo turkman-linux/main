@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='font-dec-misc'
+release='1'
+version='1.0.3'
+url='https://gitlab.freedesktop.org/xorg/font/dec-misc'
+description='X.Org DEC fonts'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/font/dec-misc/-/archive/font-dec-misc-$version/dec-misc-font-dec-misc-$version.tar.gz")
+depends=(bdftopcf font-util)
+makedepends=()
+md5sums=('e4d9faffd5dd471e92fa5d935a03971d')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd dec-misc-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='font-jis-misc'
+release='1'
+version='1.0.3'
+url='https://gitlab.freedesktop.org/xorg/font/jis-misc'
+description='X.Org JIS (japanese) fonts '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/font/jis-misc/-/archive/font-jis-misc-$version/jis-misc-font-jis-misc-$version.tar.gz")
+depends=(bdftopcf font-util)
+makedepends=()
+md5sums=('701fd43108f26d70e9b449c409be478e')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd jis-misc-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

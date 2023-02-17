@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='encodings'
+release='1'
+version='1.0.6'
+url='https://gitlab.freedesktop.org/xorg/font/encodings'
+description='X.Org font encodings '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://www.x.org/archive/individual/font/encodings-$version.tar.gz")
+depends=(mkfontscale)
+makedepends=()
+md5sums=('415c4657f0b3b689d14c9ffcfcd4ef25')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

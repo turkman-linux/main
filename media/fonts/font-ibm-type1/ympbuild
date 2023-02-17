@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='font-ibm-type1'
+release='1'
+version='1.0.3'
+url='https://gitlab.freedesktop.org/xorg/font/ibm-type1'
+description=' X.Org IBM Courier font'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/font/ibm-type1/-/archive/font-ibm-type1-$version/ibm-type1-font-ibm-type1-$version.tar.gz")
+depends=(font-util)
+makedepends=()
+md5sums=('c8bb7c89f234e877ce4585f91ae64661')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd ibm-type1-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

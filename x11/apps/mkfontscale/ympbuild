@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='mkfontscale'
+release='1'
+version='1.2.2'
+url='https://gitlab.freedesktop.org/xorg/app/mkfontscale.git/'
+description='create an index of scalable font files for X'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/app/mkfontscale/-/archive/mkfontscale-$version/mkfontscale-mkfontscale-$version.tar.gz")
+depends=(freetype libfontenc)
+makedepends=()
+md5sums=('5740018d3a1b6887a7a5fb4ebb0070ca')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

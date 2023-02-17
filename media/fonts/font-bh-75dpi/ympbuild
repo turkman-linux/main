@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='font-bh-75dpi'
+release='1'
+version='1.0.3'
+url='https://gitlab.freedesktop.org/xorg/font/bh-75dpi'
+description='X.Org Bigelow & Holmes bitmap fonts'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/font/bh-75dpi/-/archive/font-bh-75dpi-$version/bh-75dpi-font-bh-75dpi-$version.tar.gz")
+depends=(bdftopcf font-util)
+makedepends=()
+md5sums=('18bc6f753fc5990c15583d8549509137')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd bh-75dpi-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
