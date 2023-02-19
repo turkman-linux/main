@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libgusb'
+release='1'
+version='0.4.5'
+url='https://github.com/hughsie/libgusb'
+description=' GObject wrapper for libusb '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/hughsie/libgusb/archive/refs/tags/$version.tar.gz")
+depends=(vala gi-docgen mesa)
+makedepends=()
+md5sums=('08929299006546c3e2d6ea6bd9997fa2')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
