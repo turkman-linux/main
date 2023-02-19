@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='glib-networking'
+release='1'
+version='2.74.0'
+url='https://gitlab.gnome.org/GNOME/glib-networking.git/'
+description='Network-related giomodules for glib '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/glib-networking/-/archive/$version/glib-networking-$version.tar.gz")
+depends=(gsettings-desktop-schemas)
+makedepends=(gnutls)
+md5sums=('36551a896d1a6070d1a0010f339f8e72')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	-Dlibproxy=disabled \
+	-Dinstalled_tests=false
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

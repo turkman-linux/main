@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libsoup'
+release='1'
+version='3.3.1'
+url='https://gitlab.gnome.org/GNOME/libsoup.git/'
+description='HTTP client/server library for GNOME '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/libsoup/-/archive/$version/libsoup-$version.tar.gz")
+depends=(smartypants glib-networking)
+makedepends=()
+md5sums=('5538e9334cc3d7a9447d76d561dea3ee')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

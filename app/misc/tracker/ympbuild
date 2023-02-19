@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='tracker'
+release='1'
+version='3.4.1'
+url='https://gitlab.gnome.org/GNOME/tracker'
+description='A tagging metadata database, search tool and indexer'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/tracker/-/archive/$version/tracker-$version.tar.gz")
+depends=(hotdoc pygobject asciidoc libsoup)
+makedepends=()
+md5sums=('d996e40dde492da7ed2a33ea716ba235')
+group=(app.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	-Dstemmer=auto \
+	-Dsystemd_user_services=false 
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
