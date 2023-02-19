@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libproxy'
+release='1'
+version='0.4.18'
+url='https://libproxy.github.io/libproxy'
+description='Automatic proxy configuration management library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://github.com/libproxy/libproxy/releases/download/0.4.18/libproxy-0.4.18.tar.xz')
+depends=(dbus duktape gcc-libs glib2 zlib cmake git ninja perl python webkit2gtk)
+makedepends=()
+md5sums=('54f9faa122fc486b62c56e27faa090d7')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+
+setup(){
+    cmake ./
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
