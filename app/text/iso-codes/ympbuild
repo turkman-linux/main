@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='iso-codes'
+release='1'
+version='4.1'
+url='https://salsa.debian.org/iso-codes-team/iso-codes'
+description='Lists of the country, language, and currency names'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/iso-codes-4.1/iso-codes-iso-codes-4.1.tar.gz')
+depends=()
+makedepends=()
+md5sums=('e0e3e7e4b82509cd08964dc5d703f771')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
