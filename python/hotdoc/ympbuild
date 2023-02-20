@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name='hotdoc'
+release='1'
+version='0.14.0'
+url='https://github.com/leohemsted/smartypants.py/'
+description='ASCII quote-dot-dash to HTML entity converter'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/hotdoc/hotdoc/archive/refs/tags/$version.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('45374acdd7e720a4461d0ad5b7300008')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}

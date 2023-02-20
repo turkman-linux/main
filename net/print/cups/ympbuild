@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='cups'
+release='1'
+version='2.4.2'
+url='https://github.com/OpenPrinting/cups'
+description='The Common Unix Printing System '
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/OpenPrinting/cups/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('2dc62207ba89ef43ba376e0066cad138')
+group=(net.print)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

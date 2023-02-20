@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libgudev'
+release='1'
+version='237'
+url='https://example.org'
+description='Package description missing'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.gnome.org/GNOME/libgudev/-/archive/237/libgudev-237.tar.gz')
+depends=()
+makedepends=()
+md5sums=('a83582c0bca75f01d158c8b48e450415')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

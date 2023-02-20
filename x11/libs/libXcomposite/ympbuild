@@ -7,17 +7,18 @@ description='X.Org Xcomposite library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.x.org/archive/individual/lib/libXcomposite-$version.tar.xz")
-depends=(xorgproto libX11 libXfixes)
+source=("https://gitlab.freedesktop.org/xorg/lib/libxcomposite/-/archive/libXcomposite-$version/libxcomposite-libXcomposite-$version.tar.gz")
+depends=()
 makedepends=()
-md5sums=('af0a5f0abb5b55f8411cd738cf0e5259')
+md5sums=('931241d380a00b43c0ae6a0dbbd5eb30')
 group=(x11.libs)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd libxcomposite-$name-$version
 
 setup(){
+	autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }

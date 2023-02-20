@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='gtk'
+release='1'
+version='3.24.36'
+url='https://example.org'
+description='Package description missing'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.36/gtk-3.24.36.tar.gz')
+depends=(cairo libXi libXext libXfixes libXcursor libXdamage librsvg )
+makedepends=()
+md5sums=('dc0657203dd4f254f4c39fc3f72fba39')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dman=false \
+        -D installed_tests=false \
+        -D tests=false
+}
+
+build(){
+   ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
