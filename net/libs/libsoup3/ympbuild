@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='libsoup'
+name='libsoup3'
 release='1'
 version='3.3.1'
 url='https://gitlab.gnome.org/GNOME/libsoup.git/'
@@ -15,11 +15,12 @@ group=(net.libs)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd libsoup-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        -Dsysprof=disabled
 }
 
 build(){
