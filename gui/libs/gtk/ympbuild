@@ -8,7 +8,8 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=('https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.36/gtk-3.24.36.tar.gz')
-depends=(cairo libXi libXext libXfixes libXcursor libXdamage librsvg )
+depends=(cairo libXi libXext libXfixes libXcursor libXdamage librsvg
+         shared-mime-info gdk-pixbuf libxkbcommon)
 makedepends=()
 md5sums=('dc0657203dd4f254f4c39fc3f72fba39')
 group=()
