@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='gtk'
+name='gtk3'
 release='1'
 version='3.24.36'
 url='https://example.org'
@@ -9,21 +9,26 @@ maintainer='bk'
 license=('GPLv3')
 source=('https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.36/gtk-3.24.36.tar.gz')
 depends=(cairo libXi libXext libXfixes libXcursor libXdamage librsvg
-         shared-mime-info gdk-pixbuf libxkbcommon)
+         shared-mime-info gdk-pixbuf libxkbcommon libepoxy)
 makedepends=()
 md5sums=('dc0657203dd4f254f4c39fc3f72fba39')
 group=()
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd gtk-$version
 
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -Dman=false \
         -D installed_tests=false \
-        -D tests=false
+        -D tests=false \
+        -D broadway_backend=true \
+        -D cloudproviders=true \
+        -D colord=yes \
+        -D introspection=true \
+        -D tracker3=false
 }
 
 build(){
