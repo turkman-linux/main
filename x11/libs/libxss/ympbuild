@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libxss'
+release='1'
+version='1_1.2.3-1'
+url='https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver'
+description='X11 Screen Saver extension library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://salsa.debian.org/xorg-team/lib/libxss/-/archive/libxss-1_1.2.3-1/libxss-libxss-1_1.2.3-1.tar.gz')
+depends=(libXext util-macros xorgproto)
+makedepends=()
+md5sums=('cff86619e7df5baee130eec64a859b6f')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd "libxss"-$name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

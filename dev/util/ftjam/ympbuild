@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='ftjam'
+release='1'
+version='2.5.2'
+url='https://freetype.org/jam/'
+description='FT Jam - an enhanced version of the Jam build tool'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://master.dl.sourceforge.net/project/freetype/ftjam/2.5.2/ftjam-2.5.2.zip")
+depends=()
+makedepends=()
+md5sums=('21d0460a1736940850e1425fa5b385de')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
