@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='desktop-file-utils'
+release='1'
+version='0.26'
+url='https://www.freedesktop.org/wiki/Software/desktop-file-utils'
+description='Command line utilities for working with desktop entries'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.26.tar.xz')
+depends=()
+makedepends=(git meson)
+md5sums=('29739e005f5887cf41639b8450f3c23f')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
