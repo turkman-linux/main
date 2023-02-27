@@ -19,14 +19,15 @@ cd $name-$version
 
 
 setup(){
-    cmake ./
+    mkdir build
+    cd build
+    cmake ../
 }
 
 build(){
-    make $jobs
+    make -C build $jobs
 }
 
 package(){
-    make install $jobs
+    make -C build install $jobs
 }
-
