@@ -8,7 +8,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
 source=('https://github.com/libproxy/libproxy/releases/download/0.4.18/libproxy-0.4.18.tar.xz')
-depends=()
+depends=(dbus duktape gcc-libs glib2 zlib cmake git ninja perl python webkit2gtk)
 makedepends=()
 md5sums=('54f9faa122fc486b62c56e27faa090d7')
 group=(net.libs)
@@ -19,13 +19,15 @@ cd $name-$version
 
 
 setup(){
-    cmake ./
+    mkdir build
+    cd build
+    cmake ../
 }
 
 build(){
-    make $jobs
+    make -C build $jobs
 }
 
 package(){
-    make install $jobs
+    make -C build install $jobs
 }
