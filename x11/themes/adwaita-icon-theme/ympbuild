@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='adwaita-icon-theme'
+release='1'
+version='3.38.0'
+url='https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
+description='GNOME standard cursors'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=('https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/archive/3.38.0/adwaita-icon-theme-3.38.0.tar.gz')
+depends=(hicolor-icon-theme librsvg)
+makedepends=()
+md5sums=('83e4069519868b1383c571d57ac2fa61')
+group=(x11.themes)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
