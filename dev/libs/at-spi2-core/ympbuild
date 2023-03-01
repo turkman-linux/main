@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='at-spi2-core'
+release='1'
+version='2.46.0'
+url='https://gitlab.gnome.org/GNOME/at-spi2-core'
+description='GTK+ & GNOME Accessibility Toolkit'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/at-spi2-core/-/archive/AT_SPI2_CORE_${version//./_}/at-spi2-core-AT_SPI2_CORE_${version//./_}.tar.gz")
+depends=(glib libffi libpcre2 libXtst)
+makedepends=()
+md5sums=('5b074a9c118997dc91768b9e7670dae5')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd at-spi2-core-AT_SPI2_CORE_${version//./_}
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ 
+
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
