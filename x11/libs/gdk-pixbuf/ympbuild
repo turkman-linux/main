@@ -21,10 +21,10 @@ setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -Dman=false \
-        -D builtin_loaders=all \
         -D installed_tests=false \
         -D tiff=enabled \
         -D tests=false
+
 }
 
 build(){

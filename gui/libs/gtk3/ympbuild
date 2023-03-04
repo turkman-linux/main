@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
 name='gtk3'
 release='1'
-version='3.24.36'
+version='3.24.37'
 url='https://example.org'
 description='Package description missing'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.36/gtk-3.24.36.tar.gz')
+source=("https://download.gnome.org/sources/gtk+/${version:0:4}/gtk+-${version}.tar.xz")
 depends=(cairo libXi libXext libXfixes libXcursor libXdamage librsvg
-         shared-mime-info gdk-pixbuf libxkbcommon libepoxy)
+         shared-mime-info gdk-pixbuf libxkbcommon libepoxy colord libcloudproviders
+         dconf cantarell-fonts libpng)
 makedepends=()
-md5sums=('dc0657203dd4f254f4c39fc3f72fba39')
+md5sums=('3649dd48556ead2d909467c1f0751956')
 group=()
 uses=()
 arch=('x86_64')
 
-cd gtk-$version
-
+cd gtk+-$version
+export XDG_DATA_DIRS=/usr/share
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
