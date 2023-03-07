@@ -9,7 +9,7 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://download.gnome.org/sources/pango/1.50/pango-$version.tar.xz")
 depends=(fribidi libthai harfbuzz cairo)
-makedepends=()
+makedepends=(gobject-introspection)
 md5sums=('fd4b0b23915d6a0255317f811bea4215')
 group=(x11.libs)
 uses=()
@@ -21,7 +21,8 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-        -D gtk_doc=false
+        -Dintrospection=enabled \
+        -Dgtk_doc=false
 }
 
 build(){

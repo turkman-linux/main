@@ -8,8 +8,8 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/$version.tar.gz")
-depends=()
-makedepends=()
+depends=(cairo glib)
+makedepends=(gobject-introspection)
 md5sums=('7c71bb68e5950f4eb9b7ace8be0de426')
 group=(media.libs)
 uses=(freetype)
@@ -21,6 +21,8 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
+        -Ddocs=disabled \
+        -Dgobject=enabled \
         -Dfreetype=$(use_opt freetype enabled disabled)
 }
 
