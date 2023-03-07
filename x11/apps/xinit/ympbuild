@@ -15,7 +15,7 @@ source=("https://gitlab.freedesktop.org/xorg/app/xinit/-/archive/xinit-$version/
         "files/xinit.confd"
         "files/xinit.initd"
 )
-depends=(xorg-macros xorgproto libX11)
+depends=(util-macros xorgproto libX11)
 makedepends=()
 md5sums=('0855364c1c869679300d55e9dd57e2aa'
          'SKIP'
