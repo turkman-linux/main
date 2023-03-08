@@ -1,4 +1,7 @@
 #!/bin/sh
+if [ ! -d /usr/share/applications ] ; then
+    mkdir -p /usr/share/applications
+fi
 current=$(date +%s -r /usr/share/applications)
 last=$(cat /var/lib/ymp/sysconf/desktop-file-utils/update.date)
 if [ "$current" != "$last" ] ; then
