@@ -3,5 +3,5 @@ current=$(date +%s -r /usr/share/mime/)
 last=$(cat /var/lib/ymp/sysconf/shared-mime-info/update.date)
 if [ "$current" != "$last" ] ; then
     update-mime-database /usr/share/mime/
-    echo "date +%s -r /usr/share/mime" > /var/lib/ymp/sysconf/shared-mime-info/update.date
+    date +%s -r /usr/share/mime > /var/lib/ymp/sysconf/shared-mime-info/update.date
 fi
