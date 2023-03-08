@@ -1,0 +1,7 @@
+#!/bin/sh
+current=$(date +%s -r /usr/share/fonts)
+last=$(cat /var/lib/ymp/sysconf/fontconfig/update.date)
+if [ "$current" != "$last" ] ; then
+    fc-cache -f
+    echo "date +%s -r /usr/share/fonts" > /var/lib/ymp/sysconf/fontconfig/update.date
+fi

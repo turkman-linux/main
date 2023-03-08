@@ -7,10 +7,12 @@ description='Fontconfig is a library for configuring and customizing font access
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.freedesktop.org/software/fontconfig/release/fontconfig-$version.tar.gz")
+source=("https://www.freedesktop.org/software/fontconfig/release/fontconfig-$version.tar.gz"
+        "fontconfig.sysconf")
 depends=(freetype)
 makedepends=()
-md5sums=('f3b930f329e66915e875b5aa498658ad')
+md5sums=('f3b930f329e66915e875b5aa498658ad'
+         'SKIP')
 group=(media.libs)
 uses=()
 arch=('x86_64')
@@ -35,5 +37,7 @@ package(){
             ln -s ../../../usr/share/fontconfig/conf.avail/$link ${DESTDIR}/etc/fonts/conf.d/$link
         fi
     done
+    mkdir -p ${DESTDIR}/etc/sysconf.d/
+    install ../fontconfig.sysconf ${DESTDIR}/etc/sysconf.d/fontconfig
 }
 

@@ -1,0 +1,7 @@
+#!/bin/sh
+current=$(date +%s -r /usr/lib64/gdk-pixbuf-2.0)
+last=$(cat /var/lib/ymp/sysconf/gdk-pixbuf/update.date)
+if [ "$current" != "$last" ] ; then
+    gdk-pixbuf-query-loaders --update-cache
+    echo "date +%s -r /usr/lib64/gdk-pixbuf-2.0" > /var/lib/ymp/sysconf/gdk-pixbuf/update.date
+fi
