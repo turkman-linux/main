@@ -7,10 +7,12 @@ description='The Shared MIME-info Database specification'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-$version.tar.gz")
-depends=()
+source=("https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-$version.tar.gz"
+        shared-mime-info.sysconf)
+depends=(libxml2)
 makedepends=()
-md5sums=('06cb9e92e4211dc53fd52b7bfd586c78')
+md5sums=('06cb9e92e4211dc53fd52b7bfd586c78'
+         'SKIP')
 group=(x11.misc)
 uses=()
 arch=('x86_64')
@@ -28,5 +30,7 @@ build(){
 
 package(){
     ninja -C build install
+    mkdir -p ${DESTDIR}/etc/sysconf.d/
+    install ../shared-mime-info.sysconf ${DESTDIR}/etc/sysconf.d/shared-mime-info
 }
 

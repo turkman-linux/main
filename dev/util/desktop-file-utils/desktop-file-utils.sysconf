@@ -1,0 +1,7 @@
+#!/bin/sh
+current=$(date +%s -r /usr/share/applications)
+last=$(cat /var/lib/ymp/sysconf/desktop-file-utils/update.date)
+if [ "$current" != "$last" ] ; then
+    update-desktop-database /usr/share/applications/
+    echo "date +%s -r /usr/share/applications" > /var/lib/ymp/sysconf/desktop-file-utils/update.date
+fi
