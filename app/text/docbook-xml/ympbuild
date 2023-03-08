@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+name='docbook-xml'
+release='1'
+version='4.5'
+url='https://example.org'
+description='Package description missing'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://docbook.org/xml/$version/docbook-xml-$version.zip" "LICENSE")
+depends=(libxml2)
+makedepends=()
+md5sums=('03083e288e87a7e829e437358da7ef9e' 'SKIP')
+group=(app.text)
+uses=()
+arch=('x86_64')
+
+#cd $name-$version
+
+
+build(){
+    #make $jobs
+    local ver xml
+}
+
+package(){
+    #make install $jobs
+    
+
+	mkdir -p "$DESTDIR/etc/xml"
+	xmlcatalog --noout --create "$DESTDIR/etc/xml/docbook-xml"
+
+	mkdir docbook-xml-$version
+	bsdtar -C docbook-xml-$version -xf docbook-xml-$version.zip
+
+	pushd docbook-xml-$version
+	mkdir -p "$DESTDIR/usr/share/xml/docbook/xml-dtd-$version"
+	cp -dr docbook.cat *.dtd ent/ *.mod \
+		"$DESTDIR/usr/share/xml/docbook/xml-dtd-$version"
+	popd
+	
+	xmlcatalog --noout --add "public" \
+	  "-//OASIS//DTD DocBook XML V$verdion//EN" \
+	  "http://www.oasis-open.org/docbook/xml/$version/docbookx.dtd" \
+	  "$DESTDIR/etc/xml/docbook-xml"
+
+	install -Dt "$DESTDIR/usr/share/licenses/$name" -m644 LICENSE
+
+	# Fix permissions
+	find "$DESTDIR" -type f -exec chmod -c a-x {} +
+	chmod -Rc u=rwX,go=rX "$DESTDIR"
+}
+

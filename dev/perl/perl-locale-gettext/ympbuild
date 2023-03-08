@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+name='perl-locale-gettext'
+release='1'
+version='1.07'
+url='https://search.cpan.org/dist/Locale-gettext/'
+description='Permits access from Perl to the gettext() family of functions'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL' 'PerlArtistic')
+source=("https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/Locale-gettext-$version.tar.gz")
+depends=(gettext perl)
+makedepends=()
+md5sums=('bc652758af65c24500f1d06a77415019')
+group=(dev.perl)
+uses=()
+arch=('x86_64')
+
+cd "Locale-gettext"-$version
+
+build(){
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+    make $jobs
+}
+
+package(){
+    make install $jobs DESTDIR="$DESTDIR"
+    find "${DESTDIR}" -name perllocal.pod -delete
+	find "${DESTDIR}" -name .packlist -delete
+}
+

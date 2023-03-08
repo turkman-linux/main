@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='help2man'
+release='1'
+version='1.49.3'
+url='https://www.gnu.org/software/help2man/'
+description='Conversion tool to create man files'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL')
+source=("https://ftp.gnu.org/gnu/help2man/help2man-$version.tar.xz")
+depends=(perl-locale-gettext)
+makedepends=()
+md5sums=('2a0ffaa1822df5b6971f486a4fe1a4d1')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+    --libdir=/usr/lib64/ \
+    --mandir=/usr/share/man \
+	--infodir=/usr/share/info \
+	--libdir=/usr/lib
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs DESTDIR="${DESTDIR}" 
+}
+
