@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='dconf'
+release='1'
+version='0.40.0'
+url='https://gitlab.gnome.org/GNOME/dconf.git/'
+description=' Simple low-level configuration system '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/dconf/-/archive/$version/dconf-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('3413fbc4f50c4c68e6b8f7099b248c22')
+group=(gnome.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	-Dbash_completion=false \
+	-Dman=false
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+name='colord'
+release='1'
+version='1.4.6'
+url='https://www.freedesktop.org/software/colord/'
+description='System service to accurately color manage input and output devices '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/hughsie/colord/archive/refs/tags/$version.tar.gz")
+depends=(lcms2 libgusb libgudev)
+makedepends=()
+md5sums=('f895fa39bbb87fce8517675802865464')
+group=(x11.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	-Ddaemon=false \
+	-Dsession_example=false \
+	-Dbash_completion=false \
+	-Dudev_rules=true \
+	-Dsystemd=false \
+	-Dbash_completion=false \
+	-Dlibcolordcompat=true \
+	-Dargyllcms_sensor=true \
+	-Dsane=false \
+	-Dintrospection=false \
+	-Dvapi=false \
+	-Dprint_profiles=false \
+	-Dtests=false \
+	-Dinstalled_tests=false \
+	-Dman=false \
+	-Ddocs=false
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

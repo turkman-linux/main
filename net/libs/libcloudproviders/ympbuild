@@ -19,11 +19,12 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/ 
+        --libdir=/usr/lib64/
 }
 
 build(){
     ninja -C build
+        --libdir=/usr/lib64/
 }
 
 package(){

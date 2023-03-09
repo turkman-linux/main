@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='cantarell-fonts'
+release='1'
+version='0.303'
+url='https://gitlab.gnome.org/GNOME/cantarell-fonts.git/'
+description='Default fontset for GNOME Shell '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/cantarell-fonts/-/archive/v$version/cantarell-fonts-v$version.tar.gz")
+depends=(psautohint)
+makedepends=()
+md5sums=('acbc0d271b81be1415521396dcfcbbcd')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+cd $name-v$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	-Duseprebuilt=false \
+	-Dbuildappstream=false \
+	-Dbuildstatics=false \
+	-Dbuildvf=false
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
