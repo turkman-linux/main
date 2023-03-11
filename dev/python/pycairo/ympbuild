@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name='pycairo'
+release='1'
+version='1.23.0'
+url='https://github.com/pygobject/pycairo/'
+description='Python bindings for the cairo library'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/pygobject/pycairo/archive/refs/tags/v$version.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('af0dc8346c2bdee368343f1dc32616ca')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}

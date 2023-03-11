@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='uci4x'
+release='1'
+version='72'
+url='https://example.org'
+description='Package description missing'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/unicode-org/icu/archive/refs/tags/icu4x/2023-03-06/72.x.tar.gz')
+depends=()
+makedepends=()
+md5sums=('a6186148b67659684288a5829ef3b62c')
+group=()
+uses=()
+arch=('x86_64')
+
+cd icu-icu4x-2023-03-06-72.x
+#$name-$version
+cd icu4c
+cd source
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
