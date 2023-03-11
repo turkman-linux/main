@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-name='uci4x'
+name='icu4x'
 release='1'
 version='72'
-url='https://example.org'
-description='Package description missing'
+url='https://github.com/unicode-org/icu'
+description='icu International Components for Unicode'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
@@ -11,7 +11,7 @@ source=('https://github.com/unicode-org/icu/archive/refs/tags/icu4x/2023-03-06/7
 depends=()
 makedepends=()
 md5sums=('a6186148b67659684288a5829ef3b62c')
-group=()
+group=(dev.libs)
 uses=()
 arch=('x86_64')
 
