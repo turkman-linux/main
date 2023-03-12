@@ -8,10 +8,12 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://www.nano-editor.org/dist/v7/nano-$version.tar.xz"
+        "https://github.com/scopatz/nanorc/archive/refs/tags/2020.10.10.tar.gz"
         "nanorc")
 depends=(file zlib ncurses bzip2)
 makedepends=()
 md5sums=('32faafd9da9ee75feda8423d5744ee4d'
+         'fef2d5f43ac31ea0cad2cd7aed0d8255'
          'SKIP')
 uses=(nanorc)
 arch=('x86_64')
@@ -21,6 +23,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
+        --sysconfdir=/etc \
         --libdir=/usr/lib64/ \
         $(use_arg nanorc --enable-color --disable-color )\
         $(use_arg nanorc --enable-nanorc --disable-nanorc )\
@@ -33,7 +36,15 @@ build(){
 
 package(){
     make install $jobs
-    mkdir -p ${DESTDIR}/etc/
+    mkdir -p ${DESTDIR}/etc
     install ../nanorc ${DESTDIR}/etc/nanorc
+    # install extra nanorc files
+    cd ../nanorc-2020.10.10
+    for file in ./*.nanorc ; do
+        if [[ ! -f ${DESTDIR}/usr/share/nano/$file ]] ; then
+            install $file ${DESTDIR}/usr/share/nano/
+        fi
+    done
+    
 }
 
