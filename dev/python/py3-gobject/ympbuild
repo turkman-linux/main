@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='pygobject'
+name='py3-pygobject'
 release='1'
 version='3.43.1'
 url='Python bindings for GObject Introspection'
@@ -8,14 +8,15 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/pygobject/-/archive/$version/pygobject-$version.tar.gz")
-depends=(python cairo py3-cairo libX11 libXext)
+pyver=$(python -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
+depends=(python"$pyver" gobject-introspection)
 makedepends=()
 md5sums=('644705774d5cd6b668e95ac33ba64de2')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd pygobject-$version
 
 build(){
     python3 setup.py build

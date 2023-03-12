@@ -8,7 +8,8 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/snowballstem/pystemmer/archive/refs/tags/v$version.tar.gz")
-depends=(python)
+pyver=$(python -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
+depends=(python"$pyver")
 makedepends=()
 md5sums=('8e4f6e0373a0571ed34cda2c8bf98d22')
 group=(dev.python)
@@ -23,4 +24,11 @@ build(){
 
 package(){
     python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    pyver=$(python -c "import sys; print(str( sys.version_info[0]) + str(sys.version_info[1] ))")
+    for ver in 311 310 ; do
+        if [[ ! -e ${DESTDIR}/usr/lib64/python3/Stemmer.cpython-$ver-$(uname -m)-linux-gnu.so ]] ; then
+            ln -s Stemmer.cpython-$pyver-$(uname -m)-linux-gnu.so \
+                ${DESTDIR}/usr/lib64/python3/Stemmer.cpython-$ver-$(uname -m)-linux-gnu.so
+        fi
+    done
 }

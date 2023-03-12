@@ -8,7 +8,8 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/pygobject/pycairo/archive/refs/tags/v$version.tar.gz")
-depends=(python)
+pyver=$(python -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
+depends=(python"$pyver" cairo)
 makedepends=()
 md5sums=('af0dc8346c2bdee368343f1dc32616ca')
 group=(dev.python)
@@ -16,6 +17,9 @@ uses=()
 arch=('x86_64')
 
 cd pycairo-$version
+
+
+
 
 build(){
     python3 setup.py build

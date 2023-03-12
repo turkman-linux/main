@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/tracker/-/archive/3.4.2/tracker-3.4.2.tar.gz")
-depends=(py3-stemmer vala pygobject asciidoc libsoup dbus icu4x)
+depends=(py3-stemmer vala py3-pygobject asciidoc libsoup3 dbus icu)
 makedepends=()
 md5sums=('11160838cb5a0484d62b3506c0f95afb')
 group=(app.misc)
@@ -39,6 +39,11 @@ build(){
 package(){
 
     ninja -C build install
-#ln -s /usr/bin/tracker3 $DESTDIR/usr/libexec/tracker3/help
+    for prog in help export sql endpoint sparql import ; do
+        if [[ -L $DESTDIR/usr/libexec/tracker3/$prog ]] ; then
+            rm -f $DESTDIR/usr/libexec/tracker3/$prog
+            ln -s ../../bin/tracker3 $DESTDIR/usr/libexec/tracker3/$prog
+        fi
+    done
 }
 
