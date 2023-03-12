@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name='stemmer'
+release='1'
+version='2.2.0.1'
+url='https://github.com/snowballstem/pystemmer'
+description='String processing language for creating stemming algorithms'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/snowballstem/pystemmer/archive/refs/tags/v$version.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('8e4f6e0373a0571ed34cda2c8bf98d22')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd py$name-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}

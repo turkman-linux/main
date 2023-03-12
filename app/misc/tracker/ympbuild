@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='tracker'
 release='1'
-version='3.4.1'
+version='3.4.2'
 url='https://gitlab.gnome.org/GNOME/tracker'
 description='A tagging metadata database, search tool and indexer'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.gnome.org/GNOME/tracker/-/archive/$version/tracker-$version.tar.gz")
-depends=(asciidoc libsoup3)
+source=("https://gitlab.gnome.org/GNOME/tracker/-/archive/3.4.2/tracker-3.4.2.tar.gz")
+depends=(py3-stemmer vala pygobject asciidoc libsoup dbus icu4x)
 makedepends=()
-md5sums=('d996e40dde492da7ed2a33ea716ba235')
+md5sums=('11160838cb5a0484d62b3506c0f95afb')
 group=(app.misc)
 uses=()
 arch=('x86_64')
@@ -20,9 +20,16 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-	-Dstemmer=auto \
-        -Ddocs=false
-	-Dsystemd_user_services=false 
+	-Dbash_completion=false \
+	-Dsystemd_user_services=false \
+	-Ddocs=false \
+	-Dman=false \
+	-Dtests=false \
+	-Dsoup='soup3' \
+	-Dunicode_support='auto' \
+	-Doverride_sqlite_version_check=false \
+	-Dtest_utils=false \
+	-Dtests_tap_protocol=false
 }
 
 build(){
@@ -30,6 +37,8 @@ build(){
 }
 
 package(){
+
     ninja -C build install
+#ln -s /usr/bin/tracker3 $DESTDIR/usr/libexec/tracker3/help
 }
 
