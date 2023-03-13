@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xcalc'
+release='1'
+version='1.1.1'
+url='scientific calculator for X'
+description='scientific calculator for X'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/xorg/app/xcalc/-/archive/xcalc-$version/xcalc-xcalc-$version.tar.gz")
+depends=(libXaw libICE libSM libXau libXau libXext libXi libXmu libXrender libXt libxcb)
+makedepends=()
+md5sums=('8da63293f27342cffd8b397261b2c9e1')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
