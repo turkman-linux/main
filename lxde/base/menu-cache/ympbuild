@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='menu-cache'
+release='1'
+version='1.1.0'
+url='https://example.org'
+description='Package description missing'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/lxde/menu-cache/archive/refs/tags/1.1.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('8630de9fcb97c9ca9b13eccec5b35efa')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

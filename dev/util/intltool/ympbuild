@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='intltool'
+release='1'
+version='0.51.0'
+url='https://example.org'
+description='Package description missing'
+email='bk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz')
+depends=()
+makedepends=()
+md5sums=('12e517cac2b57a0121cda351570f1e63')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
