@@ -13,16 +13,17 @@ makedepends=()
 md5sums=('8b2864ba2d21586171ab9616b5610aeb')
 group=()
 uses=()
+uses_extra=(extra-only)
 arch=('x86_64')
 
 cd $name-$version
 
 setup(){
-    	./autogen.sh
-	./configure --prefix=/usr \
+    autoreconf -fvi
+	  ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
-	--with-gtk=3 \
-	--with-extra-only
+	      --with-gtk=3 \
+	     $(use_opt extra-only --with-extra-only "")
 }
 
 build(){

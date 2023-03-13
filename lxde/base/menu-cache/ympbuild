@@ -7,18 +7,24 @@ description='Package description missing'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://github.com/lxde/menu-cache/archive/refs/tags/1.1.0.tar.gz')
-depends=()
+source=('https://github.com/lxde/menu-cache/archive/refs/tags/1.1.0.tar.gz'
+        'menu-cache-1.1.0-0001-Support-gcc10-compilation.patch')
+depends=(libfm)
 makedepends=()
-md5sums=('8630de9fcb97c9ca9b13eccec5b35efa')
+md5sums=('8630de9fcb97c9ca9b13eccec5b35efa'
+         'SKIP')
 group=()
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    patch -Np1 -i ../menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
+}
+
 setup(){
-	autoreconf -fvi
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ 
 }

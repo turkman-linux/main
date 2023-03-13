@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='perl-xml-parser'
+release='1'
+version='2.46'
+url='https://metacpan.org/pod/XML::Parser'
+description='A perl module for parsing XML documents'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$version.tar.gz")
+depends=(perl expat)
+makedepends=()
+md5sums=('80bb18a8e6240fcf7ec2f7b57601c170')
+group=(dev.perl)
+uses=()
+arch=('x86_64')
+
+cd XML-Parser-$version
+
+setup(){
+    PERL_MM_USE_DEFAULT=1 perl -I. Makefile.PL INSTALLDIRS=vendor
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR="$DESTDIR" $jobs
+    find "$DESTDIR" \( -name perllocal.pod -o -name .packlist \) -delete
+}
+
