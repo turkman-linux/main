@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='lxde-icon-theme'
+release='1'
+version='0.5.1'
+url='https://lxde.org'
+description='LXDE default icon theme based on nuoveXT2'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL')
+source=("https://downloads.sourceforge.net/lxde/lxde-icon-theme-$version.tar.xz")
+depends=()
+makedepends=(intltool)
+md5sums=('7467133275edbbcc79349379235d4411')
+group=(lxde.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

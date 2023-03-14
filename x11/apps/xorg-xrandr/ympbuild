@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='xorg-xrandr'
+release='1'
+version='1.5.2'
+url='https://xorg.freedesktop.org/'
+description='Primitive command line interface to RandR extension'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://xorg.freedesktop.org/archive/individual/app/xrandr-$version.tar.xz")
+depends=(libX11 libXrandr)
+makedepends=(util-macros)
+md5sums=('f822a8d5f233e609d27cc22d42a177cb')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd "xrandr"-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

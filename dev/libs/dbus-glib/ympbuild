@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='dbus-glib'
+release='1'
+version='0.112'
+url='https://www.freedesktop.org/wiki/Software/DBusBindings'
+description='GLib bindings for DBUS'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL')
+source=(https://dbus.freedesktop.org/releases/$name/$name-$version.tar.gz{,.asc}
+        dbus-glib-bash-completion.patch::https://gitlab.freedesktop.org/dbus/dbus-glib/-/merge_requests/5.patch)
+depends=(dbus glib)
+makedepends=(python gtk-doc)
+md5sums=('021e6c8a288df02c227e4aafbf7e7527' 'b56cec57ce507208843895c1bae3c9a7' 'd41d8cd98f00b204e9800998ecf8427e')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
