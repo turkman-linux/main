@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='lxpanel'
+release='1'
+version='0.10.1-1'
+url='https://wiki.lxde.org/en/LXPanel'
+description='Lightweight X11 desktop panel for LXDE '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://salsa.debian.org/lxde-team/lxpanel/-/archive/debian/0.10.1-1/lxpanel-debian-0.10.1-1.tar.gz")
+depends=(libwnck)
+makedepends=()
+md5sums=('6e8b705c91015c1c3594f9c86eab2ed7')
+group=(lxde.base)
+uses=()
+arch=('x86_64')
+
+cd $name-debian-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ --enable-gtk3 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

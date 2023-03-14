@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='lxsession'
+release='1'
+version='0.5.5-2'
+url='https://salsa.debian.org/lxde-team/lxsession'
+description='LXDE session manager'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://salsa.debian.org/lxde-team/lxsession/-/archive/debian/0.5.5-2/lxsession-debian-0.5.5-2.tar.gz")
+depends=()
+makedepends=()
+md5sums=('57c0a337a43c256d15962a07667107d3')
+group=(lxde.base)
+uses=()
+arch=('x86_64')
+
+cd $name-debian-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-gtk3 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

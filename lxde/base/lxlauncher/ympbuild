@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='lxlauncher'
+release='1'
+version='0.2.5'
+url='https://wiki.lxde.org/en/LXLauncher'
+description='Open source clone of the Asus launcher for EeePC'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('https://github.com/lxde/lxlauncher/archive/refs/tags/0.2.5.tar.gz')
+depends=()
+makedepends=()
+md5sums=('6ba0bffe776679bb20382fa3571b0e05')
+group=(lxde.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	--enable-gtk3
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

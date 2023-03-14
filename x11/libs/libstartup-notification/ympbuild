@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libstartup-notification'
+release='1'
+version='0.12'
+url='https://www.freedesktop.org/wiki/Software/startup-notification'
+description='Application startup notification and feedback library '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=('http://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.12.tar.gz')
+depends=()
+makedepends=()
+md5sums=('2cd77326d4dcaed9a5a23a1232fb38e9')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd startup-notification-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
