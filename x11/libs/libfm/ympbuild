@@ -7,16 +7,22 @@ description='Package description missing'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://github.com/lxde/libfm/archive/refs/tags/1.3.2.tar.gz')
+source=('https://github.com/lxde/libfm/archive/refs/tags/1.3.2.tar.gz'
+        'libfm-fixes.patch')
 depends=(gtk3 pango intltool)
 makedepends=()
-md5sums=('8b2864ba2d21586171ab9616b5610aeb')
+md5sums=('8b2864ba2d21586171ab9616b5610aeb'
+         'SKIP')
 group=()
 uses=()
 uses_extra=(extra-only)
 arch=('x86_64')
 
 cd $name-$version
+
+prepare(){
+    patch -Np1 -i ../libfm-fixes.patch
+}
 
 setup(){
     autoreconf -fvi
