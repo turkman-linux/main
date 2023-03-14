@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='vte'
+name='vte3'
 release='1'
 version='0.71.99'
 url='https://gitlab.gnome.org/GNOME/vte.git/'
@@ -15,15 +15,15 @@ group=(x11.libs)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd vte-$version
 
 setup(){
-	meson setup build --prefix=/usr \
+    meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-	    -D b_lto=false \
-    -D docs=false \
-    -D gtk3=true \
-	-D_systemd=false 
+        -D b_lto=false \
+        -D docs=false \
+        -D gtk3=true \
+        -D_systemd=false 
 }
 
 build(){
