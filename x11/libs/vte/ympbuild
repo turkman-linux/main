@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='vte'
+release='1'
+version='0.71.99'
+url='https://gitlab.gnome.org/GNOME/vte.git/'
+description='vte Library providing a virtual terminal emulator widget'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/vte/-/archive/0.71.99/vte-0.71.99.tar.gz")
+depends=(libxkbcommon libxcb wayland libthai pixman  libpng pixman libpcre2 pango p11-kit nettle util-linux libjpeg-turbo libidn2 icu harfbuzz gtk3 glib gnutls gmp gdk-pixbuf fribidi fontconfig expat libepoxy dbus libdatrie libcloudproviders cairo bzip2 at-spi2-core libXfixes  libXi libXrandr libXrender libXext libXdmcp libXdamage libXcursor libXcomposite libXau libX11 libxkbcommon)
+makedepends=()
+md5sums=('b429c8b15fffab8a7397190da968ce6f')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	    -D b_lto=false \
+    -D docs=false \
+    -D gtk3=true \
+	-D_systemd=false 
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

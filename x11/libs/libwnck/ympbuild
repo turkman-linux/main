@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libwnck'
+release='1'
+version='43.0'
+url='https://gitlab.gnome.org/GNOME/libwnck.git/'
+description='A window navigation construction kit '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/libwnck/-/archive/43.0/libwnck-43.0.tar.gz")
+depends=()
+makedepends=()
+md5sums=('f7b0043cd38550230f519aede0d9e679')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ 
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

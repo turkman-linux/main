@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='wireless-tools'
+release='1'
+version='30_pre9-13'
+url='http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html'
+description='A collection of tools to configure IEEE 802.11 wireless LAN cards '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://salsa.debian.org/debian/wireless-tools/-/archive/debian/30_pre9-13/wireless-tools-debian-30_pre9-13.tar.gz")
+depends=(libwnck)
+makedepends=()
+md5sums=('c962c6c2e2a5e686e9464fcf73eb97b7')
+group=(net.wireless)
+uses=()
+arch=('x86_64')
+
+cd $name-debian-$version
+
+setup(){
+make
+	#autoreconf -fvi
+    #./configure --prefix=/usr \
+    #    --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
