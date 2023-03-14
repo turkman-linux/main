@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://www.x.org/releases/individual/xserver/xorg-server-$version.tar.xz")
-depends=(libmd libbsd libepoxy libfontenc libxkbfile 
+depends=(libmd libbsd libepoxy libfontenc libxkbfile xauth xkbcomp setxkbmap freetype
          libXfont2 libxcvt mesa libX11 libdrm pixman font-util xcb-util-renderutil
          xcb-util xcb-util-image xcb-util-wm xcb-util-keysyms)
 makedepends=()

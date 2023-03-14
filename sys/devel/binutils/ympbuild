@@ -33,7 +33,8 @@ setup(){
     cd build
     set -x
     ../configure --prefix=/usr \
-        --libdir=/usr/lib64 \
+          --libdir=/usr/lib64 \
+          --sysconfdir=/etc \
           --enable-cet \
           --enable-default-execstack=no \
           --enable-deterministic-archives \

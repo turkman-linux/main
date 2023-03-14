@@ -22,6 +22,7 @@ cd audit-userspace-$version
 setup(){
     autoreconf -fv --install
     ./configure --prefix=/usr \
+        --sysconfdir=/etc \
         --libdir=/usr/lib64 \
         --disable-zos-remote \
         --disable-listener \

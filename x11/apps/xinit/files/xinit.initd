@@ -4,7 +4,8 @@ name="xinit"
 description="X11 autologin service"
 
 start(){
-    exec /bin/busybox su - $USER -c "exec /usr/bin/startx"
+    /bin/busybox su - $USER -c "exec /usr/bin/startx" &
+    exit 0
 }
 
 depend()
