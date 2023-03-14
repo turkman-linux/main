@@ -1,2 +1,2 @@
-lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/sbin/nologin
 

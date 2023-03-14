@@ -9,12 +9,10 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/OpenPrinting/cups/archive/refs/tags/v$version.tar.gz"
         'cups.groups'
-        'cups.users'
-        'cups.initd')
+        'cups.users')
 depends=(openssl)
 makedepends=()
 md5sums=('2dc62207ba89ef43ba376e0066cad138'
-         'SKIP'
          'SKIP'
          'SKIP')
 group=(net.print)
@@ -35,7 +33,6 @@ build(){
 package(){
     make install $jobs
     mkdir -p "$DESTDIR"/etc/{passwd,group,init}.d
-    install ../cups.initd "$DESTDIR"/etc/init.d/cupsd
     install ../cups.groups "$DESTDIR"/etc/group.d/cups
     install ../cups.users "$DESTDIR"/etc/passwd.d/cups
 }
