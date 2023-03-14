@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='libwnck'
+name='libwnck3'
 release='1'
 version='43.0'
 url='https://gitlab.gnome.org/GNOME/libwnck.git/'
@@ -15,7 +15,7 @@ group=(x11.libs)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd libwnck-$version
 
 setup(){
 	meson setup build --prefix=/usr \

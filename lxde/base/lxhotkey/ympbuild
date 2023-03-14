@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/lxde/lxhotkey/archive/refs/tags/0.1.1.tar.gz")
-depends=()
+depends=(libfm)
 makedepends=()
 md5sums=('2e21ba7d8d318652000b083b49d8de5f')
 group=(lxde.base)
@@ -18,9 +18,10 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-	autoreconf -fvi
+    autoreconf -fvi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        --with-gtk=3
 }
 
 build(){

@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://salsa.debian.org/debian/wireless-tools/-/archive/debian/30_pre9-13/wireless-tools-debian-30_pre9-13.tar.gz")
-depends=(libwnck)
+depends=()
 makedepends=()
 md5sums=('c962c6c2e2a5e686e9464fcf73eb97b7')
 group=(net.wireless)
@@ -17,18 +17,15 @@ arch=('x86_64')
 
 cd $name-debian-$version
 
-setup(){
-make
-	#autoreconf -fvi
-    #./configure --prefix=/usr \
-    #    --libdir=/usr/lib64/
-}
-
 build(){
     make $jobs
 }
 
 package(){
-    make install $jobs
+    make install $jobs \
+        INSTALL_DIR="${DESTDIR}/usr/bin" \
+        INSTALL_LIB="${DESTDIR}/usr/lib64" \
+        INSTALL_INC="${DESTDIR}/usr/include" \
+        INSTALL_MAN="${DESTDIR}/usr/share/man"
 }
 

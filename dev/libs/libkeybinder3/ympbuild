@@ -8,8 +8,8 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://salsa.debian.org/debian/keybinder-3.0/-/archive/debian/0.3.2-1.1/keybinder-3.0-debian-0.3.2-1.1.tar.gz")
-depends=()
-makedepends=()
+depends=(gtk3)
+makedepends=(gnome-common)
 md5sums=('c85e710453917475c9efabb0afc1f612')
 group=(dev.libs)
 uses=()
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd keybinder-3.0-debian-0.3.2-1.1
 
 setup(){
-	./autogen.sh
+    ./autogen.sh
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ --with-gtk=3
 }

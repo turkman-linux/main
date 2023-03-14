@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='libstartup-notification'
+name='startup-notification'
 release='1'
 version='0.12'
 url='https://www.freedesktop.org/wiki/Software/startup-notification'
@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=('http://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.12.tar.gz')
-depends=()
+depends=(libX11 xcb-util)
 makedepends=()
 md5sums=('2cd77326d4dcaed9a5a23a1232fb38e9')
 group=(x11.libs)
