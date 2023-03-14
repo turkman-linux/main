@@ -7,10 +7,16 @@ description='The Common Unix Printing System '
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://github.com/OpenPrinting/cups/archive/refs/tags/v$version.tar.gz")
-depends=()
+source=("https://github.com/OpenPrinting/cups/archive/refs/tags/v$version.tar.gz"
+        'cups.groups'
+        'cups.users'
+        'cups.initd')
+depends=(openssl)
 makedepends=()
-md5sums=('2dc62207ba89ef43ba376e0066cad138')
+md5sums=('2dc62207ba89ef43ba376e0066cad138'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 group=(net.print)
 uses=()
 arch=('x86_64')
@@ -28,5 +34,9 @@ build(){
 
 package(){
     make install $jobs
+    mkdir -p "$DESTDIR"/etc/{passwd,group,init}.d
+    install ../cups.initd "$DESTDIR"/etc/init.d/cupsd
+    install ../cups.groups "$DESTDIR"/etc/group.d/cups
+    install ../cups.users "$DESTDIR"/etc/passwd.d/cups
 }
 
