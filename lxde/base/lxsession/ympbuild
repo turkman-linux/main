@@ -1,27 +1,29 @@
 #!/usr/bin/env bash
 name='lxsession'
 release='1'
-version='0.5.5-2'
-url='https://salsa.debian.org/lxde-team/lxsession'
-description='LXDE session manager'
-email='bayramk@gmail.com'
-maintainer='bk'
-license=('GPLv3')
-source=("https://salsa.debian.org/lxde-team/lxsession/-/archive/debian/0.5.5-2/lxsession-debian-0.5.5-2.tar.gz")
-depends=()
-makedepends=()
-md5sums=('57c0a337a43c256d15962a07667107d3')
+version='0.5.5'
+url='https://lxde.org'
+description='Lightweight X11 session manager'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL2')
+source=("https://downloads.sourceforge.net/lxde/$name-$version.tar.xz")
+depends=(gtk3 polkit)
+makedepends=(intltool vala docbook-xsl)
+md5sums=('e8380acef215ee7c99c067a2241c2c7b')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
-cd $name-debian-$version
-
+cd $name-$version
+rm *.stamp
 setup(){
-	autoreconf -fvi
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64/ \
-        --enable-gtk3 
+    autoreconf -fvi
+    ./configure --sysconfdir=/etc \
+        --libexecdir=/usr/lib \
+        --enable-gtk3 \
+        --prefix=/usr \
+        --libdir=/usr/lib64/
 }
 
 build(){
@@ -29,6 +31,9 @@ build(){
 }
 
 package(){
-    make install $jobs
+    make  DESTDIR="$DESTDIR" install $jobs
+    # Ignore package by AppStream to avoid duplicated IDs
+    echo 'X-AppStream-Ignore=true' >> "$DESTDIR/usr/share/applications/lxsession-default-apps.desktop"
+    echo 'X-AppStream-Ignore=true' >> "$DESTDIR/usr/share/applications/lxsession-edit.desktop"
 }
 

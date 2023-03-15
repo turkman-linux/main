@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='duktape'
+release='1'
+version='2.7.0'
+url='https://duktape.org'
+description='Embeddable Javascript engine'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://duktape.org/$name-$version.tar.xz")
+depends=(glibc)
+makedepends=()
+md5sums=('b3200b02ab80125b694bae887d7c1ca6')
+group=(dev.lang)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+_make() (
+    make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr "$@"
+)
+
+build(){
+    _make
+}
+
+package(){
+    _make DESTDIR="$DESTDIR" install
+    install -Dt "$DESTDIR/usr/share/licenses/$name" -m644 LICENSE.txt 
+}
+
