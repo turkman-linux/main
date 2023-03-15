@@ -1,0 +1,39 @@
+#!/bin/sh
+
+if [ ! -f /etc/xml/catalog ]; then
+    mkdir -p /etc/xml/
+    mkdir -p /usr/share/xml/docbook
+	xmlcatalog --noout --create /etc/xml/catalog
+fi
+
+newver=${1%-r[0-9]*}
+oldver=${2%-r[0-9]*}
+
+docbookdir=/usr/share/xml/docbook
+urls="
+	http://cdn.docbook.org/release/xsl-nons
+	http://docbook.sourceforge.net/release/xsl
+"
+
+
+update_catalog(){
+
+	for url in $urls; do
+		for rewrite in rewriteSystem rewriteURI; do
+			for version in $newver current; do
+				xmlcatalog --noout --add "$rewrite" \
+					"$url/$version" \
+					"file://$docbookdir/xsl-stylesheets-$newver" \
+					/etc/xml/catalog
+			done
+		done
+	done
+}
+
+current=$(date +%s -r $docbookdir)
+last=$(cat /var/lib/ymp/sysconf/docbook-xsl/update.date)
+if [ "$current" != "$last" ] ; then
+    update_catalog
+    date +%s -r $docbookdir > /var/lib/ymp/sysconf/docbook-xsl/update.date
+fi
+
