@@ -1,0 +1,13 @@
+--- a/gtk/gtkwindow.c
++++ b/gtk/gtkwindow.c
+@@ -4170,6 +4170,9 @@
+ static void
+ gtk_window_enable_csd (GtkWindow *window)
+ {
++  if (getenv("NOCSD") != NULL) {
++    return;
++  }
+   GtkWindowPrivate *priv = window->priv;
+   GtkWidget *widget = GTK_WIDGET (window);
+   GdkVisual *visual;
+

@@ -8,12 +8,14 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://download.gnome.org/sources/gtk+/${version:0:4}/gtk+-${version}.tar.xz"
-        "gtk3.sysconf")
+        "gtk3.sysconf"
+        "nocsd-support.patch")
 depends=(cairo libXi libXext libXfixes libXcursor libXdamage librsvg at-spi2-core
          shared-mime-info gdk-pixbuf libxkbcommon libepoxy colord libcloudproviders
          dconf cantarell-fonts libpng libXcomposite)
 makedepends=()
 md5sums=('3649dd48556ead2d909467c1f0751956'
+         'SKIP'
          'SKIP')
 group=()
 uses=()
@@ -24,6 +26,11 @@ unset CXXFLAGS
 
 cd gtk+-$version
 export XDG_DATA_DIRS=/usr/share
+
+prepare(){
+    patch -Np1 -i ../nocsd-support.patch
+}
+
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
