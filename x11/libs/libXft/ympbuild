@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libXft'
+release='1'
+version='2.3.7'
+url='https://gitlab.freedesktop.org/xorg/lib/libXft.git/'
+description='XFreeType-based font drawing library for X'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://www.x.org/archive/individual/lib/libXft-$version.tar.xz")
+depends=(fontconfig libXrender)
+makedepends=()
+md5sums=('69dc24ba444a0f6bd99423dbf8fd0260')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

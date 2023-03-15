@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='openbox'
+release='1'
+version='3.6.1'
+url='https://openbox.org'
+description='Highly configurable and lightweight X11 window manager'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("http://openbox.org/dist/openbox/openbox-$version.tar.xz")
+depends=(libSM libxml2 pango startup-notification libXrandr librsvg libXinerama)
+makedepends=()
+md5sums=('46bf5f1edda0eda0d9e824b585988be9')
+group=(x11.wm)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

@@ -8,7 +8,7 @@ email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://download.gnome.org/sources/pango/1.50/pango-$version.tar.xz")
-depends=(fribidi libthai harfbuzz cairo)
+depends=(fribidi libthai harfbuzz cairo libXft)
 makedepends=(gobject-introspection)
 md5sums=('fd4b0b23915d6a0255317f811bea4215')
 group=(x11.libs)
@@ -22,6 +22,10 @@ setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -Dintrospection=enabled \
+        -Dxft=enabled \
+        -Dcairo=enabled \
+        -Dlibthai=enabled \
+        -Dfreetype=enabled \
         -Dgtk_doc=false
 }
 
