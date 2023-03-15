@@ -2,3 +2,5 @@
 ## X11 autologin service
 ## Target user name (default=root)
 #USER=root
+## Target dpy number
+#DISPLAY=:0
