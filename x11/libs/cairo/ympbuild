@@ -8,8 +8,8 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/cairo/cairo/-/archive/$version/cairo-$version.tar.gz")
-depends=(pixman libpng glib libpcre2 fontconfig)
-makedepends=()
+depends=(pixman libpng glib libpcre2 fontconfig libX11)
+makedepends=(gtk-doc meson)
 md5sums=('bbea11bcc63e465e58aa054b56350b04')
 group=(x11.libs)
 uses=()
@@ -19,7 +19,15 @@ cd $name-$version
 
 setup(){
 	meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        -D b_lto=true \
+        -D xcb=enabled \
+        -D xlib=enabled \
+        -D xlib-xcb=enabled \
+        -D gtk_doc=false \
+        -D spectre=disabled \
+        -D symbol-lookup=disabled \
+        -D tests=disabled 
 }
 
 build(){
