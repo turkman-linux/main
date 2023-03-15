@@ -5,7 +5,11 @@ description="X11 autologin service"
 supervisor="supervise-daemon"
 pidfile="/var/run/xinit.pid"
 command="/etc/X11/xinit/xserverrc"
-command_args="$DISPLAY"
+if [ "$DISPLAY" == "" ] ; then
+    command_args=":0"
+else
+    command_args="$DISPLAY"
+fi
 
 start_pre(){
     if [ "$DISPLAY" == "" ] ; then
@@ -13,7 +17,7 @@ start_pre(){
     fi
     while sleep 0.3 ; do
         if env DISPLAY=$DISPLAY xterm -bg "#000000" -e true 2>/dev/null ; then
-            su - "$USER" -c "env DISPLAY=$DISPLAY /etc/X11/xinit/xinitrc"
+            exec su - "$USER" -c "env DISPLAY=$DISPLAY /etc/X11/xinit/xinitrc"
         fi
     done &
 }
