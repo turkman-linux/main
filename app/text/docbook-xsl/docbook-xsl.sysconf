@@ -6,8 +6,8 @@ if [ ! -f /etc/xml/catalog ]; then
 	xmlcatalog --noout --create /etc/xml/catalog
 fi
 
-newver=${1%-r[0-9]*}
-oldver=${2%-r[0-9]*}
+metadata="/var/lib/ymp/metadata/docbook-xsl.yaml"
+ver=$(grep version $metadata | cut -f2 -d":" | tr -d " ")
 
 docbookdir=/usr/share/xml/docbook
 urls="
@@ -20,20 +20,20 @@ update_catalog(){
 
 	for url in $urls; do
 		for rewrite in rewriteSystem rewriteURI; do
-			for version in $newver current; do
+			for version in $ver current; do
 				xmlcatalog --noout --add "$rewrite" \
 					"$url/$version" \
-					"file://$docbookdir/xsl-stylesheets-$newver" \
+					"file://$docbookdir/xsl-stylesheets-$version" \
 					/etc/xml/catalog
 			done
 		done
 	done
 }
 
-current=$(date +%s -r $docbookdir)
+current=$(date +%s -r $metadata)
 last=$(cat /var/lib/ymp/sysconf/docbook-xsl/update.date)
 if [ "$current" != "$last" ] ; then
     update_catalog
-    date +%s -r $docbookdir > /var/lib/ymp/sysconf/docbook-xsl/update.date
+    date +%s -r $metadata > /var/lib/ymp/sysconf/docbook-xsl/update.date
 fi
 
