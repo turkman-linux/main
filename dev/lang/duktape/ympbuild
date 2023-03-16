@@ -17,9 +17,17 @@ arch=('x86_64')
 
 cd $name-$version
 
-_make() (
+prepare(){
+    # tools/configure.py needs Python 2
+    sed -i 's/^#undef DUK_USE_FASTINT$/#define DUK_USE_FASTINT/' src/duk_config.h
+
+    # Add missing NEEDED on libm.so
+    sed -i 's/duktape\.c/& -lm/' Makefile.sharedlibrary
+}
+
+_make(){
     make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr "$@"
-)
+}
 
 build(){
     _make
@@ -27,6 +35,6 @@ build(){
 
 package(){
     _make DESTDIR="$DESTDIR" install
-    install -Dt "$DESTDIR/usr/share/licenses/$name" -m644 LICENSE.txt 
+    install -Dt "$DESTDIR/usr/share/licenses/$name" -m644 LICENSE.txt
 }
 

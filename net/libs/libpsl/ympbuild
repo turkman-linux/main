@@ -9,24 +9,30 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://github.com/rockdaboot/libpsl/releases/download/$version/libpsl-$version.tar.gz")
 depends=(libidn2)
-makedepends=( )
+makedepends=(python)
 md5sums=('ad40b970dcb5117d559b62a1e0d8d827')
 arch=('x86_64')
 group=(net.libs)
 
 cd $name-$version
 
+fprepare() {
+  rm -frv list
+}
+
 setup(){
-    meson setup build --prefix=/usr \
+    autoreconf -fiv
+    ./configure \
+        --prefix=/usr \
         --libdir=/usr/lib64 \
-        --default-library=both
+        --enable-{builtin,runtime}=libidn2 
 }
 
 build(){
-    ninja -C build
+    make $jobs
 }
 
 package(){
-    ninja -C build install
+    make install $jobs
 }
 

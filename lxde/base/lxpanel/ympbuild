@@ -17,10 +17,22 @@ arch=('x86_64')
 
 cd $name-debian-$version
 
+prepare(){
+    # Disable pager plugin as it breaks panel layout with GTK+ 3
+    # https://sourceforge.net/p/lxde/bugs/773/
+    sed -i '/pager.c/d' plugins/Makefile.am
+    sed -i '/STATIC_PAGER/d' src/private.h
+    sed -i 's/libwnck-3.0//' configure.ac
+    sed -i 's/background=1/background=0/' data/default/panels/panel.in
+}
+
 setup(){
 	autoreconf -fvi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/ --enable-gtk3 
+        --libdir=/usr/lib64/ \
+        --enable-gtk3 \
+        --disable-silent-rules \
+        --with-plugins=all,-cpufreq
 }
 
 build(){
