@@ -5,7 +5,5 @@ if [ ! -f /var/lib/ymp/sysconf/polkit/postinstall.done ] ; then
     chown -R polkitd:polkitd /{etc,usr/share}/polkit-1/rules.d
     chmod -R 700 /etc/polkit-1/rules.d
     chmod -R 700 /usr/share/polkit-1/rules.d
-	chmod 4755 /usr/lib/polkit-1/polkit-agent-helper-1
-	chmod 4755 /usr/bin/pkexec
     date > /var/lib/ymp/sysconf/polkit/postinstall.done
 fi

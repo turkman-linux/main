@@ -9,11 +9,13 @@ maintainer='akarsu'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-$version.tar.gz"
         "polkit.groups"
+        "polkit.initd"
         "polkit.passwd"
         "polkit.sysconf")
 depends=(duktape expat glib pam elogind)
 makedepends=(gobject-introspection gtk-doc meson)
 md5sums=('bbe3e745fc5bc1a41f1b5044f09a0f26'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -37,9 +39,10 @@ build(){
 package(){
     ninja -C build install $jobs
     rm -rf $DESTDIR/garbage
-    install -d $DESTDIR/etc/{passwd,group,sysconf}.d
+    install -d $DESTDIR/etc/{passwd,group,sysconf,init}.d
     install ../polkit.sysconf $DESTDIR/etc/sysconf.d/polkit
     install ../polkit.groups $DESTDIR/etc/group.d/polkit
     install ../polkit.passwd $DESTDIR/etc/passwd.d/polkit
+    install ../polkit.initd $DESTDIR/etc/init.d/polkit
 }
 

@@ -1,8 +1,5 @@
 #!/bin/sh
 if [ ! -f /var/lib/ymp/sysconf/shadow/postinstall.done ] ; then
-    for app in su chage chsh expiry ; do
-        chmod u+s /usr/bin/$app
-    done
     touch /etc/group
     date > /var/lib/ymp/sysconf/shadow/postinstall.done
 fi
