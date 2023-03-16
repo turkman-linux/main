@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='polkit'
+release='1'
+version='122'
+url='https://gitlab.freedesktop.org/polkit/polkit'
+description='Application development toolkit for controlling system-wide privileges'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-$version.tar.gz")
+depends=(duktape expat glib pam elogind)
+makedepends=(git gobject-introspection gtk-doc meson)
+md5sums=('bbe3e745fc5bc1a41f1b5044f09a0f26')
+group=(sys.auth)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+
