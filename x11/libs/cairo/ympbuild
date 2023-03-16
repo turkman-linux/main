@@ -21,9 +21,6 @@ setup(){
 	meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -D b_lto=true \
-        -D xcb=enabled \
-        -D xlib=enabled \
-        -D xlib-xcb=enabled \
         -D gtk_doc=false \
         -D spectre=disabled \
         -D symbol-lookup=disabled \
