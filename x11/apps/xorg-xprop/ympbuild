@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='xorg-xprop'
+release='1'
+version='1.2.6'
+url='https://xorg.freedesktop.org/'
+description='Property displayer for X'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom')
+source=(https://xorg.freedesktop.org/archive/individual/app/xprop-${version}.tar.xz{,.sig})
+depends=(libX11)
+makedepends=(util-macros)
+md5sums=('33c090d8632a300e63efbf36edd6a333' 'SKIP')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd "xprop"-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="${DESTDIR}" install $jobs
+    install -m755 -d "${DESTDIR}/usr/share/licenses/${name}"
+    install -m644 COPYING "${DESTDIR}/usr/share/licenses/${name}/"
+}
+

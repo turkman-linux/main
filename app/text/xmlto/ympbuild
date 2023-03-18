@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='xmlto'
+release='1'
+version='0.0.28'
+url='https://pagure.io/xmlto/'
+description='Convert xml to many other formats'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL')
+source=("https://releases.pagure.org/xmlto/xmlto-$version.tar.bz2")
+depends=(libxslt)
+makedepends=(docbook-xsl)
+md5sums=('93bab48d446c826399d130d959fe676f')
+group=(app.text)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

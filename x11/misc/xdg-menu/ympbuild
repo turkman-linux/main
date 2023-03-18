@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='xdg-menu'
+release='1'
+version='0.7.6.3'
+url='https://wiki.archlinux.org/index.php/XdgMenu'
+description='automatic generate WM menu from xdg files'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL')
+source=("https://arch.p5n.pp.ru/~sergej/dl/2018/arch-xdg-menu-$version.tar.gz")
+depends=(perl perl-xml-parser)
+makedepends=()
+md5sums=('153c5fd93c04f6b06c6535196fed1279')
+group=(x11.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    install -D -m 0755 xdg_menu "$DESTDIR"/usr/bin/xdg_menu
+    install -D -m 0755 xdg_menu_su "$DESTDIR"/usr/bin/xdg_menu_su
+    install -D -m 0755 update-menus "$DESTDIR"/usr/bin/update-menus
+    install -D -m 0644 update-menus.conf "$DESTDIR"/etc/update-menus.conf
+}
+
+package(){
+    mkdir -p "$DESTDIR"/usr/share/desktop-directories/
+    cp arch-desktop-directories/* "$DESTDIR"/usr/share/desktop-directories/
+    mkdir -p "$DESTDIR"/etc/xdg/menus/
+    cp arch-xdg-menu/* "$DESTDIR"/etc/xdg/menus/
+    mkdir -p "$DESTDIR"//var/cache/xdg-menu
+}
+
