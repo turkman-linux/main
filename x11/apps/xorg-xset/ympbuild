@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='xorg-xset'
+release='1'
+version='1.2.5'
+url='https://xorg.freedesktop.org/'
+description='User preference utility for X'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom')
+source=(https://xorg.freedesktop.org/archive/individual/app/xset-$version.tar.xz{,.sig})
+depends=(libXmu)
+makedepends=(util-macros)
+md5sums=('18ff5cdff59015722431d568a5c0bad2' 'SKIP')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd "xset"-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --without-fontcache
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install
+    install -m755 -d "$DESTDIR/usr/share/licenses/$name"
+    install -m644 COPYING "$DESTDIR/usr/share/licenses/$name/"
+}
+
