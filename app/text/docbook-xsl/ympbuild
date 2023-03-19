@@ -20,19 +20,17 @@ cd $name-$version
 
 
 build(){
-    #make $jobs
+
 	patch -Np2 -i ../765567_non-recursive_string_subst.patch
 	cd ../$name-nons-$version
 	patch -Np2 -i ../765567_non-recursive_string_subst.patch
 }
 
 package(){
-    #make install $jobs
-	#depends=(libxml2 libxslt docbook-xml)
 
 	local pkgroot ns dir
 	for ns in -nons ''; do
-	pkgroot="$DESTDIR/usr/share/xml/docbook/xsl-stylesheets-$verion$ns"
+	pkgroot="$DESTDIR/usr/share/xml/docbook/xsl-stylesheets-$version$ns"
 	dir="../"$name$ns-$version
 
 	install -Dt "$pkgroot" -m644 $dir/VERSION{,.xsl}
@@ -47,8 +45,9 @@ package(){
 	  done
 	)
 	done
-
+    install -v -m644 -D README /usr/share/doc/docbook-xsl-nons-1.79.2/README.txt
+    install -v -m644    RELEASE-NOTES* NEWS* /usr/share/doc/docbook-xsl-nons-1.79.2
 	install -d "$DESTDIR/etc/xml"
-	install -Dt "$DESTDIR/usr/share/licenses/$pkgname" -m644 $dir/COPYING
+	install -Dt "$DESTDIR/usr/share/licenses/$name" -m644 $dir/COPYING
 }
 
