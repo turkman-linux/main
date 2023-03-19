@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='pinentry'
+release='1'
+version='1.2.1'
+url='https://gnupg.org/related_software/pinentry/'
+description='Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL')
+source=("https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-${version}.tar.bz2"{,.sig})
+depends=(libassuan libgpg-error)
+makedepends=()
+md5sums=('be9b0d4bb493a139d2ec20e9b6872d37' 'SKIP')
+group=(app.crypt)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-pinentry-tty \
+        --enable-pinentry-curses \
+        --enable-fallback-curses \
+        --enable-pinentry-emacs \
+        --enable-pinentry-gtk3 \
+        --enable-pinentry-gnome3 \
+        --enable-libsecret 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="${DESTDIR}" install $jobs
+}
+

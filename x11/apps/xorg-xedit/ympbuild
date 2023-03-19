@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='xedit'
+release='1'
+version='1.2.3'
+url='https://xorg.freedesktop.org/'
+description='Simple text editor for X'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom')
+source=(https://xorg.freedesktop.org/archive/individual/app/xedit-$version.tar.xz{,.sig})
+depends=( libXaw libXmu libXt libX11)
+makedepends=(util-macros)
+md5sums=('6c62e9d4e628259fe34f3018cd54873c'
+        'ff19eef1f5674192d421e877a643e56e')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install $jobs
+    install -Dm644 COPYING "$DESTDIR/usr/share/licenses/$name/COPYING"
+}
+

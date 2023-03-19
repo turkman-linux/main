@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='npth'
+release='1'
+version='1.6'
+url='https://www.gnupg.org/software/npth/index.html'
+description='The new GNU portable threads library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL2.1')
+source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2{,.sig})
+        #https://www.gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2
+depends=(glibc)
+makedepends=()
+md5sums=('375d1a15ad969f32d25f1a7630929854' 'SKIP')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="${DESTDIR}" install $jobs
+    install -vDm 644 ./{README,NEWS,ChangeLog} -t "$DESTDIR/usr/share/doc/$name/"
+}
+
