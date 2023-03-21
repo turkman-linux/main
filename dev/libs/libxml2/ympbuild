@@ -22,6 +22,7 @@ cd $name-v$version
 setup(){
     autoreconf -fvi
     ./configure --prefix=/usr \
+    --sysconfdir=/etc \
     --with-history \
     --libdir=/usr/lib64 \
     $(use_opt python --with-python --without-python)

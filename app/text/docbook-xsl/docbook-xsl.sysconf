@@ -1,5 +1,7 @@
 #!/bin/sh
-
+if [ -e /var/lib/ymp/sysconf/docbook-xsl/postinstall.done ] ; then
+    exit 0
+fi
 metadata="/var/lib/ymp/metadata/docbook-xsl.yaml"
 ver=$(grep version $metadata | cut -f2 -d":" | tr -d " ")
 
@@ -7,20 +9,19 @@ _xmlcatalog() {
   xmlcatalog --noout "$@" /etc/xml/catalog
 }
 
-[[ -f etc/xml/catalog ]] || _xmlcatalog --create
-for ver in $new current; do
+[[ ! -f etc/xml/catalog ]] || _xmlcatalog --create
+for new in $ver current; do
     for x in rewriteSystem rewriteURI; do
-        _xmlcatalog --add $x http://cdn.docbook.org/release/xsl/$ver \
-            /usr/share/xml/docbook/xsl-stylesheets-$ver
+    _xmlcatalog --add $x http://docbook.sourceforge.net/release/xsl/$new \
+            /usr/share/xml/docbook/xsl-stylesheets-$new
 
-        _xmlcatalog --add $x http://cdn.docbook.org/release/xsl-nons/$ver \
-            /usr/share/xml/docbook/xsl-stylesheets-$ver-nons
+        _xmlcatalog --add $x http://cdn.docbook.org/release/xsl/$new \
+            /usr/share/xml/docbook/xsl-stylesheets-$new
 
-        _xmlcatalog --add $x http://docbook.sourceforge.net/release/xsl-ns/$ver \
-            /usr/share/xml/docbook/xsl-stylesheets-$ver
+        _xmlcatalog --add $x http://docbook.sourceforge.net/release/xsl-ns/$new \
+            /usr/share/xml/docbook/xsl-stylesheets-$new
 
-        _xmlcatalog --add $x http://docbook.sourceforge.net/release/xsl/$ver \
-            /usr/share/xml/docbook/xsl-stylesheets-$ver-nons
     done
 done
 
+date > /var/lib/ymp/sysconf/docbook-xsl/postinstall.done
