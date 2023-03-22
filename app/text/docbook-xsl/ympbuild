@@ -7,20 +7,21 @@ description='XML stylesheets for Docbook-xml transformations'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('custom')
-source=(https://github.com/docbook/xslt10-stylesheets/releases/download/release/$version/docbook-xsl{,-nons}-$version.zip '765567_non-recursive_string_subst.patch')
+source=(https://github.com/docbook/xslt10-stylesheets/releases/download/release/${version}/docbook-xsl{,-nons}-${version}.zip
+    'docbook-xls.install'
+    '765567_non-recursive_string_subst.patch')
 depends=(docbook-xml libxml2 libxslt)
 makedepends=()
-md5sums=('39c12481817d5a57501d27621eeba9a8' 'df397633036d576f04431f1b00047910' 'd41d8cd98f00b204e9800998ecf8427e')
+md5sums=('39c12481817d5a57501d27621eeba9a8' 'df397633036d576f04431f1b00047910' 'SKIP' 'SKIP')
 group=(app.text)
 uses=()
 arch=('x86_64')
 
-install=$name.install
+install=../../$name.install
 cd $name-$version
 
-
+ls -l ../
 build(){
-
 	patch -Np2 -i ../765567_non-recursive_string_subst.patch
 	cd ../$name-nons-$version
 	patch -Np2 -i ../765567_non-recursive_string_subst.patch
