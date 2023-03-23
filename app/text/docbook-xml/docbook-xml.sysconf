@@ -23,3 +23,5 @@ xmlcatalog --noout --add "delegateURI" \
     "http://www.oasis-open.org/docbook/" \
     "file:///etc/xml/docbook-xml" \
     /etc/xml/catalog
+
+date > /var/lib/ymp/sysconf/docbook-xml/postinstall.done

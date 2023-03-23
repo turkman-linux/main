@@ -20,8 +20,10 @@ arch=('x86_64')
 cd $name-v$version
 
 setup(){
-    autoreconf -fvi
+    ./autogen.sh
     ./configure --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
         --libdir=/usr/lib64/ \
         $(use_opt python --with-python --without-python)
 }
