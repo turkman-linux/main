@@ -7,48 +7,50 @@ description='XML stylesheets for Docbook-xml transformations'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('custom')
-source=(https://github.com/docbook/xslt10-stylesheets/releases/download/release/${version}/docbook-xsl{,-nons}-${version}.zip
-    'docbook-xls.install'
-    '765567_non-recursive_string_subst.patch')
+source=(https://github.com/docbook/xslt10-stylesheets/releases/download/release/$version/docbook-xsl-$version.zip
+        '765567_non-recursive_string_subst.patch'
+        'docbook-xsl.sysconf')
 depends=(docbook-xml libxml2 libxslt)
 makedepends=()
-md5sums=('39c12481817d5a57501d27621eeba9a8' 'df397633036d576f04431f1b00047910' 'SKIP' 'SKIP')
+md5sums=('39c12481817d5a57501d27621eeba9a8'
+         'SKIP'
+         'SKIP')
 group=(app.text)
 uses=()
 arch=('x86_64')
 
-install=../../$name.install
 cd $name-$version
 
-ls -l ../
-build(){
-	patch -Np2 -i ../765567_non-recursive_string_subst.patch
-	cd ../$name-nons-$version
+prepare(){
 	patch -Np2 -i ../765567_non-recursive_string_subst.patch
 }
 
 package(){
+	local _dest dir f
+	_dest="$DESTDIR"/usr/share/xml/docbook/xsl-stylesheets-$version
 
-	local pkgroot ns dir
-	for ns in -nons ''; do
-	pkgroot="$DESTDIR/usr/share/xml/docbook/xsl-stylesheets-$version$ns"
-	dir="../"$name$ns-$version
+	install -dm755 "$_dest"
+	install -m644 VERSION VERSION.xsl "$_dest"/
+	ln -s xsl-stylesheets-$version "${_dest%/*}/xsl-stylesheets"
+	ln -s xsl-stylesheets-$version "${_dest%/*}/xsl-stylesheets-current"
 
-	install -Dt "$pkgroot" -m644 $dir/VERSION{,.xsl}
+	for dir in assembly common eclipse epub epub3 fo highlighting html \
+		htmlhelp javahelp lib manpages params profiling roundtrip \
+		template website xhtml xhtml-1_1 xhtml5; do
 
-	(
-	  shopt -s nullglob  # ignore missing files
-	  for fn in assembly common eclipse epub epub3 fo highlighting html \
-		htmlhelp javahelp lib manpages params profiling roundtrip template \
-		website xhtml xhtml-1_1 xhtml5
-	  do
-		install -Dt "$pkgroot/$fn" -m644 $dir/$fn/*.{xml,xsl,dtd,ent}
-	  done
-	)
+		install -dm755 $_dest/$dir
+		for f in $dir/*.xml $dir/*.xsl $dir/*.dtd $dir/*.ent; do
+			[ -e "$f" ] || continue
+			install -m644 $f $_dest/$dir
+		done
 	done
-    install -v -m644 -D README /usr/share/doc/docbook-xsl-nons-1.79.2/README.txt
-    install -v -m644    RELEASE-NOTES* NEWS* /usr/share/doc/docbook-xsl-nons-1.79.2
-	install -d "$DESTDIR/etc/xml"
-	install -Dt "$DESTDIR/usr/share/licenses/$name" -m644 $dir/COPYING
+
+	install -dm755 "$DESTDIR"/etc/xml
+
+	install -m644 -D COPYING \
+		"$DESTDIR"/usr/share/licenses/$name/COPYING
+
+        install -dm755 "$DESTDIR"/etc/sysconf.d/
+        install $HOME/docbook-xsl.sysconf "$DESTDIR"/etc/sysconf.d/docbook-xsl
 }
 

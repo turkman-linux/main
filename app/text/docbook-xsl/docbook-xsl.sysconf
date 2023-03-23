@@ -1,39 +1,26 @@
 #!/bin/sh
 
-if [ ! -f /etc/xml/catalog ]; then
-    mkdir -p /etc/xml/
-    mkdir -p /usr/share/xml/docbook
-	xmlcatalog --noout --create /etc/xml/catalog
-fi
-
 metadata="/var/lib/ymp/metadata/docbook-xsl.yaml"
 ver=$(grep version $metadata | cut -f2 -d":" | tr -d " ")
 
-docbookdir=/usr/share/xml/docbook
-urls="
-	http://cdn.docbook.org/release/xsl-nons
-	http://docbook.sourceforge.net/release/xsl
-"
-
-
-update_catalog(){
-
-	for url in $urls; do
-		for rewrite in rewriteSystem rewriteURI; do
-			for version in $ver current; do
-				xmlcatalog --noout --add "$rewrite" \
-					"$url/$version" \
-					"file://$docbookdir/xsl-stylesheets-$version" \
-					/etc/xml/catalog
-			done
-		done
-	done
+_xmlcatalog() {
+  xmlcatalog --noout "$@" /etc/xml/catalog
 }
 
-current=$(date +%s -r $metadata)
-last=$(cat /var/lib/ymp/sysconf/docbook-xsl/update.date)
-if [ "$current" != "$last" ] ; then
-    update_catalog
-    date +%s -r $metadata > /var/lib/ymp/sysconf/docbook-xsl/update.date
-fi
+[[ -f etc/xml/catalog ]] || _xmlcatalog --create
+for ver in $new current; do
+    for x in rewriteSystem rewriteURI; do
+        _xmlcatalog --add $x http://cdn.docbook.org/release/xsl/$ver \
+            /usr/share/xml/docbook/xsl-stylesheets-$ver
+
+        _xmlcatalog --add $x http://cdn.docbook.org/release/xsl-nons/$ver \
+            /usr/share/xml/docbook/xsl-stylesheets-$ver-nons
+
+        _xmlcatalog --add $x http://docbook.sourceforge.net/release/xsl-ns/$ver \
+            /usr/share/xml/docbook/xsl-stylesheets-$ver
+
+        _xmlcatalog --add $x http://docbook.sourceforge.net/release/xsl/$ver \
+            /usr/share/xml/docbook/xsl-stylesheets-$ver-nons
+    done
+done
 
