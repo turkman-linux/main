@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='gnome-themes-standard'
+release='1'
+version='3.28'
+url='https://gitlab.gnome.org/GNOME/gnome-themes-extra'
+description='Standard Themes for GNOME Applications'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://gitlab.gnome.org/GNOME/gnome-themes-extra/-/archive/3.28/gnome-themes-extra-3.28.tar.gz')
+depends=(gtk3)
+makedepends=()
+md5sums=('874729bb090d2152ed1c4b2c983321cb')
+group=(x11.themes)
+uses=()
+arch=('x86_64')
+
+cd gnome-themes-extra-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --disable-gtk2-engine
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
