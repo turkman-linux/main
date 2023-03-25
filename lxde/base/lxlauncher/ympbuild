@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=('https://github.com/lxde/lxlauncher/archive/refs/tags/0.2.5.tar.gz')
-depends=(startup-notification)
+depends=(startup-notification gtk3 menu-cache)
 makedepends=()
 md5sums=('6ba0bffe776679bb20382fa3571b0e05')
 group=(lxde.base)
@@ -21,7 +21,8 @@ setup(){
 	autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
-	--enable-gtk3
+        --sysconfdir=/etc \
+        --enable-gtk3
 }
 
 build(){

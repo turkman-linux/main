@@ -18,9 +18,9 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-	autoreconf -fvi
+    autoreconf -fvi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --sysconfdir=/etc
 }
 
 build(){
