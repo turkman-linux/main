@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 name='lxinput'
 release='1'
-version='0.3.5-1'
+version='0.3.5'
 url='https://github.com/lxde/lxinput'
 description='LXDE keyboard and mouse configuration tool '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/lxde-team/lxinput/-/archive/debian/0.3.5-1/lxinput-debian-0.3.5-1.tar.gz")
+source=("https://salsa.debian.org/lxde-team/lxinput/-/archive/debian/$version-1/lxinput-debian-$version-1.tar.gz")
 depends=(gtk3)
 makedepends=()
 md5sums=('4e063d967ad6e9fa36813a84fe2f27c6')
@@ -15,7 +15,7 @@ group=(lxde.base)
 uses=()
 arch=('x86_64')
 
-cd $name-debian-$version
+cd $name-debian-$version-1
 
 setup(){
 	autoreconf -fvi

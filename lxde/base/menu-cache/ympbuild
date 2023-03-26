@@ -7,7 +7,7 @@ description='Package description missing'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://github.com/lxde/menu-cache/archive/refs/tags/1.1.0.tar.gz'
+source=("https://github.com/lxde/menu-cache/archive/refs/tags/$version.tar.gz"
         'menu-cache-1.1.0-0001-Support-gcc10-compilation.patch')
 depends=(libfm)
 makedepends=()
