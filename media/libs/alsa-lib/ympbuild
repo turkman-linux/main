@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='alsa-lib'
+release='1'
+version='1.2.8'
+url='https://www.alsa-project.org/'
+description='alsa-lib Advanced Linux Sound Architecture Library '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/alsa-project/alsa-lib/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('de332cfee083b11dd9d1604760ca8e79')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+  autoreconf -fvi  
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

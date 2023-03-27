@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+name='pipewire-media-session'
+release='1'
+version='0.4.2'
+url='https://gitlab.freedesktop.org/pipewire/media-session'
+description='session manager for PipeWire'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/pipewire/media-session/-/archive/$version/media-session-$version.tar.gz")
+depends=(pipewire alsa-lib)
+makedepends=()
+md5sums=('41c413c63a6aeacd72b48a20f970aad3')
+group=(media.video)
+uses=()
+arch=('x86_64')
+
+cd media-session-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+    --libdir=/usr/lib64
+}
+build(){
+   ninja -C build
+}
+
+package(){
+    ninja -C build install
+}

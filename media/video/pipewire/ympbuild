@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='pipewire'
+release='1'
+version='0.3.67'
+url='https://pipewire.org/'
+description='Multimedia processing graphs '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/$version/pipewire-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('c3f399f63b6a520fce5f25ab7b9c9e1f')
+group=(media.video)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+   #./autogen.sh 
+	 meson setup build --prefix=/usr \
+    --libdir=/usr/lib64
+}
+build(){
+   ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
