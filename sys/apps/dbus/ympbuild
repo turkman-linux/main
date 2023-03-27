@@ -12,7 +12,7 @@ source=("https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz"
         "dbus.initd"
         "dbus.confd"
         "dbus.xinit")
-depends=(audit expat libcap-ng)
+depends=(audit expat libcap-ng elogind)
 makedepends=()
 md5sums=('c56de960ea9031b92ee71aaa0e8e72c2'
          'SKIP'
@@ -31,12 +31,13 @@ setup(){
         --libdir=/usr/lib64/ \
         --localstatedir=/var \
         --sysconfdir=/etc \
+        --disable-xml-docs \
         --with-system-pid-file=/run/dbus/dbus.pid \
         $(use_opt x11 --with-x --without-x)
 }
 
 build(){
-    make $jobs
+    make
 }
 
 package(){

@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/$version/pipewire-$version.tar.gz")
-depends=()
+depends=(dbus eudev)
 makedepends=()
 md5sums=('c3f399f63b6a520fce5f25ab7b9c9e1f')
 group=(media.video)
@@ -18,9 +18,24 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-   #./autogen.sh 
-	 meson setup build --prefix=/usr \
-    --libdir=/usr/lib64
+     meson setup build --prefix=/usr \
+        --libdir=/usr/lib64 \
+        -Db_lto=true \
+        -Dlibjack-path=/usr/lib \
+        -Dlibv4l2-path=/usr/lib \
+        -Ddocs=disabled \
+        -Dman=enabled \
+        -Dgstreamer=enabled \
+        -Dexamples=enabled \
+        -Dffmpeg=disabled \
+        -Djack-devel=true \
+        -Dsystemd=disabled \
+        -Dvulkan=enabled \
+        -Dsdl2=disabled \
+        -Dlibcamera=enabled \
+        -Droc=enabled \
+        -Dbluez5-codec-lc3=enabled \
+        -Dsession-managers=[]
 }
 build(){
    ninja -C build
