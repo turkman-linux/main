@@ -8,33 +8,26 @@ description='Daemons for the bluetooth protocol stack'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
-source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz" "http://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.sign" "https://github.com/archlinux/svntogit-packages/blob/packages/bluez/trunk/bluetooth.modprobe")
+source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz" "https://www.linuxfromscratch.org/patches/blfs/svn/bluez-${veraion}-obexd_without_systemd-1.patch")
 depends=(glib)
 makedepends=(dbus libical json-c alsa-lib ell )
-md5sums=('3f9496fedf878fba985e56713ed7752e' '97722b87a016657d1c4ae3d2f84fd1bb' 'SKIP')
+md5sums=('3f9496fedf878fba985e56713ed7752e' '62962daa1b19bbcc2db10b7bfd531ea6')
 group=(net.wireless)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
+patch -Np1 -i ../bluez-5.66-obexd_without_systemd-1.patch
+
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
-        --mandir=/usr/share/man \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        --libexecdir=/usr/lib \
-        --with-dbusconfdir=/usr/share \
-        --enable-btpclient \
-        --enable-midi \
-        --enable-sixaxis \
-        --enable-mesh \
-        --enable-hid2hci \
-        --enable-experimental \
-        --enable-library \
-        --disable-manpages \
-        --disable-systemd 
+        --sysconfdir=/etc     \
+        --localstatedir=/var  \
+        --enable-library      \
+        --disable-manpages    \
+        --disable-systemd
 }
 
 build(){
@@ -42,117 +35,10 @@ build(){
 }
 
 package (){
-  pkgdesc="Daemons for the bluetooth protocol stack"
-  depends=('libical' 'dbus' 'glib2' 'alsa-lib' 'json-c')
-  backup=('etc/bluetooth/main.conf')
-  conflicts=('obexd-client' 'obexd-server')
-
-  make DESTDIR=${DESTDIR} \
-       install-pkglibexecPROGRAMS \
-       install-dbussessionbusDATA \
-       install-systemdsystemunitDATA \
-       install-systemduserunitDATA \
-       install-dbussystembusDATA \
-       install-dbusDATA \
-       install-man8
-
-  # ship upstream main config file
-  install -dm555 "${DESTDIR}"/etc/bluetooth
-  install -dm644 "${DESTDIR}"/${name}-${version}/src/main.conf ${DESTDIR}/etc/bluetooth/main.conf
-
-  # add basic documention
-  install -dm755 "${DESTDIR}"/usr/share/doc/"${name}"/dbus-apis
-  cp -a doc/*.txt "${DESTDIR}"/usr/share/doc/"${name}"/dbus-apis/
-  # fix module loading errors
-  install -dm755 "${DESTDIR}"/usr/lib/modprobe.d
-  install -dm644 "${srcdir}"/bluetooth.modprobe "${DESTDIR}"/usr/lib/modprobe.d/bluetooth-usb.conf
-  # load module at system start required by some functions
-  # https://bugzilla.kernel.org/show_bug.cgi?id=196621
-  install -dm755 "$DESTDIR"/usr/lib/modules-load.d
-  echo "crypto_user" > "$DESTDIR"/usr/lib/modules-load.d/bluez.conf
-  
-  # fix obex file transfer - https://bugs.archlinux.org/task/45816
-  #ln -fs /usr/lib64/systemd/user/obex.service ${DESTDIR}/usr/lib64/systemd/user/dbus-org.bluez.obex.service
-
-  # FS#74157 - bluez systemd service fails without localstatedir present
-  install -dm700 "${DESTDIR}"/var/lib64/bluetooth
-
-  # cleanup  - these libs go into bluez-libs
-  rm "${DESTDIR}"/usr/lib64/libbluetooth.so*
-
-  pkgdesc="Development and debugging utilities for the bluetooth protocol stack"
-  depends=('dbus' 'systemd' 'glib2')
-  optdepends=('ell: for btpclient')
-  backup=('etc/bluetooth/mesh-main.conf')
-  conflicts=('bluez-hcidump')
-  provides=('bluez-hcidump')
-  replaces=('bluez-hcidump' 'bluez<=4.101')
-
-
-  make DESTDIR="${DESTDIR}" \
-       install-binPROGRAMS \
-       install-dist_zshcompletionDATA \
-       install-man1
-
-  # add missing tools FS#41132, FS#41687, FS#42716
-  for files in `find tools/ -type f -perm -755`; do
-    filename=$(basename $files)
-
-    install -Dm755 tools/$filename ${DESTDIR}/usr/bin/$filename
-  done
-  
-  # ship upstream mesh config file
-  install -dm555 "${DESTDIR}"/etc/bluetooth
-  install -Dm644 mesh/mesh-main.conf "${DESTDIR}"/etc/bluetooth/mesh-main.conf
- 
-  # libbluetooth.so* are part of libLTLIBRARIES and binPROGRAMS targets
-  #make DESTDIR=${pkgdir} uninstall-libLTLIBRARIES
-  #rmdir ${pkgdir}/usr/lib
-  rm -rf ${DESTDIR}/usr/lib
-
-  # move the hid2hci man page out
-  #mv ${DESTDIR}/usr/share/man/man1/hid2hci.1 "${srcdir}"/
-
-  pkgdesc="Deprecated libraries for the bluetooth protocol stack"
-  depends=('glibc')
-  provides=('libbluetooth.so')
-  license=('LGPL2.1')
-
-
-  make DESTDIR="${DESTDIR}" \
-       install-pkgincludeHEADERS \
-       install-libLTLIBRARIES \
-       install-pkgconfigDATA
-
-  pkgdesc="CUPS printer backend for Bluetooth printers"
-  depends=('cups')
-
-
-  make DESTDIR="${DESTDIR}" install-cupsPROGRAMS
-
-  # cleanup  - these libs go into bluez-libs
-  #rm ${DESTDIR}/usr/lib/libbluetooth.so*
-
-  pkgdesc="Put HID proxying bluetooth HCI's into HCI mode"
-  depends=('systemd')
-
-  make DESTDIR=${DESTDIR} \
-       install-udevPROGRAMS \
-       install-rulesDATA
-  
-  install -dm755 "${DESTDIR}"/usr/share/man/man1
-  #mv "${srcdir}"/hid2hci.1 "${DESTDIR}"/usr/share/man/man1/hid2hci.1
-
-  # cleanup  - these libs go into bluez-libs
-  #rm "${DESTDIR}"/usr/lib/libbluetooth.so*
-
-  pkgdesc="bluez plugins (PS3 Sixaxis controller)"
-  depends=('systemd')
-
-
-  make DESTDIR="${DESTDIR}" \
-       install-pluginLTLIBRARIES
-
-  # cleanup  - these libs go into bluez-libs
-  #rm "${DESTDIR}"/usr/lib/libbluetooth.so*
+    make install $jobs
+    ln -svf ../libexec/bluetooth/bluetoothd /usr/sbin
+    install -v -dm755 /etc/bluetooth
+    install -v -m644 src/main.conf /etc/bluetooth/main.conf
+    install -v -dm755 /usr/share/doc/bluez-5.66
+    install -v -m644 doc/*.txt /usr/share/doc/bluez-5.66
 }
