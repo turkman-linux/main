@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='ell'
+release='1'
+version='0.56'
+url='https://01.org/ell'
+description='Embedded Linux library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2.1')
+source=(https://mirrors.edge.kernel.org/pub/linux/libs/$name/$name-$version.tar.{xz,sign})
+depends=()
+makedepends=()
+md5sums=('9a18412975b3d0b8fb24c582646e3446' '949e4fbe138aafc771b7463ba376c601')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
