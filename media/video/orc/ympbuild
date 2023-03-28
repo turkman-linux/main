@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='orc'
+release='1'
+version='0.4.33'
+url='https://gitlab.freedesktop.org/gstreamer/'
+description='Optimized Inner Loop Runtime Compiler'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/gstreamer/orc/-/archive/$version/orc-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('7a32427a0831baad989ca13f6ee2397e')
+group=(media.video)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+    --libdir=/usr/lib64 \
+		-Dgtk_doc=disabled
+}
+build(){
+   ninja -C build
+}
+
+package(){
+    ninja -C build install
+}

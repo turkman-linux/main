@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='ffmpeg'
+release='1'
+version='6.0'
+url='https://ffmpeg.org/'
+description='A complete, cross-platform solution to record, convert and stream audio and video.'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://salsa.debian.org/multimedia-team/ffmpeg/-/archive/upstream/$version/ffmpeg-upstream-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('333b7ce677e42082c36e08d23e56acbe')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-upstream-$version
+
+setup(){
+  	./configure --prefix=/usr \
+        --libdir=/usr/lib64/ --disable-x86asm
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
