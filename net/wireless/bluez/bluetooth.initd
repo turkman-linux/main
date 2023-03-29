@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+supervisor=supervise-daemon
+
+name="Bluetooth"
+description="Bluetooth daemon (bluetoothd) service"
+command="/usr/libexec/bluetooth/bluetoothd"
+
+depend() {
+	after coldplug udev-postmount
+	need dbus localmount hostname
+}
+

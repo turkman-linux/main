@@ -8,17 +8,23 @@ description='Daemons for the bluetooth protocol stack'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
-source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz" "https://www.linuxfromscratch.org/patches/blfs/svn/bluez-${veraion}-obexd_without_systemd-1.patch")
+source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz"
+        "bluez-5.66-obexd_without_systemd-1.patch"
+        "bluetoot.initd")
 depends=(glib)
-makedepends=(dbus libical json-c alsa-lib ell )
-md5sums=('3f9496fedf878fba985e56713ed7752e' '62962daa1b19bbcc2db10b7bfd531ea6')
+makedepends=(dbus libical json-c alsa-lib ell)
+md5sums=('3f9496fedf878fba985e56713ed7752e'
+         'SKIP'
+         'SKIP')
 group=(net.wireless)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
-patch -Np1 -i ../bluez-5.66-obexd_without_systemd-1.patch
+prepare(){
+    patch -Np1 -i ../bluez-5.66-obexd_without_systemd-1.patch
+}
 
 setup(){
     ./configure --prefix=/usr \
@@ -36,9 +42,11 @@ build(){
 
 package (){
     make install $jobs
-    ln -svf ../libexec/bluetooth/bluetoothd /usr/sbin
-    install -v -dm755 /etc/bluetooth
-    install -v -m644 src/main.conf /etc/bluetooth/main.conf
-    install -v -dm755 /usr/share/doc/bluez-5.66
-    install -v -m644 doc/*.txt /usr/share/doc/bluez-5.66
+    install -v -dm755 $DESTDIR/usr/sbin
+    ln -svf ../libexec/bluetooth/bluetoothd $DESTDIR/usr/sbin/bluetoothd
+    install -v -dm755 $DESTDIR/etc/bluetooth
+    install -v -m644 src/main.conf $DESTDIR/etc/bluetooth/main.conf
+    install -v -dm755 $DESTDIR/usr/share/doc/
+    install -v -dm755 $DESTDIR/usr/share/doc/bluez-5.66
+    install -v -m644 doc/*.txt $DESTDIR/usr/share/doc/bluez-5.66
 }
