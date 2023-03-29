@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libical'
+release='1'
+version='3.0.16'
+url='https://github.com/libical/libical'
+description='An open source reference implementation of the icalendar data type and serialization format'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL' 'MPL')
+source=("https://github.com/libical/libical/archive/refs/tags/v${version}.tar.gz")
+depends=('glibc' 'glib' 'icu' 'libxml2')
+makedepends=('cmake' 'ninja' 'gtk-doc' 'vala' 'gobject-introspection')
+md5sums=('3799f9dde1db6f7eb0cb112b5e14ab60')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+#cd $name-$version
+
+build(){
+    cmake -S "$name-$version" -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib64/ \
+        -DGOBJECT_INTROSPECTION=true \
+        -DICAL_GLIB_VAPI=true \
+        -DSHARED_ONLY=true \
+        -DICAL_BUILD_DOCS=False \
+        -DENABLE_GTK_DOC=False \
+        -DCMAKE_DISABLE_FIND_PACKAGE_BerkeleyDB=true
+    cmake --build build
+}
+
+package(){
+    DESTDIR="${DESTDIR}" cmake --install build
+}
+
