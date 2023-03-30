@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://salsa.debian.org/multimedia-team/ffmpeg/-/archive/upstream/$version/ffmpeg-upstream-$version.tar.gz")
-depends=()
+depends=(gnutls)
 makedepends=()
 md5sums=('333b7ce677e42082c36e08d23e56acbe')
 group=()
@@ -19,66 +19,52 @@ cd $name-upstream-$version
 
 setup(){
   ./configure --prefix=/usr \
-    --libdir=/usr/lib64/ \
-    --disable-stripping \
     --disable-x86asm \
-    --enable-amf \
-    --enable-avisynth \
-    --enable-cuda-llvm \
-    --enable-lto \
-    --enable-fontconfig \
-    --enable-gmp \
-    --enable-gnutls \
-    --enable-gpl \
-    --enable-ladspa \
-    --enable-libaom \
-    --enable-libass \
-    --enable-libbluray \
-    --enable-libbs2b \
-    --enable-libdav1d \
-    --enable-libdrm \
-    --enable-libfreetype \
-    --enable-libfribidi \
-    --enable-libgsm \
-    --enable-libiec61883 \
-    --enable-libjack \
-    --enable-libjxl \
-    --enable-libmfx \
-    --enable-libmodplug \
-    --enable-libmp3lame \
-    --enable-libopencore_amrnb \
-    --enable-libopencore_amrwb \
-    --enable-libopenjpeg \
-    --enable-libopenmpt \
-    --enable-libopus \
-    --enable-libpulse \
-    --enable-librav1e \
-    --enable-librsvg \
-    --enable-libsoxr \
-    --enable-libspeex \
-    --enable-libsrt \
-    --enable-libssh \
-    --enable-libsvtav1 \
-    --enable-libtheora \
-    --enable-libv4l2 \
-    --enable-libvidstab \
-    --enable-libvmaf \
-    --enable-libvorbis \
-    --enable-libvpx \
-    --enable-libwebp \
-    --enable-libx264 \
-    --enable-libx265 \
-    --enable-libxcb \
-    --enable-libxml2 \
-    --enable-libxvid \
-    --enable-libzimg \
-    --enable-nvdec \
-    --enable-nvenc \
-    --enable-opencl \
-    --enable-opengl \
-    --enable-shared \
-    --enable-version3 \
-    --enable-vulkan
+    --disable-librtmp \
+		--disable-lzma \
+		--disable-static \
+		--disable-stripping \
+		--enable-avfilter \
+		--enable-gnutls \
+		--enable-gpl \
+		--enable-libaom \
+		--enable-libass \
+		--enable-libdav1d \
+		--enable-libdrm \
+		--enable-libfontconfig \
+		--enable-libfreetype \
+		--enable-libfribidi \
+		--enable-libjxl \
+		--enable-libmp3lame \
+		--enable-libopenmpt \
+		--enable-libopus \
+		--enable-libplacebo \
+		--enable-libpulse \
+		--enable-librist \
+		--enable-libsoxr \
+		--enable-libsrt \
+		--enable-libssh \
+		--enable-libtheora \
+		--enable-libv4l2 \
+		--enable-libvidstab \
+		--enable-libvorbis \
+		--enable-libvpx \
+		--enable-libwebp \
+		--enable-libx264 \
+		--enable-libx265 \
+		--enable-libxcb \
+		--enable-libxvid \
+		--enable-libzimg \
+		--enable-libzmq \
+		--enable-lto \
+		--enable-pic \
+		--enable-postproc \
+		--enable-pthreads \
+		--enable-shared \
+		--enable-vaapi \
+		--enable-vdpau \
+		--enable-vulkan \
+		--optflags="-O3"
 }
 
 build(){
