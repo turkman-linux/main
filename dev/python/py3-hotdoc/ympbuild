@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='hotdoc'
+name='py3-hotdoc'
 release='1'
 version='0.14.0'
 url='https://pypi.org/project/hotdoc/'
@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://files.pythonhosted.org/packages/56/ad/c3c7fb2cae9baa369317600d66f41ecbf723867f3e19e5dd56aed09b7ed0/hotdoc-$version.tar.gz")
-depends=(python)
+depends=(python json-glib)
 makedepends=()
 md5sums=('1cd551b2d565877537ffa0854d6ecaee')
 group=(dev.python)

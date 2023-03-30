@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/archive/$version/gst-plugins-base-$version.tar.gz")
-depends=()
+depends=(gstreamer)
 makedepends=()
 md5sums=('848c60f921e07464538f0aff82c0bc7d')
 group=(media.video)
@@ -18,7 +18,6 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-   #./autogen.sh 
 	 meson setup build --prefix=/usr \
     --libdir=/usr/lib64
 }
