@@ -10,7 +10,7 @@ maintainer='akarsu'
 license=('GPLv2')
 source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz"
         "bluez-5.66-obexd_without_systemd-1.patch"
-        "bluetoot.initd")
+        "bluetooth.initd")
 depends=(glib)
 makedepends=(dbus libical json-c alsa-lib ell)
 md5sums=('3f9496fedf878fba985e56713ed7752e'
@@ -43,10 +43,12 @@ build(){
 package (){
     make install $jobs
     install -v -dm755 $DESTDIR/usr/sbin
+    install -v -dm755 $DESTDIR/etc/init.d
     ln -svf ../libexec/bluetooth/bluetoothd $DESTDIR/usr/sbin/bluetoothd
     install -v -dm755 $DESTDIR/etc/bluetooth
     install -v -m644 src/main.conf $DESTDIR/etc/bluetooth/main.conf
     install -v -dm755 $DESTDIR/usr/share/doc/
     install -v -dm755 $DESTDIR/usr/share/doc/bluez-5.66
     install -v -m644 doc/*.txt $DESTDIR/usr/share/doc/bluez-5.66
+    install ../bluetooth.initd $DESTDIR/etc/init.d/buetooth
 }
