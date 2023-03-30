@@ -50,5 +50,5 @@ package (){
     install -v -dm755 $DESTDIR/usr/share/doc/
     install -v -dm755 $DESTDIR/usr/share/doc/bluez-5.66
     install -v -m644 doc/*.txt $DESTDIR/usr/share/doc/bluez-5.66
-    install ../bluetooth.initd $DESTDIR/etc/init.d/buetooth
+    install ../bluetooth.initd $DESTDIR/etc/init.d/bluetooth
 }
