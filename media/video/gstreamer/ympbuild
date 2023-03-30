@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='gstreamer'
+release='1'
+version='1.22.1'
+url='https://gstreamer.freedesktop.org/'
+description='Multimedia graph framework - core'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${version}.tar.xz")
+
+depends=(glib elfutils libxml2)
+makedepends=(gobject-introspection gtk3 libcap python)
+md5sums=('3ed9648be775514c516c5dd8a267b27b')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
