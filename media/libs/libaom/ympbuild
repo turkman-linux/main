@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='libaom'
+release='1'
+version='3.6.0'
+url='https://aomedia.googlesource.com'
+description='Alliance for Open Media AV1 Codec SDK'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://aomedia.googlesource.com/aom/+archive/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=(SKIP '234ac531c1d83fe5542213fc2b2c8569')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+#cd $name-$version
+
+setup(){
+    mkdir -p build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+		    -DCMAKE_INSTALL_LIBDIR=lib64 \
+        -DAOM_TARGET_CPU=generic
+}
+
+build(){
+    make $jobs -C build
+}
+
+package(){
+    make install $jobs -C build
+}
+
