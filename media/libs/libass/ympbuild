@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libass'
+release='1'
+version='0.17.1'
+url='https:/github.com/libass/libass'
+description='portable subtitle renderer for the ASS/SSA'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/libass/libass/archive/refs/tags/$version.tar.gz")
+depends=(freetype fontconfig fribidi harfbuzz)
+makedepends=()
+md5sums=('e920cfac44bf9e729d9a0aeed22d9ddb')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
