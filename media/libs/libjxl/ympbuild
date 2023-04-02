@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='libjxl'
+release='1'
+version='0.8.1'
+url='https://github.com/libjxl/libjxl'
+description='JPEG XL image format reference implementation'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://github.com/libjxl/libjxl/archive/refs/tags/v$version.tar.gz")
+depends=(highway)
+makedepends=()
+md5sums=('04a73be60211224e039d791a902a46de')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake .. \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DBUILD_TESTING=OFF
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

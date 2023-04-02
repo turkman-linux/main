@@ -7,15 +7,21 @@ description='Feature-rich GTK+ theme switcher of the LXDE Desktop'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL2')
-source=("https://downloads.sourceforge.net/lxde/$name-$version.tar.xz")
+source=("https://downloads.sourceforge.net/lxde/$name-$version.tar.xz"
+       "00-gtk3-fix.patch")
 depends=(gtk3) #dbus-glib
 makedepends=(intltool)
-md5sums=('f10345313e2c12bad51c1b58bd46b454')
+md5sums=('f10345313e2c12bad51c1b58bd46b454'
+         'SKIP')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+
+prepare(){
+    patch -Np1 -i ../00-gtk3-fix.patch
+}
 
 setup(){
     ./configure --prefix=/usr --enable-gtk3 \
