@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='brotli'
+release='1'
+version='1.0.9'
+url='https://github.com/google/brotli'
+description='Generic-purpose lossless compression algorithm'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/google/brotli/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('c2274f0c7af8470ad514637c35bcee7d')
+group=()
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake .. \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=True
+}
+
+build(){
+    make -C build $jobs
+}
+
+package(){
+    make -C build install $jobs
+}
+

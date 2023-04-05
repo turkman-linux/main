@@ -8,7 +8,7 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://github.com/libjxl/libjxl/archive/refs/tags/v$version.tar.gz")
-depends=(highway)
+depends=(brotli libjpeg-turbo highway libpng)
 makedepends=()
 md5sums=('04a73be60211224e039d791a902a46de')
 group=()
@@ -22,14 +22,23 @@ setup(){
     cd build
     cmake .. \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DBUILD_TESTING=OFF
+        -DBUILD_TESTING=OFF \
+        -DJPEGXL_ENABLE_MANPAGES=OFF \
+        -DJPEGXL_ENABLE_DOXYGEN=OFF \
+        -DJPEGXL_ENABLE_BENCHMARK=OFF \
+		    -DJPEGXL_ENABLE_COVERAGE=OFF \
+		    -DJPEGXL_ENABLE_EXAMPLES=OFF \
+		    -DJPEGXL_ENABLE_FUZZERS=OFF \
+		    -DJPEGXL_ENABLE_SJPEG=OFF \
+		    -DJPEGXL_ENABLE_SKCMS=OFF \
+		    -DJPEGXL_ENABLE_VIEWERS=OFF
 }
 
 build(){
-    make $jobs
+    make -C build $jobs
 }
 
 package(){
-    make install $jobs
+    make -C build install $jobs
 }
 

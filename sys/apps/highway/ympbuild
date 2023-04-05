@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='highway'
+release='1'
+version='1.0.4'
+url='https://github.com/google/highway'
+description='Performance-portable, length-agnostic SIMD with runtime dispatch'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/google/highway/archive/refs/tags/$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('2747e50aa0ec0126cabc3b50799b9547')
+group=(sys.app)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake .. \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_TESTING=OFF
+}
+
+build(){
+    make -C build $jobs
+}
+
+package(){
+    make -C build install $jobs
+}
+
