@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='lame'
+release='1'
+version='3.100'
+url='http://lame.sourceforge.net/'
+description='LAME Aint an MP3 Encoder'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://downloads.sourceforge.net/$name/$name-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('83e260acbe4389b54fe08e0bdbf7cddb')
+group=(media.sound)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	
+   ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+
