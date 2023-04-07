@@ -1,0 +1,32 @@
+8#!/usr/bin/env bash
+name='mpg123'
+release='1'
+version='1.31.3'
+url='https://salsa.debian.org/multimedia-team/mpg123'
+description='mpg123 - play audio MPEG 1.0/2.0/2.5 stream (layers 1, 2 and 3)'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://salsa.debian.org/multimedia-team/mpg123/-/archive/upstream/1.31.3/mpg123-upstream-1.31.3.tar.gz')
+depends=()
+makedepends=()
+md5sums=('ad6948d8aab79542f739933157f93b47')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-upstream-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
