@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libopenmpt'
+release='1'
+version='0.6.9'
+url='https://lib.openmpt.org/files/libopenmpt/src'
+description='A library to render tracker music to a PCM audio stream'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-$version+release.autotools.tar.gz")
+depends=(mpg123)
+makedepends=()
+md5sums=('cad469bef72baeefc43a651dbe9b225c')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version+release.autotools
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
