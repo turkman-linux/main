@@ -2,8 +2,8 @@
 name='gtk3'
 release='1'
 version='3.24.37'
-url='https://example.org'
-description='Package description missing'
+url='https://download.gnome.org/sources'
+description='Gimp Toolkit'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
