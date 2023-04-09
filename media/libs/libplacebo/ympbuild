@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libplacebo'
+release='1'
+version='5.264.1'
+url='https://code.videolan.org/videolan/libplacebo/'
+description='Reusable library for GPU-accelerated image processing primitives'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://code.videolan.org/videolan/libplacebo/-/archive/v$version/libplacebo-v$version.tar.gz")
+depends=(libunwind)
+makedepends=()
+md5sums=('965a8a64da4e72e0cb8a7434c95e158a')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-v$version
+
+setup(){
+	meson setup build --prefix=/usr \
+      --libdir=/usr/lib64/ \
+      -Dopengl=disabled \
+      -Dd3d11=disabled \
+      -Dshaderc=disabled \
+      -Dvulkan=disabled
+
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+   ninja -C build install
+}
+

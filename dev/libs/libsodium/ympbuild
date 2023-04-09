@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libsodium'
+release='1'
+version='1.0.18'
+url='https://github.com/jedisct1/libsodium'
+description='P(ortable|ackageable) NaCl-based crypto library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom:ISC')
+source=("https://github.com/jedisct1/libsodium/releases/download/${version}-RELEASE/libsodium-${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('3ca9ebc13b6b4735acae0a6a4c4f9a95')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

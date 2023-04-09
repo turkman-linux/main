@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='sbc'
+release='1'
+version='2.0'
+url='https://git.kernel.org/?p=bluetooth/sbc.git'
+description='Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://kernel.googlesource.com/pub/scm/bluetooth/sbc.git/+archive/8dc5d5ba381512ad5b1afa45c63ec6b0a3833244.tar.gz")
+depends=()
+makedepends=()
+md5sums=('SKIP')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	autoreconf -fvi
+  ./configure --prefix=/usr \
+      --libdir=/usr/lib64/
+
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

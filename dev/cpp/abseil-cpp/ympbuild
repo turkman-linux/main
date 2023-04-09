@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='abseil-cpp'
+release='1'
+version='20230125.2'
+url='https://abseil.io/'
+description='Abseil Common Libraries (C++), LTS Branch '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/abseil/abseil-cpp/archive/refs/tags/$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('52b9786ca6fbc679869fee2b6fef25a5')
+group=(media.video)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	#autoreconf -fvi
+  #./configure --prefix=/usr \
+   #   --libdir=/usr/lib64/
+cmake .
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='tdb'
+release='1'
+version='1.4.8'
+url='https://tdb.samba.org/'
+description='Simple database API '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://www.samba.org/ftp/tdb/tdb-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('2b46875d656cafd13f5d1d5bc64bfa21')
+group=(sys.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	#autoreconf -fvi
+  ./configure --prefix=/usr \
+      --libdir=/usr/lib64/
+
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

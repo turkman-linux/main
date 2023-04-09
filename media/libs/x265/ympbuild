@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+name='x265'
+release='1'
+version='3.5'
+url='https://bitbucket.org/multicoreware/x265_git'
+description='Open Source H265/HEVC video encoder'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://bitbucket.org/multicoreware/x265_git/get/f0c1022b6be121a753ff02853fbe33da71988656.tar.gz")
+depends=()
+makedepends=(cmake nasm ninja)
+md5sums=('bb92a1fdcb4f4530c3fc12de3452d7fb')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+dizin="multicoreware-x265_git-f0c1022b6be1/"
+#cd $name-"upstream"-$version
+cd $dizin
+ls -l
+build(){
+    cmake -S ./source -B build-12 -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DHIGH_BIT_DEPTH=TRUE \
+        -DMAIN12=TRUE \
+        -DEXPORT_C_API=FALSE \
+        -DENABLE_CLI=FALSE \
+        -DENABLE_SHARED=FALSE \
+        -Wno-dev
+      ninja -C build-12
+
+    cmake -S ./source -B build-10 -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DHIGH_BIT_DEPTH=TRUE \
+        -DEXPORT_C_API=FALSE \
+        -DENABLE_CLI=FALSE \
+        -DENABLE_SHARED=FALSE \
+        -Wno-dev
+    ninja -C build-10
+
+    cmake -S ./source -B build -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DENABLE_SHARED=TRUE \
+        -DENABLE_HDR10_PLUS=TRUE \
+        -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
+        -DEXTRA_LINK_FLAGS='-L .' \
+        -DLINKED_10BIT=TRUE \
+        -DLINKED_12BIT=TRUE \
+        -Wno-dev
+    ln -s ../build-10/libx265.a build/libx265_main10.a
+    ln -s ../build-12/libx265.a build/libx265_main12.a
+    ninja -C build
+}
+
+package(){
+    DESTDIR="${DESTDIR}" ninja -C build install
+}
+

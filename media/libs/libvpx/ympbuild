@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+name='libvpx'
+release='1'
+version='1.13.0'
+url='https://www.webmproject.org/'
+description='Library for the vp8/vp9 codecs'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://github.com/webmproject/libvpx/archive/v${version}/libvpx-${version}.tar.gz")
+depends=()
+makedepends=(nasm)
+md5sums=('d5fd45a806a65a57d6635f9e7a98a1b2')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+sed -i 's/cp -p/cp/' build/make/Makefile
+
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
+ls -l
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --disable-install-docs \
+        --disable-install-srcs \
+        --disable-unit-tests \
+        --enable-pic \
+        --enable-postproc \
+        --enable-runtime-cpu-detect \
+        --enable-shared \
+        --enable-vp8 \
+        --enable-vp9 \
+        --enable-vp9-highbitdepth \
+        --enable-vp9-temporal-denoising
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

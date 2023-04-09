@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='libtheora'
+release='1'
+version='1.1.1'
+url='https://www.theora.org/'
+description='An open video codec developed by the Xiph.org'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://ftp.osuosl.org/pub/xiph/releases/theora/libtheora-${version}.tar.gz" "https://gitweb.gentoo.org/repo/gentoo.git/tree/media-libs/libtheora/files/libtheora-${version}-libpng16.patch")
+depends=(libogg)
+makedepends=(libvorbis)
+md5sums=('bb4dc37f0dc97db98333e7160bfbb52b' '21f74739583781b7f34b19f76b745831')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+patch -Np0 -i ../libtheora-1.1.1-libpng16.patch
+sed -i 's/png_\(sizeof\)/\1/g' examples/png2theora.c 
+setup(){
+    #autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-shared \
+        --disable-static
+}
+
+build(){
+ls -l
+    make $jobs
+}
+
+package(){
+    make install $jobs
+    install -m755 -d "${DESTDIR}/usr/share/licenses/${name}"
+    install -m644 LICENSE COPYING "${DESTDIR}/usr/share/licenses/${name}/"
+}
+

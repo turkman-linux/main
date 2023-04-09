@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+name='portaudio'
+release='1'
+version='19.7.0'
+url='http://www.portaudio.com/'
+description=' A free, cross-platform, open-source, audio I/O library '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/PortAudio/portaudio/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('49ecd6de2350b3a1466116538f7be0e7')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+prepare() {
+ 
+   cd bindings/cpp
+   autoreconf -fiv
+  ##cd ..
+  #autoreconf -fiv
+}
+setup(){
+  autoreconf -fiv	
+  local configure_options=(
+    --prefix=/usr
+    --enable-cxx
+  )
+  ./configure "${configure_options[@]}"
+}
+
+build(){
+    make -j1
+}
+
+package(){
+    make install -j`nproc`
+}
+

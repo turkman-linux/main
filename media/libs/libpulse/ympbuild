@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='libpulse'
+release='1'
+version='16.1'
+url='https://www.freedesktop.org/wiki/Software/PulseAudio/'
+description='Libraries for PulseAudio clients '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz")
+depends=(dbus libsndfile tdb libICE libxcb libSM libXtst bluez orc gtk3 sbc jack2 lirc gst-plugins-base gstreamer libasyncns fftw speexdsp libsoxr)
+makedepends=()
+md5sums=('2c7b8ceb5d7337565c7314b4d6087ca8')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd pulseaudio-$version
+
+setup(){
+	meson setup build --prefix=/usr \
+      --libdir=/usr/lib64/ \
+      -Dsystemd=disabled \
+      -Dtests=false \
+      -Ddoxygen=false \
+      -Dman=false
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+   ninja -C build install
+}
+

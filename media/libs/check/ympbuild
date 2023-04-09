@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='check'
+release='1'
+version='0.15.2'
+url='https://libcheck.github.io/check/'
+description='A unit test framework for C '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/libcheck/check/archive/refs/tags/$version.tar.gz"
+"no-static.diff")
+depends=()
+makedepends=()
+md5sums=('2528f5cff61db6d53d44fb95da0c7fce'
+	'SKIP')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+prepare() {
+   patch -Np1 -i ../no-static.diff
+}
+
+setup(){
+autoreconf -fvi
+#git describe --tags | sed 's/-/+/g'
+	CFLAGS+=" -Wno-format-extra-args"
+cmake .
+}
+
+build(){
+
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

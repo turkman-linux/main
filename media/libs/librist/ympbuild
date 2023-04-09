@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='librist'
+release='1'
+version='0.2.7'
+url='https://www.rist.tv/'
+description=' 	Reliable Internet Stream Transport (RIST)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://code.videolan.org/rist/librist/-/archive/v$version/librist-v$version.tar.gz")
+depends=()
+makedepends=(meson)
+md5sums=('7ac152a1ef28333abb706ce45948e4a3')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-"v"$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

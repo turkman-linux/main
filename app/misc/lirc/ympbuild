@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+name='lirc'
+release='1'
+version='0.10.2'
+url='https://www.lirc.org/'
+description='decode and send infra-red signals of many commonly used remote controls'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://netix.dl.sourceforge.net/project/lirc/LIRC/$version/lirc-$version.tar.bz2")
+depends=(libxslt)
+makedepends=()
+md5sums=('cb96cfb0af8067c0062e2f5a100f426a')
+group=(app.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	autoreconf -fvi
+  
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-devinput \
+    --enable-uinput
+
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+  install -Dm644 ../lirc.tmpfiles /usr/lib/tmpfiles.d/lirc.conf
+  install -Dm644 ../lirc.logrotate /etc/logrotate.d/lirc
+
+}
+

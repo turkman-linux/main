@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='libunwind'
+release='1'
+version='1.7.0'
+url='https://savannah.nongnu.org/projects/libunwind'
+description='Portable and efficient API to determine the call-chain of a program '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/libunwind/libunwind/archive/refs/tags/v$version-rc2.tar.gz")
+depends=()
+makedepends=()
+md5sums=('e4b4b6376884b02fb540f04b763df7b9')
+group=(sys.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version-rc2
+
+setup(){
+	autoreconf -fvi
+  ./configure --prefix=/usr \
+      --libdir=/usr/lib64/
+
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

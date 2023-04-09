@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='libvorbis'
+release='1'
+version='1.3.7'
+url='https://www.xiph.org/vorbis/'
+description='Reference implementation of the Ogg Vorbis audio format'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://downloads.xiph.org/releases/vorbis/libvorbis-${version}.tar.xz")
+depends=(libogg)
+makedepends=(git)
+md5sums=('50902641d358135f06a8392e61c9ac77')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --disable-static \
+        --enable-shared
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

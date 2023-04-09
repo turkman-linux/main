@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='sysfsutils'
+release='1'
+version='2.1.1'
+url='http://linux-diag.sourceforge.net/Sysfsutils.html'
+description='System Utilities Based on Sysfs'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL' 'LGPL')
+source=("https://github.com/linux-ras/sysfsutils/archive/v${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('537c110be7244905997262854505c30f')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

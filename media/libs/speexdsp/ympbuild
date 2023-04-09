@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='speexdsp'
+release='1'
+version='1.2.1'
+url='https://www.speex.org/'
+description='Audio compression format designed for speech -- DSP '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/xiph/speexdsp/archive/refs/tags/SpeexDSP-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('f014603cd6de1db152b14775e79c1048')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-SpeexDSP-$version
+
+setup(){
+	autoreconf -fvi
+  ./configure --prefix=/usr \
+      --libdir=/usr/lib64/
+
+}
+
+build(){
+    make -j`nproc`
+}
+
+package(){
+    make install -j`nproc`
+}
+

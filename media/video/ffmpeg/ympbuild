@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://salsa.debian.org/multimedia-team/ffmpeg/-/archive/upstream/$version/ffmpeg-upstream-$version.tar.gz")
-depends=(gnutls libaom libass dav1d libjxl libopenmpt)
+depends=(gnutls libaom libass dav1d libjxl libdrm lcms2 lame opus libopenmpt libpulse libplacebo gnutls librist libsrt libtheora v4l-utils vidstab libvpx libwebp x264 x265 xvidcore zimg)
 makedepends=()
 md5sums=('333b7ce677e42082c36e08d23e56acbe')
 group=()
@@ -22,7 +22,6 @@ setup(){
     --disable-x86asm \
     --disable-librtmp \
 		--disable-lzma \
-		--disable-static \
 		--disable-stripping \
 		--enable-avfilter \
 		--enable-gnutls \
@@ -36,7 +35,6 @@ setup(){
 		--enable-libfribidi \
 		--enable-libjxl \
 		--enable-libmp3lame \
-		--enable-libopenmpt \
 		--enable-libopus \
 		--enable-libplacebo \
 		--enable-libpulse \
@@ -52,6 +50,7 @@ setup(){
 		--enable-libwebp \
 		--enable-libx264 \
 		--enable-libx265 \
+		--enable-libopenmpt \
 		--enable-libxcb \
 		--enable-libxvid \
 		--enable-libzimg \
@@ -60,11 +59,13 @@ setup(){
 		--enable-pic \
 		--enable-postproc \
 		--enable-pthreads \
+		--enable-static \
 		--enable-shared \
 		--enable-vaapi \
 		--enable-vdpau \
 		--enable-vulkan \
 		--optflags="-O3"
+
 }
 
 build(){

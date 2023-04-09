@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='libsrt'
+release='1'
+version='1.5.1'
+url='https://www.srtalliance.org/'
+description=' 	Secure Reliable Transport (SRT)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MPL2')
+source=("https://github.com/Haivision/srt/archive/v${version}.tar.gz")
+depends=()
+makedepends=(cmake openssl linux-headers)
+md5sums=('9d746de8bbc94ad327215d89801ac2fb')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd "srt"-$version
+
+setup(){
+    cmake -B build -G Ninja \
+	    -DCMAKE_INSTALL_PREFIX=/usr \
+	    -DCMAKE_INSTALL_LIBDIR=/usr/lib64/ \
+	    -DCMAKE_BUILD_TYPE=MinSizeRel \
+	    -DUSE_ENCLIB=openssl-evp \
+	    -DENABLE_UNITTESTS="$(want_check && echo ON || echo OFF)" \
+	    -DENABLE_TESTING="$(want_check && echo ON || echo OFF)" \
+	    -DENABLE_STATIC=OFF \
+	    $CMAKE_CROSSOPTS
+}
+
+build(){
+    cmake --build build
+}
+
+package(){
+    cmake --install build
+}
+

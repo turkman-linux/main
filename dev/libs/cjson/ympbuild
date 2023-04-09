@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='cjson'
+release='1'
+version='1.7.15'
+url='https://github.com/DaveGamble/cJSON'
+description='Ultralightweight JSON parser in ANSI C'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/DaveGamble/cJSON/archive/v$version.tar.gz")
+depends=()
+makedepends=(cmake)
+md5sums=('921b4bcb401aa604dc632fdb1c8dbdea')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-"v"$version
+
+setup(){
+    cmake -B build -S "cJSON-${version}" \
+        -DENABLE_CJSON_UTILS=On \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=usr/lib64/
+}
+
+build(){
+    make -C build $jobs
+}
+
+package(){
+    make -C build install $jobs
+}
+

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='x264'
+release='1'
+version='0.164.3095+gitbaee400'
+url='https://www.videolan.org/developers/x264.html'
+description='Open Source H264/AVC video encoder'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://salsa.debian.org/multimedia-team/x264/-/archive/upstream/${version}/x264-upstream-${version}.tar.gz")
+depends=()
+makedepends=(nasm)
+md5sums=('9495a937cf29b2f4ec82e70c8a4dc729')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-"upstream"-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-shared \
+        --enable-pic \
+        --enable-lto \
+        --disable-avs
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

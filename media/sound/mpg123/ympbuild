@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='mpg123'
+release='1'
+version='1.31.3'
+url='https://sourceforge.net/projects/mpg123'
+description='Console based real time MPEG Audio Player for Layer 1, 2 and 3'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPLv2')
+source=(https://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.bz2{,.sig})
+depends=(alsa-lib)
+makedepends=()
+md5sums=('23ff362764374d3f2051862eea2d9a56' 'SKIP')
+group=(media.sound)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-int-quality
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

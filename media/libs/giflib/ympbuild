@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='giflib'
+release='1'
+version='5.2.1'
+url='http://giflib.sourceforge.net/'
+description='Library for reading and writing gif images'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://sourceforge.net/projects/giflib/files/giflib-${version}.tar.gz")
+depends=(xmlto)
+makedepends=()
+md5sums=('6f03aee4ebe54ac2cc1ab3e4b0a049e5')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    make $jobs
+}
+
+package(){
+    make PREFIX=/usr install $jobs
+    install -Dm 644 COPYING -t "${DESTDIR}/usr/share/licenses/${name}"
+}
+

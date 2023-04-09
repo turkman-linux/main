@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='libpgm'
+release='1'
+version='5-3-128'
+url='https://opus-codec.org/'
+description='Open codec for interactive speech and music transmission over the Internet'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/steve-o/openpgm/archive/refs/tags/release-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('134eb021a8e4618ef87d54456282d186')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd openpgm-release-$version
+cd openpgm/pgm
+setup(){
+cp openpgm-5.2.pc.in openpgm-5.3.pc.in
+	./bootstrap.sh
+  ./configure --prefix=/usr \
+      --libdir=/usr/lib64/
+
+}
+
+build(){
+    make
+}
+
+package(){
+    make install -j`nproc`
+}
+

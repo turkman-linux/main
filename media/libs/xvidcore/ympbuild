@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xvidcore'
+release='1'
+version='1.3.7'
+url='https://www.xvid.com/'
+description='XviD is an open source MPEG-4 video codec'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://downloads.xvid.com/downloads/xvidcore-${version}.tar.gz")
+depends=()
+makedepends=(nasm)
+md5sums=('5c6c19324608ac491485dbb27d4da517')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name"/build/generic"
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --disable-assembly
+}
+
+build(){
+    make
+}
+
+package(){
+    make DESTDIR=$DESTDIR install
+}
+

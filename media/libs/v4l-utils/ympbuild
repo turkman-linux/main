@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='v4l-utils'
+release='1'
+version='1.24.1'
+url='https://linuxtv.org/'
+description='Userspace tools and conversion library for Video 4 Linux'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-${version}.tar.bz2")
+depends=(libjpeg-turbo)
+makedepends=(alsa-lib)
+md5sums=('8ba9c73c4319b6afab5fa4358edc43de')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --sysconfdir=/etc \
+        --sbindir=/usr/bin \
+        --disable-static 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

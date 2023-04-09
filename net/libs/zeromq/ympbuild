@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+name='zeromq'
+release='1'
+version='4.3.4'
+_cppver=4.8.0
+url='https://github.com/jedisct1/libsodium'
+description='P(ortable|ackageable) NaCl-based crypto library'
+email='bayramk@gmail.com'
+maintainer='by'
+license=('custom:ISC')
+
+source=("https://github.com/zeromq/libzmq/releases/download/v$version/zeromq-$version.tar.gz"
+        "zmq.hpp.$_cppver.tgz::https://github.com/zeromq/cppzmq/archive/v$_cppver.tar.gz")
+depends=(libsodium libpgm)
+makedepends=()
+md5sums=('c897d4005a3f0b8276b00b7921412379'
+'SKIP')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+prepare() {
+  sed -i 's/libzmq_werror="yes"/libzmq_werror="no"/' configure
+
+  sed -i 's/openpgm-5.1/openpgm-5.3/' configure configure.ac
+  sed -i 's/CXXFLAGS="-Wno-long-long/CXXFLAGS="-Wno-unused-function -Wno-long-long/' configure
+}
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+         --libdir=/usr/lib64/ \
+         --with-pgm \
+         --with-libsodium \
+    --with-documentation --enable-static --disable-Werror
+
+}
+
+build(){
+  make -Wno-unused-function -Wnoerror=unused-function
+}
+
+package(){
+    make install $jobs
+}
+
