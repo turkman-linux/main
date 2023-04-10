@@ -8,7 +8,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-${version}.tar.bz2")
-depends=(libjpeg-turbo)
+depends=(hicolor-icon-theme libjpeg-turbo sysfsutils)
 makedepends=(alsa-lib)
 md5sums=('8ba9c73c4319b6afab5fa4358edc43de')
 group=(media.libs)
@@ -22,7 +22,6 @@ setup(){
         --libdir=/usr/lib64/ \
         --sysconfdir=/etc \
         --sbindir=/usr/bin \
-        --disable-static 
 }
 
 build(){
