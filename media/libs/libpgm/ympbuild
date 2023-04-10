@@ -18,18 +18,18 @@ arch=('x86_64')
 cd openpgm-release-$version
 cd openpgm/pgm
 setup(){
-cp openpgm-5.2.pc.in openpgm-5.3.pc.in
-	./bootstrap.sh
-  ./configure --prefix=/usr \
-      --libdir=/usr/lib64/
+    cp openpgm-5.2.pc.in openpgm-5.3.pc.in
+	  ./bootstrap.sh
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
 
 }
 
 build(){
-    make
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
 }
 

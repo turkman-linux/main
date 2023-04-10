@@ -18,7 +18,8 @@ arch=('x86_64')
 dizin="multicoreware-x265_git-f0c1022b6be1/"
 #cd $name-"upstream"-$version
 cd $dizin
-ls -l
+unset CFLAGS
+unset CXXFLAGS
 build(){
     cmake -S ./source -B build-12 -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -28,7 +29,7 @@ build(){
         -DENABLE_CLI=FALSE \
         -DENABLE_SHARED=FALSE \
         -Wno-dev
-      ninja -C build-12
+    ninja -C build-12
 
     cmake -S ./source -B build-10 -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \

@@ -18,23 +18,24 @@ uses=()
 arch=('x86_64')
 
 cd $name-$version
-prepare() {
-   patch -Np1 -i ../no-static.diff
-}
+
+#prepare() {
+#   patch -Np1 -i ../no-static.diff
+#}
 
 setup(){
-autoreconf -fvi
-#git describe --tags | sed 's/-/+/g'
-	CFLAGS+=" -Wno-format-extra-args"
-cmake .
+    autoreconf -fvi
+    #git describe --tags | sed 's/-/+/g'
+	  CFLAGS+=" -Wno-format-extra-args"
+    cmake .
 }
 
 build(){
 
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
 }
 

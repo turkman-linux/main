@@ -36,7 +36,7 @@ prepare() {
   #rm -rv waflib
 }
 
-build() {
+setup() {
   local waf_options=(
     --prefix=/usr
     --libdir=/usr/lib64/
@@ -47,64 +47,16 @@ build() {
     --dbus
   )
 
- 
+
   waf configure "${waf_options[@]}"
+}
+
+build(){
   waf build
 }
 
-package_jack2() {
-  license+=(LGPL2.1)
-  depends=(
-    alsa-lib libasound.so
-    db5.3
-    dbus libdbus-1.so
-    gcc-libs
-    glibc
-    libsamplerate libsamplerate.so
-    opus libopus.so
-    systemd-libs libsystemd.so
-  )
-  optdepends=(
-    'a2jmidid: for ALSA MIDI to JACK MIDI bridging'
-    'libffado: for firewire support using FFADO'
-    'jack-example-tools: for official JACK example-clients and tools'
-    'jack2-dbus: for dbus integration'
-    'jack2-docs: for developer documentation'
-    'realtime-privileges: for realtime privileges'
-  )
-  conflicts=(jack)
-  provides=(jack libjack.so libjacknet.so libjackserver.so)
-
-  #cd $pkgbase
+package() {
   export PYTHONPATH="$PWD:$PYTHONPATH"
-  waf install --destdir="$pkgdir"
-
-  (
-    cd $pkgdir
-
-    _pick jack2-dbus usr/bin/jack{dbus,_control}
-    _pick jack2-dbus usr/share/dbus-1/services/*
-    _pick jack2-docs usr/share/doc/$name/html
-  )
-}
-
-package_jack2-dbus() {
-  pkgdesc+=" (dbus integration)"
-  depends=(
-    dbus libdbus-1.so
-    expat libexpat.so
-    gcc-libs
-    glibc
-    jack2 libjackserver.so
-    python-dbus
-  )
-
-  mv -v jack2-dbus/* "$pkgdir"
-}
-
-package_jack2-docs() {
-  pkgdesc+=" (documentation)"
-
-  mv -v jack2-docs/* "$pkgdir"
+  waf install --destdir="$DESTDIR"
 }
 

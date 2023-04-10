@@ -18,16 +18,16 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-  ./autogen.sh	
-   ./configure --prefix=/usr \
+    sh autogen.sh
+    ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
 }
 

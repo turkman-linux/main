@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
 	autoreconf -fvi
-  
+
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -31,13 +31,12 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
-  install -Dm644 ../lirc.tmpfiles /usr/lib/tmpfiles.d/lirc.conf
-  install -Dm644 ../lirc.logrotate /etc/logrotate.d/lirc
-
+    make install $jobs
+    # remove unused files
+    rm -rf $DESTDIR/usr/share/doc/
 }
 

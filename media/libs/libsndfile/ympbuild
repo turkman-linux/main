@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/libsndfile/libsndfile/archive/refs/tags/$version.tar.gz")
-depends=()
+depends=(opus  flac libvorbis)
 makedepends=()
 md5sums=('015d2e3617241f293237bf1675f92486')
 group=(media.libs)
@@ -18,13 +18,6 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=None \
-        -Wno-dev \
-        -B build-test \
-        -S .
-  
-
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
         -DBUILD_SHARED_LIBS=ON \
@@ -37,8 +30,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
 }
 
 build(){
-      make VERBOSE=1 -C build-test
-       make VERBOSE=1 -C build
+   make VERBOSE=1 -C build
 }
 
 package(){

@@ -24,8 +24,7 @@ setup(){
         --enable-libwebpdemux   \
         --enable-libwebpdecoder \
         --enable-libwebpextras  \
-        --enable-swap-16bit-csp \
-        --disable-static 
+        --enable-swap-16bit-csp
 }
 
 build(){

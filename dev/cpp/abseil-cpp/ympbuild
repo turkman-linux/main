@@ -18,17 +18,14 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-	#autoreconf -fvi
-  #./configure --prefix=/usr \
-   #   --libdir=/usr/lib64/
-cmake .
+    cmake .
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
 }
 

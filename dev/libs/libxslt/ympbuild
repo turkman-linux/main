@@ -3,32 +3,35 @@ name='libxslt'
 release='1'
 version='1.1.37'
 url='https://gitlab.gnome.org/GNOME/libxslt'
-description=' XSLT libraries and tools '
+description='XSLT libraries and tools'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.gnome.org/GNOME/libxslt/-/archive/v$version/libxslt-v$version.tar.gz")
-depends=()
+source=("https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.37/libxslt-v$version.tar.gz")
+depends=(libxml2 zlib xz-utils)
 makedepends=()
 md5sums=('61f62b7efce418fe669825e350792c8a')
 group=(dev.libs)
 uses=()
+uses_extra=(python)
+python_depends=(python)
 arch=('x86_64')
 
 cd $name-v$version
 
 setup(){
-	autoreconf -fvi
-  ./configure --prefix=/usr \
-      --libdir=/usr/lib64/
-
+    ./autogen.sh
+    ./configure --prefix=/usr \
+         --sysconfdir=/etc \
+        --localstatedir=/var \
+        --libdir=/usr/lib64/ \
+        $(use_opt python --with-python --without-python)
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
 }
-
