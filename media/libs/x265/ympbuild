@@ -7,19 +7,25 @@ description='Open Source H265/HEVC video encoder'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://bitbucket.org/multicoreware/x265_git/get/f0c1022b6be121a753ff02853fbe33da71988656.tar.gz")
+source=("https://salsa.debian.org/multimedia-team/x265/-/archive/debian/3.5-2/x265-debian-3.5-2.tar.gz")
 depends=()
 makedepends=(cmake nasm ninja)
-md5sums=('bb92a1fdcb4f4530c3fc12de3452d7fb')
+md5sums=('1e8cca34ca094952bbe89853635faf8f')
 group=(media.libs)
 uses=()
 arch=('x86_64')
 
-dizin="multicoreware-x265_git-f0c1022b6be1/"
-#cd $name-"upstream"-$version
-cd $dizin
+cd "x265-debian-3.5-2"
+
 unset CFLAGS
 unset CXXFLAGS
+
+prepare(){
+    # force enable .pc file
+    sed -i "s/X265_LATEST_TAG/TRUE/g" source/CMakeLists.txt
+
+}
+
 build(){
     cmake -S ./source -B build-12 -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -28,6 +34,7 @@ build(){
         -DEXPORT_C_API=FALSE \
         -DENABLE_CLI=FALSE \
         -DENABLE_SHARED=FALSE \
+        -DX265_LATEST_TAG=TRUE \
         -Wno-dev
     ninja -C build-12
 
@@ -37,6 +44,7 @@ build(){
         -DEXPORT_C_API=FALSE \
         -DENABLE_CLI=FALSE \
         -DENABLE_SHARED=FALSE \
+        -DX265_LATEST_TAG=TRUE \
         -Wno-dev
     ninja -C build-10
 
@@ -48,6 +56,7 @@ build(){
         -DEXTRA_LINK_FLAGS='-L .' \
         -DLINKED_10BIT=TRUE \
         -DLINKED_12BIT=TRUE \
+        -DX265_LATEST_TAG=TRUE \
         -Wno-dev
     ln -s ../build-10/libx265.a build/libx265_main10.a
     ln -s ../build-12/libx265.a build/libx265_main12.a
