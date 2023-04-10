@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='serd'
+release='1'
+version='0.30.16'
+url='https://drobilla.net/software/serd.html'
+description='Library for RDF syntax which supports reading and writing Turtle and NTriples '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://download.drobilla.net/serd-$version.tar.xz")
+depends=(lv2)
+makedepends=()
+md5sums=('86e5ce5a874cd728a02aebf25b48dcc1')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

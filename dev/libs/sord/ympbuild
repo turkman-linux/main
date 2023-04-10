@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='sord'
+release='1'
+version='0.16.14'
+url='https://drobilla.net/software/sord.html'
+description='Library for storing RDF data in memory '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://download.drobilla.net/sord-$version.tar.xz")
+depends=(lv2)
+makedepends=()
+md5sums=('73ed5c03c43ef3cc62558c6826b15fa4')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

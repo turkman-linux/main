@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='sratom'
+release='1'
+version='0.6.14'
+url='https://drobilla.net/software/sratom.html'
+description='Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://download.drobilla.net/sratom-$version.tar.xz")
+depends=(lv2)
+makedepends=()
+md5sums=('e229f08f841e5d8b5d967e63e0626fc4')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
