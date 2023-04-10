@@ -22,6 +22,8 @@ setup(){
         --libdir=/usr/lib64/ \
         --sysconfdir=/etc \
         --sbindir=/usr/bin \
+        --disable-qv4l2 \
+        --disable-qvidcap
 }
 
 build(){

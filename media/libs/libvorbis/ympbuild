@@ -9,7 +9,7 @@ maintainer='akarsu'
 license=('BSD')
 source=("https://downloads.xiph.org/releases/vorbis/libvorbis-${version}.tar.xz")
 depends=(libogg)
-makedepends=(git)
+makedepends=()
 md5sums=('50902641d358135f06a8392e61c9ac77')
 group=(media.libs)
 uses=()
@@ -20,7 +20,6 @@ cd $name-$version
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
-        --disable-static \
         --enable-shared
 }
 
