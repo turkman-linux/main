@@ -7,10 +7,14 @@ description='Multimedia processing graphs '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/$version/pipewire-$version.tar.gz")
-depends=(lilv)
+source=("https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/$version/pipewire-$version.tar.gz"
+        "pipewire.desktop"
+        "pipewire-launcher.sh")
+depends=(lilv libpulse alsa-lib dbus)
 makedepends=()
-md5sums=('c3f399f63b6a520fce5f25ab7b9c9e1f')
+md5sums=('c3f399f63b6a520fce5f25ab7b9c9e1f'
+         'SKIP'
+         'SKIP')
 group=(media.video)
 uses=()
 arch=('x86_64')
@@ -20,7 +24,8 @@ cd $name-$version
 setup(){
    #./autogen.sh 
 	 meson setup build --prefix=/usr \
-    --libdir=/usr/lib64
+    --libdir=/usr/lib64 \
+    -D session-managers=[]
 }
 build(){
    ninja -C build
@@ -28,4 +33,9 @@ build(){
 
 package(){
     ninja -C build install
+    mkdir -p ${DESTDIR}/usr/libexec ${DESTDIR}/etc/xdg/autostart/
+    # pipewire launcher from alpine linux
+    install ../pipewire-launcher.sh ${DESTDIR}/usr/libexec/pipewire-launcher
+    install ../pipewire.desktop ${DESTDIR}/etc/xdg/autostart/
+    
 }
