@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='lv2'
+release='1'
+version='1.18.10'
+url='https://lv2plug.in/'
+description='A simple but extensible successor of LADSPA '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.com/lv2/lv2/-/archive/v$version/lv2-v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('ab0bbcf42cee61446e7db7c4fdb3d33c')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-v$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

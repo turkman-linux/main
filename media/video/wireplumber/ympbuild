@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='wireplumber'
+release='1'
+version='0.4.14'
+url='https://gitlab.freedesktop.org/pipewire/'
+description='Session / policy manager implementation for PipeWire'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.4.14/wireplumber-0.4.14.tar.gz")
+depends=()
+makedepends=()
+md5sums=('3604fd7006c7ca442d994c808e6d1553')
+group=(media.video)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+   #./autogen.sh 
+	 meson setup build --prefix=/usr \
+    --libdir=/usr/lib64 \
+		-Ddoc=disabled \
+		-Dsystemd=disabled \
+		-Dtests=false \
+		--buildtype=release
+}
+build(){
+   ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
