@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+
+name=disable-secondary-gpu
+
+depend() {
+    before dbus
+}
+
+start() {
+    /usr/libexec/disable-secondary-gpu
+}

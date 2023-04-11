@@ -10,10 +10,16 @@ license=('GPLv3')
 source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
     "openrc.sysconf"
     "reboot"
-    "poweroff")
+    "poweroff"
+    "extras/backlight-restore.initd"
+    "extras/disable-secondary-gpu.initd"
+    "extras/disable-secondary-gpu.sh")
 depends=()
 makedepends=()
 md5sums=('8b74d3db544b496f6bb33d2648db5d2f'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP')
@@ -61,5 +67,10 @@ package(){
     install ../reboot ${DESTDIR}/sbin/reboot
     install ../poweroff ${DESTDIR}/sbin/poweroff
     ln -s openrc-shutdown ${DESTDIR}/sbin/shutdown
+    # install extras
+    mkdir -p ${DESTDIR}/usr/libexec
+    install ../disable-secondary-gpu.sh ${DESTDIR}/usr/libexec/disable-secondary-gpu
+    install ../disable-secondary-gpu.initd ${DESTDIR}/etc/init.d
+    install ../backlight-restore.initd ${DESTDIR}/etc/init.d
 }
 
