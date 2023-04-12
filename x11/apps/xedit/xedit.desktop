@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=xedit
+Comment=X11 Text Editor
+GenericName=Text Editor
+Exec=xedit %F
+Icon=xedit
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Utility;TextEditor;
+MimeType=text/plain;

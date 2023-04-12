@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=xcalc
+Comment=X11 Calculator
+GenericName=Calculator
+Exec=xcalc
+Icon=xcalc
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Utility;
