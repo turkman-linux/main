@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GNU Nano
+Comment=GNU Nano Text Editor
+GenericName=Text Editor
+Exec=nano %F
+Icon=nano
+Terminal=true
+StartupNotify=true
+Type=Application
+Categories=Utility;TextEditor;
+MimeType=text/plain;

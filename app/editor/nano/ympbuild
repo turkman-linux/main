@@ -9,11 +9,15 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://www.nano-editor.org/dist/v7/nano-$version.tar.xz"
         "https://github.com/scopatz/nanorc/archive/refs/tags/2020.10.10.tar.gz"
-        "nanorc")
+        "nanorc"
+        "nano.desktop"
+        "icon.svg")
 depends=(file zlib ncurses bzip2)
 makedepends=()
 md5sums=('32faafd9da9ee75feda8423d5744ee4d'
          'fef2d5f43ac31ea0cad2cd7aed0d8255'
+         'SKIP'
+         'SKIP'
          'SKIP')
 uses=(nanorc)
 arch=('x86_64')
@@ -45,6 +49,11 @@ package(){
             install $file ${DESTDIR}/usr/share/nano/
         fi
     done
+    # install application launcher for desktop environments
+    mkdir -p ${DESTDIR}/usr/share/applications/
+    mkdir -p ${DESTDIR}/usr/share/icons/hicolor/scalable/apps/
+    install ../nano.desktop ${DESTDIR}/usr/share/applications
+    install ../icon.svg ${DESTDIR}/usr/share/icons/hicolor/scalable/apps/nano.svg
     
 }
 
