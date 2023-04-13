@@ -10,7 +10,7 @@ license=('GPLv3')
 source=()
 md5sums=()
 arch=(x86_64)
-group=(sys.base)
+group=(sys.meta)
 depends=(gcc make bison flex binutils file tar clang llvm git
          python autoconf automake findutils fakeroot gettext m4
          patch coreutils meson cmake linux-headers gtk-doc
