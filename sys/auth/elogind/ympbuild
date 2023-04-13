@@ -69,5 +69,9 @@ package(){
     # openrc service
     mkdir -p "${DESTDIR}"/etc/init.d
     install ../elogind.initd "${DESTDIR}"/etc/init.d/elogind
+
+    # shadow system-auth.d file
+    mkdir -p "${DESTDIR}"/etc/pam.d/system-auth.d/
+    echo "session    include    elogind-user" > "${DESTDIR}"/etc/pam.d/system-auth.d/99-elogind
 }
 

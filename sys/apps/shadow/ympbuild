@@ -47,7 +47,7 @@ build(){
 package(){
     make install $jobs
     install -vDm 600 ../useradd.defaults "${DESTDIR}/etc/default/useradd"
-    install -vDm 600 ../system-auth "${DESTDIR}/etc/pam.d/system-auth"
+    install -vDm 600 ../system-auth "${DESTDIR}/etc/pam.d/system-auth.d/50-shadow"
     install -vDm 755 ../shadow.sysconf ${DESTDIR}/etc/sysconf.d/shadow
 }
 
