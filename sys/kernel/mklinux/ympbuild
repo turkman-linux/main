@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mklinux'
 release='1'
-version='20230127'
+version='20230413'
 url='https://gitlab.com/turkman/devel/sources/mklinux'
 description='kernel builder'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/mklinux/-/archive/$version/mklinux-$version.zip")
 depends=(bc findutils file tar elfutils gcc binutils bison flex make kmod rsync)
 makedepends=()
-md5sums=('9d409e3763ccf535ebde917f5535ecc0')
+md5sums=('59f14c72f8ffa433cda684e1e207e9f8')
 group=(sys.kernel)
 uses=()
 arch=('x86_64')
@@ -19,5 +19,6 @@ cd $name-$version
 
 package(){
     bash mklinux.sh -g -o $DESTDIR
+    install mkfw.sh $DESTDIR/usr/bin/mkfw
 }
 
