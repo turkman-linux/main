@@ -14,4 +14,4 @@ group=(sys.base)
 depends=(gcc make bison flex binutils file tar clang llvm git
          python autoconf automake findutils fakeroot gettext m4
          patch coreutils meson cmake linux-headers gtk-doc
-         pkgconf bc diffutils)
+         pkgconf bc diffutils libtool mklinux)
