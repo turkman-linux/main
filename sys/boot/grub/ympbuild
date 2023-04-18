@@ -34,9 +34,11 @@ setup(){
         cd $tgt
         autoreconf -fvi
         ./configure --prefix=/usr \
+            --sysconfdir=/etc \
             --libdir=/usr/lib64/ \
             --disable-nls \
             --disable-werror \
+            --disable-grub-themes \
             ${_target_opts[$tgt]}
         cd ..
     done
@@ -52,5 +54,7 @@ package(){
     for tgt in ${_target[@]} ; do
         make $jobs -C $tgt install
     done
+    # remove gfx modules
+    find $DESTDIR -type f | grep "gfx" | xargs rm -fv
 }
 
