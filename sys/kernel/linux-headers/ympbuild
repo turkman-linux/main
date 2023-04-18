@@ -19,5 +19,10 @@ package(){
     # install headers (archlinux kerhel config used)
     ALLOWROOT=1 mklinux -f -o $DESTDIR -v $version -y 1 --no-build \
         -c "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config"
+    # symlink for musl
+    mkdir -p $DESTDIR/usr/include/musl
+    for name in $(ls $DESTDIR/usr/include/ | grep -v musl) ; do
+        ln -s ../$name $DESTDIR/usr/include/musl/$name
+    done
 }
 

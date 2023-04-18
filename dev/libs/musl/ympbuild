@@ -51,5 +51,12 @@ package(){
 	EOF
     chmod 755 "$DESTDIR"/usr/bin/musl-ldd
     install ../ldconfig "$DESTDIR"/usr/bin/musl-ldconfig
+    # write sys/cdefs.h header
+    {
+    echo '#ifdef __cplusplus'
+    echo '#define __BEGIN_DECLS extern "C" {'
+    echo '#define __END_DECLS }'
+    echo '#endif'
+    } > "$DESTDIR"/usr/include/musl/sys/cdefs.h
 }
 
