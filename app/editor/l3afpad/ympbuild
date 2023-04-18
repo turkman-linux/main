@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='l3afpad'
+release='1'
+version='0.8.18.1.11'
+url='https://github.com/stevenhoneyman/l3afpad'
+description='Simple plain text editor for GTK 3'
+email='mehmetozturek@gmail.com'
+maintainer='mehmet'
+license=('GPLv3')
+source=("https://github.com/stevenhoneyman/l3afpad/archive/refs/tags/v${version}.tar.gz")
+depends=(gtk3)
+makedepends=(intltool)
+md5sums=('2c209503116b53e732c37f8d8d4c40fd')
+group=(app.editor)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
