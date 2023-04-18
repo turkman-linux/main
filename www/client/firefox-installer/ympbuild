@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='firefox-installer'
+release='1'
+version='20230418'
+url='https://github.com/my-garbage-stuff/firefox-installer'
+description='Firfox installer'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/my-garbage-stuff/firefox-installer/archive/refs/tags/$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('26b7f26977d861c3e92015de92b1b427')
+group=(www.client)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    # replace /opt with /usr/libexec
+    sed -i "s|/opt|/usr/libexec|g" Makefile
+    sed -i "s|/opt|/usr/libexec|g" firefox-installer.desktop
+}
+
+package(){
+    make install $jobs
+}
+

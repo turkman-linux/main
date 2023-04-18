@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name='dejavu'
+release='1'
+version='2.37'
+url='https://github.com/dejavu-fonts/dejavu-fonts'
+description='DejaVu fonts, bitstream vera with ISO-8859-2 characters'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_${version/./_}/dejavu-lgc-fonts-ttf-$version.zip"
+        "https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_${version/./_}/dejavu-fonts-ttf-$version.zip")
+depends=()
+makedepends=()
+md5sums=('f679f7449ccfd5898730113d0b3aa29e'
+         '33e1e61fab06a547851ed308b4ffef42')
+group=(media.fonts)
+uses=()
+arch=('x86_64')
+
+package(){
+    mkdir -p ${DESTDIR}/usr/share/fonts
+    for font in dejavu dejavu-lgc ; do
+        cp -prfv $font-fonts-ttf-$version/ttf ${DESTDIR}/usr/share/fonts/$font
+    done
+}
+
