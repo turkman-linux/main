@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/my-garbage-stuff/firefox-installer/archive/refs/tags/$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('26b7f26977d861c3e92015de92b1b427')
+md5sums=('49c24a5181a98196af51735b59196071')
 group=(www.client)
 uses=()
 arch=('x86_64')
@@ -19,8 +19,7 @@ cd $name-$version
 
 prepare(){
     # replace /opt with /usr/libexec
-    sed -i "s|/opt|/usr/libexec|g" Makefile
-    sed -i "s|/opt|/usr/libexec|g" firefox-installer.desktop
+    sed -i "s|/opt|/usr/libexec|g" Makefile firefox firefox-installer.desktop
 }
 
 package(){
