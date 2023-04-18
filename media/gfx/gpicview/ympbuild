@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+name='gpicview'
+release='1'
+version='0.2.5'
+url='https://www.lxde.org'
+description='Lightweight image viewer'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL2')
+source=("https://downloads.sourceforge.net/lxde/$name-$version.tar.xz"
+        'https://github.com/archlinux/svntogit-community/blob/packages/gpicview/trunk/gpicview.appdata.xml'
+        'https://github.com/archlinux/svntogit-community/blob/packages/gpicview/trunk/0001-Fix-displaying-images-with-GTK3.patch')
+depends=(gtk3)
+makedepends=(intltool)
+md5sums=('26be9b0c5a234f1afe7d83d02a4a33f4' 'SKIP' 'SKIP')
+group=(media.gfx)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+patch -Np1 -i ../0001-Fix-displaying-images-with-GTK3.patch
+
+# Apply only one main category
+sed -i '/^Categories=/ s/Utility;//' gpicview.desktop.in
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-gtk3
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install
+ls -l ../
+    install -Dm644 ../$name.appdata.xml "$DESTDIR/usr/share/metainfo/$name.appdata.xml"
+}
+
