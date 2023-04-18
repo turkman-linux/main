@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libsecret'
+release='1'
+version='0.20.5'
+url='https://gitlab.gnome.org/GNOME/libsecret'
+description='GObject library for accessing the freedesktop.org Secret Service API'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/libsecret/-/archive/$version/libsecret-$version.tar.gz")
+depends=(libgcrypt)
+makedepends=()
+md5sums=('fd9adb133117ce3969cc78fbe0da8ca0')
+group=(app.crypt)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+

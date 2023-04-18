@@ -27,6 +27,6 @@ build(){
 }
 
 package(){
-    make install DESTDIR="$DESTDIR" $jobs
+    make install INSTROOT="$DESTDIR" DESTDIR="$DESTDIR/usr" $jobs
 }
 
