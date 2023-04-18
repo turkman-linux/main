@@ -9,7 +9,7 @@ maintainer='akarsu'
 license=('LGPL2.1')
 source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2{,.sig})
         #https://www.gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2
-depends=(glibc)
+depends=()
 makedepends=()
 md5sums=('375d1a15ad969f32d25f1a7630929854' 'SKIP')
 group=(dev.libs)
