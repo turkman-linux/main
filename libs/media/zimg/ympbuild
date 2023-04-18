@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='zimg'
+release='1'
+version='3.0.4'
+url='https://github.com/sekrit-twc/zimg'
+description='Scaling, colorspace conversion, and dithering library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom:WTFPL')
+source=("https://github.com/sekrit-twc/zimg/archive/refs/tags/release-${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('9ef18426caecf049d3078732411a9802')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-"release"-$version
+
+setup(){
+    autoreconf -vfi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
