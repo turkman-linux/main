@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+name='grub'
+release='1'
+version='2.06'
+url='https://ftp.gnu.org/gnu/grub'
+description='GNU GRand Unified Bootloader'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz")
+depends=(xz-utils)
+makedepends=()
+md5sums=('cf0fd928b1e5479c8108ee52cb114363')
+group=()
+uses=()
+arch=('x86_64')
+
+_target=(efi ia32 bios)
+
+_target_opts=(
+    [efi]="--with-platform=efi --disable-efiemu"
+    [ia32]="--with-platform=efi --target=i386 --disable-efiemu"
+    [bios]="--with-platform=pc"
+)
+
+prepare(){
+    for tgt in ${_target[@]} ; do
+        cp -prfv $name-$version $tgt
+    done
+}
+
+setup(){
+    for tgt in ${_target[@]} ; do
+        cd $tgt
+        autoreconf -fvi
+        ./configure --prefix=/usr \
+            --libdir=/usr/lib64/ \
+            --disable-nls \
+            --disable-werror \
+            ${_target_opts[$tgt]}
+        cd ..
+    done
+}
+
+build(){
+    for tgt in ${_target[@]} ; do
+        make $jobs -C $tgt
+    done
+}
+
+package(){
+    for tgt in ${_target[@]} ; do
+        make $jobs -C $tgt install
+    done
+}
+
