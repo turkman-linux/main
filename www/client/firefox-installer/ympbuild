@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='firefox-installer'
 release='1'
-version='20230418'
+version='20230419'
 url='https://github.com/my-garbage-stuff/firefox-installer'
 description='Firfox installer'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/my-garbage-stuff/firefox-installer/archive/refs/tags/$version.tar.gz")
-depends=()
+depends=(dbus-glib alsa-lib ffmpeg libX11)
 makedepends=()
-md5sums=('49c24a5181a98196af51735b59196071')
+md5sums=('519c74fa28038243cf415660997db48f')
 group=(www.client)
 uses=()
 arch=('x86_64')
