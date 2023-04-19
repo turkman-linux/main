@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='fuse'
+release='1'
+version='3.14.1'
+url='https://github.com/libfuse/libfuse'
+description='Filesystem in Userspace'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/libfuse/libfuse/archive/refs/tags/fuse-${version}.tar.gz"
+        "fuse.initd")
+depends=()
+makedepends=()
+md5sums=('a5fd7866571a5fc08cc8d6dd20ba5e79'
+         'SKIP')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd "libfuse"-$name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Ddefault_library=both \
+        -Duseroot=false \
+        -Ddisable-mtab=true
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+    ln -s fusermount3 $DESTDIR/usr/bin/fusermount
+    rm -rf $DESTDIR/dev $DESTDIR/etc/init.d
+    mkdir -p $DESTDIR/etc/init.d
+    install ../fuse.initd $DESTDIR/etc/init.d/fuse
+}
