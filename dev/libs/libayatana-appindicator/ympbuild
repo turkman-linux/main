@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='libayatana-appindicator'
+release='1'
+version='0.5.92'
+url='https://github.com/AyatanaIndicators'
+description='Ayatana Application Indicators Shared Library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/AyatanaIndicators/libayatana-appindicator/archive/refs/tags/$version.tar.gz")
+depends=(gtk3)
+makedepends=(libayatana-indicator)
+md5sums=('58ab97d0c2e1c5941d287ff6164afaaf')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake .. -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib64 \
+        -DENABLE_BINDINGS_MONO=OFF
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

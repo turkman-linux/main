@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='libayatana-ido'
+release='1'
+version='0.9.3'
+url='https://github.com/AyatanaIndicators/ayatana-ido'
+description='Package description missing'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/AyatanaIndicators/ayatana-ido/archive/refs/tags/$version.tar.gz")
+depends=(gtk3)
+makedepends=()
+md5sums=('596a1f9a13d5a903bc46d26175bbe6b0')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd ayatana-ido-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake .. -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib64 \
+        -DENABLE_TESTS=OFF
+
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}

@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/network-manager-applet/-/archive/$version/network-manager-applet-$version.tar.gz")
-depends=(libsecret gtk3 networkmanager)
+depends=(libsecret gtk3 networkmanager libnma libayatana-appindicator)
 makedepends=()
 md5sums=('cf18a8da802218479a958c50e2a33b9c')
 group=(gnome.extra)
@@ -20,14 +20,15 @@ cd network-manager-applet-$version
 setup(){
     meson setup build --prefix=/usr \
         -Dselinux=false \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        -Dwwan=false
 }
 
 build(){
-    make -C build $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make -C build install $jobs
+    ninja -C build install $jobs
 }
 

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='libayatana-indicator'
+release='1'
+version='0.9.3'
+url='https://github.com/AyatanaIndicators/libayatana-indicator'
+description='Package description missing'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/AyatanaIndicators/libayatana-indicator/archive/refs/tags/$version.tar.gz")
+depends=(libayatana-ido)
+makedepends=()
+md5sums=('ca55c642e9fb8192c5f80908b1a74b2f')
+group=(deb.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    mkdir build
+    cd build
+    cmake .. -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib64
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

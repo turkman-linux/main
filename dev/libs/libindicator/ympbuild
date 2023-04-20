@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='libindicator'
+release='1'
+version='12.10.1'
+url='https://launchpad.net/libindicator'
+description='Package description missing'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz')
+depends=(gtk3)
+makedepends=()
+md5sums=('5fd4d6bab339fc9611078b64c44a85a8')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    sed -i 's/-Werror//' {libindicator,tools}/Makefile.am
+}
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --with-gtk=3
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
