@@ -16,8 +16,11 @@ cat /etc/group.d/* | sed "s/#.*//g"| while read line ; do
 done
 if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
     mkdir -p /var/lib/ymp/sysconf/base-files/
+    mkdir /tmp -p
+    chmod 1777 /tmp
     mkdir /data/user/root -p
     mkdir /data/log -p
+    mkdir -p /data/misc
     mkdir -p /kernel/modules
     mkdir -p /kernel/firmware
     mkdir -p /usr/lib64
@@ -32,6 +35,7 @@ if [ ! -f /var/lib/ymp/sysconf/base-files/postinstall.done ]; then
     ln -s ../data/log /var/log
     ln -s ../kernel/modules /lib/modules
     ln -s ../kernel/firmware /lib/firmware
+    ln -s ../boot /kernel/images
     ln -s ./lib64 /usr/lib
     ln -s ./lib32 /usr/libx32
     date > /var/lib/ymp/sysconf/base-files/postinstall.done
