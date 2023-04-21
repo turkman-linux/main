@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='e2fsprogs'
+release='1'
+version='1.47.0'
+url='https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs'
+description='Standard EXT2/EXT3/EXT4 filesystem utilities'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$version/e2fsprogs-$version.tar.xz")
+depends=(util-linux)
+makedepends=()
+md5sums=('7eda79bc0d131b33affe1d993d76711a')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+    # this file part of utit-inux
+    rm -rf $DESTDIR/usr/share/man/man8/fsck.8
+}
+
