@@ -66,13 +66,14 @@ package(){
     # default grub config
     mkdir -p $DESTDIR/etc/default
     {
-	  echo 'GRUB_DISTRIBUTOR="GNU/Linux"'
-    echo 'GRUB_TERMINAL=console'
+	  echo 'GRUB_DISTRIBUTOR=""'
+    echo 'GRUB_TERMINAL_OUTPUT=console'
     echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet"'
     echo 'GRUB_CMDLINE_LINUX=""'
 	  echo 'GRUB_DEFAULT=0'
 	  echo 'GRUB_TIMEOUT=0'
 	  echo 'GRUB_DISABLE_SUBMENU=y'
+    echo 'GRUB_DISABLE_OS_PROBER=true'
 	  echo 'GRUB_DISABLE_RECOVERY=true'
     } > $DESTDIR/etc/default/grub
 }
