@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libhandy'
+release='1'
+version='1.0.3'
+url='https://gitlab.gnome.org/GNOME/libhandy'
+description='Building blocks for modern adaptive GNOME apps'
+email='me@osmancoskun.com'
+maintainer='mergin'
+license=('LGPLv2.1')
+source=('https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.3/libhandy-1.0.3.tar.gz')
+depends=()
+makedepends=()
+md5sums=('675302c471defd7986ba46c9496da7ff')
+group=(gui.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+		meson setup build --prefix=/usr \
+				--libdir=/usr/lib64/
+}
+
+build(){
+		ninja -C build $jobs
+}
+
+package(){
+		ninja -C build install $jobs
+}
+
