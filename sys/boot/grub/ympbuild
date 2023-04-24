@@ -18,12 +18,15 @@ dontstrip=1
 
 target=(efi ia32 bios)
 
+unset CFLAGS
+unset CXXFLAGS
 
 get_grub_opt(){
+    echo -n "--disable-efiemu "
     if [[ "$1" == "efi" ]] ; then
-        echo -n "--with-platform=efi --disable-efiemu"
+        echo -n "--with-platform=efi --target=x86_64"
     elif [[ "$1" == "ia32" ]] ; then
-        echo -n "--with-platform=efi --target=i386 --disable-efiemu"
+        echo -n "--with-platform=efi --target=i386"
     elif [[ "$1" == "bios" ]] ; then
         echo -n "--with-platform=pc"
     fi
@@ -60,7 +63,16 @@ package(){
     for tgt in ${target[@]} ; do
         make $jobs -C $tgt install
     done
-    # remove gfx modules
-    find $DESTDIR -type f | grep "gfx" | xargs rm -fv
+    # default grub config
+    mkdir -p $DESTDIR/etc/default
+    {
+	  echo 'GRUB_DISTRIBUTOR="GNU/Linux"'
+    echo 'GRUB_TERMINAL=console'
+    echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet"'
+    echo 'GRUB_CMDLINE_LINUX=""'
+	  echo 'GRUB_DEFAULT=0'
+	  echo 'GRUB_TIMEOUT=0'
+	  echo 'GRUB_DISABLE_SUBMENU=y'
+	  echo 'GRUB_DISABLE_RECOVERY=true'
+    } > $DESTDIR/etc/default/grub
 }
-
