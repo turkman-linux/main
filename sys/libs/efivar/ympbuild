@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='efivar'
+release='1'
+version='38'
+url='https://github.com/rhboot/efivar'
+description='Tools and libraries to work with EFI variables'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://github.com/rhboot/efivar/archive/refs/tags/38.tar.gz'
+        'efivar-fix-mount-h-conflict.patch')
+depends=()
+makedepends=()
+md5sums=('81782b8a856d2abf55a199a11c3790c6'
+         'SKIP')
+group=(sys.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+export ERRORS=''
+export PATH=$PATH:$HOME
+
+prepare(){
+    patch -Np1 -i ../efivar-fix-mount-h-conflict.patch
+    # fake mandoc for ignore extra dependency
+    echo "exit 0" > $HOME/mandoc
+    chmod +x $HOME/mandoc
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

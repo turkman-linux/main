@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='efibootmgr'
+release='1'
+version='18'
+url='https://github.com/rhboot/efibootmgr'
+description='Linux user-space application to modify the Intel Extensible Firmware Interface (EFI) Boot Manager.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://github.com/rhboot/efibootmgr/archive/refs/tags/18.tar.gz')
+depends=(efivar)
+makedepends=()
+md5sums=('e170147da25e1d5f72721ffc46fe4e06')
+group=(sys.boot)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    make -C src $jobs
+}
+
+package(){
+    make -C src install $jobs
+}
+
