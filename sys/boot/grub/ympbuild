@@ -12,11 +12,11 @@ depends=()
 makedepends=()
 md5sums=('cf0fd928b1e5479c8108ee52cb114363')
 group=()
-uses=()
+uses=(efi ia32 bios)
 arch=('x86_64')
 dontstrip=1
-
-target=(efi ia32 bios)
+efi_depends=(efibootmgr)
+ia32_depends=(efibootmgr)
 
 unset CFLAGS
 unset CXXFLAGS
@@ -33,13 +33,19 @@ get_grub_opt(){
 }
 
 prepare(){
-    for tgt in ${target[@]} ; do
+    for tgt in ${uses[@]} ; do
+        if ! use $tgt ; then
+            continue
+        fi
         cp -prfv $name-$version $tgt
     done
 }
 
 setup(){
-    for tgt in ${target[@]} ; do
+    for tgt in ${uses[@]} ; do
+        if ! use $tgt ; then
+            continue
+        fi
         cd $tgt
         autoreconf -fvi
         ./configure --prefix=/usr \
@@ -54,13 +60,19 @@ setup(){
 }
 
 build(){
-    for tgt in ${target[@]} ; do
+    for tgt in ${uses[@]} ; do
+        if ! use $tgt ; then
+            continue
+        fi
         make $jobs -C $tgt
     done
 }
 
 package(){
-    for tgt in ${target[@]} ; do
+    for tgt in ${uses[@]} ; do
+        if ! use $tgt ; then
+            continue
+        fi
         make $jobs -C $tgt install
     done
     # default grub config
