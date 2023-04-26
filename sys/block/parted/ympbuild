@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='parted'
+release='1'
+version='3.6'
+url='https://www.gnu.org/software/parted/parted.html'
+description='/home/celal/paketler/ornek_ympbuild'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/parted/parted-${version}.tar.xz")
+depends=()
+makedepends=()
+md5sums=('93d2d8f22baebc5eb65b85da05a79e4e')
+group=(sys.block)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --sbindir=/usr/bin \
+        --disable-rpath \
+        --disable-device-mapper
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="${DESTDIR}" install $jobs
+}
+
