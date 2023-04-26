@@ -14,10 +14,12 @@ source=("https://gitlab.freedesktop.org/xorg/app/xinit/-/archive/xinit-$version/
         "files/xinit.sysconf"
         "files/xinit.confd"
         "files/xinit.initd"
+        "files/Xresources"
 )
-depends=(util-macros xorgproto libX11 xorg-server xterm)
+depends=(util-macros xorgproto libX11 xorg-server xterm xhost xrdb)
 makedepends=()
 md5sums=('0855364c1c869679300d55e9dd57e2aa'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -49,6 +51,7 @@ package(){
     install -m755 -D ../xinit.sysconf "$DESTDIR"/etc/sysconf.d/xinit
     install -m755 -D ../xinit.initd "$DESTDIR"/etc/init.d/xinit
     install -m755 -D ../xinit.confd "$DESTDIR"/etc/conf.d/xinit
+    install ../Xresources "$DESTDIR"/etc/X11/Xresources
     # allow local connections config
     mkdir -p "$DESTDIR"/etc/X11/xinit/xinitrc.d
     echo "#!/bin/sh" > "$DESTDIR"/etc/X11/xinit/xinitrc.d/10-local.sh

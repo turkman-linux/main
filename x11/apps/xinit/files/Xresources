@@ -1,0 +1,25 @@
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: slight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+XTerm*vt100*geometry: 85x35
+XTerm*saveLines: 99999
+XTerm*termName: xterm-color
+XTerm*heightBitInput: false
+XTerm*foreground: white
+XTerm*background: black
+XTerm*boldMode: false 
+XTerm*locale: true
+XTerm*allowBoldFonts: true
+XTerm*bellIsUrgent: true
+XTerm*.translations: #override \
+  Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+  Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
+
+XTerm*cursorColor: navy
+XTerm*internalBorder: 3
+XTerm*multiClickTime: 250
