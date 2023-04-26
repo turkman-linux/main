@@ -22,12 +22,17 @@ build(){
 }
 
 package(){
-    make install BINDIR=/usr/bin LIBDIR=/usr/lib64 $jobs
+    export BINDIR=/usr/bin
+    export LIBDIR=/usr/lib64
+    export PKGCONFIGDIR=/usr/lib64/pkgconfig/
+    export INCLUDEDIR=/usr/include
+    make install  $jobs
+    rm -rf $DESTDIR/usr/local
     if ! use prog ; then
         rm -rf $DESTDIR/usr/bin
     fi
     if ! use lib ; then
-        rm -rf $DESTDIR/usr/lib64
+        rm -rf $DESTDIR/usr/lib64 $DESTDIR/usr/include
     fi
 }
 
