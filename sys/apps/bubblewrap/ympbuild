@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='bubblewrap'
+release='1'
+version='0.8.0'
+url='https://containers/bubblewrap'
+description='Unprivileged sandboxing tool, namespaces-powered chroot-like solution'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/containers/bubblewrap/archive/refs/tags/v$version.tar.gz")
+depends=(libcap)
+makedepends=()
+md5sums=('283b9896a10cb17373053d353345a757')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja install -C build $jobs
+}
+
