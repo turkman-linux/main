@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='flatpak'
+release='1'
+version='1.15.4'
+url='https://github.com/flatpak/flatpak'
+description='Linux application sandboxing and distribution framework'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://salsa.debian.org/debian/flatpak/-/archive/debian/$version-1/flatpak-debian-$version-1.tar.gz")
+depends=(ostree desktop-file-utils shared-mime-info curl)
+makedepends=()
+md5sums=('90c089a0019137085916fc7bdbaa0e2e')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-debian-$version-1
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --sysconfdir=/etc \
+        -Dsystem_helper=disabled \
+        -Dsystemd=disabled \
+        -Dsystem_install_dir=/data/flatpak \
+        -Dmalcontent=disabled \
+        -Dlibzstd=disabled \
+        -Dtests=false
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+
