@@ -7,23 +7,29 @@ description='Library to help create and query binary XML blobs'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
-source=("https://github.com/hughsie/libxmlb/archive/refs/tags/${version}.tar.gz")
+_ver="8fd75bb13cd4bed30ed369e8fe47c593d2b9dd17"
+source=("https://github.com/hughsie/libxmlb/archive/${_ver}.zip")
 depends=()
 makedepends=()
-md5sums=('751a20472aaf901e5306497581491508')
+md5sums=('19635e8c08b1a202dab7fd19ecc23464')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd $name-${_ver}
+
+prepare(){
+    sed -i "s|dependency('libzstd'|&,required: false|g" meson.build
+}
 
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-		-Dgtkdoc=false \
-		-Dtests=true \
-		-Dstemmer=false \
-		-Dintrospection=true
+		    -Dgtkdoc=false \
+		    -Dtests=true \
+		    -Dstemmer=false \
+		    -Dintrospection=true \
+        -Dzstd=false
 }
 
 build(){
