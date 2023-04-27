@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+name='ostree'
+release='1'
+version='2023.2'
+url='https://github.com/ostreedev/ostree'
+description='Operating system and container binary deployment and upgrades'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=('https://github.com/ostreedev/ostree/releases/download/v2023.2/libostree-2023.2.tar.xz')
+depends=(fuse elogind gpgme libarchive)
+makedepends=()
+md5sums=('4e8b1ddb694b7bbca76c94372992bf22')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd lib$name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+	      --sysconfdir=/etc \
+		    --localstatedir=/var \
+    		--disable-glibtest
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+    # move /usr/lib to /usr/lib64
+    mv $DESTDIR/usr/lib/* $DESTDIR/usr/lib64
+    rm -rf $DESTDIR/usr/lib/
+    # remove garbage files
+    rm -rvf $DESTDIR/etc/grub.d/
+    rm -rvf $DESTDIR/lib/systemd
+    rm -rvf $DESTDIR/usr/libexec/libostree/grub2-*
+
+}
+

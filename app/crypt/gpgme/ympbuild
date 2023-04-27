@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gpgme'
+release='1'
+version='1.20.0'
+url='https://www.gnupg.org/ftp/gcrypt/gpgme'
+description='"gnupg made easy'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-$version.tar.bz2")
+depends=(gnupg)
+makedepends=()
+md5sums=('526949233610f46655741cafd09e66a7')
+group=(app.crypt)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
