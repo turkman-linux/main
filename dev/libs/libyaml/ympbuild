@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libyaml'
+release='1'
+version='0.2.5'
+url='https://pyyaml.org/wiki/LibYAMLg'
+description='YAML 1.1 library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/yaml/libyaml/releases/download/${version}/yaml-${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('bb15429d8fb787e7d3f1c83ae129a999')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd "yaml"-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

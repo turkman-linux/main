@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='libxmlb'
+release='1'
+version='0.3.11'
+url='https://github.com/hughsie/libxmlb'
+description='Library to help create and query binary XML blobs'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://github.com/hughsie/libxmlb/archive/refs/tags/${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('751a20472aaf901e5306497581491508')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		-Dgtkdoc=false \
+		-Dtests=true \
+		-Dstemmer=false \
+		-Dintrospection=true
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+
