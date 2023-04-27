@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+name='py3-parsing'
+release='1'
+version='3.0.9'
+url='https://pypi.org/project/pyparsing/'
+description='Python library for creating PEG parsers'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://files.pythonhosted.org/packages/71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('fadc2f3bf5872bf6310576a86c3566e0')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd pyparsing-$version
+
+package(){
+    mkdir -p ${DESTDIR}/usr/lib64/python3
+    cp -prfv pyparsing ${DESTDIR}/usr/lib64/python3
+}
+
