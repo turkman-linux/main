@@ -9,7 +9,7 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://download.gnome.org/sources/gdk-pixbuf/${version%.*}/gdk-pixbuf-$version.tar.xz"
         "gdk-pixbuf.sysconf")
-depends=(libjpeg-turbo shared-mime-info gi-docgen libtiff)
+depends=(libjpeg-turbo shared-mime-info gi-docgen libtiff libpng)
 makedepends=()
 md5sums=('4a62f339cb1424693fba9bb7ffef8150'
          'SKIP')

@@ -9,7 +9,7 @@ maintainer='akarsu'
 license=('GPLv3')
 source=("https://github.com/libfuse/libfuse/archive/refs/tags/fuse-${version}.tar.gz"
         "fuse.initd")
-depends=()
+depends=(eudev)
 makedepends=()
 md5sums=('a5fd7866571a5fc08cc8d6dd20ba5e79'
          'SKIP')

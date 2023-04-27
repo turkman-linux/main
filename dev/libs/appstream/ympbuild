@@ -8,7 +8,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL')
 source=("https://github.com/ximion/appstream/archive/refs/tags/v${version}.tar.gz")
-depends=(glib libxml2 libyaml curl)
+depends=(glib libxml2 libyaml curl libxmlb gperf gdk-pixbuf)
 makedepends=(meson gobject-introspection)
 md5sums=('2b51bcf37f4071ec83050fcf75ec173c')
 group=(dev.libs)
@@ -21,7 +21,8 @@ setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -Dqt=false \
-        -Dstemming=false
+        -Dstemming=false \
+        -Dsystemd=false
 }
 
 build(){
