@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='ca-certificates'
+release='1'
+version='20230106'
+url='https://salsa.debian.org/debian/ca-certificates'
+description='Common CA certificates'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.alpinelinux.org/alpine/ca-certificates/-/archive/$version/ca-certificates-$version.tar.gz"
+        "ca-certificates.sysconf")
+depends=()
+makedepends=()
+md5sums=('c5e091fdedb5eb24babfe6e2e0bb5142'
+         'SKIP')
+group=(app.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+    # openssl conflict fix
+    rm -f ${DESTDIR}/usr/bin/c_rehash
+    # install sysconf file
+    mkdir -p ${DESTDIR}/etc/sysconf.d/
+    install ../ca-certificates.sysconf ${DESTDIR}/etc/sysconf.d/ca-certificates
+}
+

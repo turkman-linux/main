@@ -1,0 +1,20 @@
+#!/bin/sh
+current=$(date +%s -r /usr/share/ca-certificates)
+last=$(cat /var/lib/ymp/sysconf/ca-certificates/update-crt.date 2>/dev/null)
+if [ "$current" != "$last" ] ; then
+    echo "# Automatically generated. Do Not Edit." > /etc/ca-certificates.conf
+    for dir in $(ls /usr/share/ca-certificates) ; do
+        ls /usr/share/ca-certificates/$dir/ | sed "s|^|$dir/|g" >> /etc/ca-certificates.conf
+    done
+    date +%s -r /etc/ssl/ > /var/lib/ymp/sysconf/ca-certificates/update-crt.date
+fi
+
+current=$(date +%s -r /etc/ssl/)
+last=$(cat /var/lib/ymp/sysconf/ca-certificates/update.date 2>/dev/null)
+if [ "$current" != "$last" ] ; then
+    mkdir -p /etc/ssl/local
+    mkdir -p /etc/ssl/certs
+    mkdir -p /etc/ca-certificates/update.d/
+    update-ca-certificates
+    date +%s -r /etc/ssl/ > /var/lib/ymp/sysconf/ca-certificates/update.date
+fi
