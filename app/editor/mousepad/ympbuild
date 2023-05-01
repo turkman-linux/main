@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='mousepad'
+release='1'
+version='0.6.0'
+_version='0.6'
+url='https://docs.xfce.org/apps/mousepad/start'
+description='Simple text editor for Xfce'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+#source=("https://gitlab.xfce.org/apps/mousepad/-/archive/mousepad-${version}/mousepad-mousepad-${version}.tar.gz")
+source="https://archive.xfce.org/src/apps/mousepad/${_version}/mousepad-${version}.tar.bz2"
+depends=(desktop-file-utils gtksourceview4)
+makedepends=(intltool)
+md5sums=('33bf0588828cc1252fa17a2312f974b1')
+group=(app.editors)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make destdir=$destdir install $jobs
+}
+

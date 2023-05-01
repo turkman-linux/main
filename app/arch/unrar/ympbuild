@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='unrar'
+release='1'
+version='6.2.6'
+url='https://www.rarlab.com/rar_add.htm'
+description='The RAR uncompression program'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom')
+source=("https://www.rarlab.com/rar/unrarsrc-${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('6c68f2bbcd9f06f9d37801ad4256e680')
+group=(app.arch)
+uses=()
+arch=('x86_64')
+
+#cd $name-$version
+
+setup(){
+    sed -e '/CXXFLAGS=/d' -e '/LDFLAGS=/d' -i unrar/makefile # Use system build flags
+}
+
+build(){
+  cp -a unrar libunrar
+  export LDFLAGS+=' -pthread'
+  make -C libunrar lib
+  make -C unrar -j1
+}
+
+package(){
+  cd unrar
+  install -Dm755 unrar -t "$DESTDIR"/usr/bin/
+  # install license
+  install -Dm644 license.txt "$DESTDIR"/usr/share/licenses/$name/LICENSE
+}
+

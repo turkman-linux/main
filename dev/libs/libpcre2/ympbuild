@@ -20,8 +20,12 @@ cd pcre2-$version
 setup(){
     ./configure --prefix=/usr \
     	--libdir=/usr/lib64 \
-	--enable-shared \
-	--enable-static \
+	    --enable-shared \
+	    --enable-static \
+        --enable-pcre2-16 \
+        --enable-pcre2-32 \
+        --enable-jit \
+        --enable-pcre2test-libreadline \
 	$(use_opt zlib --enable-pcre2grep-libz --disable-pcre2grep-libz) \
 	$(use_opt bzip2 --enable-pcre2grep-libbz2 --disable-pcre2grep-libbz2)
 }
