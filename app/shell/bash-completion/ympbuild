@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='bash-completion'
+release='1'
+version='2.11'
+url='https://github.com/scop/bash-completion'
+description='Programmable Completion for bash'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/scop/bash-completion/releases/download/$version/bash-completion-2.11.tar.xz")
+depends=(bash)
+makedepends=()
+md5sums=('2514c6772d0de6254758b98c53f91861')
+group=(app.shell)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

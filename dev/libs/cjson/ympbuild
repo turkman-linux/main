@@ -21,7 +21,7 @@ setup(){
     cmake -B build -S "cJSON-${version}" \
         -DENABLE_CJSON_UTILS=On \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=usr/lib64/
+        -DCMAKE_INSTALL_LIBDIR=lib64/
 }
 
 build(){
