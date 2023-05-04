@@ -1,32 +1,32 @@
 #!/usr/bin/env bash
 name='lcms2'
-release='1'
-version='14'
-url='https://github.com/mm2/Little-CMS'
-description='A lightweight, speed optimized color management engine '
-email='bayramk@gmail.com'
-maintainer='bk'
+release='2'
+version='2.15'
+url='https://netix.dl.sourceforge.net/project/lcms/lcms/2.14/lcms2-2.14.tar.gz'
+description='Small-footprint color management engine, version 2'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
 license=('GPLv3')
-source=("https://github.com/mm2/Little-CMS/archive/refs/tags/lcms2.$version.tar.gz")
-depends=()
+source=("https://netix.dl.sourceforge.net/project/lcms/lcms/${version}/lcms2-${version}.tar.gz")
+depends=(libtiff)
 makedepends=()
-md5sums=('7982e4dc874c29bbfef0b7de6783006b')
+md5sums=('d17efda96ec79ebdd5de881a93b67839')
 group=(media.libs)
 uses=()
 arch=('x86_64')
 
-cd Little-CMS-$name.$version
+cd $name-$version
 
 setup(){
-	meson setup build --prefix=/usr \
+    ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }
 
 build(){
-    ninja -C build
+    make $jobs
 }
 
 package(){
-    ninja -C build install
+    make install $jobs
 }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='appstream'
-release='1'
-version='0.16.1'
+release='2'
+version='0.16.2'
 url='https://distributions.freedesktop.org/wiki/AppStream'
 description='Provides a standard for creating app stores across distributions'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPL')
 source=("https://github.com/ximion/appstream/archive/refs/tags/v${version}.tar.gz")
 depends=(glib libxml2 libyaml curl libxmlb gperf gdk-pixbuf)
 makedepends=(meson gobject-introspection)
-md5sums=('2b51bcf37f4071ec83050fcf75ec173c')
+md5sums=('c6ca019b98a4dd1aae8bbd79e73d0ddb')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
@@ -32,4 +32,3 @@ build(){
 package(){
     ninja -C build install $jobs
 }
-
