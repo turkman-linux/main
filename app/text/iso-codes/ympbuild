@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 name='iso-codes'
-release='1'
-version='4.1'
+release='2'
+version='4.15.0'
 url='https://salsa.debian.org/iso-codes-team/iso-codes'
 description='Lists of the country, language, and currency names'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=('https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/iso-codes-4.1/iso-codes-iso-codes-4.1.tar.gz')
+source=("https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v${version}/iso-codes-v${version}.tar.gz")
 depends=()
 makedepends=()
-md5sums=('e0e3e7e4b82509cd08964dc5d703f771')
-group=()
+md5sums=('68d0a549e3086a33a9e35d17a2b1a608')
+group=(app.text)
 uses=()
 arch=('x86_64')
 
-cd $name-$name-$version
+cd $name-"v"$version
 
 setup(){
     ./configure --prefix=/usr \

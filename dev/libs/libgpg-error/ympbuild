@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='libgpg-error'
-release='1'
-version='1.46'
+release='2'
+version='1.47'
 url='https://www.gnupg.org/'
 description='Support library for libgcrypt'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=(https://www.gnupg.org/ftp/gcrypt/libgpg-error/${name}-${version}.tar.bz2{,.sig})
-depends=()
+depends=(glibc )
 makedepends=()
-md5sums=('db41efe5aba3baad6cf266fea720095d' 'SKIP')
+md5sums=('58e054ca192a77226c4822bbee1b7fdb' 'SKIP')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

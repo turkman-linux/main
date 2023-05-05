@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libgcrypt'
-release='1'
-version='1.10.1'
+release='2'
+version='1.10.2'
 url='https://www.gnupg.org'
 description='General purpose cryptographic library based on the code from GnuPG'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=(https://gnupg.org/ftp/gcrypt/${name}/${name}-${version}.tar.bz2{,.sig})
 depends=(libgpg-error)
 makedepends=()
-md5sums=('8fadbe1fddafa341dce5ef3869f70e25' 'SKIP')
+md5sums=('663abb395452750522d6797967e2f442' 'SKIP')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
