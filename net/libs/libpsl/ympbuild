@@ -18,6 +18,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
+        --default-library=both \
         --libdir=/usr/lib64 \
         -Druntime=libidn2 \
 			  -Dbuiltin=true
