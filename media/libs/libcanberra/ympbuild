@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+name='libcanberra'
+release='1'
+version='0.30'
+url='https://0pointer.net/lennart/projects/libcanberra/'
+description='A small and lightweight implementation of the XDG Sound Theme Specification'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://0pointer.de/lennart/projects/libcanberra/libcanberra-${version}.tar.xz" "https://www.linuxfromscratch.org/patches/blfs/svn/libcanberra-${version}-wayland-1.patch")
+depends=(libvorbis alsa-lib gstreamer)
+makedepends=(gtk3)
+md5sums=('34cb7e4430afaf6f447c4ebdb9b42072' '63b8aa3272610d39c3114ffee292f1bc')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+prepare(){
+	patch -Np1 -i ../libcanberra-0.30-wayland-1.patch
+	autoreconf -fvi
+}
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+      	--with-builtin=dso \
+		--enable-null \
+		--disable-oss \
+      	--enable-alsa \
+		--enable-pulse \
+		--disable-oss
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+	rm -rf $DESTDIR/lib/systemd
+}
+

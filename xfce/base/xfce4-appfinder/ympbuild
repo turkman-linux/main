@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='xfce4-appfinder'
+release='1'
+version='4.18.0'
+_version='4.18'
+url='https://docs.xfce.org/xfce/xfce4-appfinder/start'
+description='Application launcher and finder'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://archive.xfce.org/src/xfce/xfce4-appfinder/${_version}/xfce4-appfinder-${version}.tar.bz2")
+depends=(garcon  libxfce4ui xfconf)
+makedepends=(intltool)
+md5sums=('7c0d45141c58b3130d4281e9d33c24ba')
+group=(xfce.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+	    --localstatedir=/var \
+		--disable-debug 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}
+

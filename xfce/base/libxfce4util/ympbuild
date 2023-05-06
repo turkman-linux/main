@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libxfce4util'
+release='1'
+version='4.18.1'
+_version='4.18'
+url='https://www.xfce.org/'
+description='Basic utility non-GUI functions for Xfce'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://archive.xfce.org/src/xfce/libxfce4util/${_version}/libxfce4util-${version}.tar.bz2")
+depends=(glib)
+makedepends=(gobject-introspection intltool vala)
+md5sums=('4a834c5dc207f33cde0e213bc4e8b5b1')
+group=(xfce.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--sbindir=/usr/bin \
+		--localstatedir=/var \
+		--disable-debug 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}
+

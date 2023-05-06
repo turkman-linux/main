@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libnotify'
+release='1'.
+version='0.8.2'
+_version='0.8'
+url='https://gitlab.gnome.org/GNOME/libnotify'
+description='Library for sending desktop notifications'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.gnome.org/sources/libnotify/${_version}/libnotify-${version}.tar.xz")
+depends=()
+makedepends=()
+md5sums=('ee2d2934a9dcfd5b1305188201e1cd50')
+group=(x11.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --buildtype=release \
+        -Dgtk_doc=false     \
+        -Dman=false \
+		-Ddefault_library=both
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+
