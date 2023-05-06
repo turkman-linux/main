@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='xfce4-dev-tools'
+release='1'
+version='4.18.0'
+_version='4.18'
+url='https://www.xfce.org/'
+description='Xfce developer tools'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("http://archive.xfce.org/src/xfce/xfce4-dev-tools/${_version}/xfce4-dev-tools-${version}.tar.bz2")
+depends=(glib gtk-doc)
+makedepends=(intltool)
+md5sums=('24ea05b8f77365f17c9d63263816ec11')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--disable-debug 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}
+
