@@ -22,7 +22,7 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
-		--libexecdir=/usr/lib/xfce4 \
+		--libexecdir=/usr/libexec \
 		--localstatedir=/var
 }
 

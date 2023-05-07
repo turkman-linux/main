@@ -12,7 +12,7 @@ source=("https://archive.xfce.org/src/apps/xfce4-terminal/${_version}/xfce4-term
 depends=(libxfce4ui vte3)
 makedepends=(intltool)
 md5sums=('c025d9d99c1e8489469e5d4f2b994600')
-group=(x11.terms)
+group=(xfce.extra)
 uses=()
 arch=('x86_64')
 
@@ -22,7 +22,7 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
-    	--libexecdir=/usr/lib/xfce4 \
+	  --libexecdir=/usr/libexec \
 		--localstatedir=/var \
 		--disable-debug 
 }
