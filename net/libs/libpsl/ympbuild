@@ -16,7 +16,20 @@ group=(net.libs)
 
 cd $name-$version
 
+prepare(){
+    # meson build missing .la file
+    # autotools missing static library
+    cp -prf ../$name-$version ../$name-autotools
+}
+
 setup(){
+    cd ../$name-autotools
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64 \
+       --enable-ld-version-script \
+       --enable-runtime=libidn2 \
+       --enable-builtin
+    cd ../$name-$version
     meson setup build --prefix=/usr \
         --default-library=both \
         --libdir=/usr/lib64 \
@@ -25,10 +38,16 @@ setup(){
 }
 
 build(){
+    cd ../$name-autotools
+    make $jobs
+    cd ../$name-$version
     ninja -C build $jobs
 }
 
 package(){
+    cd ../$name-autotools
+    make install $jobs
+    cd ../$name-$version
     ninja -C build install $jobs
 }
 
