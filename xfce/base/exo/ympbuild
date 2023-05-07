@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='exo'
+release='1'
+version='4.18.0'
+_version='4.18'
+url='https://docs.xfce.org/xfce/exo/start'
+description='Application library for the Xfce desktop environment'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://archive.xfce.org/src/xfce/exo/${_version}/exo-${version}.tar.bz2")
+depends=(libxfce4ui)
+makedepends=(intltool)
+md5sums=('9d0be4e885eaf991e12dbc14d3fc628d')
+group=(xfce.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--sbindir=/usr/bin \
+		--localstatedir=/var \
+		--disable-debug 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}

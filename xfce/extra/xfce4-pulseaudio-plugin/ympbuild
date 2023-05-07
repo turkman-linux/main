@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='xfce4-pulseaudio-plugin'
+release='1'
+version='0.4.6'
+_version='0.4'
+url='https://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin'
+description='Pulseaudio plugin for the Xfce4 panel'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/${_version}/xfce4-pulseaudio-plugin-${version}.tar.bz2")
+depends=(xfce4-panel libpulse libkeybinder3 libnotify libcanberra)
+makedepends=(intltool)
+md5sums=('84e97fa1c525bfaee67798c738e9c624')
+group=(xfce.extra)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+   		--libexecdir=/usr/lib\
+		--localstatedir=/var \
+		--disable-debug 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}

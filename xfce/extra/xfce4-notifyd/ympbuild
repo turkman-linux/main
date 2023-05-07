@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='xfce4-notifyd'
+release='1'
+version='0.8.2'
+_version='0.8'
+url='https://docs.xfce.org/apps/notifyd/start'
+description='Notification daemon for the Xfce desktop'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://archive.xfce.org/src/apps/xfce4-notifyd/${_version}/xfce4-notifyd-${version}.tar.bz2")
+depends=(libnotify libxfce4ui)
+makedepends=(intltool python xfce4-panel xfce4-dev-tools)
+md5sums=('4bbeff59d9c872961f7236c226652895')
+group=(xfce.extra)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--disable-debug 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}

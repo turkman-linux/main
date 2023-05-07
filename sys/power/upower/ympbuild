@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='upower'
+release='1'
+version='1.90.0'
+url='https://u0power.freedesktop.org/'
+description='Abstraction for enumerating power devices, listening to device events and querying history and statistics'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/upower/upower/-/archive/v${version}/upower-v${version}.tar.gz")
+depends=(libgudev libusb polkit)
+makedepends=()
+md5sums=('6640404336d3d082e9c2a4f147d9eb8b')
+group=(sys.power)
+uses=()
+arch=('x86_64')
+
+cd $name-"v"$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --buildtype=release \
+        -Dgtk-doc=false     \
+        -Dman=false \
+		-Ddefault_library=both
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='xorg-iceauth'
+release='1'
+version='1.0.9'
+url='https://xorg.freedesktop.org/'
+description='ICE authority file utility'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom')
+source=("https://gitlab.freedesktop.org/xorg/app/iceauth/-/archive/iceauth-${version}/iceauth-iceauth-${version}.tar.gz")
+depends=(libICE util-macros xorgproto)
+makedepends=()
+md5sums=('b82f662f3e2c9515d6063bd62c3dc532')
+group=(x11.apps)
+uses=()
+arch=('x86_64')
+
+cd "iceauth-iceauth"-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+	install -m755 -d "${DESTDIR}/usr/share/licenses/${name}"
+	install -m644 COPYING "${DESTDIR}/usr/share/licenses/${name}/"
+}
+

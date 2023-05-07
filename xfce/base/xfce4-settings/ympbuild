@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+name='xfce4-settings'
+release='1'
+version='4.18.2'
+_version='4.18'
+url='https://docs.xfce.org/xfce/xfce4-settings/start'
+description="Xfce's Configuration System"
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://archive.xfce.org/src/xfce/xfce4-settings/${_version}/xfce4-settings-${version}.tar.bz2")
+depends=(exo garcon lxde-icon-theme libnotify)
+makedepends=(intltool)
+md5sums=('be88cc55725fa6b935f2f06a19e92535')
+group=(xfce.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--sbindir=/usr/bin \
+		--localstatedir=/var \
+		--enable-xrandr \
+		--enable-xcursor \
+		--enable-libnotify \
+		--enable-libxklavier \
+		--enable-pluggable-dialogs \
+		--enable-sound-settings \
+		--disable-debug
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='garcon'
+release='1'
+version='4.18.1'
+_version='4.18'
+url='https://docs.xfce.org/xfce/garcon/start'
+description='Freedesktop.org compliant menu library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2' 'LGPL')
+source=("https://archive.xfce.org/src/xfce/garcon/${_version}/garcon-${version}.tar.bz2")
+depends=(libxfce4ui)
+makedepends=(intltool)
+md5sums=('0c9dd937f595beb7052657c44f77c272')
+group=(xfce.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--disable-debug 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install DESTDIR=$DESTDIR $jobs
+}
