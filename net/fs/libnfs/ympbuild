@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libnfs'
+release='1'
+version='5.0.2'
+url='https://github.com/sahlberg/libnfs'
+description='client library for accessing NFS shares'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('115034aab322d05235a9555d057f8b14')
+group=(net.fs)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
