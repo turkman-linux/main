@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gphoto2'
+release='1'
+version='2.5.28'
+url='http://www.gphoto.org/'
+description='A digital camera download and access program.'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3' 'LGPL')
+source=("https://sourceforge.net/projects/gphoto/files/gphoto/${version}/gphoto2-${version}.tar.bz2" "https://sourceforge.net/projects/gphoto/files/gphoto/${version}/gphoto2-${version}.tar.bz2.asc")
+depends=(libgphoto2 popt)
+makedepends=()
+md5sums=('e7b3c835c26e2a5e61cf0b95e19da507' 'SKIP')
+group=(media.gfx)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--with-udev=/usr/lib/udev
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install $jobs
+}

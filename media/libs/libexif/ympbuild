@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libexif'
+release='1'
+version='0.6.24'
+url='https://github.com/libexif/libexif'
+description='Library to parse an EXIF file and read the data from those tags'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://github.com/libexif/libexif/archive/refs/tags/v${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('e16dae68adb2b35c6329afe6198a9307')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
