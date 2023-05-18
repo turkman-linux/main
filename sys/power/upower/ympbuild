@@ -7,10 +7,12 @@ description='Abstraction for enumerating power devices, listening to device even
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/upower/upower/-/archive/v${version}/upower-v${version}.tar.gz")
+source=("https://gitlab.freedesktop.org/upower/upower/-/archive/v${version}/upower-v${version}.tar.gz"
+        "upowerd.initd")
 depends=(libgudev libusb polkit)
 makedepends=()
-md5sums=('6640404336d3d082e9c2a4f147d9eb8b')
+md5sums=('6640404336d3d082e9c2a4f147d9eb8b'
+         'SKIP')
 group=(sys.power)
 uses=()
 arch=('x86_64')
@@ -23,7 +25,7 @@ setup(){
         --buildtype=release \
         -Dgtk-doc=false     \
         -Dman=false \
-				-Ddefault_library=both \
+	-Ddefault_library=both \
         -Dsystemdsystemunitdir=no
 }
 
@@ -32,6 +34,8 @@ build(){
 }
 
 package(){
+    mkdir -p $DESTDIR/etc/init.d/
     ninja -C build install $jobs
+    install ../upowerd.initd $DESTDIR/etc/init.d/upowerd
 }
 
