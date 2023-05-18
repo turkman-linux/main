@@ -23,7 +23,8 @@ setup(){
         --buildtype=release \
         -Dgtk-doc=false     \
         -Dman=false \
-		-Ddefault_library=both
+				-Ddefault_library=both \
+        -Dsystemdsystemunitdir=no
 }
 
 build(){
