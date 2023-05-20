@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='udisks2'
+release='1'
+version='2.9.4'
+url='https://github.com/storaged-project/udisks'
+description='Disk Management Service, version 2'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/storaged-project/udisks/archive/refs/tags/udisks-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('b03e328a807e0183adba04e546a4f343')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd udisks-udisks-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --with-systemdsystemunitdir=no \
+        enable_available_modules=yes
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
