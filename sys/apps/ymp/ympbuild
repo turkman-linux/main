@@ -10,8 +10,8 @@ license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/ymp/-/archive/${version}/ymp-${version}.tar.gz")
 depends=(glib readline ncurses)
 makedepends=(vala)
-md5sums=('dc2656b48eb0c633a18e20304c3fade1')
-uses=(curl libarchive bash)
+md5sums=('92cfba2dabbc1c598a1cab64f225a84b')
+uses=(curl libarchive)
 curl_depends=(curl)
 libarchive_depends=(libarchive)
 group=(sys.apps)
@@ -27,7 +27,7 @@ setup(){
         --libdir=/usr/lib64 \
         $(use_opt curl  -Dlibcurl=true -Dlibcurl=false) \
         $(use_opt libarchive -Dlibarchive=true -Dlibarchive=false) \
-        -Ddebug=true -Dshared=true -Dscripts=true -Dlibbrotli=false
+        -Ddebug=true -Dscripts=true -Dlibbrotli=false
 }
 
 build(){
