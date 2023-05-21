@@ -47,5 +47,10 @@ package(){
     # install service
     mkdir -p $DESTDIR/etc/init.d
     install ../lightdm.initd $DESTDIR/etc/init.d/lightdm
+    # generate lightdm-session file
+    echo '#!/bin/sh' > $DESTDIR/usr/bin/lightdm-session
+    echo 'exec /etc/X11/xinit/Xsession $@' >> $DESTDIR/usr/bin/lightdm-session
+    # fix pam config
+    sed -i "s/systemd/elogind/g" $DESTDIR/etc/pam.d/*
 }
 
