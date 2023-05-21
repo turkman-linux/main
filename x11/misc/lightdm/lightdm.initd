@@ -12,6 +12,6 @@ depend() {
 }
 
 start_pre() {
-	checkpath --owner lightdm:lightdm --directory /var/lib/lightdm
+	checkpath --owner lightdm:lightdm --directory /var/lib/lightdm-data
 }
 
