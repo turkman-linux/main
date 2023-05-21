@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-cython'
+release='1'
+version='0.29.34'
+url='https://cython.org/'
+description='A Python to C compiler.'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/cython/cython/archive/refs/tags/$version.tar.gz")
+depends=(python libxml2 libxslt)
+makedepends=()
+md5sums=('e8fb3a99e91c8e7713a9609315f5063e')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+  cd cython-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+  python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+

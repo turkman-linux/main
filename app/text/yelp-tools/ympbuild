@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='yelp-tools'
+release='1'
+version='42.1'
+url='https://wiki.gnome.org/Apps/Yelp/Tools'
+description='Collection of tools for building and converting documentation'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/yelp-tools/-/archive/42.1/yelp-tools-$version.tar.gz")
+depends=(libX11 py3-lxml yelp-xsl)
+makedepends=()
+md5sums=('dfc3548206a9ad1d7ad5d2c44df6d87b')
+group=(app.text)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+   	meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+
