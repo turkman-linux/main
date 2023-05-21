@@ -24,6 +24,7 @@ setup(){
 	./configure --prefix=/usr \
             --sysconfdir=/etc \
             --libdir=/usr/lib64/ \
+            --localstatedir=/var \
             --disable-tests \
             --disable-gtk-doc \
             --enable-yelp-tools \
