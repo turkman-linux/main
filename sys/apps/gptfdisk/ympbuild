@@ -2,43 +2,32 @@
 name='gptfdisk'
 release='1'
 version='1.0.9'
-url='https://www.rodsbooks.com/gdisk/'
+url='https://salsa.debian.org/debian/gdisk'
 description='GPT partition table manipulator for Linux'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.rodsbooks.com/gdisk/gptfdisk-$version.tar.gz"
-	"popt-1.19.patch"
-        "popt-1.19-follow-up.patch"
-        "util-linux-2.38.patch"
-)
+source=("https://salsa.debian.org/debian/gdisk/-/archive/debian/$version-2.1/gdisk-debian-$version-2.1.tar.gz"
+        "gptfdisk-1.0.9-convenience-1.patch")
 depends=(popt)
 makedepends=()
-md5sums=('01c11ecfa454096543562e3068530e01'
-'SKIP'
-'SKIP'
-'SKIP'
-)
+md5sums=('c01c07ce8570ec39129fa1682174f711'
+         'SKIP')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
-prepare() {
-  patch -Np1 -i ../popt-1.19.patch
-  patch -Np1 -i ../util-linux-2.38.patch
-  # https://sourceforge.net/p/gptfdisk/code/merge-requests/28/
-  patch -Np1 -i ../popt-1.19-follow-up.patch
-  # https://sourceforge.net/p/gptfdisk/discussion/939590/thread/bc29ca06f8/
-  sed -i '/^#include /s:ncursesw/::' gptcurses.cc
-}
+cd gdisk-debian-$version-2.1
 
+# tinfo is not symlink of ncurses for turkman
+export LDFLAGS="$LDFLAGS -ltinfo"
 
-setup(){
-	#./autogen.sh
-	#./configure --prefix=/usr \
-        #--libdir=/usr/lib64/ 
-        echo ""
+prepare(){
+    patch -Np1 -i ../gptfdisk-1.0.9-convenience-1.patch
+    sed -i 's|ncursesw/||' gptcurses.cc &&
+    sed -i 's|sbin|usr/sbin|' Makefile &&
+    sed -i '/UUID_H/s/^.*$/#if defined (_UUID_UUID_H) || defined (_UL_LIBUUID_UUID_H)/' guid.cc &&
+    sed -i "/device =/s/= \(.*\);/= strdup(\1);/" gptcl.cc
 }
 
 build(){
@@ -46,12 +35,6 @@ build(){
 }
 
 package(){
-   # make install $jobs
-  #install -d "$pkgdir"/usr/{bin,share/{doc/gdisk,man/man8}}
-  #install -t "$DESTDIR/usr/bin" {,c,s}gdisk fixparts
-  #install -m644 -t "$pkgdir/usr/share/man/man8" {{,c,s}gdisk,fixparts}.8
-  #install -m644 -t "$pkgdir/usr/share/doc/gdisk" README NEWS
-  echo ""
-
+    make install $jobs
 }
 

@@ -16,19 +16,13 @@ uses=()
 arch=('x86_64')
 
 cd $name-$version
-setup(){
-	
-	#./configure --prefix=/usr \
-       #--libdir=/usr/lib64/
-       echo ""
-}
 
 build(){
     make $jobs
 }
 
 package(){
-install -Dm0644 src/iniparser.h "${DESTDIR}"/usr/include/iniparser.h
+  install -Dm0644 src/iniparser.h "${DESTDIR}"/usr/include/iniparser.h
   install -Dm0644 src/dictionary.h "${DESTDIR}"/usr/include/dictionary.h
   install -Dm0644 libiniparser.so.1 "$DESTDIR"/usr/lib/libiniparser.so.1
   install -Dm0644 LICENSE "${DESTDIR}"/usr/share/licenses/iniparser/LICENSE

@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/snapshot/libtracefs-$version.tar.gz")
-depends=()
+depends=(libtraceevent)
 makedepends=()
 md5sums=('eca92add29926d718bcdc8184358ab18')
 group=(net.libs)
@@ -16,12 +16,6 @@ uses=()
 arch=('x86_64')
 
 cd $name-$version
-setup(){
-	
-	#./configure --prefix=/usr \
-       #--libdir=/usr/lib64/
-       echo ""
-}
 
 build(){
     make $jobs

@@ -17,11 +17,8 @@ arch=('x86_64')
 
 cd $name-$version
 setup(){
-	
-	#./configure --prefix=/usr \
-       #--libdir=/usr/lib64/
-       echo ""
-       ./configure --prefix=/usr --mandir=/usr/share/man
+       ./configure --prefix=/usr \
+           --mandir=/usr/share/man
 }
 
 build(){
@@ -29,7 +26,7 @@ build(){
 }
 
 package(){
-make DESTDIR="${DESTDIR}" docdir=/usr/share/doc/chrpath install
+    make docdir=/usr/share/doc/chrpath install
 
 }
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+x#!/usr/bin/env bash
 name='libtrace'
 release='1'
 version='4.0.21-1'
@@ -19,8 +19,7 @@ cd $name-$version
 setup(){
 	autoreconf -fvi
 	./configure --prefix=/usr \
-       --libdir=/usr/lib64/
-       echo ""
+           --libdir=/usr/lib64/
 }
 
 build(){
