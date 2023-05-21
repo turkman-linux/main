@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libatasmart'
+release='1'
+version='0.19-5'
+url='https://salsa.debian.org/utopia-team/libatasmart'
+description='A small and lightweight parser library for ATA S.M.A.R.T. hard disks'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://salsa.debian.org/utopia-team/libatasmart/-/archive/debian/$version/libatasmart-debian-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('24e9a399360e5d204c0eb4286dfcbc87')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-debian-$version
+setup(){
+   	./autogen.sh
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/ 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

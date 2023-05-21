@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-lxml'
+release='1'
+version='4.9.2'
+url='https://pypi.org/project/lxml/'
+description='Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API.'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/lxml/lxml/archive/refs/tags/lxml-$version.tar.gz")
+depends=(python libxml2 libxslt py3-cython)
+makedepends=()
+md5sums=('08379bd7d53386d636db7ff3d0e05fde')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+
+mv lxml-lxml-$version lxml-$version
+  cd lxml-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+ python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+

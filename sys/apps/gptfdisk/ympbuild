@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+name='gptfdisk'
+release='1'
+version='1.0.9'
+url='https://www.rodsbooks.com/gdisk/'
+description='GPT partition table manipulator for Linux'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://www.rodsbooks.com/gdisk/gptfdisk-$version.tar.gz"
+	"popt-1.19.patch"
+        "popt-1.19-follow-up.patch"
+        "util-linux-2.38.patch"
+)
+depends=(popt)
+makedepends=()
+md5sums=('01c11ecfa454096543562e3068530e01'
+'SKIP'
+'SKIP'
+'SKIP'
+)
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+prepare() {
+  patch -Np1 -i ../popt-1.19.patch
+  patch -Np1 -i ../util-linux-2.38.patch
+  # https://sourceforge.net/p/gptfdisk/code/merge-requests/28/
+  patch -Np1 -i ../popt-1.19-follow-up.patch
+  # https://sourceforge.net/p/gptfdisk/discussion/939590/thread/bc29ca06f8/
+  sed -i '/^#include /s:ncursesw/::' gptcurses.cc
+}
+
+
+setup(){
+	#./autogen.sh
+	#./configure --prefix=/usr \
+        #--libdir=/usr/lib64/ 
+        echo ""
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+   # make install $jobs
+  #install -d "$pkgdir"/usr/{bin,share/{doc/gdisk,man/man8}}
+  #install -t "$DESTDIR/usr/bin" {,c,s}gdisk fixparts
+  #install -m644 -t "$pkgdir/usr/share/man/man8" {{,c,s}gdisk,fixparts}.8
+  #install -m644 -t "$pkgdir/usr/share/doc/gdisk" README NEWS
+  echo ""
+
+}
+

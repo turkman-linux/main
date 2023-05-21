@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='wandio'
+release='1'
+version='4.2.4-1'
+url='https://github.com/LibtraceTeam/wandio'
+description='C library for simple and efficient file IO'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/LibtraceTeam/wandio/archive/refs/tags/$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('6bacc4fe69eff6ffd747ba2b4d237edb')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+	autoreconf -fvi
+	./configure --prefix=/usr \
+       --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='lightdm'
+release='1'
+version='1.32.0'
+url='https://github.com/canonical/lightdm'
+description='A lightweight display manager'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://salsa.debian.org/xfce-extras-team/lightdm/-/archive/debian/$version-1/lightdm-debian-$version-1.tar.gz")
+depends=(libX11 pam libxklavier polkit xorg-server libxcb glib libgcrypt libXdmcp xmodmap xrdb yelp-tools libXi)
+makedepends=(gobject-introspection vala intltool)
+md5sums=('2b845ca384f042f21b646a76c52345f0')
+group=(x11.misc)
+uses=()
+arch=('x86_64')
+
+#cd $name-$version-1
+cd lightdm-debian-$version-1
+setup(){
+   	./autogen.sh
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --disable-tests \
+        --disable-gtk-doc \
+        --enable-yelp-tools \
+        --enable-qt5-base \
+        --with-greeter-user=lightdm \
+        --with-greeter-session=lightdm-gtk-greeter
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
