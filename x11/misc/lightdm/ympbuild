@@ -7,10 +7,12 @@ description='A lightweight display manager'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/xfce-extras-team/lightdm/-/archive/debian/$version-1/lightdm-debian-$version-1.tar.gz")
-depends=(libX11 pam libxklavier polkit xorg-server libxcb glib libgcrypt libXdmcp xmodmap xrdb yelp-tools libXi)
-makedepends=(gobject-introspection vala intltool)
-md5sums=('2b845ca384f042f21b646a76c52345f0')
+source=("https://salsa.debian.org/xfce-extras-team/lightdm/-/archive/debian/$version-1/lightdm-debian-$version-1.tar.gz"
+        "lightdm.initd")
+depends=(libX11 pam libxklavier xorg-server libxcb glib libgcrypt libXdmcp xmodmap xrdb libXi)
+makedepends=(gobject-introspection vala intltool yelp-tools)
+md5sums=('2b845ca384f042f21b646a76c52345f0'
+         'SKIP')
 group=(x11.misc)
 uses=()
 arch=('x86_64')
@@ -20,13 +22,14 @@ cd lightdm-debian-$version-1
 setup(){
    	./autogen.sh
 	./configure --prefix=/usr \
-        --libdir=/usr/lib64/ \
-        --disable-tests \
-        --disable-gtk-doc \
-        --enable-yelp-tools \
-        --enable-qt5-base \
-        --with-greeter-user=lightdm \
-        --with-greeter-session=lightdm-gtk-greeter
+            --sysconfdir=/etc \
+            --libdir=/usr/lib64/ \
+            --disable-tests \
+            --disable-gtk-doc \
+            --enable-yelp-tools \
+            --enable-qt5-base \
+            --with-greeter-user=lightdm \
+            --with-greeter-session=lightdm-gtk-greeter
 }
 
 build(){
@@ -35,5 +38,13 @@ build(){
 
 package(){
     make install $jobs
+    # create user and group
+    mkdir -p $DESTDIR/etc/group.d
+    mkdir -p $DESTDIR/etc/passwd.d
+    echo "lightdm:x:108:118:Lightdm Display Manager:/var/lib/lightdm/:/bin/false" > $DESTDIR/etc/passwd.d/lightdm
+    echo "lightdm:x:118:" > $DESTDIR/etc/group.d/lightdm
+    # install service
+    mkdir -p $DESTDIR/etc/init.d
+    install ../lightdm.initd $DESTDIR/etc/init.d/lightdm
 }
 

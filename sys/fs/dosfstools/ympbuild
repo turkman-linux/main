@@ -19,8 +19,8 @@ cd $name-$version
 setup(){
 	./autogen.sh
 	./configure --prefix=/usr \
-        --libdir=/usr/lib64/ \
-        --enable-compat-symlinks
+            --libdir=/usr/lib64/ \
+            --enable-compat-symlinks
 }
 
 build(){

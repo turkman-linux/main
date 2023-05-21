@@ -18,9 +18,9 @@ arch=('x86_64')
 cd $name-$version
 setup(){
 	meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/ \
-        -Ddocs=disabled \
-        -Dtest=disabled
+            --libdir=/usr/lib64/ \
+            -Ddocs=disabled \
+            -Dtest=disabled
 }
 
 build(){

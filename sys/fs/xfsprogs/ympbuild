@@ -17,10 +17,10 @@ arch=('x86_64')
 
 cd $name-$version
 setup(){
- make configure
-  #export OPTIMIZER="-march=${CARCH/_/-} -O1"
-  export DEBUG=-DNDEBUG
-  ./configure --prefix=/usr --libdir=/usr/lib64/ --sbindir=/usr/bin
+    make configure
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --sbindir=/usr/sbin
 
 }
 
@@ -30,9 +30,7 @@ build(){
 
 package(){
    # make install $jobs
-  make DIST_ROOT="${DESTDIR}" PKG_ROOT_SBIN_DIR="/usr/bin" install install-dev
-  chown -R root "$DESTDIR"
-  chgrp -R root "$DESTDIR"
+  make DIST_ROOT="${DESTDIR}" PKG_ROOT_SBIN_DIR="/usr/sbin" install install-dev
   # add hack as we cannot set rootlibdir
   mv "${DESTDIR}"/lib64/libhandle.so* "${DESTDIR}/usr/lib64/"
   rm -rf "${DESTDIR}/lib64"
