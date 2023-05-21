@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libtracefs'
+release='1'
+version='1.6.4'
+url='https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/'
+description='Linux kernel trace file system library'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/snapshot/libtracefs-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('eca92add29926d718bcdc8184358ab18')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+	
+	#./configure --prefix=/usr \
+       #--libdir=/usr/lib64/
+       echo ""
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='dosfstools'
+release='1'
+version='4.2'
+url='https://github.com/dosfstools/dosfstools'
+description='DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/dosfstools/dosfstools/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('233cb9fd8827f849381f9cb5f0c56c90')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+	./autogen.sh
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-compat-symlinks
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='libtrace'
+release='1'
+version='4.0.21-1'
+url='https://github.com/LibtraceTeam/libtrace'
+description='A library and tools for trace processing'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/LibtraceTeam/libtrace/archive/refs/tags/$version.tar.gz")
+depends=(wandio libpcap)
+makedepends=()
+md5sums=('b72ca1ccf9962caefe7913b3e3afaed2')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+	autoreconf -fvi
+	./configure --prefix=/usr \
+       --libdir=/usr/lib64/
+       echo ""
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

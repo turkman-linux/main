@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='ndctl'
+release='1'
+version='77'
+url='https://github.com/pmem/ndctl'
+description='Helper tools and libraries for managing non-volatile memory on Linux'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/pmem/ndctl/archive/refs/tags/v$version.tar.gz")
+depends=(json-c kmod libtraceevent libtracefs keyutils iniparser)
+makedepends=()
+md5sums=('22adf45411cfbd111f4cd05f5c1012f5')
+group=(sys.block)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+	meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Ddocs=disabled \
+        -Dtest=disabled
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+   ninja -C build install
+}
+

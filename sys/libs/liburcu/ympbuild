@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='liburcu'
+release='1'
+version='0.14'
+url='https://lttng.org/urcu'
+description='LGPLv2.1 userspace RCU (read-copy-update) library'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://lttng.org/files/urcu/userspace-rcu-latest-$version.tar.bz2")
+depends=()
+makedepends=()
+md5sums=('0cd5647788b048a5d6bbdb3b08d46299')
+group=(sys.libs)
+uses=()
+arch=('x86_64')
+
+cd userspace-rcu-0.14.0
+setup(){
+	
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/ 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

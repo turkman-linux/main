@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+name='xfsprogs'
+release='1'
+version='6.2.0'
+url='https://xfs.wiki.kernel.org/'
+description='XFS filesystem utilities'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://mirrors.edge.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-6.2.0.tar.xz")
+depends=(inih liburcu)
+makedepends=()
+md5sums=('c6578f1726eaff001da1d73a0394905c')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+ make configure
+  #export OPTIMIZER="-march=${CARCH/_/-} -O1"
+  export DEBUG=-DNDEBUG
+  ./configure --prefix=/usr --libdir=/usr/lib64/ --sbindir=/usr/bin
+
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+   # make install $jobs
+  make DIST_ROOT="${DESTDIR}" PKG_ROOT_SBIN_DIR="/usr/bin" install install-dev
+  chown -R root "$DESTDIR"
+  chgrp -R root "$DESTDIR"
+  # add hack as we cannot set rootlibdir
+  mv "${DESTDIR}"/lib64/libhandle.so* "${DESTDIR}/usr/lib64/"
+  rm -rf "${DESTDIR}/lib64"
+
+}
+

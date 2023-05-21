@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='keyutils'
+release='1'
+version='1.6.3'
+url='https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git'
+description='Linux Key Management Utilities'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('6b70b2b381c1b6d9adfaf66d5d3e7c00')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+	
+	#./configure --prefix=/usr \
+       #--libdir=/usr/lib64/
+       echo ""
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
