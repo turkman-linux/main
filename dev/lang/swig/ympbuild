@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='swig'
+release='1'
+version='4.1.1'
+url='http://www.swig.org/'
+description='Simplified Wrapper and Interface Generator'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/swig/swig/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('b7e21f668003d986630a2649537c3e3f')
+group=(dev.lang)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+setup(){
+	./autogen.sh
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/ 
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

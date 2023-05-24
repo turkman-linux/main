@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+name='lvm2'
+release='1'
+version='2_03_21'
+url='https://sourceware.org/lvm2/'
+description='User-land utilities for LVM2 (device-mapper) software'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://github.com/lvmteam/lvm2/archive/refs/tags/v$version.tar.gz")
+depends=(libaio)
+makedepends=()
+md5sums=('d12c26fc68561a6e1d06dff7f1c605b9')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+
+
+setup(){
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/  \
+    CONFIG_SHELL=/bin/bash \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-cmdlib \
+    --enable-dmeventd \
+    --enable-lvmpolld \
+    --enable-pkgconfig \
+    --enable-readline \
+    --enable-udev_rules \
+    --enable-udev_sync \
+    --enable-write_install \
+    --disable-systemd \
+    --with-cache=internal \
+    --with-default-dm-run-dir=/run \
+    --with-default-locking-dir=/run/lock/lvm \
+    --with-default-pid-dir=/run \
+    --with-default-run-dir=/run/lvm \
+    --with-thin=internal \
+    --with-udev-prefix=/usr
+}
+
+build(){
+    make $jobs
+}
+
+
+package() {
+    make install $jobs
+}
+
+

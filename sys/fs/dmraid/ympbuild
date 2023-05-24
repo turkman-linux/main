@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='dmraid'
+release='1'
+version='1.0.0'
+url='https://people.redhat.com/~heinzm/sw/dmraid/'
+description='Device-mapper RAID tool and library'
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-$version.rc16-3.tar.bz2"
+"dmraid-format-security.patch")
+depends=()
+makedepends=()
+md5sums=('819338fcef98e8e25819f0516722beeb'
+'SKIP')
+group=(sys.fs)
+uses=()
+arch=('x86_64')
+patch -Np1 -i ${DESTDIR}/dmraid-format-security.patch
+cd $name/$version.rc16-3/$name
+setup(){
+
+	autoreconf -fvi
+	./configure --prefix=/usr \
+        --libdir=/usr/lib64/ --enable-led --enable-intel_led
+}
+
+build(){
+    make -j1 $jobs
+}
+
+package(){
+    make install $jobs
+}
+
