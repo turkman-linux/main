@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='volume_key'
+release='1'
+version='0.3.12'
+url='https://pagure.io/volume_key'
+description='A library for manipulating storage volume encryption keys and storing them separately from volumes to handleforgotten passphrases, and the associated command-line tool '
+email='bayramk@gmail.com'
+maintainer='bk'
+license=('GPLv3')
+source=("https://pagure.io/volume_key/archive/volume_key-$version/volume_key-volume_key-$version.tar.gz")
+depends=(cryptsetup nss nspr swig)
+makedepends=()
+md5sums=('75b5455eafee891c3f2ed544530b3eb9')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+setup(){ 
+ export CFLAGS+=" $(python3-config --includes)"
+	autoreconf -fvi
+	./configure --prefix=/usr \
+       --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+

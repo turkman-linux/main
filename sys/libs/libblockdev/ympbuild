@@ -1,27 +1,30 @@
 #!/usr/bin/env bash
 name='libblockdev'
 release='1'
-version='2.28'
+version='2.28-1'
 url='https://github.com/storaged-project/libblockdev'
-description='A library for manipulating block devices.'
-email='aliriza.keskin@pardus.org.tr'
-maintainer='aliriza'
+description='A library for manipulating block devices'
+email='bayramk@gmail.com'
+maintainer='bk'
 license=('GPLv3')
-source=("https://github.com/storaged-project/libblockdev/releases/download/$version-1/libblockdev-$version.tar.gz")
-depends=(nss parted libbytesize)
+source=("https://github.com/storaged-project/libblockdev/archive/refs/tags/2.28-1.tar.gz")
+depends=(gawk parted kmod libyaml btrfs-progs dosfstools gptfdisk libbytesize ndctl xfsprogs lvm2 volume_key)
+#depends=(dmraid  mdadm   )
+
 makedepends=()
-md5sums=('6476e5967753ee03d8e65f4d7837a4b6')
-group=()
+md5sums=('7f7fe3135505b6917e8ad9281084dd6c')
+group=(sys.libs)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
-
 setup(){
-#    ./autogen.sh
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64/ \
-        --without-lvm_dbus
+	autoreconf -fvi
+	#./configure 
+ ./configure --prefix=/usr --sysconfdir=/etc --without-lvm_dbus \
+ --disable-dmraid
+  
+
 }
 
 build(){
