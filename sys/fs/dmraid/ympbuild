@@ -26,7 +26,7 @@ setup(){
 }
 
 build(){
-    make -j1 $jobs
+    make -j1
 }
 
 package(){

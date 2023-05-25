@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/storaged-project/udisks/archive/refs/tags/udisks-$version.tar.gz")
-depends=()
+depends=(libblockdev libatasmart libgudev)
 makedepends=()
 md5sums=('b03e328a807e0183adba04e546a4f343')
 group=(sys.fs)
@@ -20,9 +20,13 @@ cd udisks-udisks-$version
 setup(){
     autoreconf -fvi
     ./configure --prefix=/usr \
+        --sysconfdir=/etc \
         --libdir=/usr/lib64/ \
         --with-systemdsystemunitdir=no \
-        enable_available_modules=yes
+        --enable-lvm2 \
+        --enable-lvmcache \
+        --enable-btrfs \
+        --disable-zram
 }
 
 build(){
