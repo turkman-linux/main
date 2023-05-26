@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='nettle'
-release='1'
-version='3.8'
+release='2'
+version='3.9'
 url='https://www.lysator.liu.se/~nisse/nettle'
 description='A low-level cryptographic library'
-email=' parduscix@yandex.ru'
+email='parduscix@yandex.ru'
 maintainer=' sulincix'
 license=('GPLv2')
 source=("https://ftp.gnu.org/gnu/nettle/nettle-${version}.tar.gz")
 depends=(gmp)
 makedepends=( )
-md5sums=('77eca50d6bb7c6ed34275466f669f62e')
+md5sums=('785726c81122bbf230be5a7a359c0094')
 group=(dev.libs)
 arch=('x86_64')
 

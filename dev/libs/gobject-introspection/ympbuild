@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='gobject-introspection'
-release='1'
-version='1.75.4'
+release='2'
+version='1.76.1'
 url='https://gitlab.gnome.org/GNOME/gobject-introspection.git/'
 description='Introspection system for GObject-based libraries '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/1.75.4/gobject-introspection-1.75.4.tar.gz')
+source=("https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/${version}/gobject-introspection-${version}.tar.gz")
 depends=()
 makedepends=()
-md5sums=('6c3c521e7bb9ed627f5096e3098293e5')
+md5sums=('746611b169fb9fe3c05e5f4bf254b0c6')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

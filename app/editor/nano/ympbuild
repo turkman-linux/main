@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='nano'
-release='1'
-version='7.0'
+release='2'
+version='7.2'
 url='https://www.nano-editor.org/download.php'
 description='Pico editor clone with enhancements'
 email='parduscix@yandex.ru'
@@ -14,7 +14,7 @@ source=("https://www.nano-editor.org/dist/v7/nano-$version.tar.xz"
         "icon.svg")
 depends=(file zlib ncurses bzip2)
 makedepends=()
-md5sums=('32faafd9da9ee75feda8423d5744ee4d'
+md5sums=('13742c686c6ddb0b7b294634f0c13cec'
          'fef2d5f43ac31ea0cad2cd7aed0d8255'
          'SKIP'
          'SKIP'
