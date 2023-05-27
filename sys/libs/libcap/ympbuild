@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libcap'
-release='1'
-version='2.66'
+release='2'
+version='2.69'
 url='https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/'
 description='POSIX 1003.1e capabilities'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.xz")
 depends=()
 makedepends=( )
-md5sums=('00afd6e13bc94b2543b1a70770bdb41f')
+md5sums=('4667bacb837f9ac4adb4a1a0266f4b65')
 uses=()
 uses_extra=(pam)
 pam_depends=(pam)

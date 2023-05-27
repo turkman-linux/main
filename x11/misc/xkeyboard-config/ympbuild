@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xkeyboard-config'
-release='1'
-version='2.37'
+release='2'
+version='2.38'
 url='https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config'
 description='X keyboard configuration database'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/archive/xkeyboard-config-$version/xkeyboard-config-xkeyboard-config-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('01db3af4da0178c83e53afb9e47d9835')
+md5sums=('fffd23a84cddeadcec197b5131dfc6cd')
 group=(x11.misc)
 uses=()
 arch=('x86_64')

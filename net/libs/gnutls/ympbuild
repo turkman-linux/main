@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='gnutls'
-release='1'
-version='3.7.8'
+release='2'
+version='3.8.0'
+_version='3.8'
 url='https://www.gnupg.org/ftp/gcrypt/gnutls'
 description='The GnuTLS Transport Layer Security Library'
-email=' parduscix@yandex.ru'
-maintainer=' sulincix'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
 license=('GplV2')
-source=("https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-$version.tar.xz")
+source=("https://www.gnupg.org/ftp/gcrypt/gnutls/v${_version}/gnutls-${version}.tar.xz")
 depends=(nettle p11-kit)
 makedepends=( )
-md5sums=('c7b749bae243c341e6be717baf7ffbad')
+md5sums=('20a662caf20112b6b9ad1f4a64db3a97')
 arch=('x86_64')
 group=(net.libs)
 

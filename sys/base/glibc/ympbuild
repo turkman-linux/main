@@ -1,7 +1,7 @@
 #!/bin/bash
-name=glibc
-release=1
-version=2.36
+name='glibc'
+release='2'
+version='2.37'
 url='https://gitlab.com/sulinos/devel/ymp'
 description='GNU libc library'
 email='parduscix@yandex.ru'
@@ -20,7 +20,7 @@ source=("https://ftp.gnu.org/gnu/glibc/glibc-${version}.tar.xz"
         'scripts/revdep-rebuild'
         'data/tr_TR'
 )
-md5sums=('00e9b89e043340f688bc93ec03239b57'
+md5sums=('e89cf3dcb64939d29f04b4ceead5cc4e'
          'SKIP'
          'SKIP'
          'SKIP'
