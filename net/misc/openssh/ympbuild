@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openssh'
-release='1'
-version='9.2p1'
+release='2'
+version='9.3p1'
 url='https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable'
 description='OpenBSD ssh server & client'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,7 +12,7 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-$version.t
         "sshd.confd")
 depends=(zlib libxcrypt openssl libmd)
 makedepends=()
-md5sums=('f78b2acac4bb299629a8c58ddc3fac63'
+md5sums=('3430d5e6e71419e28f440a42563cb553'
          'SKIP'
          'SKIP')
 group=(net.misc)

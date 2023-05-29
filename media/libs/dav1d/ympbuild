@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='dav1d'
-release='1'
-version='1.1.0'
+release='2'
+version='1.2.0'
 url='https://code.videolan.org/videolan/dav1d/'
 description='dav1d is an AV1 Decoder'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://code.videolan.org/videolan/dav1d/-/archive/$version/dav1d-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('30931c1fdda667a2affec4c731ff8539')
+md5sums=('87807808ecbed1167399fbffd6be7f7a')
 group=(media.libs)
 uses=()
 arch=('x86_64')

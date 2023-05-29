@@ -1,7 +1,7 @@
 #!/bin/bash
-name=readline
-version=8.1
-release=1
+name='readline'
+release='2'
+version='8.2'
 url='http://www.gnu.org/software/readline/'
 description="GNU readline library"
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPL')
 arch=(x86_64)
 source=("https://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz"
        "inputrc")
-md5sums=('e9557dd5b1409f5d7b37ef717c64518e'
+md5sums=('4aa1b31be779e6b84f9a96cb66bc50f6'
          'SKIP')
 depends=()
 group=(sys.apps)

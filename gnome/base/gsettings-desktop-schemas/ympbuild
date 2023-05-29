@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gsettings-desktop-schemas'
-release='1'
-version='43.0'
+release='2'
+version='44.0'
 url='https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git/'
 description=' Collection of GSettings schemas for GNOME desktop '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/archive/$version/gsettings-desktop-schemas-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('df5f7cfbf7d285a726cb8a3e7703a832')
+md5sums=('a5ae51de37e6802afd35965b2bc94874')
 group=(gnome.base)
 uses=()
 arch=('x86_64')

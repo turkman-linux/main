@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libopenmpt'
-release='1'
-version='0.6.9'
+release='2'
+version='0.7.1'
 url='https://lib.openmpt.org/libopenmpt/'
 description='Library to decode tracked music files (modules) '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-$version+release.autotools.tar.gz")
 depends=(mpg123 libpulse libsndfile libogg libvorbis portaudio flac)
 makedepends=()
-md5sums=('cad469bef72baeefc43a651dbe9b225c')
+md5sums=('82268ef9f79a6b99c7229f7486054ad2')
 group=(media.libs)
 uses=()
 arch=('x86_64')
@@ -24,10 +24,10 @@ setup(){
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make install $jobs
 }
 

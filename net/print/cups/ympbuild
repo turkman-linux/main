@@ -23,7 +23,30 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--with-menudir=/usr/share/applications \
+		--with-icondir=/usr/share/icons \
+		--with-logdir=/var/log/cups \
+		--with-docdir=/usr/share/cups \
+		--with-rundir=/run/cups \
+		--with-cupsd-file-perm=0755 \
+		--with-cups-user=lp \
+		--with-cups-group=lp \
+		--with-system-groups=lpadmin \
+		--with-domainsocket=/run/cups/cups.sock \
+		--enable-libusb \
+		--without-rcdir \
+		--without-php \
+		--disable-pam \
+		--enable-raw-printing \
+		--enable-dbus \
+		--with-dbusdir=/usr/share/dbus-1 \
+		--enable-libpaper \
+		--enable-ssl=yes \
+		--enable-gnutls \
+		--disable-launchd 
 }
 
 build(){

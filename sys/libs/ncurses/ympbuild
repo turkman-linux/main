@@ -1,7 +1,7 @@
 #!/bin/bash
-name=ncurses
-version=6.3
-release=1
+name='ncurses'
+release='2'
+version='6.4'
 url='https://invisible-island.net/ncurses/ncurses.html'
 description="System V Release 4.0 curses emulation library"
 email='parduscix@yandex.ru'
@@ -9,7 +9,7 @@ maintainer='sulincix'
 license=('MIT')
 arch=(x86_64)
 source=("https://invisible-mirror.net/archives/$name/$name-$version.tar.gz")
-md5sums=(a2736befde5fee7d2b7eb45eb281cdbe)
+md5sums=('5a62487b5d4ac6b132fe2bf9f8fad29b')
 depends=()
 so_ver=6
 group=(sys.libs)

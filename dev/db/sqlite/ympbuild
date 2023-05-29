@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 name='sqlite'
-release='1'
-version='3.40.0'
+release='2'
+version='3.42.0'
 url='https://www.sqlite.org/download.html'
 description='A C library that implements an SQL database engine'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-srcver=3400000
-source=("https://sqlite.org/2022/sqlite-autoconf-$srcver.tar.gz")
+srcver='3420000'
+			  #https://www.sqlite.org/2023/sqlite-autoconf-3420000.tar.gz
+source=("https://www.sqlite.org/2023/sqlite-autoconf-$srcver.tar.gz")
 depends=(zlib readline)
 makedepends=( )
-md5sums=('c833d61da768a116fa16d910f43cfd9a')
+md5sums=('0c5a92bc51cf07cae45b4a1e94653dea')
 uses=()
 group=(dev.db)
 arch=('x86_64')

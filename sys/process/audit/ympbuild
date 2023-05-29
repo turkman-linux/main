@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='audit'
-release='1'
-version='3.0.9'
+release='2'
+version='3.1.1'
 url='https://people.redhat.com/sgrubb/audit/'
 description='Package description missing'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/linux-audit/audit-userspace/archive/refs/tags/v$version.tar.gz")
 depends=()
 makedepends=( )
-md5sums=('a8a7d513b4a6506e8ab624715df7f901')
+md5sums=('03f6572873b0df83e6bcb84d8c500765')
 uses=(libcap_ng)
 uses_extra=(python)
 python_depends=(python)

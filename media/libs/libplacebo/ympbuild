@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libplacebo'
-release='1'
-version='5.264.1'
+release='2'
+version='5.229.2'
 url='https://code.videolan.org/videolan/libplacebo/'
 description='Reusable library for GPU-accelerated image processing primitives'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://code.videolan.org/videolan/libplacebo/-/archive/v$version/libplacebo-v$version.tar.gz")
 depends=(libunwind)
 makedepends=()
-md5sums=('965a8a64da4e72e0cb8a7434c95e158a')
+md5sums=('02c60e18ff96d7eb690e50b785d9dfe3')
 group=(media.libs)
 uses=()
 arch=('x86_64')
