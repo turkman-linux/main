@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xterm'
-release='2'
-version='380'
+release='3'
+version='382'
 url='https://invisible-island.net'
 description='Terminal Emulator for X Windows'
 email='aliriza.keskin@pardus.org.tr'
@@ -11,7 +11,7 @@ source=("https://invisible-island.net/archives/xterm/xterm-$version.tgz"
         'xterm.desktop')
 depends=(libX11 ncurses util-linux libXt libXau libXinerama libXaw libXpm)
 makedepends=()
-md5sums=('7b609ceed5a3b803a1bca857446374f1'
+md5sums=('4ed6ddef251562585d9f6df161371285'
          'SKIP')
 group=(x11.terms)
 uses=()

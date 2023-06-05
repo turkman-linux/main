@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 name='util-linux'
-release='1'
-version='2.38.1'
+release='2'
+version='2.39'
 url='https://en.wikipedia.org/wiki/Util-linux'
 description='Various useful Linux utilities'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 license=('GPLv3' 'GPLv2' 'LPGL-2.1' 'BSD-4' 'MIT')
-source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-${version}.tar.xz")
+source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v${version}/util-linux-${version}.tar.gz")
 depends=(libcap-ng)
-md5sums=('cd11456f4ddd31f7fbfdd9488c0c0d02')
+md5sums=('a114fd390b1bfe3c2c1d14056cb368b3')
 arch=('x86_64')
 group=(sys.apps)
 uses_extra=(python udev)

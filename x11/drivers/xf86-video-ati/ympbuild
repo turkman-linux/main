@@ -1,27 +1,21 @@
 #!/usr/bin/env bash
 name='xf86-video-ati'
-release='1'
-version='19.1.0'
+release='2'
+version='22.0.0'
 url='https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati.git/'
 description='ATI video driver'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati/-/archive/xf86-video-ati-$version/xf86-video-ati-xf86-video-ati-$version.tar.gz"
-        "xf86-video-ati-19.1.0-upstream_fixes-1.patch")
+source=("https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati/-/archive/xf86-video-ati-$version/xf86-video-ati-xf86-video-ati-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('fd01d83507660e3be37fe679af822ce8'
-         'SKIP')
+md5sums=('76ef17b7e770be446b87078f6ffaa6fe')
 group=(x11.drivers)
 uses=()
 arch=('x86_64')
 
 cd $name-$name-$version
-
-prepare(){
-    patch -Np1 -i ../xf86-video-ati-19.1.0-upstream_fixes-1.patch
-}
 
 setup(){
     autoreconf -fvi
