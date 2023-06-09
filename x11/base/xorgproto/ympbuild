@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xorgproto'
-release='1'
-version='2022.2'
+release='2'
+version='2023.1'
 url='https://gitlab.freedesktop.org/xorg/proto/xorgproto'
 description='X.Org combined protocol headers'
 email='kurth4cker@tutanota.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://www.x.org/releases/individual/proto/xorgproto-${version}.tar.xz")
 depends=()
 makedepends=(util-macros)
-md5sums=('3fdb11d75f7023db273f7b3e34b58338')
+md5sums=('c1ba00071316114b7dac58a2aa9b81db')
 uses=()
 arch=('x86_64')
 group=(x11.base)
