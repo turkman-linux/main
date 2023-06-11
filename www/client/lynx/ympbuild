@@ -19,8 +19,9 @@ arch=('x86_64')
 
 cd $name$_relver
 
-patch --forward --strip=1 --input="./CVE-2021-38165.diff"
-
+prepare(){
+    patch --forward --strip=1 --input="../CVE-2021-38165.diff"
+}
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \

@@ -12,7 +12,7 @@ source=("https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/
         "conf/networkmanager.conf"
         "conf/20-wifi-powersave.conf"
         "networkmanager.initd")
-depends=(libndp nss newt)
+depends=(libndp nss newt eudev )
 makedepends=(libxslt gobject-introspection)
 md5sums=('5928e45cbd20a6c5b30eca4807aaf091'
          'SKIP'
