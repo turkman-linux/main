@@ -9,7 +9,7 @@ maintainer='bk'
 license=('GPLv3')
 source=('https://github.com/lxde/libfm/archive/refs/tags/1.3.2.tar.gz'
         'libfm-fixes.patch')
-depends=(gtk3 pango intltool)
+depends=(gtk3 pango intltool menu-cache)
 makedepends=()
 md5sums=('8b2864ba2d21586171ab9616b5610aeb'
          'SKIP')

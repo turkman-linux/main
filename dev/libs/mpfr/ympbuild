@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='mpfr'
-release='2'
+release='3'
 version='4.2.0'
 url='https://mpfr.org'
 description='multiple precision floating-point computation'
