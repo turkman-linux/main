@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+name='openssl-1.1'
+release='1'
+version='1.1.1u'
+url='https://www.openssl.org/source/'
+description='Package description missing'
+email=' aliriza.keskin@pardus.org.tr'
+maintainer=' aliriza'
+license=('GPLv3')
+source=("https://www.openssl.org/source/openssl-$version.tar.gz"
+        "https://curl.haxx.se/ca/cacert.pem"
+        "update-certdata.sh")
+depends=()
+makedepends=(coreutils)
+md5sums=('72f7ba7395f0f0652783ba1089aa0dcc'
+         'SKIP'
+         'SKIP')
+arch=('x86_64')
+group=(dev.libs)
+
+cd openssl-$version
+
+# for pod2man
+export PATH=$PATH:/usr/bin/core_perl
+
+setup(){
+    ./Configure --prefix=/usr \
+        --openssldir=/etc/ssl \
+        --libdir=lib64/openssl-1.1 \
+        shared linux-x86_64
+}
+
+build(){
+    make depend $jobs
+    make $jobs
+}
+
+package(){
+    mkdir -p "${DESTDIR}/etc/ssl/" "${DESTDIR}/sbin/"
+    make DESTDIR="${DESTDIR}" \
+    install_sw $jobs
+    rm -rf $DESTDIR/{etc,usr/bin}
+    mv $DESTDIR/usr/include/openssl $DESTDIR/usr/include/openssl-1.1
+    sed -e 's|/include$|/include/openssl-1.1|' -i "$DESTDIR"/usr/lib64/openssl-1.1/pkgconfig/*.pc
+    mkdir -p $DESTDIR/etc/ld.so.conf.d/
+    echo "/usr/lib64/openssl-1.1" > $DESTDIR/etc/ld.so.conf.d/openssl-1.1.conf
+}
+
