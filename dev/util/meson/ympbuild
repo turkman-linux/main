@@ -18,11 +18,11 @@ arch=('x86_64')
 cd $name-$version
 
 build(){
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package(){
-    python setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python -m installer --destdir="$DESTDIR" dist/*.whl
     install -d "${DESTDIR}/usr/share/vim/vimfiles"
     cp -rt "${DESTDIR}/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*/
 

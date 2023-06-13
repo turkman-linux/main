@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+name='py3-installer'
+release='1'
+version='0.7.0'
+url='https://github.com/pypa/installer/'
+description='Easily download, build, install, upgrade, and uninstall Python packages'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/pypa/installer/archive/refs/tags/$version.tar.gz")
+depends=(python py3-build)
+makedepends=( )
+md5sums=('fcfbaa5603d3e68adbaa8392963cd895')
+uses=()
+group=(dev.python)
+arch=('x86_64')
+
+cd installer-$version
+
+package(){
+    mkdir -p $DESTDIR/usr/lib64/python3/installer
+    cp -prfv src/installer/* $DESTDIR/usr/lib64/python3/installer
+}
+
