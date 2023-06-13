@@ -23,6 +23,10 @@ build(){
 
 package(){
     python -m installer --destdir="$DESTDIR" dist/*.whl
+    # move to version independent
+    mkdir -p "${DESTDIR}/usr/lib64/python3"
+    mv ${DESTDIR}/usr/lib/python*/site-packages/* "${DESTDIR}/usr/lib64/python3"
+    rm -rf "${DESTDIR}/usr/lib"
     install -d "${DESTDIR}/usr/share/vim/vimfiles"
     cp -rt "${DESTDIR}/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*/
 
