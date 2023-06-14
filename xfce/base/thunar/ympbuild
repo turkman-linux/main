@@ -9,7 +9,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2' 'LGPL2.1')
 source=("https://archive.xfce.org/src/xfce/thunar/${_version}/thunar-${version}.tar.bz2")
-depends=(exo  libxfce4ui libxfce4util)
+depends=(exo  libxfce4ui libxfce4util gtk3)
 makedepends=(gobject-introspection intltool xfce4-panel  hicolor-icon-theme)
 md5sums=('dc9ccd48acfd2ca9c9ca46631ee35e35')
 group=(xfce.base)
@@ -20,6 +20,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
+        --sysconfdir=/etc \
         --libdir=/usr/lib64/ \
 		--enable-gio-unix \
 		--enable-gudev \
