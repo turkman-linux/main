@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-wheel'
-release='1'
-version='0.38.4'
+release='2'
+version='0.40.0'
 url='https://pypi.org/project/wheel/'
 description='A built-package format for Python'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://files.pythonhosted.org/packages/a2/b8/6a06ff0f13a00fc3c3e7d222a995526cbca26c1ad107691b6b1badbbabf1/wheel-$version.tar.gz")
+source=("https://github.com/pypa/wheel/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=()
-md5sums=('83bb4e7bd4d687d398733f341a64ab91')
+md5sums=('508c46d10686536a647a13937d53259f')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,10 +18,11 @@ arch=('x86_64')
 cd wheel-$version
 
 build(){
-    python3 setup.py build
+    python3 -m build --wheel --no-isolation
+	
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python3 -m installer --destdir="$DESTDIR" dist/*.whl
 }
 
