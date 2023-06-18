@@ -13,7 +13,7 @@ source=("https://download.gnome.org/sources/gtk+/${version:0:4}/gtk+-${version}.
         "nocsd-support.patch")
 depends=(cairo libXi libXext libXfixes libXcursor libXdamage librsvg at-spi2-core
          shared-mime-info gdk-pixbuf libxkbcommon libepoxy colord libcloudproviders
-         dconf cantarell-fonts libpng libXcomposite)
+         dconf cantarell-fonts libpng libXcomposite libXinerama)
 makedepends=()
 md5sums=('3649dd48556ead2d909467c1f0751956'
          'SKIP'
