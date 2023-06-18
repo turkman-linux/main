@@ -9,7 +9,7 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://github.com/pypa/wheel/archive/refs/tags/${version}.tar.gz")
 depends=(python)
-makedepends=()
+makedepends=(py3-installer py3-flit)
 md5sums=('508c46d10686536a647a13937d53259f')
 group=(dev.python)
 uses=()
@@ -17,9 +17,16 @@ arch=('x86_64')
 
 cd wheel-$version
 
+prepare(){
+  rm -r src/wheel/vendored
+  sed -i 's/from .vendored.packaging.requirements import Requirement/from packaging.requirements import Requirement/' src/wheel/metadata.py
+  sed -i 's/from .vendored.packaging import tags/from packaging import tags/' src/wheel/bdist_wheel.py
+  sed -i 's/from .vendored.packaging import version as _packaging_version/from packaging import version as _packaging_version/' src/wheel/bdist_wheel.py
+  sed -i 's/from wheel.vendored.packaging import tags/from packaging import tags/' tests/test_bdist_wheel.py
+}
+
 build(){
     python3 -m build --wheel --no-isolation
-	
 }
 
 package(){

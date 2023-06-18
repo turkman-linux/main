@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='py3-flit'
+release='2'
+version='3.9.0'
+url='https://github.com/pypa/flit'
+description='Simplified packaging of Python modules'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/pypa/flit/archive/refs/tags/$version.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('f5d670fd1e89950c14e55b7cdc75dcbc')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd flit-$version
+
+build(){
+    cur=$PWD
+    for dir in . flit_core; do
+        cd $dir
+        python -m build --wheel --skip-dependency-check --no-isolation
+        cd $cur
+    done
+}
+
+package(){
+    cur=$PWD
+    for dir in . flit_core; do
+        cd $dir
+        python -m installer --destdir="$DESTDIR" dist/*.whl
+        cd $cur
+    done
+}
