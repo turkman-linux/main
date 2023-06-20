@@ -3,6 +3,6 @@ GROUP=users
 HOME=/data/user
 INACTIVE=-1
 EXPIRE=
-SHELL=/bin/bash
+SHELL=/bin/ash
 SKEL=/etc/skel
 CREATE_MAIL_SPOOL=no
