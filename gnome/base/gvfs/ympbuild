@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/gvfs/-/archive/$version/gvfs-$version.tar.gz")
-depends=(gcr polkit libsoup3 libgphoto2 libmtp libnfs)
+depends=(gcr polkit libsoup3 libgphoto2 libmtp libnfs udisks2 fuse)
 makedepends=()
 md5sums=('9318356ad05f95eee0bc658b137aeb8c')
 group=(gnome.base)
@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        -Dudisks2=false \
+        -Dudisks2=true \
         -Ddnssd=false \
         -Dafc=false \
         -Dgoa=false \
@@ -28,8 +28,8 @@ setup(){
         -Dcdda=false \
         -Dgoogle=false \
         -Dsystemduserunitdir=no \
-		    -Dtmpfilesdir=no \
-		    -Dlogind=false
+        -Dtmpfilesdir=no \
+        -Dlogind=false
 }
 
 build(){

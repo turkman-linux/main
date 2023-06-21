@@ -16,17 +16,12 @@ uses=()
 arch=('x86_64')
 
 cd $name-$version
-setup(){
-	#./configure --prefix=/usr \
-       #--libdir=/usr/lib64/
-       echo ""
-}
 
 build(){
-    make $jobs
+    make libdir_relative=lib64 prefix=/usr $jobs
 }
 
 package(){
-    make install $jobs
+    make libdir_relative=lib64 prefix=/usr install $jobs
 }
 

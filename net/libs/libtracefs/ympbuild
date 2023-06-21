@@ -18,10 +18,10 @@ arch=('x86_64')
 cd $name-$version
 
 build(){
-    make $jobs
+    make libdir_relative=lib64 prefix=/usr $jobs
 }
 
 package(){
-    make install $jobs
+    make libdir_relative=lib64 prefix=/usr install $jobs
 }
 
