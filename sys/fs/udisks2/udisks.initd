@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+supervisor=supervise-daemon
+
+name="Udisks2"
+description="Daemon of $name"
+
+command=/usr/libexec/udisks2/udisksd
+
+depend() {
+	need localmount dbus
+}
+

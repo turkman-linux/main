@@ -7,10 +7,12 @@ description='Disk Management Service, version 2'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/storaged-project/udisks/archive/refs/tags/udisks-$version.tar.gz")
+source=("https://github.com/storaged-project/udisks/archive/refs/tags/udisks-$version.tar.gz"
+        udisks.initd)
 depends=(libblockdev libatasmart libgudev polkit)
 makedepends=()
-md5sums=('b03e328a807e0183adba04e546a4f343')
+md5sums=('b03e328a807e0183adba04e546a4f343'
+         'SKIP')
 group=(sys.fs)
 uses=()
 arch=('x86_64')
@@ -21,6 +23,7 @@ setup(){
     autoreconf -fvi
     ./configure --prefix=/usr \
         --sysconfdir=/etc \
+        --localstatedir=/var \
         --libdir=/usr/lib64/ \
         --with-systemdsystemunitdir=no \
         --enable-lvm2 \
@@ -35,5 +38,8 @@ build(){
 
 package(){
     make install $jobs
+    # openrc service
+    mkdir -p $DESTDIR/etc/init.d
+    install ../udisks.initd $DESTDIR/etc/init.d/udisks
 }
 
