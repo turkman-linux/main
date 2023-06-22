@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='cinnamon-control-center'
+release='1'
+version='5.8.1'
+url='https://github.com/linuxmint/cinnamon-control-center'
+description='The Control Center for Cinnamon'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/linuxmint/cinnamon-control-center/archive/refs/tags/${version}.tar.gz")
+depends=(cinnamon-settings-daemon cinnamon-menus colord libgnomekbd)
+makedepends=(meson )
+md5sums=('208a363e176ca65e96e170889b644618')
+group=(cinnamon.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+ 		--libdir=/usr/lib64/ \
+		-Dmodemmanager=false \
+		-Donlineaccounts=false
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build DESTDIR=$DESTDIR install $jobs
+	rm "${DESTDIR}"/usr/bin/cinnamon-control-center
+	rm "${DESTDIR}"/usr/share/cinnamon-control-center/ui/shell.ui
+
+}
+

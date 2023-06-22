@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='cjs'
+release='1'
+version='5.6.1'
+url='https://github.com/linuxmint/cjs'
+description='Javascript Bindings for Cinnamon'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL')
+source=("https://github.com/linuxmint/cjs/archive/refs/tags/${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('b9a3c85ed98be17bacfc591e809cbc10')
+group=(gnome.extra)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

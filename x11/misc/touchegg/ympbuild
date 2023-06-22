@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='touchegg'
+release='1'
+version='2.0.16'
+url='https://github.com/JoseExposito/touchegg/'
+description='Multitouch gesture recognizer'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/JoseExposito/touchegg/archive/refs/tags/${version}.tar.gz" "touchegg.initd")
+depends=(libinput cairo libX11 libXi libXrandr libXtst pugixml gtk3 glib)
+makedepends=(cmake)
+md5sums=('f9e8b4da1d5a7200c233895603c01efc' 'SKIP')
+group=(x11.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DUSE_SYSTEMD=off
+}
+
+build(){
+    cmake --build build
+}
+
+package(){
+    DESTDIR="$DESTDIR" cmake --install build
+	install -Dm755 ../touchegg.initd  "$DESTDIR"/etc/init.d/touchegg
+}
+

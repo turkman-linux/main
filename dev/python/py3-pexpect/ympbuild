@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-pexpect'
+release='1'
+version='4.8.0'
+url='http://pexpect.readthedocs.org/en/stable'
+description='Make Python a better tool for controlling and automating other programs'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/pexpect/pexpect/archive/refs/tags/${version}.tar.gz")
+depends=(python py3-ptyprocess)
+makedepends=()
+md5sums=('b260eb284efc19489466b804ff53c59b')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "pexpect"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+

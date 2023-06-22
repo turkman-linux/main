@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+name='accountsservice'
+release='1'
+version='23.13.9'
+url='https://www.freedesktop.org/software/accountsservice/'
+description='D-Bus interface for user account query and manipulation'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+#source=("https://gitlab.freedesktop.org/accountsservice/accountsservice/-/archive/${version}/accountsservice-${version}.tar.gz")
+source=("https://www.freedesktop.org/software/accountsservice/accountsservice-${version}.tar.xz")
+depends=(elogind glib polkit)
+makedepends=(meson gobject-introspection)
+md5sums=('03dccfe1b306b7ca19743e86d118e64d')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+	mv tests/dbusmock{,-tests}
+	sed -e '/accounts_service\.py/s/dbusmock/dbusmock-tests/' -i tests/test-libaccountsservice.py
+	sed -i '/^SIMULATED_SYSTEM_LOCALE/s/en_IE.UTF-8/en_HK.iso88591/' tests/test-daemon.py
+}
+
+setup () {
+    meson setup build \
+		-Db_lto=true \
+		-Dsystemdsystemunitdir=no \
+		-Delogind=true \
+		-Dintrospection=true \
+		-Dlightdmconffile=/etc/lightdm/lightdm.conf \
+		-Ddocbook=false \
+		-Dgtk_doc=false \
+		-Dadmin_group=wheel \
+		-Dvapi=true
+}
+
+build () {
+    ninja -C build 
+}
+
+package () {
+    ninja -C build install
+}
+

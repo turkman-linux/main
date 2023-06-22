@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='timezonemap'
+release='1'
+version='0.4.5.2'
+url='https://github.com/dashea/timezonemap'
+description='Gtk3 timezone map widget, forked from gnome which forked from Ubiquity'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/dashea/timezonemap/archive/refs/tags/${version}.tar.gz")
+depends=(gtk3 libsoup3)
+makedepends=(gobject-introspection)
+md5sums=('091779f1656645854f2d3cfbc2718540')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR=${DESTDIR} install $jobs
+}
+

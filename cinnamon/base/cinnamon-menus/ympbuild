@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='cinnamon-menus'
+release='1'
+version='5.8.0'
+url='https://github.com/linuxmint/cinnamon'
+description='Linux desktop which provides advanced innovative features and a traditional user experience'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://github.com/linuxmint/cinnamon-menus/archive/refs/tags/${version}.tar.gz")
+depends=(glib)
+makedepends=(gobject-introspection meson)
+md5sums=('d664458ee4469d1bbd8f971a2cd37ee6')
+group=(cinnamon.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+ 		--libdir=/usr/lib64/ 
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    DESTDIR=$DESTDIR ninja -C build install $jobs
+}
+

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-imagesize'
+release='1'
+version='1.4.1'
+url='https://github.com/shibukawa/imagesize_py'
+description='Getting image size from png/jpeg/jpeg2000/gif file'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/shibukawa/imagesize_py/archive/refs/tags/${version}.tar.gz")
+depends=(python)
+makedepends=(py3-build py3-installer py3-setuptools py3-wheel)
+md5sums=('705a10474ca2e3112f869522e1c667b6')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "imagesize_py"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+

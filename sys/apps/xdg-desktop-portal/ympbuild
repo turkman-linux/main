@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='xdg-desktop-portal'
+release='1'
+version='1.16.0'
+url='https://github.com/flatpak/xdg-desktop-portal'
+description='Desktop integration portals for sandboxed apps'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://github.com/flatpak/xdg-desktop-portal/releases/download/${version}/xdg-desktop-portal-${version}.tar.xz")
+depends=(fuse gdk-pixbuf glib pipewire)
+makedepends=(docbook-xsl flatpak git meson xmlto)
+md5sums=('3312781f8f0ed772c52c05c010690283')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		-Db_lto=true \
+		-Dsystemd=disabled 
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    DESTDIR="$DESTDIR" ninja -C build install
+	mv "$DESTDIR"/usr/share/pkgconfig "$DESTDIR"/usr/lib/
+}
+

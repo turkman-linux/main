@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='zenity'
+release='1'
+version='3.44.1'
+url='https://wiki.gnome.org/Projects/Zenity'
+description='Display dialog boxes from the command line and shell scripts'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://download.gnome.org/sources/zenity/${version%.*}/zenity-${version}.tar.xz")
+depends=(gtk3 libnotify)
+makedepends=(meson yelp-tools)
+md5sums=('ceff286edde1a541a9da1ea0d259bb4e')
+group=(gnome.extra)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build\
+		-Db_lto=true \
+		-Dlibnotify=true
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

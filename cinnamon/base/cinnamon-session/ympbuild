@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='cinnamon-session'
+release='1'
+version='5.8.1'
+url='https://github.com/linuxmint/cinnamon-session'
+description='The Cinnamon Session Handler'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3' 'LGPL')
+source=("https://github.com/linuxmint/cinnamon-session/archive/refs/tags/${version}.tar.gz")
+depends=(cinnamon-desktop libSM libcanberra xapp libXtst)
+makedepends=(meson ninja xtrans)
+md5sums=('710b9f81ef46bec92b941d36be42793d')
+group=(cinnamon.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+ 		--libexecdir=lib64/${name} \
+		--buildtype=plain
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    DESTDIR=${DESTDIR} ninja -C build install $jobs
+}
+

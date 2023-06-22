@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-snowballstemmer'
+release='1'
+version='2.2.0'
+url='https://snowballstem.org/'
+description='Snowball stemming library collection for Python3'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+#source=("https://github.com/snowballstem/snowball/archive/refs/tags/v${version}.tar.gz")
+source=("https://pypi.python.org/packages/source/s/snowballstemmer/snowballstemmer-${version}.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('4332ddc7bbee0f344a03915b2ad59a54')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "snowballstemmer"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}

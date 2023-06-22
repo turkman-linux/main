@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='py3-pdm-pep517'
+release='1'
+version='1.1.4'
+url='https://github.com/pdm-project/pdm-pep517'
+description='A PEP 517 backend for PDM that supports PEP 621 metadata'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/pdm-project/pdm-backend/archive/refs/tags/${version}.tar.gz" "python-pdm-pep517-1.1.2-devendor.patch")
+depends=(py3-tomli-w)
+makedepends=(py3-tomli py3-cerberus)
+md5sums=('ba5d54bfe72feec5330ab3524870783b' 'SKIP')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "pdm-backend"-$version
+ls -l ../
+prepare(){
+    patch -Np1 -d ../pdm-backend-$version -i ../python-pdm-pep517-1.1.2-devendor.patch
+}
+
+build(){
+    python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+package(){
+    python -m installer --destdir="$DESTDIR" dist/*.whl
+}
+

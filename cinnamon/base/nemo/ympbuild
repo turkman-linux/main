@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='nemo'
+release='1'
+version='5.8.2'
+url='https://github.com/linuxmint/nemo'
+description='File manager for the Cinnamon desktop environment'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://github.com/linuxmint/nemo/archive/refs/tags/${version}.tar.gz")
+depends=(cinnamon-desktop dconf gvfs libexif libgsf libnotify libxml2 python xapp)
+makedepends=(meson intltool gobject-introspection)
+md5sums=('c9a192aa8af54e1d0c53b5ba1ea8e641')
+group=(cinnamon.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+ 		--libdir=/usr/lib64/ \
+		-Dxmp=false \
+		-Dselinux=false
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    DESTDIR="$DESTDIR" ninja -C build install $jobs
+}

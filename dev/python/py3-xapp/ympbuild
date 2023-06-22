@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='py3-xapp'
+release='1'
+version='2.4.0'
+url='https://github.com/linuxmint/python3-xapp'
+description='Python Xapp Library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://github.com/linuxmint/python3-xapp/archive/refs/tags/${version}.tar.gz")
+depends=(python)
+makedepends=(meson)
+md5sums=('b99fbd6d00cb9abd32b03633a23fab67')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+#cd "python3-xapp"-$version
+
+setup(){
+    meson build "python3-xapp"-$version \
+        --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    meson compile -C build
+}
+
+package(){
+    meson install -C build --destdir=${DESTDIR}
+    python -m compileall -d / "$DESTDIR"/usr/lib
+    python -O -m compileall -d / "$DESTDIR"/usr/lib
+}
+

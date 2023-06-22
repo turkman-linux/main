@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='cinnamon-screensaver'
+release='1'
+version='5.8.0'
+url='https://github.com/linuxmint/cinnamon-screensaver'
+description='Screensaver designed to integrate well with the Cinnamon desktop.'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/linuxmint/cinnamon-screensaver/archive/refs/tags/${version}.tar.gz")
+depends=(accountsservice cinnamon-desktop libgnomekbd py3-cairo py3-pygobject py3-setproctitle py3-xapp xapp)
+makedepends=(gobject-introspection meson)
+md5sums=('68130450b11eb482935f9aba45df7013')
+group=(cinnamon.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+		-Dlocking=false #$name-$version
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install DESTDIR="${DESTDIR}" $jobs
+}

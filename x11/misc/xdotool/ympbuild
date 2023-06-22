@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='xdotool'
+release='1'
+version='3.20211022.1'
+url='https://github.com/jordansissel/xdotool'
+description='Simulate keyboard/mouse input'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://github.com/jordansissel/xdotool/archive/refs/tags/v${version}.tar.gz")
+#source=("https://github.com/jordansissel/xdotool/releases/download/v${version}/${name}-${version}.tar.gz")
+depends=(libXinerama libxkbcommon libXtst)
+makedepends=()
+md5sums=('057e7c61675230c94bd1b1d164315e5c')
+group=(x11.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build() {
+	make #WITHOUT_RPATH_FIX=1
+}
+
+package () {
+    make install DESTDIR="$DESTDIR" PREFIX=/usr/local INSTALLMAN=/usr/share/man install
+}
+

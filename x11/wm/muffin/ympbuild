@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='muffin'
+release='1'
+version='5.8.0'
+url='https://github.com/linuxmint/muffin'
+description='Cinnamon window manager based on Mutter'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/linuxmint/muffin/archive/refs/tags/${version}.tar.gz")
+depends=(cinnamon-desktop gobject-introspection libcanberra libinput
+         libSM libxkbcommon startup-notification zenity graphene pipewire)
+makedepends=(meson intltool gobject-introspection)
+md5sums=('9bc750e05279cd1df74bfb28079addbf')
+group=(x11.wm)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}

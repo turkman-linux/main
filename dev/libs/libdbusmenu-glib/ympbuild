@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+name='libdbusmenu-glib'
+release='1'
+version='16.04.0'
+url='https://launchpad.net/libdbusmenu'
+description='Library for passing menus over DBus'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL3' 'LGPL2.1' 'LGPL3')
+source=(https://launchpad.net/libdbusmenu/${version%.?}/${version}/+download/libdbusmenu-${version}.tar.gz{,.asc})
+depends=(glib)
+makedepends=(gnome-common gobject-introspection gtk3 intltool vala valgrind)
+md5sums=('3c05d53053b3ea69384b5f93d7a4c7c4' 'SKIP')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd "libdbusmenu"-$version
+
+setup(){
+    sed -i 's/-Werror//' libdbusmenu-*/Makefile.{am,in}
+    export HAVE_VALGRIND_TRUE='#'
+    export HAVE_VALGRIND_FALSE=''
+
+    (
+    ./configure --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --disable-{dumper,static,tests} \
+      --with-gtk=3
+    make
+    ) 
+}
+
+build(){
+    make -j1 -C libdbusmenu-glib DESTDIR="${DESTDIR}" install
+}
+
+package(){
+    pkgdesc+=" (GTK+ 3 library)"
+    depends=("libdbusmenu-glib" 'gtk3')
+
+    make -j1 -C libdbusmenu-glib DESTDIR="${DESTDIR}" install
+    make -j1 -C libdbusmenu-gtk DESTDIR="${DESTDIR}" install
+    make -j1 -C libdbusmenu-glib DESTDIR="${DESTDIR}" uninstall
+}
+

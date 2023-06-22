@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='xdg-desktop-portal-xapp'
+release='1'
+version='1.0.1'
+url='https://github.com/linuxmint/xdg-desktop-portal-xapp'
+description='A backend implementation for xdg-desktop-portal using GTK and various pieces of Cinnamon/MATE/Xfce4 infrastructure'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL-2.1')
+source=("https://github.com/linuxmint/xdg-desktop-portal-xapp/archive/refs/tags/${version}.tar.gz")
+depends=(xapp xdg-desktop-portal)
+makedepends=(meson)
+md5sums=('85248659403dd33ed69dffe290372299')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		-Db_lto=true \
+		-Dsystemduserunitdir=/no
+}
+
+build(){
+    meson build
+}
+
+package(){
+    DESTDIR="$DESTDIR" meson install -C build
+	rm -r "$DESTDIR"/no
+}
+
