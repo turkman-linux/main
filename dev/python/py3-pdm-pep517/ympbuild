@@ -16,7 +16,7 @@ uses=()
 arch=('x86_64')
 
 cd "pdm-backend"-$version
-ls -l ../
+
 prepare(){
     patch -Np1 -d ../pdm-backend-$version -i ../python-pdm-pep517-1.1.2-devendor.patch
 }

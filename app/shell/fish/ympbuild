@@ -26,7 +26,8 @@ setup(){
         -DBUILD_SHARED_LIBS=True \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-        -DFISH_USE_SYSTEM_PCRE2=false
+        -DFISH_USE_SYSTEM_PCRE2=true \
+        -DBUILD_DOCS=false
 }
 
 build(){

@@ -17,11 +17,15 @@ arch=('x86_64')
 
 cd "packaging"-$version
 
+export PYTHONPATH=src/packaging
+
 build(){
     python -m build -nw
 }
 
 package(){
+#    mkdir -p $DESTDIR/usr/lib64/python3
+#    cp -prfv src/* $DESTDIR/usr/lib64/python3
     python -m installer --destdir="$DESTDIR" dist/*.whl
 }
 
