@@ -3,7 +3,7 @@ name='mozjs102'
 release='1'
 version='102.12.0'
 url='https://spidermonkey.dev/'
-description='JavaScript interpreter and libraries - Version 78'
+description='JavaScript interpreter and libraries - Version 102'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('MPL')
@@ -18,8 +18,26 @@ arch=('x86_64')
 cd "mozjs-upstream"-$version
 
 export MOZCONFIG=./mozconfig.opt
-
-package(){
+unset CARGO_PROFILE_RELEASE_OPT_LEVEL
+unset CARGO_PROFILE_RELEASE_LTO
+export CC=clang
+export CXX=clang++
+export CFLAGS="$CFLAGS -O2"
+export CXXFLAGS="$CXXFLAGS -O2"
+export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+export MOZ_NOSPAM=1
+export PYTHON=/usr/bin/python3
+export RUST_TARGET="$CTARGET"
+export SHELL=/bin/ash
+export RUSTFLAGS="$RUSTFLAGS -C debuginfo=1"
+	
+build(){
     ./mach build --directory $DESTDIR
 }
 
+package(){
+    cd obj
+	make DESTDIR="$DESTDIR" install
+	rm -f "$DESTDIR"/usr/lib/*.ajs
+}

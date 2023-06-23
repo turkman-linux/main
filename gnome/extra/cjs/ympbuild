@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cjs'
 release='1'
-version='5.6.1'
+version='5.8.0'
 url='https://github.com/linuxmint/cjs'
 description='Javascript Bindings for Cinnamon'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL')
 source=("https://github.com/linuxmint/cjs/archive/refs/tags/${version}.tar.gz")
-depends=()
+depends=(js102)
 makedepends=()
-md5sums=('b9a3c85ed98be17bacfc591e809cbc10')
+md5sums=('991e1bbf2ebf7cca4e93cfce66c4a876')
 group=(gnome.extra)
 uses=()
 arch=('x86_64')
