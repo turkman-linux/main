@@ -12,14 +12,14 @@ depends=(cinnamon-desktop gobject-introspection libcanberra libinput
          libSM libxkbcommon startup-notification zenity graphene pipewire)
 makedepends=(meson intltool gobject-introspection)
 md5sums=('9bc750e05279cd1df74bfb28079addbf')
-group=(x11.wm)
+group=(cinnamon.base)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
 setup(){
-    meson setup build
+    meson setup build --prefix=/usr
 }
 
 build(){

@@ -27,5 +27,10 @@ build () {
 }
 
 package () {
-    ninja -C build install DESTDIR="${DESTDIR}" $jobs
+    ninja -C build install $jobs
+    # fix symlinks
+    rm -f $DESTDIR/usr/bin/cinnamon-screensaver
+    rm -f $DESTDIR/usr/bin/cinnamon-screensaver-command
+    ln -s ../share/cinnamon-screensaver/cinnamon-screensaver-main.py $DESTDIR/usr/bin/cinnamon-screensaver
+    ln -s ../share/cinnamon-screensaver/cinnamon-screensaver-command.py $DESTDIR/usr/bin/cinnamon-screensaver-command
 }

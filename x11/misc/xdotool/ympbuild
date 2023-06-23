@@ -18,11 +18,13 @@ arch=('x86_64')
 
 cd $name-$version
 
+export PATH=$PATH:/usr/bin/core_perl
+
 build() {
 	make #WITHOUT_RPATH_FIX=1
 }
 
 package () {
-    make install DESTDIR="$DESTDIR" PREFIX=/usr/local INSTALLMAN=/usr/share/man install
+    make install DESTDIR="$DESTDIR" PREFIX=/usr INSTALLMAN=/usr/share/man install
 }
 
