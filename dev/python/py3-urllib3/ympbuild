@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-urllib3'
+release='1'
+version='2.0.3'
+url='https://github.com/urllib3/urllib3'
+description='HTTP library with thread-safe connection pooling, file post, and more'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/urllib3/urllib3/archive/refs/tags/${version}.tar.gz")
+depends=(python)
+makedepends=(py3-build py3-installer py3-setuptools py3-sphinx py3-wheel py3-hatchling)
+md5sums=('395767051ae262775e44ef11ee05bcfe')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "urllib3"-$version
+
+
+build(){
+	python -m build --wheel --no-isolation
+
+}
+
+package(){
+	python -m installer --destdir="$DESTDIR" dist/*.whl
+}
+

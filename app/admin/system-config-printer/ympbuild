@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='system-config-printer'
+release='1'
+version='1.5.18'
+url='https://github.com/OpenPrinting/system-config-printer'
+description='A CUPS printer configuration tool and status applet'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/OpenPrinting/system-config-printer/releases/download/v${version}/system-config-printer-${version}.tar.xz")
+depends=(py3-pycups py3-dbus libnotify py3-curl py3-pygobject gtk3 py3-cairo libusb)
+makedepends=(xmlto docbook-xsl desktop-file-utils libsecret)
+md5sums=('ee92ed28a0f89a88ff0478c62c59c599')
+group=(app.admin)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	#./bootstrap
+    ./configure --build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install $jobs
+}
+

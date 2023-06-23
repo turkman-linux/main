@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name='py3-pillow'
+release='1'
+version='9.5.0'
+url='https://python-pillow.org/'
+description='Python Imaging Library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://github.com/python-pillow/Pillow/archive/refs/tags/${version}.tar.gz")
+depends=(python freetype lcms2  libtiff  libxcb)
+makedepends=(git py3-build py3-installer py3-wheel py3-setuptools libwebp tk)
+md5sums=('7eee6ea92f43d34e0c0a04a05fb435be')
+group=()
+uses=()
+arch=('x86_64')
+
+cd "Pillow"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}

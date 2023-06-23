@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='pugixml'
+release='1'
+version='1.13'
+url='https://pugixml.org/'
+description='Light-weight, simple and fast XML parser for C++ with XPath support'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/zeux/pugixml/archive/refs/tags/v${version}.tar.gz")
+depends=()
+makedepends=(cmake)
+md5sums=('6f5b0cdca4f5e50b10066076fbf02e70')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    cmake -B build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_SHARED_LIBS=True \
+		-DCMAKE_BUILD_TYPE=No
+}
+
+build(){
+    cmake --build build
+}
+
+package(){
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

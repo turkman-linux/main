@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-ptyprocess'
+_name='ptyprocess'
+release='1'
+version='0.7.0'
+url='https://github.com/pexpect/ptyprocess'
+description='Run a subprocess in a pseudo terminal'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://pypi.io/packages/source/p/${_name}/${_name}-${version}.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('9da200c397cb1752209a6b718b6cfc68')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd $_name-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+
+

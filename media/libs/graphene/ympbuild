@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='graphene'
+release='1'
+version='1.10.8'
+url='http://ebassi.github.io/graphene/'
+description='A thin layer of graphic data types'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://download.gnome.org/sources/graphene/${version%.*}/graphene-${version}.tar.xz")
+depends=()
+makedepends=(gobject-introspection meson)
+md5sums=('169e3c507b5a5c26e9af492412070b81')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+name='mozjs102'
+release='1'
+version='102.12.0'
+url='https://spidermonkey.dev/'
+description='JavaScript interpreter and libraries - Version 78'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MPL')
+source=("https://salsa.debian.org/gnome-team/mozjs/-/archive/upstream/${version}/mozjs-upstream-${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('2c3edd3fa06881c60a4911a369d06ca7')
+group=(gnome.extra)
+uses=()
+arch=('x86_64')
+
+cd "mozjs-upstream"-$version
+
+export MOZCONFIG=./mozconfig.opt
+
+package(){
+    ./mach build --directory $DESTDIR
+}
+

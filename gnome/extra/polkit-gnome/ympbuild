@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='polkit-gnome'
+release='1'
+version='0.105'
+url='https://gitlab.gnome.org/Archive/policykit-gnome'
+description='PolicyKit integration for the GNOME desktop'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.gnome.org/sources/polkit-gnome/${version}/polkit-gnome-${version}.tar.xz"
+"https://www.linuxfromscratch.org/patches/blfs/svn/polkit-gnome-${version}-consolidated_fixes-1.patch" 
+"polkit-gnome-authentication-agent-1.desktop")
+depends=(gtk3 polkit)
+makedepends=(intltool)
+md5sums=('50ecad37c8342fb4a52f590db7530621' '83e8d2ee60fd4fa963f379f01a263bfd' 'SKIP')
+group=(gnome.extra)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+	patch -Np1 -i ../polkit-gnome-0.105-consolidated_fixes-1.patch
+}
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+	install -Dm644 "../polkit-gnome-authentication-agent-1.desktop" \
+		"$DESTDIR/etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop"
+}
+

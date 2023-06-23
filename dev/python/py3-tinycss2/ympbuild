@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-tinycss2'
+release='1'
+version='1.2.1'
+url='https://pypi.python.org/pypi/tinycss2'
+description='Low-level CSS parser for Python'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://github.com/Kozea/tinycss2/archive/refs/tags/v${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('39d99a0f33d5bacbd1cd1e663de960d5')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "tinycss2"-$version
+
+
+build(){
+    python -m build -nw
+}
+
+package(){
+    python -m installer -d "$DESTDIR" dist/*.whl
+	install -Dm644 LICENSE -t "$DESTDIR"/usr/share/licenses/$name/
+}
+

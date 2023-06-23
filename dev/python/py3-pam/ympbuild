@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-pam'
+release='1'
+version='2.0.2'
+url='https://github.com/FirefighterBlu3/python-pam'
+description='A Python interface to the PAM library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/FirefighterBlu3/python-pam/archive/refs/tags/v${version}.tar.gz")
+depends=(python py3-six)
+makedepends=()
+md5sums=('928b13bf7377315f9a13f7baf6c6bf08')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "python-pam"-$version
+
+build(){
+    python -m build --wheel --no-isolation
+}
+
+package(){
+	python -m installer --destdir="${DESTDIR}" dist/*.whl
+	install -Dm644 LICENSE "${DESTDIR}/usr/share/licenses/${name}/LICENSE"
+}
+
+

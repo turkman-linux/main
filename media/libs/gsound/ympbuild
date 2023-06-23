@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='gsound'
+release='1'
+version='1.0.3'
+url='https://wiki.gnome.org/Projects/GSound'
+description='Small library for playing system sounds'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://download.gnome.org/sources/gsound/${version%.*}/gsound-${version}.tar.xz")
+depends=(libcanberra)
+makedepends=()
+md5sums=('7338c295034432a6e782fd20b3d04b68')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build \
+		-Dgtk_doc=false \
+		-Dintrospection=true \
+		-Denable_vala=true \
+		--buildtype=release \
+		--prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

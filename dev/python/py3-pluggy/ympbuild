@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='py3-pluggy'
+release='1'
+version='1.0.0'
+url='https://pluggy.readthedocs.io/en/latest/'
+description='Plugin management and hook calling for Python'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://files.pythonhosted.org/packages/a1/16/db2d7de3474b6e37cbb9c008965ee63835bba517e22cdb8c35b5116b5ce1/pluggy-${version}.tar.gz")
+depends=(py3-pdm-pep517)
+makedepends=(py3-setuptools)
+md5sums=('daa6fddfb6cd364f3c82e52098911e4b')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "pluggy"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --skip-build
+}
+
+

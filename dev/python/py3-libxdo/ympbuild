@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='py3-libxdo'
+release='1'
+version='0.1.2a1'
+url='https://pypi.org/project/python-libxdo/'
+description='Package description missing'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/rshk/python-libxdo/archive/refs/tags/v${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('346429c4ae9f29d7ab039666027a46db')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "python-libxdo"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+
+

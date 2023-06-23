@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-tomli'
+release='1'
+version='2.0.1'
+url='https://github.com/hukkin/tomli'
+description="Lil' TOML parser"
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/hukkin/tomli/archive/refs/tags/${version}.tar.gz")
+depends=(python)
+makedepends=(py3-build py3-flit-core)
+md5sums=('b32f504876fd88ea1ca0c2fab4ce8e27')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "tomli"-$version
+
+build(){
+    python -m build -wn --skip-dependency-check
+}
+
+package(){
+    python3 -m installer -d "$DESTDIR" dist/*.whl
+}
+

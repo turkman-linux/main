@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='py3-editables'
+release='1'
+version='0.3'
+url='https://github.com/pfmoore/editables'
+description='library for creating editable wheels'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/pfmoore/editables/archive/refs/tags/${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('82c645a015cc63b2857bf095fb17443b')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "editables"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+
+

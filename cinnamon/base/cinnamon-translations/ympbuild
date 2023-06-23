@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='cinnamon-translations'
+release='1'
+version='5.8.1'
+url='https://github.com/linuxmint/cinnamon-translations'
+description='Translations for Cinnamon and Nemo'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://github.com/linuxmint/cinnamon-translations/archive/refs/tags/${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('b9ea707443c81e4340b0cb219d289130')
+group=(cinnamon.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+
+build(){
+    make $jobs
+}
+
+package(){
+    cp -r usr/ "${DESTDIR}"
+}
+

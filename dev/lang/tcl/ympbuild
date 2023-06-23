@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='tcl'
+release='1'
+version='8.6.13'
+url='https://www.tcl-lang.org/'
+description=' 	The Tcl scripting language'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('TCL')
+source=("http://prdownloads.sourceforge.net/tcl/tcl${version}-src.tar.gz")
+depends=(zlib)
+makedepends=()
+md5sums=('0e4358aade2f5db8a8b6f2f6d9481ec2')
+group=(dev.lang)
+uses=()
+arch=('x86_64')
+
+cd $name$version"/unix"
+
+setup(){
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+		--mandir=/usr/share/man \
+		--enable-threads \
+		--with-system-sqlite \
+		--enable-64bit
+}
+
+build(){
+    make
+}
+
+package(){
+    make INSTALL_ROOT="${DESTDIR}" install install-private-headers
+}
+

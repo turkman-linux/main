@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='py3-babel'
+release='1'
+version='2.12.1'
+url='http://babel.pocoo.org/'
+description='Python3 i18n tool'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD-3-Clause')
+source=("https://github.com/python-babel/babel/archive/refs/tags/v${version}.tar.gz")
+depends=(python)
+makedepends=(py3-tz py3-setuptools)
+md5sums=('e3a014f2a831e4b45ef90ee1f3f45d95')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "babel"-$version
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
+
+
