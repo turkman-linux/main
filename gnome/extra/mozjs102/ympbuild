@@ -25,19 +25,22 @@ export CXX=clang++
 export CFLAGS="$CFLAGS -O2"
 export CXXFLAGS="$CXXFLAGS -O2"
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
-export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+export MOZBUILD_STATE_PATH="$HOME/mozbuild"
 export MOZ_NOSPAM=1
 export PYTHON=/usr/bin/python3
-export RUST_TARGET="$CTARGET"
+export RUST_TARGET="x86_64"
 export SHELL=/bin/ash
-export RUSTFLAGS="$RUSTFLAGS -C debuginfo=1"
-	
+
+prepare(){
+    echo "ac_add_options --prefix=/usr" >> ./mozconfig.opt
+}
+
 build(){
-    ./mach build --directory $DESTDIR
+    ./mach build
 }
 
 package(){
-    cd obj
+  cd obj-opt
 	make DESTDIR="$DESTDIR" install
 	rm -f "$DESTDIR"/usr/lib/*.ajs
 }
