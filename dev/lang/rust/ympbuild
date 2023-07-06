@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='rust'
+release='1'
+version='1.70.0'
+url='https://www.rust-lang.org'
+description='Systems programming language from Mozilla'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://static.rust-lang.org/dist/rustc-$version-src.tar.gz"
+        'config.toml')
+depends=(curl gcc libssh llvm)
+makedepends=(cmake ninja perl python)
+md5sums=('b98fdbee83d080287daf3157628b291f'
+         'SKIP')
+group=(dev.lang)
+uses=()
+arch=('x86_64')
+# disable strip
+dontstrip=1
+
+cd rustc-$version-src
+
+setup () {
+    install ../config.toml ./config.toml
+}
+
+build () {
+    python3 ./x.py build -j `nproc`
+}
+
+package () {
+    python3 ./x.py install -j `nproc`
+}
+
