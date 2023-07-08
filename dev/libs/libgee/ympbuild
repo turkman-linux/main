@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='libgee'
+release='1'
+version='0.20.6'
+url='https://gitlab.gnome.org/GNOME/libgee'
+description='A collection library providing GObject-based interfaces and classes for commonly used data structures'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.gnome.org/sources/libgee/${version%.*}/libgee-${version}.tar.xz")
+depends=()
+makedepends=(gobject-introspection vala autoconf)
+md5sums=('8b9001f47e15ef7a1776ac1f5bb015a0')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--build=$CBUILD \
+		--host=$CHOST
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
