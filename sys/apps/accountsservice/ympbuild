@@ -26,19 +26,20 @@ prepare(){
 
 setup () {
     meson setup build \
-		-Db_lto=true \
-		-Dsystemdsystemunitdir=no \
-		-Delogind=true \
-		-Dintrospection=true \
-		-Dlightdmconffile=/etc/lightdm/lightdm.conf \
-		-Ddocbook=false \
-		-Dgtk_doc=false \
-		-Dadmin_group=wheel \
-		-Dvapi=true
+        --prefix=/usr \
+		    -Db_lto=true \
+		    -Dsystemdsystemunitdir=no \
+		    -Delogind=true \
+		    -Dintrospection=true \
+		    -Dlightdmconffile=/etc/lightdm/lightdm.conf \
+		    -Ddocbook=false \
+		    -Dgtk_doc=false \
+		    -Dadmin_group=wheel \
+		    -Dvapi=true
 }
 
 build () {
-    ninja -C build 
+    ninja -C build
 }
 
 package () {
