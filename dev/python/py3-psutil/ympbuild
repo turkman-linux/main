@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-psutil'
+release='1'
+version='5.9.5'
+url='https://github.com/giampaolo/psutil'
+description='Cross-platform lib for process and system monitoring in Python'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/giampaolo/psutil/archive/refs/tags/release-$version.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('caeaf46c55a66a1190ace77d462a68f6')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd psutil-release-$version
+
+
+build () {
+    python3 setup.py build
+}
+
+package () {
+    python3 setup.py install --skip-build --root="$DESTDIR"
+    rm -r "$DESTDIR"/usr/lib/python3*/site-packages/psutil/tests/
+}
+
