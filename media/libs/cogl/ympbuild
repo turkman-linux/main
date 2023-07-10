@@ -7,10 +7,10 @@ description='An object oriented GL/GLES Abstraction/Utility Layer'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('MIT')
-source=("https://gitlab.gnome.org/Archive/cogl/-/archive/${version}/cogl-${version}.tar.gz")
+source=("https://download.gnome.org/sources/cogl/1.22/cogl-$version.tar.xz")
 depends=(mesa libdrm libXext libXdamage libXcomposite gdk-pixbuf pango libXrandr)
 makedepends=(gobject-introspection git gtk-doc)
-md5sums=('00d3790a36da96a36a1101577a740ae4')
+md5sums=('7dd8b2e24171ef7399f851cea144b569')
 group=(media.libs)
 uses=()
 arch=('x86_64')
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup () {
-	autoreconf -fvi
+#	autoreconf -fvi
     ./configure --prefix=/usr \
 		--libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
