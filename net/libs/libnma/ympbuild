@@ -29,5 +29,7 @@ build(){
 
 package(){
     ninja -C build install $jobs
+    # in nm-applet
+    rm -f $DESTDIR/usr/share/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 }
 
