@@ -21,6 +21,9 @@ setup () {
     ./configure --prefix=/usr \
          --libdir=/usr/lib64/ \
          --with-ncursesw
+    # change default color blue to red
+    sed -i "s/COLOR_BLUE/COLOR_RED/g" dlg_colors.h
+    sed -i "s/COLOR_CYAN/COLOR_MAGENTA/g" dlg_colors.h
 }
 
 build () {
