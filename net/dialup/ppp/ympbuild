@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ppp'
-release='1'
-version='2.4.9'
+release='2'
+version='2.5.0'
 url='https://download.samba.org/pub/ppp'
 description='A daemon which implements the Point-to-Point Protocol for dial-up networking'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.samba.org/pub/ppp/ppp-$version.tar.gz")
 depends=(libpcap openssl dbus libxcrypt)
 makedepends=()
-md5sums=('c88153ae3d16ae114152cd3c15c7301d')
+md5sums=('ce5fd7b9f6e1095ae6c0c11365c444eb')
 group=(net.dialup)
 uses=()
 arch=('x86_64')

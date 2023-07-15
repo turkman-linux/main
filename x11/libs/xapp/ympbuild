@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xapp'
-release='1'
-version='2.4.2'
+release='2'
+version='2.6.1'
 url='https://github.com/linuxmint/xapp'
 description='Common library for X-Apps project'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPL')
 source=("https://github.com/linuxmint/xapp/archive/$version/xapp-${version}.tar.gz")
 depends=(libdbusmenu libgnomekbd)
 makedepends=(vala py3-pygobject make gobject-introspection)
-md5sums=('cfd3182d5c1e5c49ffb82896b298063a')
+md5sums=('61b7effc6629ed5469abc1fc0f3be5bf')
 group=(x11.libs)
 uses=()
 arch=('x86_64')

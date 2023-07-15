@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='libxml2'
-release='1'
-version='2.10.3'
+release='2'
+version='2.11.4'
 url='https://gitlab.gnome.org/GNOME/libxml2'
 description='XML parser and toolkit'
 email=' aliriza.keskin@pardus.org.tr'
 maintainer=' aliriza'
 license=('GPLv3')
-source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.3/libxml2-v${version}.tar.gz")
+source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${version}/libxml2-v${version}.tar.gz")
 depends=(zlib xz-utils)
 makedepends=()
-md5sums=('4a8bc66943dd13f7ff2ee8816b808969')
+md5sums=('8510dc032833bb3aebb304dcf530b4bc')
 uses=(python)
 uses_extra=()
 python_depends=(python)

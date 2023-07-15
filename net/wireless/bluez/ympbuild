@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 name='bluez'
 #pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-hid2hci' 'bluez-plugins')
-release='1'
-version='5.66'
+release='2'
+version='5.68'
 url='https://www.bluez.org'
 description='Daemons for the bluetooth protocol stack'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
 source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz"
-        "bluez-5.66-obexd_without_systemd-1.patch"
+        "bluez-5.68-obexd_without_systemd-1.patch"
         "bluetooth.initd")
 depends=(glib)
 makedepends=(dbus libical json-c alsa-lib ell)
-md5sums=('3f9496fedf878fba985e56713ed7752e'
+md5sums=('00a72fed12e706b2d8bb40786154d3aa'
          'SKIP'
          'SKIP')
 group=(net.wireless)
@@ -23,7 +23,7 @@ arch=('x86_64')
 cd $name-$version
 
 prepare(){
-    patch -Np1 -i ../bluez-5.66-obexd_without_systemd-1.patch
+    patch -Np1 -i ../bluez-5.68-obexd_without_systemd-1.patch
 }
 
 setup(){

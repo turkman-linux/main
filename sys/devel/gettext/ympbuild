@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gettext'
-release='1'
-version='0.21.1'
+release='2'
+version='0.22'
 url='https://gnu.org/software/gettext'
 description='GNU locale utilities'
 email='kurth4cker@tutanota.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/gettext/gettext-${version}.tar.xz")
 depends=(libunistring)
 makedepends=( )
-md5sums=('27fcc8a42dbc8f334f23a08f1f2fe00a')
+md5sums=('db2f3daf34fd5b85ab1a56f9033e42d1')
 uses=(bzip2 lzma)
 bzip2_depends=(bzip2)
 lzma_depends=(xz-utils)
