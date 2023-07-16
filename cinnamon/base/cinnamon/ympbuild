@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='cinnamon'
-release='1'
+release='2'
 version='5.8.4'
 url='https://github.com/linuxmint/cinnamon'
 description='Linux desktop which provides advanced innovative features and a traditional user experience'
@@ -9,10 +9,10 @@ maintainer='akarsu'
 license=('GPLv2')
 source=("https://github.com/linuxmint/cinnamon/archive/refs/tags/$version.tar.gz")
 depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
-        cinnamon-session cinnamon-settings-daemon cjs gnome-backgrounds gsound gstreamer libcroco 
-		libgnomekbd libkeybinder3 librsvg muffin nemo polkit-gnome py3-cairo py3-dbus py3-pygobject 
-		py3-pam py3-pexpect py3-pillow py3-inotify py3-tz py3-tinycss2 py3-xapp py3-requests 
-		timezonemap xapp xdg-desktop-portal-xapp
+        cinnamon-session cinnamon-settings-daemon cjs gnome-backgrounds gsound gstreamer libcroco
+		    libgnomekbd libkeybinder3 librsvg muffin nemo polkit-gnome py3-cairo py3-dbus py3-pygobject
+		    py3-pam py3-pexpect py3-pillow py3-inotify py3-tz py3-tinycss2 py3-xapp py3-requests
+		    timezonemap xapp xdg-desktop-portal-xapp caribou
 )
 makedepends=(meson gobject-introspection intltool)
 md5sums=('525ee66434fc3cdb60bf362845141b17')
@@ -34,5 +34,7 @@ build(){
 
 package(){
     ninja -C build install $jobs
+    # remove broken symlink
+    rm -f $DESTDIR/etc/xdg/menus/cinnamon-applications-merged
 }
 

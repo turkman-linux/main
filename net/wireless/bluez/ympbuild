@@ -9,7 +9,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
 source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz"
-        "bluez-5.68-obexd_without_systemd-1.patch"
+        "bluez-obexd_without_systemd-1.patch"
         "bluetooth.initd")
 depends=(glib)
 makedepends=(dbus libical json-c alsa-lib ell)
@@ -23,7 +23,7 @@ arch=('x86_64')
 cd $name-$version
 
 prepare(){
-    patch -Np1 -i ../bluez-5.68-obexd_without_systemd-1.patch
+    patch -Np1 -i ../bluez-obexd_without_systemd-1.patch
 }
 
 setup(){

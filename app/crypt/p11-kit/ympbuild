@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='p11-kit'
-release='1'
+release='2'
 version='0.25.0'
 url='https://github.com/p11-glue/p11-kit'
 description='Library for loading and sharing PKCS#11 modules'

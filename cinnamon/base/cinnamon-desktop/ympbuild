@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='cinnamon-desktop'
-release='1'
+release='2'
 version='5.8.0'
 url='https://github.com/linuxmint/cinnamon-desktop'
 description='Library with common API for various Cinnamon modules'
@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/ 
+        --libdir=/usr/lib64/
 }
 
 build(){

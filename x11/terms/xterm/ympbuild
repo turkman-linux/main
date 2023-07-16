@@ -9,7 +9,7 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://invisible-island.net/archives/xterm/xterm-$version.tgz"
         'xterm.desktop')
-depends=(libX11 ncurses util-linux libXt libXau libXinerama libXaw libXpm)
+depends=(libX11 ncurses util-linux libXt libXau libXinerama libXaw libXpm libXft)
 makedepends=()
 md5sums=('27a701e73076e42a265e34f8fe558ff6'
          'SKIP')
