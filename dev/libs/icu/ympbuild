@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
 name='icu'
-release='2'
-version='73.2'
-_version='73-2'
+release='1'
+version='72'
 url='https://github.com/unicode-org/icu'
 description='icu International Components for Unicode'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-				https://github.com/unicode-org/icu/archive/refs/tags/release-73-2.tar.gz
-source=("https://github.com/unicode-org/icu/archive/refs/tags/release-${_version}.tar.gz")
+source=('https://github.com/unicode-org/icu/archive/refs/tags/icu4x/2023-03-06/72.x.tar.gz')
 depends=()
 makedepends=()
-md5sums=('2fc030d5f0316be527a46bc0730b8580')
+md5sums=('a6186148b67659684288a5829ef3b62c')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
 
-cd "icu-release"-$version"/icu4c/source"
+cd icu-icu4x-*/icu4c/source
 
 setup(){
     ./configure --prefix=/usr \
