@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-setuptools'
-release='2'
-version='67.8.0'
+release='3'
+version='68.0.0'
 url='https://pypi.org/project/setuptools/'
 description='Easily download, build, install, upgrade, and uninstall Python packages'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pypa/setuptools/archive/refs/tags/v${version}.tar.gz")
 depends=(python)
 makedepends=( )
-md5sums=('4036ad7ba388ef0cf2b3a35dba79af62')
+md5sums=('56a2ae897108941b6236a46b0eff6f43')
 uses=()
 group=(dev.python)
 arch=('x86_64')
