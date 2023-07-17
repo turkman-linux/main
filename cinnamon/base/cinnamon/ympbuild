@@ -7,7 +7,8 @@ description='Linux desktop which provides advanced innovative features and a tra
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
-source=("https://github.com/linuxmint/cinnamon/archive/refs/tags/$version.tar.gz")
+source=("https://github.com/linuxmint/cinnamon/archive/refs/tags/$version.tar.gz"
+        "https://github.com/linuxmint/cinnamon/commit/fce9aad1ebb290802dc550e8dae6344dddf9dec1.patch")
 depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
         cinnamon-session cinnamon-settings-daemon cjs gnome-backgrounds gsound gstreamer libcroco
 		    libgnomekbd libkeybinder3 librsvg muffin nemo polkit-gnome py3-cairo py3-dbus py3-pygobject
@@ -15,12 +16,19 @@ depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
 		    timezonemap xapp xdg-desktop-portal-xapp caribou
 )
 makedepends=(meson gobject-introspection intltool)
-md5sums=('525ee66434fc3cdb60bf362845141b17')
+md5sums=('525ee66434fc3cdb60bf362845141b17'
+         'SKIP')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+
+prepare(){
+    # 5.8.4 pillow fix patch.
+    # TODO: Remove this.
+    patch -Np1 -i ../*.patch
+}
 
 setup(){
     meson setup build --prefix=/usr \

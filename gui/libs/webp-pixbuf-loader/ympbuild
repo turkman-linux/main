@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='webp-pixbuf-loader'
+release='1'
+version='0.2.4'
+url='https://aruiz/webp-pixbuf-loader'
+description='WebM GDK Pixbuf Loader library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/aruiz/webp-pixbuf-loader/archive/refs/tags/$version.tar.gz")
+depends=(libwebp gdk-pixbuf)
+makedepends=()
+md5sums=('2218f764598044497691c02bf641173d')
+group=(gui.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
