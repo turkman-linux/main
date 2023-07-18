@@ -2,32 +2,37 @@
 name='nasm'
 release='1'
 version='2.16.01'
-url='https://www.nasm.us/'
+url='https://github.com/netwide-assembler/nasm'
 description='80x86 assembler designed for portability and modularity'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('BSD')
-source=("https://www.nasm.us/pub/nasm/releasebuilds/${version}/nasm-${version}.tar.xz")
+source=("https://github.com/netwide-assembler/nasm/archive/refs/tags/nasm-$version.tar.gz")
 depends=(asciidoc xmlto)
 makedepends=(diffutils)
-md5sums=('d755ba0d16f94616c2907f8cab7c748b')
+md5sums=('d1912050d04c95645479e72d0d58e032')
 group=(dev.lang)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd $name-$name-$version
 
 setup(){
+    ./autogen.sh
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }
 
 build(){
     make $jobs
+    # do not build doc
+    touch nasm.1
+    touch ndisasm.1
 }
 
 package(){
     make install $jobs
     install -Dm 644 LICENSE -t "${DESTDIR}"/usr/share/licenses/nasm
+    rm -rf $DESTDIR/usr/share/man
 }
 
