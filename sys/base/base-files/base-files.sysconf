@@ -4,7 +4,7 @@ cat /etc/passwd.d/* | sed "s/#.*//g"| while read line ; do
     if [ -z "${line}" ] ; then
         : skip empty line
     else
-        uid=$(echo $line | cut -f2 -d":")
+        uid=$(echo $line | cut -f3 -d":")
         if ! grep "x:$uid:" /etc/passwd > /dev/null ; then
             echo "${line}" >> /etc/passwd
         fi
