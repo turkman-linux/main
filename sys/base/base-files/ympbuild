@@ -8,8 +8,10 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
-        "base-files.sysconf")
+        "base-files.sysconf"
+        "os-release")
 md5sums=('e1e41fe1398a3d97ef087289cfff7e78'
+         'SKIP'
          'SKIP')
 arch=(x86_64)
 group=(sys.base)
@@ -20,4 +22,5 @@ package(){
     mkdir -p ${DESTDIR}/etc/sysconf.d
     make install
     install ../base-files.sysconf  ${DESTDIR}/etc/sysconf.d/base-files
+    install ../os-release  ${DESTDIR}/etc/
 }
