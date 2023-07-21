@@ -3,8 +3,11 @@ touch /etc/passwd
 cat /etc/passwd.d/* | sed "s/#.*//g"| while read line ; do
     if [ -z "${line}" ] ; then
         : skip empty line
-    elif ! grep "^${line}$" /etc/passwd > /dev/null ; then
-        echo "${line}" >> /etc/passwd
+    else
+        uid=$(echo $line | cut -f2 -d":")
+        if grep "x:$uid: "/etc/passwd > /dev/null ; then
+            echo "${line}" >> /etc/passwd
+        fi
     fi
 done
 cat /etc/group.d/* | sed "s/#.*//g"| while read line ; do
