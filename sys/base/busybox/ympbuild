@@ -1,7 +1,7 @@
 #!/bin/bash
 name=busybox
-version=1.35.0
-release=1
+version=1.36.1
+release=2
 url='https://busybox.net'
 description='BusyBox is a software suite that provides several Unix utilities in a single executable file.'
 email='parduscix@yandex.ru'
@@ -16,7 +16,7 @@ source=("https://busybox.net/downloads/busybox-$version.tar.bz2"
         "files/udhcpc.script"
         "data-user.patch"
 )
-md5sums=("585949b1dd4292b604b7d199866e9913"
+md5sums=("0fc591bc9f4e365dfd9ade0014f32561"
          "SKIP"
          "SKIP"
          "SKIP"

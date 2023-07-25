@@ -7,7 +7,7 @@ description='lzma compression utilities and library'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 source=("https://sourceware.org/pub/bzip2/bzip2-${version}.tar.gz"
-        'makefile.patch')
+        'bzip2.pc.in')
 md5sums=('67e051268d0c475ea773822f7500d0e5'
          'SKIP')
 group=(app.arch)
@@ -15,35 +15,27 @@ arch=(x86_64)
 cd $name-$version
 
 setup(){
-    mkdir -p $name-shared
-    cp *.c *.h $name-shared
-    cp Makefile-libbz2_so $name-shared/Makefile
-    cd $name-shared
-    patch -Np1 < ../../makefile.patch
+	# Generate relative symlinks
+	sed -i \
+		-e 's:\$(PREFIX)/man:\$(PREFIX)/share/man:g' \
+		-e 's:ln -s -f $(PREFIX)/bin/:ln -s :' \
+		Makefile
+
+	# fixup broken version stuff
+	sed -i \
+		-e "s:1\.0\.4:$version:" \
+		bzip2.1 bzip2.txt Makefile-libbz2_so manual.*
 }
 build(){
-    export CFLAGS="-Winline -D_FILE_OFFSET_BITS=64 ${CFLAGS}"
-    make -e -j$(nproc) bzip2recover libbz2.a
-    make -j$(nproc) -C $name-shared CFLAGS="-fpic -fPIC ${CFLAGS}"
+    make -f Makefile-libbz2_so all
+	make all
 }
 package(){
-    install -dm755 ${DESTDIR}/usr/{bin,lib64/bzip2,include,share/man/man1}
-
-    install -m755 $name-shared/bzip2-shared "${DESTDIR}"/usr/bin/bzip2
-    install -m755 bzip2recover bzdiff bzgrep bzmore "${DESTDIR}"/usr/bin
-    ln -sf bzip2 "${DESTDIR}"/usr/bin/bunzip2
-    ln -sf bzip2 "${DESTDIR}"/usr/bin/bzcat
-
-    install -m755 libbz2.a "${DESTDIR}"/usr/lib64
-    install -m755 $name-shared/libbz2.so.${version} "${DESTDIR}"/usr/lib64/
-    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so
-    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1
-    ln -s libbz2.so.$version "${DESTDIR}"/usr/lib64/libbz2.so.1.0
-
-    install -m644 bzlib.h "${DESTDIR}"/usr/include/
-
-    install -m644 bzip2.1 "${DESTDIR}"/usr/share/man/man1/
-    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bunzip2.1
-    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzcat.1
-    ln -sf bzip2.1 "${DESTDIR}"/usr/share/man/man1/bzip2recover.1
+    make PREFIX="$DESTDIR"/usr install
+	install -D libbz2.so.$version "$DESTDIR"/usr/lib/libbz2.so.$version
+	ln -s libbz2.so.$version "$DESTDIR"/usr/lib/libbz2.so
+	ln -s libbz2.so.$version "$DESTDIR"/usr/lib/libbz2.so.${version%%.*}
+	mkdir -p "$DESTDIR"/usr/lib/pkgconfig/
+    sed "s|@VERSION@|$version|" ../bzip2.pc.in \
+		> "$DESTDIR"/usr/lib/pkgconfig/bzip2.pc
 }
