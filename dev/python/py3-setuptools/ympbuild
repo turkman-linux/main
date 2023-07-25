@@ -7,15 +7,25 @@ description='Easily download, build, install, upgrade, and uninstall Python pack
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/pypa/setuptools/archive/refs/tags/v${version}.tar.gz")
+source=("https://pypi.io/packages/source/s/setuptools/setuptools-$version.tar.gz")
 depends=(python)
 makedepends=( )
-md5sums=('56a2ae897108941b6236a46b0eff6f43')
+md5sums=('c5e4ff6557d99204464aa300c0bad7d4')
 uses=()
 group=(dev.python)
 arch=('x86_64')
 
+export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
+
 cd setuptools-$version
+
+prepare(){
+    # Fix post-release tag
+	  sed -e '/tag_build = .post/d' \
+  	    -e '/tag_date = 1/d' \
+	      -i setup.cfg
+}
+
 
 build(){
     python3 setup.py build

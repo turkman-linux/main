@@ -19,14 +19,10 @@ cd wheel-$version
 
 prepare(){
   rm -r src/wheel/vendored
-  sed -i 's/from .vendored.packaging.requirements import Requirement/from packaging.requirements import Requirement/' src/wheel/metadata.py
-  sed -i 's/from .vendored.packaging import tags/from packaging import tags/' src/wheel/bdist_wheel.py
-  sed -i 's/from .vendored.packaging import version as _packaging_version/from packaging import version as _packaging_version/' src/wheel/bdist_wheel.py
-  sed -i 's/from wheel.vendored.packaging import tags/from packaging import tags/' tests/test_bdist_wheel.py
 }
 
 build(){
-    python3 -m build --wheel --no-isolation
+    python3 -m build
 }
 
 package(){

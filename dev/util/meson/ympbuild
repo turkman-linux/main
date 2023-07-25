@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='meson'
 release='2'
-version='1.1.1'
+version='1.2.0'
 url='https://github.com/mesonbuild/meson'
 description='High productivity build system'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/mesonbuild/meson/releases/download/$version/meson-$version.tar.gz")
 depends=(python py3-setuptools)
 makedepends=( )
-md5sums=('0f810b31b26156989ac9321fa2063a04')
+md5sums=('677616183f2c5e03e2139b06280129a0')
 uses=()
 group=(dev.util)
 arch=('x86_64')
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 build(){
-    python -m build --wheel --no-isolation
+    python3 -m build
 }
 
 package(){
