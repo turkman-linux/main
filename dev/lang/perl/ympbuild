@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='perl'
-release='1'
-version='5.36.0'
+release='2'
+version='5.38.0'
 url='https://www.cpan.org/src/'
 description='A highly capable, feature-rich programming language'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://www.cpan.org/src/5.0/perl-$version.tar.gz")
 depends=(gdbm libxcrypt libnsl)
 makedepends=( )
-md5sums=('68a2683bb79979c26ec57876abb7f303')
+md5sums=('06934f18763474c1e3c9312c158f5d0e')
 uses=()
 group=(dev.lang)
 arch=('x86_64')

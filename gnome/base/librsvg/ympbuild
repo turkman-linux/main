@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 name='librsvg'
-release='1'
-version='2.40.20'
+release='2'
+version='2.56.3'
 url='https://github.com/oaken-source/librsvg-og'
 description='Scalable Vector Graphics (SVG) rendering library '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
+#source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
+source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
 depends=(libcroco gobject-introspection pango cairo fontconfig libX11 libXext libXrender libxcb gdk-pixbuf)
 makedepends=()
-md5sums=('f5b9737a91d377a3eb47ab898dba681a')
+md5sums=('8055142a6c9d0d21d42e40bc08dff814')
 group=(gnome.base)
 uses=()
 arch=('x86_64')
 
-cd $name-og-$version
+cd $name-$version
 
 setup(){
-    autoreconf -fvi
+    #autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }
