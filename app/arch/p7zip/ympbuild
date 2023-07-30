@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='p7zip'
-release='1'
-version='17.04'
+release='2'
+version='17.05'
 url='https://github.com/jinfeihan57/p7zip'
 description='Command-line file archiver with high compression ratio'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://github.com/flyfishzy/p7zip/archive/refs/tags/v$version.zip")
+#source=("https://github.com/flyfishzy/p7zip/archive/refs/tags/v$version.zip")
+source=("https://github.com/p7zip-project/p7zip/archive/refs/tags/v${version}.tar.gz")
 depends=(gcc)
 makedepends=()
-md5sums=('5f362f28d7f8b75d89f86065b3dba520')
+md5sums=('de921a08f37242a8eed8e4a758fbcb58')
 uses=()
 arch=('x86_64')
 group=(app.arch)
