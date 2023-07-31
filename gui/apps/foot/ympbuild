@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://codeberg.org/dnkl/foot/archive/$version.tar.gz")
-depends=(wayland)
+depends=(wayland fontconfig ncurses pixman)
 makedepends=()
 md5sums=('a0fc6e3e0fb1f3b10edb2887779aeae7')
 group=(gui.apps)
@@ -28,5 +28,7 @@ build(){
 
 package(){
     ninja -C build install
+    rm -f $DESTDIR/usr/share/terminfo/f/foot-direct
+    rm -f $DESTDIR/usr/share/terminfo/f/foot
 }
 
