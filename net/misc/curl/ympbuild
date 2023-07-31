@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='curl'
-release='2'
-version='8.1.1'
+release='3'
+version='8.2.1'
 url='https://github.com/curl/curl'
 description='An URL retrieval utility and library'
-email=' parduscix@yandex.ru'
-maintainer=' sulincix'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
 license=('MIT')
 source=("https://curl.se/download/curl-$version.zip")
 depends=(zlib openssl libnghttp2 libpsl)
 makedepends=( )
-md5sums=('60c61a90060d8b4357c4e9bff050234b')
+md5sums=('be8159231246fda5b115effe20ea50e2')
 arch=('x86_64')
 group=(net.misc)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='seatd'
-release='1'
-version='0.7.0'
+release='2'
+version='0.8.0'
 url='https://sr.ht/~kennylevinsen/seatd'
 description='Minimal seat management daemon and universal library'
 email='bayramk@gmail.com'
@@ -11,7 +11,7 @@ source=("https://github.com/kennylevinsen/seatd/archive/refs/tags/$version.tar.g
         "seatd.initd")
 depends=()
 makedepends=()
-md5sums=('922b8a4ca4dfdb1f43a294db9e77bcf7'
+md5sums=('7c687ded0fa4db2352a8c9a6b41abca7'
          'SKIP')
 group=(sys.auth)
 uses=()
