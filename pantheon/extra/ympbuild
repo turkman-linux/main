@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='elementary-appcenter'
+release='1'
+version='7.3.0'
+url='https://github.com/elementary/appcenter'
+description='App store for elementary OS'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/elementary/appcenter/archive/refs/tags/$version.tar.gz")
+depends=(granite libhandy flatpak appstream polkit)
+makedepends=()
+md5sums=('d884edab05d907128331ed0b54762cb5')
+group=(pantheon.extra)
+uses=()
+arch=('x86_64')
+
+cd appcenter-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dpackagekit_backend=false \
+        -Dubuntu_drivers_backend=false
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
