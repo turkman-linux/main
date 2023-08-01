@@ -21,6 +21,8 @@ setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -Dqt=false \
+        -Dvapi=true \
+        -Dapt-support=false \
         -Dstemming=false \
         -Dsystemd=false
 }
