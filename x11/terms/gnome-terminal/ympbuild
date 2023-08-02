@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='gnome-terminal'
+release='1'
+version='3.48.1'
+url='https://wiki.gnome.org/Apps/Terminal'
+description='GNOME terminal emulator application'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/${version}/gnome-terminal-${version}.tar.gz"
+"gnome-terminal-daemon"
+"gnome-terminal-daemon.desktop")
+depends=( dconf gsettings-desktop-schemas itstool libpcre2 vte3)
+makedepends=()
+md5sums=('1ad71a29e933ed3cc0e0c06e270d4542' 'SKIP' 'SKIP')
+group=(x11.terms)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		-Dnautilus_extension=false \
+		-Dsearch_provider=false
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    DESTDIR=${DESTDIR} ninja -C build install $jobs
+}
+
