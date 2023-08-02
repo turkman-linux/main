@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='xdg-desktop-portal-gtk'
+release='1'
+version='1.14.1'
+url='https://github.com/flatpak/xdg-desktop-portal-gtk'
+description='A backend implementation for xdg-desktop-portal using GTK'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/flatpak/xdg-desktop-portal-gtk/archive/refs/tags/$version.tar.gz")
+depends=(gsettings-desktop-schemas gtk3 xdg-desktop-portal)
+makedepends=()
+md5sums=('3dbc553b205470a6eabfd62eb83bc76b')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+         --libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+
