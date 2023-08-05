@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='glibmm'
+release='1'
+version='2.66.6'
+url='https://www.gtkmm.org'
+description=' 	C++ bindings for GLib'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.gnome.org/sources/glibmm/${version%.*}/glibmm-${version}.tar.xz")
+depends=(glib)
+makedepends=()
+md5sums=('6defa41dd789059e57b0b417c36c004f')
+group=(dev.cpp)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+ --libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    DESTDIR=${DESTDIR} ninja -C build install $jobs
+}
+
+
