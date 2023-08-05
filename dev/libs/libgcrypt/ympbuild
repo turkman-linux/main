@@ -24,7 +24,6 @@ setup(){
     autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
-        --disable-static \
         --disable-padlock-support
 }
 

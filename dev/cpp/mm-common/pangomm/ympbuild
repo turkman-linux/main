@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='pangomm'
+release='1'
+version='2.46.3'
+url='https://www.gtkmm.org/'
+description='C++ bindings for Pango'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.gnome.org/sources/pangomm/${version%.*}/pangomm-${version}.tar.xz")
+depends=()
+makedepends=()
+md5sums=('7af783bb04de766fafaaad26c9ed475a')
+group=(dev.cpp)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+		--libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    DESTDIR=${DESTDIR} ninja -C build install $jobs
+}
+

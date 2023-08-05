@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='lightdm-gtk-greeter'
+release='1'
+version='2.0.8'
+url='https://github.com/Xubuntu/lightdm-gtk-greeter'
+description='Gtk based greeter for lightdm.'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/Xubuntu/lightdm-gtk-greeter/archive/refs/tags/lightdm-gtk-greeter-${version}.tar.gz")
+depends=(gtk3 lightdm)
+makedepends=(exo gobject-introspection intltool)
+md5sums=('c664b5de0a737d0c05748a06d589bee4')
+group=(x11.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$name-$version
+
+setup () {
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--sbindir=/usr/bin \
+		--with-libxklavier \
+		--enable-kill-on-sigterm \
+		--disable-libido \
+		--disable-libindicator
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="${DESTDIR}" install $jobs
+}
+
