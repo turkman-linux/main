@@ -7,15 +7,15 @@ description='Documentation system for C++, C, Java, IDL and PHP'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://doxygen.nl/files/doxygen-${version}.src.tar.gz")
-depends=(cmake)
-makedepends=()
-md5sums=('95008edf2d84aeefb7c65a6a4857dc2c')
+source=("https://github.com/doxygen/doxygen/archive/refs/tags/Release_${version//./_}.tar.gz")
+depends=()
+makedepends=(cmake)
+md5sums=('c273eeeecaff4902007bd66169c249ca')
 group=(app.doc)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd $name-Release_${version//./_}
 
 setup () {
 	cmake -B build -G Ninja \

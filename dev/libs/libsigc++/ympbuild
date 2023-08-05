@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libsigc++'
+release='1'
+version='3.4.0'
+url='https://example.org'
+description='Typesafe callback system for standard C++'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/libsigcplusplus/libsigcplusplus/archive/refs/tags/$version.tar.gz")
+depends=(gcc)
+makedepends=()
+md5sums=('4fbe910401267fff4784f535ff859be1')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd libsigcplusplus-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+     --libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+

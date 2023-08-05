@@ -3,12 +3,12 @@ name='glibmm'
 release='1'
 version='2.66.6'
 url='https://www.gtkmm.org'
-description=' 	C++ bindings for GLib'
+description='C++ bindings for GLib'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.gnome.org/sources/glibmm/${version%.*}/glibmm-${version}.tar.xz")
-depends=(glib)
+depends=(glib libsigc++2)
 makedepends=()
 md5sums=('6defa41dd789059e57b0b417c36c004f')
 group=(dev.cpp)
@@ -16,10 +16,15 @@ uses=()
 arch=('x86_64')
 
 cd $name-$version
+export PATH=$HOME:$PATH
+
+prepare () {
+    ln -s /bin/true $HOME/dot
+}
 
 setup () {
     meson setup build --prefix=/usr \
- --libdir=/usr/lib64/
+        --libdir=/usr/lib64/
 }
 
 build () {

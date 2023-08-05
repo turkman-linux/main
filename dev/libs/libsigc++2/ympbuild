@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libsigc++2'
+release='1'
+version='2.12.0'
+url='https://example.org'
+description='Typesafe callback system for standard C++'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.gnome.org/sources/libsigc++/${version%.*}/libsigc++-$version.tar.xz")
+depends=(gcc)
+makedepends=()
+md5sums=('943b7aef5d74fbc4f4a3bb67bcfaae02')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd libsigc++-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+     --libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
