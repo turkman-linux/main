@@ -8,16 +8,24 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/${version}/gnome-terminal-${version}.tar.gz"
+"00-ignore-language-check.patch"
 "gnome-terminal-daemon"
 "gnome-terminal-daemon.desktop")
 depends=( dconf gsettings-desktop-schemas itstool libpcre2 vte3)
 makedepends=()
-md5sums=('1ad71a29e933ed3cc0e0c06e270d4542' 'SKIP' 'SKIP')
+md5sums=('1ad71a29e933ed3cc0e0c06e270d4542'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 group=(x11.terms)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+
+prepare (){
+    patch -Np1 -i ../00-ignore-language-check.patch
+}
 
 setup () {
     meson setup build --prefix=/usr \

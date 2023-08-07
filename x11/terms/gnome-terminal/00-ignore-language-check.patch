@@ -1,0 +1,25 @@
+diff --git a/src/server.cc b/src/server.cc
+index 2493f969..c503671c 100644
+--- a/src/server.cc
++++ b/src/server.cc
+@@ -145,20 +145,11 @@ init_server (int argc,
+     return _EXIT_FAILURE_WRONG_ID;
+   }
+ 
+-  if (setlocale (LC_ALL, "") == nullptr) {
+-    g_printerr ("Locale not supported.\n");
+-    return _EXIT_FAILURE_UNSUPPORTED_LOCALE;
+-  }
+-
+   terminal_i18n_init (TRUE);
+ 
+   g_unsetenv ("CHARSET");
+   g_unsetenv ("OUTPUT_CHARSET");
+   const char *charset;
+-  if (!g_get_charset (&charset)) {
+-    g_printerr ("Non UTF-8 locale (%s) is not supported!\n", charset);
+-    return _EXIT_FAILURE_NO_UTF8;
+-  }
+ 
+   /* Sanitise environment */
+   g_unsetenv ("DBUS_STARTER_BUS_TYPE");
