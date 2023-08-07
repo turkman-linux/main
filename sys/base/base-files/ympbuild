@@ -1,7 +1,7 @@
 #!/bin/bash
 name=base-files
-release=1
-version=1
+release=2
+version=2
 url='https://gitlab.com/turkman/devel/sources/base-files'
 description='Base system files'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
         "base-files.sysconf"
         "os-release")
-md5sums=('e1e41fe1398a3d97ef087289cfff7e78'
+md5sums=('913b9fcbea19309e947336007c6e3a21'
          'SKIP'
          'SKIP')
 arch=(x86_64)

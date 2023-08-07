@@ -1,6 +1,6 @@
 NAME=Turkman
-ID=bozkurt
-ID_LIKE=bozkurt
+ID=turkish
+ID_LIKE=turkish
 BUILD_ID=rolling
 PRETTY_NAME="Turkman GNU/Linux"
 ANSI_COLOR="5;31"
