@@ -11,7 +11,7 @@ source=("https://github.com/ncopa/xfce-polkit/releases/download/v${version}/xfce
 depends=(polkit libxfce4ui)
 makedepends=()
 md5sums=('2c0d6fd64ec4c57abbb079e396c0bd1c')
-group=(sys.auth)
+group=(xfce.extra)
 uses=()
 arch=('x86_64')
 
@@ -23,8 +23,7 @@ setup () {
 		--build=$CBUILD \
 		--host=$CHOST \
 		--sysconfdir=/etc \
-		--mandir=/usr/share/man \
-		--libexecdir=/usr/lib/xfce4
+		--mandir=/usr/share/man
 }
 
 build () {
