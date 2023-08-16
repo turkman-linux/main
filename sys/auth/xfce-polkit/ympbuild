@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='xfce-polkit'
+release='1'
+version='0.3'
+url='https://github.com/ncopa/xfce-polkit'
+description='A simple PolicyKit authentication agent for XFCE'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://github.com/ncopa/xfce-polkit/releases/download/v${version}/xfce-polkit-${version}.tar.gz")
+depends=(polkit libxfce4ui)
+makedepends=()
+md5sums=('2c0d6fd64ec4c57abbb079e396c0bd1c')
+group=(sys.auth)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--libexecdir=/usr/lib/xfce4
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
