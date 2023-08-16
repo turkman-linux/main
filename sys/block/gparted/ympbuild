@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='gparted'
+release='1'
+version='1.5.0'
+url='https://gparted.sourceforge.net/'
+description='Graphical partition editor for creating, reorganizing, and deleting disk partitions'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://downloads.sourceforge.net/project/gparted/gparted/gparted-${version}/gparted-${version}.tar.gz")
+depends=(parted gtkmm3)
+makedepends=(intltool itstool pkgconf yelp-tools polkit)
+md5sums=('9adbd4b1cbcb7a7c76dcc0e9ffed9a7c')
+group=(sys.block)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--disable-doc
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
