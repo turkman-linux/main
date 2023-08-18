@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-sphinx'
-release='1'
-version='7.0.1'
+release='2'
+version='7.2.2'
 url='https://www.sphinx-doc.org/'
 description='Python Documentation Generator'
 email='akarsu@protonmail.com'
@@ -9,8 +9,8 @@ maintainer='akarsu'
 license=('BSD-2-Clause')
 source=("https://github.com/sphinx-doc/sphinx/archive/refs/tags/v${version}.tar.gz")
 depends=(python py3-babel py3-docutils py3-imagesize py3-jinja py3-packaging py3-pygments py3-requests py3-snowballstemmer)
-makedepends=(py3-build py3-flit py3-installer)
-md5sums=('1bb87f2b84b2fd3401fff53cc9681209')
+makedepends=(py3-build py3-flit-core py3-installer)
+md5sums=('3885dc10736988363f398b51992d9118')
 group=(dev.python)
 uses=()
 arch=('x86_64')
