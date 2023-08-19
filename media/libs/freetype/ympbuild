@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='freetype'
-release='1'
-version='2.9.1'
+release='2'
+version='2.13.1'
 url='https://download.savannah.gnu.org/releases/freetype/'
 description='Package freetype'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.savannah.gnu.org/releases/freetype/freetype-$version.tar.gz")
 depends=(zlib bzip2 glib libpng)
 makedepends=()
-md5sums=('3adb0e35d3c100c456357345ccfa8056')
+md5sums=('ea70022407b00debe025681f974835ad')
 group=(media.libs)
 uses=(harfbuzz)
 harfbuzz_depends=(harfbuzz)
