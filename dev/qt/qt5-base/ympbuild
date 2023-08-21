@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+name='qt5-base'
+release='1'
+version='5.15.10'
+url='https://git.alpinelinux.org/aports/tree/community/qt5-qtbase'
+description='Cross-platform application development framework'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.qt.io/official_releases/qt/5.15/5.15.10/submodules/qtbase-everywhere-opensource-src-5.15.10.tar.xz")
+depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl)
+makedepends=()
+md5sums=('3658b0b72d71470a0fb673483909caef')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+dontstrip="31"
+
+cd qtbase-everywhere-src-$version
+
+setup () {
+    ./configure                                      \
+         -confirm-license                            \
+         -opensource                                 \
+         -prefix /usr                                \
+         -archdatadir    /usr/lib/qt5                \
+         -bindir         /usr/bin/qt5                \
+         -plugindir      /usr/lib/qt5/plugins        \
+         -importdir      /usr/lib/qt5/imports        \
+         -headerdir      /usr/include/qt5            \
+         -datadir        /usr/share/qt5              \
+         -docdir         /usr/share/doc/qt5          \
+         -translationdir /usr/share/qt5/translations \
+         -examplesdir    /usr/share/doc/qt5/examples \
+         -sysconfdir /etc/xdg                        \
+         -dbus-linked                                \
+         -openssl-linked                             \
+         -system-harfbuzz                            \
+         -system-sqlite                              \
+         -nomake examples                            \
+         -no-rpath                                   \
+         -syslog
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install  INSTALL_ROOT=$DESTDIR $jobs
+}
+
