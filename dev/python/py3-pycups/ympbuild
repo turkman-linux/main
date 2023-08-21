@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='py3-pycups'
+release='1'
+version='2.0.1'
+url='https://github.com/OpenPrinting/pycups'
+description='Python bindings for cups'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/OpenPrinting/pycups/archive/refs/tags/v$version.tar.gz")
+depends=(python cups)
+makedepends=()
+md5sums=('0d36ad4c8f8c3e3b29527f65abfcb758')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd pycups-$version
+
+build () {
+    python3 setup.py build
+}
+
+package () {
+    python3 setup.py install --root="${DESTDIR}" --optimize=1
+}
+
