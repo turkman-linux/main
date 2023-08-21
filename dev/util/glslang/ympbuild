@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='glslang'
-release='2'
-version='12.1.0'
+release='3'
+version='12.3.1'
 url='https://github.com/KhronosGroup/glslang'
 description='OpenGL and OpenGL ES shader front end and validator'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/KhronosGroup/glslang/archive/refs/tags/$version.tar.gz")
 depends=(gcc)
 makedepends=()
-md5sums=('218e2dd3ab422fca3a99ba6ca517c84c')
+md5sums=('0d453bdb40e79948bd05aa3910fdec56')
 group=(dev.util)
 uses=()
 arch=('x86_64')
