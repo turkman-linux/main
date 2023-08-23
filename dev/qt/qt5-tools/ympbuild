@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='qt5-tools'
+release='1'
+version='5.15.10'
+url='https://download.qt.io/official_releases/qt/'
+description='A cross-platform application and UI framework'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.qt.io/official_releases/qt/5.15/$version/submodules/qttools-everywhere-opensource-src-$version.tar.xz")
+depends=(qt5-base)
+makedepends=(vulkan-headers)
+md5sums=('ba4c2bf4da7146121c1d9368e1566ce7')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd qttools-everywhere-src-$version
+
+export PATH=$PATH:/usr/bin/qt5
+
+setup () {
+    qmake
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install INSTALL_ROOT=$DESTDIR $jobs
+}
+
