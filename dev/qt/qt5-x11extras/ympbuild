@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='qt5-x11extras'
+release='1'
+version='5.15.10'
+url='https://download.qt.io/archive/qt'
+description='Provides platform-specific APIs for X11'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/5.15/$version/submodules/qtx11extras-everywhere-opensource-src-$version.tar.xz")
+depends=(qt5-base)
+makedepends=()
+md5sums=('0ab639d031ce3da501f07764f69df8ad')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd qtx11extras-everywhere-src-$version
+export PATH=$PATH:/usr/bin/qt5
+
+setup () {
+    qmake
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make INSTALL_ROOT=$DESTDIR install $jobs
+}
+
