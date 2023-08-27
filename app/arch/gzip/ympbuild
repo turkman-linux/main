@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gzip'
-release='1'
-version='1.12'
+release='2'
+version='1.13'
 url='https://ftp.gnu.org/gnu/gzip'
 description='Standard GNU compressor'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/gzip/gzip-$version.zip")
 depends=()
 makedepends=()
-md5sums=('a8a12bb7efcdc73af08a584a0bcf8f3f')
+md5sums=('fdfa4ccc111f0de54a947fe041f2119a')
 uses=()
 group=(app.arch)
 arch=('x86_64')

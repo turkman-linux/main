@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ell'
-release='2'
-version='0.57'
+release='3'
+version='0.58'
 url='https://01.org/ell'
 description='Embedded Linux library'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2.1')
 source=(https://mirrors.edge.kernel.org/pub/linux/libs/$name/$name-$version.tar.{xz,sign})
 depends=()
 makedepends=()
-md5sums=('7ec5975ae506431b2bec40371931dd31' '44177e69a7044febaadbe545b2e0947b')
+md5sums=('d6dc4b910101de38168c847fb1efefa2' 'f1c05b3e08ac542b23f02bc706b83508')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

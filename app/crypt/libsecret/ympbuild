@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libsecret'
-release='1'
-version='0.20.5'
+release='2'
+version='0.21.0'
 url='https://gitlab.gnome.org/GNOME/libsecret'
 description='GObject library for accessing the freedesktop.org Secret Service API'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/libsecret/-/archive/$version/libsecret-$version.tar.gz")
 depends=(libgcrypt)
 makedepends=()
-md5sums=('fd9adb133117ce3969cc78fbe0da8ca0')
+md5sums=('8caa0c78c6f92b35b712906ba4f2ad0b')
 group=(app.crypt)
 uses=()
 arch=('x86_64')
