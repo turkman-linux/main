@@ -18,18 +18,19 @@ arch=('x86_64')
 cd $name-$version"+16.04.20160218"
 
 setup () {
-cmake -B build -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-	    -DCMAKE_INSTALL_LIBDIR=lib \
+    cmake -B build \
+       -DWITH_DOC=OFF \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+	    -DCMAKE_INSTALL_LIBDIR=lib64 \
 	    -DCMAKE_BUILD_TYPE=None \
 	    -DUSE_QT5=ON
 }
 
 build () {
-    cmake --build build
+    make -C build
 }
 
 package () {
-    DESTDIR="$DESTDIR" cmake --install build
+    make -C build install
 }
 

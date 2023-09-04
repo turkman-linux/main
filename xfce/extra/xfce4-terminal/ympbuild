@@ -11,7 +11,7 @@ source=("https://archive.xfce.org/src/apps/xfce4-terminal/${version%.*}/xfce4-te
 depends=(libxfce4ui vte3)
 makedepends=(intltool)
 md5sums=('ee9177be31c6e4ccc6a6f293158358e4')
-group=(x11.terms)
+group=(xfce.extra)
 uses=()
 arch=('x86_64')
 
@@ -19,11 +19,10 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/ \
-		--sysconfdir=/etc \
-    	--libexecdir=/usr/lib/xfce4 \
-		--localstatedir=/var \
-		--disable-debug 
+      --libdir=/usr/lib64/ \
+      --sysconfdir=/etc \
+    	--libexecdir=/usr/libexec \
+		  --localstatedir=/var
 }
 
 build(){
