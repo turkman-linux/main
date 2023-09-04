@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 name='gmp'
-release='1'
-version='6.2.1'
+release='2'
+version='6.3.0'
 url='https://gmplib.org'
 description='Library for arbitrary-precision arithmetic on different type of numbers'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 license=('GPLv2' 'LGPLv3')
 source=("https://gmplib.org/download/gmp/gmp-${version}.tar.xz")
-md5sums=('0b82665c4a92fd2ade7440c13fcaa42b')
+md5sums=('956dc04e864001a9c22429f761f2c283')
 arch=('x86_64')
 group=(dev.libs)
 uses=(cxx)

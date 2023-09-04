@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='plasma-wayland-protocols'
+release='1'
+version='1.10.0'
+url='https://www.kde.org/plasma-desktop/'
+description='Plasma Specific Protocols for Wayland'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-${version}.tar.xz")
+depends=()
+makedepends=(qt5-base extra-cmake-modules)
+md5sums=('28ae1490011ff205cbf8d99be6dd124f')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr \
+			-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+    cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

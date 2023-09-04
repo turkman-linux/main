@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
 name='xfce4-terminal'
-release='1'
-version='1.0.4'
-_version='1.0'
+release='2'
+version='1.1.0'
 url='https://docs.xfce.org/apps/terminal/start'
 description='A modern terminal emulator primarily for the Xfce desktop environment'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
-source=("https://archive.xfce.org/src/apps/xfce4-terminal/${_version}/xfce4-terminal-${version}.tar.bz2")
+source=("https://archive.xfce.org/src/apps/xfce4-terminal/${version%.*}/xfce4-terminal-${version}.tar.bz2")
 depends=(libxfce4ui vte3)
 makedepends=(intltool)
-md5sums=('c025d9d99c1e8489469e5d4f2b994600')
-group=(xfce.extra)
+md5sums=('ee9177be31c6e4ccc6a6f293158358e4')
+group=(x11.terms)
 uses=()
 arch=('x86_64')
 
@@ -22,7 +21,7 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
-	  --libexecdir=/usr/libexec \
+    	--libexecdir=/usr/lib/xfce4 \
 		--localstatedir=/var \
 		--disable-debug 
 }
