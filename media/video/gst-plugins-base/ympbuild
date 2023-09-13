@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gst-plugins-base'
-release='1'
-version='1.18.6'
+release='2'
+version='1.19.2'
 url='https://gitlab.freedesktop.org/gstreamer'
 description='GStreamer plugins and helper libraries'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/archive/$version/gst-plugins-base-$version.tar.gz")
 depends=(gstreamer)
 makedepends=()
-md5sums=('848c60f921e07464538f0aff82c0bc7d')
+md5sums=('206be0da46ed9b2aef4e4be6ed2925e9')
 group=(media.video)
 uses=()
 arch=('x86_64')
