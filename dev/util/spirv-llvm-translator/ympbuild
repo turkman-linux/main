@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 name='spirv-llvm-translator'
-release='1'
-version='15.0.0'
+release='2'
+version='16.0.0'
 url='https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
 description='Bi-directional translator between SPIR-V and LLVM IR'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v$version/SPIRV-LLVM-Translator-$version.tar.gz")
+#source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v$version/SPIRV-LLVM-Translator-$version.tar.gz")
+_commit="322fca5d9c59bfdb80562a52ace51cdbe2a60e92"
+source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/${_commit}.zip")
 depends=(spirv-tools llvm)
 makedepends=()
-md5sums=('19e3ee2fb84754602ec754c594b20a1d')
+md5sums=('bd23f9249cea9a33f7ad507bdb3683b3')
 group=(dev.util)
 uses=()
 arch=('x86_64')
 
 cd SPIRV-LLVM-Translator-$version
+cd SPIRV-LLVM-Translator-${_commit}
 
 setup(){
     mkdir build && cd build

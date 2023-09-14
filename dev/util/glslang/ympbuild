@@ -16,6 +16,7 @@ uses=()
 arch=('x86_64')
 
 cd $name-$version
+export CXXFLAGS+=" -ffat-lto-objects"
 
 setup(){
     cmake \
