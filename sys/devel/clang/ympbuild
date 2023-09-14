@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='clang'
-release='1'
-version='15.0.7'
+release='2'
+version='16.0.6'
 url='https://github.com/llvm/llvm-project'
 description='The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.'
 email='aliriza.keskin@pardus.org.tr'
@@ -17,10 +17,10 @@ source=(
 depends=(llvm)
 makedepends=()
 md5sums=(
-    'a6d0141e50b48f5e60c682277dac83b4'
-    '68b76dd37b263aca3a5132b5f8c23f80'
-    'c77db4c71e1eb267358204dffe2c6e10'
-    '5be9535f0b93cb6232d0171a8abb3137'
+    '70053a666251fdcabc466ea4a0275972'
+    '775a93a7b168101f544dbfed23ac4aaa'
+    '7d986cda69719a35bd5ecb266fcf1f65'
+    'b7830bb90e376c90a43c2c190a0a5ffa'
 )
 group=(sys.devel)
 uses=()
