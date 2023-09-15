@@ -9,6 +9,7 @@ maintainer='sulincix'
 license=('GPLv3')
 arch=(x86_64)
 group=(sys.base)
+makedepends=(musl)
 source=("https://busybox.net/downloads/busybox-$version.tar.bz2"
         "files/busybox.sysconf"
         "files/busybox.initramfs"
@@ -24,9 +25,13 @@ md5sums=("0fc591bc9f4e365dfd9ade0014f32561"
          "SKIP"
 )
 
+export PATH=$PATH:/usr/bin/core_perl
 cd $name-$version
 
 prepare(){
+    for tool in ar strip ; do
+        ln -s /usr/bin/$tool ../musl-$tool
+    done
     patch -Np1 -i ../data-user.patch
 }
 
@@ -34,6 +39,8 @@ setup(){
     make defconfig
     sed -i "s|.*CONFIG_STATIC_LIBGCC .*|CONFIG_STATIC_LIBGCC=y|" .config
     sed -i "s|.*CONFIG_STATIC .*|CONFIG_STATIC=y|" .config
+    echo 'CONFIG_CROSS_COMPILER_PREFIX="musl-"' >> .config
+
 }
 
 build(){
