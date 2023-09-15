@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-cairo'
-release='1'
-version='1.23.0'
+release='2'
+version='1.24.0'
 url='https://github.com/pygobject/pycairo/'
 description='Python bindings for the cairo library'
 email='bayramk@gmail.com'
@@ -11,15 +11,12 @@ source=("https://github.com/pygobject/pycairo/archive/refs/tags/v$version.tar.gz
 pyver=$(python -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
 depends=(python"$pyver" cairo)
 makedepends=()
-md5sums=('af0dc8346c2bdee368343f1dc32616ca')
+md5sums=('61c40e73fccbed41cc89e35afc4c9ddb')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
 cd pycairo-$version
-
-
-
 
 build(){
     python3 setup.py build

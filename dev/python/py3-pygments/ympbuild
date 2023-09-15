@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-pygments'
-release='2'
-version='2.15.1'
+release='3'
+version='2.16.1'
 url='https://pypi.org/project/Pygments'
 description='Pygments is a syntax highlighting package written in Python.'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pygments/pygments/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=()
-md5sums=('8f3575093e63ffaf2c9b605e35f3286d')
+md5sums=('f5c45d41dff1a7510c9c4f42c47ddd61')
 group=(dev.python)
 uses=()
 arch=('x86_64')
