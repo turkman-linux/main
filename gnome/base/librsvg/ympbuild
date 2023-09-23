@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 name='librsvg'
-release='2'
-version='2.56.3'
-#url='https://github.com/oaken-source/librsvg-og'
-url='https://download.gnome.org/sources/librsvg'
+release='3'
+version='2.57.0'
+url='https://github.com/oaken-source/librsvg-og'
 description='Scalable Vector Graphics (SVG) rendering library '
 email='bayramk@gmail.com'
 maintainer='bk'
@@ -11,8 +10,8 @@ license=('GPLv3')
 #source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
 source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
 depends=(libcroco gobject-introspection pango cairo fontconfig libX11 libXext libXrender libxcb gdk-pixbuf)
-makedepends=(rust)
-md5sums=('8055142a6c9d0d21d42e40bc08dff814')
+makedepends=()
+md5sums=('8b700dd04c10bf65dbc6824d2780561d')
 group=(gnome.base)
 uses=()
 arch=('x86_64')

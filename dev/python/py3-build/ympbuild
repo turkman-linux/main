@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-build'
-release='1'
-version='0.10.0'
+release='2'
+version='1.0.1'
 url='https://github.com/pypa/build/'
 description='Easily download, build, install, upgrade, and uninstall Python packages'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pypa/build/archive/refs/tags/$version.tar.gz")
 depends=(python py3-wheel)
 makedepends=( )
-md5sums=('1b219467065a5ac8fad9546c93a6332f')
+md5sums=('d6230170909b380ee0dc1f77f96b3635')
 uses=()
 group=(dev.python)
 arch=('x86_64')
