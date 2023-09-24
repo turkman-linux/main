@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='at-spi2-core'
-release='2'
-version='2.48.0'
+release='3'
+version='2.50.0'
 url='https://gitlab.gnome.org/GNOME/at-spi2-core'
 description='GTK+ & GNOME Accessibility Toolkit'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/at-spi2-core/-/archive/AT_SPI2_CORE_${version//./_}/at-spi2-core-AT_SPI2_CORE_${version//./_}.tar.gz")
 depends=(glib libffi libpcre2 libXtst)
 makedepends=()
-md5sums=('706cb3f079aa25ca295e7da5161abe06')
+md5sums=('53a9f4c5bc94fec2990b0ce6f1aa97eb')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

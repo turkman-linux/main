@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 name='cups'
-release='1'
-version='2.4.2'
+release='2'
+version='2.4.7'
 url='https://github.com/OpenPrinting/cups'
 description='The Common Unix Printing System '
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://github.com/OpenPrinting/cups/archive/refs/tags/v$version.tar.gz"
+source=("https://github.com/OpenPrinting/cups/releases/download/v${version}/cups-${version}-source.tar.gz"
         'cups.groups'
-        'cups.users')
+        'cups.users'
+		'cupsd.initd')
 depends=(openssl)
 makedepends=()
-md5sums=('2dc62207ba89ef43ba376e0066cad138'
+md5sums=('e0a5ddbf53dfad41da26fc1ef60b2256'
          'SKIP'
-         'SKIP')
+         'SKIP'
+		 'SKIP')
 group=(net.print)
 uses=()
 arch=('x86_64')
@@ -46,7 +48,8 @@ setup(){
 		--enable-libpaper \
 		--enable-ssl=yes \
 		--enable-gnutls \
-		--disable-launchd 
+		--disable-launchd \
+		--disable-systemd
 }
 
 build(){
@@ -58,5 +61,6 @@ package(){
     mkdir -p "$DESTDIR"/etc/{passwd,group,init}.d
     install ../cups.groups "$DESTDIR"/etc/group.d/cups
     install ../cups.users "$DESTDIR"/etc/passwd.d/cups
+	install ../cupsd.initd "$DESTDIR"/etc/init.d/cupsd
 }
 

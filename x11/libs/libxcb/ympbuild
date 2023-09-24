@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libxcb'
-release='1'
-version='1.15'
+release='2'
+version='1.16'
 url='https://xcb.freedesktop.org'
 description='X C-language Bindings library'
 email='kurth4cker@tutanota.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://www.x.org/releases/individual/lib/libxcb-$version.tar.xz")
 depends=(libXau libXdmcp xcb-proto)
 makedepends=(xorgproto util-macros python)
-md5sums=('39c0fc337e738ad6c908e7cce90957d0')
+md5sums=('c769f93c254263077df62404661b710d')
 uses=()
 arch=('x86_64')
 group=(x11.libs)

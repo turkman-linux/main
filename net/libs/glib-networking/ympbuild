@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='glib-networking'
-release='2'
-version='2.76.0'
+release='3'
+version='2.78.0'
 url='https://gitlab.gnome.org/GNOME/glib-networking.git/'
 description='Network-related giomodules for glib '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/glib-networking/-/archive/$version/glib-networking-$version.tar.gz")
 depends=(gsettings-desktop-schemas)
 makedepends=(gnutls)
-md5sums=('5b2fbc674ac207a8810cdd312aa0021d')
+md5sums=('73480ecffcfe2a8486fe20db9fb6daa3')
 group=(net.libs)
 uses=()
 arch=('x86_64')

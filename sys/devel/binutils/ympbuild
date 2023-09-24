@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='binutils'
-release='2'
-version='2.40'
+release='3'
+version='2.41'
 url='https://ftp.gnu.org/gnu/binutils/'
 description='A set of programs to assemble and manipulate binary and object files'
 email=' aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz")
 depends=(zlib)
 makedepends=( )
-md5sums=('007b59bd908a737c06e5a8d3d2c737eb')
+md5sums=('256d7e0ad998e423030c84483a7c1e30')
 arch=('x86_64')
 group=(sys.devel)
 uses=(multilib)

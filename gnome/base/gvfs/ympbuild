@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='gvfs'
-release='1'
-version='1.50.4'
-url='https://gitlab.gnome.org/GNOME/gvfs'
-description='Gnome Virtual FileSystem'
-email='aliriza.keskin@pardus.org.tr'
-maintainer='aliriza'
-license=('GPLv3')
-source=("https://gitlab.gnome.org/GNOME/gvfs/-/archive/$version/gvfs-$version.tar.gz")
-depends=(gcr polkit libsoup3 libgphoto2 libmtp libnfs udisks2 fuse)
+release='2'
+version='1.52.0'
+url='https://wiki.gnome.org/Projects/gvfs'
+description='Virtual filesystem implementation for GIO'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://gitlab.gnome.org/GNOME/gvfs/-/archive/${version}/gvfs-${version}.tar.gz")
+depends=(udisks2 libcdio-paranoia)
 makedepends=()
-md5sums=('9318356ad05f95eee0bc658b137aeb8c')
+md5sums=('5a3b313b2cf6838c8765a55008b7cc55')
 group=(gnome.base)
 uses=()
 arch=('x86_64')
@@ -19,17 +19,20 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        -Dudisks2=true \
-        -Ddnssd=false \
-        -Dafc=false \
-        -Dgoa=false \
-        -Dbluray=false \
-        -Dsmb=false \
-        -Dcdda=false \
-        -Dgoogle=false \
-        -Dsystemduserunitdir=no \
-        -Dtmpfilesdir=no \
-        -Dlogind=false
+        --libdir=/usr/lib64/ \
+		--buildtype=release \
+		-Dfuse=false        \
+		-Dgphoto2=false     \
+		-Dafc=false         \
+		-Dbluray=false      \
+		-Dnfs=false         \
+		-Dmtp=false         \
+		-Dsmb=false         \
+		-Dtmpfilesdir=no    \
+		-Ddnssd=false       \
+		-Dgoa=false         \
+		-Dgoogle=false      \
+		-Dsystemduserunitdir=no
 }
 
 build(){
