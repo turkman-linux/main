@@ -8,7 +8,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
 source=("https://github.com/gottcode/xfce4-whiskermenu-plugin/archive/refs/tags/v${version}.tar.gz")
-depends=(garcon xfce4-panel)
+depends=(garcon xfce4-panel accountsservice)
 makedepends=(cmake ninja)
 md5sums=('d692bf797efd901c35f9ae67688fad56')
 group=(xfce.extra)
@@ -22,7 +22,7 @@ setup(){
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DENABLE_GTK_LAYER_SHELL=OFF 
+		-DENABLE_GTK_LAYER_SHELL=OFF
 }
 
 build(){
