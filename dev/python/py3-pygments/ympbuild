@@ -18,7 +18,7 @@ arch=('x86_64')
 cd pygments-$version
 
 build(){
-    python -m build --wheel --no-isolation
+    python -m build --wheel
 }
 
 package(){
