@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-whiskermenu-plugin'
-release='1'
-version='2.7.3'
+release='2'
+version='2.8.0'
 url='https://gottcode.org/xfce4-whiskermenu-plugin/'
 description='Menu for Xfce4'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://github.com/gottcode/xfce4-whiskermenu-plugin/archive/refs/tags/v${version}.tar.gz")
 depends=(garcon xfce4-panel)
 makedepends=(cmake ninja)
-md5sums=('0f4ef8695e9f3f5491379088322ff919')
+md5sums=('d692bf797efd901c35f9ae67688fad56')
 group=(xfce.extra)
 uses=()
 arch=('x86_64')
@@ -22,14 +22,14 @@ setup(){
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-GNinja
+		-DENABLE_GTK_LAYER_SHELL=OFF 
 }
 
 build(){
-    ninja -C build
+    cmake --build build
 }
 
 package(){
-    DESTDIR="$DESTDIR" ninja -C build install
+     DESTDIR="${DESTDIR}" cmake --install build
 }
 

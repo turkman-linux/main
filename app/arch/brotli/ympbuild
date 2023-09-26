@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='brotli'
-release='1'
-version='1.0.9'
+release='2'
+version='1.1.0'
 url='https://github.com/google/brotli'
 description='Generic-purpose lossless compression algorithm'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,8 +10,8 @@ license=('GPLv3')
 source=("https://github.com/google/brotli/archive/refs/tags/v$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('c2274f0c7af8470ad514637c35bcee7d')
-group=()
+md5sums=('3a6a3dba82a3604792d3cb0bd41bca60')
+group=(app.arch)
 uses=()
 arch=('x86_64')
 

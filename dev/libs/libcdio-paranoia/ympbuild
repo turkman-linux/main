@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libcdio-paranoia'
+release='1'
+version='10.2+2.0.1'
+url='https://www.gnu.org/software/libcdio/'
+description='Compact Disc Digital Audio (CDDA) extraction tool using libcdio for CDROM access'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-${version}.tar.bz2")
+depends=()
+makedepends=()
+md5sums=('98332ca7b2a4fcabf5dec8a57cc98fe9')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+

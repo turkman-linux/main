@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 name='file'
-release='2'
-version='5.44'
+release='3'
+version='5.45'
 url='https://www.darwinsys.com/file/'
 description="Identify a file's format by scanning binary data for patterns"
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 source=("http://ftp.astron.com/pub/file/file-${version}.tar.gz")
-md5sums=('a60d586d49d015d842b9294864a89c7a')
+md5sums=('26b2a96d4e3a8938827a1e572afd527a')
 group=(sys.apps)
 
 uses=(bzip2 lzma zlib seccomp)

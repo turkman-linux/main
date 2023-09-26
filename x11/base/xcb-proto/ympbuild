@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xcb-proto'
-release='2'
-version='1.15.2'
+release='3'
+version='1.16.0'
 url='https://xcb.freedesktop.org/'
 description='X C-language Bindings protocol headers'
 email='kurth4cker@tutanota.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-${version}.tar.xz")
 depends=( )
 makedepends=(python libxml2)
-md5sums=('d2251b01927c2fbe92dc540f9536b430')
+md5sums=('92081b0faafd93f8262463c69829a482')
 uses=()
 arch=('x86_64')
 group=(x11.base)
