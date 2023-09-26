@@ -20,6 +20,7 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
+        --sysconfdir=/etc \
         --libdir=/usr/lib64/
 }
 
