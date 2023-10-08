@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+name='ghostscript'
+release='1'
+version='9.27'
+url='https://example.org'
+description='Package description missing'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=(
+    "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-$version.tar.xz"
+    "ghostscript-9.27-upstream_fixes-1.patch"
+    "https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz"
+    "https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz"
+)
+depends=()
+makedepends=()
+md5sums=(
+    'dd531503dbbc524f73528359e2ea145c'
+    'SKIP'
+    '6865682b095f8c4500c54b285ff05ef6'
+    '33457d3f37de7ef03d2eea05a9e6aa4f'
+)
+group=(app.text)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+        --disable-compile-inits \
+         --enable-dynamic
+}
+
+build () {
+    make so $jobs
+}
+
+package () {
+    make install $jobs
+    make soinstall $jobs
+    install -v -m644 base/*.h $DESTDIR/usr/include/ghostscript
+    ln -sfvn ghostscript $DESTDIR/usr/include/ps
+    install -v -m644 ../fonts/* $DESTDIR/usr/share/ghostscript
+}
+
