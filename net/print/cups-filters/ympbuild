@@ -9,7 +9,7 @@ maintainer='akarsu'
 license=('GPLv3')
 source=("https://www.openprinting.org/download/cups-filters/cups-filters-${version}.tar.xz"
 "cups-filters-1.28.16-security_fix-1.patch")
-depends=(cups)
+depends=(cups poppler)
 makedepends=()
 md5sums=('24bed15110499fd652d65d6baab85ca6' 'SKIP')
 group=(net.print)
@@ -30,13 +30,10 @@ setup () {
 		--libdir=/usr/lib64/ \
 		--disable-avahi \
 		--disable-mutool \
-		--build=$CBUILD \
-		--host=$CHOST \
 		--sysconfdir=/etc \
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--localstatedir=/var \
-		--with-pdftops=pdftops \
 		--with-shell=/bin/sh \
 		--without-rcdir \
 		--without-rclevels \
@@ -44,8 +41,8 @@ setup () {
 }
 
 build () {
-	make libcupsfilters.la
-	make libfontembed.la
+    make libcupsfilters.la
+    make libfontembed.la
     make $jobs
 }
 
