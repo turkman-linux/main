@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+name='cups-filters'
+release='1'
+version='1.28.16'
+url='https://wiki.linuxfoundation.org/openprinting/cups-filters'
+description='OpenPrinting CUPS filters and backends'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://www.openprinting.org/download/cups-filters/cups-filters-${version}.tar.xz"
+"cups-filters-1.28.16-security_fix-1.patch")
+depends=(cups)
+makedepends=()
+md5sums=('24bed15110499fd652d65d6baab85ca6' 'SKIP')
+group=(net.print)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+ 	patch -Np1 < ../cups-filters-${version}-security_fix-1.patch
+}
+
+
+setup () {
+	CXXFLAGS="$CXXFLAGS -flto=auto -std=c++17" \
+	#autoreconf -fvi
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--disable-avahi \
+		--disable-mutool \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--localstatedir=/var \
+		--with-pdftops=pdftops \
+		--with-shell=/bin/sh \
+		--without-rcdir \
+		--without-rclevels \
+		--with-test-font-path=/usr/share/fonts/dejavu/DejaVuSans.ttf
+}
+
+build () {
+	make libcupsfilters.la
+	make libfontembed.la
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR/" install $jobs
+}
+
