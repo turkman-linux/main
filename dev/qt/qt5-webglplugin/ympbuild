@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='qt5-webglplugin'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='QPA plugin for running an application via a browser using streamed WebGL commands'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwebglplugin-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base qt5-declarative)
+makedepends=()
+md5sums=('7e3c028e3dcf758ab2a05aa926e75100')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtwebglplugin-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}

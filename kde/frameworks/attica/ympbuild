@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='attica'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Qt library that implements the Open Collaboration Services API'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/attica-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules doxygen)
+md5sums=('360a188da38af8c79898eb7f5f35bbb8')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+    cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

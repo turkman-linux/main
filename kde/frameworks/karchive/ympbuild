@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='karchive'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Qt 5 addon providing access to numerous types of archives'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/karchive-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('76df3b37d0b2018a5cdf38488bf5d825')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

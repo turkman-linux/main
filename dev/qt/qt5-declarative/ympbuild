@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt5-declarative'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/developers/'
+description='Qt5 - QtDeclarative component'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtdeclarative-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(python vulkan-headers)
+md5sums=('788bc607fd0ccbe2b56623c6b017019b')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtdeclarative-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}
+
+

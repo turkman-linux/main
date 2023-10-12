@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='qt5-quickcontrols2'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='Next generation user interface controls based on Qt Quick'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtquickcontrols2-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base qt5-declarative qt5-graphicaleffects)
+makedepends=()
+md5sums=('3d9fd23d30203792a8af0314e8ca5348')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtquickcontrols2-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}

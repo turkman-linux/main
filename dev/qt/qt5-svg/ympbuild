@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='qt5-svg'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='Classes for displaying the contents of SVG files'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtsvg-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=()
+md5sums=('d77aa82f139312fd0071d8b77be62be2')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtsvg-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}

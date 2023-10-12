@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt5-quickcontrols'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='Reusable Qt Quick based UI controls to create classic desktop-style user interfaces'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtquickcontrols-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base qt5-declarative)
+makedepends=()
+md5sums=('579b5348806792b161004f6bca53d5b2')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtquickcontrols-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}
+
+
