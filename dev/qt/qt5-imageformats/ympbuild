@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='qt5-imageformats'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='Plugins for additional image formats: TIFF, MNG, TGA, WBMP'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtimageformats-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=()
+md5sums=('b6b979ff9bf20f055b1c1fe6d51209c7')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtimageformats-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}
+

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='kconfig'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Configuration system'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kconfig-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('1a1eb753d364e3b2dc2f2c6b4f6ffd31')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

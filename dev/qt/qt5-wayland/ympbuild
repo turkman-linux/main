@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='qt5-wayland'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/developers/'
+description='Provides APIs for Wayland'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwayland-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-declarative libXcomposite libxkbcommon qt5-quickcontrols2)
+makedepends=(vulkan-headers)
+md5sums=('de32005eba5f53d3bd2886ee14a39809')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtwayland-everywhere-src-"$version
+export PATH=/usr/bin/qt5:$PATH
+
+setup () {
+		qmake
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install $jobs
+}
+

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kcodecs'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Provide a collection of methods to manipulate strings using various encodings'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kcodecs-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('8d5b51b59c07572032d99fc4238a137e')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

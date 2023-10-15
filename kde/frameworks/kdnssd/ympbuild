@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='kdnssd'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Abstraction to system DNSSD features'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kdnssd-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('861fd4f343bba5b2514d6c82a5212919')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

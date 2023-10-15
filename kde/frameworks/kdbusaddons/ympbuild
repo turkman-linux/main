@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kdbusaddons'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Addons to QtDBus'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPLv3')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kdbusaddons-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('2c9138b30255bf7204ada1c4a9ed74da')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+

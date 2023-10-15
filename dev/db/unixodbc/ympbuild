@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='unixodbc'
+release='1'
+version='2.3.12'
+url='https://www.unixodbc.org'
+description='ODBC is an open specification to access Data Sources'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://www.unixodbc.org/unixODBC-${version}.tar.gz")
+depends=(readline libtool)
+makedepends=()
+md5sums=('d62167d85bcb459c200c0e4b5a63ee48')
+group=(dev.db)
+uses=()
+arch=('x86_64')
+
+cd "unixODBC"-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
