@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='qt5-webengine'
+release='1'
+version='5.15.10'
+url='https://doc.qt.io/QT-5/qtwebengine-index.html'
+description='Qt5 - QtWebEngine components'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL3' 'LGPL3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwebengine-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=()
+md5sums=('e0967e713f1ac8a60b0ce3db0bc840aa')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtwebengine-everywhere-src"-$version
+
+export PATH=/usr/bin/qt5:$PATH
+
+setup () {
+	qmake ./qtwebengine.pro  -- -system-ffmpeg -webengine-icu 
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install INSTALL_ROOT="$DESTDIR" $jobs
+}
+
