@@ -18,7 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 build () {
-    python -m build --wheel --skip-dependency-check --no-isolation
+    python -m build --wheel
 }
 
 package () {

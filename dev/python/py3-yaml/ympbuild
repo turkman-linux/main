@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='py3-yaml'
+release='1'
+version='6.0.1'
+url='https://github.com/yaml/pyyaml'
+description='Python3 bindings for YAML'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/yaml/pyyaml/archive/refs/tags/$version.tar.gz")
+depends=(libyaml python)
+makedepends=(py3-wheel py3-setuptools py3-build py3-installer)
+md5sums=('e1ceb8ac30446570c787678c1301ceed')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd pyyaml-$version
+
+
+build () {
+    python -m build --wheel --config-setting=--with-libyaml
+}
+
+package () {
+    python -m installer --destdir="$DESTDIR" dist/*.whl
+}
+

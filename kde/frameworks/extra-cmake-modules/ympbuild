@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='extra-cmake-modules'
-release='1'
-version='5.109.0'
+release='2'
+version='5.110.0'
 url='https://download.kde.org/stable/frameworks/'
 description='The Extra Cmake Modules package contains extra CMake modules used by KDE Frameworks 5 and other packages. '
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.kde.org/stable/frameworks/5.109/extra-cmake-modules-$version.zip")
+source=("https://download.kde.org/stable/frameworks/5.110/extra-cmake-modules-$version.zip")
 depends=(cmake)
 makedepends=()
-md5sums=('e50692d10f710dadd45536dd49246ca9')
+md5sums=('3c9fd4f6a00b3b8161b9d1d522e97cae')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
