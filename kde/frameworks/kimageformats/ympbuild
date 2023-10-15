@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='kimageformats'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Image format plugins for Qt5'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kimageformats-${version}.tar.xz")
+depends=(extra-cmake-modules openexr qt5-base)
+makedepends=(karchive libavif libheif libraw)
+md5sums=('860e3bc411ea8dca6bb90f1ad589cc17')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
+		-DKIMAGEFORMATS_HEIF=ON
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

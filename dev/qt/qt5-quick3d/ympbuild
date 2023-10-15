@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+name='qt5-quick3d'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/developers'
+description='Qt module and API for defining 3D content in Qt Quick'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=(GPLv3)
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtquick3d-everywhere-opensource-src-${version}.tar.xz"
+"qt5-quick3d-assimp-5.1.patch")
+depends=(qt5-base assimp)
+makedepends=(qt5-declarative)
+md5sums=('4fee5576384e91d9c0ada47d07b13d37' 'SKIP')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtquick3d-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+prepare() {
+	mkdir .git
+	patch -Np1 -i ../qt5-quick3d-assimp-5.1.patch
+	#patch -d quick3d -p1 < ../qt5-quick3d-assimp-5.1.patch # Fix build with assimp 5.1
+}
+
+setup() {
+	qmake qtquick3d.pro 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+	find "/usr/lib" -type f -name '*.prl' \
+		-exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+}
+
+

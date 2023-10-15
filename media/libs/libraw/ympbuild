@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libraw'
+release='1'
+version='0.21.1'
+url='https://www.libraw.org/'
+description='Library for reading RAW files obtained from digital photo cameras'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('DDL' 'LGPL')
+source=("https://www.libraw.org/data/LibRaw-${version}.tar.gz")
+depends=()
+makedepends=(lcms2)
+md5sums=('2942732de752f46baccd9c6d57823b7b')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd "LibRaw"-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ 
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+

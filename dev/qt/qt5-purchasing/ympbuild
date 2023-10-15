@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt5-purchasing'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='Qt In-App Purchasing API'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtpurchasing-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(qt5-declarative)
+md5sums=('a99f1cf791de9f5d38930e2e0dfbe4ec')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtpurchasing-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}
+
+

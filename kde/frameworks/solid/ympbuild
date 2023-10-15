@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='solid'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description=' Hardware integration and detection'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/solid-${version}.tar.xz")
+depends=(bison 	eudev flex qt5-tools udisks2 upower)
+makedepends=(doxygen extra-cmake-modules)
+md5sums=('35dd7220eeb18d7620bbe94a3ef0301c')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DBUILD_TESTING=OFF \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}

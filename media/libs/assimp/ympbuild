@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+name='assimp'
+release='1'
+version='5.3.1'
+url='https://www.assimp.org'
+description='Open Asset Import Library imports and exports 3D model formats'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://github.com/assimp/assimp/archive/v${version}/assimp-v${version}.tar.gz")
+depends=()
+makedepends=(cmake ninja)
+md5sums=('835357be3c1e70120fe2d5a52542ce55')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=MinSizeRel \
+			-DCMAKE_INSTALL_PREFIX=/usr \
+			-DCMAKE_INSTALL_LIBDIR=lib \
+			-DBUILD_SHARED_LIBS=True \
+			-DASSIMP_IGNORE_GIT_HASH=ON \
+			-DASSIMP_BUILD_ASSIMP_TOOLS=ON \
+			-DASSIMP_BUILD_TESTS="$(want_check && echo ON || echo OFF)" \
+			-DASSIMP_WARNINGS_AS_ERRORS=OFF \
+			-DASSIMP_BUILD_MINIZIP=True  # use vendored fork of minizip
+
+}
+
+build () {
+    	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

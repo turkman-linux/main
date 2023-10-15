@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='openexr'
+release='1'
+version='3.2.1'
+url='https://www.openexr.com'
+description='A high dynamic-range image file format library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD')
+source=("https://github.com/openexr/openexr/archive/v${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('1d5bb07433ec641cf3bb1b519a27ea6f')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib 
+
+}
+
+build () {
+    	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}

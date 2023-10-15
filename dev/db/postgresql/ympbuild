@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+name='postgresql'
+release='1'
+version='16.0'
+url='https://www.postgresql.org/'
+description='A sophisticated object-relational DBMS, version 16'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom:PostgreSQL')
+source=("https://ftp.postgresql.org/pub/source/v${version}/postgresql-${version}.tar.bz2")
+depends=()
+makedepends=()
+md5sums=('f5319191df114e2361d938687216cc9b')
+group=(dev.db)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib/ \
+		--datarootdir=/usr/share \
+		--datadir=/usr/share/postgresql \
+		--libdir=/usr/lib \
+		--sysconfdir=/etc/postgresql \
+		--disable-rpath \
+		--with-system-tzdata=/usr/share/zoneinfo \
+		--with-libxml \
+		--with-openssl \
+		--with-uuid=e2fs \
+		--with-icu \
+		--with-llvm \
+		--with-libxslt \
+		--with-lz4 \
+		--with-llvm \
+		--with-perl \
+		--with-python \
+		--with-tcl \
+		--with-lz4
+
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
