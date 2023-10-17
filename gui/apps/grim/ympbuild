@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='grim'
+release='1'
+version='1.4.1'
+url='https://git.sr.ht/~emersion/grim'
+description='Grabs images from Wayland compositors'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://git.sr.ht/~emersion/grim/archive/v$version.tar.gz")
+depends=(wayland libpng libjpeg-turbo)
+makedepends=(meson)
+md5sums=('41f163e0d386cf57581af28f02e3deaa')
+group=(gui.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-v$version
+
+setup () {
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
