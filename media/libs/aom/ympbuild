@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='aom'
+release='1'
+version='3.7.0'
+url='https://aomedia.org/'
+description='Alliance for Open Media (AOM) AV1 codec SDK (libraries)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD' 'custom')
+source=("https://storage.googleapis.com/aom-releases/libaom-${version}.tar.gz")
+depends=()
+makedepends=(cmake)
+md5sums=('26fd53c63898211c4f13ffab1e807617')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd "lib"$name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_SHARED_LIBS=True
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

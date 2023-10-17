@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt5-speech'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='Qt module to make text to speech and speech recognition easy'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtspeech-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base qt5-multimedia)
+makedepends=()
+md5sums=('c9bd467b90532c9f63cd1ea62aaa9dbe')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtspeech-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}
+
+

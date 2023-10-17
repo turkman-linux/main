@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='kplotting'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Lightweight plotting framework'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kplotting-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(qt5-declarative)
+md5sums=('8d014342611f0d2a50af3886b83f2e66')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
+
+}
+
+build () {
+    cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

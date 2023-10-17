@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='kitemviews'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Widget addons for Qt Model/View'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kitemviews-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('24d9c85916063a4983fad7e29829a5b9')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DBUILD_TESTING=OFF \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

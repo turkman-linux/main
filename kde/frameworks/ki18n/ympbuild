@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='ki18n'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Advanced internationalization framework'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/ki18n-${version}.tar.xz")
+depends=(qt5-base qt5-declarative)
+makedepends=(doxygen extra-cmake-modules python)
+md5sums=('4d24a7fb42585f27cf08d766f7b7d8d2')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_QCH=ON
+}
+
+build () {
+    cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

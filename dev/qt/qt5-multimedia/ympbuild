@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='qt5-multimedia'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/'
+description='Qt5 - Multimedia support'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtmultimedia-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base alsa-lib gst-plugins-base)
+makedepends=(qt5-declarative)
+md5sums=('fe334df0b5769dbe241f8eaac48a1e9b')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtmultimedia-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}

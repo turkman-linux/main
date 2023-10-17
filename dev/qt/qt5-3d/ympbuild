@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt5-3d'
+release='1'
+version='5.15.10'
+url='https://www.qt.io/developers'
+description='C++ and QML APIs for easy inclusion of 3D graphics'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qt3d-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base assimp)
+makedepends=(qt5-declarative vulkan-headers)
+md5sums=('1c87203af23f4f5b8175998652c0ac2e')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qt3d-everywhere-src-"${version}
+export PATH=/usr/bin/qt5:$PATH
+
+
+setup() {
+	qmake 
+}
+
+
+build () {
+    make
+}
+
+package () {
+    make INSTALL_ROOT="$DESTDIR" install
+}
+
+
