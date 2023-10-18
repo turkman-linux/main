@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/swaywm/sway/archive/refs/tags/$version.zip")
-depends=(wlroots json-c)
+depends=(wlroots json-c xorg-xwayland)
 makedepends=()
 md5sums=('eaf1d5929dc3587c7345d2b8fd362c0a')
 group=(gui.wm)
@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ -D werror=false
 }
 
 build(){
