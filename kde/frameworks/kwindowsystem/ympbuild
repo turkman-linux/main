@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='kwindowsystem'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Access to the windowing system'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kwindowsystem-${version}.tar.xz")
+depends=(qt5-x11extras)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('86ca92a17dcd11ce98d5114b879631f5')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+

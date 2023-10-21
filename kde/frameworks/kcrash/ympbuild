@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='kcrash'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Support for application crash analysis and bug report from apps'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kcrash-${version}.tar.xz")
+depends=(kcoreaddons)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('6b235b033f2456fc5141feee3eb6ef79')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

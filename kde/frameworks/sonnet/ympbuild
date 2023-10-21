@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='sonnet'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Spelling framework for Qt5'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/sonnet-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('c2cbf58fc160c6e003093c030797ac7c')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kjobwidgets'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Widgets for tracking KJob instances'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kjobwidgets-${version}.tar.xz")
+depends=(kcoreaddons kwidgetsaddons qt5-x11extras)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('a16be8295e6c78a9712b6801c9e01f44')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
