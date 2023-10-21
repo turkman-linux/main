@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kguiaddons'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Addons to QtGui'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kguiaddons-${version}.tar.xz")
+depends=(qt5-x11extras qt5-qtwayland)
+makedepends=(extra-cmake-modules clang doxygen qt5-tools plasma-wayland-protocols)
+md5sums=('3aefa6eb505baca45ddfdfc87564f0a9')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
