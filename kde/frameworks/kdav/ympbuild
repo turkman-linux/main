@@ -8,15 +8,12 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kdav-${version}.tar.xz")
-depends=(ki18n kcoreaddons)
+depends=(ki18n kcoreaddons kio)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
 md5sums=('4db999372c3658df2afeee727a4eb9c7')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
-
-#HATA :   Could NOT find KF5 (missing: KIO) (found suitable version "5.110.0",  minimum required is "5.110.0")
-
 
 cd $name-$version
 

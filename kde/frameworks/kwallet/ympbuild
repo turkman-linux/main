@@ -17,9 +17,6 @@ arch=('x86_64')
 
 cd $name-$version
 
-#HATA : Could not find a package configuration file provided by "KF5Notifications"  (requested version 5.110.0) with any of the following names:
-#   KF5NotificationsConfig.cmake kf5notifications-config.cmake
-
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \

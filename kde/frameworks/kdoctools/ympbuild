@@ -9,7 +9,7 @@ maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kdoctools-${version}.tar.xz")
 depends=(docbook-xml docbook-xsl karchive)
-makedepends=(karchive ki18n 	libxml2 libxslt qt5-base)
+makedepends=(karchive ki18n perl-uri libxml2 libxslt qt5-base)
 md5sums=('af0b00d93e1d87ae538db5ebe59f13b9')
 group=(kde.frameworks)
 uses=()
@@ -26,7 +26,7 @@ cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_QCH=ON \
-		-DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.79.2-nons
+		-DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.79.2
 }
 
 build () {
