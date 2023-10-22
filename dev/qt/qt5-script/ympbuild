@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='qt5-script'
+release='1'
+version='5.15.10'
+url='https://doc.qt.io/QT-5/qtwebengine-index.html'
+description='Qt5 - QtScript component'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL3' 'LGPL3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtscript-everywhere-opensource-src-${version}.tar.xz")
+depends=(qt5-base)
+makedepends=()
+md5sums=('6ba547076c9b4e5ca7cd2d7d210008ad')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtscript-everywhere-src"-$version
+
+#HATA : collect2: error: ld returned 1 exit status make[2]: *** [Makefile:674: ../../lib/libQt5Script.so.5.15.10] Error 1
+
+export PATH=/usr/bin/qt5:$PATH
+
+setup () {
+	qmake
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install INSTALL_ROOT="$DESTDIR" $jobs
+}

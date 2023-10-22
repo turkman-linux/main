@@ -7,26 +7,36 @@ description='Provides APIs for Wayland'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('FDL' 'GPL3' 'LGPL3' 'custom')
-source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwayland-everywhere-opensource-src-${version}.tar.xz")
+#source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwayland-everywhere-opensource-src-${version}.tar.xz")
+source=("https://dev.alpinelinux.org/archive/qt/qtwayland-3a8613b91d2239aebc73b43562f929aa71af0de5.tar.xz")
 depends=(qt5-declarative libXcomposite libxkbcommon qt5-quickcontrols2)
 makedepends=(vulkan-headers)
-md5sums=('de32005eba5f53d3bd2886ee14a39809')
+#md5sums=('de32005eba5f53d3bd2886ee14a39809')
+md5sums=('942ab9bd3e52bf34c5eeee9c09a2a20a')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
 
-cd "qtwayland-everywhere-src-"$version
+#cd "qtwayland-everywhere-src-"$version
+cd "qtwayland-3a8613b91d2239aebc73b43562f929aa71af0de5"
 export PATH=/usr/bin/qt5:$PATH
+
+prepare() {
+	mkdir .git
+}
 
 setup () {
 		qmake
 }
 
 build () {
-    make $jobs
+    make
 }
 
 package () {
-    make INSTALL_ROOT="$DESTDIR" install $jobs
+    make INSTALL_ROOT="$DESTDIR" install
+	# Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+	find "$DESTDIR/usr/lib" -type f -name '*.prl' \
+		-exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 }
 

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='networkmanager-qt'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Qt wrapper for NetworkManager API'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/networkmanager-qt-${version}.tar.xz")
+depends=(networkmanager qt5-base )
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('4de55327e1be7697776e81f895ce9d5c')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

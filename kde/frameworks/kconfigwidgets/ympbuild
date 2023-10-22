@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kconfigwidgets'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Widgets for KConfig'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kconfigwidgets-${version}.tar.xz")
+depends=(kauth kcodecs kconfig ki18n kwidgetsaddons kcoreaddons)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('7941697549bee28203c1c9d222938da3')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

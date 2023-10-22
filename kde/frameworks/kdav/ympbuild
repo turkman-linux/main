@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='kdav'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='A DAV protocol implemention with KJobs'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kdav-${version}.tar.xz")
+depends=(ki18n kcoreaddons)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('4db999372c3658df2afeee727a4eb9c7')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+#HATA :   Could NOT find KF5 (missing: KIO) (found suitable version "5.110.0",  minimum required is "5.110.0")
+
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON \
+		-DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.79.2-nons
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

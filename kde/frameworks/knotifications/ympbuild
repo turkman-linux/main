@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='knotifications'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Abstraction for system notifications'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/knotifications-${version}.tar.xz")
+depends=(libcanberra libdbusmenu-qt kwindowsystem kconfig kcoreaddons qt5-speech libXtst)
+makedepends=(extra-cmake-modules qt5-tools doxygen qt5-declarative)
+md5sums=('f6217c43deb241da273ce739d0c68b9a')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+#HATA : CMake Error at /usr/lib64/cmake/Qt5TextToSpeech/Qt5TextToSpeechConfig.cmake:26 (message):
+#  The imported target "Qt5::TextToSpeech" references the file
+
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='threadweaver'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='High-level multithreading framework'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/threadweaver-${version}.tar.xz")
+depends=(qt5-base qt5-declarative)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('4982a47ab2c8c3c539235f701db9b1ed')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
