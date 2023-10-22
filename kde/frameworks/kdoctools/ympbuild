@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='kdoctools'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Documentation generation from docbook'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kdoctools-${version}.tar.xz")
+depends=(docbook-xml docbook-xsl karchive)
+makedepends=(karchive ki18n 	libxml2 libxslt qt5-base)
+md5sums=('af0b00d93e1d87ae538db5ebe59f13b9')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+#HATA : CMake Error at /usr/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+#  Could NOT find PerlModules (missing: PerlModules_all_modules_found  URI::Escape)
+
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON \
+		-DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.79.2-nons
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+
