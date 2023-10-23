@@ -9,12 +9,11 @@ maintainer='sulincix'
 license=('LGPL2.1')
 source=("https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v${version}.zip")
 depends=()
-makedepends=()
+makedepends=(python)
 md5sums=('4332df17c41730e487ed3a45af958e7a')
 group=(sys.libs)
 uses=(python)
 uses_extra=()
-python_depends=(python)
 arch=('x86_64')
 
 cd $name-$version
