@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='cyrus-sasl'
+release='1'
+version='2.1.28'
+url='https://www.cyrusimap.org/sasl/'
+description='Cyrus Simple Authentication Service Layer (SASL)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom')
+source=("https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-${version}/cyrus-sasl-${version}.tar.gz"
+"saslauthd.initd")
+depends=()
+makedepends=(gdbm openssl py3-sphinx sqlite libtool)
+md5sums=('6f228a692516f5318a64505b46966cfa' 'SKIP')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+	install -Dm755 ../saslauthd.initd "$DESTDIR"/etc/init.d/saslauthd
+}
+
