@@ -1,24 +1,30 @@
 #!/usr/bin/env bash
 name='libblockdev'
-release='1'
-version='2.28'
+release='2'
+version='3.0.4'
 url='https://github.com/storaged-project/libblockdev'
 description='A library for manipulating block devices'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/storaged-project/libblockdev/releases/download/$version-1/libblockdev-$version.tar.gz")
-depends=(gawk parted kmod libyaml btrfs-progs dosfstools gptfdisk libbytesize ndctl xfsprogs lvm2 volume_key dmraid)
+depends=(gawk parted kmod libyaml btrfs-progs dosfstools gptfdisk
+         libbytesize ndctl xfsprogs lvm2 volume_key dmraid libnvme)
 makedepends=()
-md5sums=('6476e5967753ee03d8e65f4d7837a4b6')
+md5sums=('74eed189c000cb3b0194c73c425c418c')
 group=(sys.libs)
 uses=()
 arch=('x86_64')
 
+unset CFLAGS
+export CC=clang
+
 cd $name-$version
 setup(){
+    # FIXME: remove --without-xxx
     ./configure --prefix=/usr \
-        --sysconfdir=/etc 
+        --sysconfdir=/etc \
+        --without-fs
 }
 
 build(){

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kmod'
-release='1'
-version='30'
+release='2'
+version='31'
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 description='library and tools for managing linux kernel modules'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz")
-depends=()
+depends=(zlib xz-utils)
 makedepends=()
-md5sums=('85202f0740a75eb52f2163c776f9b564')
+md5sums=('6165867e1836d51795a11ea4762ff66a')
 group=(sys.apps)
 uses=()
 arch=('x86_64')

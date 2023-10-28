@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cmake'
-release='1'
-version='3.25.1'
+release='2'
+version='3.27.7'
 url='https://example.org'
 description='A cross-platform open-source make system'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version.tar.gz")
-depends=( )
+depends=()
 makedepends=( )
-md5sums=('521a03b1c36412463eda0348bebf4765')
+md5sums=('0f11cf15c7f2fa6234b9fc415c78029c')
 uses=()
 uses_extra=(qt)
 group=(dev.util)

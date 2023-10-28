@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='foot'
-release='3'
-version='1.15.1'
+release='4'
+version='1.16.2'
 url='https://codeberg.org/dnkl/foot'
 description='Fast, lightweight and minimalistic Wayland terminal emulator'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://codeberg.org/dnkl/foot/archive/$version.tar.gz")
 depends=(wayland fontconfig ncurses pixman)
 makedepends=()
-md5sums=('a0fc6e3e0fb1f3b10edb2887779aeae7')
+md5sums=('5e19001c74469c4951fbf425b84cdd23')
 group=(gui.apps)
 uses=()
 arch=('x86_64')

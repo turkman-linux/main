@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='json-c'
-release='1'
-version='0.16-20220414'
+release='2'
+version='0.17-20230812'
 url='https://github.com/json-c/json-c'
 description='A JSON implementation in C'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/json-c/json-c/archive/refs/tags/json-c-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('4f3288a5f14e0e6abe914213f41234e0')
+md5sums=('6d724389b0a08c519d9dd6e2fac7efb8')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

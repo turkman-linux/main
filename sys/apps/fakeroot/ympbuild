@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 name='fakeroot'
-release='1'
-version='1.30.1-1'
+release='2'
+version='1.32.1'
 url='https://salsa.debian.org/clint/fakeroot/-/tags'
 description='A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://salsa.debian.org/clint/fakeroot/-/archive/debian/$version/fakeroot-debian-$version.tar.gz")
-depends=(sed util-linux)
+source=("https://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_$version.orig.tar.gz")
+depends=(sed util-linux bash)
 makedepends=()
-md5sums=('840f91cde585b509f2b408df5e0a14fb')
+md5sums=('0e423c0362663c08837439bacf57d931')
 uses=()
 group=(sys.apps)
 arch=('x86_64')
 
-cd $name-debian-$version
+cd $name-$version
 
 setup(){
     autoreconf -fvi
@@ -26,11 +26,12 @@ setup(){
 
 build(){
     make
-    cd doc
-    po4a -k 0 --rm-backups --variable 'srcdir=../doc/' po4a/po4a.cfg
+    #cd doc
+    #po4a -k 0 --rm-backups --variable 'srcdir=../doc/' po4a/po4a.cfg
 }
 
 package(){
     make install
+
 }
 

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='json-glib'
-release='1'
-version='1.6.6'
+release='2'
+version='1.8.0'
 url='https://gitlab.gnome.org/GNOME/json-glib.git/'
 description='Library providing GLib serialization and deserialization for the JSON format'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/json-glib/-/archive/$version/json-glib-$version.tar.gz")
-depends=()
+depends=(glib)
 makedepends=()
-md5sums=('d8c50be019c50e61c61001feccd44269')
+md5sums=('ef92d15e08053de550424564f745c9d4')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
