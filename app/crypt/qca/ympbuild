@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qca'
+release='1'
+version='2.3.7'
+url='https://userbase.kde.org/QCA'
+description='Qt cryptographic architecture'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/qca/2.3.7/qca-${version}.tar.xz")
+depends=(make-ca which cyrus-sasl)
+makedepends=(cmake doxygen libgcrypt openssl qt5-base)
+md5sums=('0e50817de610e145c83ca012f79f18f5')
+group=(app.crypt)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+	cmake -B build-qt5 -G Ninja \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DWITH_cyrus-sasl_PLUGIN=yes \
+		-DQT6=OFF
+}
+
+build () {
+    cmake --build build-qt5
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build-qt5
+}
+

@@ -7,10 +7,11 @@ description='A daemon which implements the Point-to-Point Protocol for dial-up n
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.samba.org/pub/ppp/ppp-$version.tar.gz")
+source=("https://download.samba.org/pub/ppp/ppp-$version.tar.gz" 
+	"pppd.initd")
 depends=(libpcap openssl dbus libxcrypt)
 makedepends=()
-md5sums=('ce5fd7b9f6e1095ae6c0c11365c444eb')
+md5sums=('ce5fd7b9f6e1095ae6c0c11365c444eb' 'SKIP')
 group=(net.dialup)
 uses=()
 arch=('x86_64')
@@ -19,7 +20,8 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+		--disable-systemd
 }
 
 build(){
@@ -27,6 +29,6 @@ build(){
 }
 
 package(){
-    make install INSTROOT="$DESTDIR" DESTDIR="$DESTDIR/usr" $jobs
+    make DESTDIR="$DESTDIR" install $jobs
+	install -D -m755 "../pppd.initd" $DESTDIR"/etc/init.d/pppd"
 }
-
