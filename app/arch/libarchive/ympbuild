@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 name=libarchive
-version=3.7.0 
-release=2
+version=3.7.2
+release=3
 url='https://www.libarchive.org'
 description='Multi-format archive and compression library'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 source=("https://www.libarchive.org/downloads/libarchive-${version}.tar.xz"
         'fix-mount-h-conflict.patch')
-md5sums=('d76b6f541c6c36d2485c921b78a18432'
+md5sums=('4f4ef6a17c7b0b484aa2c95aa6deefac'
          'SKIP')
 license=('BSD')
 group=(app.arch)
