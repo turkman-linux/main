@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='strace'
+release='1'
+version='6.6'
+url='https://gitlab.com/strace/strace'
+description='strace is a diagnostic, debugging and instructional userspace utility for Linux'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/strace/strace/releases/download/v$version/strace-$version.tar.xz")
+depends=(perl libunwind)
+makedepends=()
+md5sums=('e1e791635e89113a78e889bfe070c111')
+group=(sys.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --with-libunwind --enable-mpers=no
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+
