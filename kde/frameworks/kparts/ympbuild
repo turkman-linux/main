@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kparts'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Document centric plugin system'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kparts-${version}.tar.xz")
+depends=(kconfig kcoreaddons ki18n kio kwidgetsaddons kxmlgui qt5-base)
+makedepends=(doxygen extra-cmake-modules qt5-tools)
+md5sums=('c5e9c8d779447bae8087ab96787675a0')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

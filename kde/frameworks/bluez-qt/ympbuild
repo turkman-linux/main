@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='bluez-qt'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Qt wrapper for Bluez 5 DBus API'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/bluez-qt-${version}.tar.xz")
+depends=(qt5-base bluez)
+makedepends=(extra-cmake-modules doxygen qt5-tools qt5-declarative)
+md5sums=('1b77baae26e80102e9188f910eb18758')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

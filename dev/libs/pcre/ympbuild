@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='pcre'
+release='1'
+version='8.45'
+url='https://www.pcre.org'
+description='Perl-compatible regular expression library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('BSD-3-Clause')
+source=("https://downloads.sourceforge.net/project/pcre/pcre/${version}/pcre-${version}.tar.bz2")
+depends=(readline zlib bzip2)
+makedepends=()
+md5sums=('4452288e6a0eefb2ab11d36010a1eebb')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--enable-unicode-properties \
+		--enable-pcre16 \
+		--enable-pcre32 \
+		--enable-jit \
+		--enable-pcregrep-libz \
+		--enable-pcregrep-libbz2 \
+		--enable-pcretest-libreadline
+
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+

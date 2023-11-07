@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='knewstuff'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Support for downloading application assets from the network'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/knewstuff-${version}.tar.xz")
+depends=(kio kpackage attica syndication)
+makedepends=(extra-cmake-modules doxygen qt5-tools qt5-declarative)
+md5sums=('629f3c69cb637a05a41b8b0157b54088')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+

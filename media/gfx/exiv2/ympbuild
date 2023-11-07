@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='exiv2'
+release='1'
+version='0.28.0'
+url='https://exiv2.org'
+description='A library for extracting file metadata'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://github.com/Exiv2/exiv2/archive/refs/tags/v${version}/exiv2-v${version}.tar.gz")
+depends=(expat zlib)
+makedepends=(cmake ninja)
+md5sums=('0d8d2ab50eb73228f8d1ffa36561bf53')
+group=(media.gfx)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DEXIV2_ENABLE_VIDEO=ON \
+		-DEXIV2_BUILD_SAMPLES=OFF \
+		-DEXIV2_ENABLE_BMFF=ON \
+		-DEXIV2_ENABLE_BROTLI=OFF \
+		-DEXIV2_ENABLE_INIH=OFF
+}
+
+build () {
+	ninja -C build
+}
+
+package () {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

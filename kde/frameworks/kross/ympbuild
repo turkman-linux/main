@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='kross'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Framework for scripting KDE applications'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/portingAids/kross-${version}.tar.xz")
+depends=(kcompletion kcoreaddons ki18n kiconthemes kio kparts kwidgetsaddons kxmlgui qt5-base)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('f6dda12d6d867ed92e989870638e353d')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+

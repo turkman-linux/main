@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kinit'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Process launcher to speed up launching KDE applications'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kinit-${version}.tar.xz")
+depends=(kio)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('e10c5ff50ec59a430e47163f65689bba')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

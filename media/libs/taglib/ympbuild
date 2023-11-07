@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='taglib'
+release='1'
+version='1.13.1'
+url='https://taglib.github.io/'
+description='A Library for reading and editing the meta-data of several popular audio formats'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL' 'MPL')
+source=("https://taglib.github.io/releases/taglib-${version}.tar.gz")
+depends=(zlib)
+makedepends=(cmake)
+md5sums=('2fe6089da73ad414aa1b982b83415362')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=MinSizeRel \
+		-DWITH_ZLIB=ON \
+		-DBUILD_SHARED_LIBS=ON \
+		-DBUILD_EXAMPLES=ON \
+		-DVISIBILITY_HIDDEN=ON
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}
+

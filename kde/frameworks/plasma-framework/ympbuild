@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='plasma-framework'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Plasma library and runtime components based upon KF5 and Qt5'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/plasma-framework-${version}.tar.xz")
+depends=(kactivities kwayland kirigami2)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
+md5sums=('1544487d2081496e746dd17d9225a5b0')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
