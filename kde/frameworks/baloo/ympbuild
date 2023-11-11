@@ -20,7 +20,7 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib 
+		-DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build () {
@@ -29,4 +29,11 @@ build () {
 
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
+    # remove autostart file (it is bloat)
+    rm -f $DESTDIR/etc/xdg/autostart/baloo_file.desktop
+    # fix symlinks
+    rm -f $DESTDIR/usr/bin/baloo_file
+    rm -f $DESTDIR/usr/bin/baloo_file_extractor
+    ln -s ../lib/libexec/baloo_file $DESTDIR/usr/bin/baloo_file
+    ln -s ../lib/libexec/baloo_file_extractor $DESTDIR/usr/bin/baloo_file_extractor
 }

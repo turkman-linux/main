@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
 name='ffmpeg'
-release='1'
-version='6.0'
+release='2'
+version='6.0.1'
 url='https://ffmpeg.org/'
 description='A complete, cross-platform solution to record, convert and stream audio and video.'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/multimedia-team/ffmpeg/-/archive/upstream/$version/ffmpeg-upstream-$version.tar.gz")
-depends=(gnutls libaom libass dav1d libjxl libdrm lcms2 lame opus libopenmpt libpulse libplacebo gnutls librist libsrt libtheora v4l-utils vidstab libvpx libwebp x264 x265 xvidcore zimg zeromq)
-makedepends=()
-md5sums=('333b7ce677e42082c36e08d23e56acbe')
+source=("https://ffmpeg.org/releases/ffmpeg-$version.tar.xz")
+depends=(gnutls libaom libass dav1d libjxl libdrm lcms2 lame opus libopenmpt libpulse
+         gnutls librist libsrt libtheora v4l-utils vidstab libvpx libwebp x264 x265 xvidcore zimg zeromq)
+makedepends=(nasm)
+md5sums=('ce0e7f8abc6b72bb345d1b854760236d')
 group=()
 uses=()
 arch=('x86_64')
 
-cd $name-upstream-$version
+cd $name-$version
 
 setup(){
   ./configure --prefix=/usr \
-    --disable-x86asm \
     --disable-librtmp \
 		--disable-lzma \
 		--disable-stripping \
@@ -36,7 +36,6 @@ setup(){
 		--enable-libjxl \
 		--enable-libmp3lame \
 		--enable-libopus \
-		--enable-libplacebo \
 		--enable-libpulse \
 		--enable-librist \
 		--enable-libsoxr \
