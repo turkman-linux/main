@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kpeople'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='A library that provides access to all contacts and the people who hold them'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kpeople-${version}.tar.xz")
+depends=(kcoreaddons ki18n kwidgetsaddons kitemviews)
+makedepends=(extra-cmake-modules doxygen qt5-tools qt5-declarative)
+md5sums=('662c9cf8c7c2e1cdeae54935c563b15f')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='qqc2-desktop-style'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='A style for Qt Quick Controls 2 to make it follow your desktop theme'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/qqc2-desktop-style-${version}.tar.xz")
+depends=(kirigami2 kiconthemes sonnet)
+makedepends=(extra-cmake-modules)
+md5sums=('e09a44d46d88cf227505d329bcb2d1f5')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

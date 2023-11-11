@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='kcalc'
+release='1'
+version='23.08.2'
+url='https://kde.org/applications/utilities/org.kde.kcalc'
+description='Scientific Calculator'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL' 'LGPL' 'FDL')
+source=(https://download.kde.org/stable/release-service/${version}/src/${name}-${version}.tar.xz{,.sig})
+depends=(mpfr kxmlgui knotifications)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('8ac8a45eca1b02899d18a81a2effca66' 'SKIP')
+group=(kde.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+	cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+
+    DESTDIR="$DESTDIR" cmake --install build
+	rm -f $DESTDIR/usr/share/kglobalaccel/org.kde.kcalc.desktop
+	ln -s ../applications/org.kde.kcalc.desktop $DESTDIR/usr/share/kglobalaccel/org.kde.kcalc.desktop
+}

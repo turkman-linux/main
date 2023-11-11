@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='boost'
+release='1'
+version='1.83.0'
+_version='1_83_0'
+url='https://www.boost.org/'
+description='Free peer-reviewed portable C++ source libraries (development headers)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom')
+source=("https://boostorg.jfrog.io/artifactory/main/release/${version}/source/boost_${_version}.tar.bz2")
+depends=(which)
+makedepends=()
+md5sums=('406f0b870182b4eb17a23a9d8fce967d')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name"_"$_version
+
+prepare(){
+	sed -i '/#include.*phoenix.*tuple.hpp.*/d' boost/phoenix/stl.hpp
+}
+
+build () {
+	./bootstrap.sh --prefix=/usr --with-python=python3
+	./b2 stage -j4 threading=multi link=shared
+}
+
+package () {
+	./b2 --includedir="$DESTDIR"/usr/include \
+		--libdir="$DESTDIR"/usr/lib \
+		install
+}

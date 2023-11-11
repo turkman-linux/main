@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='oxygen-icons'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Oxygen icon theme'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/oxygen-icons5-${version}.tar.xz")
+depends=()
+makedepends=(extra-cmake-modules qt5-base)
+md5sums=('b97964da1be0a97c559e69707e610c2f')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name"5"-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

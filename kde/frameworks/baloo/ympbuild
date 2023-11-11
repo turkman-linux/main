@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='baloo'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='A framework for searching and managing metadata'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/baloo-${version}.tar.xz")
+depends=(kfilemetadata kidletime kio lmdb)
+makedepends=(extra-cmake-modules kdoctools doxygen qt5-tools qt5-declarative)
+md5sums=('4a3d426eb826f9e20eb9b56f9d5427b3')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

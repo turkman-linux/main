@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kcalendarcore'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='The KDE calendar access library'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kcalendarcore-${version}.tar.xz")
+depends=(libical qt5-base)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('35bf98dc87b399e517c147557d9472c1')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
