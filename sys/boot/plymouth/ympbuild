@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+name='plymouth'
+release='1'
+version='22.02.122'
+url='https://www.freedesktop.org/wiki/Software/Plymouth/'
+description='Graphical boot splash screen'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://gitlab.freedesktop.org/plymouth/plymouth/-/archive/${version}/plymouth-${version}.tar.gz"
+"plymouth.initcpio_hook"
+"plymouth.initcpio_install"
+)
+#source=("https://www.freedesktop.org/software/plymouth/releases/plymouth-${version}.tar.xz")
+depends=(cairo cantarell-fonts libdrm libpng pango)
+makedepends=(gtk3 docbook-xsl)
+md5sums=('a468a1178eacdd2f83818b5c3e113b73' 'SKIP' 'SKIP')
+group=(sys.boot)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--localstatedir=/var \
+		--with-system-root-install \
+		--disable-systemd-integration
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+
+	rm -f "$DESTDIR"/usr/lib/plymouth/*.la
+
+	# Install mkinitcpio hook
+	install -Dm644 ../plymouth.initcpio_hook "$DESTDIR/usr/lib/initcpio/hooks/$name"
+	install -Dm644 ../plymouth.initcpio_install "$DESTDIR/usr/lib/initcpio/install/$name"
+	
+	rm -f $DESTDIR/usr/share/plymouth/themes/spinfinity/header-image.png
+	#ln -s ../../plymouth/bizcom.png $DESTDIR/usr/share/plymouth/themes/spinfinity/header-image.png
+}
+

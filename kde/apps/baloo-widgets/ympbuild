@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='baloo-widgets'
+release='1'
+version='23.08.2'
+url='https://www.kde.org/'
+description='Widgets for Baloo'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/release-service/${version}/src/baloo-widgets-${version}.tar.xz")
+depends=(baloo)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('1d093f638e4c685f546d885b8aaa1491')
+group=(kde.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

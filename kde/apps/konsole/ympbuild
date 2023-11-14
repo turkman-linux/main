@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='konsole'
+release='1'
+version='23.08.2'
+url='https://kde.org/applications/system/konsole'
+description="KDE's terminal emulator"
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL' 'GPL' 'FDL')
+source=("https://download.kde.org/stable/release-service/${version}/src/konsole-${version}.tar.xz")
+depends=(kpty kparts knewstuff)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('5cd9724bc52d0a9c99035d3693452bcd')
+group=(kde.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DENABLE_PLUGIN_SSHMANAGER=ON \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
