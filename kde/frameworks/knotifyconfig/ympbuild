@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='knotifyconfig'
+release='1'
+version='5.110.0'
+url='https://community.kde.org/Frameworks'
+description='Core components for the KDE s Activities'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/knotifyconfig-${version}.tar.xz")
+depends=(kio)
+makedepends=(extra-cmake-modules doxygen qt5-tools)
+md5sums=('2dc9cf6f8fce1d287eb336e958493f29')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+

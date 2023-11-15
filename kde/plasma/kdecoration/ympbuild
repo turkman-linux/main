@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kdecoration'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='Plugin based library to create window decorations'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/kdecoration-${version}.tar.xz")
+depends=(ki18n)
+makedepends=(extra-cmake-modules kcoreaddons)
+md5sums=('382ea37b4c5e2599a3bfcc2a1ac3279b')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

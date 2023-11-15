@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='kuserfeedback'
+release='1'
+version='1.3.0'
+url='https://kde.org/products/frameworks/'
+description='Framework for collecting user feedback for applications via telemetry and surveys'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=(https://download.kde.org/stable/kuserfeedback/kuserfeedback-${version}.tar.xz{,.sig})
+depends=(qt5-base)
+makedepends=(clang extra-cmake-modules qt5-declarative qt5-svg qt5-tools)
+md5sums=('d5e787de6cf0001f23133694dbffd96f' 'SKIP')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+	#CXXFLAGS += -Wno-deprecated-copy
+	cmake -B build -G Ninja \
+			-DCMAKE_INSTALL_PREFIX=/usr \
+			-DCMAKE_INSTALL_LIBDIR=lib \
+			-DBUILD_TESTING=OFF 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

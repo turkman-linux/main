@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='layer-shell-qt'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/layer-shell-qt-${version}.tar.xz")
+depends=(qt5-wayland)
+makedepends=(extra-cmake-modules wayland-protocols)
+md5sums=('8d746089d2fa97a87e76e4b5c820971d')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

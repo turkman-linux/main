@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='extra-cmake-modules'
-release='3'
-version='5.111.0'
-url='https://download.kde.org/stable/frameworks/'
-description='The Extra Cmake Modules package contains extra CMake modules used by KDE Frameworks 5 and other packages. '
-email='aliriza.keskin@pardus.org.tr'
-maintainer='aliriza'
-license=('GPLv3')
-source=("https://download.kde.org/stable/frameworks/5.111/extra-cmake-modules-$version.zip")
+release='2'
+version='5.112.0'
+url='https://community.kde.org/Frameworks'
+description='Extra modules and scripts for CMake'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/extra-cmake-modules-${version}.tar.xz")
 depends=(cmake)
 makedepends=()
-md5sums=('3cad7f0fa78803ef9e21da876bc01f5e')
+md5sums=('40fa6d3c54ce18dccec1dac4ee23d7d6')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -18,19 +18,21 @@ arch=('x86_64')
 cd $name-$version
 
 setup () {
-    mkdir build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_HTML_DOCS=OFF \
+    #mkdir build && cd build
+    cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DSphinx_BUILD_EXECUTABLE=/usr/bin/sphinx-build \
+        -DBUILD_HTML_DOCS=ON \
         -DBUILD_MAN_DOCS=OFF \
-        -DBUILD_QTHELP_DOCS=OFF \
-         ..
+        -DBUILD_QTHELP_DOCS=ON
 }
 
 build () {
-    make -C build $jobs
+    cmake --build build
 }
 
 package () {
-    make -C build install $jobs
+    DESTDIR="$DESTDIR" cmake --install build
 }
+
 

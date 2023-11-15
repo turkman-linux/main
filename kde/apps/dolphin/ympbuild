@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='dolphin'
+release='1'
+version='23.08.3'
+url='https://apps.kde.org/dolphin/'
+description='KDE File Manager'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('LGPL')
+source=("https://download.kde.org/stable/release-service/${version}/src/dolphin-${version}.tar.xz")
+depends=(baloo-widgets knewstuff kcmutils kparts kactivities kuserfeedback)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('82a60a035cae093a499df3a6bfb5f405')
+group=(kde.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+	rm -r "$DESTDIR"/usr/lib/systemd
+
+	rm -f $DESTDIR/usr/share/kglobalaccel/org.kde.dolphin.desktop
+	ln -s ../applications/org.kde.dolphin.desktop $DESTDIR/usr/share/kglobalaccel/org.kde.dolphin.desktop
+
+}

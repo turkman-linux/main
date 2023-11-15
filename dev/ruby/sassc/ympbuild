@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='sassc'
+release='1'
+version='3.6.2'
+url='https://github.com/sass/sassc'
+description='Libsass command line driver'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/sass/sassc/archive/refs/tags/${version}.tar.gz")
+depends=()
+makedepends=(libsass)
+md5sums=('4c3b06ce2979f2a9f0a35093e501d8bb')
+group=(dev.ruby)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+	autoreconf -fvi
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+

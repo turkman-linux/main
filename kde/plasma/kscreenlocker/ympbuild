@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+name='kscreenlocker'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='Library and components for secure lock screen architecture'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/kscreenlocker-${version}.tar.xz"
+"kde.pam"
+"kde-np.pam"
+"0001-Prevent-finishing-greeter-by-unhandled-signals.patch")
+depends=(layer-shell-qt kidletime kdeclarative libkscreen perl)
+makedepends=(extra-cmake-modules kdoctools kcmutils libXcursor)
+md5sums=('a7cce889af2d79290bcb1b1499630536' 'SKIP' 'SKIP' 'SKIP')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+	patch -Np1 -i ../0001-Prevent-finishing-greeter-by-unhandled-signals.patch
+
+}
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+
+	install -D -m644 ../kde.pam "$DESTDIR"/etc/pam.d/kde
+	install -m644 ../kde-np.pam "$DESTDIR"/etc/pam.d/kde-np
+}
