@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-distro'
+release='1'
+version='1.8.0'
+url='https://github.com/python-distro/distro'
+description="A much more elaborate replacement for removed Python\'s platform.linux_distribution() method "
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/python-distro/distro/archive/refs/tags/v1.8.0.tar.gz")
+depends=(python)
+makedepends=()
+md5sums=('6b97136f88a0549a98dfc46dc0b99281')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd distro-$version
+
+
+build () {
+    python -m build --wheel
+    make $jobs
+}
+
+package () {
+    python -m installer --destdir="${DESTDIR}" dist/*.whl
+}
+

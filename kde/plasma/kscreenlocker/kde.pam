@@ -2,10 +2,10 @@
 
 auth       required     pam_nologin.so
 
-auth       include      base-auth
+auth       include      system-auth
 
-account    include      base-account
+account    include      system-auth
 
-password   include      base-password
+password   include      system-auth
 
-session    include      base-session-noninteractive
+session    include      system-auth
