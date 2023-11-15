@@ -11,7 +11,7 @@ source=("https://github.com/sass/sassc/archive/refs/tags/${version}.tar.gz")
 depends=()
 makedepends=(libsass)
 md5sums=('4c3b06ce2979f2a9f0a35093e501d8bb')
-group=(dev.ruby)
+group=(dev.lang)
 uses=()
 arch=('x86_64')
 
