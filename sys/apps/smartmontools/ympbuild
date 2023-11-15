@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='smartmontools'
+release='1'
+version='7.4'
+url='http://smartmontools.sourceforge.net/'
+description='Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://downloads.sourceforge.net/sourceforge/smartmontools/smartmontools-${version}.tar.gz"
+	"smartd.initd"
+	"smartd.confd")
+depends=()
+makedepends=(linux-headers)
+md5sums=('178d31a6ff5256c093227ab45a3f52aa' 'SKIP' 'SKIP')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--sysconfdir=/etc
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+   make DESTDIR="$DESTDIR"/ install
+
+	install -Dm755 ../smartd.initd "$DESTDIR"/etc/init.d/smartd
+	install -Dm644 ../smartd.confd "$DESTDIR"/etc/conf.d/smartd
+}
+
