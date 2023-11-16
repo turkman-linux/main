@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+name='lm-sensors'
+release='1'
+version='3.6.0'
+url='https://github.com/lm-sensors/lm-sensors'
+description='Collection of user space tools for general SMBus access and hardware monitoring.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+_commit="31d1f125d8076f1c8c8f3224b31d240e6e6a1763"
+source=("https://github.com/lm-sensors/lm-sensors/archive/${_commit}.zip")
+depends=(sysfsutils)
+makedepends=()
+md5sums=('573b35b96c05efec40a39c5434b2a510')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-${_commit}
+
+export CFLAGS="$CFLAGS -fno-stack-protector"
+
+build () {
+    make $jobs PREFIX=/usr
+}
+
+package () {
+    make PREFIX=/usr DESTDIR="$DESTDIR" install $jobs
+}
+
