@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='qrencode'
+release='1'
+version='4.1.1'
+url='https://fukuchi.org/works/qrencode/'
+description='C library for encoding data in a QR Code symbol.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://fukuchi.org/works/qrencode/qrencode-$version.tar.gz")
+depends=(libpng)
+makedepends=()
+md5sums=('a046d19b4ad90d9f28ee0b3f29b60da6')
+group=(media.gfx)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+ --libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kcoreaddons'
-release='1'
-version='5.110.0'
+release='2'
+version='5.112.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtCore'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcoreaddons-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('9fcee2fb381bcee57e42f7fb91275024')
+md5sums=('724cb024b7a2cbea2496aee38292e64d')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

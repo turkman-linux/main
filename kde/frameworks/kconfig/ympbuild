@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kconfig'
-release='1'
-version='5.110.0'
+release='2'
+version='5.112.0'
 url='https://community.kde.org/Frameworks'
 description='Configuration system'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kconfig-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('1a1eb753d364e3b2dc2f2c6b4f6ffd31')
+md5sums=('a698b81ad285af22ce4969f578634713')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
