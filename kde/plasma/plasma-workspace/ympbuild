@@ -49,5 +49,8 @@ build () {
 
 package () {
     ninja -C build install $jobs
+    # fix symlinks
+    rm -f $DESTDIR//usr/bin/lookandfeeltool
+    ln -s plasma-apply-lookandfeel $DESTDIR//usr/bin/lookandfeeltool
 }
 
