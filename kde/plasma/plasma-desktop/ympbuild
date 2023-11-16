@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+name='plasma-desktop'
+release='1'
+version='5.27.9'
+url='https://de.org/plasma-desktop'
+description='KDE Plasma Desktop'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/$version/plasma-desktop-$version.tar.xz")
+depends=(accountsservice kirigami2 plasma-workspace setxkbmap)
+makedepends=()
+md5sums=('e1446c2047adbad63929fc028b597f87')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    # Remove bloats from cmakelist.txt
+    ## applets
+    sed -i "/.*taskmanager.*/d" applets/CMakeLists.txt
+    # Removed because of KDELibs4Support
+    sed -i "/.*KDELibs4Support.*/d" CMakeLists.txt
+    sed -i "/.*dateandtime.*/d" kcms/CMakeLists.txt
+    # Replace dependency
+    sed -i "s/KSysGuard/KF5IconThemes/g" CMakeLists.txt
+}
+
+setup () {
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+
