@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='libksysguard'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='KDE system monitor library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/$version/libksysguard-$version.tar.xz")
+depends=(knewstuff libXres)
+makedepends=()
+md5sums=('8fbd525b217c632106cb02075bd99754')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DQt5WebChannel=OFF \
+        -DQt5WebEngineWidgets=OFF
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+

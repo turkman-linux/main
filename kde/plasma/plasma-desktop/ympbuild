@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-desktop-$version.tar.xz")
-depends=(accountsservice kirigami2 plasma-workspace setxkbmap)
+depends=(accountsservice kirigami2 plasma-workspace setxkbmap libksysguard)
 makedepends=()
 md5sums=('e1446c2047adbad63929fc028b597f87')
 group=(kde.plasma)
@@ -20,9 +20,8 @@ cd $name-$version
 prepare(){
     # Remove bloats from cmakelist.txt
     ## applets
-    sed -i "/.*taskmanager.*/d" applets/CMakeLists.txt
-    # Removed because of KDELibs4Support
     sed -i "/.*KDELibs4Support.*/d" CMakeLists.txt
+    # Removed because of KDELibs4Support
     sed -i "/.*dateandtime.*/d" kcms/CMakeLists.txt
     # Replace dependency
     sed -i "s/KSysGuard/KF5IconThemes/g" CMakeLists.txt
