@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='plasma-disks'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='Monitors S.M.A.R.T. capable devices for imminent failure'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/plasma-disks-${version}.tar.xz")
+depends=(smartmontools kinfocenter)
+makedepends=(extra-cmake-modules)
+md5sums=('30c21b9c97ac80baf935c774be383fce')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
