@@ -19,6 +19,23 @@ arch=('x86_64')
 
 cd $name-$version.1
 
+prepare(){
+    # Remove bloats from cmakelist.txt
+    ## Main
+    sed -i "/.*KUserFeedback.*/d" CMakeLists.txt
+    sed -i "/.*KSysGuard.*/d" CMakeLists.txt
+    sed -i "/.*libqalculate.*/d" CMakeLists.txt
+    sed -i "/.*systemmonitor.*/d" CMakeLists.txt
+    ## subdir : dataengines
+    sed -i "/.*systemmonitor.*/d" dataengines/CMakeLists.txt
+    sed -i "/.*devicenotifications.*/d" dataengines/CMakeLists.txt
+    ## subdir : applets
+    sed -i "/.*systemmonitor.*/d" applets/CMakeLists.txt
+    ## subdir : runners
+    sed -i "/.*kill.*/d" runners/CMakeLists.txt
+
+}
+
 setup () {
     mkdir build
     cd build
