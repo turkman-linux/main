@@ -23,12 +23,16 @@ prepare(){
     # Remove bloats from cmakelist.txt
     ## Main
     sed -i "/.*KUserFeedback.*/d" CMakeLists.txt
+    sed -i "s/ Wallet / /g" CMakeLists.txt
     sed -i "/.*KSysGuard.*/d" CMakeLists.txt
     sed -i "/.*libqalculate.*/d" CMakeLists.txt
     sed -i "/.*systemmonitor.*/d" CMakeLists.txt
+    sed -i "/.*soliduiserver.*/d" CMakeLists.txt
     ## subdir : dataengines
     sed -i "/.*systemmonitor.*/d" dataengines/CMakeLists.txt
     sed -i "/.*devicenotifications.*/d" dataengines/CMakeLists.txt
+    ## subdir: kcms
+    sed -i "/.*users.*/d" kcms/CMakeLists.txt
     ## subdir : applets
     sed -i "/.*systemmonitor.*/d" applets/CMakeLists.txt
     ## subdir : runners
