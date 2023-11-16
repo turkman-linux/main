@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='plasma-workspace'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='Kde Plasma Workspace'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/$version/plasma-workspace-$version.1.tar.xz")
+depends=(accountsservice kactivitymanagerd kded kinit kio
+         kirigami2 kquickcharts kwin milou pipewire qt5-tools
+         plasma-integration qt5-quickcontrols)
+makedepends=()
+md5sums=('7fb544cfaef8786e912363b256a63c45')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version.1
+
+setup () {
+    mkdir build
+    cd build
+    cmake .. -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
