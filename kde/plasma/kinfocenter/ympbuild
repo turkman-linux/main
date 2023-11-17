@@ -30,10 +30,6 @@ build () {
 
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
-    # remove broken symlink and insert script
     # systemsettings5 file is not part of kinfocenter
     rm -f $DESTDIR/usr/bin/kinfocenter
-    echo '#!/bin/sh' >  $DESTDIR/usr/bin/kinfocenter
-    echo 'exec /usr/bin/systemsettings5 "$@"' >  $DESTDIR/usr/bin/kinfocenter
-
 }

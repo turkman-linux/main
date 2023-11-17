@@ -31,5 +31,7 @@ package () {
     # fix symlink
     rm -f $DESTDIR/usr/share/kglobalaccel/systemsettings.desktop
     ln -s ../applications/systemsettings.desktop $DESTDIR/usr/share/kglobalaccel/systemsettings.desktop
+    # link kinfocenter
+    ln -s systemsettings $DESTDIR/usr/bin/kinfocenter
 }
 
