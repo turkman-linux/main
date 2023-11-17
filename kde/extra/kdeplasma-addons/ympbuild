@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='kdeplasma-addons'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description=''
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/$version/kdeplasma-addons-$version.tar.xz")
+depends=(plasma-workspace kunitconversion)
+makedepends=()
+md5sums=('70c298db54203e935c48e91590180d47')
+group=(kde.extra)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
