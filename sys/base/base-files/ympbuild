@@ -9,8 +9,10 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/base-files/-/archive/$version/base-files-$version.zip"
         "base-files.sysconf"
+        "logo.svg"
         "os-release")
 md5sums=('913b9fcbea19309e947336007c6e3a21'
+         'SKIP'
          'SKIP'
          'SKIP')
 arch=(x86_64)
@@ -19,8 +21,10 @@ group=(sys.base)
 cd "$name-$version"
 
 package(){
-    mkdir -p ${DESTDIR}/etc/sysconf.d
+    mkdir -p ${DESTDIR}/etc/sysconf.d \
+        ${DESTDIR}/usr/share/icons/hicolor/scalable/apps/
     make install
     install ../base-files.sysconf  ${DESTDIR}/etc/sysconf.d/base-files
     install ../os-release  ${DESTDIR}/etc/
+    install ../logo.svg ${DESTDIR}/usr/share/icons/hicolor/scalable/apps/turkman.svg
 }

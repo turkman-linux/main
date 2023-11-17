@@ -13,7 +13,7 @@ done
 cat /etc/group.d/* | sed "s/#.*//g"| while read line ; do
     if [ -z "${line}" ] ; then
         : skip empty line
-    elif ! grep "^${line}$" /etc/group > /dev/null ; then
+    elif ! grep "^${line}" /etc/group > /dev/null ; then
         echo "${line}" >> /etc/group
     fi
 done
