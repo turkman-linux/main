@@ -24,7 +24,7 @@ prepare(){
     # Removed because of KDELibs4Support
     sed -i "/.*dateandtime.*/d" kcms/CMakeLists.txt
     # Replace dependency
-    sed -i "s/KSysGuard/KF5IconThemes/g" CMakeLists.txt
+    #sed -i "s/KSysGuard/KF5IconThemes/g" CMakeLists.txt
 }
 
 setup () {
