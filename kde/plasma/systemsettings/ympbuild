@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='systemsettings'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='KDE system manager for hardware, software, and workspaces'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/$version/systemsettings-$version.tar.xz")
+depends=(plasma-workspace)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('4648e981691f9fff7bd9ee3409b42b25')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build -G Ninja \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+    # fix symlink
+    rm -f $DESTDIR/usr/share/kglobalaccel/systemsettings.desktop
+    ln -s ../applications/systemsettings.desktop $DESTDIR/usr/share/kglobalaccel/systemsettings.desktop
+}
+
