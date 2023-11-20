@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/frameworks/${version%.*}/oxygen-icons5-
 depends=()
 makedepends=(extra-cmake-modules qt5-base)
 md5sums=('b97964da1be0a97c559e69707e610c2f')
-group=(kde.frameworks)
+group=(kde.extra)
 uses=()
 arch=('x86_64')
 
