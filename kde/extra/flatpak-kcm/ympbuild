@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/plasma/${version}/flatpak-kcm-${version
 depends=(flatpak)
 makedepends=(extra-cmake-modules)
 md5sums=('1f6c592fcab06f8043c0dbd95f87633f')
-group=(kde.plasma)
+group=(kde.extra)
 uses=()
 arch=('x86_64')
 

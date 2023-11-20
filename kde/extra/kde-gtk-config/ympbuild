@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-name='kmenuedit'
+name='kde-gtk-config'
 release='1'
 version='5.27.9'
 url='https://kde.org/plasma-desktop'
-description='KDE menu editor'
+description='GTK2 and GTK3 Configurator for KDE'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
-source=("https://download.kde.org/stable/plasma/${version}/kmenuedit-${version}.tar.xz")
-depends=(kio)
-makedepends=(extra-cmake-modules kdoctools)
-md5sums=('a4f7846f258c216aa0cce005b29cd23b')
-group=(kde.plasma)
+source=("https://download.kde.org/stable/plasma/${version}/kde-gtk-config-${version}.tar.xz")
+depends=(qt5-svg kdecoration kconfigwidgets kdbusaddons kwindowsystem)
+makedepends=(extra-cmake-modules gtk3 sassc)
+md5sums=('2f336708889452f4e841132e9a18258d')
+group=(kde.extra)
 uses=()
 arch=('x86_64')
 
@@ -31,4 +31,3 @@ build () {
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
 }
-

@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/plasma/${version}/oxygen-sounds-${versi
 depends=()
 makedepends=(extra-cmake-modules)
 md5sums=('f6c770e3433516628c2f805ae5d32bbd')
-group=(kde.plasma)
+group=(kde.extra)
 uses=()
 arch=('x86_64')
 

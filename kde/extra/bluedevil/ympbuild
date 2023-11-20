@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-name='breeze-gtk'
+name='bluedevil'
 release='1'
 version='5.27.9'
 url='https://kde.org/plasma-desktop'
-description='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
+description='Integrate the Bluetooth technology within KDE workspace and applications'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
-source=("https://download.kde.org/stable/plasma/${version}/breeze-gtk-${version}.tar.xz")
-depends=()
-makedepends=(extra-cmake-modules sassc py3-cairo breeze)
-md5sums=('9c1816279ddac1fe05cfb765ec77464b')
-group=(kde.plasma)
+source=("https://download.kde.org/stable/plasma/${version}/bluedevil-${version}.tar.xz")
+depends=(bluez-qt kdeclarative)
+makedepends=(extra-cmake-modules plasma-framework kdoctools kcmutils)
+md5sums=('4fca7af9df4e4a39e9b3b7e18e6e8836')
+group=(kde.extra)
 uses=()
 arch=('x86_64')
 
@@ -31,3 +31,5 @@ build () {
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
 }
+
+
