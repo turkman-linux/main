@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='plasma-pa'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop/'
+description='Plasma applet for audio volume management using PulseAudio'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/$version/plasma-pa-$version.tar.xz")
+depends=(pipewire plasma-workspace)
+makedepends=(extra-cmake-modules kdoctools)
+md5sums=('121487f0196db823e2666bf8bfcf9a81')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+
