@@ -7,15 +7,21 @@ description='Plasma applet written in QML for managing network connections'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.xz")
-depends=(plasma-workspace networkmanager-qt)
+source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.xz"
+        'no-kwallet.patch')
+depends=(plasma-workspace networkmanager-qt modemmanager-qt)
 makedepends=(extra-cmake-modules)
-md5sums=('8aa75ac7aae92f8287840496da66cd3a')
+md5sums=('8aa75ac7aae92f8287840496da66cd3a'
+         'SKIP')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+
+prepare(){
+    patch -Np1 -i ../no-kwallet.patch
+}
 
 setup () {
     cmake -B build \
