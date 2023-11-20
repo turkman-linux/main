@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='plasma-nm'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop/'
+description='Plasma applet written in QML for managing network connections'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.xz")
+depends=(plasma-workspace networkmanager-qt)
+makedepends=(extra-cmake-modules)
+md5sums=('8aa75ac7aae92f8287840496da66cd3a')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+

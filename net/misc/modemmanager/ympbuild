@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+name='modemmanager'
+release='1'
+version='1.22.0'
+url='https://gitlab.freedesktop.org/mobile-broadband/ModemManager'
+description='Cellular modem control and connectivity'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/$version/ModemManager-$version.tar.gz")
+depends=(elogind eudev glib libcap libffi libgudev libpcre2 polkit util-linux zlib)
+makedepends=()
+md5sums=('8fb368594cd41fc43ddb42b694db90d4')
+group=(net.misc)
+uses=()
+arch=('x86_64')
+
+cd ModemManager-$version
+
+setup () {
+    meson setup build \
+        --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dsystemdsystemunitdir=no \
+        -Dpolkit=permissive \
+        -Dvapi=true \
+        -Dbash_completion=false \
+        -Dmbim=false \
+        -Dqrtr=false \
+        -Dqmi=false
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
