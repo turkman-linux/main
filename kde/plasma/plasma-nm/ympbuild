@@ -9,7 +9,7 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.xz"
         'no-kwallet.patch')
-depends=(plasma-workspace networkmanager-qt modemmanager-qt)
+depends=(plasma-workspace networkmanager-qt modemmanager-qt qca)
 makedepends=(extra-cmake-modules)
 md5sums=('8aa75ac7aae92f8287840496da66cd3a'
          'SKIP')

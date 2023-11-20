@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/frameworks/5.112/kactivities-stats-$ver
 depends=(kactivities)
 makedepends=()
 md5sums=('e71d3565da690b8deb33f900e7b41e14')
-group=(kde.framework)
+group=(kde.frameworks)
 uses=()
 arch=('x86_64')
 
