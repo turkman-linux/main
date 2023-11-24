@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cinnamon-control-center'
-release='1'
-version='5.8.1'
+release='3'
+version='6.0.0'
 url='https://github.com/linuxmint/cinnamon-control-center'
 description='The Control Center for Cinnamon'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
 source=("https://github.com/linuxmint/cinnamon-control-center/archive/refs/tags/${version}.tar.gz")
-depends=(cinnamon-settings-daemon cinnamon-menus colord libgnomekbd networkmanager libnma)
-makedepends=(meson)
-md5sums=('208a363e176ca65e96e170889b644618')
+depends=(cinnamon-settings-daemon cinnamon-menus colord libgnomekbd)
+makedepends=(meson )
+md5sums=('fcf3c538fc4b108b10a6e0685c5af308')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')
@@ -29,7 +29,9 @@ build () {
 }
 
 package () {
-    ninja -C build install $jobs
+    DESTDIR=$DESTDIR  ninja -C build install $jobs
+	#rm "${DESTDIR}"/usr/bin/cinnamon-control-center
+	#rm "${DESTDIR}"/usr/share/cinnamon-control-center/ui/shell.ui
 
 }
 
