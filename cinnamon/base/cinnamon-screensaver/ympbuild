@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='cinnamon-screensaver'
-release='1'
-version='5.8.0'
+release='2'
+version='6.0.0'
 url='https://github.com/linuxmint/cinnamon-screensaver'
 description='Screensaver designed to integrate well with the Cinnamon desktop.'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/linuxmint/cinnamon-screensaver/archive/refs/tags/${version}.tar.gz")
 depends=(accountsservice cinnamon-desktop libgnomekbd py3-cairo py3-pygobject py3-setproctitle py3-xapp xapp)
 makedepends=(gobject-introspection meson)
-md5sums=('68130450b11eb482935f9aba45df7013')
+md5sums=('5ed5b247b59c5400b073b7fbed811e82')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,9 @@ cd $name-$version
 
 setup () {
     meson setup build --prefix=/usr \
-		-Dlocking=false #$name-$version
+    	--libdir=/usr/lib64/ \
+    	-Ddefault_library=both 
+		#-Dlocking=false #$name-$version
 }
 
 build () {
@@ -27,10 +29,11 @@ build () {
 }
 
 package () {
-    ninja -C build install $jobs
-    # fix symlinks
-    rm -f $DESTDIR/usr/bin/cinnamon-screensaver
-    rm -f $DESTDIR/usr/bin/cinnamon-screensaver-command
-    ln -s ../share/cinnamon-screensaver/cinnamon-screensaver-main.py $DESTDIR/usr/bin/cinnamon-screensaver
-    ln -s ../share/cinnamon-screensaver/cinnamon-screensaver-command.py $DESTDIR/usr/bin/cinnamon-screensaver-command
+    DESTDIR="${DESTDIR}" ninja -C build install $jobs
+    
+    rm -f ${DESTDIR}/usr/bin/cinnamon-screensaver-command
+    rm -f ${DESTDIR}/usr/bin/cinnamon-screensaver
+
+    ln -s ../../usr/share/cinnamon-screensaver/cinnamon-screensaver-command.py ${DESTDIR}/usr/bin/cinnamon-screensaver-command
+    ln -s ../../usr/share/cinnamon-screensaver/cinnamon-screensaver-main.py ${DESTDIR}/usr/bin/cinnamon-screensaver
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='cinnamon-desktop'
 release='2'
-version='5.8.0'
+version='6.0.0'
 url='https://github.com/linuxmint/cinnamon-desktop'
 description='Library with common API for various Cinnamon modules'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/linuxmint/cinnamon-desktop/archive/$version/cinnamon-desktop-$version.tar.gz")
 depends=()
 makedepends=(libXinerama libxkbfile)
-md5sums=('cde124596a427145f001b33a9d77f183')
+md5sums=('265b69d5f57e9600c673c6be79ec20e0')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,7 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ 
 }
 
 build(){
