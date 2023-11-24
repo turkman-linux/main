@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='git'
-release='3'
-version='2.42.0'
+release='4'
+version='2.43.0'
 url='https://mirrors.edge.kernel.org/pub/software/scm/git/'
 description='the fast distributed version control system'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,8 @@ license=('GPLv3')
 source=("https://mirrors.edge.kernel.org/pub/software/scm/git/git-$version.tar.xz")
 depends=(curl openssl zlib)
 makedepends=()
-md5sums=('e61c187f6863d5e977e60cdedf213ec0')
+md5sums=('66a036a0442b8d159b0eff5a0fe0dc94')
+group=(dev.vcs)
 uses=()
 arch=('x86_64')
 

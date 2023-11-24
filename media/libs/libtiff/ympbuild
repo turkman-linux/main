@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libtiff'
-release='1'
-version='4.5.0'
+release='2'
+version='4.6.0'
 url='https://gitlab.com/libtiff/libtiff'
 description='Tag Image File Format (TIFF) library '
 email='bayramk@gmail.com'
@@ -9,9 +9,9 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.com/libtiff/libtiff/-/archive/v$version/libtiff-v$version.tar.gz")
 depends=()
-makedepends=()
-md5sums=('6e9b613cd83da5024b65fc9b80416833')
-group=()
+makedepends=(cmake)
+md5sums=('118a2e5fc9ed71653195b332b9715890')
+group=(media.libs)
 uses=()
 arch=('x86_64')
 
@@ -20,14 +20,15 @@ cd $name-v$version
 setup(){
     autoreconf -fvi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        --disable-docs
 }
 
 build(){
-    make -j`nproc`
+    make $jobs
 }
 
 package(){
-    make install -j`nproc`
+    make DESTDIR="${DESTDIR}" install $jobs
 }
 

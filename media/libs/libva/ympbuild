@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libva'
-release='3'
-version='2.19.0'
+release='4'
+version='2.20.0'
 url='https://github.com/intel/libva'
 description='An implementation for VA-API (Video Acceleration API)'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/intel/libva/archive/$version.tar.gz")
 depends=(libdrm)
 makedepends=()
-md5sums=('21ba95be718d4cc3733fedd0904faa0b')
+md5sums=('21ce1b9ee27fe01e3b1d4302876f18d9')
 group=(media.libs)
 uses=(wayland x11)
 arch=('x86_64')
