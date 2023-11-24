@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='cinnamon-desktop'
-release='2'
+release='3'
 version='6.0.0'
 url='https://github.com/linuxmint/cinnamon-desktop'
 description='Library with common API for various Cinnamon modules'

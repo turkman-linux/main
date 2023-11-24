@@ -7,10 +7,14 @@ description='Userspace components of the audit framework'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/linux-audit/audit-userspace/archive/refs/tags/v$version.tar.gz")
+source=("https://github.com/linux-audit/audit-userspace/archive/refs/tags/v$version.tar.gz"
+        "auditd.initd"
+        "auditd.confd")
 depends=()
 makedepends=( )
-md5sums=('03f6572873b0df83e6bcb84d8c500765')
+md5sums=('03f6572873b0df83e6bcb84d8c500765'
+         'SKIP'
+         'SKIP')
 group=(sys.process)
 uses=(libcap_ng)
 uses_extra=(python)
@@ -29,6 +33,9 @@ setup(){
         --disable-listener \
         --disable-systemd \
         --disable-gssapi-krb5 \
+        --enable-shared=audit \
+		    --with-arm \
+		    --with-aarch64 \
         $(use_opt python --with-python3 --without-python3) \
         $(use_opt python --with-python --without-python) \
         $(use_opt libcap_ng --with-libcap-ng=yes --with-libcap-ng=no)
@@ -40,5 +47,7 @@ build(){
 
 package(){
     make install $jobs
+    install -Dm755 ../auditd.initd "$DESTDIR"/etc/init.d/auditd
+    install -Dm755 ../auditd.confd "$DESTDIR"/etc/conf.d/auditd
 }
 

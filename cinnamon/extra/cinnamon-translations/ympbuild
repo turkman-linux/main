@@ -11,7 +11,7 @@ source=("https://github.com/linuxmint/cinnamon-translations/archive/refs/tags/${
 depends=()
 makedepends=()
 md5sums=('c488e3efc6e7aef6cd8d75b3749bc7f2')
-group=(cinnamon.base)
+group=(cinnamon.extra)
 uses=()
 arch=('x86_64')
 
