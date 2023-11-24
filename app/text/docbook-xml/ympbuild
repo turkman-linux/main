@@ -2,8 +2,8 @@
 name='docbook-xml'
 release='1'
 version='4.5'
-url='https://example.org'
-description='Package description missing'
+url='https://docbook.org/xml'
+description='A widely used XML scheme for writing documentation and help'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('MIT')
