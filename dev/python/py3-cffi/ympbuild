@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='py3-cffi'
-release='1'
-version='1.15.1'
+release='2'
+version='1.16.0'
 url='https://pypi.org/project/cffi/'
 description='Foreign Function Interface for Python calling C code.'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://files.pythonhosted.org/packages/2b/a8/050ab4f0c3d4c1b8aaa805f70e26e84d0e27004907c5b8ecc1d31815f92a/cffi-1.15.1.tar.gz")
+source=("https://github.com/python-cffi/cffi/archive/refs/tags/v${version}.tar.gz")
+#source=("https://files.pythonhosted.org/packages/2b/a8/050ab4f0c3d4c1b8aaa805f70e26e84d0e27004907c5b8ecc1d31815f92a/cffi-1.15.1.tar.gz")
 depends=(python py3-cparser libffi)
 makedepends=()
-md5sums=('f493860a6e98cd0c4178149568a6b4f6')
+md5sums=('51409cb22603a9310b9d3c44282359ba')
 group=(dev.python)
 uses=()
 arch=('x86_64')

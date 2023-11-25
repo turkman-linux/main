@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfsprogs'
-release='3'
-version='6.4.0'
+release='4'
+version='6.5.0'
 url='https://xfs.wiki.kernel.org/'
 description='XFS filesystem utilities'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://mirrors.edge.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-${version}.tar.xz")
 depends=(inih liburcu)
 makedepends=()
-md5sums=('81c09e5ea47412c3a109a316cf4dd39d')
+md5sums=('312d4f63c02c63a6b8b8b80a9ada11c6')
 group=(sys.fs)
 uses=()
 arch=('x86_64')

@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 name='shared-mime-info'
-release='1'
-version='2.2'
+release='2'
+version='2.4'
 url='https://gitlab.freedesktop.org/xdg/shared-mime-info'
 description='The Shared MIME-info Database specification'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-$version.tar.gz"
+source=("https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/${version}/shared-mime-info-${version}.tar.gz"
         shared-mime-info.sysconf)
 depends=(libxml2)
 makedepends=()
-md5sums=('06cb9e92e4211dc53fd52b7bfd586c78'
+md5sums=('aac56db912b7b12a04fb0018e28f2f36'
          'SKIP')
 group=(x11.misc)
 uses=()

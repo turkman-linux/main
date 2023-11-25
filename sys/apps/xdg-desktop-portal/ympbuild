@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xdg-desktop-portal'
-release='1'
-version='1.16.0'
+release='2'
+version='1.18.2'
 url='https://github.com/flatpak/xdg-desktop-portal'
 description='Desktop integration portals for sandboxed apps'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://github.com/flatpak/xdg-desktop-portal/releases/download/${version}/xdg-desktop-portal-${version}.tar.xz")
 depends=(fuse gdk-pixbuf glib pipewire bubblewrap )
 makedepends=(docbook-xsl git meson xmlto)
-md5sums=('3312781f8f0ed772c52c05c010690283')
+md5sums=('20e0b28c1528e57b13cc236ba7840e03')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
