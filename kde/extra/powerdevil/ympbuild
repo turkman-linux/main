@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='powerdevil'
+release='1'
+version='5.27.9'
+url='https://kde.org/plasma-desktop'
+description='Manages the power consumption settings of a Plasma Shell'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/powerdevil-${version}.tar.xz")
+depends=(plasma-workspace)
+makedepends=(extra-cmake-modules plasma-framework kdoctools kcmutils)
+md5sums=('82225813c7ed0107776d2fcd021ab820')
+group=(kde.extra)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
+
