@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='muffin'
-release='1'
-version='5.8.0'
+release='2'
+version='6.0.0'
 url='https://github.com/linuxmint/muffin'
 description='Cinnamon window manager based on Mutter'
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ source=("https://github.com/linuxmint/muffin/archive/refs/tags/${version}.tar.gz
 depends=(cinnamon-desktop gobject-introspection libcanberra libinput
          libSM libxkbcommon startup-notification zenity graphene pipewire)
 makedepends=(meson intltool gobject-introspection)
-md5sums=('9bc750e05279cd1df74bfb28079addbf')
+md5sums=('884b3aadc288cd2c3c4ce9957e19f0e8')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')

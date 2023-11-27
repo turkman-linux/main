@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libxkbcommon'
-release='1'
-version='1.5.0'
+release='2'
+version='1.6.0'
 url='https://github.com/xkbcommon/libxkbcommon'
 description='keymap handling library for toolkits and window systems'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-$version.tar.gz")
 depends=(libxml2 libxcb xkeyboard-config)
 makedepends=()
-md5sums=('94123bad1ad88688134b91349b496c02')
+md5sums=('34ee8ede1374fc2eb6bd03d27c1b2e5d')
 group=(x11.libs)
 uses=(wayland)
 wayland_depends=(wayland-protocols wayland)

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gnome-terminal'
-release='1'
-version='3.48.1'
+release='2'
+version='3.50.1'
 url='https://wiki.gnome.org/Apps/Terminal'
 description='GNOME terminal emulator application'
 email='akarsu@protonmail.com'
@@ -11,9 +11,9 @@ source=("https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/${version}/gnom
 "00-ignore-language-check.patch"
 "gnome-terminal-daemon"
 "gnome-terminal-daemon.desktop")
-depends=( dconf gsettings-desktop-schemas itstool libpcre2 vte3)
+depends=(dconf gsettings-desktop-schemas itstool libpcre2 vte3)
 makedepends=()
-md5sums=('1ad71a29e933ed3cc0e0c06e270d4542'
+md5sums=('627c0381b3620f7f92662dbc0a9c4099'
          'SKIP'
          'SKIP'
          'SKIP')

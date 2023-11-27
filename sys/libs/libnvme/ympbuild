@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libnvme'
-release='1'
-version='1.5'
+release='2'
+version='1.6'
 url='https://example.org'
 description='C Library for NVM Express on Linux'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/linux-nvme/libnvme/archive/refs/tags/v${version}/libnvme-${version}.tar.gz")
 depends=(json-c openssl linux-headers)
 makedepends=(dbus	meson python util-linux)
-md5sums=('8289e988a3244a35cc326aa564a7a727')
+md5sums=('35e840e895bece4d84707695afae3012')
 group=(sys.libs)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,8 @@ cd $name-$version
 
 setup () {
     meson setup build --prefix=/usr \
-		--libdir=/usr/lib64/
+		--libdir=/usr/lib64/ \
+		-Ddefault_library=both
 }
 
 build () {

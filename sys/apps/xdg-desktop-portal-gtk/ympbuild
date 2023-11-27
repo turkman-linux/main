@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xdg-desktop-portal-gtk'
-release='1'
-version='1.14.1'
+release='2'
+version='1.15.1'
 url='https://github.com/flatpak/xdg-desktop-portal-gtk'
 description='A backend implementation for xdg-desktop-portal using GTK'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,24 +10,29 @@ license=('GPLv3')
 source=("https://github.com/flatpak/xdg-desktop-portal-gtk/archive/refs/tags/$version.tar.gz")
 depends=(gsettings-desktop-schemas gtk3 xdg-desktop-portal)
 makedepends=()
-md5sums=('3dbc553b205470a6eabfd62eb83bc76b')
+md5sums=('a2a161c5e4e48442b61ee9c7bed18b40')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
-setup () {
-    autoreconf -fvi
-    ./configure --prefix=/usr \
-         --libdir=/usr/lib64/
+setup(){
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Db_lto=true \
+		-Dappchooser=enabled \
+		-Ddatarootdir=/usr/lib/pkgconfig \
+		-Ddbus-service-dir=/usr/share/dbus-1/services/ \
+		-Dlockdown=enabled \
+		-Dsettings=enabled \
+		-Dwallpaper=disabled
 }
 
-build () {
-    make $jobs
+build(){
+    ninja -C build $jobs
 }
 
-package () {
-    make install $jobs
+package(){
+    ninja -C build install $jobs
 }
-

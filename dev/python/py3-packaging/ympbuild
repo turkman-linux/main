@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-packaging'
-release='1'
-version='23.1'
+release='2'
+version='23.2'
 url='https://pypi.org/project/packaging'
 description='Core utilities for Python3 packages'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('Apache-2.0 AND BSD-2-Clause')
 source=("https://github.com/pypa/packaging/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=(py3-parsing)
-md5sums=('c43924bf15188607e7789c0db2955fdc')
+md5sums=('0f7bc51196160ee850df25ff7f0f603a')
 group=(dev.python)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gpgme'
-release='2'
-version='1.21.0'
+release='3'
+version='1.23.1'
 url='https://www.gnupg.org/ftp/gcrypt/gpgme'
 description='gnupg made easy'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-$version.tar.bz2")
 depends=(gnupg)
 makedepends=()
-md5sums=('3a83288e753a7da53a5626d29e4416fd')
+md5sums=('6382b05365315fe0494469c3e71e935e')
 group=(app.crypt)
 uses=()
 arch=('x86_64')
