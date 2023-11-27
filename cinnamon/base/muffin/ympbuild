@@ -9,8 +9,9 @@ maintainer='akarsu'
 license=('GPLv3')
 source=("https://github.com/linuxmint/muffin/archive/refs/tags/${version}.tar.gz")
 depends=(cinnamon-desktop gobject-introspection libcanberra libinput
-         libSM libxkbcommon startup-notification zenity graphene pipewire)
-makedepends=(meson intltool gobject-introspection)
+         libSM libxkbcommon startup-notification zenity graphene pipewire
+         xorg-xwayland)
+makedepends=(meson intltool gobject-introspection wayland-protocols)
 md5sums=('884b3aadc288cd2c3c4ce9957e19f0e8')
 group=(cinnamon.base)
 uses=()
