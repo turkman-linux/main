@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+name='procps-ng'
+release='1'
+version='4.0.4'
+url='https://gitlab.com/procps-ng/procps'
+description='/proc file system utilities'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-$version.tar.xz")
+depends=(ncurses)
+makedepends=()
+md5sums=('2f747fc7df8ccf402d03e375c565cf96')
+group=(sys.apps)
+uses=(elogind)
+arch=('x86_64')
+
+elogind_depends=(elogind)
+
+cd $name-${version}
+
+prepare(){
+  sed 's:<ncursesw/:<:g' -i src/watch.c
+}
+
+setup () {
+  # with-systemd uses elogind :D
+  ./configure \
+    --prefix=/usr \
+    --exec-prefix=/ \
+    --sysconfdir=/etc \
+    --libdir=/usr/lib \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --enable-watch8bit \
+    $(use_opt elogind --with-systemd --without-systemd) \
+    --disable-kill
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+
