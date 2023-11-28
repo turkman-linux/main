@@ -31,7 +31,7 @@ setup () {
 		-DENABLE_JOURNALD=OFF \
 		-DNO_SYSTEMD=ON \
 		-DUSE_ELOGIND=ON \
-		-DUID_MIN=0 \
+		-DUID_MIN=999 \
 		-DUID_MAX=60513 \
 		-DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf
