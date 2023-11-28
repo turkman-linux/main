@@ -19,10 +19,10 @@ arch=('x86_64')
 
 cd $name-$version
 
+export CXXFLAGS="$CXXFLAGS -flto=auto"
+
 setup () {
-	CXXFLAGS="$CXXFLAGS -flto=auto" \
 	cmake -B build -G Ninja \
-		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_MAN_PAGES=ON \
@@ -36,11 +36,13 @@ setup () {
 }
 
 build () {
-	cmake --build build
+	ninja -C build
 }
 
 package () {
-    DESTDIR="$DESTDIR" cmake --install build
+    ninja -C build install
     install -Dm755 ../sddm.initd "$DESTDIR"/etc/init.d/sddm
 	install -Dm644 ../sddm.confd "$DESTDIR"/etc/conf.d/sddm
+	mkdir -p $DESTDIR/etc/passwd.d/
+	echo "sddm:x:118:127:Simple Desktop Display Manager:/var/lib/sddm:/bin/false" > $DESTDIR/etc/passwd.d/sddm
 }
