@@ -9,10 +9,11 @@ maintainer='akarsu'
 license=('GPL')
 source=("https://github.com/sddm/sddm/archive/v${version}/sddm-v${version}.tar.gz"
 	"sddm.initd"
-	"sddm.confd")
+	"sddm.confd"
+	"sddm.pam")
 depends=(qt5-declarative xauth xorg-server)
 makedepends=(extra-cmake-modules py3-docutils qt5-tools)
-md5sums=('7af67d5fb767639861d35c80eb4e1191' 'SKIP' 'SKIP')
+md5sums=('7af67d5fb767639861d35c80eb4e1191' 'SKIP' 'SKIP' 'SKIP')
 group=(x11.misc)
 uses=()
 arch=('x86_64')
@@ -30,9 +31,10 @@ setup () {
 		-DENABLE_JOURNALD=OFF \
 		-DNO_SYSTEMD=ON \
 		-DUSE_ELOGIND=ON \
-		-DUID_MIN=500 \
-		-DUID_MAX=65000 \
-		-DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d
+		-DUID_MIN=0 \
+		-DUID_MAX=60513 \
+		-DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
+        -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf
 }
 
 build () {
@@ -43,6 +45,16 @@ package () {
     ninja -C build install
     install -Dm755 ../sddm.initd "$DESTDIR"/etc/init.d/sddm
 	install -Dm644 ../sddm.confd "$DESTDIR"/etc/conf.d/sddm
-	mkdir -p $DESTDIR/etc/passwd.d/
-	echo "sddm:x:118:127:Simple Desktop Display Manager:/var/lib/sddm:/bin/false" > $DESTDIR/etc/passwd.d/sddm
+	# replace pam script
+	install -Dm644 ../sddm.pam "$DESTDIR"/etc/pam.d/sddm
+	mkdir -p $DESTDIR/etc/passwd.d/ $DESTDIR/etc/group.d/
+	echo "sddm:x:109:119:Simple Desktop Display Manager:/var/lib/sddm/:/bin/false" > $DESTDIR/etc/passwd.d/sddm
+    echo "sddm:x:119:" > $DESTDIR/etc/group.d/sddm
+    
+    install -d "$DESTDIR"/usr/lib/sddm/sddm.conf.d
+    "$DESTDIR"/usr/bin/sddm --example-config > "$DESTDIR"/usr/lib/sddm/sddm.conf.d/default.conf
+    # Unset InputMethod https://github.com/sddm/sddm/issues/952
+    sed -e "/^InputMethod/s/qtvirtualkeyboard//" \
+        -i "$DESTDIR"/usr/lib/sddm/sddm.conf.d/default.conf
+
 }
