@@ -54,7 +54,7 @@ build () {
 	mkdir -p "$_cli_builddir"/src/github.com/docker/
 	ln -sf "$_cli_builddir" "$_cli_builddir"/src/github.com/docker/cli
 	LDFLAGS="" make VERSION="$pkgver" dynbinary
-	
+
 }
 
 package () {
@@ -75,12 +75,9 @@ package () {
 		"$_moby_builddir"/bundles/dynbinary-daemon/dockerd \
 		"$_moby_builddir"/bundles/dynbinary-daemon/docker-proxy
 
-    # service files from gentoo
+  # service files from gentoo
 	install -Dm755 docker.initd "$DESTDIR"/etc/init.d/docker
 	install -Dm644 docker.confd "$DESTDIR"/etc/conf.d/docker
-	
-	# group definition
-	mkdir -p "$DESTDIR"/etc/group.d/
-	echo "docker:x:531:" > "$DESTDIR"/etc/group.d/docker
+
 }
 
