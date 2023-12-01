@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+name='go'
+release='1'
+version='1.21.4'
+url='https://go.dev'
+description='Go programming language compiler'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+depends=()
+makedepends=()
+source=("https://go.dev/dl/go$version.linux-$DEBARCH.tar.gz")
+if [[ "$DEBARCH" == "amd64" ]] ; then
+    md5sums=('b5ead0fdcb32540df8376389ee6c34a4')
+fi
+group=(dev.lang)
+uses=()
+arch=('x86_64')
+
+cd go/src
+
+export PATH=$HOME/go-prebuilt/bin:$PATH
+export GOROOT_BOOTSRTRAP=$HOME/go-prebuilt
+export GOARCH=$DEBARCH
+export GOOS=linux
+export GOPATH="$HOME/go"
+export GOROOT="$HOME/go-prebuilt"
+export GOBIN="$GOROOT"/bin
+export GOROOT_FINAL=/usr/lib64/go
+
+prepare(){
+    # copy directory
+    cd ../..
+    cp -prvf go go-prebuilt
+    # remove binary from source
+    cd go/src
+    rm -rfv bin pkg/tool
+}
+
+build () {
+    ./make.bash -v
+}
+
+package () {
+    cd ..
+    mkdir -p "$DESTDIR"/usr/bin "$DESTDIR"/usr/lib64/go/bin "$DESTDIR"/usr/share/doc/go
+
+	for binary in go gofmt; do
+		install -Dm755 bin/"$binary" "$DESTDIR"/usr/lib64/go/bin/"$binary"
+		ln -s ../lib64/go/bin/"$binary" "$DESTDIR"/usr/bin/
+	done
+
+	cp -a pkg lib "$DESTDIR"/usr/lib64/go
+	cp -r doc misc "$DESTDIR"/usr/share/doc/go
+	rm -rf "$DESTDIR"/usr/lib64/go/pkg/obj
+	rm -rf "$DESTDIR"/usr/lib64/go/pkg/bootstrap
+	rm -f  "$DESTDIR"/usr/lib64/go/pkg/tool/*/api
+
+	mkdir -p "$DESTDIR"/usr/lib64/go/
+	cp -a "$HOME/go"/src "$DESTDIR"/usr/lib64/go
+
+	# Install go.env, see https://go.dev/doc/toolchain#GOTOOLCHAIN.
+	install -Dm644 "$HOME/go"/go.env "$DESTDIR"/usr/lib64/go/go.env
+	install -Dm644 VERSION "$DESTDIR/usr/lib64/go/VERSION"
+
+	# Remove tests from /usr/lib64/go/src to reduce package size,
+	# these should not be needed at run-time by any program.
+	find "$DESTDIR"/usr/lib64/go/src \( -type f -a -name "*_test.go" \) \
+		-exec rm -rf \{\} \+
+	find "$DESTDIR"/usr/lib64/go/src \( -type d -a -name "testdata" \) \
+		-exec rm -rf \{\} \+
+
+	# Remove rc (plan 9) and bat scripts (windows) to reduce package
+	# size further. The bash scripts are actually needed at run-time.
+	#
+	# See: https://gitlab.alpinelinux.org/alpine/aports/issues/11091
+	find "$DESTDIR"/usr/lib64/go/src -type f -a \( -name "*.rc" -o -name "*.bat" \) \
+		-exec rm -rf \{\} \+
+
+	# cgo test files will be removed from misc/ in Go 1.21.
+	# Removing them from now decreases the size of -doc below 2 MiB.
+	#
+	# See https://github.com/golang/go/issues/37486#issuecomment-1321364279
+	rm -r "$DESTDIR"/usr/share/doc/go/misc/cgo
+}
+

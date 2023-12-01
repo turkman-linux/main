@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+name='docker'
+release='1'
+version='24.0.7'
+url='https://docker.io'
+description='Pack, ship and run any application as a lightweight container'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("cli.tar.gz::https://github.com/docker/cli/archive/v$version.tar.gz"
+        "moby.tar.gz::https://github.com/moby/moby/archive/v$version.tar.gz"
+        'docker.initd'
+        'docker.confd')
+#depends=(ca-certificates containerd iptables tini)
+makedepends=(go)
+md5sums=('6e264f0471a7e924962dbab92268fb09'
+         '059ed51462797354f39e630d3d2257ef'
+         'SKIP'
+         'SKIP')
+group=(app.containers)
+uses=()
+arch=('x86_64')
+
+# Thx alpine linux
+# https://git.alpinelinux.org/aports/tree/community/docker/APKBUILD
+
+_cli_commit=afdd53b4e341be38d2056a42113b938559bb1d94    # https://github.com/docker/cli/commits/v$pkgver
+_moby_commit=311b9ff0aa93aa55880e1e5f8871c4fb69583426   # https://github.com/moby/moby/commits/v$pkgver
+
+export AUTO_GOPATH=1
+export GITCOMMIT=$_cli_commit		# for cli
+export DOCKER_GITCOMMIT=$_moby_commit	# for moby
+export DOCKER_BUILDTAGS=$_buildtags
+export DISABLE_WARN_OUTSIDE_CONTAINER=1
+unset CC # prevent possible ccache issues
+
+_cli_builddir="$HOME/cli-$version"
+_moby_builddir="$HOME/moby-$version"
+
+build () {
+    # engine (moby)
+    cd moby-$version
+    mkdir -p src/github.com/docker/
+	ln -sf "$HOME/moby-$version" src/github.com/docker/dockerd
+    GOPATH="$PWD" VERSION="$pkgver" hack/make.sh dynbinary
+
+    # Required for building man-pages
+	export GOPATH="$_cli_builddir"
+	export GOBIN="$GOPATH/bin"
+	export PATH="$GOBIN:$PATH"
+
+    # cli
+	cd ../cli-$version
+	mkdir -p "$_cli_builddir"/src/github.com/docker/
+	ln -sf "$_cli_builddir" "$_cli_builddir"/src/github.com/docker/cli
+	LDFLAGS="" make VERSION="$pkgver" dynbinary
+	
+}
+
+package () {
+    install -Dm644 "$_cli_builddir"/contrib/completion/fish/$name.fish \
+		"$DESTDIR"/usr/share/fish/vendor_completions.d/$name.fish
+
+	install -Dm644 "$_cli_builddir"/contrib/completion/zsh/_$name \
+		"$DESTDIR"/usr/share/zsh/site-functions/_$name
+
+	install -Dm644 "$_cli_builddir"/contrib/completion/bash/$name \
+		"$DESTDIR"/usr/share/bash-completion/completions/$name
+
+	# 'build/docker' is a symlink to 'docker-linux-$arch' e.g. 'docker-linux-amd64'
+	install -Dm755 "$_cli_builddir"/build/docker \
+		"$DESTDIR"/usr/bin/docker
+
+	install -Dm755 -t "$DESTDIR"/usr/bin \
+		"$_moby_builddir"/bundles/dynbinary-daemon/dockerd \
+		"$_moby_builddir"/bundles/dynbinary-daemon/docker-proxy
+
+    # service files from gentoo
+	install -Dm755 docker.initd "$DESTDIR"/etc/init.d/docker
+	install -Dm644 docker.confd "$DESTDIR"/etc/conf.d/docker
+}
+
