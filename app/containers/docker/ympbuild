@@ -11,7 +11,7 @@ source=("cli.tar.gz::https://github.com/docker/cli/archive/v$version.tar.gz"
         "moby.tar.gz::https://github.com/moby/moby/archive/v$version.tar.gz"
         'docker.initd'
         'docker.confd')
-#depends=(ca-certificates containerd iptables tini)
+depends=(make-ca containerd tini)
 makedepends=(go)
 md5sums=('6e264f0471a7e924962dbab92268fb09'
          '059ed51462797354f39e630d3d2257ef'
