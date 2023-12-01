@@ -1,23 +1,22 @@
 #!/usr/bin/env bash
 name='ghostscript'
-release='1'
-version='9.27'
+release='2'
+version='10.02.1'
+_version='10021'
 url='https://example.org'
 description='An interpreter for the PostScript language'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=(
-    "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-$version.tar.xz"
-    "ghostscript-9.27-upstream_fixes-1.patch"
+    "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${_version}/ghostscript-${version}.tar.xz"
     "https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz"
     "https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz"
 )
 depends=()
 makedepends=()
 md5sums=(
-    'dd531503dbbc524f73528359e2ea145c'
-    'SKIP'
+    '26c0cbfa2e09da97f1fc78728048ada8'
     '6865682b095f8c4500c54b285ff05ef6'
     '33457d3f37de7ef03d2eea05a9e6aa4f'
 )
@@ -30,7 +29,8 @@ cd $name-$version
 setup () {
     ./configure --prefix=/usr \
         --disable-compile-inits \
-         --enable-dynamic
+         --enable-dynamic \
+         --disable-hidden-visibility
 }
 
 build () {

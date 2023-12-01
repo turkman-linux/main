@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='gst-plugins-bad'
-release='1'
-version='1.18.6'
+release='2'
+version='1.22.7'
 url='https://gitlab.freedesktop.org/gstreamer'
 description=' GStreamer plugins and helper libraries'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/archive/$version/gst-plugins-bad-$version.tar.gz")
+source=("https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-${version}.tar.xz")
+#source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/archive/$version/gst-plugins-bad-$version.tar.gz")
 depends=(gst-plugins-base)
 makedepends=()
-md5sums=('4bd822ca18be8c3d409f091a8f9219ff')
+md5sums=('63d4e2811069a0a852782a788b494340')
 group=(media.video)
 uses=()
 arch=('x86_64')

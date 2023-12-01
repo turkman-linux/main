@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='gst-plugins-good'
-release='1'
-version='1.18.6'
+release='2'
+version='1.22.7'
 url='https://gitlab.freedesktop.org/gstreamer/'
 description='GStreamer plugins'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-good/-/archive/$version/gst-plugins-good-$version.tar.gz")
+source=("https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-${version}.tar.xz")
+#source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-good/-/archive/$version/gst-plugins-good-$version.tar.gz")
 depends=(gstreamer gst-plugins-base)
 makedepends=()
-md5sums=('fa12514ea3a9d6e83b400a4d29051ab2')
+md5sums=('555ff88e787ff40c948f55e5b9ca4e5a')
 group=(media.video)
 uses=()
 arch=('x86_64')
@@ -19,7 +20,8 @@ cd $name-$version
 
 setup(){
 	 meson setup build --prefix=/usr \
-    --libdir=/usr/lib64
+    --libdir=/usr/lib64 \
+    -Dqt6=disabled
 }
 build(){
    ninja -C build

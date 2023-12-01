@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mbedtls'
-release='3'
-version='3.4.0'
+release='4'
+version='3.5.0'
 url='https://tls.mbed.org/'
 description='Portable cryptographic and SSL/TLS library, aka polarssl'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('Apache')
 source=("https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v${version}.tar.gz")
 depends=(glibc)
 makedepends=(cmake python)
-md5sums=('3f6c2eadc1243e9895d65c67b46eb890')
+md5sums=('e76d1c2c673bdda2ab69dc0061f5fa51')
 group=(net.libs)
 uses=()
 arch=('x86_64')

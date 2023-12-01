@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='gst-plugins-ugly'
-release='1'
-version='1.18.6'
+release='2'
+version='1.22.7'
 url='https://gitlab.freedesktop.org/gstreamer'
 description='Ugly GStreamer plugins'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly/-/archive/$version/gst-plugins-ugly-$version.tar.gz")
+source=("https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-${version}.tar.xz")
+#source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly/-/archive/$version/gst-plugins-ugly-$version.tar.gz")
 depends=(gst-plugins-base)
 makedepends=()
-md5sums=('7957c8b34be7abba8fc80d72da6259ef')
+md5sums=('1e6a65cc6eea7c317cee4e3eb9c0ae57')
 group=(media.video)
 uses=()
 arch=('x86_64')
