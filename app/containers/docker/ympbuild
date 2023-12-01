@@ -11,7 +11,7 @@ source=("cli.tar.gz::https://github.com/docker/cli/archive/v$version.tar.gz"
         "moby.tar.gz::https://github.com/moby/moby/archive/v$version.tar.gz"
         'docker.initd'
         'docker.confd')
-depends=(make-ca containerd tini)
+depends=(make-ca containerd iptables tini)
 makedepends=(go)
 md5sums=('6e264f0471a7e924962dbab92268fb09'
          '059ed51462797354f39e630d3d2257ef'
@@ -78,5 +78,9 @@ package () {
     # service files from gentoo
 	install -Dm755 docker.initd "$DESTDIR"/etc/init.d/docker
 	install -Dm644 docker.confd "$DESTDIR"/etc/conf.d/docker
+	
+	# group definition
+	mkdir -p "$DESTDIR"/etc/group.d/
+	echo "docker:x:531:" > "$DESTDIR"/etc/group.d/docker
 }
 
