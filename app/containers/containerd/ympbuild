@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+name='containerd'
+release='1'
+version='1.7.10'
+url='https://example.org'
+description='Package description missing'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/containerd/containerd/archive/v$version.tar.gz"
+        "containerd.initd"
+        "containerd.confd")
+depends=(runc)
+makedepends=(go)
+md5sums=('0b2cc4244e310fa1cbf8fb3b2c95fbd3'
+         'SKIP'
+         'SKIP')
+group=(app.containers)
+uses=()
+arch=('x86_64')
+
+export GOFLAGS="-modcacherw -mod=readonly"
+export GOCACHE="$HOME/go-cache"
+export GOTMPDIR="$HOME"
+export GOMODCACHE="$HOME/go"
+
+export GO111MODULE=on
+
+cd $name-$version
+
+build () {
+    make VERSION=v$version \
+        GO_BUILD_FLAGS="$GOFLAGS" \
+        GO_GCFLAGS="" EXTRA_LDFLAGS="-buildid=" \
+        STATIC=1 BUILDTAGS=no_systemd
+}
+
+package () {
+  install -d "$DESTDIR"/usr/bin/
+  install -Dm755 ./bin/* "$DESTDIR"/usr/bin/
+
+	install -Dm755 ../containerd.initd \
+		"$DESTDIR"/etc/init.d/containerd
+	install -Dm644 ../containerd.confd \
+		"$DESTDIR"/etc/conf.d/containerd
+}
+
