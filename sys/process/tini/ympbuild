@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='tini'
+release='1'
+version='0.19.0'
+url='https://github.com/krallin/tini'
+description='A tiny but valid `init` for containers'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/krallin/tini/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+md5sums=('72935bca9232313409a052833068fb1d')
+group=(sys.process)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib64 ..
+}
+
+build () {
+    cd build
+    make $jobs
+}
+
+package () {
+    cd build
+    make install $jobs
+    # required for docker
+    ln -sf tini-static "$DESTDIR"/usr/bin/docker-init
+}
+
