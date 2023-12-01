@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+name='iptables'
+release='1'
+version='1.8.10'
+url='https://www.netfilter.org/projects/iptables/index.html'
+description='Linux kernel packet control tool (using legacy interface)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://www.netfilter.org/projects/iptables/files/iptables-${version}.tar.xz"
+	"use-sh-iptables-apply.patch"
+	"iptables.initd"
+	"iptables.confd"
+	"ip6tables.confd"
+	"ebtables.initd"
+	"ebtables.confd")
+depends=(libnftnl libmnl)
+makedepends=(bison flex)
+md5sums=('5eaa3bb424dd3a13c98c0cb026314029' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+group=(net.firewall)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare() {
+  patch -Np1 -i ../use-sh-iptables-apply.patch
+}
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--mandir=/usr/share/man \
+		--sbindir=/sbin \
+		--sysconfdir=/etc \
+		--without-kernel \
+		--enable-devel \
+		--enable-libipq \
+		--enable-shared
+
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+   make install DESTDIR="$DESTDIR" $jobs
+   
+   rm -f $DESTDIR/usr/bin/iptables-xml
+   ln -s ../../sbin/xtables-legacy-multi $DESTDIR/usr/bin/iptables-xml
+   
+   install -Dm644 include/iptables.h include/ip6tables.h \
+		-t "$DESTDIR"/usr/include/
+	install -Dm644 include/libiptc/*.h -t "$DESTDIR"/usr/include/libiptc/
+
+	install -D -m755 ../iptables.initd "$DESTDIR"/etc/init.d/iptables
+	install -D -m644 ../iptables.confd "$DESTDIR"/etc/conf.d/iptables
+	install -D -m755 ../iptables.initd "$DESTDIR"/etc/init.d/ip6tables
+	install -D -m644 ../ip6tables.confd "$DESTDIR"/etc/conf.d/ip6tables
+	install -D -m755 ../ebtables.initd "$DESTDIR"/etc/init.d/ebtables
+	install -D -m644 ../ebtables.confd "$DESTDIR"/etc/conf.d/ebtables
+
+	ln -sfv xtables-nft-multi "$DESTDIR"/sbin/iptables
+	ln -sfv xtables-nft-multi "$DESTDIR"/sbin/iptables-save
+	ln -sfv xtables-nft-multi "$DESTDIR"/sbin/iptables-restore
+	ln -sfv xtables-nft-multi "$DESTDIR"/sbin/ip6tables
+	ln -sfv xtables-nft-multi "$DESTDIR"/sbin/ip6tables-save
+	ln -sfv xtables-nft-multi "$DESTDIR"/sbin/ip6tables-restore
+}
+

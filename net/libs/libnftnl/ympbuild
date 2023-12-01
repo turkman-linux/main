@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='libnftnl'
+release='1'
+version='1.2.6'
+url='https://netfilter.org/projects/libnftnl'
+description='Netfilter library providing interface to the nf_tables subsystem'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://netfilter.org/projects/libnftnl/files/libnftnl-${version}.tar.xz")
+depends=(libmnl)
+makedepends=()
+md5sums=('9bf28deba94430ee7a3dac0dc5c5026b')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
