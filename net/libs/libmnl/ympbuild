@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libmnl'
+release='1'
+version='1.0.5'
+url='https://www.netfilter.org/projects/libmnl/'
+description='Library for minimalistic netlin'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://www.netfilter.org/projects/libmnl/files/libmnl-${version}.tar.bz2")
+depends=()
+makedepends=()
+md5sums=('0bbb70573119ec5d49435114583e7a49')
+group=(net.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
