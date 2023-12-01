@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='runc'
+release='1'
+version='1.1.10'
+url='https://github.com/opencontainers/runc'
+description='CLI tool for spawning and running containers according to the OCI specification'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/opencontainers/runc/archive/v$version/runc-$version.tar.gz")
+depends=()
+makedepends=(go)
+md5sums=('1a3c4081ad29cfaf8544edc70be81e0c')
+group=(app.containers)
+uses=()
+arch=('x86_64')
+
+_commit=18a0cb0f32bcac2ecc9a10f327d282759c144dab
+
+export GOCACHE="${GOCACHE:-"$HOME/go-cache"}"
+export GOTMPDIR="${GOTMPDIR:-"$HOME"}"
+export GOMODCACHE="${GOMODCACHE:-"$HOME/go"}"
+
+
+cd $name-$version
+
+build () {
+    make COMMIT="$_commit"
+}
+
+package () {
+    install -Dsm755 runc "$DESTDIR"/usr/bin/runc
+}
+
