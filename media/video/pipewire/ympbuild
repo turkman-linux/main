@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='pipewire'
-release='1'
-version='0.3.67'
+release='2'
+version='1.0.0'
 url='https://pipewire.org/'
 description='Multimedia processing graphs '
 email='bayramk@gmail.com'
@@ -12,7 +12,7 @@ source=("https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/$version/pip
         "pipewire-launcher.sh")
 depends=(lilv libpulse alsa-lib dbus)
 makedepends=()
-md5sums=('c3f399f63b6a520fce5f25ab7b9c9e1f'
+md5sums=('0452405de47b4a619766f18fbda4bfa1'
          'SKIP'
          'SKIP')
 group=(media.video)
