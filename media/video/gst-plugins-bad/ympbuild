@@ -18,9 +18,13 @@ arch=('x86_64')
 
 cd $name-$version
 
+# Fix undefined symbol 'exp'
+export CFLAGS="$CfLAGS -lm"
+
 setup(){
 	 meson setup build --prefix=/usr \
-    --libdir=/usr/lib64
+    --libdir=/usr/lib64 \
+    -Dgpl=enabled
 }
 build(){
    ninja -C build

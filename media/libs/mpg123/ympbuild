@@ -1,4 +1,4 @@
-8#!/usr/bin/env bash
+#!/usr/bin/env bash
 name='mpg123'
 release='2'
 version='1.32.3'
