@@ -8,7 +8,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('Apache')
 source=("https://github.com/OpenPrinting/libppd/releases/download/${version}/libppd-${version}.tar.xz")
-depends=(cups cups-filters)
+depends=(cups libcupsfilters)
 makedepends=(ghostscript)
 md5sums=('ab889cbcdaa23689d9a425769f208da9')
 group=(net.print)
@@ -28,10 +28,10 @@ setup () {
 }
 
 build () {
-    make $jobs
+    make
 }
 
 package () {
-    make DESTDIR="$DESTDIR" install $jobs
+    make install
 }
 
