@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='polkit'
-release='1'
-version='122'
+release='2'
+version='123'
 url='https://gitlab.freedesktop.org/polkit/polkit'
 description='Application development toolkit for controlling system-wide privileges'
 email='akarsu@protonmail.com'
@@ -14,7 +14,7 @@ source=("https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-
         "polkit.sysconf")
 depends=(duktape expat glib pam elogind)
 makedepends=(gobject-introspection gtk-doc meson)
-md5sums=('bbe3e745fc5bc1a41f1b5044f09a0f26'
+md5sums=('36540b837c588e1e77145523bb39f511'
          'SKIP'
          'SKIP'
          'SKIP'

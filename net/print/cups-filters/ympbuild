@@ -1,31 +1,26 @@
 #!/usr/bin/env bash
 name='cups-filters'
-release='1'
-version='1.28.16'
+release='2'
+version='2.0.0'
 url='https://wiki.linuxfoundation.org/openprinting/cups-filters'
 description='OpenPrinting CUPS filters and backends'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://www.openprinting.org/download/cups-filters/cups-filters-${version}.tar.xz"
-"cups-filters-1.28.16-security_fix-1.patch")
+source=("https://github.com/OpenPrinting/cups-filters/archive/refs/tags/${version}.tar.gz")
+#source=("https://www.openprinting.org/download/cups-filters/cups-filters-${version}.tar.xz")
 depends=(cups poppler ghostscript)
 makedepends=()
-md5sums=('24bed15110499fd652d65d6baab85ca6' 'SKIP')
+md5sums=('64ec28ce5e05623048c55b9007b0455b')
 group=(net.print)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
-prepare(){
- 	patch -Np1 < ../cups-filters-${version}-security_fix-1.patch
-}
-
-
 setup () {
 	CXXFLAGS="$CXXFLAGS -flto=auto -std=c++17" \
-	#autoreconf -fvi
+	autoreconf -fvi
     ./configure --prefix=/usr \
 		--libdir=/usr/lib64/ \
 		--disable-avahi \
@@ -41,12 +36,10 @@ setup () {
 }
 
 build () {
-    make libcupsfilters.la
-    make libfontembed.la
     make $jobs
 }
 
 package () {
-    make DESTDIR="$DESTDIR/" install $jobs
+    make DESTDIR="$DESTDIR" install $jobs
 }
 

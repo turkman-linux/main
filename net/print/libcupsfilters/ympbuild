@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='libcupsfilters'
+release='1'
+version='2.0.0'
+url='https://github.com/OpenPrinting/libcupsfilters'
+description='OpenPrinting CUPS Filters - contains all the code of the filters of the former cups-filters package as library functions'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('Apache')
+source=("https://github.com/OpenPrinting/libcupsfilters/releases/download/${version}/libcupsfilters-${version}.tar.xz")
+depends=(cups libexif poppler libjpeg-turbo libpng libtiff lcms2 fontconfig dbus)
+makedepends=(ghostscript)
+md5sums=('267e569145bd20615fa18ae65ea6f870')
+group=(net.print)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		--sysconfdir=/etc \
+		--sbindir=/usr/bin \
+		--localstatedir=/var \
+		--disable-mutool
+
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make DESTDIR="$DESTDIR" install $jobs
+}
+
