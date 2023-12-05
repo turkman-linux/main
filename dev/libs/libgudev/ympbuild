@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='libgudev'
-release='1'
-version='237'
+release='2'
+version='238'
 url='https://example.org'
 description='GObject bindings for libudev'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://gitlab.gnome.org/GNOME/libgudev/-/archive/237/libgudev-237.tar.gz')
-depends=()
+source=("https://gitlab.gnome.org/GNOME/libgudev/-/archive/$version/libgudev-$version.tar.gz")
+depends=(glib eudev)
 makedepends=()
-md5sums=('a83582c0bca75f01d158c8b48e450415')
+md5sums=('c85736d109526690bf6e2845616f6809')
 group=()
 uses=()
 arch=('x86_64')

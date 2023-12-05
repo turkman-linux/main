@@ -1,29 +1,37 @@
 #!/usr/bin/env bash
 name='appstream'
 release='2'
-version='0.16.2'
+version='1.0.0'
 url='https://distributions.freedesktop.org/wiki/AppStream'
 description='Provides a standard for creating app stores across distributions'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL')
-source=("https://github.com/ximion/appstream/archive/refs/tags/v${version}.tar.gz")
+source=("https://github.com/ximion/appstream/archive/refs/tags/v${version}.tar.gz"
+        'no-zstd.patch')
 depends=(glib libxml2 libyaml curl libxmlb gperf gdk-pixbuf)
 makedepends=(meson gobject-introspection)
-md5sums=('c6ca019b98a4dd1aae8bbd79e73d0ddb')
+md5sums=('43b699013eaf7aeaf9f9bbb0b9f6e007'
+         'SKIP')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    patch -Np1 -i ../no-zstd.patch
+}
+
 setup(){
     meson setup build --prefix=/usr \
+        -Dwrap_mode=nopromote \
         --libdir=/usr/lib64/ \
         -Dqt=false \
         -Dvapi=true \
         -Dapt-support=false \
         -Dstemming=false \
+        -Dzstd=false \
         -Dsystemd=false
 }
 

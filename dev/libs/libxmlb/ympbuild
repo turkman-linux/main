@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 name='libxmlb'
-release='1'
-version='0.3.11'
+release='2'
+version='0.3.14'
 url='https://github.com/hughsie/libxmlb'
 description='Library to help create and query binary XML blobs'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
-_ver="8fd75bb13cd4bed30ed369e8fe47c593d2b9dd17"
+_ver="e64c60d993cd463edf0441a221fae263f9a6663e"
 source=("https://github.com/hughsie/libxmlb/archive/${_ver}.zip")
 depends=()
 makedepends=()
-md5sums=('19635e8c08b1a202dab7fd19ecc23464')
+md5sums=('1ae671b08f5b4b0e163179fbb040389f')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
