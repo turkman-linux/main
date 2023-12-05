@@ -17,9 +17,8 @@ group=(sys.kernel)
 
 package(){
     # install kernel (archlinux kernel config used)
-    # https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config
     ALLOWROOT=1 mklinux -f -o $DESTDIR -v $version -y 1 --no-build \
-       -c "https://gitlab.com/turkman/devel/assets/linux-config/-/raw/main/config"
+       -c "https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config"
     # symlink for musl
     mkdir -p $DESTDIR/usr/include/musl
     for name in $(ls $DESTDIR/usr/include/ | grep -v musl) ; do
