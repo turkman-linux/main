@@ -1,28 +1,23 @@
 #!/usr/bin/env bash
 name='live-boot'
-release='1'
+release='2'
 version='1.0'
 url='https://gitlab.com/turkman'
 description='initramfs tools live hooks'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=('live-boot.script'
-        'live-boot.hook'
-       )
+source=("https://gitlab.com/turkman/devel/sources/live-boot/-/archive/$version/live-boot-$version.tar.gz")
 depends=(initramfs-tools)
 makedepends=()
-md5sums=('SKIP'
-         'SKIP'
-        )
+md5sums=('069de262fbb125fe931bd0e628046a4b')
 group=(sys.kernel)
 uses=()
 arch=('x86_64')
 
+cd $name-$version
+
 package(){
-    mkdir -p ${DESTDIR}/etc/initramfs-tools/scripts/
-    mkdir -p ${DESTDIR}/usr/share/initramfs-tools/hooks/
-    install live-boot.script ${DESTDIR}/etc/initramfs-tools/scripts/live
-    install live-boot.hook ${DESTDIR}/usr/share/initramfs-tools/hooks/live
+    make install
 }
 
