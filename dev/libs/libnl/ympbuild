@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='libnl'
-release='2'
-version='3.8.0'
-_version='3_8_0'
+release='3'
+version='3.9.0'
+_version='3_9_0'
 url='https://github.com/thom311'
 description='Netlink Library Suite '
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ license=('GPLv3')
 source=("https://github.com/thom311/libnl/releases/download/libnl${_version}/libnl-${version}.tar.gz")
 depends=()
 makedepends=()
-md5sums=('86a4245274aae0a1cfdbd85ce88eede9')
+md5sums=('27bffaccbb22ab9d8cff377b320f6014')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

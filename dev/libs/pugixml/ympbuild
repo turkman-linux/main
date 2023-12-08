@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='pugixml'
-release='1'
-version='1.13'
+release='2'
+version='1.14'
 url='https://pugixml.org/'
 description='Light-weight, simple and fast XML parser for C++ with XPath support'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/zeux/pugixml/archive/refs/tags/v${version}.tar.gz")
 depends=()
 makedepends=(cmake)
-md5sums=('6f5b0cdca4f5e50b10066076fbf02e70')
+md5sums=('bffc9e4d64b1a25a50d39991937a523c')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

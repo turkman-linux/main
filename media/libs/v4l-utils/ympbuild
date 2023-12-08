@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='v4l-utils'
-release='1'
-version='1.24.1'
+release='2'
+version='1.26.0'
 url='https://linuxtv.org/'
 description='Userspace tools and conversion library for Video 4 Linux'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
-source=("https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-${version}.tar.bz2")
+				
+source=("https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-${version}.tar.xz")
 depends=(hicolor-icon-theme libjpeg-turbo sysfsutils)
 makedepends=(alsa-lib)
-md5sums=('8ba9c73c4319b6afab5fa4358edc43de')
+md5sums=('0ccb2a18e1d3a3b2986591753a2b3a7f')
 group=(media.libs)
 uses=()
 arch=('x86_64')
@@ -18,19 +19,17 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
+    meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-        --sysconfdir=/etc \
-        --sbindir=/usr/bin \
-        --disable-qv4l2 \
-        --disable-qvidcap
+        -Ddefault_library=both \
+        -Dqv4l2=disabled \
+        -Dqvidcap=disabled
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install $jobs
+    ninja -C build install $jobs
 }
-

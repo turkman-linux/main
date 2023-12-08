@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gawk'
-release='1'
-version='5.2.1'
+release='2'
+version='5.3.0'
 url='https://savannah.gnu.org/projects/gawk'
 description='GNU awk pattern-matching language'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/gawk/gawk-$version.tar.xz")
 depends=(mpfr readline)
 makedepends=()
-md5sums=('02956bc5d117a7437bb4f7039f23b964')
+md5sums=('97c5a7d83f91a7e1b2035ebbe6ac7abd')
 uses=()
 group=(sys.apps)
 arch=('x86_64')

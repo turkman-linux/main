@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gi-docgen'
-release='1'
-version='2023.1'
+release='2'
+version='2023.3'
 url='https://gitlab.gnome.org/GNOME/gi-docgen'
 description=' A documentation generator for GObject-based libraries '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/gi-docgen/-/archive/$version/gi-docgen-$version.tar.gz")
 depends=(py3-pygments py3-markdown py3-jinja py3-typogrify)
 makedepends=()
-md5sums=('844e84610246501d3303ae9150d0cc24')
+md5sums=('a8a03bac876478de7b2a32291ed8cc12')
 group=(dev.util)
 uses=()
 arch=('x86_64')

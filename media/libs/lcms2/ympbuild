@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='lcms2'
-release='2'
-version='2.15'
+release='3'
+version='2.16'
 url='https://netix.dl.sourceforge.net/project/lcms/lcms/2.14/lcms2-2.14.tar.gz'
 description='Small-footprint color management engine, version 2'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://netix.dl.sourceforge.net/project/lcms/lcms/${version}/lcms2-${version}.tar.gz")
 depends=(libtiff)
 makedepends=()
-md5sums=('d17efda96ec79ebdd5de881a93b67839')
+md5sums=('f219d87c247957c97020a3859d8d6fa8')
 group=(media.libs)
 uses=()
 arch=('x86_64')
