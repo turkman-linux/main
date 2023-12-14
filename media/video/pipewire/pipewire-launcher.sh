@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # we must exit if cinnamon desktop detected
-if [ "$XDG_CURRENT_DESKTOP" == "X-Cinnamon" ]:
+if [ "$XDG_CURRENT_DESKTOP" == "X-Cinnamon" ]; then
     exit 0
 fi
 
