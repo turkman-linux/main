@@ -16,15 +16,26 @@ md5sums=('0452405de47b4a619766f18fbda4bfa1'
          'SKIP'
          'SKIP')
 group=(media.video)
-uses=()
+uses=(alsa gstreamer bluetooth jack)
+uses_extra=(v4l2)
 arch=('x86_64')
 
 cd $name-$version
 
 setup(){
-   #./autogen.sh 
-	 meson setup build --prefix=/usr \
+
+   meson setup build --prefix=/usr \
     --libdir=/usr/lib64 \
+    -D gstreamer=$(use_opt gstreamer enabled disabled)\
+    -D gstreamer-device-provider=$(use_opt gstreamer enabled disabled) \
+    -D pipewire-alsa=$(use_opt alsa enabled disabled)\
+    -D alsa=$(use_opt alsa enabled disabled)\
+    -D jack=$(use_opt jack enabled disabled)\
+    -D bluez5=$(use_opt bluetooth enabled disabled)\
+    -D bluez5-backend-hsp-native=$(use_opt bluetooth enabled disabled)\
+    -D bluez5-backend-hfp-native=$(use_opt bluetooth enabled disabled)\
+    -D bluez5-codec-opus=$(use_opt bluetooth enabled disabled)\
+    -D v4l2=$(use_opt v4l2 enabled disabled)\
     -D session-managers=[]
 }
 build(){
