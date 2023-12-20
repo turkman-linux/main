@@ -11,7 +11,7 @@ source=("https://github.com/scop/bash-completion/releases/download/$version/bash
 depends=(bash)
 makedepends=()
 md5sums=('2514c6772d0de6254758b98c53f91861')
-group=(app.shell)
+group=(app.shells)
 uses=()
 arch=('x86_64')
 

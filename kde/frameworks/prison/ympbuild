@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/frameworks/5.112/prison-$version.tar.xz
 depends=(qt5-base)
 makedepends=()
 md5sums=('7829a393955af2d58f9a27cfb06f18ad')
-group=(kde.framework)
+group=(kde.frameworks)
 uses=()
 arch=('x86_64')
 

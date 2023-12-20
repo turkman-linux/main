@@ -11,7 +11,7 @@ source=("https://github.com/stevenhoneyman/l3afpad/archive/refs/tags/v${version}
 depends=(gtk3)
 makedepends=(intltool)
 md5sums=('2c209503116b53e732c37f8d8d4c40fd')
-group=(app.editor)
+group=(app.editors)
 uses=()
 arch=('x86_64')
 

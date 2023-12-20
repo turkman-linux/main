@@ -11,7 +11,7 @@ source=("https://gitlab.freedesktop.org/xorg/app/xauth/-/archive/xauth-$version/
 depends=(libXmu libX11)
 makedepends=()
 md5sums=('1e3086f646c35e7e66e81cb878490baf')
-group=(x11.app)
+group=(x11.apps)
 uses=()
 arch=('x86_64')
 

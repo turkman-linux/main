@@ -11,7 +11,7 @@ source=("https://github.com/google/highway/archive/refs/tags/$version.tar.gz")
 depends=()
 makedepends=()
 md5sums=('2747e50aa0ec0126cabc3b50799b9547')
-group=(sys.app)
+group=(sys.apps)
 uses=()
 arch=('x86_64')
 

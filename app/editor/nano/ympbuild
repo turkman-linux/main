@@ -21,7 +21,7 @@ md5sums=('13742c686c6ddb0b7b294634f0c13cec'
          'SKIP')
 uses=(nanorc)
 arch=('x86_64')
-group=(app.editor)
+group=(app.editors)
 
 cd $name-$version
 
