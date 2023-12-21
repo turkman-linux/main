@@ -13,7 +13,7 @@ source="https://archive.xfce.org/src/apps/mousepad/${_version}/mousepad-${versio
 depends=(desktop-file-utils gtksourceview4)
 makedepends=(intltool)
 md5sums=('9f1b5565cbb8975f85ed5cc0ff6a876b')
-group=(app.editors)
+group=(app.editor)
 uses=()
 arch=('x86_64')
 

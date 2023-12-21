@@ -12,7 +12,7 @@ arch=(x86_64)
 ver=$version+git20210903+057cd650a4ed-8
 source=("https://salsa.debian.org/debian/dash/-/archive/debian/$ver/dash-debian-$ver.zip")
 md5sums=("fa7d340bd8968e10f8097667cfdd1c18")
-group=(app.shells)
+group=(app.shell)
 
 cd $name-debian-$ver
 

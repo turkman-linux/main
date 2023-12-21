@@ -11,7 +11,7 @@ source=("https://github.com/fish-shell/fish-shell/releases/download/${version}/f
 depends=(ncurses libpcre2 gettext)
 makedepends=(cmake python)
 md5sums=('b721bbff7adc221f4e77b44404727026')
-group=(app.shells)
+group=(app.shell)
 uses=()
 arch=('x86_64')
 

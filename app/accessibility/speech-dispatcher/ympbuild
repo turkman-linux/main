@@ -8,7 +8,7 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://github.com/brailcom/speechd/archive/refs/tags/$version.tar.gz")
-depends=()
+depends=(dotconf libaio libpulse)
 makedepends=()
 md5sums=('e9f03959ced56a6fff8e933e8fe89cc0')
 group=(app.accessibility)
@@ -27,6 +27,7 @@ setup () {
     autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
+        --sysconfdir=/etc \
         --with-ibmtts=no \
         --with-kali=no \
         --with-baratinoo=no \
