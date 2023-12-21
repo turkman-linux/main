@@ -11,7 +11,7 @@ arch=(x86_64)
 depends=(readline ncurses)
 source=("https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz")
 md5sums=(cfb4cf795fc239667f187b3d6b3d396f)
-group=(app.shell)
+group=(app.shells)
 
 cd $name-$version
 

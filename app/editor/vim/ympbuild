@@ -13,7 +13,7 @@ makedepends=()
 md5sums=('a28acac9c6bfd2c14af33140d38e3dce'
          'SKIP')
 arch=('x86_64')
-group=(app.editor)
+group=(app.editors)
 
 cd ${name}${version/\./}
 
