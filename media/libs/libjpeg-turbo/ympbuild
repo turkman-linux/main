@@ -2,8 +2,8 @@
 name='libjpeg-turbo'
 release='2'
 version='3.0.0'
-url='MMX, SSE, and SSE2 SIMD accelerated JPEG library'
-description='https://libjpeg-turbo.org/'
+url='https://libjpeg-turbo.org/'
+description='MMX, SSE, and SSE2 SIMD accelerated JPEG library'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')

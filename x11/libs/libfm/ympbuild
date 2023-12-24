@@ -13,7 +13,7 @@ depends=(gtk3 pango intltool menu-cache)
 makedepends=()
 md5sums=('8b2864ba2d21586171ab9616b5610aeb'
          'SKIP')
-group=()
+group=(x11.libs)
 uses=()
 uses_extra=(extra-only)
 arch=('x86_64')

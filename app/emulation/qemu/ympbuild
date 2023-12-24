@@ -11,7 +11,7 @@ source=("https://download.qemu.org/qemu-$version.tar.xz")
 depends=()
 makedepends=()
 md5sums=('f7e3443d5b62afa0c10771ad42c5e17a')
-group=()
+group=(app.emulation)
 uses=(gtk vnc)
 arch=('x86_64')
 

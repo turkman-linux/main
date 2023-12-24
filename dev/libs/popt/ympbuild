@@ -11,7 +11,7 @@ source=("https://github.com/rpm-software-management/popt/archive/refs/tags/popt-
 depends=()
 makedepends=()
 md5sums=('d2e41e1338e1227826d986855344925b')
-group=()
+group=(dev.libs)
 uses=()
 arch=('x86_64')
 
