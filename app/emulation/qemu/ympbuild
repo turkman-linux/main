@@ -8,14 +8,18 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.qemu.org/qemu-$version.tar.xz")
-depends=()
+depends=(alsa-lib bzip2 curl cyrus-sasl eudev fuse glib
+         gnutls jack2 keyutils libaio libcap-ng libpulse
+         libseccomp libusb libxkbcommon mesa ndctl pam
+         pipewire
+)
 makedepends=()
 md5sums=('f7e3443d5b62afa0c10771ad42c5e17a')
 group=(app.emulation)
 uses=(gtk vnc)
 arch=('x86_64')
 
-gtk_depends=(gtk3)
+gtk_depends=(gtk3 vte3)
 
 
 cd $name-$version
