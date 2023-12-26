@@ -13,7 +13,7 @@ depends=(libfm)
 makedepends=()
 md5sums=('8630de9fcb97c9ca9b13eccec5b35efa'
          'SKIP')
-group=()
+group=(lxde.base)
 uses=()
 arch=('x86_64')
 

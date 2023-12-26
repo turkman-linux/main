@@ -11,7 +11,7 @@ source=("https://github.com/python-pillow/Pillow/archive/refs/tags/${version}.ta
 depends=(python freetype lcms2  libtiff  libxcb)
 makedepends=(git py3-build py3-installer py3-wheel py3-setuptools libwebp)
 md5sums=('2044975777256471e2f9749ea808b5c9')
-group=()
+group=(dev.python)
 uses=()
 arch=('x86_64')
 

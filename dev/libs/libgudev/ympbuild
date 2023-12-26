@@ -11,7 +11,7 @@ source=("https://gitlab.gnome.org/GNOME/libgudev/-/archive/$version/libgudev-$ve
 depends=(glib eudev)
 makedepends=()
 md5sums=('c85736d109526690bf6e2845616f6809')
-group=()
+group=(dev.libs)
 uses=()
 arch=('x86_64')
 

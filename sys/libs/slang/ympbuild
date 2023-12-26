@@ -11,7 +11,7 @@ source=("https://www.jedsoft.org/releases/slang/slang-$version.tar.bz2")
 depends=(zlib)
 makedepends=()
 md5sums=('69015c8300088373eb65ffcc6ed4db8c')
-group=()
+group=(sys.libs)
 uses=()
 arch=('x86_64')
 

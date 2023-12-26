@@ -19,7 +19,7 @@ md5sums=('3649dd48556ead2d909467c1f0751956'
          'SKIP'
          'SKIP'
          'SKIP')
-group=()
+group=(gui.libs)
 uses=()
 arch=('x86_64')
 
