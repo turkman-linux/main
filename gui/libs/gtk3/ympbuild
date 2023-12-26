@@ -55,6 +55,9 @@ build(){
 package(){
     ninja -C build install
     mkdir -p ${DESTDIR}/etc/sysconf.d
+    mkdir -p ${DESTDIR}/etc/profile.d
+    echo "export GTK_OVERLAY_SCROLLING=0" > ${DESTDIR}/etc/profile.d/gtk3.sh
+    echo "export GDK_CORE_DEVICE_EVENTS=1" >> ${DESTDIR}/etc/profile.d/gtk3.sh
     install ../gtk3.sysconf ${DESTDIR}/etc/sysconf.d/gtk3
 }
 
