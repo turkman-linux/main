@@ -1,12 +1,12 @@
 #!/bin/sh
 for dir in $(ls /usr/share/icons) ; do
     if [ -d "/usr/share/icons/$dir" ] ; then
-        current=$(date +%s -r "/usr/share/icons/$dir")
+        current=$(find  "/usr/share/icons/$dir" -type d -exec date +%s -r {} \; | sort | tail -n 1)
         last=$(cat /var/lib/ymp/sysconf/gtk3/"$dir"-update.date 2>/dev/null)
         if [ "$current" != "$last" ] ; then
             gtk-update-icon-cache "/usr/share/icons/$dir"
         fi
-        date +%s -r "/usr/share/icons/$dir" > /var/lib/ymp/sysconf/gtk3/"$dir"-update.date
+        find  "/usr/share/icons/$dir" -type d -exec date +%s -r {} \; | sort | tail -n 1 > /var/lib/ymp/sysconf/gtk3/"$dir"-update.date
     fi
 done
 current=$(date +%s -r /usr/lib64/gtk-3.0)
