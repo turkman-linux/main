@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='curl'
-release='5'
-version='8.4.0'
+release='6'
+version='8.5.0'
 url='https://github.com/curl/curl'
 description='An URL retrieval utility and library'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://curl.se/download/curl-$version.zip")
 depends=(zlib openssl libnghttp2 libpsl)
 makedepends=( )
-md5sums=('e930d2848cb23b9443373bbffaf2fee2')
+md5sums=('7b573f83c7c6d1894f43bbabe7085242')
 arch=('x86_64')
 group=(net.misc)
 
