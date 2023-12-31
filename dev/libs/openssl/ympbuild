@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 name='openssl'
-release='2'
-version='3.1.1'
+release='3'
+version='3.2.0'
 url='https://www.openssl.org/source/'
 description='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
-email=' aliriza.keskin@pardus.org.tr'
+email='aliriza.keskin@pardus.org.tr'
 maintainer=' aliriza'
 license=('GPLv3')
 source=("https://www.openssl.org/source/openssl-$version.tar.gz"
@@ -12,7 +12,7 @@ source=("https://www.openssl.org/source/openssl-$version.tar.gz"
         "update-certdata.sh")
 depends=()
 makedepends=(coreutils)
-md5sums=('1864b75e31fb4a6e0a07fd832529add3'
+md5sums=('7903549a14abebc5c323ce4e85f2cbb2'
          'SKIP'
          'SKIP')
 arch=('x86_64')
