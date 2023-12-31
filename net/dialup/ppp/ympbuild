@@ -20,7 +20,8 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/ \
+        --sysconfdir=/etc \
+        --libdir=/usr/lib64 \
 		--disable-systemd
 }
 
