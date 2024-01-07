@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='fish'
-release='1'
-version='3.6.1'
+release='2'
+version='3.7.0'
 url='https://fishshell.com/'
 description='Smart and user friendly shell intended mostly for interactive use'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://github.com/fish-shell/fish-shell/releases/download/${version}/fish-${version}.tar.xz")
 depends=(ncurses libpcre2 gettext)
 makedepends=(cmake python)
-md5sums=('b721bbff7adc221f4e77b44404727026')
+md5sums=('22c3fab479b185faf620a3b3f43443c3')
 group=(app.shell)
 uses=()
 arch=('x86_64')
@@ -24,7 +24,6 @@ setup(){
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_SHARED_LIBS=True \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DFISH_USE_SYSTEM_PCRE2=true \
         -DBUILD_DOCS=false

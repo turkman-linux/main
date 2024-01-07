@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='papirus-icon-theme'
-release='3'
-version='20231101'
+release='4'
+version='20231201'
 url='https://github.com/PapirusDevelopmentTeam/papirus-icon-theme'
 description='papirus icon theme'
 email='03teknoloji@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/PapirusDevelopmentTeam/$name/archive/$version/$name-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('2c42e8eb7477055ed09e6a700baa4a6f')
+md5sums=('5498bc168d422f274cf6232f0131d48f')
 group=(x11.themes)
 uses=()
 arch=('x86_64')
