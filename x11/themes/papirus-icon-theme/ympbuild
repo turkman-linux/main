@@ -17,5 +17,5 @@ arch=('x86_64')
 
 package() {
   cd $name-$version
-  make DESTDIR="$DESTDIR" install
+  make SHELL="/bin/bash -x" DESTDIR="$DESTDIR" install
 }

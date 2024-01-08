@@ -18,7 +18,7 @@ arch=('x86_64')
 cd markdown-$version
 
 build(){
-    python3 -m build --wheel --no-isolation
+    python3 -m build --wheel
 }
 
 package(){
