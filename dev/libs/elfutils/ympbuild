@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 name='elfutils'
-release='2'
-version='0.189'
+release='3'
+version='0.190'
 url='https://sourceware.org/elfutils/'
 description='Libraries/utilities to handle ELF objects (drop in replacement for libelf)'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 license=('GPLv3' 'GPLv2' 'LGPLv3')
 source=("https://sourceware.org/elfutils/ftp/${version}/elfutils-${version}.tar.bz2")
-depends=( )
 makedepends=( )
-md5sums=('5cfaa711a90cb670406cd495aeaa6030')
+md5sums=('79ad698e61a052bea79e77df6a08bc4b')
 uses=(bzip2 lzma nls)
 uses_extra=(zstd)
 arch=('x86_64')

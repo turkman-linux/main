@@ -11,6 +11,7 @@ source=("https://www.x.org/releases/individual/xcb/xcb-util-image-${version}.tar
 depends=(libxcb xcb-util)
 makedepends=(xorgproto util-macros)
 md5sums=('a67bfac2eff696170259ef1f5ce1b611')
+group=(x11.libs)
 uses=()
 arch=('x86_64')
 

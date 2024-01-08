@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-pexpect'
-release='1'
-version='4.8.0'
+release='2'
+version='4.9'
 url='http://pexpect.readthedocs.org/en/stable'
 description='Make Python a better tool for controlling and automating other programs'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/pexpect/pexpect/archive/refs/tags/${version}.tar.gz")
 depends=(python py3-ptyprocess)
 makedepends=()
-md5sums=('b260eb284efc19489466b804ff53c59b')
+md5sums=('c438edc94eba0e87307d951560856f0a')
 group=(dev.python)
 uses=()
 arch=('x86_64')

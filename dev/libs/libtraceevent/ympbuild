@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libtraceevent'
-release='1'
-version='1.7.2'
+release='2'
+version='1.8.1'
 url='https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/'
 description='Linux kernel trace event library'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/snapshot/libtraceevent-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('5a8cd771ab709e7a7eb793555c7e570f')
+md5sums=('4ab55447c9ccfbfb12ba5e9b7ae412e7')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

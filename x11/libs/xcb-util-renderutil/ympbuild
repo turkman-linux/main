@@ -11,6 +11,7 @@ source=("https://www.x.org/releases/individual/xcb/xcb-util-renderutil-${version
 depends=(libxcb)
 makedepends=(util-macros xorgproto)
 md5sums=('193b890e2a89a53c31e2ece3afcbd55f')
+group=(x11.libs)
 uses=()
 arch=('x86_64')
 
