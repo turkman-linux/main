@@ -9,7 +9,7 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://www.freedesktop.org/software/fontconfig/release/fontconfig-$version.tar.gz"
         "fontconfig.sysconf")
-depends=(freetype)
+depends=(freetype expat)
 makedepends=()
 md5sums=('8c0842d84fa1edbde4cf4c2c82e25b66'
          'SKIP')
