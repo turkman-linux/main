@@ -24,6 +24,7 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/lib64/ \
+        -Drootlibdir=/lib64 \
         -Dudevrulesdir=/lib64/udev/rules.d \
         -Dcgroup-controller=elogind \
         -Dhalt-path=/sbin/halt \
@@ -67,5 +68,9 @@ package(){
     # shadow system-auth.d file
     mkdir -p "${DESTDIR}"/etc/pam.d/system-auth.d/
     echo "session    include    elogind-user" > "${DESTDIR}"/etc/pam.d/system-auth.d/99-elogind
+
+    # ld.so.conf
+    mkdir -p "${DESTDIR}"/etc/ld.so.conf.d/
+    echo "/lib64/elogind" > "${DESTDIR}"/etc/ld.so.conf.d/elogind.conf
 }
 
