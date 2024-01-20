@@ -13,6 +13,11 @@ depend() {
 	# Make sure we start before any other display manager
 	before display-manager
 }
+start_pre() {
+  # systemd is running stuff
+  checkpath --mode 0700 -d /run/systemd/system/
+  ln -s elogind /sys/fs/cgroup/systemd
+}
 
 extra_started_commands="reload"
 

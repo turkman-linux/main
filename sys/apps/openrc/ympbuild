@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openrc'
-release='1'
-version='0.46'
+release='2'
+version='0.53'
 url='https://github.com/OpenRC/openrc'
 description='The OpenRC init system'
 email='aliriza.keskin@pardus.org.tr'
@@ -16,7 +16,7 @@ source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
     "extras/disable-secondary-gpu.sh")
 depends=()
 makedepends=()
-md5sums=('8b74d3db544b496f6bb33d2648db5d2f'
+md5sums=('4c539c934497e15fc038a18465268f00'
     'SKIP'
     'SKIP'
     'SKIP'

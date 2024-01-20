@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 name='elogind'
-release='1'
-version='246.10'
+release='2'
+version='252.9'
 url='https://github.com/elogind/elogind'
 description="he systemd project's logind, extracted to a standalone package"
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/elogind/elogind/archive/refs/tags/v$version.tar.gz"
-        "remove-polkit-gobject-1-check.patch"
         "elogind.initd"
         "systemd.pc")
 depends=(acl attr audit libcap-ng libcap dbus pam)
 makedepends=()
-md5sums=('32ab2201281f14738d9c045f3669c14d'
-         'SKIP'
+md5sums=('2be2c43298e2fc41c5bee33dde605f01'
          'SKIP'
          'SKIP')
 group=(sys.auth)
@@ -22,10 +20,6 @@ uses=()
 arch=('x86_64')
 
 cd $name-$version
-
-prepare(){
-    patch -Np1 -i ../remove-polkit-gobject-1-check.patch
-}
 
 setup(){
     meson setup build --prefix=/usr \
@@ -37,7 +31,7 @@ setup(){
         -Dpoweroff-path=/sbin/poweroff \
         -Drootlibexecdir=/usr/libexec/elogind \
         -Ddefault-hierarchy=hybrid \
-        -Ddefault-kill-user-processes=false \
+        -Ddefault-kill-user-processes=true \
         -Dpam=true \
         -Dselinux=false \
         -Daudit=true \
