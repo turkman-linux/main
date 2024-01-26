@@ -15,8 +15,8 @@ depend() {
 }
 start_pre() {
   # systemd is running stuff
-  checkpath --mode 0700 -d /run/systemd/
-  checkpath --mode 0700 -d /run/systemd/system/
+  checkpath --mode 0755 -d /run/systemd/
+  checkpath --mode 0755 -d /run/systemd/system/
 }
 
 extra_started_commands="reload"
