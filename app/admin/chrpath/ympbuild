@@ -1,24 +1,26 @@
 #!/usr/bin/env bash
 name='chrpath'
-release='1'
-version='0.16'
+release='2'
+version='0.17'
 url='https://directory.fsf.org/wiki/Chrpath'
 description='Chrpath can modify the rpath and runpath of ELF executables'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://deb.debian.org/debian/pool/main/c/chrpath/chrpath_$version.orig.tar.gz")
+source=("https://codeberg.org/pere/chrpath/archive/release-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('2bf8d1d1ee345fc8a7915576f5649982')
+md5sums=('a76a47c9c82016821808f5726a66e600')
 group=(app.admin)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd $name
+
 setup(){
-       ./configure --prefix=/usr \
-           --mandir=/usr/share/man
+   autoreconf -vfi
+   ./configure --prefix=/usr \
+       --mandir=/usr/share/man
 }
 
 build(){

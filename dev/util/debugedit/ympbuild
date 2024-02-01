@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='debugedit'
+release='1'
+version='5.0'
+url='https://sourceware.org/ftp/debugedit'
+description='Package description missing'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://sourceware.org/ftp/debugedit/$version/debugedit-$version.tar.xz")
+depends=(elfutils)
+makedepends=()
+md5sums=('9961a1ae59b6417d27e3a646dc4078b7')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+ --libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+

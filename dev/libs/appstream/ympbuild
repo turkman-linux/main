@@ -14,7 +14,8 @@ depends=(glib libxml2 libyaml curl libxmlb gperf gdk-pixbuf)
 makedepends=(meson gobject-introspection)
 md5sums=('0ce7465d38c646b6cb4fca7db6adcc9c')
 group=(dev.libs)
-uses=()
+uses=(compose)
+compose_depends=(pango librsvg)
 arch=('x86_64')
 
 cd $name-${_commit}
@@ -24,6 +25,7 @@ setup(){
     meson setup build --prefix=/usr \
         -Dwrap_mode=nopromote \
         --libdir=/usr/lib64/ \
+        -Dcompose=$(use_opt compose true false) \
         -Dqt=false \
         -Dvapi=true \
         -Dapt-support=false \

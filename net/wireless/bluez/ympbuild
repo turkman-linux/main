@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='bluez'
-release='3'
-version='5.69'
+release='4'
+version='5.72'
 url='https://www.bluez.org'
 description='Daemons for the bluetooth protocol stack'
 email='akarsu@protonmail.com'
@@ -12,7 +12,7 @@ source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz"
         "bluetooth.initd")
 depends=(glib)
 makedepends=(dbus libical json-c alsa-lib ell)
-md5sums=('a05a6c133d3bf6dc1d1c6c46a9704312'
+md5sums=('fcacd4d6d65f7da141977a2beb1ba78f'
          'SKIP'
          'SKIP')
 group=(net.wireless)

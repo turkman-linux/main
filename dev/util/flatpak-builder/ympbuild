@@ -1,34 +1,36 @@
 #!/usr/bin/env bash
 name='flatpak-builder'
-release='1'
-version='1.3.3'
+release='2'
+version='1.4.0'
 url='https://salsa.debian.org/debian/flatpak-builder'
 description='Sandboxed app framework - developer tools'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=('https://salsa.debian.org/debian/flatpak-builder/-/archive/upstream/1.3.3/flatpak-builder-upstream-1.3.3.tar.gz')
-depends=(flatpak elfutils git patch)
+source=("https://github.com/flatpak/flatpak-builder/releases/download/$version/flatpak-builder-$version.tar.xz")
+depends=(flatpak elfutils git patch dconf)
 makedepends=()
-md5sums=('2905c9f70b28815d7c0faad7d928e8b6')
+md5sums=('9cc2c9156ba828c2e7810c20e66cacfb')
 group=(dev.util)
 uses=()
 arch=('x86_64')
 
-cd $name-upstream-$version
+cd $name-$version
 
 setup(){
-    autoreconf -fvi
-    ./configure --prefix=/usr \
+    meson setup build \
+        --prefix=/usr \
         --sysconfdir=/etc \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+       -Dfuse=3
+
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install $jobs
+    ninja -C build install $jobs
 }
 

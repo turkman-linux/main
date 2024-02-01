@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='grub'
-release='1'
-version='2.06'
+release='2'
+version='2.12'
 url='https://ftp.gnu.org/gnu/grub'
 description='GNU GRand Unified Bootloader'
 email='parduscix@yandex.ru'
@@ -10,9 +10,10 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz")
 depends=()
 makedepends=()
-md5sums=('cf0fd928b1e5479c8108ee52cb114363')
+md5sums=('60c564b1bdc39d8e43b3aab4bc0fb140')
 group=(sys.boot)
-uses=(efi ia32 bios)
+uses=(efi bios)
+uses_extra=(ia32)
 arch=('x86_64')
 dontstrip=1
 efi_depends=(efibootmgr)
@@ -33,6 +34,7 @@ get_grub_opt(){
 }
 
 prepare(){
+    echo depends bli part_gpt > $name-$version/grub-core/extra_deps.lst
     for tgt in ${uses[@]} ; do
         if ! use $tgt ; then
             continue
@@ -76,16 +78,18 @@ package(){
         make $jobs -C $tgt install
     done
     # default grub config
-    mkdir -p $DESTDIR/etc/default
+    mkdir -p $DESTDIR/etc/default $DESTDIR/usr/bin/
     {
 	  echo 'GRUB_DISTRIBUTOR=""'
     echo 'GRUB_TERMINAL_OUTPUT=console'
     echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet"'
     echo 'GRUB_CMDLINE_LINUX=""'
 	  echo 'GRUB_DEFAULT=0'
-	  echo 'GRUB_TIMEOUT=0'
+	  echo 'GRUB_TIMEOUT=5'
 	  echo 'GRUB_DISABLE_SUBMENU=y'
     echo 'GRUB_DISABLE_OS_PROBER=true'
 	  echo 'GRUB_DISABLE_RECOVERY=true'
     } > $DESTDIR/etc/default/grub
+    echo "#!/bin/sh" > $DESTDIR/usr/bin/update-grub
+    echo "grub-mkconfig -o /boot/grub/grub.cfg" >> $DESTDIR/usr/bin/update-grub
 }
