@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='alsa-lib'
-release='1'
-version='1.2.8'
+release='2'
+version='1.2.10'
 url='https://www.alsa-project.org/'
 description='alsa-lib Advanced Linux Sound Architecture Library '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/alsa-project/alsa-lib/archive/refs/tags/v$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('de332cfee083b11dd9d1604760ca8e79')
+md5sums=('31265da09c10af01f613e9801a7c9a78')
 group=(media.libs)
 uses=()
 arch=('x86_64')
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-  autoreconf -fvi  
+  autoreconf -fvi
 	./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }

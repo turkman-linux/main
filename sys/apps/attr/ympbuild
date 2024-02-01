@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='attr'
-release='1'
-version='2.5.1'
+release='2'
+version='2.5.2'
 url='https://mirror.rabisu.com/savannah-nongnu/attr/'
 description='The attr package contains utilities to administer the extended attributes on filesystem objects. '
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://mirror.rabisu.com/savannah-nongnu/attr/attr-${version}.tar.gz")
-depends=( )
-makedepends=( )
-md5sums=('ac1c5a7a084f0f83b8cace34211f64d8')
+depends=()
+makedepends=()
+md5sums=('227043ec2f6ca03c0948df5517f9c927')
 group=(sys.apps)
 arch=('x86_64')
 

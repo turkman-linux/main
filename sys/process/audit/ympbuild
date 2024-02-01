@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='audit'
-release='2'
-version='3.1.1'
+release='3'
+version='4.0'
 url='https://people.redhat.com/sgrubb/audit/'
 description='Userspace components of the audit framework'
 email='aliriza.keskin@pardus.org.tr'
@@ -11,8 +11,8 @@ source=("https://github.com/linux-audit/audit-userspace/archive/refs/tags/v$vers
         "auditd.initd"
         "auditd.confd")
 depends=()
-makedepends=( )
-md5sums=('03f6572873b0df83e6bcb84d8c500765'
+makedepends=()
+md5sums=('a4a4f9e4a3aa426d5c555184133e447d'
          'SKIP'
          'SKIP')
 group=(sys.process)

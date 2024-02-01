@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='acl'
-release='1'
-version='2.3.1'
+release='2'
+version='2.3.2'
 url='https://mirror.rabisu.com/savannah-nongnu/acl'
 description='The acl package contains utilities to administer Access Control Lists'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.savannah.nongnu.org/releases/acl/acl-$version.tar.xz")
 depends=(attr)
 makedepends=( )
-md5sums=('95ce715fe09acca7c12d3306d0f076b2')
+md5sums=('590765dee95907dbc3c856f7255bd669')
 group=(sys.apps)
 arch=('x86_64')
 
