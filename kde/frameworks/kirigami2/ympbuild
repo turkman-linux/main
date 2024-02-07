@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kirigami2'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='A QtQuick based components set'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kirigami2-${version}.tar.xz")
 depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects)
 makedepends=(extra-cmake-modules qt5-tools qt5-svg kpackage doxygen)
-md5sums=('594a988cc1e502e3675db5abf722acb5')
+md5sums=('e32151c42475d86f74b45173153d4d5e')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

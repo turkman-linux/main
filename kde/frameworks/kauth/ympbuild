@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kauth'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Abstraction to system policy and authentication features'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kauth-${version}.tar.xz")
 depends=(qt5-base kcoreaddons)
 makedepends=(extra-cmake-modules graphviz qt5-tools doxygen)
-md5sums=('fc074465e484160b974415f7dfaaecd7')
+md5sums=('763be13bb190f61d2ceaec14ea8d8887')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

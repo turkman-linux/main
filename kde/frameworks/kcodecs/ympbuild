@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kcodecs'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Provide a collection of methods to manipulate strings using various encodings'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcodecs-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('8d5b51b59c07572032d99fc4238a137e')
+md5sums=('11e441ff480648521b91890aa1a4a5e6')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

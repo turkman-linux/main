@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='extra-cmake-modules'
-release='2'
-version='5.112.0'
+release='3'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Extra modules and scripts for CMake'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/extra-cmake-modules-${version}.tar.xz")
 depends=(cmake)
 makedepends=()
-md5sums=('40fa6d3c54ce18dccec1dac4ee23d7d6')
+md5sums=('475f189080f5d249de3f53d1aece9416')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -22,9 +22,9 @@ setup () {
     cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DSphinx_BUILD_EXECUTABLE=/usr/bin/sphinx-build \
-        -DBUILD_HTML_DOCS=OFF \
+        -DBUILD_HTML_DOCS=ON \
         -DBUILD_MAN_DOCS=OFF \
-        -DBUILD_QTHELP_DOCS=OFF
+        -DBUILD_QTHELP_DOCS=ON
 }
 
 build () {

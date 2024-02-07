@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
 name='kio'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
-description='Framework providing transparent file and data management'
+description='Resource and network access abstraction'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kio-${version}.tar.xz")
-depends=(karchive kcompletion kconfig kguiaddons ki18n kxmlgui
-         gcc qt5-base qt5-x11extras qt5-declarative kservice
-         kauth solid)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('e7f0566641251e0db82f516465200531')
+depends=(karchive kbookmarks kcompletion kconfig kconfigwidgets kcoreaddons kcrash
+	kdbusaddons ki18n kiconthemes kitemviews kjobwidgets kservice kwidgetsaddons kwindowsystem solid)
+makedepends=(doxygen extra-cmake-modules libxml2 libxslt qt5-tools)
+md5sums=('476559f2314a7e7cf6e0bc870c4334fe')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -24,7 +23,7 @@ cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_QCH=ON \
-		-DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.79.2-nons
+		-DBUILD_TESTING=OFF
 }
 
 build () {
@@ -34,3 +33,4 @@ build () {
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
 }
+

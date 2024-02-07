@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='karchive'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Qt 5 addon providing access to numerous types of archives'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/karchive-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('76df3b37d0b2018a5cdf38488bf5d825')
+md5sums=('8652c351ad2ae2629217f5482733263e')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

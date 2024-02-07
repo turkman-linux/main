@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kxmlgui'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='User configurable main windows'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kxmlgui-${version}.tar.xz")
 depends=(kglobalaccel kiconthemes kitemviews)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('494846db7e48f1d999c7a374eaf9a1ff')
+md5sums=('0e82d262cb9d08755d8ece168fc31022')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

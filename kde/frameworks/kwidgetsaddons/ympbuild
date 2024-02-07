@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kwidgetsaddons'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtWidgets'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kwidgetsaddons-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(clang doxygen extra-cmake-modules qt5-tools)
-md5sums=('7a341a44caf89aa586a902ae67677910')
+md5sums=('4fc9ef28f11e983f691d2d15a332725a')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
