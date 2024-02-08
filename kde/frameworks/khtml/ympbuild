@@ -17,8 +17,17 @@ arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    sed -i "/.*KF5Wallet.*/d" CMakeLists.txt
+    sed -i "/.*KF5::Wallet.*/d" src/CMakeLists.txt
+    sed -i "/.*kwallet.*/d" src/html/ksslkeygen.cpp
+}
+
+export CFLAGS="$CFLAGS -DKHTML_NO_WALLET"
+export CXXFLAGS="$CXXFLAGS -DKHTML_NO_WALLET"
+
 setup () {
-cmake -B build -G Ninja \
+  cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib
 }

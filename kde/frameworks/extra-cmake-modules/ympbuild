@@ -22,9 +22,9 @@ setup () {
     cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DSphinx_BUILD_EXECUTABLE=/usr/bin/sphinx-build \
-        -DBUILD_HTML_DOCS=ON \
+        -DBUILD_HTML_DOCS=OFF \
         -DBUILD_MAN_DOCS=OFF \
-        -DBUILD_QTHELP_DOCS=ON
+        -DBUILD_QTHELP_DOCS=OFF
 }
 
 build () {

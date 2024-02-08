@@ -18,8 +18,13 @@ arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    # remove kwallet dependency
+    sed -i "/add_subdirectory(kpasswdserver)/d" src/CMakeLists.txt
+}
+
 setup () {
-cmake -B build -G Ninja \
+  cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_QCH=ON \

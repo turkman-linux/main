@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='kcoreaddons'
-release='2'
+release='3'
 version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtCore'
@@ -20,7 +20,8 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_QCH=ON
 }
 
 build () {
