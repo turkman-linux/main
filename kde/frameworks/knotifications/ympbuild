@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='knotifications'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Abstraction for system notifications'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/knotifications-${version}.tar.xz")
 depends=(libcanberra libdbusmenu-qt kwindowsystem kconfig kcoreaddons qt5-speech libXtst)
 makedepends=(extra-cmake-modules qt5-tools doxygen qt5-declarative)
-md5sums=('f6217c43deb241da273ce739d0c68b9a')
+md5sums=('1a64548994c3ec494d4d8e54e4d25aa8')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -25,7 +25,8 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_QCH=ON 
+		-DBUILD_QCH=ON \
+		-DWITH_X11=$(usex X)
 }
 
 build () {

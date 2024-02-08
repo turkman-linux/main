@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kcompletion'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Text completion helpers and widgets'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcompletion-${version}.tar.xz")
 depends=(kconfig)
 makedepends=(extra-cmake-modules graphviz qt5-tools doxygen)
-md5sums=('91ef323fb60f104fd4068eae5862f6ed')
+md5sums=('2bb424ebc0650b338f927ed72966ff0b')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

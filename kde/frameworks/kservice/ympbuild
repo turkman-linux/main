@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kservice'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='Advanced plugin and service introspection'
 description='Support for unit conversion'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kservice-${version}.tar.xz")
 depends=(ki18n kconfig kdbusaddons kcoreaddons)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('d10203e2528badcb3960fb61856e1211')
+md5sums=('2b830b7183b55364db204aad40ebf742')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

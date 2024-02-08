@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kapidox'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Frameworks API Documentation Tools'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kapidox-${version}.tar.xz")
 depends=(py3-jinja py3-yaml)
 makedepends=(py3-build py3-installer py3-wheel py3-setuptools qt5-base)
-md5sums=('b54d1e754dd90caadd728261cde90840')
+md5sums=('975ebf3ea8525381c52e021dd3367f02')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 build () {
-    python -m build --wheel
+    python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package () {

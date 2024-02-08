@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ktextwidgets'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Advanced text editing widgets'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/ktextwidgets-${version}.tar.xz")
 depends=(kcompletion sonnet qt5-speech)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('ff9d06b644ec42b7cfadb4edda08d5dd')
+md5sums=('dfda4b4225a3c0ecb181ca8a990cc8af')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

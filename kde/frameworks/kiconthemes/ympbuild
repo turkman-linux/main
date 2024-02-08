@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kiconthemes'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Support for icon themes'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kiconthemes-${version}.tar.xz")
 depends=(qt5-svg kconfigwidgets karchive)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('6490f0ef66821b67560f6b3363e1c5b4')
+md5sums=('f997425dce56c003c6350e2595d81069')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

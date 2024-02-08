@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kcoreaddons'
 release='2'
-version='5.112.0'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtCore'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcoreaddons-${version}.tar.xz")
-depends=(qt5-base)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('724cb024b7a2cbea2496aee38292e64d')
+depends=(qt5-base breeze-icons)
+makedepends=(clang extra-cmake-modules graphviz qt5-tools doxygen)
+md5sums=('3bdf763a3ca15383822e97dfe2635269')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,8 @@ cd $name-$version
 
 setup () {
 cmake -B build -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build () {
@@ -29,3 +30,5 @@ build () {
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
 }
+
+

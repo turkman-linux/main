@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kglobalaccel'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Add support for global workspace shortcuts'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kglobalaccel-${version}.tar.xz")
-depends=(kdbusaddons kconfig kcrash kwindowsystem)
+depends=(kdbusaddons kconfig kcrash)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('590824e75f0fd5fb610c06a0008ac92d')
+md5sums=('d4b9194beb2d0f67a150354636a7d778')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

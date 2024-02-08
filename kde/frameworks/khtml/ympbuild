@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='khtml'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='The KDE HTML library, ancestor of WebKit'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/portingAids/khtml-${version}.tar.xz")
-depends=(giflib kparts kjs phonon)
+depends=(giflib kparts kjs)
 makedepends=(extra-cmake-modules gperf)
-md5sums=('33c96cb6f85043dbde58c33ffa1c6767')
+md5sums=('3c71b94d25d8d3714ea63d2bb59fde3d')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

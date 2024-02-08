@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kguiaddons'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtGui'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kguiaddons-${version}.tar.xz")
-depends=(qt5-x11extras qt5-wayland)
+depends=(qt5-x11extras qt5-qtwayland)
 makedepends=(extra-cmake-modules clang doxygen qt5-tools plasma-wayland-protocols)
-md5sums=('3aefa6eb505baca45ddfdfc87564f0a9')
+md5sums=('a7d576421f0a13005b4e87e16b2edaf5')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

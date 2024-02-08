@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kjobwidgets'
-release='1'
-version='5.110.0'
+release='2'
+version='5.114.0'
 url='https://community.kde.org/Frameworks'
 description='Widgets for tracking KJob instances'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kjobwidgets-${version}.tar.xz")
 depends=(kcoreaddons kwidgetsaddons qt5-x11extras)
 makedepends=(extra-cmake-modules qt5-tools doxygen)
-md5sums=('a16be8295e6c78a9712b6801c9e01f44')
+md5sums=('974a71d9ec60b908638d36174a9648e1')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
