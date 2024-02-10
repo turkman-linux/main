@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='tmux'
+release='1'
+version='3.3a'
+url='https://github.com/tmux/tmux'
+description='Teminal multiplexer'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/tmux/tmux/releases/download/$version/tmux-$version.tar.gz")
+depends=(ncurses libevent)
+makedepends=()
+md5sums=('8eee5883b9f6550fa4efaad0c9ec38f3')
+group=(app.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+ --libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+

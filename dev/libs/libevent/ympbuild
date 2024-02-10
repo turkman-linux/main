@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='libevent'
+release='1'
+version='2.1.12'
+url='https://libevent.org'
+description='An event notification library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/libevent/libevent/releases/download/release-$version-stable/libevent-$version-stable.tar.gz")
+depends=(openssl)
+makedepends=()
+md5sums=('b5333f021f880fe76490d8a799cd79f4')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version-stable
+
+setup () {
+    ./configure --prefix=/usr \
+ --libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+
