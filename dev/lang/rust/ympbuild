@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='rust'
-release='2'
-version='1.74.0'
+release='3'
+version='1.75.0'
 url='https://www.rust-lang.org'
 description='Systems programming language from Mozilla'
 email='aliriza.keskin@pardus.org.tr'
@@ -11,7 +11,7 @@ source=("https://static.rust-lang.org/dist/rustc-$version-src.tar.gz"
         'config.toml')
 depends=(curl gcc libssh llvm)
 makedepends=(cmake ninja perl python)
-md5sums=('96325c20a8fc75fa062647a84003e5d3'
+md5sums=('6420f7d4e0eb3f4f4963a2e2afdb301b'
          'SKIP')
 group=(dev.lang)
 uses=()

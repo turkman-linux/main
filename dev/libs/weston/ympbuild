@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='weston'
-release='2'
-version='12.0.0'
+release='3'
+version='13.0.0'
 url='https://gitlab.freedesktop.org/wayland/weston'
 description='A lightweight and functional Wayland compositor'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/wayland/weston/-/archive/$version/weston-$version.tar.gz")
 depends=(pixman libdrm libxkbcommon libinput pango libjpeg-turbo lcms2 seatd)
 makedepends=()
-md5sums=('358ebc5564538ca179af92d3441f4892')
+md5sums=('f5d8614664a26211621910d310b42890')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
@@ -20,9 +20,9 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-        -Ddeprecated-launcher-logind=false \
         -Dimage-webp=false \
         -Dbackend-rdp=false \
+        -Dbackend-vnc=false \
         -Dxwayland=false \
         -Dsystemd=false \
         -Dremoting=false \

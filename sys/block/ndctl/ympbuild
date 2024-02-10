@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ndctl'
-release='1'
-version='77'
+release='2'
+version='78'
 url='https://github.com/pmem/ndctl'
 description='Helper tools and libraries for managing non-volatile memory on Linux'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pmem/ndctl/archive/refs/tags/v$version.tar.gz")
 depends=(json-c kmod libtraceevent libtracefs keyutils iniparser)
 makedepends=()
-md5sums=('22adf45411cfbd111f4cd05f5c1012f5')
+md5sums=('e9508933924acacb006e1f4003c47bbc')
 group=(sys.block)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-pathspec'
-release='1'
-version='0.11.1'
+release='2'
+version='0.12.1'
 url='https://github.com/cpburnz/python-path-specification'
 description='Utility library for gitignore style pattern matching of file paths'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 source=("https://github.com/cpburnz/python-pathspec/archive/refs/tags/v${version}.tar.gz")
 depends=(python)
 makedepends=(py3-build py3-flit py3-installer py3-wheel)
-md5sums=('0965b5b501cf63c8c8b1139e1c04c4ce')
+md5sums=('615333a7a673fd3105c65048b5bbf2cc')
 group=(dev.python)
 uses=()
 arch=('x86_64')

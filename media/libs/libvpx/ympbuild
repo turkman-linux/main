@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libvpx'
-release='1'
-version='1.13.0'
+release='2'
+version='1.14.0'
 url='https://www.webmproject.org/'
 description='Library for the vp8/vp9 codecs'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('BSD')
 source=("https://github.com/webmproject/libvpx/archive/v${version}/libvpx-${version}.tar.gz")
 depends=()
 makedepends=(nasm)
-md5sums=('d5fd45a806a65a57d6635f9e7a98a1b2')
+md5sums=('026bc289d916624dabdfd713c1c5b69a')
 group=(media.libs)
 uses=()
 arch=('x86_64')

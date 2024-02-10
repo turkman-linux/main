@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='utf8cpp'
+release='1'
+version='4.0.5'
+url='https://github.com/nemtrif/utfcpp'
+description='UTF-8 with C++ in a Portable Way'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('custom:BSL')
+source=("https://github.com/nemtrif/utfcpp/archive/refs/tags/v${version}.tar.gz")
+depends=()
+makedepends=(cmake)
+md5sums=('8e0fe13266a7fa02f61340bf399986c3')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd "utfcpp"-$version
+
+setup () {
+	cmake -B build -G Ninja \
+			-DCMAKE_INSTALL_PREFIX=/usr \
+			-DUTF8_TESTS=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}

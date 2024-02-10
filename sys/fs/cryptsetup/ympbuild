@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='cryptsetup'
-release='1'
-version='2.6.1'
+release='2'
+version='2.7.0'
 url='https://gitlab.com/cryptsetup/'
 description='Tool to setup encrypted devices with dm-crypt'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.com/cryptsetup/cryptsetup/-/archive/v$version/cryptsetup-v$version.tar.gz")
 depends=(lvm2 json-c)
 makedepends=()
-md5sums=('62dca8beccc359ada07cd932d5556eb6')
+md5sums=('b564e09e74d29c38611c12ce9bed3a26')
 group=(sys.fs)
 uses=()
 arch=('x86_64')

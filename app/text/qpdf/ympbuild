@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qpdf'
-release='1'
-version='11.6.1'
+release='2'
+version='11.8.0'
 url='https://github.com/qpdf/qpdf'
 description='Command-line tool for structural, content-preserving transformation of PDF files'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/qpdf/qpdf/releases/download/v$version/qpdf-$version.tar.gz")
 depends=(libjpeg-turbo gnutls)
 makedepends=()
-md5sums=('a5cacc48af5c931e62c58c8e4421e940')
+md5sums=('aec6ad628203411cd04fbb7e145ecc72')
 group=(app.text)
 uses=()
 arch=('x86_64')
