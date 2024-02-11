@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
 name='perl-libwww'
-release='1'
-version='6.67'
+release='2'
+version='6.72'
 url='https://metacpan.org/release/libwww-perl'
 description='The World-Wide Web library for Perl'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('PerlArtistic' 'GPL')
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/libwww-perl-$version.tar.gz")
-depends=('perl' 'perl-encode-locale' 'perl-file-listing'
-         'perl-html-parser' 'perl-http-cookies' 'perl-http-daemon'
-         'perl-http-date' 'perl-http-negotiate' 'perl-lwp-mediatypes'
-         'perl-net-http' 'perl-try-tiny' 'perl-uri' 'perl-www-robotrules')
-makedepends=('perl-test-fatal' 'perl-test-needs' 'perl-test-requiresinternet')
-md5sums=('ff7621d0350da3052f24db9a74692672')
+depends=(perl )
+makedepends=()
+md5sums=('ea683625d1c875c583ae8859602bac66')
 group=(dev.perl)
 uses=()
 arch=('x86_64')

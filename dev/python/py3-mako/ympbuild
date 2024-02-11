@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='py3-mako'
-release='1'
-version='1.2.4'
+release='2'
+version='1.3.2'
 url='https://pypi.org/project/Mako/'
 description='A super-fast templating language that borrows the best ideas from the existing templating languages.'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://files.pythonhosted.org/packages/05/5f/2ba6e026d33a0e6ddc1dddf9958677f76f5f80c236bd65309d280b166d3e/Mako-${version}.tar.gz")
+source=("https://files.pythonhosted.org/packages/d4/1b/71434d9fa9be1ac1bc6fb5f54b9d41233be2969f16be759766208f49f072/Mako-${version}.tar.gz")
+#source=("https://files.pythonhosted.org/packages/05/5f/2ba6e026d33a0e6ddc1dddf9958677f76f5f80c236bd65309d280b166d3e/Mako-${version}.tar.gz")
 depends=(python py3-markupsafe)
 makedepends=()
-md5sums=('651f365616611fcd4f2702a9002e2195')
+md5sums=('0500a3df18f02c9e53fe3a9314c1a1ae')
 group=(dev.python)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libjxl'
-release='1'
-version='0.8.1'
+release='2'
+version='0.9.2'
 url='https://github.com/libjxl/libjxl'
 description='JPEG XL image format reference implementation'
 email='parduscix@yandex.ru'
@@ -10,12 +10,16 @@ license=('GPLv3')
 source=("https://github.com/libjxl/libjxl/archive/refs/tags/v$version.tar.gz")
 depends=(brotli libjpeg-turbo highway libpng lcms2)
 makedepends=()
-md5sums=('04a73be60211224e039d791a902a46de')
+md5sums=('11ecf6dbf3a9afdf907becb016bf8e0c')
 group=(media.libs)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+
+prepare(){
+	./deps.sh
+}
 
 setup(){
     mkdir build

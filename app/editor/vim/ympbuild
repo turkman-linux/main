@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 name='vim'
-release='1'
-version='9.0'
+release='2'
+version='9.1.0095'
 url='http://ftp.vim.org/pub/vim/unix/'
 description='free and open-source, screen-based text editor program'
 email='queryvs@example.com'
 maintainer='queryvs'
 license=('GPLv2')
-source=("http://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2")
+				#https://github.com/vim/vim/archive/refs/tags/v9.1.0095.tar.gz
+source=("https://github.com/vim/vim/archive/refs/tags/v$version.tar.gz")
 depends=(ncurses)
 makedepends=()
-md5sums=('a28acac9c6bfd2c14af33140d38e3dce'
+md5sums=('9bcf6aa825dd6955a447e984a87307b3'
          'SKIP')
 arch=('x86_64')
 group=(app.editor)
 
-cd ${name}${version/\./}
+cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
@@ -43,6 +44,6 @@ build(){
 }
 
 package(){
-    make install $jobs
+    make DESTDIR="$DESTDIR" install $jobs
 }
 

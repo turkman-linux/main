@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='wayland-protocols'
-release='2'
-version='1.32'
+release='3'
+version='1.33'
 url='https://gitlab.freedesktop.org/wayland/wayland-protocols'
 description='Wayland protocol files'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/$version/downloads/wayland-protocols-$version.tar.xz")
 depends=(wayland)
 makedepends=()
-md5sums=('00c2cedb0d2df714a0965a00c19385c6')
+md5sums=('6af4d3a18fbfc7d8aa3f9ccf5b4743f3')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

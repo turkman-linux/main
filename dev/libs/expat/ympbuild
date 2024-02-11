@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='expat'
-release='1'
-version='2.5.0'
+release='2'
+version='2.6.0'
 url='https://github.com/libexpat/libexpat'
 description='An XML parser library'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-$version.tar.xz")
+source=("https://github.com/libexpat/libexpat/releases/download/R_2_6_0/expat-$version.tar.xz")
 depends=( )
 makedepends=( )
-md5sums=('ac6677b6d1b95d209ab697ce8b688704')
+md5sums=('bd169cb11f4b9bdfddadf9e88a5c4d4b')
 uses=()
 arch=('x86_64')
 group=(dev.libs)

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='poppler'
-release='2'
-version='23.10.0'
+release='3'
+version='24.01.0'
 url='https://poppler.freedesktop.org/'
 description='PDF rendering library based on xpdf 3.0'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPL')
 source=("https://poppler.freedesktop.org/poppler-${version}.tar.xz")
 depends=(cairo lcms2 libjpeg-turbo libpng libxml2 nss libtiff zlib)
 makedepends=(boost cmake fontconfig gobject-introspection)
-md5sums=('3be79099d8725debef73ea07502b771a')
+md5sums=('dfbd19dc807ca0155f39009de4ffc044')
 group=(app.text)
 uses=()
 arch=('x86_64')
@@ -22,7 +22,7 @@ cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib64 \
 		-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
-    -DENABLE_LIBOPENJPEG=none \
+    	-DENABLE_LIBOPENJPEG=none \
 		-DBUILD_QT5_TESTS=OFF \
 		-DBUILD_QT6_TESTS=OFF \
 		-DBUILD_GTK_TESTS=OFF \

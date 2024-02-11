@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libwacom'
-release='3'
-version='2.9.0'
+release='4'
+version='2.10.0'
 url='https://github.com/linuxwacom/libwacom/wiki'
 description='Library to help implement Wacom tablet settings'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/linuxwacom/libwacom/releases/download/libwacom-${version}/libwacom-${version}.tar.xz")
 depends=(eudev)
 makedepends=(meson)
-md5sums=('2f4de3d56ae20702cbd4174e10a99aa8')
+md5sums=('9baf8fb0e486e225ef81b9becb46031b')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

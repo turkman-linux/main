@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libpulse'
-release='1'
-version='16.1'
+release='2'
+version='17.0'
 url='https://www.freedesktop.org/wiki/Software/PulseAudio/'
 description='Libraries for PulseAudio clients '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-$version.tar.xz")
 depends=(dbus libsndfile tdb libICE libxcb libSM libXtst gtk3 sbc jack2 lirc gst-plugins-base gstreamer libasyncns speexdsp libsoxr)
 makedepends=(bluez)
-md5sums=('2c7b8ceb5d7337565c7314b4d6087ca8')
+md5sums=('c4a3596a26ff4b9dcd0c394dd1d4f8ee')
 group=(media.libs)
 uses=()
 arch=('x86_64')

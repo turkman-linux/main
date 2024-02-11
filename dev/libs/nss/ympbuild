@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='nss'
-release='4'
-version='3.94'
-_version='3_94'
+release='5'
+version='3.97'
+_version='3_97'
 url='https://archive.mozilla.org/pub/security/nss/releases/'
 description='Network Security Service libraries'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,7 +12,7 @@ source=("https://archive.mozilla.org/pub/security/nss/releases/NSS_${_version}_R
 "nss-${version}-standalone-1.patch")
 depends=(nspr)
 makedepends=(gyp)
-md5sums=('a4694b0508ef509aa0bc0f3e068a3ad2' 'SKIP')
+md5sums=('66da5ddb30ebf742338d4f7f180fb329' 'SKIP')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

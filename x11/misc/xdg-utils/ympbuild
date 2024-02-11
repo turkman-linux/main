@@ -1,20 +1,21 @@
+#!/usr/bin/env bash
 name='xdg-utils'
-release='1'
-version='1.1.3'
+release='2'
+version='1.2.1'
 url='https://www.freedesktop.org/wiki/Software/xdg-utils/'
 description='Command line tools that assist applications with a variety of desktop integration tasks'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://portland.freedesktop.org/download/xdg-utils-$version.tar.gz")
+source=("https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v${version}/xdg-utils-v${version}.tar.gz")
 depends=(file xorg-xset xorg-xprop)
 makedepends=(docbook-xsl lynx xmlto)
-md5sums=('902042508b626027a3709d105f0b63ff')
+md5sums=('4c72585a98ba8f775cb9e72b066cc0df')
 group=(x11.misc)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+cd $name-"v"$version
 
 setup(){
     ./configure --prefix=/usr \
