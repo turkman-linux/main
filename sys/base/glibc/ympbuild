@@ -1,8 +1,8 @@
 #!/bin/bash
 name='glibc'
-release='3'
+release='4'
 version='2.39'
-url='https://gitlab.com/sulinos/devel/ymp'
+url='https://ftp.gnu.org/gnu/glibc'
 description='GNU libc library'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
@@ -52,7 +52,6 @@ setup(){
         --enable-static-pie
         --enable-static-nss
         --disable-nscd
-
     )
     if use multilib ; then
         export CC="gcc -m32"
