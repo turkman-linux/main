@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 name='py3-pluggy'
-release='1'
-version='1.0.0'
+release='2'
+version='1.4.0'
 url='https://pluggy.readthedocs.io/en/latest/'
 description='Plugin management and hook calling for Python'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/a1/16/db2d7de3474b6e37cbb9c008965ee63835bba517e22cdb8c35b5116b5ce1/pluggy-${version}.tar.gz")
+source=("https://files.pythonhosted.org/packages/54/c6/43f9d44d92aed815e781ca25ba8c174257e27253a94630d21be8725a2b59/pluggy-1.4.0.tar.gz")
 depends=(py3-pdm-pep517)
 makedepends=(py3-setuptools)
-md5sums=('daa6fddfb6cd364f3c82e52098911e4b')
+md5sums=('ffb69741271eaeefab3f2ef2435e2d5f')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
 cd "pluggy"-$version
+
 
 build(){
     python3 setup.py build

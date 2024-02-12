@@ -24,6 +24,7 @@ depend() {
 
 start_pre() {
 	checkpath -f -m 0644 -o root:root "$DOCKER_LOGFILE"
+  iptables -t nat -F
 }
 
 reload() {

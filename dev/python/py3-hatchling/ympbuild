@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-hatchling'
-release='1'
-version='1.18.0'
+release='2'
+version='1.21.0'
 url='https://github.com/pypa/hatch'
 description=' 	Modern, extensible Python build backend'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/pypa/hatch/archive/refs/tags/hatchling-v${version}.tar.gz")
 depends=(python)
 makedepends=(py3-pathspec py3-editables py3-trove-classifiers py3-pluggy)
-md5sums=('18de98a22f62df1ce02b8ce55aab413a')
+md5sums=('6f0aaa799c8490cc3ab7a67e65b75b97')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd "hatch-hatchling-v"$version
 
 build(){
-    python -m build --wheel --no-isolation backend
+    python -m build --wheel backend
 }
 
 package(){

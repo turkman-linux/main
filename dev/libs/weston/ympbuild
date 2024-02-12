@@ -8,7 +8,7 @@ email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/wayland/weston/-/archive/$version/weston-$version.tar.gz")
-depends=(pixman libdrm libxkbcommon libinput pango libjpeg-turbo lcms2 seatd)
+depends=(pixman libdrm libxkbcommon libinput pango libjpeg-turbo lcms2 seatd pipewire xorg-xwayland xcb-util-cursor)
 makedepends=()
 md5sums=('f5d8614664a26211621910d310b42890')
 group=(dev.libs)
@@ -20,19 +20,16 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-        -Dimage-webp=false \
+        -Dsystemd=false \
         -Dbackend-rdp=false \
         -Dbackend-vnc=false \
-        -Dxwayland=false \
-        -Dsystemd=false \
-        -Dremoting=false \
-        -Dpipewire=false
+        -Dremoting=false
 }
 
 build(){
     ninja -C build
 }
- 
+
 package(){
     ninja -C build install
 }

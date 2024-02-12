@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='docker'
-release='1'
-version='24.0.7'
+release='2'
+version='25.0.3'
 url='https://docker.io'
 description='Pack, ship and run any application as a lightweight container'
 email='aliriza.keskin@pardus.org.tr'
@@ -13,8 +13,8 @@ source=("cli.tar.gz::https://github.com/docker/cli/archive/v$version.tar.gz"
         'docker.confd')
 depends=(make-ca containerd iptables tini)
 makedepends=(go)
-md5sums=('6e264f0471a7e924962dbab92268fb09'
-         '059ed51462797354f39e630d3d2257ef'
+md5sums=('07e11663adb2485dded81d99e45b4aae'
+         '39e1f98dfaba26fe6cdc14f97050c63c'
          'SKIP'
          'SKIP')
 group=(app.containers)
@@ -24,8 +24,8 @@ arch=('x86_64')
 # Thx alpine linux
 # https://git.alpinelinux.org/aports/tree/community/docker/APKBUILD
 
-_cli_commit=afdd53b4e341be38d2056a42113b938559bb1d94    # https://github.com/docker/cli/commits/v$pkgver
-_moby_commit=311b9ff0aa93aa55880e1e5f8871c4fb69583426   # https://github.com/moby/moby/commits/v$pkgver
+_cli_commit=4debf411d1e6efbd9ce65e4250718e9c529a6525    # https://github.com/docker/cli/commits/v$pkgver
+_moby_commit=f417435e5f6216828dec57958c490c4f8bae4f98   # https://github.com/moby/moby/commits/v$pkgver
 
 export AUTO_GOPATH=1
 export GITCOMMIT=$_cli_commit		# for cli
