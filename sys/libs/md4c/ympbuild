@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='md4c'
-release='1'
-version='0.4.8'
+release='2'
+version='0.5.2'
 url='https://github.com/mity/md4c'
 description='C Markdown parser'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/mity/md4c/archive/release-${version}/md4c-${version}.tar.gz")
 depends=()
 makedepends=(cmake)
-md5sums=('3a3d87255705dd812a679d329638a92d')
+md5sums=('8ead909cfe31884295e81e2eee32bac9')
 group=(sys.libs)
 uses=()
 arch=('x86_64')

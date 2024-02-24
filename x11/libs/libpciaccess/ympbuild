@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libpciaccess'
-release='1'
-version='0.17'
+release='2'
+version='0.18'
 url='https://gitlab.freedesktop.org/xorg/lib/libpciaccess'
 description='Library providing generic access to the PCI bus and devices'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://www.x.org/archive/individual/lib/libpciaccess-$version.tar.xz")
 depends=()
 makedepends=()
-md5sums=('1466cf950c914ad2db1dbb76c9a724db')
+md5sums=('54f48367e37666f9e0f12571d1ee3620')
 group=(x11.libs)
 uses=()
 arch=('x86_64')
@@ -18,15 +18,16 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Ddefault_library=both
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install $jobs
+    ninja -C build install $jobs
 }
 

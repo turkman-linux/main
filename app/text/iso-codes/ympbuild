@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='iso-codes'
-release='2'
-version='4.15.0'
+release='3'
+version='4.16.0'
 url='https://salsa.debian.org/iso-codes-team/iso-codes'
 description='Lists of the country, language, and currency names'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v${version}/iso-codes-v${version}.tar.gz")
 depends=()
 makedepends=()
-md5sums=('68d0a549e3086a33a9e35d17a2b1a608')
+md5sums=('841cfc1afcb91e50dc03956ca0a2ad37')
 group=(app.text)
 uses=()
 arch=('x86_64')
