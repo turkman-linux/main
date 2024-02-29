@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mesa'
-release='3'
-version='23.1.7'
+release='4'
+version='24.0.1'
 url='https://gitlab.freedesktop.org/mesa/mesa'
 description='An open-source implementation of the OpenGL specification'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-$version/mesa-mesa-$version.tar.gz")
 depends=(libva libvdpau libdrm llvm glslang elfutils libclc py3-mako libglvnd eudev)
 makedepends=(git)
-md5sums=('a6aab70bc34767191b5cb34123e1bc57')
+md5sums=('5aa8b0f26e4c081897ddd79df111c24b')
 group=(media.libs)
 uses=(wayland x11)
 wayland_depends=(wayland wayland-protocols)
@@ -25,7 +25,7 @@ setup(){
         -D b_lto=true \
         -D platforms=$(use_opt x11 x11 ""),$(use_opt wayland wayland "") \
         -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
-        -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio-experimental \
+        -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D dri3=enabled \
         -D egl=enabled \

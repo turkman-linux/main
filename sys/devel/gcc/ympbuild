@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gcc'
-release='2'
-version='13.1.0'
+release='3'
+version='13.2.0'
 url='https://ftp.gnu.org/gnu/gcc/'
 description='GNU Compiler Collection'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-${version}/gcc-${version}.tar.xz")
 depends=(binutils libmpc zlib linux-headers)
 makedepends=( )
-md5sums=('43e4de77f2218c83ca675257ea1af9ef')
+md5sums=('e0e48554cc6e4f261d55ddee9ab69075')
 arch=('x86_64')
 group=(sys.devel)
 uses=(multilib)
