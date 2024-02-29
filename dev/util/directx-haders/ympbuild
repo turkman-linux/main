@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='directx-headers'
+release='2'
+version='1.611.0'
+url='https://github.com/microsoft/DirectX-Headers'
+description='DirectX headers for using D3D12'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/microsoft/DirectX-Headers/archive/refs/tags/v${version}.tar.gz")
+depends=()
+makedepends=()
+md5sums=('2907ab684e6a22cf91f6b7a137640b2a')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd "DirectX-Headers"-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+		--libdir=/usr/lib64/ \
+		-Dbuild-test=false
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    DESTDIR="$DESTDIR" ninja -C build install $jobs
+}
+
