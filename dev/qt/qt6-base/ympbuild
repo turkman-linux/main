@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+name='qt6-base'
+release='1'
+version='6.6.2'
+url='https://qt.io/developers/'
+description='A cross-platform application and UI framework'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+source=("https://invent.kde.org/qt/qt/qtbase/-/archive/v${version}/qtbase-v${version}.tar.gz")
+depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl)
+makedepends=()
+md5sums=('980159aee096191abb991f24f42933a8')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+dontstrip="31"
+
+cd qtbase-v$version
+
+setup () {
+  cmake -B build -G Ninja -Wno-dev \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+		-DINSTALL_BINDIR=lib64/qt6/bin \
+		-DINSTALL_PUBLICBINDIR=usr/bin \
+		-DINSTALL_DOCDIR=share/doc/qt6 \
+		-DINSTALL_ARCHDATADIR=lib64/qt6 \
+		-DINSTALL_DATADIR=share/qt6 \
+		-DINSTALL_INCLUDEDIR=include/qt6 \
+		-DINSTALL_MKSPECSDIR=lib64/qt6/mkspecs \
+		-DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
+		-DQT_FEATURE_journald=OFF \
+		-DFEATURE_libproxy=ON \
+		-DQT_FEATURE_openssl_linked=ON \
+		-DQT_FEATURE_reduce_relocations=OFF \
+		-DQT_FEATURE_system_sqlite=ON \
+		-DQT_FEATURE_system_xcb_xinput=ON \
+		-DQT_FEATURE_vulkan=ON \
+		-DQT_FEATURE_xcb=ON
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
