@@ -8,7 +8,7 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 source=("https://invent.kde.org/qt/qt/qtbase/-/archive/v${version}/qtbase-v${version}.tar.gz")
-depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl)
+depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl double-conversion)
 makedepends=()
 md5sums=('980159aee096191abb991f24f42933a8')
 group=(dev.qt)
@@ -23,8 +23,8 @@ setup () {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-		-DINSTALL_BINDIR=lib64/qt6/bin \
-		-DINSTALL_PUBLICBINDIR=usr/bin \
+		-DINSTALL_BINDIR=bin/qt6 \
+		-DINSTALL_PUBLICBINDIR=usr/bin/qt6 \
 		-DINSTALL_DOCDIR=share/doc/qt6 \
 		-DINSTALL_ARCHDATADIR=lib64/qt6 \
 		-DINSTALL_DATADIR=share/qt6 \
@@ -33,12 +33,13 @@ setup () {
 		-DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
 		-DQT_FEATURE_journald=OFF \
 		-DFEATURE_libproxy=ON \
-		-DQT_FEATURE_openssl_linked=ON \
-		-DQT_FEATURE_reduce_relocations=OFF \
-		-DQT_FEATURE_system_sqlite=ON \
-		-DQT_FEATURE_system_xcb_xinput=ON \
-		-DQT_FEATURE_vulkan=ON \
-		-DQT_FEATURE_xcb=ON
+        -DFEATURE_openssl_linked=ON \
+        -DFEATURE_system_sqlite=ON \
+        -DFEATURE_system_xcb_xinput=ON \
+        -DFEATURE_no_direct_extern_access=ON \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+        -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
+
 }
 
 build () {
