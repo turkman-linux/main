@@ -1,41 +1,55 @@
 #!/usr/bin/env bash
 name='spirv-llvm-translator'
-release='2'
-version='16.0.0'
+release='3'
+version='18.1.0'
 url='https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
 description='Bi-directional translator between SPIR-V and LLVM IR'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-#source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v$version/SPIRV-LLVM-Translator-$version.tar.gz")
-_commit="322fca5d9c59bfdb80562a52ace51cdbe2a60e92"
-source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/${_commit}.zip")
+source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v$version/SPIRV-LLVM-Translator-$version.tar.gz"
+        "2388.patch")
+#_commit="63fd3515855469507e9531db68a834c2179ef4e1"
+#source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/${_commit}.zip")
 depends=(spirv-tools llvm)
 makedepends=()
-md5sums=('bd23f9249cea9a33f7ad507bdb3683b3')
+md5sums=('caaab5d5769f7dfe044b99eeb83ac2cf'
+         'SKIP')
 group=(dev.util)
 uses=()
 arch=('x86_64')
 
 cd SPIRV-LLVM-Translator-$version
-cd SPIRV-LLVM-Translator-${_commit}
+#cd SPIRV-LLVM-Translator-${_commit}
+
+prepare(){
+    patch -Rp1 -i ../2388.patch
+}
 
 setup(){
     mkdir build && cd build
-    cmake .. -G Ninja \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=True \
-        -DLLVM_SPIRV_INCLUDE_TESTS=1 \
-        -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
-        -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv
-
+    cmake .. \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_INSTALL_LIBDIR=lib \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+    -D CMAKE_C_FLAGS_RELEASE="$CFLAGS" \
+    -D CMAKE_POSITION_INDEPENDENT_CODE=ON \
+    -D CMAKE_SKIP_RPATH=ON \
+    -D LLVM_BUILD_TOOLS=ON \
+    -D CCACHE_ALLOWED=OFF \
+    -D LLVM_DIR=/usr/lib/cmake/llvm \
+    -D LLVM_SPIRV_BUILD_EXTERNAL=YES \
+    -D LLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv \
+    -D FETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -Wno-dev
 }
 
 build(){
-    ninja -C build
+    make -C build
 }
 
 package(){
-    ninja -C build install
+    make -C build install
 }
 

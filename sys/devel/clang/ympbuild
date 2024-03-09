@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='clang'
-release='2'
-version='16.0.6'
+release='3'
+version='18.1.1'
 url='https://github.com/llvm/llvm-project'
 description='The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.'
 email='aliriza.keskin@pardus.org.tr'
@@ -17,11 +17,12 @@ source=(
 depends=(llvm)
 makedepends=()
 md5sums=(
-    '70053a666251fdcabc466ea4a0275972'
-    '775a93a7b168101f544dbfed23ac4aaa'
-    '7d986cda69719a35bd5ecb266fcf1f65'
-    'b7830bb90e376c90a43c2c190a0a5ffa'
+    '64294af06a888b7968ae977832f88396'
+    '36e0f3ff5f2f927b8cb20e3220ae4d17'
+    '466aecd0889df065dbc026b56f44eb89'
+    'aa9a78a149fa45ad4d8336cbdaafcec8'
 )
+
 group=(sys.devel)
 uses=()
 arch=('x86_64')
@@ -44,6 +45,7 @@ local cmake_args=(
     -DENABLE_LINKER_BUILD_ID=ON
     -DLLVM_BUILD_DOCS=OFF
     -DLLVM_BUILD_TESTS=OFF
+    -DLLVM_INCLUDE_TESTS=OFF
     -DLLVM_ENABLE_RTTI=ON
     -DLLVM_ENABLE_SPHINX=OFF
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit
