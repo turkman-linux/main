@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='vte3'
-release='3'
-version='0.74.0'
+release='4'
+version='0.76.0'
 url='https://gitlab.gnome.org/GNOME/vte.git/'
 description='vte Library providing a virtual terminal emulator widget'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/vte/-/archive/${version}/vte-${version}.tar.gz")
 depends=(libxkbcommon libxcb wayland libthai pixman  libpng pixman libpcre2 pango p11-kit nettle util-linux libjpeg-turbo libidn2 icu harfbuzz gtk3 glib gnutls gmp gdk-pixbuf fribidi fontconfig expat libepoxy dbus libdatrie libcloudproviders cairo bzip2 at-spi2-core libXfixes  libXi libXrandr libXrender libXext libXdmcp libXdamage libXcursor libXcomposite libXau libX11 libxkbcommon)
 makedepends=()
-md5sums=('f88a99da623dbfaa535668f1296b92cc')
+md5sums=('bcdccadfaea49fe56c83cf838fc2615c')
 group=(x11.libs)
 uses=()
 arch=('x86_64')
@@ -18,13 +18,14 @@ arch=('x86_64')
 cd vte-$version
 
 setup(){
+    unset meson
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         -D b_lto=false \
         -D docs=false \
         -D gtk3=true \
-		-D gtk4=false \
-        -D_systemd=false 
+    		-D gtk4=false \
+        -D_systemd=false
 }
 
 build(){
