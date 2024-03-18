@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 name='boost'
-release='1'
-version='1.83.0'
-_version='1_83_0'
+release='2'
+version='1.84.0'
+_version='1_84_0'
 url='https://www.boost.org/'
 description='Free peer-reviewed portable C++ source libraries (development headers)'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('custom')
 source=("https://boostorg.jfrog.io/artifactory/main/release/${version}/source/boost_${_version}.tar.bz2")
-depends=(which)
-makedepends=()
-md5sums=('406f0b870182b4eb17a23a9d8fce967d')
+depends=(icu)
+makedepends=(which)
+md5sums=('9dcd632441e4da04a461082ebbafd337')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

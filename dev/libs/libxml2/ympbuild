@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libxml2'
 release='3'
-version='2.12.0'
+version='2.12.6'
 url='https://gitlab.gnome.org/GNOME/libxml2'
 description='XML parser and toolkit'
 email=' aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${version}/libxml2-v${version}.tar.gz")
 depends=(zlib xz-utils)
 makedepends=(python)
-md5sums=('25f3ac6bbabeda5320c0a53261685937')
+md5sums=('51b9d36d5148cec5e82d48a032e1c4b9')
 uses=(python)
 uses_extra=()
 arch=('x86_64')

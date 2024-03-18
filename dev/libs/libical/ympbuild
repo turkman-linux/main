@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libical'
-release='1'
-version='3.0.16'
+release='2'
+version='3.0.17'
 url='https://github.com/libical/libical'
 description='An open source reference implementation of the icalendar data type and serialization format'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL' 'MPL')
 source=("https://github.com/libical/libical/archive/refs/tags/v${version}.tar.gz")
 depends=(glib icu libxml2)
 makedepends=(cmake ninja gtk-doc vala gobject-introspection)
-md5sums=('3799f9dde1db6f7eb0cb112b5e14ab60')
+md5sums=('aab3e2c80a5a61c744204675bff19ae0')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

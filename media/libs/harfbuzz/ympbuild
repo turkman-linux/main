@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='harfbuzz'
-release='5'
-version='8.3.0'
+release='6'
+version='8.3.1'
 url='https://github.com/harfbuzz/harfbuzz'
 description='HarfBuzz text shaping engine'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/$version.tar.gz")
-depends=(cairo glib)
+depends=(cairo glib icu)
 makedepends=(gobject-introspection)
-md5sums=('695b66f27dd3abbddce526e0b5aef74f')
+md5sums=('561a8c81a8ad7cb04c00fbcb671f0527')
 group=(media.libs)
 uses=(freetype)
 freetype_depends=(freetype)

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='poppler'
-release='3'
-version='24.01.0'
+release='4'
+version='24.03.0'
 url='https://poppler.freedesktop.org/'
 description='PDF rendering library based on xpdf 3.0'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL')
 source=("https://poppler.freedesktop.org/poppler-${version}.tar.xz")
-depends=(cairo lcms2 libjpeg-turbo libpng libxml2 nss libtiff zlib)
+depends=(cairo lcms2 libjpeg-turbo libpng libxml2 nss libtiff zlib gpgme)
 makedepends=(boost cmake fontconfig gobject-introspection)
-md5sums=('dfbd19dc807ca0155f39009de4ffc044')
+md5sums=('2d50c3c8e0011d1fa14572c744cd33bb')
 group=(app.text)
 uses=()
 arch=('x86_64')
