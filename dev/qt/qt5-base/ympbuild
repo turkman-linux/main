@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='qt5-base'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.13'
 url='https://git.alpinelinux.org/aports/tree/community/qt5-qtbase'
 description='Cross-platform application development framework'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.qt.io/official_releases/qt/5.15/5.15.10/submodules/qtbase-everywhere-opensource-src-5.15.10.tar.xz")
+source=("https://download.qt.io/official_releases/qt/5.15/5.15.13/submodules/qtbase-everywhere-opensource-src-5.15.13.tar.xz")
 depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl)
 makedepends=()
-md5sums=('3658b0b72d71470a0fb673483909caef')
+md5sums=('119446a119bea7640314067775f27802')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
