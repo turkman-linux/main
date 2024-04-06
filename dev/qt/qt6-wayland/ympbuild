@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='qt6-wayland'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/developers/'
+description='Provides APIs for Wayland'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwayland-everywhere-src-${version}.tar.xz")
+depends=(qt6-base qt6-declarative libXcomposite libxkbcommon)
+makedepends=(vulkan-headers cmake wayland)
+sha256sums=('d73470e4217da388d8cd2a517ee8bb373853f33c569306e80f04397845157aea')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtwayland-everywhere-src-"$version
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

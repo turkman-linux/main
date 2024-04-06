@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt6-svg'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='Classes for displaying the contents of SVG files'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtsvg-everywhere-src-${version}.tar.xz")
+depends=(qt6-base)
+makedepends=(cmake)
+sha256sums=('1518f40e08ff5e6153a6e26e5b95b033413ac143b70795dc1317e7f73ebf922d')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtsvg-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+
+setup() {
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr
+}
+
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

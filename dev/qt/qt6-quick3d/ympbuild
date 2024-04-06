@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='qt6-quick3d'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/developers'
+description='Qt module and API for defining 3D content in Qt Quick'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=(GPLv3)
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtquick3d-everywhere-src-${version}.tar.xz")
+depends=(qt6-base assimp)
+makedepends=(qt6-declarative)
+sha256sums=('8bb943bf3f65a933b74fcd93d927e22b8621484030586c15586728e2f67ed910')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtquick3d-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

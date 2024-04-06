@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='qt6-3d'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='Package description missing'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qt3d-everywhere-src-${version}.tar.xz")
+depends=(qt6-base qt6-declarative qt6-shadertools)
+makedepends=(cmake assimp ninja)
+sha256sums=('803b82a8be8632b79f4fc717b236edba716100ab274a54349add439056896424')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qt3d-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DINPUT_qt3d_assimp=system
+
+}
+
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

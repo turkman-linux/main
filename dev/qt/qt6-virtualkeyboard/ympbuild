@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='qt6-virtualkeyboard'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='Virtual keyboard framework'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('GPLv3')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtvirtualkeyboard-everywhere-src-${version}.tar.xz")
+depends=(qt6-base qt6-svg qt6-declarative)
+makedepends=(cmake)
+sha256sums=('d61bb2a18b1b06f64c956b2bde740c90a4bb46c47a99b31462e6e8d278a0cb6a')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+#HATALI PAKET
+
+cd "qtvirtualkeyboard-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

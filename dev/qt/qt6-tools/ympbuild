@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='qt6-tools'
+release='2'
+version='6.7.0'
+url='https://download.qt.io/official_releases/qt/'
+description='A cross-platform application and UI framework'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.qt.io/official_releases/qt/${version%.*}/$version/submodules/qttools-everywhere-src-$version.tar.xz")
+depends=(qt6-base)
+makedepends=(vulkan-headers)
+sha256sums=('c8da6b239e82fe1e23465cbf0936c0da5a334438d3fb433e19c503cbb1abee7b')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd qttools-everywhere-src-$version
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=Release \
+			-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}
+
+

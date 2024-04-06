@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='qt6-multimedia'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='Qt6 - Multimedia support'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtmultimedia-everywhere-src-${version}.tar.xz")
+depends=(qt6-base alsa-lib ffmpeg libpulse gst-plugins-base)
+makedepends=(cmake perl qt6-declarative)
+sha256sums=('f394bae49e3d4ee6a3b0c9e1e5e31bb870cc04a4b44f4cda3615baf7bd078c70')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtmultimedia-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+#HATALI PAKET
+
+setup() {
+export CFLAGS="$CFLAGS -g1 -flto=auto"
+export CXXFLAGS="$CXXFLAGS -g1 -flto=auto"
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

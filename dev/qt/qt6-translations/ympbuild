@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='qt6-translations'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='A cross-platform application and UI framework (Translations)'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qttranslations-everywhere-src-${version}.tar.xz")
+depends=(qt6-base qt6-tools)
+makedepends=(cmake)
+sha256sums=('26fc8047062ca4bacd1bd953be86fd39c6e0a5f5e9920c72ba9d40876cea4b56')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qttranslations-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

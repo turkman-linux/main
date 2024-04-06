@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='extra-cmake-modules'
-release='3'
-version='5.114.0'
+release='4'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Extra modules and scripts for CMake'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/extra-cmake-modules-${version}.tar.xz")
 depends=(cmake)
 makedepends=()
-md5sums=('475f189080f5d249de3f53d1aece9416')
+md5sums=('3e1b640fc5c3b4d96484029d1034c48a')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

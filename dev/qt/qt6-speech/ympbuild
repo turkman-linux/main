@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='qt6-speech'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='Qt module to make text to speech and speech recognition easy'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtspeech-everywhere--src-${version}.tar.xz")
+depends=(qt6-base qt6-multimedia speech-dispatcher)
+makedepends=()
+sha256sums=('ssssss')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+#HATALI PAKET
+
+cd "qtspeech-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+
+setup() {
+	cmake -B build -G Ninja \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}
+

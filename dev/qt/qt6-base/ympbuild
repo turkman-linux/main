@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 name='qt6-base'
-release='1'
-version='6.6.2'
+release='2'
+version='6.7.0'
 url='https://qt.io/developers/'
 description='A cross-platform application and UI framework'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-source=("https://invent.kde.org/qt/qt/qtbase/-/archive/v${version}/qtbase-v${version}.tar.gz")
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtbase-everywhere-src-${version}.tar.xz")
+#source=("https://invent.kde.org/qt/qt/qtbase/-/archive/v${version}/qtbase-v${version}.tar.gz")
 depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl double-conversion)
 makedepends=()
-md5sums=('980159aee096191abb991f24f42933a8')
+sha256sums=('11b2e29e2e52fb0e3b453ea13bbe51a10fdff36e1c192d8868c5a40233b8b254')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
 dontstrip="31"
 
-cd qtbase-v$version
+cd q"tbase-everywhere-src-"$version
 
 setup () {
   cmake -B build -G Ninja -Wno-dev \
@@ -38,7 +39,10 @@ setup () {
         -DFEATURE_system_xcb_xinput=ON \
         -DFEATURE_no_direct_extern_access=ON \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-        -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
+        -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
+		-DQT_FEATURE_reduce_relocations=OFF \
+		-DQT_FEATURE_vulkan=ON \
+		-DQT_FEATURE_xcb=ON 
 
 }
 
