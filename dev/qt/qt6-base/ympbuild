@@ -9,15 +9,16 @@ maintainer='brkt8khn'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtbase-everywhere-src-${version}.tar.xz")
 #source=("https://invent.kde.org/qt/qt/qtbase/-/archive/v${version}/qtbase-v${version}.tar.gz")
-depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl double-conversion)
-makedepends=()
+depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl double-conversion libproxy
+         xcb-util-cursor xcb-util-wm xcb-util-keysyms)
+makedepends=(vulkan-headers)
 sha256sums=('11b2e29e2e52fb0e3b453ea13bbe51a10fdff36e1c192d8868c5a40233b8b254')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
 dontstrip="31"
 
-cd q"tbase-everywhere-src-"$version
+cd "qtbase-everywhere-src-"$version
 
 setup () {
   cmake -B build -G Ninja -Wno-dev \
@@ -42,7 +43,7 @@ setup () {
         -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
 		-DQT_FEATURE_reduce_relocations=OFF \
 		-DQT_FEATURE_vulkan=ON \
-		-DQT_FEATURE_xcb=ON 
+		-DQT_FEATURE_xcb=ON
 
 }
 
