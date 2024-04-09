@@ -9,13 +9,11 @@ maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtvirtualkeyboard-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-svg qt6-declarative)
-makedepends=(cmake)
+makedepends=(cmake ninja)
 sha256sums=('d61bb2a18b1b06f64c956b2bde740c90a4bb46c47a99b31462e6e8d278a0cb6a')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
-
-#HATALI PAKET
 
 cd "qtvirtualkeyboard-everywhere-src-"${version}
 export PATH=/usr/bin/qt6:$PATH

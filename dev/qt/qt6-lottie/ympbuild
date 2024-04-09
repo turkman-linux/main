@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-name='qt6-positioning'
+name='qt6-lottie'
 release='2'
 version='6.7.0'
 url='https://www.qt.io/'
-description='Helps you create viable mapping solutions using the data available from some of the popular location services'
+description='A family of player software for a certain json-based file format for describing 2d vector graphics animations'
 email='brkt8khn@gmailmail.com'
 maintainer='brkt8khn'
 license=('FDL' 'GPL3' 'LGPL3' 'custom')
-source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtpositioning-everywhere-src-${version}.tar.xz")
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtlottie-everywhere-src-${version}.tar.xz")
 depends=(qt6-base)
-makedepends=(qt6-declarative cmake ninja qt6-serialport)
-sha256sums=('1d601ba43c26c8a01db81eeaaeea5943c015da98caa59d7905b86e0e9d609ddf')
+makedepends=(qt6-declarative cmake ninja)
+sha256sums=('9c0ffbde3c99e006bd13c844a1d691e275c02db1c3db44d05154c939d23ba2ed')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
 
-cd "qtpositioning-everywhere-src-"${version}
+cd "qtlottie-everywhere-src-"${version}
 export PATH=/usr/bin/qt6:$PATH
 
 setup() {

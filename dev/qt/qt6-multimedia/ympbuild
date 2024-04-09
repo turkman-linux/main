@@ -18,14 +18,12 @@ arch=('x86_64')
 cd "qtmultimedia-everywhere-src-"${version}
 export PATH=/usr/bin/qt6:$PATH
 
-#HATALI PAKET
 
 setup() {
-export CFLAGS="$CFLAGS -g1 -flto=auto"
-export CXXFLAGS="$CXXFLAGS -g1 -flto=auto"
 	cmake -B build -G Ninja \
-			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-			-DCMAKE_INSTALL_PREFIX=/usr 
+			-DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
+    		-DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects"
+
 
 }
 
@@ -34,5 +32,7 @@ build () {
 }
 
 package () {
-   DESTDIR="$DESTDIR" cmake --install build
+	DESTDIR="$DESTDIR" cmake --install build
+	DESTDIR="$DESTDIR" cmake --install build/src/plugins/multimedia/gstreamer
+	DESTDIR="$DESTDIR" cmake --install build/src/plugins/multimedia/ffmpeg
 }

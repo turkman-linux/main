@@ -7,15 +7,13 @@ description='Qt module to make text to speech and speech recognition easy'
 email='brkt8khn@gmail.com'
 maintainer='brkt8khn'
 license=('FDL' 'GPL3' 'LGPL3' 'custom')
-source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtspeech-everywhere--src-${version}.tar.xz")
-depends=(qt6-base qt6-multimedia speech-dispatcher)
-makedepends=()
-sha256sums=('ssssss')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtspeech-everywhere-src-${version}.tar.xz")
+depends=(qt6-base qt6-multimedia)
+makedepends=(speech-dispatcher qt6-declarative cmake)
+sha256sums=('44768eba837d48c2233ef12aab562acf2d3c531b489f4ec70124e2bb313d1f11')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
-
-#HATALI PAKET
 
 cd "qtspeech-everywhere-src-"${version}
 export PATH=/usr/bin/qt6:$PATH

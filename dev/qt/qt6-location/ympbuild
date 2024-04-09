@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-name='qt6-positioning'
+name='qt6-location'
 release='2'
 version='6.7.0'
 url='https://www.qt.io/'
@@ -7,15 +7,15 @@ description='Helps you create viable mapping solutions using the data available 
 email='brkt8khn@gmailmail.com'
 maintainer='brkt8khn'
 license=('FDL' 'GPL3' 'LGPL3' 'custom')
-source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtpositioning-everywhere-src-${version}.tar.xz")
-depends=(qt6-base)
-makedepends=(qt6-declarative cmake ninja qt6-serialport)
-sha256sums=('1d601ba43c26c8a01db81eeaaeea5943c015da98caa59d7905b86e0e9d609ddf')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtlocation-everywhere-src-${version}.tar.xz")
+depends=(qt6-base qt6-declarative)
+makedepends=(cmake ninja)
+sha256sums=('bb044d66bc17db98f526ec1b52d8e94810e046310f288561380774e5903ad46a')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
 
-cd "qtpositioning-everywhere-src-"${version}
+cd "qtlocation-everywhere-src-"${version}
 export PATH=/usr/bin/qt6:$PATH
 
 setup() {
