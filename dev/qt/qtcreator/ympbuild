@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+name='qtcreator'
+release='1'
+version='13.0.0'
+url='https://www.qt.io'
+description='Lightweight, cross-platform integrated development environment'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('GPLv3')
+source=("https://download.qt.io/official_releases/qtcreator/${version%.*}/$version/qt-creator-opensource-src-$version.tar.gz")
+depends=(qt6-5compat qt6-base qt6-declarative qt6-quick3d qt6-tools qt6-serialport qt6-svg qt6-webengine yaml-cpp zstd)
+makedepends=(cmake llvm python)
+sha256sums=('31bff5da429eb7437168637cdd67dc5616c5706e5023a4aa19257dc668f0456e')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+export PATH=/usr/bin/qt6:$PATH
+
+setup () {
+	cmake -B build -S qt-creator-opensource-src-$version \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBEXECDIR=lib \
+		-DWITH_DOCS=ON \
+		-DBUILD_DEVELOPER_DOCS=ON \
+		-DBUILD_QBS=OFF \
+		-DQTC_CLANG_BUILDMODE_MATCH=ON \
+		-DCLANGTOOLING_LINK_CLANG_DYLIB=ON \
+		-DQT_DEBUG_FIND_PACKAGE=ON
+}
+
+build () {
+	cmake --build build
+	cmake --build build --target docs
+}
+
+package () {
+	DESTDIR="$DESTDIR" cmake --install build
+	# Install docs
+	cp -r build/share/doc "$DESTDIR"/usr/share
+
+	DESTDIR="$DESTDIR" cmake --install build --component Devel
+}
