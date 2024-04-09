@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt6-connectivity'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='Provides access to Bluetooth hardware'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtconnectivity-everywhere-src-${version}.tar.xz")
+depends=(qt6-base bluez pcsc-lite)
+makedepends=(cmake ninja)
+sha256sums=('07afd6aac19ff73c8ba1471057f43d4ef2737d6a8a772393ec907988dd71244c')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtconnectivity-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}

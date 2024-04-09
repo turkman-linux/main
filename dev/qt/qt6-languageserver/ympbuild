@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='qt6-languageserver'
+release='2'
+version='6.7.0'
+url='https://www.qt.io/'
+description='Qt implementation of the Language Server Protocol'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('FDL' 'GPL3' 'LGPL3' 'custom')
+source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtlanguageserver-everywhere-src-${version}.tar.xz")
+depends=(qt6-base qt6-websockets)
+makedepends=(cmake ninja)
+sha256sums=('a99ecb342abdf7b7ac24804c89830a7991de95f9402f45a1e337ae851f76c9fc')
+group=(dev.qt)
+uses=()
+arch=('x86_64')
+
+cd "qtlanguageserver-everywhere-src-"${version}
+export PATH=/usr/bin/qt6:$PATH
+
+setup() {
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr 
+
+}
+
+
+build () {
+	cmake --build build
+}
+
+package () {
+   DESTDIR="$DESTDIR" cmake --install build
+}
