@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kdeclarative'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Provides integration of QML and KDE Frameworks'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kdeclarative-${version}.tar.xz")
-depends=(kio kpackage libepoxy)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('e141465054d4bf65467db3f2e7c4ebed')
+depends=(kio kpackage libepoxy ki18n kconfig kwidgetsaddons kguiaddons kglobalaccel)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('4671ebb7ee9ba2ed7a02d2c71dde90fe681be507e7d7913e79acb15dfce7b6f9')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

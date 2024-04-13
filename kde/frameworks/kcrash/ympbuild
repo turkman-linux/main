@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kcrash'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Support for application crash analysis and bug report from apps'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcrash-${version}.tar.xz")
-depends=(kcoreaddons)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-md5sums=('cb073f4770ddb535a9e7d0bdb10cc33a')
+depends=(qt6-base kcoreaddons)
+makedepends=(extra-cmake-modules qt6-tools doxygen)
+sha256sums=('f56f1ed44e494417b7046e4f94791ad4ddd07c6cb8f0f704f2053717a44296f9')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

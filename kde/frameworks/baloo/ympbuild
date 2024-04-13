@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='baloo'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='A framework for searching and managing metadata'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/baloo-${version}.tar.xz")
-depends=(kfilemetadata kidletime kio lmdb)
-makedepends=(extra-cmake-modules kdoctools doxygen qt5-tools qt5-declarative)
-md5sums=('4a3d426eb826f9e20eb9b56f9d5427b3')
+depends=(kconfig kcoreaddons kcrash kdbusaddons kfilemetadata ki18n kidletime kio lmdb qt6-base solid)
+makedepends=(extra-cmake-modules kdoctools doxygen qt6-tools)
+sha256sums=('ea21e88d1fe252d2dc95e0b7ae8891594822ccdd898e7aa56d46ed9ecd626a41')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -34,6 +34,6 @@ package () {
     # fix symlinks
     rm -f $DESTDIR/usr/bin/baloo_file
     rm -f $DESTDIR/usr/bin/baloo_file_extractor
-    ln -s ../lib/libexec/baloo_file $DESTDIR/usr/bin/baloo_file
-    ln -s ../lib/libexec/baloo_file_extractor $DESTDIR/usr/bin/baloo_file_extractor
+
+	rm -r "$DESTDIR"/usr/lib/systemd
 }

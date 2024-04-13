@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kglobalaccel'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Add support for global workspace shortcuts'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kglobalaccel-${version}.tar.xz")
-depends=(kdbusaddons kconfig kcrash kcoreaddons kwindowsystem qt5-declarative qt5-x11extras)
-makedepends=(extra-cmake-modules doxygen qt5-tools xcb-util-keysyms)
-md5sums=('d4b9194beb2d0f67a150354636a7d778')
+depends=(qt6-base)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('58009eb0d0b70c93dc0cb0886ae929f3756e972c841d7a3e465df8307e5b7149')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kparts'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Document centric plugin system'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kparts-${version}.tar.xz")
-depends=(kconfig kcoreaddons ki18n kio kwidgetsaddons kxmlgui qt5-base)
-makedepends=(doxygen extra-cmake-modules qt5-tools)
-md5sums=('e76b3f641bbab68d93fdc71dcc1c793d')
+depends=(kconfig kcoreaddons ki18n kio kwidgetsaddons kxmlgui qt6-base)
+makedepends=(doxygen extra-cmake-modules qt6-tools)
+sha256sums=('f08308556eecd6db0be727ec1d27b3bb533880a530d112bb16ec2f08ead1f6e1')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,8 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
 }
 
 build () {

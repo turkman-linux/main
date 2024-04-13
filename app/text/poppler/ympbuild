@@ -4,13 +4,13 @@ release='4'
 version='24.03.0'
 url='https://poppler.freedesktop.org/'
 description='PDF rendering library based on xpdf 3.0'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPL')
 source=("https://poppler.freedesktop.org/poppler-${version}.tar.xz")
-depends=(cairo lcms2 libjpeg-turbo libpng libxml2 nss libtiff zlib gpgme)
+depends=(cairo lcms2 libjpeg-turbo libpng libxml2 nss libtiff zlib)
 makedepends=(boost cmake fontconfig gobject-introspection)
-md5sums=('2d50c3c8e0011d1fa14572c744cd33bb')
+sha256sums=('bafbf0db5713dec25b5d16eb2cd87e4a62351cdc40f050c3937cd8dd6882d446')
 group=(app.text)
 uses=()
 arch=('x86_64')
@@ -28,8 +28,8 @@ cmake -B build -G Ninja \
 		-DBUILD_GTK_TESTS=OFF \
 		-DBUILD_CPP_TESTS=OFF \
 		-DBUILD_MANUAL_TESTS=OFF \
-		-DENABLE_QT5=OFF \
-		-DENABLE_QT6=OFF \
+		-DENABLE_QT5=ON \
+		-DENABLE_QT6=ON \
 		-DENABLE_BOOST=OFF
 }
 
@@ -38,6 +38,11 @@ build () {
 }
 
 package () {
-    DESTDIR="$DESTDIR" cmake --install build
+    #DESTDIR="$DESTDIR" cmake --install build
+
+	install -Dm644 build/poppler-qt5.pc -t "$DESTDIR"/usr/lib/pkgconfig/
+	install -Dm644 build/poppler-qt6.pc -t "$DESTDIR"/usr/lib/pkgconfig/
+	DESTDIR="$DESTDIR" cmake --install build/qt5
+	DESTDIR="$DESTDIR" cmake --install build/qt6
 }
 

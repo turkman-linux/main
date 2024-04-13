@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='polkit-qt6'
+release='2'
+version='0.200.0'
+url='https://download.kde.org/stable/polkit-qt-1'
+description='Polkit-Qt provides an API to PolicyKit in the Qt environment.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-$version.tar.xz")
+depends=(qt6-base polkit)
+makedepends=(cmake)
+sha256sums=('5d3b611c062d2b76a93750bb10c907bfd21d1ff08d0a15dc2cf63e278e1677fb')
+group=(sys.auth)
+uses=()
+arch=('x86_64')
+
+cd polkit-qt-1-$version
+
+setup () {
+    cmake -B build-qt6 -G Ninja \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DQT_MAJOR_VERSION=6
+	
+}
+
+build () {
+    cmake --build build-qt6
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build-qt6
+}
+

@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='kwayland'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Qt-style Client and Server library wrapper for the Wayland libraries'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
-source=("https://download.kde.org/stable/frameworks/${version%.*}/kwayland-${version}.tar.xz")
-depends=(qt5-wayland wayland)
-makedepends=(extra-cmake-modules doxygen qt5-tools wayland-protocols plasma-wayland-protocols)
-md5sums=('ee78d5b3a947df75ecb663b5c621b1f4')
+source=("https://download.kde.org/stable/plasma/${version}/kwayland-${version}.tar.xz")
+#source=("https://download.kde.org/stable/frameworks/${version%.*}/kwayland-${version}.tar.xz")
+depends=(qt6-base qt6-wayland wayland)
+makedepends=(extra-cmake-modules doxygen qt6-tools wayland-protocols plasma-wayland-protocols)
+sha256sums=('00312094681966a4cf692288398047a24136f1bce132307304d0dffa1cf9ed79')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

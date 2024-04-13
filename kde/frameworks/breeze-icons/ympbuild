@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='breeze-icons'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='Breeze icon themes'
 description='Addons to QtCore'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/breeze-icons-${version}.tar.xz")
 depends=()
-makedepends=(extra-cmake-modules qt5-base)
-md5sums=('ec40ee1de6deb23863829a4d653e6a9a')
+makedepends=(extra-cmake-modules qt6-base)
+sha256sums=('473e9851e4f84a64f1e808d58fd8760219a1b08feaf4b514a1399c8e5c889dc4')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -30,5 +30,6 @@ build () {
 
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
+	rm $DESTDIR/usr/share/icons/breeze/actions/24/fingerprint-symbolic.svg
 }
 

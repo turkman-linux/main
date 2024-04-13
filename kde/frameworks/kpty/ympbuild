@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kpty'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Pty abstraction'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kpty-${version}.tar.xz")
 depends=(kcoreaddons)
-makedepends=(doxygen extra-cmake-modules qt5-tools ki18n)
-md5sums=('c7e0dbda148fa754996746ba71815f57')
+makedepends=(doxygen extra-cmake-modules qt6-tools ki18n)
+sha256sums=('c5df357adfc1733593f6ceb3cd95ff7a3e587701f990b631dfaee0278e0df171')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

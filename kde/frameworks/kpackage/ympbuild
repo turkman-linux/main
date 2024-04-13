@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kpackage'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Framework that lets applications manage user installable packages of non-binary assets'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kpackage-${version}.tar.xz")
-depends=(karchive ki18n kcoreaddons)
-makedepends=(doxygen extra-cmake-modules qt5-tools)
-md5sums=('5e8011e0dcd69e4c3b12f75b2820af34')
+depends=(qt6-base karchive ki18n kcoreaddons)
+makedepends=(doxygen extra-cmake-modules qt6-tools kdoctools)
+sha256sums=('d2aec3df0dffb71e93acc03c46f2d4ca59c58263a9989df75107bf5223e9d1b7')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -21,6 +21,7 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
 		-DBUILD_QCH=ON 
 }
 

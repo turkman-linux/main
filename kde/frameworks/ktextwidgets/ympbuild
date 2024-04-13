@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='ktextwidgets'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Advanced text editing widgets'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/ktextwidgets-${version}.tar.xz")
-depends=(kcompletion sonnet qt5-speech)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('dfda4b4225a3c0ecb181ca8a990cc8af')
+depends=(kcolorscheme kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons qt6-base sonnet qt6-speech)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('b093f570ea3c2d4320e41b575a540fb75acd5b5f818bc6215a5fdb57754b6c40')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -24,8 +24,7 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_QCH=ON \
-		-DDocBookXSL_DIR=/usr/share/xml/docbook/xsl-stylesheets-1.79.2-nons
+		-DBUILD_QCH=ON
 }
 
 build () {

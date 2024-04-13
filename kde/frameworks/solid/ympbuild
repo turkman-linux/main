@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='solid'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
-description=' Hardware integration and detection'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+description='Hardware integration and detection'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/solid-${version}.tar.xz")
-depends=(bison 	eudev flex qt5-tools udisks2 upower)
-makedepends=(doxygen extra-cmake-modules)
-md5sums=('bfe60502c09abb3b91f5bf949d454e77')
+depends=(qt6-base udisks2 upower)
+makedepends=(qt6-tools qt6-declarative doxygen extra-cmake-modules)
+sha256sums=('75c5d254eeceb917c35cb0e32beff76a2cf1458f773ecd0e7795b47dad5aadd3')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -21,6 +21,7 @@ setup () {
 cmake -B build -G Ninja \
 		-DBUILD_TESTING=OFF \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_QCH=ON
 }
 

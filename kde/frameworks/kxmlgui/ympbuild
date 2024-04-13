@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kxmlgui'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='User configurable main windows'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kxmlgui-${version}.tar.xz")
-depends=(kglobalaccel kiconthemes kitemviews)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('0e82d262cb9d08755d8ece168fc31022')
+depends=(kcolorscheme kconfig kconfigwidgets kcoreaddons kglobalaccel kguiaddons ki18n kiconthemes kitemviews kwidgetsaddons qt6-base)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('d26c62ce9f5be8643fed465531418fb67e4d13edf61797a946da301aeb9158f2')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

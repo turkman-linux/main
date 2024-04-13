@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='libqaccessibilityclient'
-release='1'
-version='0.5.0'
+release='2'
+version='0.6.0'
 url='https://invent.kde.org/libraries/libqaccessibilityclient'
 description='Accessibilty tools helper library, used e.g. by screen readers'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://download.kde.org/stable/libqaccessibilityclient/libqaccessibilityclient-${version}.tar.xz")
 depends=(glibc)
-makedepends=(extra-cmake-modules qt5-base)
-md5sums=('138add284b3f5104e89b98847d6205d3')
+makedepends=(extra-cmake-modules qt6-base)
+sha256sums=('4c50c448622dc9c5041ed10da7d87b3e4e71ccb49d4831a849211d423c5f5d33')
 group=(media.libs)
 uses=()
 arch=('x86_64')
@@ -21,7 +21,7 @@ setup() {
 	cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DQT_MAJOR_VERSION=5
+		-DQT_MAJOR_VERSION=6
 
 }
 

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='sonnet'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Spelling framework for Qt5'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/sonnet-${version}.tar.xz")
-depends=(qt5-base)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-md5sums=('57b2211d1c7ed7b6fce10912791399db')
+depends=(qt6-base)
+makedepends=(extra-cmake-modules hunspell qt6-declarative qt6-tools doxygen)
+sha256sums=('2083df45e7a729a37a8d6642145e6acf4c53e6b235303843e31031c8d290ae8b')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,8 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
 }
 
 build () {

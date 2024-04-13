@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='purpose'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Framework for providing abstractions to get the developer s purposes fulfilled'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/purpose-${version}.tar.xz")
-depends=(kconfig kcoreaddons ki18n kio kirigami2 knotifications kservice qt5-base qt5-declarative)
+depends=(kconfig kcoreaddons kcmutils ki18n kio kirigami knotifications kservice qt6-base qt6-declarative)
 makedepends=(intltool extra-cmake-modules)
-md5sums=('a007abef9234eebe7d32910951190d13')
+sha256sums=('4fa85cbd2d9dd49216eda6433b43e05bbb114249dac51df55242328f7eb8f97c')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,8 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=ON
 }
 
 build () {

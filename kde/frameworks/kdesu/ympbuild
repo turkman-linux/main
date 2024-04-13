@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kdesu'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Integration with su for elevated privileges'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kdesu-${version}.tar.xz")
-depends=(kpty kconfig)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('1bbb4a71e19463364708174837c6c47a')
+depends=(qt6-base kpty kconfig)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('24cca7ab6da9630799e5f0107b546d37ee635b1f9f4b7c12eb53a1b3619b2c0c')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

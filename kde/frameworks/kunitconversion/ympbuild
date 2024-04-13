@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kunitconversion'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Support for unit conversion'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kunitconversion-${version}.tar.xz")
-depends=(qt5-base)
-makedepends=(doxygen extra-cmake-modules qt5-tools ki18n)
-md5sums=('c620b57ca8c18a4135c4b8aee02327b4')
+depends=(ki18n qt6-base)
+makedepends=(doxygen extra-cmake-modules qt6-tools)
+sha256sums=('c88494ac8971c25dc6bc9a1119ea44c0f8eda44e9d2883ade9aca651e9968d5e')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

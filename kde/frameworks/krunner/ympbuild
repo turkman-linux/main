@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='krunner'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Framework for providing different actions given a string query'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/krunner-${version}.tar.xz")
-depends=(plasma-framework threadweaver)
-makedepends=(extra-cmake-modules kdoctools doxygen qt5-tools)
-md5sums=('ffb563ccf08ea1af40fb59c39655c3d3')
+depends=( kconfig kcoreaddons ki18n kitemmodels qt6-base)
+makedepends=(extra-cmake-modules kdoctools doxygen qt6-tools)
+sha256sums=('22d33fd27567a350ae4edae4fe5662b748e8fabd539863441794558e68f3313d')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

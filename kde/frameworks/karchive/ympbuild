@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='karchive'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
-description='Qt 5 addon providing access to numerous types of archives'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+description='Qt addon providing access to numerous types of archives'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/karchive-${version}.tar.xz")
-depends=(qt5-base)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('8652c351ad2ae2629217f5482733263e')
+depends=(qt6-base)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('75a591d9648026eb86826974e6f3882e7f620592ecef8fabeb19206e63b04e50')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,8 @@ cd $name-$version
 
 setup () {
 cmake -B build -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DWITH_LIBZSTD=OFF
 
 }
 

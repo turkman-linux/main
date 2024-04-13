@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kcontacts'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Address book API for KDE'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcontacts-${version}.tar.xz")
-depends=(kcoreaddons kconfig ki18n kcodecs)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('8c21f7cea752f575f05e629bab71fd1f')
+depends=(qt6-base kcoreaddons kconfig ki18n kcodecs)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('179c6748e555c5c028b02a4b9b165ede13a09cf5eaf0ea012366c9727d230ec4')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

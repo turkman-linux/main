@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='prison'
-release='1'
-version='5.112.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='A barcode API to produce QRCode barcodes and DataMatrix barcodes'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.kde.org/stable/frameworks/5.112/prison-$version.tar.xz")
-depends=(qt5-base)
-makedepends=()
-md5sums=('7829a393955af2d58f9a27cfb06f18ad')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/prison-${version}.tar.xz")
+depends=(qt6-base libdmtx qrencode qt6-multimedia)
+makedepends=(extra-cmake-modules qt6-tools doxygen)
+sha256sums=('6ff5fbc6fc38581072ee45904e022d5bf2e7b3b1f49ac9d1d0c6024d7ca3ec5a')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -18,9 +18,11 @@ arch=('x86_64')
 cd $name-$version
 
 setup () {
-    cmake -B build \
-         -DBUILD_TESTING=OFF \
-         -DBUILD_QCH=ON
+	cmake -B build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
+		-DBUILD_QCH=ON
 }
 
 build () {
@@ -28,6 +30,6 @@ build () {
 }
 
 package () {
-    cmake --install build
+    INSTALL_ROOT="$DESTDIR" cmake --install build
 }
 

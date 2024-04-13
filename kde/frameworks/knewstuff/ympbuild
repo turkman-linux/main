@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='knewstuff'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Support for downloading application assets from the network'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/knewstuff-${version}.tar.xz")
-depends=(kio kpackage attica syndication)
-makedepends=(extra-cmake-modules doxygen qt5-tools qt5-declarative)
-md5sums=('629f3c69cb637a05a41b8b0157b54088')
+depends=(qt6-base karchive kconfig kcoreaddons ki18n kpackage attica kwidgetsaddons syndication)
+makedepends=(extra-cmake-modules doxygen qt6-tools qt6-declarative)
+sha256sums=('0299dba980590bd7c74870a74c6bb6ca732af478ab2c9ba414943f62ea0be0fa')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

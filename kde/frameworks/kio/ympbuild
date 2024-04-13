@@ -1,27 +1,23 @@
 #!/usr/bin/env bash
 name='kio'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Resource and network access abstraction'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kio-${version}.tar.xz")
-depends=(karchive kbookmarks kcompletion kconfig kconfigwidgets kcoreaddons kcrash
-	kdbusaddons ki18n kiconthemes kitemviews kjobwidgets kservice kwidgetsaddons kwindowsystem solid)
-makedepends=(doxygen extra-cmake-modules libxml2 libxslt qt5-tools)
-md5sums=('476559f2314a7e7cf6e0bc870c4334fe')
+depends=(karchive kbookmarks kcompletion kconfig kconfigwidgets kcoreaddons kcrash kauth
+	kdbusaddons ki18n kiconthemes kitemviews kjobwidgets kservice kwidgetsaddons kwindowsystem solid qt6-base qt6-5compat)
+makedepends=(doxygen extra-cmake-modules libxml2 libxslt qt6-tools)
+sha256sums=('4951adf043299e463803cc63ed33d5261b81bff969eb189dc13350f495cb4b42')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
-prepare(){
-    # remove kwallet dependency
-    sed -i "/add_subdirectory(kpasswdserver)/d" src/CMakeLists.txt
-}
 
 setup () {
   cmake -B build -G Ninja \

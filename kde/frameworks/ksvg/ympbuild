@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='ksvg'
+release='2'
+version='6.0.0'
+url='https://community.kde.org/Frameworks'
+description='Components for handling SVGs'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('GPLv3')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/ksvg-${version}.tar.xz")
+depends=(kconfig kcoreaddons kguiaddons qt6-base qt6-svg)
+makedepends=(extra-cmake-modules kirigami qt6-declarative qt6-tools)
+sha256sums=('d056cb96b06c1f1a8a8f39c134858cf1437c546b9d79a9eb1a92f8933d1e3579')
+group=(kde.framework)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

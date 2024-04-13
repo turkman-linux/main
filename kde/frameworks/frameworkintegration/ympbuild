@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='frameworkintegration'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Framework providing components to allow applications to integrate with a KDE Workspace'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/frameworkintegration-${version}.tar.xz")
-depends=(appstream kconfig kconfigwidgets ki18n kiconthemes knewstuff 	knotifications kpackage kwidgetsaddons qt5-base)
+depends=(appstream ki18n kiconthemes knewstuff knotifications kwidgetsaddons qt6-base)
 makedepends=(extra-cmake-modules)
-md5sums=('536b44079250ad3f785ac1d00c1d9d81')
+sha256sums=('343efa4e4f7d1c804de2cb6a2cac7a980cf7f3787fd4f523fa2c2d2d15f65d9b')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

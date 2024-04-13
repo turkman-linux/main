@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kfilemetadata'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='A library for extracting file metadata'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kfilemetadata-${version}.tar.xz")
-depends=(attr exiv2 karchive kconfig kcoreaddons ki18n qt5-base taglib)
-makedepends=(doxygen extra-cmake-modules ffmpeg qt5-tools)
-md5sums=('0d911624125697bfc0e7e6a6a7c2e6b7')
+depends=(attr exiv2 karchive kconfig kcoreaddons ki18n qt6-base taglib)
+makedepends=(doxygen extra-cmake-modules ffmpeg qt6-tools)
+sha256sums=('cf130dc1b32a31a19213f3e1ac67f2180cb7931240e5c755211686e93792f393')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -19,8 +19,10 @@ cd $name-$version
 
 setup () {
 cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=MinSizeRel \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
 		-DBUILD_QCH=ON
 }
 

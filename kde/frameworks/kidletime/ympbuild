@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kidletime'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Monitoring user activity'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kidletime-${version}.tar.xz")
-depends=(qt5-x11extras libxss)
-makedepends=(extra-cmake-modules doxygen qt5-tools plasma-wayland-protocols wayland-protocols)
-md5sums=('8f4d1fa08be91f126b0af6ff00cb2e4c')
+depends=(qt6-base)
+makedepends=(extra-cmake-modules doxygen qt6-tools qt6-wayland libxss plasma-wayland-protocols wayland-protocols)
+sha256sums=('aa846b4cfcbc48d084350d1f525638fcf4766b0363bcde40fcefa88a8fbda7b3')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,9 @@ cd $name-$version
 
 setup () {
 cmake -B build -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
 }
 
 build () {

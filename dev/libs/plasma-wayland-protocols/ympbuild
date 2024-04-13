@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='plasma-wayland-protocols'
-release='1'
-version='1.10.0'
+release='2'
+version='1.12.0'
 url='https://www.kde.org/plasma-desktop/'
 description='Plasma Specific Protocols for Wayland'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-${version}.tar.xz")
 depends=()
-makedepends=(qt5-base extra-cmake-modules)
-md5sums=('28ae1490011ff205cbf8d99be6dd124f')
+makedepends=(qt6-base extra-cmake-modules)
+sha256sums=('1483bfd279cb913c83579b5d71c58f9958764f9ba4303b3647e1007cb70d4f9e')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

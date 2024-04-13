@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kservice'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='Advanced plugin and service introspection'
 description='Support for unit conversion'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kservice-${version}.tar.xz")
-depends=(ki18n kconfig kdbusaddons kcoreaddons)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('2b830b7183b55364db204aad40ebf742')
+depends=(ki18n kconfig kcoreaddons qt6-base)
+makedepends=(extra-cmake-modules doxygen kdoctools qt6-tools)
+sha256sums=('9b44acf51d280deaa3114ec59518a6af5d645cb1ec2ebadb5de74681c8891bfe')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='modemmanager-qt'
-release='1'
-version='5.110.0'
+release='2'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Qt wrapper for modemmanager API'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/modemmanager-qt-${version}.tar.xz")
-depends=(modemmanager qt5-base )
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-md5sums=('9319b8873ab28ca425182a1fe0c9afc5')
+depends=(modemmanager qt6-base )
+makedepends=(extra-cmake-modules qt6-tools doxygen)
+sha256sums=('efd6ea3eae52b21279bdee38e80f667c35d98b977a442f4bd6b8a0a471f90ff3')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,8 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
 }
 
 build () {

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kiconthemes'
 release='2'
-version='5.114.0'
+version='6.0.0'
 url='https://community.kde.org/Frameworks'
 description='Support for icon themes'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kiconthemes-${version}.tar.xz")
-depends=(qt5-svg kconfigwidgets karchive)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-md5sums=('f997425dce56c003c6350e2595d81069')
+depends=(qt6-base qt6-svg kconfigwidgets kcolorscheme karchive kwidgetsaddons)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('f557bd269fafe617eb8d4b7ac2959609f96cce3ea8b1b3ac231063a726927bb0')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
