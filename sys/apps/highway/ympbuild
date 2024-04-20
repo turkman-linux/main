@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='highway'
-release='1'
-version='1.0.4'
+release='2'
+version='1.1.0'
 url='https://github.com/google/highway'
 description='Performance-portable, length-agnostic SIMD with runtime dispatch'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/google/highway/archive/refs/tags/$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('2747e50aa0ec0126cabc3b50799b9547')
+sha256sums=('354a8b4539b588e70b98ec70844273e3f2741302c4c377bcc4e81b3d1866f7c9')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
