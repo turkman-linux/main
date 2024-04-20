@@ -23,7 +23,7 @@ export CXXFLAGS="$CXXFLAGS -g1 -flto=auto -ffat-lto-objects"
 
 setup() {
 	cmake -B build -G Ninja \
-      -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
+      -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
 			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 			-DCMAKE_INSTALL_PREFIX=/usr
 
