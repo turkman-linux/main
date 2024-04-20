@@ -30,6 +30,6 @@ build () {
 
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
-	rm $DESTDIR/usr/share/icons/breeze/actions/24/fingerprint-symbolic.svg
+	  #rm $DESTDIR/usr/share/icons/breeze/actions/24/fingerprint-symbolic.svg
 }
 

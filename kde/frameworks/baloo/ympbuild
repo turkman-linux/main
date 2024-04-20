@@ -31,9 +31,6 @@ package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
     # remove autostart file (it is bloat)
     rm -f $DESTDIR/etc/xdg/autostart/baloo_file.desktop
-    # fix symlinks
-    rm -f $DESTDIR/usr/bin/baloo_file
-    rm -f $DESTDIR/usr/bin/baloo_file_extractor
-
-	rm -r "$DESTDIR"/usr/lib/systemd
+    # remove systemd stuff
+    rm -r "$DESTDIR"/usr/lib/systemd
 }
