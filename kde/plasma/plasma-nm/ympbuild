@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-nm'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop/'
 description='Plasma applet written in QML for managing network connections'
 email='aliriza.keskin@pardus.org.tr'
@@ -9,30 +9,27 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.xz"
         'no-kwallet.patch')
-depends=(plasma-workspace networkmanager-qt modemmanager-qt qca)
+depends=(kcmutils kcolorscheme kcompletion kconfig kcoreaddons kdbusaddons kdeclarative ki18n kio kirigami knotifications kquickcharts
+         ksvg kwidgetsaddons kwindowsystem libplasma modemmanager-qt networkmanager-qt prison qca qcoro-qt6 qt6-base qt6-declarative solid)
 makedepends=(extra-cmake-modules)
-md5sums=('8aa75ac7aae92f8287840496da66cd3a'
-         'SKIP')
+sha256sums=('52cf96738ceeafce65f183a3457325aeb5b1f18a4336ceede5a226556e6e9eb4' 'SKIP')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
-prepare(){
-    patch -Np1 -i ../no-kwallet.patch
-}
-
 setup () {
     cmake -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib 
 }
 
 build () {
-    make -C build $jobs
+	cmake --build build
 }
 
 package () {
-    make -C build install $jobs
+    INSTALL_ROOT="$DESTDIR" cmake --install build
 }
 

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='kwallet'
+release='2'
+version='6.0.0'
+url='https://community.kde.org/Frameworks'
+description='Secure and unified container for user passwords'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kwallet-${version}.tar.xz")
+depends=(gpgme kcolorscheme kconfig kcoreaddons kdbusaddons ki18n knotifications kwidgetsaddons
+         kwindowsystem libgcrypt qt6-base)
+makedepends=(extra-cmake-modules doxygen kservice qt6-tools)
+sha256sums=('bab43823de8b1b086dc4b2ad10d10bd6c4d0d2e1f8b5fd5fdd5f7d365fb8e5cc')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

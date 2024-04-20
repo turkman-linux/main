@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='libkscreen'
+name='plasma-activities'
 release='2'
 version='6.0.0'
 url='https://kde.org/plasma-desktop'
-description='KDE screen management software'
+description='Core components for KDE Activities'
 email='brkt8khn@gmail.com'
 maintainer='brkt8khn'
 license=('GPLv2')
-source=("https://download.kde.org/stable/plasma/${version}/libkscreen-${version}.tar.xz")
-depends=(qt6-base qt6-wayland wayland libxcb)
-makedepends=(extra-cmake-modules doxygen qt6-tools plasma-wayland-protocols)
-sha256sums=('c42a7290c899fc8b887890a7b03efd720b476d7ac6fc91c64e6f03dadff09b44')
+source=("https://download.kde.org/stable/plasma/${version}/plasma-activities-${version}.tar.xz")
+depends=(kconfig kcoreaddons qt6-base)
+makedepends=(extra-cmake-modules qt6-declarative qt6-tools)
+sha256sums=('f0bd07bbcd9022c72e564046046029b39f71d1cc5b467b9f50914813043b2795')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -21,7 +21,7 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_TESTING=OFF
+		-DBUILD_QCH=ON
 }
 
 build () {
@@ -31,4 +31,3 @@ build () {
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
 }
-

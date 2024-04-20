@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='kglobalacceld'
+release='2'
+version='6.0.0'
+url='https://kde.org/plasma-desktop'
+description='Daemon providing Global Keyboard Shortcut (Accelerator) functionality'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/kglobalacceld-${version}.tar.xz")
+depends=(kconfig kcoreaddons kcrash kdbusaddons kglobalaccel kio kjobwidgets kservice kwindowsystem libX11
+         libxcb qt6-base xcb-util-keysyms)
+makedepends=(extra-cmake-modules)
+sha256sums=('aa7eb34f3dfafdc2f475bb20ed6a8563a2e9fbfb06470890e127dc9054f945aa')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

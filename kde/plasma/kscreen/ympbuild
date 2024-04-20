@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kscreen'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='KDE screen management software'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kscreen-${version}.tar.xz")
-depends=(libkscreen plasma-framework qt5-sensors layer-shell-qt)
-makedepends=(extra-cmake-modules kcmutils)
-md5sums=('6c39b1b86423dc22a756bdafe4d07702')
+depends=(kcmutils kconfig kcoreaddons kdbusaddons kdeclarative ki18n kirigami ksvg kwindowsystem libplasma libkscreen libX11 libxcb libXi qt6-base qt6-declarative qt6-sensors layer-shell-qt)
+makedepends=(extra-cmake-modules )
+sha256sums=('f97c0457630bce0d90fdbc0f6c45f1e2b21a60144bd182d8b41f58939bfd7346')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -20,8 +20,7 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_TESTING=OFF
+		-DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build () {

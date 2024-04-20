@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 name='kgamma'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description="Adjust your monitor's gamma settings"
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv2')
-source=("https://download.kde.org/stable/plasma/${version}/kgamma5-${version}.tar.xz")
-depends=()
+source=("https://download.kde.org/stable/plasma/${version}/kgamma-${version}.tar.xz")
+depends=(kcmutils kconfig kcoreaddons ki18n libX11 libXxf86vm qt6-base)
 makedepends=(extra-cmake-modules kdoctools)
-md5sums=('2445a1c0a3d84c2ee96de07492ddce89')
+sha256sums=('9704d32c84e26d8c33017f0b0c562b741bbb6695b89fa38829fc84375a505665')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
 
-cd $name"5"-$version
+cd $name-$version
 
 setup () {
 cmake -B build -G Ninja \

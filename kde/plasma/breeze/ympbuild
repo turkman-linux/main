@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='breeze'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/breeze-${version}.tar.xz")
-depends=(frameworkintegration kdecoration breeze-icons kirigami2 hicolor-icon-theme)
-makedepends=(extra-cmake-modules kcmutils)
-md5sums=('de7b4629697279e5f231751f1f68bce9')
+depends=(breeze-icons frameworkintegration kcmutils kcolorscheme kconfig kcoreaddons kguiaddons ki18n kiconthemes kirigami
+         kwidgetsaddons kwindowsystem qt6-base qt6-declarative kdecoration hicolor-icon-theme)
+makedepends=(extra-cmake-modules)
+sha256sums=('bc72a16b116b7beabf1b4e9a451019f9048e7be6b05ac73a4627f25b2c2059ea')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -21,6 +22,7 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QT5=OFF \
 		-DBUILD_TESTING=OFF
 }
 

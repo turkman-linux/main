@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='kwin'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='An easy to use, but flexible, composited Window Manager'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kwin-${version}.tar.xz")
-depends=(kscreenlocker xcb-util-cursor plasma-framework kcmutils breeze libqaccessibilityclient pipewire lcms2 libxcvt)
-makedepends=(extra-cmake-modules qt5-tools kdoctools krunner wayland-protocols plasma-wayland-protocols)
-md5sums=('95717e3b21e3877e18670428eecaa70d')
+depends=(kscreenlocker xcb-util-cursor kcmutils breeze libqaccessibilityclient pipewire lcms2 libxcvt qt6-tools  qt6-5compat
+         qt6-base qt6-declarative qt6-multimedia qt6-sensors qt6-wayland)
+makedepends=(extra-cmake-modules kdoctools krunner kglobalacceld libdisplay-info wayland-protocols plasma-wayland-protocols)
+sha256sums=('b1947c2b44de6190908462c81e8ac89ff9c7326a87641feb65e6ccd85262a4db')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

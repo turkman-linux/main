@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='kstatusnotifieritem'
+release='2'
+version='6.0.0'
+url='https://community.kde.org/Frameworks'
+description='Implementation of Status Notifier Items'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('LGPL')
+source=("https://download.kde.org/stable/frameworks/${version%.*}/kstatusnotifieritem-${version}.tar.xz")
+depends=(kwindowsystem qt6-base)
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('b426176d2cbc6fe80c758b6c476a47341d89a92cbb3355c2be37428a41772907')
+group=(kde.frameworks)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
+		-DBUILD_QCH=ON 
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+
