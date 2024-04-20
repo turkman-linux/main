@@ -21,12 +21,13 @@ export PATH=/usr/bin/qt6:$PATH
 setup() {
 	cmake -B build -G Ninja \
 			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-			-DCMAKE_INSTALL_PREFIX=/usr 
+			-DCMAKE_INSTALL_PREFIX=/usr
 
 }
 
 build () {
-	cmake --build build
+	ninja -C build clean
+	ninja -C build
 }
 
 package () {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ffmpeg'
-release='3'
-version='6.1'
+release='4'
+version='7.0'
 url='https://ffmpeg.org/'
 description='A complete, cross-platform solution to record, convert and stream audio and video.'
 email='bayramk@gmail.com'
@@ -9,19 +9,16 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://ffmpeg.org/releases/ffmpeg-${version}.tar.xz"
 "ffmpeg-6.1-chromium_method-1.patch")
-depends=(gnutls libaom libass dav1d libjxl libdrm lcms2 lame opus libopenmpt libpulse
+depends=(gnutls libaom libass dav1d libjxl libdrm lcms2 lame opus libopenmpt libpulse libunwind vulkan-loader
          gnutls librist libsrt libtheora v4l-utils vidstab libvpx libwebp x264 x265 xvidcore zimg zeromq)
 makedepends=(nasm)
-md5sums=('5898f671dca522f537c3b57d1d6b57a3' 'SKIP')
+sha256sums=('4426a94dd2c814945456600c8adfc402bee65ec14a70e8c531ec9a2cd651da7b' 'SKIP')
 group=(media.video)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
-prepare(){
-	patch -Np1 -i ../ffmpeg-6.1-chromium_method-1.patch
-}
 
 setup(){
   ./configure --prefix=/usr \
@@ -67,8 +64,8 @@ setup(){
 		--enable-shared \
 		--enable-vaapi \
 		--enable-vdpau \
-		--enable-vulkan \
 		--optflags="-O3"
+		#--enable-vulkan \
 
 }
 

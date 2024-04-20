@@ -9,7 +9,7 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-${version}.tar.xz")
 #source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/archive/$version/gst-plugins-base-$version.tar.gz")
-depends=(gstreamer)
+depends=(gstreamer orc)
 makedepends=()
 md5sums=('156e377fb065b9ba5d38d30385f15608')
 group=(media.video)
@@ -20,8 +20,7 @@ cd $name-$version
 
 setup(){
 	 meson setup build --prefix=/usr \
-    --libdir=/usr/lib64 \
-    --wrap-mode=nodownload
+    --libdir=/usr/lib64
 }
 build(){
    ninja -C build

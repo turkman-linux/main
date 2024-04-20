@@ -22,9 +22,8 @@ setup() {
 export CFLAGS="$CFLAGS -g1 -flto=auto"
 export CXXFLAGS="$CXXFLAGS -g1 -flto=auto"
 
-	cmake -B build -G Ninja \
-			-DCMAKE_BUILD_TYPE=Release \
-			-DCMAKE_INSTALL_PREFIX=/usr 
+	cmake -B build  -G Ninja \
+			-DCMAKE_INSTALL_PREFIX=/usr
 
 }
 

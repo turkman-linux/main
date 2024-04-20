@@ -34,6 +34,7 @@ setup () {
 		-DINSTALL_MKSPECSDIR=lib64/qt6/mkspecs \
 		-DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
 		-DQT_FEATURE_journald=OFF \
+    -DQT_FEATURE_opengles3=ON \
 		-DFEATURE_libproxy=ON \
         -DFEATURE_openssl_linked=ON \
         -DFEATURE_system_sqlite=ON \
@@ -53,5 +54,10 @@ build () {
 
 package () {
     ninja -C build install $jobs
+    install -d -m755 "$DESTDIR"/usr/include/qt6xcb-private/{gl_integrations,nativepainting}
+    cp -r src/plugins/platforms/xcb/*.h "$DESTDIR"/usr/include/qt6xcb-private/
+    cp -r src/plugins/platforms/xcb/gl_integrations/*.h "$DESTDIR"/usr/include/qt6xcb-private/gl_integrations/
+    cp -r src/plugins/platforms/xcb/nativepainting/*.h "$DESTDIR"/usr/include/qt6xcb-private/nativepainting/
+
 }
 

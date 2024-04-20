@@ -19,11 +19,13 @@ cd "qtmultimedia-everywhere-src-"${version}
 export PATH=/usr/bin/qt6:$PATH
 
 
+export CXXFLAGS="$CXXFLAGS -g1 -flto=auto -ffat-lto-objects"
+
 setup() {
 	cmake -B build -G Ninja \
-			-DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
-    		-DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects"
-
+      -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=/usr
 
 }
 
