@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gnome-icon-theme'
+release='1'
+version='3.12.0'
+url='https://gitlab.gnome.org/GNOME/gnome-icon-theme'
+description='GNOME standard icons'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv3')
+source=("https://salsa.debian.org/gnome-team/gnome-icon-theme/-/archive/debian/$version-4/gnome-icon-theme-debian-$version-4.tar.gz")
+depends=(hicolor-icon-theme librsvg)
+makedepends=()
+sha256sums=('8f619b70e7407c043cd5558de81785109fa1522213e9d6473ce6c827a2e74aa3')
+group=(x11.themes)
+uses=()
+arch=('x86_64')
+
+cd $name-debian-$version-4
+
+setup(){
+    ./configure --prefix=/usr \
+        --disable-icon-mapping
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+}
+
