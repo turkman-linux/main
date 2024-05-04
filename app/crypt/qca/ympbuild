@@ -1,35 +1,61 @@
 #!/usr/bin/env bash
 name='qca'
-release='1'
-version='2.3.7'
+release='2'
+version='2.3.8'
 url='https://userbase.kde.org/QCA'
 description='Qt cryptographic architecture'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
-source=("https://download.kde.org/stable/qca/2.3.7/qca-${version}.tar.xz")
+source=("https://download.kde.org/stable/qca/$version/qca-${version}.tar.xz")
 depends=(make-ca which cyrus-sasl)
-makedepends=(cmake doxygen libgcrypt openssl qt5-base)
-md5sums=('0e50817de610e145c83ca012f79f18f5')
+makedepends=(cmake doxygen libgcrypt openssl)
+sha256sums=('48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264')
 group=(app.crypt)
-uses=()
+uses=(qt5 qt6)
+qt5_depends=(qt5-base)
+qt6_depends=(qt6-base)
 arch=('x86_64')
 
 cd $name-$version
+# force enable UTF-8
+export LANG="en_US.UTF-8"
 
 setup () {
-	cmake -B build-qt5 -G Ninja \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DWITH_cyrus-sasl_PLUGIN=yes \
-		-DQT6=OFF
+  ops=(
+    cmake -G Ninja \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DBUILD_TESTS=OFF \
+    	-DCMAKE_INSTALL_PREFIX=/usr \
+    	-DWITH_cyrus-sasl_PLUGIN=yes
+)
+  if use qt6 ; then
+        ${ops[@]} \
+        -B build-qt6 \
+        -DQT6=ON
+  fi
+  if use qt5 ; then
+        ${ops[@]} \
+        -B build-qt5 \
+        -DQT6=OFF
+  fi
 }
 
 build () {
+	if use qt6 ; then
+    cmake --build build-qt6
+  fi
+	if use qt5 ; then
     cmake --build build-qt5
+  fi
 }
 
 package () {
-    DESTDIR="$DESTDIR" cmake --install build-qt5
+  if use qt6 ; then
+      DESTDIR="$DESTDIR" cmake --install build-qt6
+  fi
+  if use qt5 ; then
+      DESTDIR="$DESTDIR" cmake --install build-qt5
+  fi
 }
 

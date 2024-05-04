@@ -9,7 +9,7 @@ maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/${version}/libplasma-${version}.tar.xz")
 depends=(kcmutils kcolorscheme kconfig kcoreaddons kglobalaccel ki18n kiconthemes kio kirigami knotifications kpackage
-         ksvg kwidgetsaddons kwindowsystem libglvnd libX11 libxcb  qt6-5compat  qt6-base  qt6-declarative qt6-wayland  wayland)
+         ksvg kwidgetsaddons kwindowsystem libglvnd libX11 libxcb  qt6-5compat  qt6-base  qt6-declarative qt6-wayland  wayland plasma-activities)
 makedepends=(doxygen extra-cmake-modules  kdoctools plasma-wayland-protocols qt6-tools)
 sha256sums=('b1d8f4701a009dd18797cbf68f06bdc45a3e85a243b04190890b4b40440927d2')
 group=(kde.plasma)

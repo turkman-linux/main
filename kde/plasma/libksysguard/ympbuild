@@ -9,7 +9,7 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/libksysguard-$version.tar.xz")
 depends=(kauth kconfig kcoreaddons kdeclarative ki18n kirigami kitemmodels knewstuff kpackage kquickcharts kservice
-         libnl libpcap qt6-base qt6-declarative solid zlib)
+         libnl libpcap qt6-base qt6-declarative solid zlib lm-sensors)
 makedepends=(extra-cmake-modules qt6-tools)
 sha256sums=('6b72ccfbed69f27bcec0d86414ed780870109801cc20c505901657c85c3644dd')
 group=(kde.plasma)
