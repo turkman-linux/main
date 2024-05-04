@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+name='qcoro-qt6'
+release='1'
+version='0.10.0'
+url='https://github.com/danvratil/qcoro'
+description='C++ Coroutines for Qt'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('MIT')
+source=("https://github.com/danvratil/qcoro/archive/v${version}/qcoro-v${version}.tar.gz")
+depends=()
+makedepends=(cmake qt6-declarative qt6-websockets)
+sha256sums=('b7c8f00273ad27d85814bf4ec93eb6922c75656800a61d11854d36355a4a1aec')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd "qcoro"-$version
+
+setup () {
+cmake -B build-qt6 -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_SHARED_LIBS=TRUE \
+		-DUSE_QT_VERSION=6 \
+		-DQCORO_BUILD_EXAMPLES=OFF
+
+}
+
+build () {
+	cmake --build build-qt6
+}
+
+package () {
+	INSTALL_ROOT="$DESTDIR" cmake --install build-qt6
+}
+

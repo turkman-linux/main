@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='libplasma'
+release='2'
+version='6.0.0'
+url='https://kde.org/plasma-desktop'
+description='Plasma library and runtime components'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('GPLv3')
+source=("https://download.kde.org/stable/plasma/${version}/libplasma-${version}.tar.xz")
+depends=(kcmutils kcolorscheme kconfig kcoreaddons kglobalaccel ki18n kiconthemes kio kirigami knotifications kpackage
+         ksvg kwidgetsaddons kwindowsystem libglvnd libX11 libxcb  qt6-5compat  qt6-base  qt6-declarative qt6-wayland  wayland)
+makedepends=(doxygen extra-cmake-modules  kdoctools plasma-wayland-protocols qt6-tools)
+sha256sums=('b1d8f4701a009dd18797cbf68f06bdc45a3e85a243b04190890b4b40440927d2')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_QCH=ON
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

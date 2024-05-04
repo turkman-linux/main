@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='kfind'
+release='2'
+version='24.02.2'
+url='https://www.kde.org/applications/utilities/kfind'
+description='Find Files/Folders'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
+license=('GPLv3')
+source=("https://download.kde.org/stable/release-service/${version}/src/kfind-${version}.tar.xz")
+depends=(karchive kcompletion kconfig kconfigwidgets kcoreaddons kfilemetadata ki18n kio kwidgetsaddons
+         kxmlgui qt6-5compat qt6-base)
+makedepends=(extra-cmake-modules kdoctools)
+sha256sums=('ae0f1fb029c4b4b85122ccd71f4c1d186929ef19057ddaf3b72ca1b3252c98ad')
+group=(kde.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_QCH=ON \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+    cmake --build build
+}
+
+package () {
+    DESTDIR="$DESTDIR" cmake --install build
+}

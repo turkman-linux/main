@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 name='libksysguard'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='KDE system monitor library'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/libksysguard-$version.tar.xz")
-depends=(knewstuff libXres lm-sensors)
-makedepends=()
-md5sums=('8fbd525b217c632106cb02075bd99754')
+depends=(kauth kconfig kcoreaddons kdeclarative ki18n kirigami kitemmodels knewstuff kpackage kquickcharts kservice
+         libnl libpcap qt6-base qt6-declarative solid zlib)
+makedepends=(extra-cmake-modules qt6-tools)
+sha256sums=('6b72ccfbed69f27bcec0d86414ed780870109801cc20c505901657c85c3644dd')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -20,8 +21,8 @@ cd $name-$version
 setup () {
     cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQt5WebChannel=OFF \
-        -DQt5WebEngineWidgets=OFF
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
 }
 
 build () {
