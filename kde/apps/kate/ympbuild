@@ -1,39 +1,50 @@
 #!/usr/bin/env bash
 name='kate'
-release='1'
-version='23.08.2'
+release='2'
+version='24.02.2'
 url='https://kde.org/applications/utilities/org.kde.kate'
 description='A multi-document, multi-view text editor'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL' 'LGPL' 'FDL')
 source=("https://invent.kde.org/utilities/kate/-/archive/v${version}/kate-v${version}.tar.gz")
-depends=(knewstuff ktexteditor kactivities hicolor-icon-theme)
+depends=(knewstuff ktexteditor hicolor-icon-theme)
 makedepends=(extra-cmake-modules kdoctools)
-md5sums=('5820cc92b2923e5a2b4a4039151d4025')
+sha256sums=('1633e59115562da2cc83429f9e39db3c62e5d9685005cf318fdc2e4e2aaceaed')
 group=(kde.apps)
+uses_extra=(kwrite)
 uses=()
 arch=('x86_64')
 
 cd $name-"v"$version
 
-build () {
-cmake -B build/kate -G Ninja \
+setup(){
+  cmake -B build/kate -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_LIBDIR=lib64 \
 		-DBUILD_kwrite=FALSE
-	cmake --build build/kate
 
-	cmake -B build/kwrite -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_kate=FALSE \
-		-DBUILD_addons=FALSE
-	cmake --build build/kwrite
+  if use kwrite ; then
+	  cmake -B build/kwrite -G Ninja \
+  		-DCMAKE_INSTALL_PREFIX=/usr \
+		  -DCMAKE_INSTALL_LIBDIR=lib64 \
+		  -DBUILD_kate=FALSE \
+		  -DBUILD_addons=FALSE
+  fi
+}
+
+build () {
+	cmake --build build/kate
+  if use kwrite ; then
+	    cmake --build build/kwrite
+  fi
+
 }
 
 package () {
     DESTDIR="$DESTDIR" cmake --install build/kate
-	DESTDIR="$DESTDIR" cmake --install build/kwrite
+  if use kwrite ; then
+   	DESTDIR="$DESTDIR" cmake --install build/kwrite
+  fi
 }
 

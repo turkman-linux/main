@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kcalc'
-release='1'
-version='23.08.2'
+release='2'
+version='24.02.2'
 url='https://kde.org/applications/utilities/org.kde.kcalc'
 description='Scientific Calculator'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL' 'LGPL' 'FDL')
-source=(https://download.kde.org/stable/release-service/${version}/src/${name}-${version}.tar.xz{,.sig})
+source=(https://download.kde.org/stable/release-service/${version}/src/${name}-${version}.tar.xz)
 depends=(mpfr kxmlgui knotifications)
 makedepends=(extra-cmake-modules kdoctools)
-md5sums=('8ac8a45eca1b02899d18a81a2effca66' 'SKIP')
+sha256sums=("9cc2d27635f858afb7bf30f9e7e9bef2c04dea653ee33baa43165da3e5797b9d")
 group=(kde.apps)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,7 @@ cd $name-$version
 setup(){
 	cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_LIBDIR=lib64 \
 		-DBUILD_TESTING=OFF
 }
 
@@ -31,6 +31,6 @@ build () {
 package () {
 
     DESTDIR="$DESTDIR" cmake --install build
-	rm -f $DESTDIR/usr/share/kglobalaccel/org.kde.kcalc.desktop
-	ln -s ../applications/org.kde.kcalc.desktop $DESTDIR/usr/share/kglobalaccel/org.kde.kcalc.desktop
+	  rm -f $DESTDIR/usr/share/kglobalaccel/org.kde.kcalc.desktop
+	  ln -s ../applications/org.kde.kcalc.desktop $DESTDIR/usr/share/kglobalaccel/org.kde.kcalc.desktop
 }

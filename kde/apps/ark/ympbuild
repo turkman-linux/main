@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ark'
-release='1'
-version='23.08.2'
+release='2'
+version='24.02.2'
 url='https://kde.org/applications/utilities/org.kde.ark'
 description='Graphical file compression/decompression utility with support for multiple formats'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/release-service/${version}/src/ark-${version}.tar.xz")
 depends=(kio libarchive kparts)
 makedepends=()
-md5sums=('aac8020d47081acbbf5178f5d13eb85c')
+sha256sums=('06374f5c7c2aee7a93c04bfd7b6b3baaeab3962e8277c9087fea54ba9805bdce')
 group=(kde.apps)
 uses=()
 arch=('x86_64')
@@ -21,7 +21,7 @@ setup () {
 	cmake -B build -G Ninja \
 		-DCMAKE_BUILD_TYPE=MinSizeRel \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_INSTALL_LIBDIR=lib64
 
 }
 

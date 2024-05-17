@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='dolphin'
-release='1'
-version='23.08.3'
+release='2'
+version='24.02.2'
 url='https://apps.kde.org/dolphin/'
 description='KDE File Manager'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/release-service/${version}/src/dolphin-${version}.tar.xz")
-depends=(baloo-widgets knewstuff kcmutils kparts kactivities)
+depends=(baloo-widgets knewstuff kcmutils kparts)
 makedepends=(extra-cmake-modules kdoctools)
-md5sums=('82a60a035cae093a499df3a6bfb5f405')
+sha256sums=("50844490d45159ca16c1d8d9f5f0701f118772e4b09adad270835b67bb26a701")
 group=(kde.apps)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,7 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib 
+		-DCMAKE_INSTALL_LIBDIR=lib64
 }
 
 build () {
