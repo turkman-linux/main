@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+name='spectacle'
+release='1'
+version='24.02.2'
+url='https://kde.org/applications/utilities/org.kde.spectacle'
+description='Application for capturing desktop screenshots'
+email='osman.coskun95@gmail.com'
+maintainer='mergin'
+license=('GPLv3')
+source=("https://download.kde.org/stable/release-service/$version/src/spectacle-$version.tar.xz"
+        spectacle.desktop)
+depends=(qt6-base kwayland kpipewire)
+makedepends=(extra-cmake-modules ki18n kdoctools)
+sha256sums=('4118f7355eb0584deb2a88ce46ece7b616880397f0ab2b810cbe4cbc21742152'
+            'SKIP')
+group=(kde.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+		cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib64
+}
+
+build(){
+		ninja -C build $jobs
+}
+
+package(){
+     ninja -C build install $jobs
+     # fix symlink
+     rm -f $DESTDIR/usr/share/kglobalaccel/org.kde.spectacle.desktop
+     ln -s ../applications/org.kde.spectacle.desktop \
+          $DESTDIR/usr/share/kglobalaccel/org.kde.spectacle.desktop
+     # install autostart file
+     install -Dm644 ../spectacle.desktop -t "$DESTDIR"/etc/xdg/autostart/
+}
+
