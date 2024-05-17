@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 name='plasma-desktop'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://de.org/plasma-desktop'
 description='KDE Plasma Desktop'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-desktop-$version.tar.xz")
-depends=(accountsservice kirigami2 plasma-workspace setxkbmap libksysguard)
-makedepends=()
-md5sums=('e1446c2047adbad63929fc028b597f87')
+depends=(accountsservice plasma-workspace setxkbmap libksysguard)
+makedepends=(xf86-input-evdev xf86-input-libinput xorg-server)
+sha256sums=('924ce04db2c88cf7ae1a23f19b38eb452977087b6e937ed0568ce5397bcc927d')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+
+export LANG="C.UTF-8"
+export LC_ALL=$LANG
 
 prepare(){
     # Remove bloats from cmakelist.txt

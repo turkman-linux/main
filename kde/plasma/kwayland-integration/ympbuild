@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kwayland-integration'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='KWayland integration'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kwayland-integration-${version}.tar.xz")
 depends=(kwindowsystem kwayland)
 makedepends=(extra-cmake-modules wayland-protocols kidletime)
-md5sums=('0766ffad491c53ea3e36f3c1e04ed6a3')
+sha256sums=('04e2cbc45ea3c4b6f18aba16610fd2c7fa20b263ca606290b1b27546650101e9')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,7 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_LIBDIR=lib64 \
 		-DBUILD_TESTING=OFF
 }
 

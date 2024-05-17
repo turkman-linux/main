@@ -1,23 +1,26 @@
 #!/usr/bin/env bash
 name='plasma-workspace'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='Kde Plasma Workspace'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.kde.org/stable/plasma/$version/plasma-workspace-$version.1.tar.xz")
-depends=(accountsservice kactivitymanagerd kded kinit kio
-         kirigami2 kquickcharts kwin milou pipewire qt5-tools
-         plasma-integration qt5-quickcontrols)
-makedepends=()
-md5sums=('7fb544cfaef8786e912363b256a63c45')
+source=("https://download.kde.org/stable/plasma/$version/plasma-workspace-$version.tar.xz")
+depends=(accountsservice kactivitymanagerd kded  kio
+         kquickcharts kwin milou pipewire
+         plasma-integration qt6-base xdotool)
+makedepends=(qt6-tools)
+sha256sums=('47dd87b4c0e09c1bcb34162b7aae3e5a3b9a4aaba1b9fed0f4d681bb3f9febba')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
 
-cd $name-$version.1
+cd $name-$version
+
+export LANG="C.UTF-8"
+export LC_ALL=$LANG
 
 prepare(){
     # Remove bloats from cmakelist.txt
