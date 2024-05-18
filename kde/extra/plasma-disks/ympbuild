@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-disks'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='Monitors S.M.A.R.T. capable devices for imminent failure'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/plasma-disks-${version}.tar.xz")
 depends=(smartmontools kinfocenter)
 makedepends=(extra-cmake-modules)
-md5sums=('30c21b9c97ac80baf935c774be383fce')
+sha256sums=('b82ffe327db6edd746c422f71e0071523713de6d9b2f46fb0e12d03002874f2a')
 group=(kde.extra)
 uses=()
 arch=('x86_64')

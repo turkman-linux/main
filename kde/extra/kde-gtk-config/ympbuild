@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kde-gtk-config'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='GTK2 and GTK3 Configurator for KDE'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kde-gtk-config-${version}.tar.xz")
-depends=(qt5-svg kdecoration kconfigwidgets kdbusaddons kwindowsystem)
+depends=(qt6-svg kdecoration kconfigwidgets kdbusaddons kwindowsystem)
 makedepends=(extra-cmake-modules gtk3 sassc)
-md5sums=('2f336708889452f4e841132e9a18258d')
+sha256sums=('60071ffcb5427818a50caa95b2272489da10805c32b975d382026c078f8d8453')
 group=(kde.extra)
 uses=()
 arch=('x86_64')

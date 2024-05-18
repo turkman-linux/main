@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='bluedevil'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='Integrate the Bluetooth technology within KDE workspace and applications'
 email='akarsu@protonmail.com'
@@ -9,8 +9,8 @@ maintainer='akarsu'
 license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/bluedevil-${version}.tar.xz")
 depends=(bluez-qt kdeclarative)
-makedepends=(extra-cmake-modules plasma-framework kdoctools kcmutils)
-md5sums=('4fca7af9df4e4a39e9b3b7e18e6e8836')
+makedepends=(extra-cmake-modules kdoctools kcmutils)
+sha256sums=('831473069c7bf07187af2acbb101d3a6c74755587e490142098d5aa054ee6265')
 group=(kde.extra)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,7 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_LIBDIR=lib64 \
 		-DBUILD_TESTING=OFF
 }
 

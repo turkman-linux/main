@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='breeze-gtk'
-release='1'
-version='5.27.9'
+release='2'
+version='6.0.0'
 url='https://kde.org/plasma-desktop'
 description='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/breeze-gtk-${version}.tar.xz")
 depends=()
 makedepends=(extra-cmake-modules sassc py3-cairo breeze)
-md5sums=('9c1816279ddac1fe05cfb765ec77464b')
+sha256sums=('cec4caf1c229bc30ca00c6605db4db98a96502167f34a9b77ca02b26b499ab36')
 group=(kde.extra)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,7 @@ cd $name-$version
 setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_LIBDIR=lib64 \
 		-DBUILD_TESTING=OFF
 }
 
