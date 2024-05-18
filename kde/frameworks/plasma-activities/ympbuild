@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-name='kactivities-stats'
-release='1'
-version='5.112.0'
+name='plasma-activities'
+release='2'
+version='6.0.0'
 url='https://download.kde.org/stable/frameworks'
 description='A library for accessing the usage data collected by the activities system'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.kde.org/stable/frameworks/5.112/kactivities-stats-$version.tar.xz")
-depends=(kactivities)
-makedepends=()
-md5sums=('e71d3565da690b8deb33f900e7b41e14')
+source=("https://download.kde.org/stable/plasma/$version/plasma-activities-$version.tar.xz")
+depends=(qt6-base)
+makedepends=(qt6-tools)
+sha256sums=('f0bd07bbcd9022c72e564046046029b39f71d1cc5b467b9f50914813043b2795')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
