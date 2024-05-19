@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+name='tzdata'
+release='1'
+version='2024a'
+url='https://example.org'
+description='Package description missing'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://www.iana.org/time-zones/repository/releases/tzcode$version.tar.gz"
+	      "https://www.iana.org/time-zones/repository/releases/tzdata$version.tar.gz"
+	      "https://dev.alpinelinux.org/archive/posixtz/posixtz-0.5.tar.xz")
+depends=()
+makedepends=()
+sha256sums=('80072894adff5a458f1d143e16e4ca1d8b2a122c9c5399da482cb68cba6a1ff8'
+            '0d0434459acbd2059a7a8da1f3304a84a86591f6ed69c6248fffa502b6edffe3'
+            'e0a79e0922be2da686a1888d79cd253baaf81c2f30b4378fbbcf9ff9d632aab5')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+build () {
+    make $jobs
+    cd posixtz-0.5
+    make posixtz $jobs
+}
+
+_timezones="africa antarctica asia australasia europe northamerica \
+	southamerica etcetera backward factory"
+package() {
+	./zic -b fat -y ./yearistype -d "$DESTDIR"/usr/share/zoneinfo $_timezones
+	./zic -b fat -y ./yearistype -d "$DESTDIR"/usr/share/zoneinfo/right -L leapseconds $_timezones
+	./zic -b fat -y ./yearistype -d "$DESTDIR"/usr/share/zoneinfo/posix $_timezones
+
+	./zic -b fat -y ./yearistype -d "$DESTDIR"/usr/share/zoneinfo -p America/New_York
+	install -m444 -t "$DESTDIR"/usr/share/zoneinfo iso3166.tab zone1970.tab zone.tab
+
+	install -Dm755 -t "$DESTDIR"/usr/sbin zic zdump
+
+	install -Dm644 -t "$DESTDIR"/usr/share/man/man8 zic.8 zdump.8
+
+	rm -f "$DESTDIR"/usr/share/zoneinfo/localtime
+	install -Dm755 -t "$DESTDIR"/usr/bin ./posixtz-0.5/posixtz
+
+	install -Dm644 -t "$DESTDIR"/usr/share/zoneinfo ./leap-seconds.list
+}
