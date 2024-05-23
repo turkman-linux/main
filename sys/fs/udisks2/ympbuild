@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='udisks2'
-release='1'
-version='2.9.4'
+release='2'
+version='2.10.1'
 url='https://github.com/storaged-project/udisks'
 description='Disk Management Service, version 2'
 email='aliriza.keskin@pardus.org.tr'
@@ -11,7 +11,7 @@ source=("https://github.com/storaged-project/udisks/archive/refs/tags/udisks-$ve
         udisks.initd)
 depends=(libblockdev libatasmart libgudev polkit)
 makedepends=()
-md5sums=('b03e328a807e0183adba04e546a4f343'
+sha256sums=('a1c4232ce0f4d6a800269f8e8c6e93afb0e39aa7017383082943e400a0bc8e13'
          'SKIP')
 group=(sys.fs)
 uses=()

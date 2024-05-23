@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libblockdev'
-release='2'
-version='3.0.4'
+release='3'
+version='3.1.1'
 url='https://github.com/storaged-project/libblockdev'
 description='A library for manipulating block devices'
 email='bayramk@gmail.com'
@@ -11,20 +11,19 @@ source=("https://github.com/storaged-project/libblockdev/releases/download/$vers
 depends=(gawk parted kmod libyaml btrfs-progs dosfstools gptfdisk
          libbytesize ndctl xfsprogs lvm2 volume_key dmraid libnvme)
 makedepends=()
-md5sums=('74eed189c000cb3b0194c73c425c418c')
+sha256sums=('a5cb33a53ff5969067982704f45399d02555fdb2313ed0c56eac9555397dc2db')
 group=(sys.libs)
 uses=()
 arch=('x86_64')
 
-unset CFLAGS
-export CC=clang
+# ignore warnings. Bad idea but working
+export CFLAGS="$CFLAGS -Wno-all"
 
 cd $name-$version
 setup(){
-    # FIXME: remove --without-xxx
+    autoreconf -fvi
     ./configure --prefix=/usr \
-        --sysconfdir=/etc \
-        --without-fs
+        --sysconfdir=/etc
 }
 
 build(){

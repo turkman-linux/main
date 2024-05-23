@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='e2fsprogs'
-release='1'
-version='1.47.0'
+release='2'
+version='1.47.1'
 url='https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs'
 description='Standard EXT2/EXT3/EXT4 filesystem utilities'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$version/e2fsprogs-$version.tar.xz")
 depends=(util-linux)
 makedepends=()
-md5sums=('7eda79bc0d131b33affe1d993d76711a')
+sha256sums=('5a33dc047fd47284bca4bb10c13cfe7896377ae3d01cb81a05d406025d99e0d1')
 group=(sys.fs)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,12 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        --enable-elf-shlibs     \
+        --disable-libblkid      \
+        --disable-libuuid       \
+        --disable-uuidd         \
+        --disable-fsck
 }
 
 build(){

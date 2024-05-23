@@ -9,7 +9,7 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-workspace-$version.tar.xz")
 depends=(accountsservice kactivitymanagerd kded  kio
-         kquickcharts kwin milou pipewire
+         kquickcharts kwin milou pipewire phonon
          plasma-integration qt6-base xdotool)
 makedepends=(qt6-tools)
 sha256sums=('47dd87b4c0e09c1bcb34162b7aae3e5a3b9a4aaba1b9fed0f4d681bb3f9febba')
