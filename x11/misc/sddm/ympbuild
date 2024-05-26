@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='sddm'
-release='1'
-version='0.20.0'
+release='2'
+version='0.21.0'
 url='https://github.com/sddm/sddm'
 description='Simple Desktop Display Manager'
 email='akarsu@protonmail.com'
@@ -11,9 +11,9 @@ source=("https://github.com/sddm/sddm/archive/v${version}/sddm-v${version}.tar.g
 	"sddm.initd"
 	"sddm.confd"
 	"sddm.pam")
-depends=(qt5-declarative xauth xorg-server)
-makedepends=(extra-cmake-modules py3-docutils qt5-tools)
-md5sums=('7af67d5fb767639861d35c80eb4e1191' 'SKIP' 'SKIP' 'SKIP')
+depends=(qt6-base qt6-declarative xauth xorg-server elogind libXau libxcb)
+makedepends=(extra-cmake-modules py3-docutils qt6-tools)
+sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf' 'SKIP' 'SKIP' 'SKIP')
 group=(x11.misc)
 uses=()
 arch=('x86_64')
@@ -25,9 +25,9 @@ export CXXFLAGS="$CXXFLAGS -flto=auto"
 setup () {
 	cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_LIBDIR=lib64 \
 		-DBUILD_MAN_PAGES=ON \
-		-DBUILD_WITH_QT6=OFF \
+		-DBUILD_WITH_QT6=ON \
 		-DENABLE_JOURNALD=OFF \
 		-DNO_SYSTEMD=ON \
 		-DUSE_ELOGIND=ON \

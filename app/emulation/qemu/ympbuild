@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qemu'
-release='1'
-version='8.1.2'
+release='2'
+version='9.0.0'
 url='https://qemu.org'
 description='Quick Emulator'
 email='aliriza.keskin@pardus.org.tr'
@@ -14,7 +14,7 @@ depends=(alsa-lib bzip2 curl cyrus-sasl eudev fuse glib
          pipewire
 )
 makedepends=()
-md5sums=('f7e3443d5b62afa0c10771ad42c5e17a')
+sha256sums=('32708ac66c30d8c892633ea968c771c1c76d597d70ddead21a0d22ccf386da69')
 group=(app.emulation)
 uses=(gtk vnc)
 arch=('x86_64')
@@ -24,21 +24,42 @@ gtk_depends=(gtk3 vte3)
 
 cd $name-$version
 
+prepare(){
+    cd ..
+    cp -prf $name-$version $name-$version.static
+}
+
 setup () {
-    ./configure --prefix=/usr \
+
+    opts=(
         --libdir=/usr/lib64/ \
-        --enable-slirp \
-        --target-list=x86_64-softmmu,aarch64-linux-user,aarch64-softmmu \
         --disable-zstd \
+    )
+    # configure system
+    ./configure --prefix=/usr \
+        --disable-linux-user \
+        --target-list=x86_64-softmmu,aarch64-softmmu \
+        --enable-slirp \
         $(use_opt gtk --enable-gtk --disable-gtk) \
-        $(use_opt vnc --enable-vnc --disable-vnc)
+        $(use_opt vnc --enable-vnc --disable-vnc) \
+        ${opts[@]}
+    # configure user static
+    cd ../$name-$version.static
+    ./configure --prefix=/usr \
+        --disable-system \
+        --enable-linux-user \
+        --static \
+        --target-list=aarch64-linux-user,x86_64-linux-user \
+        ${opts[@]}
 }
 
 build () {
+    make -C ../$name-$version.static $jobs
     make $jobs
 }
 
 package () {
+    make -C ../$name-$version.static install $jobs
     make install $jobs
 }
 
