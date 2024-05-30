@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='slurp'
+release='1'
+version='1.5.0'
+url='https://Select a region in a Wayland compositor '
+description='Select a region in a Wayland compositor'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/emersion/slurp/archive/refs/tags/v$version.tar.gz")
+depends=(cairo libxkbcommon wayland)
+makedepends=()
+sha256sums=('0fa880d4a93e1c795e3b5929fbea47546df0955bea34fc2f7ffeb1751678f663')
+group=(gui.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
