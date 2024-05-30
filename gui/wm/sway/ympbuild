@@ -2,16 +2,19 @@
 name='sway'
 release='2'
 version='1.9'
+bg_version='1.2.1'
 url='https://github.com/swaywm/sway'
 description=='i3-compatible Wayland window manager'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/swaywm/sway/archive/refs/tags/$version.zip"
+        "https://github.com/swaywm/swaybg/archive/refs/tags/v${bg_version}.tar.gz"
         "sway.desktop")
-depends=(wlroots json-c xorg-xwayland)
+depends=(wlroots json-c xorg-xwayland gdk-pixbuf cairo)
 makedepends=()
 sha256sums=('ee978ecb92d10ea799d746e9e73df7cd1b8138aed5361d55abfc6f59d82587f4'
+            '45c4a1a3b83c86ddc321a6136402b708f195a022d0ccee4641b23d14c3a3c25e'
             'SKIP')
 group=(gui.wm)
 uses=()
@@ -24,14 +27,21 @@ setup(){
         --libdir=/usr/lib64/ \
         -Dwerror=true \
         -Dtray=enabled
+    cd ..
+    cd swaybg-${bg_version}
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        -Dgdk-pixbuf=enabled
 }
 
 build(){
     ninja -C build
+    ninja -C ../swaybg-${bg_version}/build
 }
 
 package(){
     ninja -C build install
+    ninja -C ../swaybg-${bg_version}/build install
     install -D -m644 ../sway.desktop \
 		    -t "$DESTDIR"/usr/share/wayland-sessions/
 }
