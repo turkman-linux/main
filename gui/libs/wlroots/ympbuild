@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='wlroots'
-release='2'
-version='0.17.0'
+release='3'
+version='0.17.3'
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
 description='Pluggable, composable, unopinionated modules for building a Wayland compositor'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/$version/wlroots-$version.tar.gz")
-depends=(seatd hwdata eudev libxkbcommon wayland)
+depends=(seatd hwdata eudev libxkbcommon wayland xcb-util-wm)
 makedepends=()
-md5sums=('350b9085b67fc8496c4a5228bb992c22')
+sha256sums=('3c2525528ecb5cd64cf410b2d6d140d4fc28d4a5b2ee06bedab3f0154ebc50b4')
 group=(gui.libs)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,7 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-        -Dexamples=false
+        -Dexamples=true
 }
 
 build(){
