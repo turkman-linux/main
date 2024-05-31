@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='ymp'
-release='2'
-version='1.1'
+release='3'
+version='1.2'
 url='https://gitlab.com/turkman/devel/sources/ymp'
 description='Yerli ve Milli Package manager'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/ymp/-/archive/${version}/ymp-${version}.tar.gz")
-depends=(glib readline ncurses file)
+depends=(glib readline ncurses)
 makedepends=(vala)
-sha256sums=('6fae3e0b37db45d3ba8788a940f43a47c6eee9b181f89186aacf819e4e8cdae1')
+sha256sums=('adc173b0670a4c645ba14c7d4124c8d5ddac5a3b2c920eb25bc2382a5879dfcc')
 uses=(curl libarchive)
 curl_depends=(curl)
 libarchive_depends=(libarchive)
