@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='initramfs-tools'
-release='1'
-version='0.142'
+release='2'
+version='0.143'
 url='https://salsa.debian.org/kernel-team/initramfs-tools'
 description='Initial ramdisk system from debian'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,11 +10,13 @@ license=('GPLv3')
 source=("https://salsa.debian.org/kernel-team/initramfs-tools/-/archive/v$version/initramfs-tools-v$version.tar.gz"
         "patches/remove-zstd.patch"
         "patches/non-debian.patch"
+        "patches/no-dracut.patch"
         "patches/remove-logsave.patch"
         "initramfs-tools.sysconf")
 depends=(eudev findutils coreutils)
 makedepends=()
-md5sums=('a3765010fe0fc6a71fe900a798b759ea'
+sha256sums=('5d3091b0393c4246bcdae499cfd5ba490c78194d7eede01d951f4124ff2f9895'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -26,9 +28,16 @@ arch=('x86_64')
 cd $name-v$version
 
 prepare(){
-    patch -Np1 < ../remove-zstd.patch
-    patch -Np1 < ../remove-logsave.patch
-    patch -Np1 < ../non-debian.patch
+    patch -Np1 -i ../remove-zstd.patch
+    patch -Np1 -i ../remove-logsave.patch
+    patch -Np1 -i ../non-debian.patch
+    patch -Np1 -i ../no-dracut.patch
+    # hidepid=2 default
+    sed -i "s/ proc \/proc/,hidepid=2&/g" init
+    # replace linux-version command
+    sed -i "s/linux-version/false/g" hook-functions
+    sed -i "s/linux-version list/ls \/lib\/modules\//g" update-initramfs
+    sed -i "s/linux-version sort --reverse/cat/g" update-initramfs
 }
 
 package(){

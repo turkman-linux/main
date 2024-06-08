@@ -77,5 +77,10 @@ package(){
     install ../disable-secondary-gpu.sh ${DESTDIR}/usr/libexec/disable-secondary-gpu
     install ../disable-secondary-gpu.initd ${DESTDIR}/etc/init.d
     install ../backlight-restore.initd ${DESTDIR}/etc/init.d
+    # systemd /proc/1/comm hack
+    # move openrc-run as systemd path and symlink
+    mkdir -p $DESTDIR/lib/systemd/
+    mv $DESTDIR/sbin/openrc-init $DESTDIR/lib/systemd/systemd
+    ln -s ../lib/systemd/systemd $DESTDIR/sbin/openrc-init 
 }
 
