@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openrc'
-release='2'
-version='0.53'
+release='4'
+version='0.54'
 url='https://github.com/OpenRC/openrc'
 description='The OpenRC init system'
 email='aliriza.keskin@pardus.org.tr'
@@ -16,7 +16,7 @@ source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
     "extras/disable-secondary-gpu.sh")
 depends=()
 makedepends=()
-md5sums=('4c539c934497e15fc038a18465268f00'
+sha256sums=('ad808516cb9b9a6e031ac2faeef88214164db3b11d5659a542501491e48b298d'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -30,6 +30,11 @@ pam_depends=(pam)
 arch=('x86_64')
 
 cd $name-$version
+
+prepare(){
+    # hidepid=2 by default
+    sed -i "s/ proc \/proc/,hidepid=2&/g" sh/init.sh.Linux.in 
+}
 
 setup(){
     meson setup build \
