@@ -33,7 +33,7 @@ cd $name-$version
 
 prepare(){
     # hidepid=2 by default
-    sed -i "s/ proc \/proc/,hidepid=2&/g" sh/init.sh.Linux.in 
+    sed -i "s/ proc \/proc/,hidepid=2,gid=31&/g" sh/init.sh.Linux.in 
 }
 
 setup(){
@@ -64,6 +64,7 @@ package(){
     mkdir -p ${DESTDIR}/etc/group.d
     mkdir -p ${DESTDIR}/etc/passwd.d
     echo "uucp:x:14:" > ${DESTDIR}/etc/group.d/uucp
+    echo "proc:x:31:" > ${DESTDIR}/etc/group.d/proc
     echo "uucp:x:10:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
     # move /share to /usr/share
     mkdir -p ${DESTDIR}/usr ${DESTDIR}/sbin
