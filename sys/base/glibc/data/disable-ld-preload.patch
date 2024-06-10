@@ -1,0 +1,20 @@
+diff --git a/elf/rtld.c b/elf/rtld.c
+index e9525ea9..0879caa1 100644
+--- a/elf/rtld.c
++++ b/elf/rtld.c
+@@ -1836,15 +1836,6 @@ dl_main (const ElfW(Phdr) *phdr,
+   struct link_map **preloads = NULL;
+   unsigned int npreloads = 0;
+ 
+-  if (__glibc_unlikely (state.preloadlist != NULL))
+-    {
+-      RTLD_TIMING_VAR (start);
+-      rtld_timer_start (&start);
+-      npreloads += handle_preload_list (state.preloadlist, main_map,
+-					"LD_PRELOAD");
+-      rtld_timer_accum (&load_time, start);
+-    }
+-
+   if (__glibc_unlikely (state.preloadarg != NULL))
+     {
+       RTLD_TIMING_VAR (start);

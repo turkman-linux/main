@@ -17,9 +17,11 @@ source=("https://ftp.gnu.org/gnu/glibc/glibc-${version}.tar.xz"
         'data/glibc.sysconf'
         'scripts/locale-gen'
         'scripts/revdep-rebuild'
+        'data/disable-ld-preload.patch'
         'data/tr_TR'
 )
 md5sums=('be81e87f72b5ea2c0ffe2bedfeb680c6'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -35,6 +37,10 @@ export CFLAGS="-O2 ${debug:+-g} -s -mtune=generic -DTURKMAN"
 export CXXFLAGS="-O2 ${debug:+-g} -s -mtune=generic -DTURKMAN"
 
 cd "$name-$version"
+
+prepare(){
+    patch -Np1 -i ../disable-ld-preload.patch
+}
 
 setup(){
     opts=(
