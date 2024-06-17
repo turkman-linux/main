@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='ghostscript'
-release='2'
-version='10.02.1'
-_version='10021'
+release='3'
+version='10.03.1'
+_version='10031'
 url='https://example.org'
 description='An interpreter for the PostScript language'
 email='aliriza.keskin@pardus.org.tr'
@@ -13,12 +13,12 @@ source=(
     "https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz"
     "https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz"
 )
-depends=()
-makedepends=()
-md5sums=(
-    '26c0cbfa2e09da97f1fc78728048ada8'
-    '6865682b095f8c4500c54b285ff05ef6'
-    '33457d3f37de7ef03d2eea05a9e6aa4f'
+depends=(libXt cups fontconfig zlib libpng libtiff lcms2 poppler cairo glibc libX11 gdk-pixbuf glib)
+makedepends=(gtk3 gnutls)
+sha256sums=(
+    '157212edc96b8ccc409475dce2e49833fb4427f150c455258ded9632c106abee'
+    '0eb6f356119f2e49b2563210852e17f57f9dcc5755f350a69a46a0d641a0c401'
+    '8146cccc4699fe9dab841446bdd17039f4769c903eceb54409188b920754aab3'
 )
 group=(app.text)
 uses=()
@@ -28,6 +28,7 @@ cd $name-$version
 
 setup () {
     ./configure --prefix=/usr \
+		--libdir=/usr/lib64/ \
         --disable-compile-inits \
          --enable-dynamic \
          --disable-hidden-visibility

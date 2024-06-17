@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='attica'
-release='2'
-version='6.0.0'
+release='3'
+version='6.3.0'
 url='https://community.kde.org/Frameworks'
 description='Qt library that implements the Open Collaboration Services API'
 email='brkt8khn@gmail.com'
@@ -9,8 +9,8 @@ maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/attica-${version}.tar.xz")
 depends=(qt6-base)
-makedepends=(extra-cmake-modules doxygen)
-sha256sums=('ef21d8e57aeae4757b6b40dfe0d0e9c38302a979164b4e4d493b631b7c023d23')
+makedepends=(extra-cmake-modules doxygen qt6-tools)
+sha256sums=('abaf3a113a002d5d8435a3a75020f98c574290d2c552a5f256291d0418cc59ed')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -18,8 +18,10 @@ arch=('x86_64')
 cd $name-$version
 
 setup () {
-cmake -B build -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr 
+	cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib64 \
+		-DBUILD_QCH=ON
 
 }
 

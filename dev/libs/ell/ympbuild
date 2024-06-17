@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='ell'
-release='5'
-version='0.62'
+release='6'
+version='0.66'
 url='https://01.org/ell'
 description='Embedded Linux library'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmailmail.com'
+maintainer='brkt8khn'
 license=('GPLv2.1')
 source=(https://mirrors.edge.kernel.org/pub/linux/libs/$name/$name-$version.tar.{xz,sign})
 depends=()
-makedepends=()
-md5sums=('720eac90e32a6008ec5408f7930a0415' 'SKIP')
+makedepends=(glib linux-headers)
+sha256sums=('7a78b757080ed6518c1c4fa26ad6a7a3d6e4e385386a20b6fb52379e7d1ffa36' 'SKIP')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
