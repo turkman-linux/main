@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cinnamon-session'
-release='2'
-version='6.0.0'
+release='3'
+version='6.2.0'
 url='https://github.com/linuxmint/cinnamon-session'
 description='The Cinnamon Session Handler'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv3' 'LGPL')
 source=("https://github.com/linuxmint/cinnamon-session/archive/refs/tags/${version}.tar.gz")
 depends=(cinnamon-desktop libSM libcanberra xapp libXtst)
 makedepends=(meson ninja xtrans)
-md5sums=('4890badbe5d16e82de2ab4266ed6fc3e')
+sha256sums=('fd12d27652658f95644cf7a93adcbd6a985f3a6bc47c68660eed563b8ab34693')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')

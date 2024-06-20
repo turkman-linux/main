@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 name='cinnamon'
-release='2'
-version='6.0.0'
+release='3'
+version='6.2.0'
 url='https://github.com/linuxmint/cinnamon'
 description='Linux desktop which provides advanced innovative features and a traditional user experience'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv2')
 source=("https://github.com/linuxmint/cinnamon/archive/refs/tags/$version.tar.gz")
 depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
@@ -15,7 +15,7 @@ depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
 		    timezonemap xapp xdg-desktop-portal-xapp caribou
 )
 makedepends=(meson gobject-introspection intltool)
-md5sums=('0f3b7ff7fa409a27b820e215edca51ec')
+sha256sums=('40c0d923d9a5236cd088ea74210c1f28f386a2d29fb6fc87e4ab11e07ac27605')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')
