@@ -20,6 +20,14 @@ cd $name-$version
 
 export CFLAGS='-static-libgcc -static-libstdc++ -fPIC'
 
+export PATH=$PATH:$HOME
+
+prepare(){
+    # fake makeinfo
+    touch $HOME/makeinfo
+    chmod 755 $HOME/makeinfo
+}
+
 setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
