@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cinnamon-desktop'
-release='3'
-version='6.0.0'
+release='4'
+version='6.2.0'
 url='https://github.com/linuxmint/cinnamon-desktop'
 description='Library with common API for various Cinnamon modules'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://github.com/linuxmint/cinnamon-desktop/archive/$version/cinnamon-desktop-$version.tar.gz")
 depends=()
 makedepends=(libXinerama libxkbfile)
-md5sums=('265b69d5f57e9600c673c6be79ec20e0')
+sha256sums=('95bb6fc16597601b1febde4bd1317ba9c3ab662119b6b8e602b49e832d3f3eb7')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')

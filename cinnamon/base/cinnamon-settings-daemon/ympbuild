@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cinnamon-settings-daemon'
-release='2'
-version='6.0.0'
+release='3'
+version='6.2.0'
 url='https://github.com/linuxmint/cinnamon-settings-daemon'
 description='The Cinnamon Settings daemon'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://github.com/linuxmint/cinnamon-settings-daemon/archive/refs/tags/${version}.tar.gz")
 depends=(cinnamon-desktop colord dbus-glib libcanberra cups libgnomekbd libgudev libnotify librsvg libwacom nss polkit upower)
 makedepends=(meson ninja xf86-input-wacom)
-md5sums=('2196db65d92eb9a768942c4491a8e292')
+sha256sums=('ecb360017284cdf8a5776a64175ac69f730790d3031f1f4cabc5f8c52660a498')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')

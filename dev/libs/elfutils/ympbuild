@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 name='elfutils'
-release='3'
-version='0.190'
+release='4'
+version='0.191'
 url='https://sourceware.org/elfutils/'
 description='Libraries/utilities to handle ELF objects (drop in replacement for libelf)'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 license=('GPLv3' 'GPLv2' 'LGPLv3')
 source=("https://sourceware.org/elfutils/ftp/${version}/elfutils-${version}.tar.bz2")
-makedepends=( )
-md5sums=('79ad698e61a052bea79e77df6a08bc4b')
+depends=()
+makedepends=(bzip2 curl gcc libarchive sqlite xz-utils zlib)
+sha256sums=('df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871')
 uses=(bzip2 lzma nls)
 uses_extra=(zstd)
 arch=('x86_64')
@@ -21,6 +22,7 @@ zstd_depends=(zstd)
 cd $name-$version
 
 setup(){
+	autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
 		--enable-shared \
