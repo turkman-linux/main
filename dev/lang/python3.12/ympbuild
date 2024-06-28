@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+name='python3.12'
+release='1'
+version='3.12.4'
+url='https://www.python.org/downloads/'
+description='Next generation of the python high-level scripting language'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('custom')
+source=("https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
+       'turkman.patch')
+depends=('bzip2' 'gdbm'  'libnsl' 'libxcrypt' 'openssl' 'zlib' 'sqlite')
+makedepends=( )
+sha256sums=('f6d419a6d8743ab26700801b4908d26d97e8b986e14f95de31b32de2b0e79554'
+         'SKIP')
+expat_depends=('expat')
+arch=('x86_64')
+group=(dev.lang python)
+
+export CFLAGS="-O2 -s -DNCURSES_WIDECHAR=1"
+export CXXFLAGS="-O2 -s -DNCURSES_WIDECHAR=1"
+export LDFLAGS="-lncursesw"
+
+
+cd Python-$version
+
+setup(){
+    patch -Np1 -i "../turkman.patch"
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib \
+        --enable-ipv6 \
+		    --enable-loadable-sqlite-extensions \
+    		--enable-optimizations \
+	    	--enable-shared \
+			  --with-lto \
+		    --with-computed-gotos \
+		    --with-dbmliborder=gdbm:ndbm \
+		    --with-system-expat \
+        --with-system-libmpdec
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make install $jobs
+    mv ${DESTDIR}/usr/lib{,64}
+    # this symlinks provided by main python metapackage
+    for bin in pydoc3 idle3 python3 python3-config pip3 2to3; do
+        rm -f ${DESTDIR}/usr/bin/$bin
+    done
+    rm -f ${DESTDIR}/usr/lib64/pkgconfig/python3.pc
+    rm -f ${DESTDIR}/usr/lib64/pkgconfig/python3-embed.pc
+    # remove unused file
+    rm -f ${DESTDIR}/usr/share/man/man1/python3.1
+    # move libpython3.so file
+    mv ${DESTDIR}/usr/lib64/libpython3.so ${DESTDIR}/usr/lib64/libpython3.so.3.12
+}
+

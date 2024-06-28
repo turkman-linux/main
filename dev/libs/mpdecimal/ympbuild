@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='mpdecimal'
+release='1'
+version='4.0.0'
+url='https://www.bytereef.org/mpdecimal/index.html'
+description='complete implementation of the General Decimal Arithmetic Specification'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('942445c3245b22730fd41a67a7c5c231d11cb1b9936b9c0f76334fb7d0b4468c')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+         --libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+

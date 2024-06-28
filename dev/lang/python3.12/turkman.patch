@@ -1,0 +1,15 @@
+*** a/Lib/site.py	Tue Feb  7 13:15:11 2023
+--- b/Lib/site.py	Tue Feb  7 13:15:45 2023
+*************** def getsitepackages(prefixes=None):
+*** 366,371 ****
+--- 366,374 ----
+              if sys.platlibdir != "lib":
+                  libdirs.append("lib")
+  
++             sitepackages.insert(0, os.path.join(prefix, "share", "python3"))
++             sitepackages.insert(0, os.path.join(prefix, "lib", "python3"))
++ 
+              for libdir in libdirs:
+                  path = os.path.join(prefix, libdir,
+                                      "python%d.%d" % sys.version_info[:2],
+
