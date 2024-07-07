@@ -46,7 +46,9 @@ package(){
         if [[ -f meson.build ]] ; then
             ninja -C build install
         else
-            python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+            python3 setup.py install --root="${DESTDIR}" \
+                --prefix=/usr --install-lib=/usr/lib64/python3 \
+                --optimize=1 --skip-build
         fi
         cd ..
     done
