@@ -22,7 +22,8 @@ setup(){
     for _dir in ${uses[@]}; do
         cd nemo-${_dir}
         if [[ -f meson.build ]] ; then
-            meson setup build
+            meson setup build --prefix=/usr \
+                --libdir=/usr/lib64
         fi
         cd ..
     done
