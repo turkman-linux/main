@@ -4,13 +4,13 @@ release='2'
 version='0.5'
 url='https://github.com/pfmoore/editables'
 description='library for creating editable wheels'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('MIT')
 source=("https://github.com/pfmoore/editables/archive/refs/tags/${version}.tar.gz")
-depends=()
-makedepends=()
-md5sums=('e738f27bdde55318832ea8d3cd2ffb10')
+depends=(python)
+makedepends=(py3-build py3-flit py3-installer)
+sha256sums=('1ff2663aa1669eb89115a38e2d4067c21bb847e7006f72bf979a1a91b8bc2304')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,12 +18,10 @@ arch=('x86_64')
 cd "editables"-$version
 
 build(){
-    #python3 setup.py build
 	python -m build --wheel --no-isolation
 }
 
 package(){
-    #python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
 	python -m installer --destdir="$DESTDIR" dist/*.whl
 }
 

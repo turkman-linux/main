@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-cerberus'
-release='1'
-version='1.3.4'
+release='2'
+version='1.3.5'
 url='http://python-cerberus.org/'
 description='Lightweight, extensible data validation library for Python'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('ISC')
 source=("https://github.com/pyeve/cerberus/archive/refs/tags/${version}.tar.gz")
 depends=(python)
-makedepends=(py3-setuptools)
-md5sums=('df1416f38dc34f7db37d2f3026909f0d')
+makedepends=(py3-setuptools py3-build py3-installer py3-wheel)
+sha256sums=('f2ee895c33ee25a159166263ee799c1a8a810086b99cabd5b1c8abdd5b193cac')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,11 +18,11 @@ arch=('x86_64')
 cd "cerberus"-$version
 
 build(){
-    python3 setup.py build
+    python3 -m build --wheel --no-isolation
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python3 -m installer --destdir="$DESTDIR" dist/*.whl
 }
 
 

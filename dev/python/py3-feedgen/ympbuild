@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-feedgen'
-release='1'
-version='0.9.0'
+release='2'
+version='1.0.0'
 url='https://github.com/lkiesow/python-feedgen'
 description='feedgen Python 2 and 3 compatibility library '
 email='bayramk@gmail.com'
@@ -9,8 +9,8 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/lkiesow/python-feedgen/archive/refs/tags/v$version.tar.gz")
 depends=(python)
-makedepends=()
-md5sums=('1d5bc899ec8e506391674413911b15dc')
+makedepends=(py3-build py3-flit py3-installer py3-sphinx py3-wheel)
+sha256sums=('03c44b8624749082c67eee2b92f1b79c3b905ca97834372ea5e150a7e0c581b8')
 group=(dev.python)
 uses=()
 arch=('x86_64')
