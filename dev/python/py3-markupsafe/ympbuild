@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 name='py3-markupsafe'
-release='1'
-version='2.1.2'
+release='2'
+version='2.1.5'
 url='https://pypi.org/project/MarkupSafe'
 description='Safely add untrusted strings to HTML/XML markup.'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://files.pythonhosted.org/packages/95/7e/68018b70268fb4a2a605e2be44ab7b4dd7ce7808adae6c5ef32e34f4b55a/MarkupSafe-${version}.tar.gz")
+source=("https://github.com/pallets/markupsafe/archive/refs/tags/${version}.tar.gz")
 depends=(python)
-makedepends=()
-md5sums=('02f337b98aef11bd0fee9c5ae860173b')
+makedepends=(py3-build py3-installer py3-setuptools py3-wheel)
+sha256sums=('307f63295d17f178b7d3af5968fb828e34086d5d66fec505b630a1e5f5b3328b')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
-cd MarkupSafe-$version
+cd markupsafe-$version
 
 build(){
     python3 setup.py build

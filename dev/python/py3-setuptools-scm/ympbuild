@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+name='py3-setuptools-scm'
+release='1'
+version='8.1.0'
+url='https://github.com/pypa/setuptools_scm'
+description='Handles managing your python package versions in scm metadata'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('MIT')
+source=("https://github.com/pypa/setuptools_scm/archive/refs/tags/v${version}.tar.gz")
+depends=(python py3-packaging py3-setuptools)
+makedepends=(py3-build py3-installer py3-wheel)
+sha256sums=('070b0850fc17a832ccefe23c8b51418965b9e56be60027e5398ad276153bf091')
+uses=()
+group=(dev.python)
+arch=('x86_64')
+
+
+cd setuptools_scm-$version
+
+build(){
+    python3 -m build --wheel --skip-dependency-check --no-isolation
+}
+
+package(){
+    python3 -m installer --destdir="$DESTDIR" dist/*.whl
+}
+

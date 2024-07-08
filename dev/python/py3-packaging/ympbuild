@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-packaging'
-release='2'
-version='23.2'
+release='3'
+version='24.0'
 url='https://pypi.org/project/packaging'
 description='Core utilities for Python3 packages'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('Apache-2.0 AND BSD-2-Clause')
 source=("https://github.com/pypa/packaging/archive/refs/tags/${version}.tar.gz")
 depends=(python)
-makedepends=(py3-parsing)
-md5sums=('0f7bc51196160ee850df25ff7f0f603a')
+makedepends=(py3-build py3-installer)
+sha256sums=('1bf35cf2c2be982f2ae6c905760ae19cb744fadbf56269f2e54f7bdcef64d291')
 group=(dev.python)
 uses=()
 arch=('x86_64')
