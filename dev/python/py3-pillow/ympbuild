@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-pillow'
-release='4'
-version='10.2.0'
+release='5'
+version='10.3.0'
 url='https://python-pillow.org/'
 description='Python Imaging Library'
-email='akarsu@protonmail.com'
-maintainer='akarsu'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
 license=('BSD')
 source=("https://github.com/python-pillow/Pillow/archive/refs/tags/${version}.tar.gz")
 depends=(python freetype lcms2  libtiff  libxcb)
 makedepends=(git py3-build py3-installer py3-wheel py3-setuptools libwebp)
-md5sums=('5d3366f6d917283802e6d2aef286d423')
+sha256sums=('5a2f1a812237bf9bd57f283422f46ca97a1c3d43d5f67b9bf8a0d499c4b97c85')
 group=(dev.python)
 uses=()
 arch=('x86_64')

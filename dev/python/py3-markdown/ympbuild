@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-markdown'
-release='2'
-version='3.5.1'
+release='3'
+version='3.6'
 url='https://github.com/Python-Markdown/markdown'
 description='A Python implementation of John Gruber’s Markdown with Extension support.'
 email='parduscix@yandex.ru'
@@ -9,8 +9,8 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://github.com/Python-Markdown/markdown/archive/refs/tags/$version.tar.gz")
 depends=(python)
-makedepends=()
-md5sums=('cf0cb1e79621a55fd443cfe4497659e2')
+makedepends=(py3-build py3-installer py3-setuptools py3-wheel)
+sha256sums=('f65f3867f967b4b0ea4acd951bb7f0d9cb4d033c6fc28847a7eeb4d9fe242844')
 group=(dev.python)
 uses=()
 arch=('x86_64')

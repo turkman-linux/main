@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='usbutils'
+release='1'
+version='017'
+url='https://linux-usb.sourceforge.net'
+description='USB Device Utilities'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('GPLv3')
+source=("https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usbutils.git/snapshot/usbutils-$version.tar.gz")
+depends=(hwdata)
+makedepends=(libusb eudev)
+sha256sums=('7bb79a4c3fc664b700838add2444906919fd1d9bd767a733fc4b23975d2872b7')
+group=(sys.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr\
+    	--libdir=/usr/lib64 \
+    	--datadir=/usr/share/hwdata
+}
+build(){
+    make
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install
+	install -vDm 755 usbreset -t "$DESTDIR/usr/bin"
+}

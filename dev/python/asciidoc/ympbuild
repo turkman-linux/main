@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='asciidoc'
-release='1'
+release='2'
 version='10.2.0'
 url='https://github.com/asciidoc-py/asciidoc-py/'
 description='A plain text human readable/writable document format '
@@ -8,9 +8,9 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/asciidoc-py/asciidoc-py/archive/refs/tags/$version.tar.gz")
-depends=(python)
-makedepends=()
-md5sums=('dce6bfe35fd2fe4fc71e1ca8c8ead683')
+depends=(docbook-xsl libxslt python)
+makedepends=(py3-build py3-installer py3-wheel)
+sha256sums=('684ea53c1f5b71d6d1ac6086bbc96906b1f709ecc7ab536615b0f0c9e1baa3cc')
 group=(dev.python)
 uses=()
 arch=('x86_64')
