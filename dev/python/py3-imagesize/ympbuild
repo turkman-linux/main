@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-imagesize'
-release='1'
+release='2'
 version='1.4.1'
 url='https://github.com/shibukawa/imagesize_py'
 description='Getting image size from png/jpeg/jpeg2000/gif file'

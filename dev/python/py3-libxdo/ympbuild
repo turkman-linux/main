@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-libxdo'
-release='1'
+release='2'
 version='0.1.2a1'
 url='https://pypi.org/project/python-libxdo/'
 description='ibxdo is the library behind xdotool, a tool to “fake keyboard/mouse input, window management, and more”.'

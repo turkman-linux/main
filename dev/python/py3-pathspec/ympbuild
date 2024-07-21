@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-pathspec'
-release='2'
+release='3'
 version='0.12.1'
 url='https://github.com/cpburnz/python-path-specification'
 description='Utility library for gitignore style pattern matching of file paths'

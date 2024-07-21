@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-distutils-extra'
-release='1'
+release='2'
 version='2.39'
 url='https://launchpad.net/python-distutils-extra'
 description='Enhancements to the Python build system'

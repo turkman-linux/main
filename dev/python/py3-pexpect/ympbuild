@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-pexpect'
-release='2'
+release='3'
 version='4.9'
 url='http://pexpect.readthedocs.org/en/stable'
 description='Make Python a better tool for controlling and automating other programs'

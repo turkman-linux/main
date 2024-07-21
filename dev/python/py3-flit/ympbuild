@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-flit'
-release='2'
+release='3'
 version='3.9.0'
 url='https://github.com/pypa/flit'
 description='Simplified packaging of Python modules'

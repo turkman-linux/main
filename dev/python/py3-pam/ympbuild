@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-pam'
-release='1'
+release='2'
 version='2.0.2'
 url='https://github.com/FirefighterBlu3/python-pam'
 description='A Python interface to the PAM library'

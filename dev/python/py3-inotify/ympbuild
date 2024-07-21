@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-inotify'
-release='1'
+release='2'
 version='0.9.6'
 url='https://pypi.org/project/pyinotify'
 description='Linux filesystem events monitoring'

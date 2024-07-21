@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='py3-installer'
-release='1'
+release='2'
 version='0.7.0'
 url='https://github.com/pypa/installer/'
 description='Easily download, build, install, upgrade, and uninstall Python packages'
