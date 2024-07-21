@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-pyproject-hooks'
-release='1'
-version='1.0.0'
+release='2'
+version='1.1.0'
 url='https://github.com/pypa/pyproject-hooks'
 description='Python project hooks'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=('https://github.com/pypa/pyproject-hooks/archive/refs/tags/v1.0.0.tar.gz')
+source=("https://github.com/pypa/pyproject-hooks/archive/refs/tags/v$version.tar.gz")
 depends=(python)
 makedepends=(py3-build)
-md5sums=('03ea6db4dd6f0f06a5732e8d2f4fb39f')
+sha256sums=('1cbbabcd93ea1ac50cca7f23e5b640904684ae6c85003c6f7cf02b598c33f28f')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -20,7 +20,7 @@ cd pyproject-hooks-$version
 export PYTHONPATH=src/pyproject_hooks
 
 build () {
-    python -m build --wheel --no-isolation
+    python -m build --wheel
 }
 
 package () {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-psutil'
-release='1'
-version='5.9.5'
+release='2'
+version='6.0.0'
 url='https://github.com/giampaolo/psutil'
 description='Cross-platform lib for process and system monitoring in Python'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/giampaolo/psutil/archive/refs/tags/release-$version.tar.gz")
 depends=(python)
 makedepends=()
-md5sums=('caeaf46c55a66a1190ace77d462a68f6')
+sha256sums=('187588c10ff4804b91e0c947d6b1a4006dbb633261c0f869865de518603c5d5e')
 group=(dev.python)
 uses=()
 arch=('x86_64')
