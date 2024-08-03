@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 name='python'
-release='1'
-version='3.11'
+release='2'
+version='3.12'
 url='https://gitlab.com/turkman'
 description='Python meta package'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=('pydefault' 'python.sysconf')
-depends=('python3.11|python3.10')
+depends=('python3.12|python3.11|python3.10')
 makedepends=()
 md5sums=('SKIP' 'SKIP')
 uses=()
