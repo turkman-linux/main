@@ -1,7 +1,7 @@
 #!/bin/bash
 name=base-files
-release=2
-version=2
+release=3
+version=3
 url='https://gitlab.com/turkman/devel/sources/base-files'
 description='Base system files'
 email='parduscix@yandex.ru'
@@ -11,7 +11,7 @@ source=("https://gitlab.com/turkman/devel/sources/base-files/-/archive/$version/
         "base-files.sysconf"
         "logo.svg"
         "os-release")
-md5sums=('913b9fcbea19309e947336007c6e3a21'
+sha256sums=('6b83c2222c35307066605363b3670465c7bf013c19a29017566a4dd10edddb17'
          'SKIP'
          'SKIP'
          'SKIP')
