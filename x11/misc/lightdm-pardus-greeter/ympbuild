@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='lightdm-pardus-greeter'
-release='2'
-version='0.0.8'
+release='3'
+version='0.1.0'
 url='https://github.com/pardus/pardus-lightdm-greeter'
 description='Lightdm greeter for Pardus'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pardus/pardus-lightdm-greeter/archive/refs/tags/debian/$version.tar.gz")
 depends=(lightdm py3-pygobject py3-cairo)
 makedepends=()
-sha256sums=('f87f6fcdea323f0f0c3c3fea22240531553f1ef1bd0d2303f93d6e0fe4d25281')
+sha256sums=('987c6a52758e0f232065d1f5332a1f78f019c22b323e55534f128f28e7e714c1')
 group=(x11.misc)
 uses=()
 arch=('x86_64')
