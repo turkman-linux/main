@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='screen'
+release='1'
+version='4.9.1'
+url='https://ftp.gnu.org/gnu/screen/'
+description='Full-screen window manager that multiplexes a physical terminal'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/screen/screen-$version.tar.gz")
+depends=(ncurses pam libxcrypt)
+makedepends=()
+sha256sums=('26cef3e3c42571c0d484ad6faf110c5c15091fbf872b06fa7aa4766c7405ac69')
+group=(app.misc)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./autogen.sh
+    ./configure --prefix=/usr \
+       --libdir=/usr/lib64/ \
+       --enable-colors256 \
+       --enable-pam \
+       --enable-rxvt_osc \
+       --enable-telnet \
+       --with-sys-screenrc=/etc/screenrc
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install DESTDIR=$DESTDIR $jobs
+    install -Dm644 etc/etcscreenrc "${DESTDIR}"/etc/screenrc
+}
+
