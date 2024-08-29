@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='wmenu'
+release='1'
+version='0.1.9'
+url='https://codeberg.org/adnano/wmenu/'
+description='Dmenu clone for wayland'
+email='tolgaucar44@gmail.com'
+maintainer='librecat'
+license=('MIT')
+source=("https://codeberg.org/adnano/wmenu/archive/$version.tar.gz")
+depends=(cairo libxkbcommon wayland pango)
+makedepends=(scdoc)
+sha256sums=('1b457dfdbf8404748a036d8ee4fab1853d5dd28b132531321b7afc78e85bc1cd')
+group=(gui.apps)
+uses=()
+arch=('x86_64')
+
+cd $name
+
+setup () {
+    meson setup build --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
