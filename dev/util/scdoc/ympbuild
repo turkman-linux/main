@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='scdoc'
+release='1'
+version='1.11.3'
+url='https://git.sr.ht/~sircmpwn/scdoc/'
+description='Tool for generating roff manual pages'
+email='tolgaucar44@gmail.com'
+maintainer='librecat'
+license=('MIT')
+source=("https://git.sr.ht/~sircmpwn/$name/archive/$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('4c5c6136540384e5455b250f768e7ca11b03fdba1a8efc2341ee0f1111e57612')
+group=(gui.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build () {
+	make $jobs
+}
+
+package () {
+   make install $jobs
+}
+
