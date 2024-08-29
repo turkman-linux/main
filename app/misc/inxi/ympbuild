@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+name='inxi'
+release='1'
+version='3.3.35-1'
+url='https://smxi.org/docs/inxi.htm'
+descriptio='inxi'
+email='03teknoloji@gmail.com'
+maintainer='mobilturka'
+license=('GPLv3')
+source=("https://codeberg.org/smxi/inxi/archive/$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('08e43312bc60435d770607c3611f2fa35478ea0f48c60d5d5fd60ab2ee421f2e')
+group=()
+uses=()
+arch=('x86_64')
+
+
+package() {
+    cd "$name"
+
+    install -Dm 00755 $name "$DESTDIR/usr/bin/$name"
+    install -Dm 00644 $name.1 "$DESTDIR/usr/share/man/man1/$name.1"
+}
