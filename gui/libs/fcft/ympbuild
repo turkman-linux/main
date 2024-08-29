@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='fcft'
+release='1'
+version='3.1.8'
+url='https://codeberg.org/dnkl/$name'
+description='Simple library for font loading and glyph rasterization'
+email='tolgaucar44@gmail.com'
+maintainer='librecat'
+license=('MIT')
+source=("https://codeberg.org/dnkl/fcft/archive/$version.tar.gz")
+depends=(fontconfig freetype harfbuzz pixman)
+makedepends=()
+sha256sums=('f48c793f354b8be95477e475dde7c98ac9d2628c52ecb42029dc6d20b52d787c')
+group=(gui.libs)
+uses=()
+arch=('x86_64')
+
+cd $name
+
+setup(){
+	meson setup build \
+		-Dprefix=/usr \
+    		-Dgrapheme-shaping=enabled \
+		-Drun-shaping=disabled
+
+}
+
+build(){
+    ninja -C build
+}
+
+package(){
+    ninja -C build install
+}
+
