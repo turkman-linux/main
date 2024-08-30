@@ -1,0 +1,9 @@
++++ sex.c
+@@ -8,6 +8,7 @@
+  * Completely rewrote how word wrapping works and added -w flag.
+  */
+ 
++#include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <time.h>
