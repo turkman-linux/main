@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-scxml'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
 description='Static and runtime integration of SCXML models into Qt code'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtscxml-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(qt5-declarative)
-md5sums=('fbf72ea0d2c96fc8f4a953cb74caff17')
+sha256sums=('a1c77176eb1b27b9a4a4b9cc324493c55282f81880770e9f0411fa9ee5e705bd')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

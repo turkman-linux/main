@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-wayland'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/developers/'
 description='Provides APIs for Wayland'
 email='akarsu@protonmail.com'
@@ -12,7 +12,7 @@ source=("https://dev.alpinelinux.org/archive/qt/qtwayland-3a8613b91d2239aebc73b4
 depends=(qt5-declarative libXcomposite libxkbcommon qt5-quickcontrols2)
 makedepends=(vulkan-headers)
 #md5sums=('de32005eba5f53d3bd2886ee14a39809')
-md5sums=('942ab9bd3e52bf34c5eeee9c09a2a20a')
+sha256sums=('ad956b9723d504d5ea960a0826883e4a26c1d63ca906c3e2c35401e13e49b204')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

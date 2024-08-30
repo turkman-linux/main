@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-declarative'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/developers/'
 description='Qt5 - QtDeclarative component'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtdeclarative-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(python vulkan-headers)
-md5sums=('788bc607fd0ccbe2b56623c6b017019b')
+sha256sums=('25d9ae3e27efb814f3ca933b6f5acdc754fdefbc714a297040932f133ad1e652')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

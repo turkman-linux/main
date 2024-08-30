@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-multimedia'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
 description='Qt5 - Multimedia support'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtmultimedia-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base alsa-lib gst-plugins-base)
 makedepends=(qt5-declarative)
-md5sums=('fe334df0b5769dbe241f8eaac48a1e9b')
+sha256sums=('c5ec6b6eb99444c79b24d32cd0eab813810ab20c9b09bc9c98df7ca3fe09c7a4')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

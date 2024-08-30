@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-svg'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
 description='Classes for displaying the contents of SVG files'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtsvg-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=()
-md5sums=('d77aa82f139312fd0071d8b77be62be2')
+sha256sums=('a99e87dbebd2621ea62fb4f8448b978a660d781fd91bb8f02fc636073035f145')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
