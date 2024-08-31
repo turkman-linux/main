@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ca-certificates'
-release='1'
-version='20230106'
+release='2'
+version='20240705'
 url='https://salsa.debian.org/debian/ca-certificates'
 description='Common CA certificates'
 email='aliriza.keskin@pardus.org.tr'
@@ -11,7 +11,7 @@ source=("https://gitlab.alpinelinux.org/alpine/ca-certificates/-/archive/$versio
         "ca-certificates.sysconf")
 depends=()
 makedepends=()
-md5sums=('c5e091fdedb5eb24babfe6e2e0bb5142'
+sha256sums=('125ad77f66dbac3dfedefa2368a907f90b449baf5c826396714a4055c582bce6'
          'SKIP')
 group=(app.misc)
 uses=()
