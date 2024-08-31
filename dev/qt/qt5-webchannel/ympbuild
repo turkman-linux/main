@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-webchannel'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
 description='Library for seamless integration of C++ +and QML applications with HTML/JavaScript clients.'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwebchannel-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base qt5-declarative)
 makedepends=()
-md5sums=('f9d7d2f9268f90a1f625eb1c500de4a0')
+sha256sums=('e33416aab97486b73de99e325a30f5e5bcce25f0cb7dfc472ed0ea25aa25d949')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-sensors'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
 description='The Qt Sensors API provides access to sensor hardware via QML and C++'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtsensors-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(qt5-declarative)
-md5sums=('1ebad4c4cffe5c661625e6cd9fc118da')
+sha256sums=('2a60d62997d7cb88be5145e61e460aeebc18983628e5a9217eec3720ef309a1d')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

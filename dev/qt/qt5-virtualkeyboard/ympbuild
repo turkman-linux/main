@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-virtualkeyboard'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
 description='Virtual keyboard framework'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtvirtualkeyboard-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-svg qt5-declarative)
 makedepends=()
-md5sums=('5a38e7c6825d71e91cf9980780de8110')
+sha256sums=('55caf54fd49ce63dc20e8900ade9bf890d95292404f28eb1e746b21d97cfb6db')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

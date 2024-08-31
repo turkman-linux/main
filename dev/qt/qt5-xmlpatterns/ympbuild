@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt5-xmlpatterns'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
 description='Virtual keyboard framework'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtxmlpatterns-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base)
 makedepends=(qt5-declarative)
-md5sums=('1a15066f195183f9aeaa8568135edcb9')
+sha256sums=('c73bec56c5c4fe706496ae8f29bdda7bcb59f9faa2fa11feb700d5e2f38caaba')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

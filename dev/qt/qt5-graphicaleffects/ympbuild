@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='qt5-graphicaleffects'
-release='1'
-version='5.15.10'
+release='2'
+version='5.15.14'
 url='https://www.qt.io/'
-description='Graphical effects for use with Qt Quick 2'
+descriptin='Graphical effects for use with Qt Quick 2'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtgraphicaleffects-everywhere-opensource-src-${version}.tar.xz")
 depends=(qt5-base qt5-declarative)
 makedepends=()
-md5sums=('4419cc31af8b693dea99387a2ea826a5')
+sha256sums=('1f0b5cc6c2942524f65a7a98e55e03e30944194bc1d9d7b73ec1ac44634ffc85')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
