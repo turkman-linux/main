@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name=sex
+version=1.0
+release=1
+url='http://spatula.net/software/sex'
+description='Spout silly, random porn-like text'
+email='leah@vuxu.org'
+maintainer='Leah Neukirchen'
+source=("http://spatula.net/software/sex//${name}-${version}.tar.gz"
+	"fix.patch"
+)
+arch=(x86_64 aarch64)
+sha256sums=('0f21831cd583ed917c2fc5f17bbe4e42f1d700417260b2e5924bf86b7f06eea8'
+    'SKIP'
+)
+license=('Public Domain')
+
+cd $name-$version
+
+prepare(){
+    patch -Np0 -i ../fix.patch
+}
+
+build(){
+    cc -o sex sex.c
+}
+package(){
+   cp sex /usr/bin/
+}
