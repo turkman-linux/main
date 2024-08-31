@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='linux'
-release='5'
-version='6.10.5'
+release='6'
+version='6.10.7'
 url='https://cdn.kernel.org/pub/linux/kernel/'
 description='Linux kernel'
 email='aliriza.keskin@pardus.org.tr'
