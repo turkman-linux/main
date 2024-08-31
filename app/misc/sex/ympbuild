@@ -13,6 +13,7 @@ arch=(x86_64 aarch64)
 sha256sums=('0f21831cd583ed917c2fc5f17bbe4e42f1d700417260b2e5924bf86b7f06eea8'
     'SKIP'
 )
+group=(app.misc)
 license=('Public Domain')
 
 cd $name-$version
@@ -25,5 +26,6 @@ build(){
     cc -o sex sex.c
 }
 package(){
-   cp sex /usr/bin/
+    mkdir -p $DESTDIR/usr/bin/
+    install sex $DESTDIR/usr/bin/
 }
