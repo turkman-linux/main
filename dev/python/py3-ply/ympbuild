@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+name='py3-ply'
+release='1'
+version='3.11'
+url='https://www.dabeaz.com/ply/'
+description='Python-ply package'
+email='03teknoloji@gmail.com'
+maintainer='mobilturka'
+license=('GPLv3')
+source=("https://pypi.io/packages/source/p/ply/ply-$version.tar.gz")
+depends=(python)
+makedepends=(py3-wheel py3-setuptools)
+sha256sums=('00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "ply-$version"
+
+build(){
+    python3 setup.py build
+}
+
+package(){
+    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+}
