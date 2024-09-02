@@ -8,10 +8,12 @@ email=' aliriza.keskin@pardus.org.tr'
 maintainer=' aliriza'
 license=('MIT')
 source=("https://musl.libc.org/releases/musl-$version.tar.gz"
-        'ldconfig')
+        'ldconfig'
+        'bits_types.h')
 depends=( )
 makedepends=( )
 md5sums=('a507ae4f7f20bcfe566d8eb65c1af73e'
+         'SKIP'
          'SKIP')
 arch=('x86_64')
 group=(dev.libs)
@@ -58,5 +60,6 @@ package(){
     echo '#define __END_DECLS }'
     echo '#endif'
     } > "$DESTDIR"/usr/include/musl/sys/cdefs.h
+    install ../bits_types.h "$DESTDIR"/usr/include/musl/bits/types.h
 }
 
