@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='grub'
-release='2'
+release='3'
 version='2.12'
 url='https://ftp.gnu.org/gnu/grub'
 description='GNU GRand Unified Bootloader'
@@ -8,7 +8,7 @@ email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz")
-depends=()
+depends=(lvm2)
 makedepends=()
 md5sums=('60c564b1bdc39d8e43b3aab4bc0fb140')
 group=(sys.boot)
