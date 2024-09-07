@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='ristretto'
+release='1'
+version='0.13.2'
+url='https://docs.xfce.org/apps/ristretto/start'
+description='A fast and lightweight picture viewer for Xfce'
+email='03teknoloji@gmail.com'
+maintainer='mobilturka'
+license=('GPLv3')
+source=("https://archive.xfce.org/src/apps/$name/0.13/$name-$version.tar.bz2")
+depends=(libxfce4ui xfconf tumbler libexif file)
+makedepends=()
+sha256sums=('779f5ede3016019eec01d64a025583078d3936e35d4288ec2e8433494d757dd9')
+group=(xfce.extra)
+uses=()
+arch=('x86_64')
+
+build() {
+  cd $name-$version
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-debug
+  make
+}
+
+package() {
+  cd $name-$version
+  make DESTDIR="$DESTDIR" install
+}
+
