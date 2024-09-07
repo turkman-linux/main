@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='networkmanager'
-release='3'
-version='1.44.2'
+release='4'
+version='1.48.10'
 url='https://gitlab.freedesktop.org/NetworkManager/NetworkManager'
 description='network management daemon'
 email='aliriza.keskin@pardus.org.tr'
@@ -14,7 +14,7 @@ source=("https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/
         "networkmanager.initd")
 depends=(libndp nss newt)
 makedepends=(libxslt gobject-introspection)
-md5sums=('52d96b8a01913fed16a30173da07bd82'
+sha256sums=('53f3b8e3af81a244591327e2fb30e9018d3e7f90ad2c5879add475eefd786edf'
          'SKIP'
          'SKIP'
          'SKIP'

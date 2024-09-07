@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libhandy'
-release='1'
-version='1.8.2'
+release='2'
+version='1.8.3'
 url='https://gitlab.gnome.org/GNOME/libhandy'
 description='Building blocks for modern adaptive GNOME apps'
 email='me@osmancoskun.com'
@@ -10,7 +10,7 @@ license=('LGPLv2.1')
 source=("https://gitlab.gnome.org/GNOME/libhandy/-/archive/$version/libhandy-$version.tar.gz")
 depends=(gtk3)
 makedepends=()
-md5sums=('7822d4c12dba6634624a803274089de3')
+sha256sums=('7e7670f5d0a6d0adc24b888da44dab938a6f52472b8944d6dd4e31b6d3569a5f')
 group=(gui.libs)
 uses=()
 arch=('x86_64')
