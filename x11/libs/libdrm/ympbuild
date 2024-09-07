@@ -17,6 +17,8 @@ arch=('x86_64')
 
 cd $name-$version
 
+export LANG=en_US.UTF-8
+
 setup(){
     meson setup build --prefix=/usr \
         -D default_library=both \

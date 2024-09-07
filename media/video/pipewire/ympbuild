@@ -18,6 +18,7 @@ sha256sums=('f2645dda4294a46b58727bf81352f13180be232e74ff7fccbc44f30d31fa4766'
 group=(media.video)
 uses=(alsa gstreamer bluetooth jack)
 uses_extra=(v4l2)
+bluetooth_depends=(bluez)
 arch=('x86_64')
 
 cd $name-$version
