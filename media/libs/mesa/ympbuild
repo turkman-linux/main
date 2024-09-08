@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mesa'
 release='6'
-version='24.2.1'
+version='24.1.3'
 url='https://gitlab.freedesktop.org/mesa/mesa'
 description='An open-source implementation of the OpenGL specification'
 email='aliriza.keskin@pardus.org.tr'
@@ -9,8 +9,8 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-$version/mesa-mesa-$version.tar.gz")
 depends=(libva libvdpau libdrm llvm glslang elfutils libclc py3-mako libglvnd eudev)
-makedepends=(git directx-headers)
-sha256sums=('b6baa3c1ada135a2560df3080ffee81da78adc65efd16d366957278bc4ff7728')
+makedepends=(git directx-headers py3-ply)
+sha256sums=('cba3b60092f4b54b2a8bfaf0ca8963101b8aae953c8b0fb1737ef32cd62afd94')
 group=(media.libs)
 uses=(wayland x11)
 wayland_depends=(wayland wayland-protocols)
@@ -27,27 +27,27 @@ setup(){
         -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
         -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
-        -D dri3=enabled \
+        -D platforms=x11,wayland \
+        -D llvm=enabled \
+        -D shared-llvm=enabled \
+        -D shared-glapi=enabled \
+        -D gbm=enabled \
+        -D glx=dri \
+        -D opengl=true \
+        -D osmesa=true \
+        -D gles1=enabled \
+        -D gles2=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
         -D gallium-nine=true \
-        -D gallium-opencl=icd \
+        -D gallium-rusticl=false \
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gallium-xa=enabled \
-        -D gbm=enabled \
-        -D gles1=disabled \
-        -D gles2=enabled \
-        -D glvnd=true \
-        -D glx=dri \
-        -D llvm=enabled \
-        -D osmesa=true \
-        -D shared-glapi=enabled \
-        -D microsoft-clc=disabled \
-        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
-        -D valgrind=disabled \
+        -D rust_std=2021 \
+        -D video-codecs=all \
         -D lmsensors=disabled \
-        -Dzstd=false
+        -D zstd=false
 
 }
 
