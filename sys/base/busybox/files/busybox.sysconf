@@ -5,3 +5,10 @@ if /bin/busybox [ ! -f /var/lib/ymp/sysconf/busybox/postinstall.done ] ; then
     /bin/busybox chmod u+s /bin/su
     /bin/busybox date > /var/lib/ymp/sysconf/busybox/postinstall.done
 fi
+for cmd in $(/bin/busybox --list) ; do
+    if [ -e /usr/bin/$cmd ] || [ -e /usr/sbin/$cmd ] ; then
+        /bin/busybox rm -f /bin/$cmd
+    elif ! [ -e /bin/$cmd ] && ! [ -e /sbin/$cmd ]; then
+        /bin/busybox ln -s busybox /bin/$cmd
+    fi
+done
