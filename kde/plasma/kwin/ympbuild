@@ -9,7 +9,8 @@ maintainer='brkt8khn'
 license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kwin-${version}.tar.xz")
 depends=(kscreenlocker xcb-util-cursor kcmutils breeze libqaccessibilityclient pipewire lcms2 libxcvt qt6-tools  qt6-5compat
-         qt6-base qt6-declarative qt6-multimedia qt6-sensors qt6-wayland xorg-xwayland libinput libdisplay-info kglobalacceld)
+         qt6-base qt6-declarative qt6-multimedia qt6-sensors qt6-wayland xorg-xwayland libinput libdisplay-info kglobalacceld
+         kwayland)
 makedepends=(extra-cmake-modules kdoctools krunner libdisplay-info wayland-protocols plasma-wayland-protocols)
 sha256sums=('b1947c2b44de6190908462c81e8ac89ff9c7326a87641feb65e6ccd85262a4db')
 group=(kde.plasma)
