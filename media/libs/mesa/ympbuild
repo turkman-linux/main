@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mesa'
-release='6'
-version='24.1.3'
+release='7'
+version='24.2.3'
 url='https://gitlab.freedesktop.org/mesa/mesa'
 description='An open-source implementation of the OpenGL specification'
 email='aliriza.keskin@pardus.org.tr'
@@ -22,7 +22,7 @@ cd $name-$name-$version
 setup(){
     meson setup build --prefix=/usr \
         -D b_ndebug=true \
-        -D b_lto=true \
+        -D b_lto=false \
         -D platforms=$(use_opt x11 x11 ""),$(use_opt wayland wayland "") \
         -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
         -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio \
