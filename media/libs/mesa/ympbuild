@@ -24,7 +24,7 @@ setup(){
         -D b_ndebug=true \
         -D b_lto=false \
         -D platforms=$(use_opt x11 x11 ""),$(use_opt wayland wayland "") \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,llvmpipe,softpipe,swrast,i915,iris,crocus,zink,d3d12 \
         -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D platforms=x11,wayland \
