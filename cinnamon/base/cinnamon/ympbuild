@@ -38,4 +38,3 @@ package(){
     # remove broken symlink
     rm -f $DESTDIR/etc/xdg/menus/cinnamon-applications-merged
 }
-
