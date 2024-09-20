@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='cinnamon-translations'
-release='3'
-version='6.2.0'
+release='4'
+version='6.2.2'
 url='https://github.com/linuxmint/cinnamon-translations'
 description='Translations for Cinnamon and Nemo'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://github.com/linuxmint/cinnamon-translations/archive/refs/tags/${version}.tar.gz")
 depends=()
 makedepends=()
-sha256sums=('86d23a840c8f0e86ac3581079046c4f7c90bab4dd8a0c9fb4058c164f0666401')
+sha256sums=('ef0e621492e32155a2e5ac47083c6167280f0b285bc0e4da3259a6d5c5cc366b')
 group=(cinnamon.extra)
 uses=()
 arch=('x86_64')
