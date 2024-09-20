@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='cinnamon'
-release='4'
-version='6.2.7'
+release='5'
+version='6.2.9'
 url='https://github.com/linuxmint/cinnamon'
 description='Linux desktop which provides advanced innovative features and a traditional user experience'
 email='brkt8khn@gmail.com'
@@ -15,7 +15,7 @@ depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
 		    timezonemap xapp xdg-desktop-portal-xapp caribou
 )
 makedepends=(meson gobject-introspection intltool)
-sha256sums=('e61f98368f570c59459e3902778f599a83af54c709e22a623d5268e8298e97a1')
+sha256sums=('a0b15b98a899532d531689ea11ff6805a87fcf5994e238322b6c916bf8c29919')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')
