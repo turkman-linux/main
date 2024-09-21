@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='alsa-lib'
-release='2'
-version='1.2.10'
+release='3'
+version='1.2.12'
 url='https://www.alsa-project.org/'
 description='alsa-lib Advanced Linux Sound Architecture Library '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/alsa-project/alsa-lib/archive/refs/tags/v$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('31265da09c10af01f613e9801a7c9a78')
+sha256sums=('f067dbba9376e5bbbb417b77751d2a9f2f277c54fb3a2b5c023cc2c7dfb4e3c1')
 group=(media.libs)
 uses=()
 arch=('x86_64')

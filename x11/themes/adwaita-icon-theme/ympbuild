@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='adwaita-icon-theme'
-release='3'
-version='46.2'
+release='4'
+version='47.0'
 url='https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
 description='GNOME standard icons'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/archive/$version/adwaita-icon-theme-$version.tar.gz")
 depends=(hicolor-icon-theme librsvg)
 makedepends=(meson)
-sha256sums=('02960619d98a4420395aa1a18cfefb012748282ccac6fbaa9ccd52b1492e7d16')
+sha256sums=('e0845b6a398b67e048a3b1a2700b4da16f90b95c19d0ea1ff0ba65d78609dd2f')
 group=(x11.themes)
 uses=()
 arch=('x86_64')
