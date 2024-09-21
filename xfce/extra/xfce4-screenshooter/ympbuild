@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='xfce4-screenshooter'
+release='1'
+version='1.11.1'
+url='https://docs.xfce.org/apps/xfce4-screenshooter/start'
+description='An application to take screenshots for Xfce'
+email='03teknoloji@gmail.com'
+maintainer='mobilturka'
+license=('GPLv2')
+source=("https://archive.xfce.org/src/apps/$name/${version%.*}/$name-$version.tar.bz2")
+depends=(xfce4-panel zenity hicolor-icon-theme)
+makedepends=()
+sha256sums=('d94c4a37ac9b26f6d73214bdc254624a4ede4e111bee8d34e689f8f04c37d34d')
+group=(xfce.extra)
+uses=()
+arch=('x86_64')
+
+prepare() {
+  cd $name-$version
+}
+
+build() {
+  cd $name-$version
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-debug
+  make
+}
+
+package() {
+  cd $name-$version
+  make DESTDIR="$DESTDIR" install
+}
+
