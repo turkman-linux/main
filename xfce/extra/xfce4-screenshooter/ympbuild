@@ -15,24 +15,20 @@ group=(xfce.extra)
 uses=()
 arch=('x86_64')
 
-prepare() {
-  cd $name-$version
+cd $name-$version
+
+setup() {
+    ./configure \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var
 }
 
-build() {
-  cd $name-$version
-
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-debug
-  make
+build(){
+    make
 }
 
 package() {
-  cd $name-$version
-  make DESTDIR="$DESTDIR" install
+    make DESTDIR="$DESTDIR" install
 }
 

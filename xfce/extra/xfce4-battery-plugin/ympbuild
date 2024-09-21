@@ -22,11 +22,9 @@ cd $name-$version
 
 setup() {
      ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-debug
-  make
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var
 }
 
 build(){
