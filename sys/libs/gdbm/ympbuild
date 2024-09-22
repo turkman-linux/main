@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gdbm'
-release='1'
-version='1.23'
+release='2'
+version='1.24'
 url='https://www.gnu.org.ua/software/gdbm/download.html'
 description=' Standard GNU database libraries'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/gdbm/gdbm-${version}.tar.gz")
 depends=( )
 makedepends=( )
-md5sums=('8551961e36bf8c70b7500d255d3658ec')
+sha256sums=('695e9827fdf763513f133910bc7e6cfdb9187943a4fec943e57449723d2b8dbf')
 uses=()
 group=(sys.libs)
 arch=('x86_64')
