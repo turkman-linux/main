@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kapidox'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Frameworks API Documentation Tools'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kapidox-${version}.tar.xz")
 depends=(py3-jinja py3-yaml)
 makedepends=(py3-build py3-installer py3-wheel py3-setuptools qt6-base)
-sha256sums=('e4cd452fe796b29536c30b5256e0f8ea82dcadefdcb29ce282f2c1eaea3764bb')
+sha256sums=('f2542f22211474987998901cb48ad2202ee5156cf399805884e1449d9860a3a1')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

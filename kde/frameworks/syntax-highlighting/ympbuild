@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='syntax-highlighting'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Syntax highlighting engine for structured text and code'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/syntax-highlighting-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(extra-cmake-modules qt6-declarative qt6-tools doxygen)
-sha256sums=('2ef9e6b8aeb8543e64f4a3628afa331c0656fe6c485f3574c407651d7c12a653')
+sha256sums=('3e1883dd51a3267e56cd3ace38620094a15ae6dbaecdd18d33b7d4fa2f18c378')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

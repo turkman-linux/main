@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ksvg'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Components for handling SVGs'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/ksvg-${version}.tar.xz")
 depends=(kconfig kcoreaddons kguiaddons qt6-base qt6-svg)
 makedepends=(extra-cmake-modules kirigami qt6-declarative qt6-tools)
-sha256sums=('d056cb96b06c1f1a8a8f39c134858cf1437c546b9d79a9eb1a92f8933d1e3579')
+sha256sums=('ae2024bd4d7e6950c92b5924deced5d55b6101749d635799b24fedac60cb26cd')
 group=(kde.framework)
 uses=()
 arch=('x86_64')

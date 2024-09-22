@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kirigami'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='A QtQuick based components set'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kirigami-${version}.tar.xz")
 depends=(qt6-base qt6-svg qt6-declarative)
 makedepends=(extra-cmake-modules qt6-tools doxygen qt6-shadertools)
-sha256sums=('ed0f56c89249fb92a9af99a94fd13542abbae4a8f1613aaaa2bfab87914b601a')
+sha256sums=('43a73b161e1c85da3eadc63e7cc6c1b3c686aa56951b0d0e2df4a2cc1334759c')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

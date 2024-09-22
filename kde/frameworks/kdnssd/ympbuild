@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kdnssd'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Abstraction to system DNSSD features'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kdnssd-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(extra-cmake-modules doxygen qt6-tools)
-sha256sums=('0694964ba4adb7e20bd0d1007694440a298b433f6da8647a24bc151dc348b679')
+sha256sums=('37fd254c39b66fca1b52f898c045f322a0ea3177c927941979ccb7b9b98ebffd')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

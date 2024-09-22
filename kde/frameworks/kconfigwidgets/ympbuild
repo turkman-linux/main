@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kconfigwidgets'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Widgets for KConfig'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kconfigwidgets-${version}.tar.xz")
 depends=(qt6-base kcodecs kconfig ki18n kwidgetsaddons kcoreaddons kguiaddons kcolorscheme)
 makedepends=(extra-cmake-modules doxygen qt6-tools)
-sha256sums=('511bed0d95de186b3cf62c7192bbb6020450d4861f05c1a545356144f17de532')
+sha256sums=('a4804683fc0477fb505c410444164bf2803ffc216d221609a0be5842803e5612')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

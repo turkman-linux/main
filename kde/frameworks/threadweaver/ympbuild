@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='threadweaver'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='High-level multithreading framework'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/threadweaver-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('ba9daec6e0697fdc2accf74a46a6d59403e5e340d280bce916fd6356a668ddb3')
+sha256sums=('ae70d0936c438ebf4a3f7b2a708efb9cd30b5a4147d9b70ae5d4437dbb20bde8')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

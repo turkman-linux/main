@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kded'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Extensible deamon for providing system level services'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kded-${version}.tar.xz")
 depends=(kconfig kservice kcrash kcoreaddons kdbusaddons qt6-base)
 makedepends=(extra-cmake-modules)
-sha256sums=('c6243233f2827b27b1a42987a7a3058f13853f7d0e2bf289c055f245d0c5c625')
+sha256sums=('292ca941acc69c443f47895ea784493b08fd573afe0f4e99f5f42b8a029954b0')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

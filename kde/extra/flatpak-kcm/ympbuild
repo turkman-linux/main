@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='flatpak-kcm'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='Flatpak Permissions Management KCM'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/plasma/${version}/flatpak-kcm-${version}.tar.xz")
 depends=(flatpak)
 makedepends=(extra-cmake-modules)
-sha256sums=('deee5c35cc531c092e4898e6bc95089c33b3279cf598f93446363c6d80fb7121')
+sha256sums=('508f7d98bd14124214746f244804feddcd24588cb0eb7c5803907b22513d290a')
 group=(kde.extra)
 uses=()
 arch=('x86_64')

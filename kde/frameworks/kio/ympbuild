@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kio'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Resource and network access abstraction'
 email='brkt8khn@gmail.com'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/frameworks/${version%.*}/kio-${version}
 depends=(karchive kbookmarks kcompletion kconfig kconfigwidgets kcoreaddons kcrash kauth
 	kdbusaddons ki18n kiconthemes kitemviews kjobwidgets kservice kwidgetsaddons kwindowsystem solid qt6-base qt6-5compat)
 makedepends=(doxygen extra-cmake-modules libxml2 libxslt qt6-tools)
-sha256sums=('4951adf043299e463803cc63ed33d5261b81bff969eb189dc13350f495cb4b42')
+sha256sums=('9c8bf83534577a322d4633d241d9770bc8ba8a45624e2f041e1b8dbdbc198a13')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

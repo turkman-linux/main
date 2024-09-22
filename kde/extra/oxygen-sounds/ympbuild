@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='oxygen-sounds'
-release='1'
-version='5.27.9'
+release='2'
+version='5.27.11'
 url='https://kde.org/plasma-desktop'
 description='The Oxygen Sound Theme'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/oxygen-sounds-${version}.tar.xz")
 depends=()
 makedepends=(extra-cmake-modules)
-md5sums=('f6c770e3433516628c2f805ae5d32bbd')
+sha256sums=('6fa249c55a51941e023b982e20279e594279e216c53e065a928de6b4089df1de')
 group=(kde.extra)
 uses=()
 arch=('x86_64')

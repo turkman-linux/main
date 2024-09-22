@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qqc2-desktop-style'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='A style for Qt Quick Controls 2 to make it follow your desktop theme'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/qqc2-desktop-style-${version}.tar.xz")
 depends=(kcolorscheme kconfig kirigami kiconthemes qt6-base qt6-declarative sonnet)
 makedepends=(extra-cmake-modules qt6-tools)
-sha256sums=('848305ff8880fdbad19bf57ed9f128e59cd71ecb8a36fbf920a55b60f68a2c93')
+sha256sums=('888638775a4c8bb7f80e10e878fd923880c75f2aa6e3878d52c12a77f3da9321')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-desktop'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://de.org/plasma-desktop'
 description='KDE Plasma Desktop'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-desktop-$version.tar.xz")
 depends=(accountsservice plasma-workspace setxkbmap libksysguard)
 makedepends=(xf86-input-evdev xf86-input-libinput xorg-server)
-sha256sums=('924ce04db2c88cf7ae1a23f19b38eb452977087b6e937ed0568ce5397bcc927d')
+sha256sums=('d9e236c9a9a332d8b7b4edde44c65d0b0ec38ea75adc5bbfa21a6c4c7f4261c2')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

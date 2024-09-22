@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kcalc'
-release='2'
-version='24.02.2'
+release='3'
+version='24.08.1'
 url='https://kde.org/applications/utilities/org.kde.kcalc'
 description='Scientific Calculator'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL' 'FDL')
 source=(https://download.kde.org/stable/release-service/${version}/src/${name}-${version}.tar.xz)
 depends=(mpfr kxmlgui knotifications)
 makedepends=(extra-cmake-modules kdoctools)
-sha256sums=("9cc2d27635f858afb7bf30f9e7e9bef2c04dea653ee33baa43165da3e5797b9d")
+sha256sums=("86ebb9b36b5f4d620904884206985cecc0ffd253666f27313ec7bae99b10a96e")
 group=(kde.apps)
 uses=()
 arch=('x86_64')

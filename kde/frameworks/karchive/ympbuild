@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='karchive'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Qt addon providing access to numerous types of archives'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/karchive-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(extra-cmake-modules doxygen qt6-tools)
-sha256sums=('75a591d9648026eb86826974e6f3882e7f620592ecef8fabeb19206e63b04e50')
+sha256sums=('e5530253c70de024926e1985154f9115f02af50c7d998a874a3175b404444e79')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

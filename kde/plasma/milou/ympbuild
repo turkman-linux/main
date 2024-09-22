@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='milou'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='A dedicated search application built on top of Baloo'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/milou-${version}.tar.xz")
 depends=(kirigami krunner ksvg libplasma qt6-base qt6-declarative)
 makedepends=(extra-cmake-modules kdoctools)
-sha256sums=('c8ea924f7c3915e1deaa5220ba007238526b3df9029b3ac98eca158e5552b34a')
+sha256sums=('405148a12ee7fec89388f99bc5485507548c8512de22ba03025154442735390a')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

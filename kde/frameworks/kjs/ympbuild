@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kjs'
-release='2'
-version='5.114.0'
+release='3'
+version='5.116.0'
 url='https://community.kde.org/Frameworks'
 description='Support for JS scripting in applications'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/portingAids/kjs-${version}.tar.xz")
 depends=(qt5-base pcre)
 makedepends=(extra-cmake-modules kdoctools)
-md5sums=('54c55b4ed266abaefef6094607f97e06')
+sha256sums=('9fb4f33e31d5b31eb6449311c1c61acaa968d42419252c0ab9dccb1f5fd9e1b7')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

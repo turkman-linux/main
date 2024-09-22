@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kfind'
-release='2'
-version='24.02.2'
+release='3'
+version='24.08.1'
 url='https://www.kde.org/applications/utilities/kfind'
 description='Find Files/Folders'
 email='brkt8khn@gmailmail.com'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/release-service/${version}/src/kfind-${
 depends=(karchive kcompletion kconfig kconfigwidgets kcoreaddons kfilemetadata ki18n kio kwidgetsaddons
          kxmlgui qt6-5compat qt6-base)
 makedepends=(extra-cmake-modules kdoctools)
-sha256sums=('ae0f1fb029c4b4b85122ccd71f4c1d186929ef19057ddaf3b72ca1b3252c98ad')
+sha256sums=('e877fac508bec688e1792330c6f656ffffbcbd59fe161a174b0bd2d501d803bb')
 group=(kde.apps)
 uses=()
 arch=('x86_64')
