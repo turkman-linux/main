@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+name='pulseaudio-qt'
+release='1'
+version='1.6.0'
+url='https://community.kde.org/Frameworks'
+description='A barcode API to produce QRCode barcodes and DataMatrix barcodes'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://download.kde.org/stable/$name/$name-${version}.tar.xz")
+depends=(qt6-base libpulse)
+makedepends=(extra-cmake-modules qt6-tools)
+sha256sums=('1becbadacb36a9d6a431a0c93cdb428f8f67f37cf2d23768675983318c0ade84')
+group=(media.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+	cmake -B build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF \
+		-DQT_MAJOR_VERSION=6
+}
+
+build () {
+    cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
+

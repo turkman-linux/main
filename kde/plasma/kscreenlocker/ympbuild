@@ -16,7 +16,7 @@ depends=(kconfig kcoreaddons kcrash kdeclarative kglobalaccel ki18n kidletime ki
          xcb-util-keysyms)
 makedepends=(extra-cmake-modules kdoctools kcmutils)
 sha256sums=('a0ea8354122a28e0acc6ec604a7658fee5b00f125cc09ea758c9b91bf3c7f0fc' 'SKIP' 'SKIP' 'SKIP')
-group=(kde.extra)
+group=(kde.plasma)
 uses=()
 arch=('x86_64')
 

@@ -22,7 +22,7 @@ cd $name-$version
 setup () {
     cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib 
+		-DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build () {

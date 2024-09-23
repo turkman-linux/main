@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-wayland-protocols'
-release='2'
-version='1.12.0'
+release='3'
+version='1.14.0'
 url='https://www.kde.org/plasma-desktop/'
 description='Plasma Specific Protocols for Wayland'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-${version}.tar.xz")
 depends=()
 makedepends=(qt6-base extra-cmake-modules)
-sha256sums=('1483bfd279cb913c83579b5d71c58f9958764f9ba4303b3647e1007cb70d4f9e')
+sha256sums=('1a4385ecfc79f7589f07381cab11c3ff51f6e2fa4b73b78600d6ad096394bf81')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
