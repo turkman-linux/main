@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='orc'
-release='1'
-version='0.4.33'
+release='2'
+version='0.4.40'
 url='https://gitlab.freedesktop.org/gstreamer/'
 description='Optimized Inner Loop Runtime Compiler'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/gstreamer/orc/-/archive/$version/orc-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('7a32427a0831baad989ca13f6ee2397e')
+sha256sums=('272aea9badb58d9b01a5d882405e0832a884a1e9bc7f51fad1e77bd7d5205cce')
 group=(media.video)
 uses=()
 arch=('x86_64')
