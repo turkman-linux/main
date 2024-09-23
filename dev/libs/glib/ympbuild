@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 name='glib'
-release='3'
-version='2.78.0'
+release='4'
+version='2.82.1'
+_version='2.82'
 url='https://download.gnome.org/sources/glib/'
 description='Low-level core library that forms the basis for projects such as GTK+ and GNOME.'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://download.gnome.org/sources/glib/2.78/glib-${version}.tar.xz"
+source=("https://download.gnome.org/sources/glib/${_version}/glib-${version}.tar.xz"
         "glib.sysconf")
 depends=(libffi util-linux libpcre2 zlib)
 makedepends=( )
-md5sums=('fbddfac52807161670a11023965f1176'
+sha256sums=('478634440bf52ee4ec4428d558787398c0be6b043c521beb308334b3db4489a6'
          'SKIP')
 uses=()
 arch=('x86_64')
