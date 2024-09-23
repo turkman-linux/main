@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kitemmodels'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Models for Qt Model/View system'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kitemmodels-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(doxygen extra-cmake-modules qt6-tools qt6-declarative)
-sha256sums=('89b879981722821a911bba1765128820217944fa78e5452369158ed97a835b3a')
+sha256sums=('36ec04b3fd25249a1ce9cfd08824f2c2e40ef4d54224e118e06fa21c5f9a4f76')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

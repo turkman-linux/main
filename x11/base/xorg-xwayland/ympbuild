@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xorg-xwayland'
-release='2'
-version='24.1.0'
+release='3'
+version='24.1.2'
 url='https://xorg.freedesktop.org/archive/individual/xserver/'
 description='Standalone X server running under Wayland'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$version.tar.xz")
 depends=(wayland libdrm libepoxy libglvnd libXau libxcvt mesa nettle pixman libxkbfile libXfont2 libfontenc)
 makedepends=()
-sha256sums=('bef21c4f18807a4ed571c4e2df60ab63b5466bbd502ecceb2485b892ab76dcc2')
+sha256sums=('141eb76e7e422a3661c08782c70be40931084755042c04506e0d97dd463ef7d2')
 group=(x11.base)
 uses=()
 arch=('x86_64')

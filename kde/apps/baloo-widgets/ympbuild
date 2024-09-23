@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='baloo-widgets'
-release='2'
-version='24.02.2'
+release='3'
+version='24.08.1'
 url='https://www.kde.org/'
 description='Widgets for Baloo'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/release-service/${version}/src/baloo-widgets-${version}.tar.xz")
 depends=(baloo kio)
 makedepends=(extra-cmake-modules kdoctools)
-sha256sums=('276b557c363da367d1c6950eb0e1ab2cae389aab7b53daf6a9e2431f87deea15')
+sha256sums=('979fe83b62a7f47b67377e5288b51d803c0622956f505bed2dbb0919ac4a7965')
 group=(kde.apps)
 uses=()
 arch=('x86_64')

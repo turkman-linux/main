@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kglobalacceld'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='Daemon providing Global Keyboard Shortcut (Accelerator) functionality'
 email='brkt8khn@gmail.com'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/plasma/${version}/kglobalacceld-${versi
 depends=(kconfig kcoreaddons kcrash kdbusaddons kglobalaccel kio kjobwidgets kservice kwindowsystem libX11
          libxcb qt6-base xcb-util-keysyms)
 makedepends=(extra-cmake-modules)
-sha256sums=('aa7eb34f3dfafdc2f475bb20ed6a8563a2e9fbfb06470890e127dc9054f945aa')
+sha256sums=('dc0e0a977e0bae17788e7030bec38d655aef60cce01b740e48f5579a4731d3aa')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

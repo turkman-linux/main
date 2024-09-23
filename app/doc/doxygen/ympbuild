@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='doxygen'
-release='2'
-version='1.10.0'
+release='3'
+version='1.12.0'
 url='http://www.doxygen.nl/'
 description='Documentation system for C++, C, Java, IDL and PHP'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/doxygen/doxygen/archive/refs/tags/Release_${version//./_}.tar.gz")
 depends=()
 makedepends=(cmake)
-md5sums=('82de97da58776ee561cceab097c34ac0')
+sha256sums=('5ca35e1258020df5fe8b21c3656aed156c317def4a81b7fe52f452edc9f35768')
 group=(app.doc)
 uses=()
 arch=('x86_64')

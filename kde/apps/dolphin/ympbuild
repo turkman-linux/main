@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='dolphin'
-release='2'
-version='24.02.2'
+release='3'
+version='24.08.1'
 url='https://apps.kde.org/dolphin/'
 description='KDE File Manager'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/release-service/${version}/src/dolphin-${version}.tar.xz")
 depends=(baloo-widgets knewstuff kcmutils kparts phonon)
 makedepends=(extra-cmake-modules kdoctools)
-sha256sums=("50844490d45159ca16c1d8d9f5f0701f118772e4b09adad270835b67bb26a701")
+sha256sums=("1dba9afb6617080c1b4937a88ec012fba77184327acc8573d9e351feed537668")
 group=(kde.apps)
 uses=()
 arch=('x86_64')
@@ -35,3 +35,4 @@ package () {
 	ln -s ../applications/org.kde.dolphin.desktop $DESTDIR/usr/share/kglobalaccel/org.kde.dolphin.desktop
 
 }
+

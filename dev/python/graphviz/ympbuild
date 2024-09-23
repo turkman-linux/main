@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='graphviz'
-release='1'
-version='9.0.0'
+release='2'
+version='12.1.1'
 url='https://www.graphviz.org/'
 description='Graph Visualization Tools'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('EPL-1.0')
 source=("https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/${version}/graphviz-${version}.tar.xz")
 depends=()
 makedepends=()
-md5sums=('2d658d17086605a8b889599ceb99b240')
+sha256sums=('8dd4fa2a30a80e9ee4a11ad4f43f4a900d683684e824681b084a1dc86777a2a3')
 group=(dev.python)
 uses=()
 arch=('x86_64')

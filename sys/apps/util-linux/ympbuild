@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='util-linux'
-release='2'
-version='2.39'
+release='3'
+version='2.40'
 url='https://en.wikipedia.org/wiki/Util-linux'
 description='Various useful Linux utilities'
 email='kurth4cker@tutanota.com'
@@ -9,7 +9,7 @@ maintainer='kurth4cker'
 license=('GPLv3' 'GPLv2' 'LPGL-2.1' 'BSD-4' 'MIT')
 source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v${version}/util-linux-${version}.tar.gz")
 depends=(libcap-ng)
-md5sums=('a114fd390b1bfe3c2c1d14056cb368b3')
+sha256sums=('2a51d08cb71fd8e491e0cf633032c928f9a2848417f8441cb8cf7ef9971de916')
 arch=('x86_64')
 group=(sys.apps)
 uses_extra=(python udev)

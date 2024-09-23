@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gobject-introspection'
-release='3'
-version='1.78.0'
+release='4'
+version='1.82.0'
 url='https://gitlab.gnome.org/GNOME/gobject-introspection.git/'
 description='Introspection system for GObject-based libraries '
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/${version}/gobject-introspection-${version}.tar.gz")
 depends=()
 makedepends=()
-md5sums=('6d7bff4172389d66637f5b47b37c13f1')
+sha256sums=('82c2372520d9ec58f0361efddb2ef9ce4026618b7389e99ba73f8a4e683ed361')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

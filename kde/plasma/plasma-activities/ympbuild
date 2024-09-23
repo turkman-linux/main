@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-activities'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='Core components for KDE Activities'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/plasma-activities-${version}.tar.xz")
 depends=(kconfig kcoreaddons qt6-base)
 makedepends=(extra-cmake-modules qt6-declarative qt6-tools)
-sha256sums=('f0bd07bbcd9022c72e564046046029b39f71d1cc5b467b9f50914813043b2795')
+sha256sums=('b353fbe7ae30f6a04ef4f81d3e0250654a0f9859a9ef43214c89c78b924e284b')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

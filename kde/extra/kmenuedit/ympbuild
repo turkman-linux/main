@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kmenuedit'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='KDE menu editor'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kmenuedit-${version}.tar.xz")
 depends=(kio)
 makedepends=(extra-cmake-modules kdoctools)
-sha256sums=('fa6a09e8fec343680d58d47daedf0d58267f8b990f12e2c50aa72babc963ac5f')
+sha256sums=('fcb27a83a5554fb5654633bed08cb608986572e30f5e4241607a354ec89d6556')
 group=(kde.extra)
 uses=()
 arch=('x86_64')

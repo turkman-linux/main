@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='baloo'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='A framework for searching and managing metadata'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/baloo-${version}.tar.xz")
 depends=(kconfig kcoreaddons kcrash kdbusaddons kfilemetadata ki18n kidletime kio lmdb qt6-base solid)
 makedepends=(extra-cmake-modules kdoctools doxygen qt6-tools)
-sha256sums=('ea21e88d1fe252d2dc95e0b7ae8891594822ccdd898e7aa56d46ed9ecd626a41')
+sha256sums=('d8046cb6e7df1d5b8310aed4e4dc71ec8379b602744b90d08fa9f14bda47a6af')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

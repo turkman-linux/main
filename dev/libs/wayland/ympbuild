@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='wayland'
-release='2'
-version='1.22.0'
+release='3'
+version='1.23.0'
 url='https://gitlab.freedesktop.org/wayland'
 description='Core Wayland window system code and protocol'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/wayland/wayland/-/archive/$version/wayland-$version.tar.gz")
 depends=(zlib expat libffi xz-utils libxml2 mesa)
 makedepends=()
-md5sums=('0093c2b9cacd102e21cc25dfc9f88f36')
+sha256sums=('7c5c28fa73f22d1c5021e17e1148f29ab17bf8b776a406f1c4489d3e2992ec3a')
 group=(dev.libs)
 uses=()
 uses_extra=(doc)

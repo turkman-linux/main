@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libksysguard'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='KDE system monitor library'
 email='aliriza.keskin@pardus.org.tr'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/plasma/$version/libksysguard-$version.t
 depends=(kauth kconfig kcoreaddons kdeclarative ki18n kirigami kitemmodels knewstuff kpackage kquickcharts kservice
          libnl libpcap qt6-base qt6-declarative solid zlib lm-sensors)
 makedepends=(extra-cmake-modules qt6-tools)
-sha256sums=('6b72ccfbed69f27bcec0d86414ed780870109801cc20c505901657c85c3644dd')
+sha256sums=('ad01fa2c664f82ce24b7d617bc1994206376373f9bd64ae313b3287fd58a02b9')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

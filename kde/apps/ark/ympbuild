@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ark'
-release='2'
-version='24.02.2'
+release='3'
+version='24.08.1'
 url='https://kde.org/applications/utilities/org.kde.ark'
 description='Graphical file compression/decompression utility with support for multiple formats'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/release-service/${version}/src/ark-${version}.tar.xz")
 depends=(kio libarchive kparts)
 makedepends=()
-sha256sums=('06374f5c7c2aee7a93c04bfd7b6b3baaeab3962e8277c9087fea54ba9805bdce')
+sha256sums=('09a98a344e6debf939ff2c3973d67c7794c15f22faff7b8bbafba3d1e3aa5d8d')
 group=(kde.apps)
 uses=()
 arch=('x86_64')

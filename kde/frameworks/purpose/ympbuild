@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='purpose'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Framework for providing abstractions to get the developer s purposes fulfilled'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/purpose-${version}.tar.xz")
 depends=(kconfig kcoreaddons kcmutils ki18n kio kirigami knotifications kservice qt6-base qt6-declarative)
 makedepends=(intltool extra-cmake-modules)
-sha256sums=('4fa85cbd2d9dd49216eda6433b43e05bbb114249dac51df55242328f7eb8f97c')
+sha256sums=('40f80a04a737f5b79d9980baabdca54c820456bb30add04479257291c62ac274')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

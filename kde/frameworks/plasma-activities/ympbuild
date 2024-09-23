@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-activities'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://download.kde.org/stable/frameworks'
 description='A library for accessing the usage data collected by the activities system'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-activities-$version.tar.xz")
 depends=(qt6-base)
 makedepends=(qt6-tools)
-sha256sums=('f0bd07bbcd9022c72e564046046029b39f71d1cc5b467b9f50914813043b2795')
+sha256sums=('e0efff427b2155b09784851fa1645511ffb93629e557e887ec5dacff2fe223a0')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

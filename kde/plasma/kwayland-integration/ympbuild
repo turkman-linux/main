@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kwayland-integration'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='KWayland integration'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kwayland-integration-${version}.tar.xz")
 depends=(kwindowsystem kwayland)
 makedepends=(extra-cmake-modules wayland-protocols kidletime)
-sha256sums=('04e2cbc45ea3c4b6f18aba16610fd2c7fa20b263ca606290b1b27546650101e9')
+sha256sums=('23c610203f1bfaaccc82718e60adaa333e31dd42837d4e84dff0cf80e614c688')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

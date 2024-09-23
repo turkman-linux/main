@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='oxygen-icons'
-release='2'
-version='5.114.0'
+release='3'
+version='5.116.0'
 url='https://community.kde.org/Frameworks'
 description='Oxygen icon theme'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/oxygen-icons-${version}.tar.xz")
 depends=()
 makedepends=(extra-cmake-modules qt5-base)
-md5sums=('eaa06cbd28343f48d776cd6103529105')
+sha256sums=('fc83cac9567b54072cd1b99bd5ab1e555f555076b9c5f503e30e280580b79db5')
 group=(kde.extra)
 uses=()
 arch=('x86_64')

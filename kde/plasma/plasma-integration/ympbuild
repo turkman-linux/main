@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-integration'
-release='2'
-version='6.0.0'
+release='3'
+version='6.1.5'
 url='https://kde.org/plasma-desktop'
 description='Qt Platform Theme integration plugins for the Plasma workspaces'
 email='brkt8khn@gmailmail.com'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/plasma/${version}/plasma-integration-${
 depends=(kcolorscheme kcompletion kconfig kcoreaddons kguiaddons kiconthemes kstatusnotifieritem ki18n kio kwidgetsaddons kwindowsystem
          kxmlgui libxcb libXcursor qt6-base qt6-declarative qt6-wayland wayland)
 makedepends=(extra-cmake-modules plasma-wayland-protocols)
-sha256sums=('133ff66eca6363b798b5152e96e370400213e5a2bc28bd633d8b691406b02c41')
+sha256sums=('15ab4bf7709124ec4fe78422820901c8efb7fbb92245576be57c847482a5ec9b')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

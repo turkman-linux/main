@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='bluez-qt'
-release='2'
-version='6.0.0'
+release='3'
+version='6.5.0'
 url='https://community.kde.org/Frameworks'
 description='Qt wrapper for Bluez 5 DBus API'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/bluez-qt-${version}.tar.xz")
 depends=(qt6-base bluez)
 makedepends=(extra-cmake-modules doxygen qt6-tools qt6-declarative)
-sha256sums=('36798f1e7a0a472607435beb2833f6cc77d65cb006decac1ec0b0a3a6f5142eb')
+sha256sums=('f0234766fc1af9410708d0886eef304175b09a5b99c48c0eb877a80fec6aa65e')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
