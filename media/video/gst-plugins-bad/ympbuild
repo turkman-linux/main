@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gst-plugins-bad'
-release='2'
-version='1.22.7'
+release='3'
+version='1.24.7'
 url='https://gitlab.freedesktop.org/gstreamer'
 description=' GStreamer plugins and helper libraries'
 email='bayramk@gmail.com'
@@ -11,7 +11,7 @@ source=("https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-$
 #source=("https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/archive/$version/gst-plugins-bad-$version.tar.gz")
 depends=(gst-plugins-base)
 makedepends=()
-md5sums=('63d4e2811069a0a852782a788b494340')
+sha256sums=('75d513fc0ba635fb1f39786d890b73fbac5f4bc88ff39f2a9ff62f4b8f428f22')
 group=(media.video)
 uses=()
 arch=('x86_64')
@@ -33,3 +33,4 @@ build(){
 package(){
     ninja -C build install
 }
+
