@@ -8,7 +8,7 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/${version}/gobject-introspection-${version}.tar.gz")
-depends=()
+depends=(glib)
 makedepends=()
 sha256sums=('82c2372520d9ec58f0361efddb2ef9ce4026618b7389e99ba73f8a4e683ed361')
 group=(dev.libs)
@@ -17,11 +17,13 @@ arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    sed -i "s|subdir('tests')||g" meson.build
+}
+
 setup(){
-    unset meson
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/ \
-        --wrap-mode=nodownload
+        --libdir=/usr/lib64/
 }
 
 build(){

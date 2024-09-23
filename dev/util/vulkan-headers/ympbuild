@@ -19,15 +19,15 @@ cd Vulkan-Headers-$version
 
 setup(){
     mkdir build && cd build
-    cmake .. \
+    cmake -G Ninja .. \
       -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build(){
-    make -C build $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make -C build install $jobs
+    ninja -C build install $jobs
 }
 

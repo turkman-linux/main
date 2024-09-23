@@ -17,9 +17,13 @@ arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    ./bootstrap
+}
+
 setup(){
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64
+   autoreconf -fvi
+   ./configure --prefix=/usr
 }
 
 build(){
