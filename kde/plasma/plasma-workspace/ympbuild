@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-workspace-$version.tar.xz")
 depends=(accountsservice kactivitymanagerd kded  kio
          kquickcharts kwin milou pipewire phonon
-         plasma-integration qt6-base xdotool)
+         plasma-integration qt6-base xdotool qcoro-qt6)
 makedepends=(qt6-tools)
 sha256sums=('c29e15a3ed42446f997b7e1695864f85ebff084e2ece581c914a0d8a8e265ae7')
 group=(kde.plasma)
@@ -38,6 +38,7 @@ prepare(){
     sed -i "/.*users.*/d" kcms/CMakeLists.txt
     ## subdir : applets
     sed -i "/.*systemmonitor.*/d" applets/CMakeLists.txt
+    sed -i "/.*devicenotifier.*/d" applets/CMakeLists.txt
     ## subdir : runners
     sed -i "/.*kill.*/d" runners/CMakeLists.txt
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kwayland'
 release='3'
-version='6.5.0'
+version='6.1.5'
 url='https://community.kde.org/Frameworks'
 description='Qt-style Client and Server library wrapper for the Wayland libraries'
 email='brkt8khn@gmail.com'
@@ -11,8 +11,8 @@ source=("https://download.kde.org/stable/plasma/${version}/kwayland-${version}.t
 #source=("https://download.kde.org/stable/frameworks/${version%.*}/kwayland-${version}.tar.xz")
 depends=(qt6-base qt6-wayland wayland)
 makedepends=(extra-cmake-modules doxygen qt6-tools wayland-protocols plasma-wayland-protocols)
-sha256sums=('e0efff427b2155b09784851fa1645511ffb93629e557e887ec5dacff2fe223a0')
-group=(kde.frameworks)
+sha256sums=('67a3e15730bda36073f30422bdc21aee27bf205fbeec1a2b8020c9d1a97f8da9')
+group=(kde.plasma)
 uses=()
 arch=('x86_64')
 

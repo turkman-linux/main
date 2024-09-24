@@ -23,7 +23,6 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64 \
-        --default-library both \
         -D glib_debug=disabled \
         -D selinux=disabled \
         -D sysprof=disabled
