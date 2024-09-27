@@ -1,22 +1,18 @@
 #!/usr/bin/env bash
 name='polkit'
-release='2'
-version='123'
+release='3'
+version='125'
 url='https://gitlab.freedesktop.org/polkit/polkit'
 description='Application development toolkit for controlling system-wide privileges'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-$version.tar.gz"
-        "polkit.groups"
+source=("https://github.com/polkit-org/polkit/archive/refs/tags/$version.tar.gz"
         "polkit.initd"
-        "polkit.passwd"
         "polkit.sysconf")
 depends=(duktape expat glib pam elogind)
 makedepends=(gobject-introspection gtk-doc meson)
-md5sums=('36540b837c588e1e77145523bb39f511'
-         'SKIP'
-         'SKIP'
+sha256sums=('ea5cd6e6e2afa6bad938ee770bf0c2cd9317910f37956faeba2869adcf3747d1'
          'SKIP'
          'SKIP')
 group=(sys.auth)
@@ -28,7 +24,10 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
-        -Dsession_tracking="libelogind" \
+        -Dsession_tracking="elogind" \
+        -D os_type=redhat \
+        -D polkitd_uid=102 \
+        -D polkitd_user=polkitd \
         -Dsystemdsystemunitdir=/garbage
 }
 
@@ -41,8 +40,9 @@ package(){
     rm -rf $DESTDIR/garbage
     install -d $DESTDIR/etc/{passwd,group,sysconf,init}.d
     install ../polkit.sysconf $DESTDIR/etc/sysconf.d/polkit
-    install ../polkit.groups $DESTDIR/etc/group.d/polkit
-    install ../polkit.passwd $DESTDIR/etc/passwd.d/polkit
     install ../polkit.initd $DESTDIR/etc/init.d/polkit
+    # GID: polkitd 102
+    echo "polkitd:x:102:polkitd" > $DESTDIR/etc/group.d/polkitd
+    echo "polkitd:x:102:102:User for polkitd:/var/empty:/sbin/nologin" > $DESTDIR/etc/passwd.d/polkitd
 }
 

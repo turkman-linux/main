@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='dbus'
-release='1'
-version='1.15.2'
+release='2'
+version='1.15.10'
 url='https://dbus.freedesktop.org/releases/dbus/'
 description='A message bus system, a simple way for applications to talk to each other'
 email='aliriza.keskin@pardus.org.tr'
@@ -14,7 +14,7 @@ source=("https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz"
         "dbus.xinit")
 depends=(audit expat libcap-ng elogind)
 makedepends=()
-md5sums=('c56de960ea9031b92ee71aaa0e8e72c2'
+sha256sums=('f700f2f1d0473f11e52f3f3e179f577f31b85419f9ae1972af8c3db0bcfde178'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -27,24 +27,25 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
+    meson setup build --prefix=/usr \
         --libdir=/usr/lib64/ \
         --localstatedir=/var \
         --sysconfdir=/etc \
-        --disable-xml-docs \
-        --with-system-pid-file=/run/dbus/dbus.pid \
-        $(use_opt x11 --with-x --without-x)
+        -Dxml_docs=disabled \
+        -Dsystem_pid_file=/run/dbus/dbus.pid \
+        -Dx11_autolaunch=$(use_opt x11 enabled disabled)
 }
 
 build(){
-    make
+    ninja -C build $jobs
 }
 
 package(){
-    make $jobs install
+    ninja -C build install $jobs
     mkdir -p "$DESTDIR"/etc/{passwd,group,sysconf,init,conf}.d "$DESTDIR"/etc/X11/xinit/xinitrc.d/
-    echo "messagebus:x:109:" > "$DESTDIR"/etc/group.d/dbus
-    echo "messagebus:x:103:109::/nonexistent:/usr/sbin/nologin" > "$DESTDIR"/etc/passwd.d/dbus
+    # GID: messagebus 103
+    echo "messagebus:x:103:" > "$DESTDIR"/etc/group.d/dbus
+    echo "messagebus:x:103:103::/nonexistent:/usr/sbin/nologin" > "$DESTDIR"/etc/passwd.d/dbus
     install ../dbus.sysconf "$DESTDIR"/etc/sysconf.d/dbus
     install ../dbus.initd "$DESTDIR"/etc/init.d/dbus
     install ../dbus.confd "$DESTDIR"/etc/conf.d/dbus
