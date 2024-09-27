@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name=xz-utils
+release=2
 version=5.6.2
-release=1
 homepage='https://tukaani.org/xz/'
 description='lzma compression utilities'
 maintainer='kurth4cker'
