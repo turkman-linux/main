@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name=xz-utils
-version=5.2.7
+version=5.6.2
 release=1
 homepage='https://tukaani.org/xz/'
 description='lzma compression utilities'
@@ -8,7 +8,7 @@ maintainer='kurth4cker'
 email='kurth4cker@tutanota.com'
 license=('GPLv2+')
 source=("https://tukaani.org/xz/xz-${version}.tar.gz")
-md5sums=('66f82a9fa24623f5ea8a9ee6b4f808e2')
+sha256sums=('8bfd20c0e1d86f0402f2497cfa71c6ab62d4cd35fd704276e3140bfb71414519')
 group=(app.arch)
 arch=(x86_64)
 uses=(doc nls)
@@ -29,3 +29,4 @@ build(){
 package(){
     make install $jobs
 }
+
