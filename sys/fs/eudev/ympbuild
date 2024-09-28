@@ -37,10 +37,10 @@ setup(){
         --with-rootprefix=/ \
         --libdir=/lib64/ \
         --with-rootrundir=/run \
-		--with-rootlibexecdir=/lib64/udev \
-		--enable-split-usr \
-		--disable-selinux \
-		--enable-kmod
+        --with-rootlibexecdir=/lib64/udev \
+        --enable-split-usr \
+        --disable-selinux \
+        --enable-kmod
 }
 
 build(){

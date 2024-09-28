@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openrc'
-release='4'
-version='0.54'
+release='5'
+version='0.55.1'
 url='https://github.com/OpenRC/openrc'
 description='The OpenRC init system'
 email='aliriza.keskin@pardus.org.tr'
@@ -16,7 +16,7 @@ source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
     "extras/disable-secondary-gpu.sh")
 depends=()
 makedepends=()
-sha256sums=('ad808516cb9b9a6e031ac2faeef88214164db3b11d5659a542501491e48b298d'
+sha256sums=('62e2c72cd3b10a4db2b0cf2ef25a52fc2b269f50c934329ff5f8e973cd81d5a4'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -33,7 +33,7 @@ cd $name-$version
 
 prepare(){
     # hidepid=2 by default
-    sed -i "s/ proc \/proc/,hidepid=2,gid=31&/g" sh/init.sh.Linux.in 
+    sed -i "s/ proc \/proc/,hidepid=2,gid=31&/g" sh/init.sh.Linux.in
 }
 
 setup(){
@@ -52,7 +52,6 @@ build(){
 }
 
 package(){
-    export DESTDIR=${DESTDIR}//
     ninja -C build install
     # disable all services
     rm -f ${DESTDIR}/etc/runlevels/*/*
@@ -63,9 +62,11 @@ package(){
     install ../openrc.sysconf ${DESTDIR}/etc/sysconf.d/openrc
     mkdir -p ${DESTDIR}/etc/group.d
     mkdir -p ${DESTDIR}/etc/passwd.d
-    echo "uucp:x:14:" > ${DESTDIR}/etc/group.d/uucp
-    echo "proc:x:31:" > ${DESTDIR}/etc/group.d/proc
-    echo "uucp:x:10:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
+    # GID: uucp 14
+    # GID: proc 31
+    echo "uucp:x:14:" >> ${DESTDIR}/etc/group.d/openrc
+    echo "proc:x:31:" >> ${DESTDIR}/etc/group.d/openrc
+    echo "uucp:x:14:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
     # move /share to /usr/share
     mkdir -p ${DESTDIR}/usr ${DESTDIR}/sbin
     mv ${DESTDIR}/{,usr}/share
@@ -76,12 +77,12 @@ package(){
     # install extras
     mkdir -p ${DESTDIR}/usr/libexec
     install ../disable-secondary-gpu.sh ${DESTDIR}/usr/libexec/disable-secondary-gpu
-    install ../disable-secondary-gpu.initd ${DESTDIR}/etc/init.d
-    install ../backlight-restore.initd ${DESTDIR}/etc/init.d
+    install ../disable-secondary-gpu.initd ${DESTDIR}/etc/init.d/disable-secondary-gpu
+    install ../backlight-restore.initd ${DESTDIR}/etc/init.d/backlight-restore
     # systemd /proc/1/comm hack
     # move openrc-run as systemd path and symlink
     mkdir -p $DESTDIR/lib/systemd/
     mv $DESTDIR/sbin/openrc-init $DESTDIR/lib/systemd/systemd
-    ln -s ../lib/systemd/systemd $DESTDIR/sbin/openrc-init 
+    ln -s ../lib/systemd/systemd $DESTDIR/sbin/openrc-init
 }
 

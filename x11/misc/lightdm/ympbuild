@@ -42,7 +42,8 @@ package(){
     # create user and group
     mkdir -p $DESTDIR/etc/group.d
     mkdir -p $DESTDIR/etc/passwd.d
-    echo "lightdm:x:108:118:Lightdm Display Manager:/var/lib/lightdm-data/:/bin/false" > $DESTDIR/etc/passwd.d/lightdm
+    # GID: lightdm 118
+    echo "lightdm:x:118:118:Lightdm Display Manager:/var/lib/lightdm-data/:/bin/sh" > $DESTDIR/etc/passwd.d/lightdm
     echo "lightdm:x:118:" > $DESTDIR/etc/group.d/lightdm
     # install service
     mkdir -p $DESTDIR/etc/init.d

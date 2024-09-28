@@ -6,4 +6,12 @@ if [ ! -f /var/lib/ymp/sysconf/polkit/postinstall.done ] ; then
     chmod -R 700 /etc/polkit-1/rules.d
     chmod -R 700 /usr/share/polkit-1/rules.d
     date > /var/lib/ymp/sysconf/polkit/postinstall.done
+    usermod -aG proc polkitd
+fi
+set -o pipefail
+if ! ls -la /usr/bin/pkexec | grep "^...s" >/dev/null ; then
+    chmod 4755 /usr/bin/pkexec
+fi
+if ! ls -la /usr/lib/polkit-1/polkit-agent-helper-1 | grep "^...s" >/dev/null; then
+    chmod 4755 /usr/lib/polkit-1/polkit-agent-helper-1
 fi

@@ -21,6 +21,7 @@ arch=('x86_64')
 cd $name-$version
 
 export CXXFLAGS="$CXXFLAGS -flto=auto"
+export LANG="en_US.UTF-8"
 
 setup () {
 	cmake -B build -G Ninja \
@@ -44,13 +45,14 @@ build () {
 package () {
     ninja -C build install
     install -Dm755 ../sddm.initd "$DESTDIR"/etc/init.d/sddm
-	install -Dm644 ../sddm.confd "$DESTDIR"/etc/conf.d/sddm
-	# replace pam script
-	install -Dm644 ../sddm.pam "$DESTDIR"/etc/pam.d/sddm
-	mkdir -p $DESTDIR/etc/passwd.d/ $DESTDIR/etc/group.d/
-	echo "sddm:x:109:119:Simple Desktop Display Manager:/var/lib/sddm/:/bin/false" > $DESTDIR/etc/passwd.d/sddm
+    install -Dm644 ../sddm.confd "$DESTDIR"/etc/conf.d/sddm
+    # replace pam script
+    install -Dm644 ../sddm.pam "$DESTDIR"/etc/pam.d/sddm
+    mkdir -p $DESTDIR/etc/passwd.d/ $DESTDIR/etc/group.d/
+    # GID: sddm 119
+    echo "sddm:x:119:119:Simple Desktop Display Manager:/var/lib/sddm/:/bin/sh" > $DESTDIR/etc/passwd.d/sddm
     echo "sddm:x:119:" > $DESTDIR/etc/group.d/sddm
-    
+
     install -d "$DESTDIR"/usr/lib/sddm/sddm.conf.d
     "$DESTDIR"/usr/bin/sddm --example-config > "$DESTDIR"/usr/lib/sddm/sddm.conf.d/default.conf
     # Unset InputMethod https://github.com/sddm/sddm/issues/952

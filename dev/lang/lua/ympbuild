@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+name='lua'
+release='1'
+version='5.4.7'
+url='https://lua.org'
+description='Powerful lightweight programming language designed for extending applicationsPowerful lightweight programming language designed for extending applications'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://www.lua.org/ftp/lua-$version.tar.gz"
+        "lua.pc"
+        "lua-5.4.7-shared_library-1.patch")
+depends=(readline)
+makedepends=()
+sha256sums=('9fbf5e28ef86c69858f6d3d34eccc32e911c1a28b4120ff3e84aaa70cfbf1e30'
+            'SKIP'
+            'SKIP')
+group=(dev.lang)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    patch -Np1 -i ../lua-5.4.7-shared_library-1.patch
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs \
+        INSTALL_TOP="$DESTDIR" \
+        INSTALL_DATA='cp -d' \
+        INSTALL_MAN="$DESTDIR/usr/share/man/man1" \
+        TO_LIB="liblua.so liblua.so.5.4 liblua.so.5.4.7"
+    install -Dm644 ../lua.pc "$DESTDIR"/usr/lib/pkgconfig/lua54.pc
+    ln -sf lua54.pc "$DESTDIR"/usr/lib/pkgconfig/lua.pc
+    ln -sf lua54.pc "$DESTDIR"/usr/lib/pkgconfig/lua5.4.pc
+    ln -sf lua54.pc "$DESTDIR"/usr/lib/pkgconfig/lua-5.4.pc
+    rm -rvf "$DESTDIR"/share
+}
+
