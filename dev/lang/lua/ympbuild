@@ -34,6 +34,7 @@ package () {
         INSTALL_TOP="$DESTDIR" \
         INSTALL_DATA='cp -d' \
         INSTALL_MAN="$DESTDIR/usr/share/man/man1" \
+        INSTALL_INC="$DESTDIR/usr/include"
         TO_LIB="liblua.so liblua.so.5.4 liblua.so.5.4.7"
     install -Dm644 ../lua.pc "$DESTDIR"/usr/lib/pkgconfig/lua54.pc
     ln -sf lua54.pc "$DESTDIR"/usr/lib/pkgconfig/lua.pc
