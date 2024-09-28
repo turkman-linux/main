@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gnome-terminal'
-release='2'
-version='3.50.1'
+release='3'
+version='3.54.0'
 url='https://wiki.gnome.org/Apps/Terminal'
 description='GNOME terminal emulator application'
 email='akarsu@protonmail.com'
@@ -13,7 +13,7 @@ source=("https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/${version}/gnom
 "gnome-terminal-daemon.desktop")
 depends=(dconf gsettings-desktop-schemas itstool libpcre2 vte3)
 makedepends=()
-md5sums=('627c0381b3620f7f92662dbc0a9c4099'
+sha256sums=('77370b4a00d0cda9ef339ff3aa809d266f3b937f00875176904c5bbefb76ae79'
          'SKIP'
          'SKIP'
          'SKIP')
