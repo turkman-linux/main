@@ -24,8 +24,8 @@ setup(){
 build(){
   cp -a unrar libunrar
   export LDFLAGS+=' -pthread'
-  make -C libunrar lib
-  make -C unrar -j1
+  make -C libunrar lib $jobs
+  make -C unrar $jobs
 }
 
 package(){

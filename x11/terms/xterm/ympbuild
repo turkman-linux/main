@@ -50,8 +50,8 @@ package(){
     make install $jobs DESTDIR=${DESTDIR}
     make install-ti $jobs DESTDIR=${DESTDIR}
     mkdir -p "${DESTDIR}"/usr/share/applications
-    mkdir -p "${DESTDIR}"/usr/share/xgreeters
+    mkdir -p "${DESTDIR}"/usr/share/xsessions
     install {xterm,uxterm}.desktop "${DESTDIR}"/usr/share/applications/
-    install ../xterm.desktop "${DESTDIR}"/usr/share/xgreeters/
+    install ../xterm.desktop "${DESTDIR}"/usr/share/xsessions/
 }
 

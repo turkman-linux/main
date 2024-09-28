@@ -17,13 +17,18 @@ arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    # force disable docs
+    sed -i "s/^subdir('docs')//g" meson.build
+}
+
 setup(){
 	 meson setup build --prefix=/usr \
     --libdir=/usr/lib64 \
+    -Dsystem-lua=true \
 		-Ddoc=disabled \
 		-Dsystemd=disabled \
-		-Dtests=false \
-		--buildtype=release
+		-Dtests=false
 }
 build(){
    ninja -C build
