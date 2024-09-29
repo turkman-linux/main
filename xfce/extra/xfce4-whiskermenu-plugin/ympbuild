@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-whiskermenu-plugin'
-release='2'
-version='2.8.0'
+release='3'
+version='2.8.3'
 url='https://gottcode.org/xfce4-whiskermenu-plugin/'
 description='Menu for Xfce4'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://github.com/gottcode/xfce4-whiskermenu-plugin/archive/refs/tags/v${version}.tar.gz")
 depends=(garcon xfce4-panel accountsservice)
 makedepends=(cmake ninja)
-md5sums=('d692bf797efd901c35f9ae67688fad56')
+sha256sums=('bf1fa1c6563b3354bb196d99010d013ddaa227398e70d4ac79a4798b8d92fece')
 group=(xfce.extra)
 uses=()
 arch=('x86_64')
