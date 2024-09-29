@@ -55,7 +55,7 @@ package(){
     install ../pipewire.initd ${DESTDIR}/etc/init.d/pipewire
     # environment variable
     echo "export PIPEWIRE_RUNTIME_DIR=/run/pipewire" > ${DESTDIR}/etc/profile.d/pipewire.sh
-    echo "export PULSE_RUNTIME_PATH=/run/pipewire/pulse" > ${DESTDIR}/etc/profile.d/pipewire.sh
+    echo "export PULSE_RUNTIME_PATH=/run/pipewire/pulse" >> ${DESTDIR}/etc/profile.d/pipewire.sh
     echo "export PULSE_SERVER=unix:/run/pipewire/pulse/native" >> ${DESTDIR}/etc/profile.d/pipewire.sh
     # pipewire user (uid same with audio group)
     echo "pipewire:x:29:29::/run/pipewire:/bin/false" > "$DESTDIR"/etc/passwd.d/pipewire
