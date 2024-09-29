@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='tumbler'
-release='1'
-version='4.18.1'
+release='2'
+version='4.18.2'
 _version='4.18'
 url='https://docs.xfce.org/xfce/tumbler/start'
 description='Thumbnail service implementing the thumbnail management D-Bus specification'
@@ -11,7 +11,7 @@ license=('GPLv2' 'LGPL')
 source=("https://archive.xfce.org/src/xfce/tumbler/${_version}/tumbler-${version}.tar.bz2")
 depends=(glib  gdk-pixbuf libxfce4util)
 makedepends=(intltool)
-md5sums=('e66ff221ea5cd19c84ce80abca033f52')
+sha256sums=('b530eec635eac7f898c0d8d3a3ff79d76a145d3bed3e786d54b1ec058132be7a')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
