@@ -3,18 +3,26 @@ export PIPEWIRE_RUNTIME_DIR=/run/pipewire
 export XDG_RUNTIME_DIR=/run/pipewire
 export PULSE_RUNTIME_PATH=/run/pipewire/pulse
 umask 002
+exec &>~/pipewire.log
 
 # We need to kill any existing pipewire instance to restore sound
 pkill -u "${USER}" -fx /usr/bin/pipewire-pulse 1>/dev/null 2>&1
 pkill -u "${USER}" -fx /usr/bin/pipewire 1>/dev/null 2>&1
+pkill -u "${USER}" -fx /usr/bin/pipewire-media-session 1>/dev/null 2>&1
+pkill -u "${USER}" -fx /usr/bin/wireplumber 1>/dev/null 2>&1
 
 dbus=''
 if [ -f /usr/bin/dbus-run-session ] ; then
     dbus='/usr/bin/dbus-run-session'
 fi
 
+exec /usr/bin/pipewire &
 
-exec $dbus /usr/bin/pipewire &
+if [ -x /usr/bin/wireplumber ]; then
+    exec /usr/bin/wireplumber &
+elif [ -x /usr/bin/pipewire-media-session ]; then
+    exec /usr/bin/pipewire-media-session &
+fi
 
 # wait for pipewire to start before attempting to start related daemons
 while [ "$(pgrep -f /usr/bin/pipewire)" = "" ]; do
