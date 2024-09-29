@@ -11,7 +11,7 @@ source=("https://github.com/lxde/menu-cache/archive/refs/tags/$version.tar.gz"
         'menu-cache-1.1.0-0001-Support-gcc10-compilation.patch')
 depends=(libfm)
 makedepends=()
-md5sums=('8630de9fcb97c9ca9b13eccec5b35efa'
+sha256sums=('990857aa61a2894730e3749b6bc0f905967eed0c21aa2b62a7694007bdccbe8d'
          'SKIP')
 group=(lxde.base)
 uses=()
