@@ -32,5 +32,9 @@ build(){
 
 package(){
    ninja -C build install
+   # remove pulseaudio service and binaries (We uses pipewire-pulse)
+   rm -f $DESTDIR/usr/bin/start-pulseaudio-x11
+   rm -f $DESTDIR/usr/bin/pulseaudio
+   rm -rf $DESTDIR/etc/xdg
 }
 

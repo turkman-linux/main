@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+name="pipewire"
+description="PipeWire multimedia server"
+pidfile="/run/${name}.pid"
+command="/usr/libexec/pipewire-launcher"
+command_background=true
+supervisor=supervise-daemon
+command_user="pipewire:audio"
+
+
+user="audio"
+group="audio"
+
+depend() {
+    need dbus
+}
+
+start_pre() {
+    checkpath --directory --mode 0755 --owner=pipewire:audio /run/${name}
+}
+
