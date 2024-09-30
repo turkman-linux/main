@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libxfce4util'
-release='1'
-version='4.18.1'
+release='2'
+version='4.18.2'
 _version='4.18'
 url='https://www.xfce.org/'
 description='Basic utility non-GUI functions for Xfce'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/libxfce4util/${_version}/libxfce4util-${version}.tar.bz2")
 depends=(glib)
 makedepends=(gobject-introspection intltool vala)
-md5sums=('4a834c5dc207f33cde0e213bc4e8b5b1')
+sha256sums=('d9a329182b78f7e2520cd4aafcbb276bbbf162f6a89191676539ad2e3889c353')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

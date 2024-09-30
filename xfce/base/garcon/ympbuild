@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='garcon'
-release='1'
-version='4.18.1'
+release='2'
+version='4.18.2'
 _version='4.18'
 url='https://docs.xfce.org/xfce/garcon/start'
 description='Freedesktop.org compliant menu library'
@@ -11,7 +11,7 @@ license=('GPLv2' 'LGPL')
 source=("https://archive.xfce.org/src/xfce/garcon/${_version}/garcon-${version}.tar.bz2")
 depends=(libxfce4ui)
 makedepends=(intltool)
-md5sums=('0c9dd937f595beb7052657c44f77c272')
+sha256sums=('1b8c9292e131968fbfc8987bbc62c5ba47186dd45ef4e47c5d8c5088bb2d434d')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

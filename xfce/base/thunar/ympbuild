@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='thunar'
-release='1'
-version='4.18.6'
+release='2'
+version='4.18.11'
 _version='4.18'
 url='https://docs.xfce.org/xfce/thunar/start'
 description='Modern, fast and easy-to-use file manager for Xfce'
@@ -11,7 +11,7 @@ license=('GPLv2' 'LGPL2.1')
 source=("https://archive.xfce.org/src/xfce/thunar/${_version}/thunar-${version}.tar.bz2")
 depends=(exo  libxfce4ui libxfce4util gtk3)
 makedepends=(gobject-introspection intltool xfce4-panel  hicolor-icon-theme)
-md5sums=('dc9ccd48acfd2ca9c9ca46631ee35e35')
+sha256sums=('7d0bdae2076a568c137d403ab5600e06a7a4f7a02514d486da7b8414aa75d612')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

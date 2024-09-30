@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-appfinder'
-release='1'
-version='4.18.0'
+release='2'
+version='4.18.1'
 _version='4.18'
 url='https://docs.xfce.org/xfce/xfce4-appfinder/start'
 description='Application launcher and finder'
@@ -11,7 +11,7 @@ license=('GPLv3')
 source=("https://archive.xfce.org/src/xfce/xfce4-appfinder/${_version}/xfce4-appfinder-${version}.tar.bz2")
 depends=(garcon  libxfce4ui xfconf)
 makedepends=(intltool)
-md5sums=('7c0d45141c58b3130d4281e9d33c24ba')
+sha256sums=('9854ea653981be544ad545850477716c4c92d0c43eb47b75f78534837c0893f9')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

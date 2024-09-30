@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-pulseaudio-plugin'
-release='2'
-version='0.4.7'
+release='3'
+version='0.4.8'
 url='https://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin'
 description='Pulseaudio plugin for the Xfce4 panel'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/${version%.*}/xfce4-pulseaudio-plugin-${version}.tar.bz2")
 depends=(xfce4-panel libpulse libkeybinder3 libnotify libcanberra)
 makedepends=(intltool)
-md5sums=('7d1041a7538daf8171dbbc71f5bbefe9')
+sha256sums=('bd742b207c39c221e91c57c9c9be2839eb802d1b1ee01a02b7427cd02d3f0348')
 group=(xfce.extra)
 uses=()
 arch=('x86_64')

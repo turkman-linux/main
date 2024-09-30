@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfconf'
-release='1'
-version='4.18.1'
+release='2'
+version='4.18.3'
 _version='4.18'
 url='https://docs.xfce.org/xfce/xfconf/start'
 description='D-Bus-based configuration storage system'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/xfconf/${_version}/xfconf-${version}.tar.bz2")
 depends=( libxfce4util)
 makedepends=(gobject-introspection intltool vala)
-md5sums=('60519958af4178d9bf110087a9c4a118')
+sha256sums=('c56cc69056f6947b2c60b165ec1e4c2b0acf26a778da5f86c89ffce24d5ebd98')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
