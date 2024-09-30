@@ -7,25 +7,27 @@ description='Lightweight X11 session manager'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL2')
-source=("https://salsa.debian.org/lxde-team/lxsession/-/archive/debian/$version-2/lxsession-debian-$version-2.tar.gz")
+_commit="95e902d76758e09f9226abd39163aadd5cd50bc1"
+source=("https://github.com/lxde/lxsession/archive/${_commit}.zip")
 depends=(gtk3 polkit)
 makedepends=(intltool vala docbook-xsl)
-sha256sums=('c9ed57c23c682fbd33cf5a8092a5d5c5415a922f8e36d350dcbb637434db6843')
+sha256sums=('19df9abfda70fb051c4e0f6d17a68d6e635728065faee7b95e441e26af4098d9')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
-cd $name-debian-$version-2
+cd $name-${_commit}
+
+export CC="clang"
+export CXX="clang++"
 
 setup(){
-    autoreconf -fvi
+    ./autogen.sh
     ./configure --prefix=/usr\
         --sysconfdir=/etc \
         --libexecdir=/usr/libexec \
         --enable-gtk3 \
-        --enable-buildin-clipboard \
-        --libdir=/usr/lib64/ \
-        --enable-buildin-polkit
+        --libdir=/usr/lib64/
 }
 
 build(){

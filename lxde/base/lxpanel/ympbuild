@@ -7,17 +7,24 @@ description='Lightweight X11 desktop panel for LXDE '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/lxde-team/lxpanel/-/archive/debian/$version-1/lxpanel-debian-$version-1.tar.gz")
+source=("https://salsa.debian.org/lxde-team/lxpanel/-/archive/debian/$version-1/lxpanel-debian-$version-1.tar.gz"
+        "lxpanel-0.10.1-c99.patch")
 depends=(libwnck3 wireless-tools)
 makedepends=()
-sha256sums=('e4c6a8c9901f4226160af79c409236fe4e5d1b1ec3aefdb1c43e416698f27811')
+sha256sums=('e4c6a8c9901f4226160af79c409236fe4e5d1b1ec3aefdb1c43e416698f27811'
+            'SKIP')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
 cd $name-debian-$version-1
 
+export CFLAGS="-Wno-all -O2 -s"
+export CXXFLAGS="-Wno-all -O2 -s"
+
 prepare(){
+
+    patch -Np1 -i ../lxpanel-0.10.1-c99.patch
     # Disable pager plugin as it breaks panel layout with GTK+ 3
     # https://sourceforge.net/p/lxde/bugs/773/
     sed -i '/pager.c/d' plugins/Makefile.am

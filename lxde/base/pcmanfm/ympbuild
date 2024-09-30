@@ -17,6 +17,9 @@ arch=('x86_64')
 
 cd $name-$version
 
+export CC="clang"
+export CXX="clang++"
+
 setup(){
 	autoreconf -fvi
     ./configure --prefix=/usr \

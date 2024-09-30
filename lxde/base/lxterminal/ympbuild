@@ -17,10 +17,14 @@ arch=('x86_64')
 
 cd $name-debian-$version-2
 
+export CC="clang"
+export CXX="clang++"
+
+
 setup(){
 	autoreconf -fvi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/ --enable-gtk3 
+        --libdir=/usr/lib64/ --enable-gtk3
 }
 
 build(){
