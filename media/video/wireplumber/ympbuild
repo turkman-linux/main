@@ -7,12 +7,10 @@ description='Session / policy manager implementation for PipeWire'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/$version/$name-$version.tar.gz"
-        "wireplumber.desktop")
+source=("https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/$version/$name-$version.tar.gz")
 depends=(pipewire)
 makedepends=()
-sha256sums=('ce7b7217d880bed1438e408ea412716a259cb46b09f597bfd652a577dc60185c'
-            'SKIP')
+sha256sums=('ce7b7217d880bed1438e408ea412716a259cb46b09f597bfd652a577dc60185c')
 group=(media.video)
 uses=()
 arch=('x86_64')
@@ -38,8 +36,5 @@ build(){
 
 package(){
     ninja -C build install
-    # install autostart file
-    mkdir -p $DESTDIR/etc/xdg/autostart
-    install ../wireplumber.desktop $DESTDIR/etc/xdg/autostart/
 }
 

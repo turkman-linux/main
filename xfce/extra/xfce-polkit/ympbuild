@@ -32,5 +32,7 @@ build () {
 
 package () {
     make DESTDIR="$DESTDIR" install $jobs
+    # dont run non xfce
+    echo "OnlyShowIn=XFCE;" >> $DESTDIR//etc/xdg/autostart/xfce-polkit.desktop
 }
 
