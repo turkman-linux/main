@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='hwdata'
-release='2'
-version='0.379'
+release='3'
+version='0.387'
 url='https://github.com/vcrhonek/hwdata'
 description='Hardware identification and configuration data'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/vcrhonek/hwdata/archive/refs/tags/v$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('2d8d413696545fd889ca3d32b78f64b5')
+sha256sums=('8c6be8f0863a8ff5c83b2c46aa525b503b30d42792ed57891c40849de543e1ee')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
@@ -29,4 +29,6 @@ build(){
 package(){
     make install $jobs
 }
+
+
 
