@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-quicktimeline'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/developers'
 description='Qt module for keyframe-based timeline construction'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtquicktimeline-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-declarative)
 makedepends=(cmake ninja)
-sha256sums=('eb45657c6c6b5d57775473d4d69e7d964a17778695ffb2ff50a75aa1b63489bd')
+sha256sums=('1106a41bd8081903058a47a2bca3a147d594d15cc21006aa45f38c6e1dd91f08')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

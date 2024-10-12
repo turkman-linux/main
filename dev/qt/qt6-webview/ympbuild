@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-webview'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/'
 description='Provides a way to display web content in a QML application'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwebview-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-declarative)
 makedepends=(cmake ninja)
-sha256sums=('3619e07138cc1fe2fa091e25ba6548f5f11f26f1ebf68a56f193aed336ea5cf9')
+sha256sums=('7cb89d41593876b176368b15c1cded3d5a3c4fdf7e0a10f0c61021e3e8c179f3')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

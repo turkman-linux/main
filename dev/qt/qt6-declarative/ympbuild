@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-declarative'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/developers/'
 description='Qt6 - QtDeclarative component'
 email='brkt8khn@gmail.com'
@@ -11,7 +11,7 @@ source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/q
 depends=(qt6-base)
 makedepends=(python vulkan-headers qt6-languageserver qt6-shadertools)
 md5sums=('788bc607fd0ccbe2b56623c6b017019b')
-sha256sums=('5a0c39579a74d7cca581162c866ed0887287d4f8d5abff7ab9492d4a58fa9e2c')
+sha256sums=('3b41a36b42e919a3aa0da1f71107591504200f41707bee2ad8e8d4f99b5644c2')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

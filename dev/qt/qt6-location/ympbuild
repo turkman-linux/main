@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-location'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/'
 description='Helps you create viable mapping solutions using the data available from some of the popular location services'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtlocation-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-declarative qt6-positioning)
 makedepends=(cmake ninja)
-sha256sums=('bb044d66bc17db98f526ec1b52d8e94810e046310f288561380774e5903ad46a')
+sha256sums=('a0c487f4b36965ea921127033cc227acf1f292ba577081842c5b75d2ef9731a0')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
