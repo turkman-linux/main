@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kcmutils'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Utilities for interacting with KCModules'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcmutils-${version}.tar.xz")
 depends=(kconfig kconfigwidgets kcoreaddons kguiaddons ki18n kio kirigami kitemviews kservice kwidgetsaddons kxmlgui qt6-base qt6-declarative)
 makedepends=(extra-cmake-modules doxygen qt6-tools)
-sha256sums=('eb8474ec5ae620e361e6ef971e3ec14ac6807be2df8e02d27e7d8ae9badca993')
+sha256sums=('4118388f8f62aa5f1139ed78823b58b009e9ebf7f3755e9a94ab5f9eba644cbe')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

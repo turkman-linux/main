@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kinfocenter'
-release='3'
-version='6.1.5'
+release='4'
+version='6.2.0'
 url='https://kde.org/plasma-desktop'
 description='A utility that provides information about a computer system'
 email='brkt8khn@gmail.com'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/plasma/${version}/kinfocenter-${version
 depends=(kauth kcmutils kconfig kcoreaddons kdeclarative ki18n kio kirigami kservice kwidgetsaddons libusb qt6-base
          qt6-declarative)
 makedepends=(extra-cmake-modules solid kdoctools)
-sha256sums=('0976ae43756b6ddbf4e70e750cb17f422dabe7604c5e2f824ab4f1e0161ae5d0')
+sha256sums=('508730f7b44dc85ba4e67caf526199528cefcf3dd603f6280917a930e0fe06cc')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

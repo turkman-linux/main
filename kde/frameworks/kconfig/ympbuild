@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kconfig'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Configuration system'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kconfig-${version}.tar.xz")
 depends=(qt6-base qt6-declarative)
 makedepends=(extra-cmake-modules doxygen qt6-tools)
-sha256sums=('e48e5315d3491ddfb878abf124a6e14886a6317857fa63f411ecd720da8a5d13')
+sha256sums=('be2d5ddb63e56703bc097e5d9912b39abc513ac51654de2e0d83a1aed2c54b1b')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

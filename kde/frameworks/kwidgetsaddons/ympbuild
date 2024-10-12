@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kwidgetsaddons'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtWidgets'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kwidgetsaddons-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(clang doxygen extra-cmake-modules qt6-tools)
-sha256sums=('cf3abcc40a619183c7d4625dc961a0b65ae593c6c41afe0aaa450e90b5d0fe09')
+sha256sums=('bd36342893863e6110c5f1245f8ae0b3a338275f4eaf124b15585d2fe492329a')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-nm'
-release='3'
-version='6.1.5'
+release='4'
+version='6.2.0'
 url='https://kde.org/plasma-desktop/'
 description='Plasma applet written in QML for managing network connections'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,7 +12,7 @@ source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.
 depends=(kcmutils kcolorscheme kcompletion kconfig kcoreaddons kdbusaddons kdeclarative ki18n kio kirigami knotifications kquickcharts
          ksvg kwidgetsaddons kwindowsystem libplasma modemmanager-qt networkmanager-qt prison qca qcoro-qt6 qt6-base qt6-declarative solid)
 makedepends=(extra-cmake-modules)
-sha256sums=('cb04ddaf00d728ea0b4b5d108b3389d462ce5078726f8b655f38de330eeb21f5' 'SKIP')
+sha256sums=('ce72008abf17555d1b20f66480ff21992a7c44b26cf056a133fd2d2ee7421e75' 'SKIP')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

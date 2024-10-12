@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='layer-shell-qt'
-release='3'
-version='6.1.5'
+release='4'
+version='6.2.0'
 url='https://kde.org/plasma-desktop'
 description='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/layer-shell-qt-${version}.tar.xz")
 depends=(qt6-base qt6-wayland wayland)
 makedepends=(extra-cmake-modules wayland-protocols)
-sha256sums=('d11cb55f75d6eb8904e48cd096857043a6da9900b1c34b7ac5716e6e46f0ed32')
+sha256sums=('5390d178e7f6516d691edaa85fce9cbccfe060cea573abc650bb4066878eb2fe')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

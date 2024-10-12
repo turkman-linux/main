@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kauth'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Abstraction to system policy and authentication features'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kauth-${version}.tar.xz")
 depends=(qt6-base kcoreaddons kwindowsystem polkit-qt6)
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('1af517a509da1c5ddb4420d7430894b751562e07cc4c134abe0dcb606358d394')
+sha256sums=('173654eee2891acd41538d31ace8b9d7ae60863bc7faef1cacec7e21c7eb1223')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
