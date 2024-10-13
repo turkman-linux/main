@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 name='wpa_supplicant'
-release='1'
-version='2.10'
+release='2'
+version='2.11'
 url='https://w1.fi/wpa_supplicant/'
 description='IEEE 802.1X/WPA supplicant for secure wireless transfers'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=('https://w1.fi/releases/wpa_supplicant-2.10.tar.gz'
+source=('https://w1.fi/releases/wpa_supplicant-2.11.tar.gz'
     'wpa_supplicant.initd'
     'wpa_supplicant.confd'
     'wpa_cli.sh'
 )
 depends=(dbus libnl openssl pcsc-lite readline)
 makedepends=()
-md5sums=('d26797fcb002898d4ee989179346e1cc'
+sha256sums=('912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a'
     'SKIP'
     'SKIP'
     'SKIP'

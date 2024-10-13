@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='wireless-tools'
-release='1'
-version='30_pre9-13'
+release='2'
+version='30_pre9-17'
 url='http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html'
 description='A collection of tools to configure IEEE 802.11 wireless LAN cards '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/debian/wireless-tools/-/archive/debian/30_pre9-13/wireless-tools-debian-30_pre9-13.tar.gz")
+source=("https://salsa.debian.org/debian/wireless-tools/-/archive/debian/30_pre9-17/wireless-tools-debian-30_pre9-17.tar.gz")
 depends=()
 makedepends=()
-md5sums=('c962c6c2e2a5e686e9464fcf73eb97b7')
+sha256sums=('e0a5a76af530b887fc3846f59eb77be22a93c42289e37b76f0135ca3bf1d85d8')
 group=(net.wireless)
 uses=()
 arch=('x86_64')
