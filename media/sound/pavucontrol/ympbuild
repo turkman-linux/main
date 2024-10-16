@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='pavucontrol'
-release='2'
-version='6.1'
+release='1'
+version='5.0'
 url='https://freedesktop.org/software/pulseaudio/pavucontrol/'
 description='Pulseaudio Volume Control, GTK based mixer for Pulseaudio'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-${version}.tar.xz")
 depends=(gtkmm3 json-glib libcanberra)
 makedepends=()
-sha256sums=('0dce61c1088eafa04c270e1fb79eb7aff47e98567f7d28c65a7bee6cd24e415d')
+md5sums=('a4a5dc51dcf4d912443faf3fe8d32b55')
 group=(media.sound)
 uses=()
 arch=('x86_64')
@@ -29,4 +29,3 @@ build () {
 package () {
     make install $jobs
 }
-
