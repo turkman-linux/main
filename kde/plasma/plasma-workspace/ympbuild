@@ -10,7 +10,8 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-workspace-$version.tar.xz")
 depends=(accountsservice kactivitymanagerd kded  kio
          kquickcharts kwin milou pipewire phonon
-         plasma-integration qt6-base xdotool qcoro-qt6)
+         plasma-integration qt6-base xdotool qcoro-qt6
+         plasma5support plasma-activities-stats)
 makedepends=(qt6-tools)
 sha256sums=('2d4268cbae757631be57d69d34fc02c8d0204762515370c9679ecb2aa2afdf33')
 group=(kde.plasma)

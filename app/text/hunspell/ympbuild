@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='hunspell'
+release='1'
+version='1.7.2'
+url='https://github.com/hunspell/hunspell'
+description='Spell checker, morphological analyzer library and command-line tool'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/hunspell/hunspell/archive/refs/tags/v$version.tar.gz")
+depends=(ncurses readline)
+makedepends=()
+sha256sums=('69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e')
+group=(app.text)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs
+}
+

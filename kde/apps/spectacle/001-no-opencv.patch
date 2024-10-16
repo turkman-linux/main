@@ -1,0 +1,86 @@
+diff --git a/src/Gui/Annotations/EffectUtils.cpp b/src/Gui/Annotations/EffectUtils.cpp
+index 7d505a5..674a24f 100755
+--- a/src/Gui/Annotations/EffectUtils.cpp
++++ b/src/Gui/Annotations/EffectUtils.cpp
+@@ -5,7 +5,6 @@
+  */
+ 
+ #include "EffectUtils.h"
+-#include "QtCV.h"
+ 
+ #include <QDebug>
+ #include <QPainter>
+@@ -147,11 +146,8 @@ QImage shapeShadow(const Traits::OptTuple &traits, qreal devicePixelRatio)
+         p.drawText(geometryTrait->path.boundingRect(), textTrait->textFlags(), textTrait->text());
+     }
+     p.end();
+-    auto mat = QtCV::qImageToMat(shadow);
+     const qreal sigma = Traits::Shadow::radius * devicePixelRatio;
+-    const int ksize = QtCV::sigmaToKSize(sigma);
+     // Do this before converting to Alpha8 because stackBlur gets distorted with Alpha8.
+-    QtCV::stackOrGaussianBlurCompatibility(mat, mat, {ksize, ksize}, sigma, sigma);
+     // We only want black shadows with opacity, so we only need black and 8 bits of alpha.
+     // If we don't do this, color emojis won't have black semi-transparent shadows.
+     shadow.convertTo(QImage::Format_Alpha8);
+diff --git a/src/Gui/Annotations/Traits.cpp b/src/Gui/Annotations/Traits.cpp
+index 396d341..807dbc1 100755
+--- a/src/Gui/Annotations/Traits.cpp
++++ b/src/Gui/Annotations/Traits.cpp
+@@ -5,7 +5,6 @@
+ 
+ #include "Traits.h"
+ #include "Geometry.h"
+-#include "QtCV.h"
+ #include "settings.h"
+ #include <QLocale>
+ #include <QUuid>
+@@ -87,7 +86,6 @@ QImage Traits::ImageEffects::Blur::image(const std::function<QImage()> &getImage
+         }
+         // RGBA is better for use with OpenCV
+         m_backingStoreCache.convertTo(QImage::Format_RGBA8888_Premultiplied);
+-        auto mat = QtCV::qImageToMat(m_backingStoreCache);
+         // Below this, the effect is nearly invisible.
+         static const qreal min = 0.5;
+         // Above this, glitches with color splotches happen.
+@@ -96,7 +94,6 @@ QImage Traits::ImageEffects::Blur::image(const std::function<QImage()> &getImage
+         const qreal dynamicMin = 1 * dpr;
+         const qreal dynamicMax = 16 * dpr;
+         const qreal sigma = std::clamp(m_strength * (dynamicMax - dynamicMin) + dynamicMin, min, max);
+-        QtCV::stackOrGaussianBlurCompatibility(mat, mat, {}, sigma, sigma);
+         m_backingStoreCache.setDevicePixelRatio(dpr);
+         m_backingStoreCache.setText(strengthKey, strengthString(m_strength));
+     }
+diff --git a/src/Platforms/ImagePlatformKWin.cpp b/src/Platforms/ImagePlatformKWin.cpp
+index 237130c..69fd9d2 100755
+--- a/src/Platforms/ImagePlatformKWin.cpp
++++ b/src/Platforms/ImagePlatformKWin.cpp
+@@ -7,7 +7,6 @@
+ #include "ImagePlatformKWin.h"
+ #include "ExportManager.h"
+ #include "Geometry.h"
+-#include "QtCV.h"
+ #include "DebugUtils.h"
+ #include "ImageMetaData.h"
+ 
+@@ -107,21 +106,6 @@ QImage combinedImage(const QList<QImage> &images)
+     // Not sure what to do if we end up having different formats for different screens.
+     QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
+     finalImage.fill(Qt::transparent);
+-    auto mainMat = QtCV::qImageToMat(finalImage);
+-    for (auto &image : images) {
+-        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
+-        const auto mat = QtCV::qImageToMat(rgbaImage);
+-        // Region Of Interest to put the image in the main image.
+-        const auto pos = ImageMetaData::logicalXY(rgbaImage) * finalDpr;
+-        const auto size = rgbaImage.deviceIndependentSize() * finalDpr;
+-        // Truncate to ints instead of rounding to prevent ROI from going out of bounds.
+-        const cv::Rect rect(pos.x(), pos.y(), size.width(), size.height());
+-        const auto imageDpr = image.devicePixelRatio();
+-        const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
+-        const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
+-        // Will just copy if there's no difference in size
+-        cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
+-    }
+     finalImage.setDevicePixelRatio(finalDpr);
+     ImageMetaData::setSubGeometryList(finalImage, geometryList);
+     return finalImage;

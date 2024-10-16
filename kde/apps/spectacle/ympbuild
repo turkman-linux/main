@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='spectacle'
-release='4'
+release='2'
 version='24.08.2'
 url='https://kde.org/applications/utilities/org.kde.spectacle'
 description='Application for capturing desktop screenshots'
@@ -8,16 +8,31 @@ email='osman.coskun95@gmail.com'
 maintainer='mergin'
 license=('GPLv3')
 source=("https://download.kde.org/stable/release-service/$version/src/spectacle-$version.tar.xz"
+        000-no-opencv.patch
+        001-no-opencv.patch
+        002-fix-qmlcache.patch
         spectacle.desktop)
 depends=(qt6-base kwayland kpipewire)
 makedepends=(extra-cmake-modules ki18n kdoctools)
 sha256sums=('3f90f8cfe3359ad94f5bb0025a9251805a092c5892cd2a891965c21a0984cbdf'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 group=(kde.apps)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+export PATH=$PATH:/usr/lib64/qt6/libexec/rcc
+
+export LANG=en_US.UTF-8
+
+prepare(){
+    patch -Np1 -i ../000-no-opencv.patch
+    patch -Np1 -i ../001-no-opencv.patch
+    patch -Np1 -i ../002-fix-qmlcache.patch
+}
 
 setup(){
 		cmake -B build -G Ninja \
@@ -39,4 +54,3 @@ package(){
      # install autostart file
      install -Dm644 ../spectacle.desktop -t "$DESTDIR"/etc/xdg/autostart/
 }
-
