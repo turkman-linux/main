@@ -46,18 +46,18 @@ prepare(){
 }
 
 setup () {
-    mkdir build
-    cd build
-    cmake .. -G Ninja \
-        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGLIBC_LOCALE_GEN=OFF \
+        -DBUILD_TESTING=OFF
 }
 
 build () {
-    ninja -C build $jobs
+    make -C build $jobs
 }
 
 package () {
-    ninja -C build install $jobs
+    make -C build install $jobs
     # fix symlinks
     rm -f $DESTDIR//usr/bin/lookandfeeltool
     ln -s plasma-apply-lookandfeel $DESTDIR//usr/bin/lookandfeeltool

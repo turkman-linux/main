@@ -26,6 +26,6 @@ build () {
 }
 
 package () {
-    make install $jobs
+    make install $jobs  DESTDIR="$DESTDIR"
 }
 
