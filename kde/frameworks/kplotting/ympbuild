@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kplotting'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Lightweight plotting framework'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kplotting-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(extra-cmake-modules doxygen qt6-tools)
-sha256sums=('021697c4d42002fad49db0d283552a2b40e81f968763d87b3ad47ec3f580d943')
+sha256sums=('130eedc234f0fedaf2c415de895c979454f64c3b049043327d43cd509e2386b3')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='syndication'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='An RSS/Atom parser library'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/syndication-${version}.tar.xz")
 depends=(kcodecs qt6-base)
 makedepends=(extra-cmake-modules doxygen qt6-tools)
-sha256sums=('cdafc51c9271b00150b8d63bf250d6d040f7bc8c56907af61dc59a44c96c674e')
+sha256sums=('c2a485229d8a430858d7f473fe8b133737d93d33a776e46eedfa77bb9e30ba24')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

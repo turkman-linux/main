@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='spectacle'
-release='1'
-version='24.02.2'
+release='4'
+version='24.08.2'
 url='https://kde.org/applications/utilities/org.kde.spectacle'
 description='Application for capturing desktop screenshots'
 email='osman.coskun95@gmail.com'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/release-service/$version/src/spectacle-
         spectacle.desktop)
 depends=(qt6-base kwayland kpipewire)
 makedepends=(extra-cmake-modules ki18n kdoctools)
-sha256sums=('4118f7355eb0584deb2a88ce46ece7b616880397f0ab2b810cbe4cbc21742152'
+sha256sums=('3f90f8cfe3359ad94f5bb0025a9251805a092c5892cd2a891965c21a0984cbdf'
             'SKIP')
 group=(kde.apps)
 uses=()

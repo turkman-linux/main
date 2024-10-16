@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='sonnet'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Spelling framework for Qt5'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/sonnet-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(extra-cmake-modules qt6-declarative qt6-tools doxygen)
-sha256sums=('7e86b6f82b7951c3e81cea75f79baf7a8a0f884fcb024f02a6153a467a3de1aa')
+sha256sums=('2f970d490effd668e64dd93ffef344a80db7e63130bb23df4fa0d6b14150e588')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -31,5 +31,4 @@ build () {
 package () {
     INSTALL_ROOT="$DESTDIR" cmake --install build
 }
-
 

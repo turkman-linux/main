@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-workspace'
-release='3'
-version='6.1.5'
+release='4'
+version='6.2.0'
 url='https://kde.org/plasma-desktop'
 description='Kde Plasma Workspace'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,7 +12,7 @@ depends=(accountsservice kactivitymanagerd kded  kio
          kquickcharts kwin milou pipewire phonon
          plasma-integration qt6-base xdotool qcoro-qt6)
 makedepends=(qt6-tools)
-sha256sums=('c29e15a3ed42446f997b7e1695864f85ebff084e2ece581c914a0d8a8e265ae7')
+sha256sums=('2d4268cbae757631be57d69d34fc02c8d0204762515370c9679ecb2aa2afdf33')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

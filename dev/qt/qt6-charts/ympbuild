@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-charts'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/'
 description='The Qt Sensors API provides access to sensor hardware via QML and C++'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtcharts-everywhere-src-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(qt6-declarative)
-sha256sums=('899d5498c91bfb01fde2ff2438c82adf4d4d9b3cf646e7ad7b0036dbf32b7ca4')
+sha256sums=('1923daac0d1a69b03a4cb119b147c2e3f5080f642af365098fd8771a465b132f')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-remoteobjects'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/'
 description='Inter-process communication (IPC) module developed for Qt'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtremoteobjects-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-declarative)
 makedepends=(cmake ninja)
-sha256sums=('a0ba60d625c9713fc8396b8db1e283df863bfaa06664d46496bd16fab5e4c695')
+sha256sums=('f1df570c6d9796e98374414f0f24f31bdd1e61f8063d6d9e2f407632559c7588')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

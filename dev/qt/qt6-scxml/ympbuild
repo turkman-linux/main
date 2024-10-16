@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-scxml'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/'
 description='Static and runtime integration of SCXML models into Qt code'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtscxml-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-declarative)
 makedepends=(cmake ninja)
-sha256sums=('725b97bbb8766df733d7588488acd92375c218eeb376a95525572b4268a9257c')
+sha256sums=('bba9aa4ef441b01b2d391486ddccfb09efa378c8a24e6d13e983fc019837b43b')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='modemmanager-qt'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Qt wrapper for modemmanager API'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/modemmanager-qt-${version}.tar.xz")
 depends=(modemmanager qt6-base )
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('76c2b18c9c5c5d9c360282a031feaae966029322f19de050d91d39207cd5717b')
+sha256sums=('fc45dcd8ada243baf7900099062f312b677bf694f88f36746d534afe907bf8f3')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

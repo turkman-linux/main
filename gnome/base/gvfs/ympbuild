@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gvfs'
-release='2'
-version='1.52.0'
+release='3'
+version='1.56.0'
 url='https://wiki.gnome.org/Projects/gvfs'
 description='Virtual filesystem implementation for GIO'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://gitlab.gnome.org/GNOME/gvfs/-/archive/${version}/gvfs-${version}.tar.gz")
 depends=(udisks2 libcdio-paranoia gcr libsoup3)
 makedepends=()
-md5sums=('5a3b313b2cf6838c8765a55008b7cc55')
+sha256sums=('859e71b97a7d9db85e4e38f45cecb9d51c7c9870cb22257fb7316be9bac3e351')
 group=(gnome.base)
 uses=()
 arch=('x86_64')

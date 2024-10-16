@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kparts'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Document centric plugin system'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kparts-${version}.tar.xz")
 depends=(kconfig kcoreaddons ki18n kio kwidgetsaddons kxmlgui qt6-base)
 makedepends=(doxygen extra-cmake-modules qt6-tools)
-sha256sums=('4eb5417b267f77c16c85482f919adfb5b7714a95239771c4aafbfeb90e4a371f')
+sha256sums=('0b1b305050d61fcbefa7026b096dc6b47709d7435c69b18ab56a7e2ea57d759e')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

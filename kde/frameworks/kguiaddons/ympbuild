@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kguiaddons'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtGui'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kguiaddons-${version}.tar.xz")
 depends=(qt6-base qt6-wayland)
 makedepends=(extra-cmake-modules doxygen qt6-tools plasma-wayland-protocols)
-sha256sums=('7193fa930b85fa6e7fda3a85f1e52f362ecd3e110e80055d9084eeafaeac4807')
+sha256sums=('ac437ca6baf50b0178bc8bf0b4dd1e6e70e0e4ef1ac770259738a1c42d035bcc')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

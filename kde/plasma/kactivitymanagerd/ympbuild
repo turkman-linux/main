@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kactivitymanagerd'
-release='3'
-version='6.1.5'
+release='4'
+version='6.2.0'
 url='https://kde.org/plasma-desktop'
 description="System service to manage user's activities and track the usage patterns"
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kactivitymanagerd-${version}.tar.xz")
 depends=(kconfig kcoreaddons kcrash kglobalaccel ki18n kio kservice kwindowsystem kxmlgui qt6-base)
 makedepends=(extra-cmake-modules boost)
-sha256sums=('3f8afda273787802d5cd46bf76f8f1467ece1f21c83bbaa6513435775523810f')
+sha256sums=('eb943611d85d18ac5793c3bc81b97b7507af97034df0386d9bd0e39999e6e06c')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

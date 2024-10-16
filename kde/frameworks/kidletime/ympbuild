@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kidletime'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Monitoring user activity'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kidletime-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(extra-cmake-modules doxygen qt6-tools qt6-wayland libxss plasma-wayland-protocols wayland-protocols)
-sha256sums=('b6dc7d6eadb642248000f165155a72d2dfab6c1a93e0130f8f83394a7628eaf6')
+sha256sums=('60a6c70387b63e61147029ce57f170237271411630a3372a0e8d7240b8006aaf')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

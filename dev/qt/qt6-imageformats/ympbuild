@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-imageformats'
-release='2'
-version='6.7.0'
+release='3'
+version='6.8.0'
 url='https://www.qt.io/'
 description='Plugins for additional image formats: TIFF, MNG, TGA, WBMP'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtimageformats-everywhere-src-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(cmake ninja)
-sha256sums=('516ce07ec8dd5a11c59816fe33ddb71d4f691d0ebbc1798ac338f23b86c029a7')
+sha256sums=('595bf8557b91e1f8ebc726f1e09868a3c7e610ff5045068f2d4ea2428c49a5d4')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

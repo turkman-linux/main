@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kbookmarks'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Support for bookmarks and the XBEL format'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kbookmarks-${version}.tar.xz")
 depends=(kconfig kconfigwidgets kcoreaddons kwidgetsaddons qt6-base)
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('97dabceae5b0eac1107c49c50d1d7d9a7d26b9246c9ab53d123990525c55fbec')
+sha256sums=('bd41a39df76515ee34e7df07b2600e1e5b67b1812cc959ec51585f2ebcc56573')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='knotifications'
-release='3'
-version='6.5.0'
+release='4'
+version='6.7.0'
 url='https://community.kde.org/Frameworks'
 description='Abstraction for system notifications'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/knotifications-${version}.tar.xz")
 depends=(qt6-base libcanberra kconfig)
 makedepends=(extra-cmake-modules qt6-tools doxygen qt6-declarative)
-sha256sums=('3d73dc682176138cba995b6954eeafdd4507097313f1b2102a4d5ed905a3eee6')
+sha256sums=('9e972f015d9b31b3283bf842a32d270096224d127c13a6e79450f4f0452de5e7')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
