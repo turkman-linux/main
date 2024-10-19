@@ -14,6 +14,7 @@ makedepends=()
 sha256sums=('a0a35e0a28fe8b5aa2ffd383dcfe43ea607eb6dc8e3bff1c24b37980b31ca25e'
             'SKIP')
 group=(app.container)
+dontstrip="31"
 uses=()
 arch=('x86_64')
 
