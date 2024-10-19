@@ -20,6 +20,10 @@ arch=('x86_64')
 
 cd debian-subsystem-$version
 
+export CFLAGS=""
+export CXXFLAGS=""
+
+
 build () {
     # parallel job build and install is not supported.
     make
