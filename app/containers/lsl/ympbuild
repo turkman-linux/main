@@ -9,20 +9,15 @@ maintainer='sulincix'
 license=('GPLv3')
 source=("https://gitlab.com/sulincix/debian-subsystem/-/archive/1.0.1/debian-subsystem-$version.tar.gz"
         "lsl.sysconf")
-depends=(pam)
+depends=(pam make perl)
 makedepends=()
-sha256sums=('a0a35e0a28fe8b5aa2ffd383dcfe43ea607eb6dc8e3bff1c24b37980b31ca25e'
+sha256sums=('5ac2d03b363650f50e51bd8232648d401310f67aee8432ffe61b1e3a6f3881a0'
             'SKIP')
 group=(app.container)
-dontstrip="31"
 uses=()
 arch=('x86_64')
 
 cd debian-subsystem-$version
-
-export CFLAGS=""
-export CXXFLAGS=""
-
 
 build () {
     # parallel job build and install is not supported.
