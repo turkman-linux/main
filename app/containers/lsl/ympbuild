@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='lsl'
+release='1'
+version='1.0.1'
+url='https://sulincix/debian-subsystem'
+description='Linux subsystem for linux'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://gitlab.com/sulincix/debian-subsystem/-/archive/1.0.1/debian-subsystem-$version.tar.gz"
+        "lsl.sysconf")
+depends=(pam)
+makedepends=()
+sha256sums=('a0a35e0a28fe8b5aa2ffd383dcfe43ea607eb6dc8e3bff1c24b37980b31ca25e'
+            'SKIP')
+group=(app.container)
+uses=()
+arch=('x86_64')
+
+cd debian-subsystem-$version
+
+build () {
+    # parallel job build and install is not supported.
+    make
+}
+
+package () {
+    make install DESTDIR=$DESTDIR DISTRO=debian
+    # install sysconf file
+    mkdir -p $DESTDIR/etc/sysconf.d/
+    install ../lsl.sysconf $DESTDIR/etc/sysconf.d/lsl
+}
+

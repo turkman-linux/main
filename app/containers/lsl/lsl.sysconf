@@ -1,0 +1,7 @@
+#!/bin/sh
+if ! ls -la /bin/lsl | grep "^...s" >/dev/null ; then
+    chmod 4755 /bin/lsl-sandbox
+fi
+if ! ls -la /bin/lsl-sandbox | grep "^...s" >/dev/null ; then
+    chmod 4755 /bin/lsl-sandbox
+fi
