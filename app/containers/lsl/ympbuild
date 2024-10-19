@@ -11,7 +11,7 @@ source=("https://gitlab.com/sulincix/debian-subsystem/-/archive/1.0.1/debian-sub
         "lsl.sysconf")
 depends=(pam make perl)
 makedepends=()
-sha256sums=('5ac2d03b363650f50e51bd8232648d401310f67aee8432ffe61b1e3a6f3881a0'
+sha256sums=('c32c2f3ff15ff39ce0ecca851f1f2920985b9fd855e83d20282be7640abc3658'
             'SKIP')
 group=(app.container)
 uses=()
