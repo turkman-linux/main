@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='bubblewrap'
-release='1'
-version='0.8.0'
+release='2'
+version='0.10.0'
 url='https://containers/bubblewrap'
 description='Unprivileged sandboxing tool, namespaces-powered chroot-like solution'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/containers/bubblewrap/archive/refs/tags/v$version.tar.gz")
 depends=(libcap)
 makedepends=()
-md5sums=('283b9896a10cb17373053d353345a757')
+sha256sums=('2108fafedeec4df2c451119606c191b0bfbd88328972dbb04fb8eb56081a724f')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
