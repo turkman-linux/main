@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='spdlog'
+release='1'
+version='1.15.0'
+url='https://github.com/gabime/spdlog'
+description='Fast C++ logging library.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/gabime/spdlog/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('9962648c9b4f1a7bbc76fd8d9172555bad1871fdb14ff4f842ef87949682caa5')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build -G Ninja\
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DSPDLOG_BUILD_SHARED=ON
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+

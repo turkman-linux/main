@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='gtk-layer-shell'
+release='1'
+version='0.9.0'
+url='https://github.com/wmww/gtk-layer-shell'
+description='A library to create panels and other desktop components for Wayland using the Layer Shell protocol'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/wmww/gtk-layer-shell/archive/refs/tags/v$version.tar.gz")
+depends=(gtk3)
+makedepends=()
+sha256sums=('3809e5565d9ed02e44bb73787ff218523e8760fef65830afe60ea7322e22da1c')
+group=(gui.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build \
+       --prefix=/usr
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+

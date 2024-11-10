@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='fmt'
+release='1'
+version='11.0.2'
+url='https://github.com/fmtlib/fmt'
+description='A modern formatting library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/fmtlib/fmt/archive/refs/tags/$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('6cb1e6d37bdcb756dbbe59be438790db409cdb4868c66e888d5df9f13f7c027f')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build -G Ninja\
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBUILD_SHARED_LIBS=ON \
+      -Wno-dev
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
