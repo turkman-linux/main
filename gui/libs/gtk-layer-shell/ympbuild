@@ -19,7 +19,8 @@ cd $name-$version
 
 setup () {
     meson setup build \
-       --prefix=/usr
+       --prefix=/usr \
+       -Dexamples=true
 }
 
 build () {
