@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='tomlplusplus'
+release='1'
+version='3.4.0'
+url='https://github.com/marzer/tomlplusplus'
+description='Header-only TOML config file parser and serializer for C++17.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/marzer/tomlplusplus/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('8517f65938a4faae9ccf8ebb36631a38c1cadfb5efa85d9a72e15b9e97d25155')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build \
+        --prefix=/usr
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+

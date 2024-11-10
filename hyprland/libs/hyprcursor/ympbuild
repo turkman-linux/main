@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='hyprcursor'
+release='1'
+version='0.1.10'
+url='https://github.com/hyprwm/hyprcursor'
+description='The hyprland cursor format, library and utilities.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/hyprwm/hyprcursor/archive/refs/tags/v$version.zip")
+depends=(librsvg libzip tomlplusplus)
+makedepends=()
+sha256sums=('887afdcb96d0617fba228ff18a8b37e53a2b9629b809ef84f69972a7c2da7f57')
+group=(hyprland.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+

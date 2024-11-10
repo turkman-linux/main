@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='hyprwayland-scanner'
+release='1'
+version='0.4.2'
+url='https://github.com/hyprwm/hyprlang'
+description='A Hyprland implementation of wayland-scanner, in and for C++.'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/hyprwm/hyprwayland-scanner/archive/refs/tags/v$version.tar.gz")
+depends=(hyprutils glib pugixml)
+makedepends=()
+sha256sums=('2f1e54336ed6cc3dbab5ad5279f2520eae1a90fc80852ab005a8250a5a15d1ac')
+group=(hyprland.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+

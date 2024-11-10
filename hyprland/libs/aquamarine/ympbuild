@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='aquamarine'
+release='1'
+version='0.4.4'
+url='https://github.com/hyprwm/aquamarine'
+description='Aquamarine is a very light linux rendering backend library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/hyprwm/aquamarine/archive/refs/tags/v$version.tar.gz")
+depends=(libglvnd libglvnd libinput mesa seatd wayland)
+makedepends=()
+sha256sums=('2ac672bce27ac8a2f2d236582d49a2b6bbe243e9a7a5d06881e636607e897110')
+group=(hyprland.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+      -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+

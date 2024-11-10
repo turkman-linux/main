@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libinput'
 release='4'
-version='1.25.0'
+version='1.26.2'
 url='https://gitlab.freedesktop.org/libinput/libinput'
 description='Input device management and event handling library'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.freedesktop.org/libinput/libinput/-/archive/$version/libinput-$version.tar.gz")
 depends=(eudev mtdev libevdev)
 makedepends=()
-md5sums=('fc582c553e40be99bea49adf6d4aa669')
+sha256sums=('5c1c4150f217fea1db2d1fd88e2607b2f1928cfde65c34da65a9f24dcfd69464')
 group=(dev.libs)
 uses=()
 uses_extra=(wacom)

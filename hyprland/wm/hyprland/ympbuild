@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+name='hyprland'
+release='1'
+version='0.45.0'
+url='https://github.com/hyprwm/hyprland'
+description="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/hyprwm/Hyprland/releases/download/v$version/source-v$version.tar.gz")
+depends=(hyprcursor libXcursor libglvnd libinput libxcb libxcb libxkbcommon mesa pango util-linux xcb-util-errors xcb-util-wm)
+makedepends=()
+sha256sums=('9690b5c0c10fdc277ea7988a28318941dde854260ede4339634dbf2bba8192a3')
+group=(hyprland.wm)
+uses=()
+arch=('x86_64')
+
+cd hyprland-source
+
+setup () {
+    meson setup build \
+      --prefix=/usr \
+     -Dsystemd=disabled
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+    # fix absolute path symlink
+    rm -f $DESTDIR/usr/bin/hyprland
+    ln -s Hyprland $DESTDIR/usr/bin/hyprland
+}
+

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='hyprutils'
+release='1'
+version='0.2.4'
+url='https://github.com/hyprwm/hyprutils'
+description='Hyprland utilities library used across the ecosystem'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/hyprwm/hyprutils/archive/refs/tags/v$version.zip")
+depends=(pixman)
+makedepends=()
+sha256sums=('acba6e5153a9e3aaa9eda473ee4f39c302f6eb872254732a731cd6179457d546')
+group=(hyprland.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+
