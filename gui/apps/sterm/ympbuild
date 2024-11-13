@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='sterm'
+release='1'
+version='2.3'
+url='https://gitlab.com/sulincix/sterm'
+description='Sulincix Terminal'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://gitlab.com/sulincix/sterm/-/archive/$version/sterm-$version.tar.gz")
+depends=(gtk3 vte3)
+makedepends=()
+sha256sums=('8eb0ce48c67d67da7f1dbeeeaa8e7efd1dbe6db7c3f7945e92508c2e0ca56c60')
+group=(gui.apps)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    meson setup build \
+         --prefix=/usr
+}
+
+build () {
+    ninja -C build $jobs
+}
+
+package () {
+    ninja -C build install $jobs
+}
+
