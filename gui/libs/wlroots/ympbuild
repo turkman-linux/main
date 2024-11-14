@@ -8,7 +8,10 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/$version/wlroots-$version.tar.gz")
-depends=(seatd hwdata eudev libxkbcommon wayland xcb-util-wm)
+depends=(seatd hwdata eudev libxkbcommon wayland xcb-util-wm
+         libglvnd libglvnd libinput libxcb libxcb mesa
+         pixman vulkan-loader xcb-util-errors xcb-util-renderutil
+)
 makedepends=()
 sha256sums=('3c2525528ecb5cd64cf410b2d6d140d4fc28d4a5b2ee06bedab3f0154ebc50b4')
 group=(gui.libs)
