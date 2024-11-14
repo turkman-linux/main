@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 name='util-linux'
-release='3'
-version='2.40'
+release='4'
+version='2.40.2'
+_version='2.40'
 url='https://en.wikipedia.org/wiki/Util-linux'
 description='Various useful Linux utilities'
 email='kurth4cker@tutanota.com'
 maintainer='kurth4cker'
 license=('GPLv3' 'GPLv2' 'LPGL-2.1' 'BSD-4' 'MIT')
-source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v${version}/util-linux-${version}.tar.gz")
+source=("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v${_version}/util-linux-${version}.tar.gz")
 depends=(libcap-ng)
-sha256sums=('2a51d08cb71fd8e491e0cf633032c928f9a2848417f8441cb8cf7ef9971de916')
+sha256sums=('7bec316b713a14c6be1a5721aa0e56a3b6170277329e6e1f1a56013cc91eece0')
 arch=('x86_64')
 group=(sys.apps)
 uses_extra=(python udev)
@@ -18,27 +19,31 @@ udev_depends=(eudev)
 
 cd $name-$version
 
+export CFLAGS="$CFLAGS -D_PATH_LOGIN=\\\"/usr/bin/login\\\""
+export CXXFLAGS="$CXXFLAGS -D_PATH_LOGIN=\\\"/usr/bin/login\\\""
+
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
-	--libdir=/usr/lib64 \
-	--bindir=/usr/bin \
-	--enable-shared \
-	--enable-static \
-	--disable-su \
-	--disable-runuser \
-	--disable-chfn-chsh \
-	--disable-login \
-	--disable-sulogin \
-	--disable-makeinstall-chown \
-	--disable-makeinstall-setuid \
-	--disable-pylibmount \
-	--disable-raw \
-	--without-systemd \
-	--without-libuser \
-	--without-utempter \
-	--without-econf \
-	$(use_opt python --with-python --without-python) \
-	$(use_opt udev --with-udev --without-udev)
+      --libdir=/usr/lib64 \
+      --bindir=/usr/bin \
+      --enable-shared \
+      --enable-static \
+      --disable-su \
+      --disable-runuser \
+      --disable-chfn-chsh \
+      --disable-login \
+      --disable-sulogin \
+      --disable-makeinstall-chown \
+      --disable-makeinstall-setuid \
+      --disable-pylibmount \
+      --disable-raw \
+      --without-systemd \
+      --without-libuser \
+      --without-utempter \
+      --without-econf \
+      $(use_opt python --with-python --without-python) \
+      $(use_opt udev --with-udev --without-udev)
 }
 
 build(){
