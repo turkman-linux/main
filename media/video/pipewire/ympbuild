@@ -8,11 +8,13 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/$version/pipewire-$version.tar.gz"
+        "pipewire.env"
         "pipewire.desktop"
         "pipewire-launcher.sh")
 depends=(lilv libpulse alsa-lib dbus)
 makedepends=()
 sha256sums=('b88b9c94548128f0078dc6d376389c2447c6c324ee6dda20d9037bc77a9dd4ee'
+         'SKIP'
          'SKIP'
          'SKIP')
 group=(media.video)
@@ -45,9 +47,10 @@ build(){
 
 package(){
     ninja -C build install
-    mkdir -p ${DESTDIR}/usr/libexec ${DESTDIR}/etc/xdg/autostart/
+    mkdir -p ${DESTDIR}/usr/libexec ${DESTDIR}/etc/xdg/autostart/ ${DESTDIR}/etc/profile.d
     # pipewire launcher from alpine linux
     install ../pipewire-launcher.sh ${DESTDIR}/usr/libexec/pipewire-launcher
+    install ../pipewire.env ${DESTDIR}/etc/profile.d/pipewire.sh
     install ../pipewire.desktop ${DESTDIR}/etc/xdg/autostart/
 }
 
