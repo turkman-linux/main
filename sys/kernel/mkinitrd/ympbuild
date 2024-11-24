@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='mkinitrd'
+release='1'
+version='0.0.1'
+url='https://gitlab.com/turkman/devel/sources/mkinitrd'
+description='Initial ramdisk system from turkman linux'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://gitlab.com/turkman/devel/sources/mkinitrd/-/archive/$version/mkinitrd-$version.tar.gz"
+        "mkinitrd.sysconf")
+depends=(eudev findutils coreutils)
+makedepends=()
+sha256sums=('21811112b57f69439240d9658ebdf2c078b52d7762d4c50b718cd3693b5d5c16'
+            'SKIP')
+uses=()
+group=(sys.kernel)
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build \
+      --bindir=/bin
+}
+
+package(){
+    ninja -C build install
+    # sysconf trigger
+    mkdir -p $DESTDIR/etc/sysconf.d
+    install ../mkinitrd.sysconf $DESTDIR/etc/sysconf.d/mkinitrd
+}

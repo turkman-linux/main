@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='live-boot'
-release='3'
-version='1.1'
-url='https://gitlab.com/turkman'
+release='4'
+version='2.0'
+url='https://gitlab.com/turkman/devel/sources/live-boot'
 description='initramfs tools live hooks'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/live-boot/-/archive/$version/live-boot-$version.tar.gz")
-depends=(initramfs-tools)
+depends=(mkinitrd)
 makedepends=()
-sha256sums=('d4ede85d23ede6f5e82c95170936900b0801d5ac4c136f34c81f1f6dec73b2f2')
+sha256sums=('f356639410bc9d2a097266da13b85d111369c97cf8aa6dc6f7dea03e77ced5de')
 group=(sys.kernel)
 uses=()
 arch=('x86_64')

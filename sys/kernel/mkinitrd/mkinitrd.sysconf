@@ -1,0 +1,9 @@
+#!/bin/sh
+if grep "boot=live" /proc/cmdline >/dev/null ; then
+    exit 0
+fi
+for kernel in $(ls /lib/modules) ; do
+    if [ ! -f /boot/initrd.img-$kernel ] ; then
+        mkinitrd -u -k $kernel
+    fi
+done
