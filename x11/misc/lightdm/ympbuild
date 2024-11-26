@@ -8,10 +8,12 @@ email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://salsa.debian.org/xfce-extras-team/lightdm/-/archive/debian/$version-1/lightdm-debian-$version-1.tar.gz"
+        "lightdm-session.sh"
         "lightdm.initd")
 depends=(libX11 pam libxklavier xorg-server libxcb glib libgcrypt libXdmcp xmodmap xrdb libXi)
 makedepends=(gobject-introspection vala intltool yelp-tools)
-md5sums=('2b845ca384f042f21b646a76c52345f0'
+sha256sums=('10eec5e47c9546f934f568591140204db2ea2241f345685bb8eeb35da05c83e5'
+         'SKIP'
          'SKIP')
 group=(x11.misc)
 uses=()
@@ -28,7 +30,7 @@ setup(){
             --disable-tests \
             --disable-gtk-doc \
             --enable-yelp-tools \
-            --enable-qt5-base \
+            --disable-qt5-base \
             --with-greeter-user=lightdm \
             --with-greeter-session=lightdm-gtk-greeter
 }
@@ -49,8 +51,7 @@ package(){
     mkdir -p $DESTDIR/etc/init.d
     install ../lightdm.initd $DESTDIR/etc/init.d/lightdm
     # generate lightdm-session file
-    echo '#!/bin/sh' > $DESTDIR/usr/bin/lightdm-session
-    echo 'exec /etc/X11/xinit/Xsession $@' >> $DESTDIR/usr/bin/lightdm-session
+    install ../lightdm-session.sh $DESTDIR/usr/bin/lightdm-session
     # fix pam config
     sed -i "s/systemd/elogind/g" $DESTDIR/etc/pam.d/*
 }
