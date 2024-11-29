@@ -1,23 +1,5 @@
 #!/bin/sh
 
-# backup envs
-p=$PATH
-h=$HOME
-u=$USER
-d=$(dbus-launch)
-# erase envs
-unset $(env | while read line ; do
-    echo "${line/=*/}"
-done)
-# restore envs
-export PATH="$p"
-export HOME="$h"
-export USER="$u"
-
-export PIPEWIRE_RUNTIME_DIR=$HOME/.config/pipewire
-export XDG_RUNTIME_DIR=$HOME/.config
-export $d
-
 # We need to kill any existing pipewire instance to restore sound
 pkill -u "${USER}" -fx /usr/bin/pipewire-pulse 1>/dev/null 2>&1
 pkill -u "${USER}" -fx /usr/bin/pipewire-media-session 1>/dev/null 2>&1
@@ -37,6 +19,4 @@ elif [ -x /usr/bin/pipewire-media-session ]; then
 	exec /usr/bin/pipewire-media-session &
 fi
 
-if [ -f "/usr/share/pipewire/pipewire-pulse.conf" ] ; then
-    exec /usr/bin/pipewire-pulse &
-fi
+[ -f "/usr/share/pipewire/pipewire-pulse.conf" ] && exec /usr/bin/pipewire-pulse &
