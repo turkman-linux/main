@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='nano'
-release='3'
-version='8.0'
+release='4'
+version='8.2'
 url='https://www.nano-editor.org/download.php'
 description='Pico editor clone with enhancements'
 email='parduscix@yandex.ru'
@@ -15,7 +15,7 @@ source=("https://www.nano-editor.org/dist/v8/nano-$version.tar.xz"
         "icon.svg")
 depends=(file zlib ncurses bzip2)
 makedepends=()
-sha256sums=('c17f43fc0e37336b33ee50a209c701d5beb808adc2d9f089ca831b40539c9ac4'
+sha256sums=('d5ad07dd862facae03051c54c6535e54c7ed7407318783fcad1ad2d7076fffeb'
             '9e836760f61473a7a6ae28ac5e10b8d5b26f0415d1bd0c85d56d9b09e27a9fe1'
             'SKIP'
             'SKIP'
@@ -27,7 +27,14 @@ group=(app.editor)
 
 cd $name-$version
 
+prepare(){
+    # fake makeinfo command
+    echo > ~/makeinfo
+    chmod 755 ~/makeinfo
+}
+
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --sysconfdir=/etc \
         --libdir=/usr/lib64/ \
