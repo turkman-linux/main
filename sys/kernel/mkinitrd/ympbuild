@@ -11,7 +11,7 @@ source=("https://gitlab.com/turkman/devel/sources/mkinitrd/-/archive/$version/mk
         "mkinitrd.sysconf")
 depends=(eudev findutils coreutils)
 makedepends=()
-sha256sums=('34ec88191fbadbc2e083786d22fffb8a8fd4eacf653c38c0a48bafd90676fc30'
+sha256sums=('7b60cd7977d0b0c43873d35ef740f3deab8832fd3c3cfe03a41cfbb0e3355f75'
             'SKIP')
 uses=()
 group=(sys.kernel)
