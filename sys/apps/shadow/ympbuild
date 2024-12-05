@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='shadow'
-release='1'
-version='4.13'
+release='2'
+version='4.16.0'
 url='https://github.com/shadow-maint/shadow/releases'
 description='Password and account management tool suite with support for shadow files and PAM'
 email='aliriza.keskin@pardus.org.tr'
@@ -13,7 +13,7 @@ source=("https://github.com/shadow-maint/shadow/releases/download/$version/shado
         "system-auth")
 depends=(pam libxcrypt acl attr)
 makedepends=( )
-md5sums=('b1ab01b5462ddcf43588374d57bec123'
+sha256sums=('b78e3921a95d53282a38e90628880624736bf6235e36eea50c50835f59a3530b'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -35,9 +35,11 @@ setup(){
         --with-fcaps \
         --with-libpam \
         --without-group-name-max-length \
-        --with-bcrypt \
+        --without-selinux \
+        --without-libbsd \
         --with-yescrypt \
-        --without-selinux
+        --without-bcrypt \
+        --disable-nls
 }
 
 build(){

@@ -1,0 +1,4 @@
+#!/bin/sh
+if ! ls -la /sbin/unix_chkpwd | grep "^...s" >/dev/null ; then
+    chmod 4755 /sbin/unix_chkpwd
+fi

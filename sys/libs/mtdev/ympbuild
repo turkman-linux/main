@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mtdev'
-release='1'
-version='1.1.6'
+release='2'
+version='1.1.7'
 url='https://bitmath.org/code/mtdev/'
 description='Multitouch Protocol Translation Library'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://bitmath.org/code/mtdev/mtdev-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('add648e38e26167ecdf78f0cd527a672')
+sha256sums=('a55bd02a9af4dd266c0042ec608744fff3a017577614c057da09f1f4566ea32c')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
@@ -18,6 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
+    autoreconf -vfi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }

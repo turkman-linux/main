@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 name='pam'
-release='2'
-version='1.6.0'
+release='3'
+version='1.7.0'
 url='https://github.com/linux-pam/linux-pam'
 description='PAM (Pluggable Authentication Modules) library'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/linux-pam/linux-pam/releases/download/v$version/Linux-PAM-$version.tar.xz")
+source=("https://github.com/linux-pam/linux-pam/releases/download/v$version/Linux-PAM-$version.tar.xz"
+        "pam.sysconf")
 depends=(libtirpc libxcrypt libnsl)
 makedepends=( )
-md5sums=('41a10af5fc35a7be472ae9864338e64a')
+sha256sums=('57dcd7a6b966ecd5bbd95e1d11173734691e16b68692fa59661cdae9b13b1697'
+            'SKIP')
 uses=()
 arch=('x86_64')
 group=(sys.libs)
@@ -18,23 +20,22 @@ group=(sys.libs)
 cd Linux-PAM-$version
 
 setup(){
-    ./configure --prefix=/usr \
-        --sbindir=/sbin \
+    meson setup build \
+         --prefix=/usr \
         --libdir=/lib64 \
-        --enable-securedir=/lib64/security \
-        --enable-static \
-        --enable-shared \
-        --disable-selinux \
-        --disable-nls
+        --sbindir=/sbin \
+        -Ddocs=disabled
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install $jobs
+    ninja -C build install $jobs
     # remove systemd stuff
     rm -rf ${DESTDIR}/usr/lib/systemd/
+    mkdir -p ${DESTDIR}/etc/sysconf.d
+    install ../pam.sysconf ${DESTDIR}/etc/sysconf.d/pam
 }
 

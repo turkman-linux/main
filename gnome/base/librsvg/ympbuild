@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='librsvg'
-release='3'
-version='2.57.0'
+release='4'
+version='2.59.2'
 url='https://github.com/oaken-source/librsvg-og'
 description='Scalable Vector Graphics (SVG) rendering library '
 email='bayramk@gmail.com'
@@ -10,8 +10,8 @@ license=('GPLv3')
 #source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
 source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
 depends=(libcroco gobject-introspection pango cairo fontconfig libX11 libXext libXrender libxcb gdk-pixbuf)
-makedepends=()
-md5sums=('8b700dd04c10bf65dbc6824d2780561d')
+makedepends=(rust)
+sha256sums=('ecd293fb0cc338c170171bbc7bcfbea6725d041c95f31385dc935409933e4597')
 group=(gnome.base)
 uses=()
 arch=('x86_64')
@@ -19,16 +19,18 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    #autoreconf -fvi
-    ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+    meson setup build \
+        --prefix=/usr \
+        -Dintrospection=enabled \
+        -Dpixbuf=enabled\
+        -Dpixbuf-loader=enabled \
+        -Dvala=enabled
 }
-
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install DESTDIR="$DESTDIR" $jobs
+    ninja -C build install DESTDIR="$DESTDIR" $jobs
 }
 

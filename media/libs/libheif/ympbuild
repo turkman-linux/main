@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libheif'
-release='2'
-version='1.17.5'
+release='3'
+version='1.19.5'
 url='https://www.libde265.org/'
 description='ISO/IEC 23008-12:2017 HEIF file format decoder and encoder'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/strukturag/libheif/releases/download/v${version}/libheif-${version}.tar.gz")
 depends=(libaom libpng gdk-pixbuf x265)
 makedepends=(cmake libjpeg-turbo)
-md5sums=('380cb683400c0fb87c13c68ec4e6a90b')
+sha256sums=('d3cf0a76076115a070f9bc87cf5259b333a1f05806500045338798486d0afbaf')
 group=(media.libs)
 uses=()
 arch=('x86_64')

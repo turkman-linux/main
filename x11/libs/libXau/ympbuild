@@ -18,6 +18,7 @@ group=(x11.libs)
 cd $name-$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
         --enable-static \

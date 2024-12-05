@@ -17,6 +17,7 @@ group=(x11.misc)
 cd $name-$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }

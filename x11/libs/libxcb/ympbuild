@@ -18,13 +18,14 @@ group=(x11.libs)
 cd $name-$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
-	--enable-shared \
-	--enable-static \
-	--disable-devel-docs \
-	--without-launchd \
-	--without-doxygen
+        --enable-shared \
+        --enable-static \
+        --disable-devel-docs \
+        --without-launchd \
+        --without-doxygen
 }
 
 build(){

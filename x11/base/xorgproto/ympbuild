@@ -18,10 +18,11 @@ group=(x11.base)
 cd $name-$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
-	--without-xmlto \
-	--without-xsltproc
+        --without-xmlto \
+        --without-xsltproc
 }
 
 build(){
