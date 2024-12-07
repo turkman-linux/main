@@ -10,3 +10,7 @@ depend() {
 	need dbus localmount hostname
 }
 
+start_pre() {
+    modprobe uinput || true
+    modprobe uhid || true
+}

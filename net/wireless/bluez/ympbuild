@@ -1,29 +1,23 @@
 #!/usr/bin/env bash
 name='bluez'
-release='4'
-version='5.72'
+release='5'
+version='5.79'
 url='https://www.bluez.org'
 description='Daemons for the bluetooth protocol stack'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv2')
 source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${version}.tar.xz"
-        "bluez-5.69-obexd_without_systemd-1.patch"
         "bluetooth.initd")
 depends=(glib)
 makedepends=(dbus libical json-c alsa-lib ell)
-md5sums=('fcacd4d6d65f7da141977a2beb1ba78f'
-         'SKIP'
+sha256sums=('4164a5303a9f71c70f48c03ff60be34231b568d93a9ad5e79928d34e6aa0ea8a'
          'SKIP')
 group=(net.wireless)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
-
-prepare(){
-    patch -Np1 -i ../bluez-5.69-obexd_without_systemd-1.patch
-}
 
 setup(){
     ./configure --prefix=/usr \
@@ -32,7 +26,11 @@ setup(){
         --localstatedir=/var  \
         --enable-library      \
         --disable-manpages    \
-        --disable-systemd
+        --disable-systemd \
+		    --enable-deprecated \
+        --enable-hid2hci \
+        --enable-mesh \
+        --enable-sixaxis
 }
 
 build(){
