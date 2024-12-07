@@ -1,9 +1,7 @@
-# see config.toml.example for more possible options
-# See the 8.4 book for an old example using shipped LLVM
-# e.g. if not installing clang, or using a version before 13.0
+profile = "dist"
 
-# tell x.py to not keep printing an annoying warning
-changelog-seen = 2
+# see src/bootstrap/src/utils/change_tracker.rs
+change-id = 131075
 
 [llvm]
 # by default, rust will build for a myriad of architectures
@@ -35,14 +33,26 @@ prefix = "/usr"
 docdir = "share/doc/rustc-@version@"
 
 [rust]
+codegen-units-std = 1
+debuginfo-level = 1
+debuginfo-level-std = 2
 channel = "stable"
 description = ""
+rpath = false
+frame-pointers = true
+lld = false
+use-lld = "external"
+llvm-bitcode-linker = false
+deny-warnings = false
+backtrace-on-ice = true
+remap-debuginfo = false
+jemalloc = true
 
 # BLFS used to not install the FileCheck executable from llvm,
 # so disabled codegen tests.  The assembly tests rely on FileCheck
 # and cannot easily be disabled, so those will anyway fail if
 # FileCheck has not been installed.
-#codegen-tests = false
+codegen-tests = false
 
 [target.x86_64-unknown-linux-gnu]
 # NB the output of llvm-config (i.e. help options) may be
@@ -53,3 +63,4 @@ llvm-config = "/usr/bin/llvm-config"
 # NB the output of llvm-config (i.e. help options) may be
 # dumped to the screen when config.toml is parsed.
 llvm-config = "/usr/bin/llvm-config"
+
