@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+name='cargo-c'
+release='1'
+version='0.10.7'
+url='https://github.com/lu-zero/cargo-c'
+description='cargo applet to build and install C-compatible libraries'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=("https://github.com/lu-zero/cargo-c/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('c4532dd2bf23769df5f64649d5b0c037fb2a29467c74d16a54bad3054d9f3f3a')
+group=(dev.util)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    cargo fetch
+}
+
+build () {
+    cargo build --release --frozen
+}
+
+package () {
+    install -Dm755 target/release/cargo-* -t "$DESTDIR"/usr/bin/
+}
+

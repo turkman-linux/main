@@ -10,7 +10,7 @@ license=('GPLv3')
 #source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
 source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
 depends=(libcroco gobject-introspection pango cairo fontconfig libX11 libXext libXrender libxcb gdk-pixbuf)
-makedepends=(rust)
+makedepends=(rust cargo-c vala)
 sha256sums=('ecd293fb0cc338c170171bbc7bcfbea6725d041c95f31385dc935409933e4597')
 group=(gnome.base)
 uses=()
@@ -18,9 +18,15 @@ arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    # convert CRFL files to normal files
+    find -type f -exec sed -i "s/\r$//g" {} \;
+}
+
 setup(){
     meson setup build \
         --prefix=/usr \
+        -Ddocs=disabled \
         -Dintrospection=enabled \
         -Dpixbuf=enabled\
         -Dpixbuf-loader=enabled \
@@ -31,6 +37,6 @@ build(){
 }
 
 package(){
-    ninja -C build install DESTDIR="$DESTDIR" $jobs
+    ninja -C build install $jobs
 }
 
