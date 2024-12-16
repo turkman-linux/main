@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cinnamon-control-center'
-release='3'
-version='6.2.0'
+release='4'
+version='6.4.1'
 url='https://github.com/linuxmint/cinnamon-control-center'
 description='The Control Center for Cinnamon'
 email='brkt8khn@gmail.com'
 maintainer='brkt8khn'
 license=('GPLv3')
 source=("https://github.com/linuxmint/cinnamon-control-center/archive/refs/tags/${version}.tar.gz")
-depends=(cinnamon-settings-daemon cinnamon-menus colord libgnomekbd)
+depends=(cinnamon-settings-daemon cinnamon-menus colord libgnomekbd networkmanager libnma)
 makedepends=(meson)
-sha256sums=('f3e5caf03c4d629fbaf883caa816fe799685438d650012621e51457583000d07')
+sha256sums=('a68886524ce3f18952bc79d28061b71fc48a24e5dac5175874e3d390425bad92')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')

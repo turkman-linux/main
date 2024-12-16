@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='cinnamon-menus'
-release='3'
-version='6.2.0'
+release='4'
+version='6.4.0'
 url='https://github.com/linuxmint/cinnamon'
 description='Linux desktop which provides advanced innovative features and a traditional user experience'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://github.com/linuxmint/cinnamon-menus/archive/refs/tags/${version}.tar.gz")
 depends=(glib)
 makedepends=(gobject-introspection meson)
-sha256sums=('95170602c5291db6f5031dfc245ebf61872ff93860fb1fc18ec433bec638cf16')
+sha256sums=('9cad5ac61900492f66c91810fd13bed9dc37b49ec0b9bbc0bbe9ebf48ee45452')
 group=(cinnamon.base)
 uses=()
 arch=('x86_64')

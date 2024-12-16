@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-sass'
+release='1'
+version='0.23.0'
+url='https://github.com/sass/libsass-python'
+description='Python sass library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/sass/libsass-python/archive/refs/tags/$version.tar.gz")
+depends=(python libsass)
+makedepends=()
+sha256sums=('4bff7819756f52f6e4592f03f205104d1ca431088d9452aed5042f89a36f9873')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd libsass-python-$version
+
+export SYSTEM_SASS=1
+
+build(){
+    python -m build --wheel
+}
+
+package(){
+    python -m installer --destdir="${DESTDIR}" dist/*.whl
+}
+
