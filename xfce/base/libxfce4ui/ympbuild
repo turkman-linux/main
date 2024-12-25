@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='libxfce4ui'
-release='2'
-version='4.18.6'
-_version='4.18'
+release='3'
+version='4.20.0'
+_version='4.20'
 url='https://www.xfce.org/'
 description='Widgets library for the Xfce desktop environment'
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/libxfce4ui/${_version}/libxfce4ui-${version}.tar.bz2")
 depends=(gtk3 xfconf libxfce4util)
 makedepends=(gobject-introspection intltool vala)
-sha256sums=('77dd99206cc8c6c7f69c269c83c7ee6a037bca9d4a89b1a6d9765e5a09ce30cd')
+sha256sums=('75e8996984f20375aadecd5c16f5147c211ed0bd26d7861ab0257561eb76eaee')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -23,8 +23,7 @@ setup(){
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
 		--sbindir=/usr/bin \
-		--localstatedir=/var \
-		--disable-debug 
+		--localstatedir=/var
 }
 
 build(){

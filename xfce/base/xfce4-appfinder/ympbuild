@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='xfce4-appfinder'
-release='2'
-version='4.18.1'
-_version='4.18'
+release='3'
+version='4.20.0'
+_version='4.20'
 url='https://docs.xfce.org/xfce/xfce4-appfinder/start'
 description='Application launcher and finder'
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ license=('GPLv3')
 source=("https://archive.xfce.org/src/xfce/xfce4-appfinder/${_version}/xfce4-appfinder-${version}.tar.bz2")
 depends=(garcon  libxfce4ui xfconf)
 makedepends=(intltool)
-sha256sums=('9854ea653981be544ad545850477716c4c92d0c43eb47b75f78534837c0893f9')
+sha256sums=('82ca82f77dc83e285db45438c2fe31df445148aa986ffebf2faabee4af9e7304')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -22,8 +22,7 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
-	    --localstatedir=/var \
-		--disable-debug 
+	    --localstatedir=/var
 }
 
 build(){

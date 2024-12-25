@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='libxfce4windowing'
+release='1'
+version='4.20.0'
+_version='4.20'
+url='https://www.xfce.org/'
+description='Widgets library for the Xfce desktop environment'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPLv2')
+source=("https://archive.xfce.org/src/xfce/libxfce4windowing/${_version}/libxfce4windowing-${version}.tar.bz2")
+depends=(glib gobject-introspection	gtk3 libdisplay-info libwnck3
+        libX11 libXrandr wayland wlroots)
+makedepends=(gobject-introspection intltool vala xfce4-dev-tools)
+sha256sums=('56f29b1d79606fb00a12c83ef4ece12877d2b22bf1acaaff89537fbe8e939f68')
+group=(xfce.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup(){
+    meson setup build \
+        --prefix=/usr
+}
+
+build(){
+    ninja -C build $jobs
+}
+
+package(){
+    ninja -C build install $jobs
+}
+

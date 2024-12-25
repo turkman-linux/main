@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='thunar-volman'
-release='1'
-version='4.18.0'
-_version='4.18'
+release='2'
+version='4.20.0'
+_version='4.20'
 url='https://docs.xfce.org/xfce/thunar/thunar-volman'
 description='Automatic management of removable drives and media for Thunar'
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/thunar-volman/${_version}/thunar-volman-${version}.tar.bz2")
 depends=( hicolor-icon-theme libxfce4ui thunar)
 makedepends=(intltool)
-sha256sums=('93b75c7ffbe246a21f4190295acc148e184be8df397e431b258d0d676e87fc65')
+sha256sums=('b0dad852959b515b8fbfd1ed552e362340347d26d5246e7f1b973027131eb1da')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -22,8 +22,7 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--disable-debug 
+		--localstatedir=/var
 }
 
 build(){
