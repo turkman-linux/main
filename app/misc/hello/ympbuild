@@ -18,6 +18,7 @@ dontstrip="31"
 cd $name-$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64
 }
