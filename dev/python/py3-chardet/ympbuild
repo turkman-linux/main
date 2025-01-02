@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-chardet'
+release='1'
+version='5.2.0'
+url='https://github.com/chardet/chardet'
+description='https://github.com/chardet/chardet/tags'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/chardet/chardet/archive/refs/tags/$version.tar.gz")
+depends=(python)
+makedepends=(py3-setuptools)
+sha256sums=('07249fb7bdf1fc669e2fb0eba58afe18fe6c5e3187ee806f22969f0e809a32dd')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "chardet"-$version
+
+
+build(){
+    python3 -m build
+}
+
+package(){
+    python3 -m installer --destdir ${DESTDIR} dist/*.whl
+}
+
+

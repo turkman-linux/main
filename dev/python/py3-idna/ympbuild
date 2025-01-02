@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+name='py3-idna'
+release='1'
+version='3.10'
+url='https://github.com/kjd/idna'
+description=' Internationalized Domain Names for Python (IDNA 2008 and UTS #46)'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('MIT')
+source=("https://github.com/kjd/idna/archive/refs/tags/v$version.tar.gz")
+depends=(python)
+makedepends=(py3-setuptools)
+sha256sums=('04f6b013c384deca20a165a4cdf36823465a81c2bb914c40b543802d39e1cb1a')
+group=(dev.python)
+uses=()
+arch=('x86_64')
+
+cd "idna"-$version
+
+
+build(){
+    python3 -m build
+}
+
+package(){
+    python3 -m installer --destdir ${DESTDIR} dist/*.whl
+}
+
+
