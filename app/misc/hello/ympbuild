@@ -17,10 +17,19 @@ dontstrip="31"
 
 cd $name-$version
 
+prepare(){
+    echo "#!/bin/busybox true" > $HOME/makeinfo
+    chmod 755 $HOME/makeinfo
+}
+
 setup(){
     autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64
+
+    # do not generate po files
+    echo -e "%:" > po/Makefile
+    echo -e "\t:" >> po/Makefile
 }
 
 build(){
