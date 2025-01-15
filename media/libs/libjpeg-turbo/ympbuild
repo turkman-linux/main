@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libjpeg-turbo'
-release='2'
-version='3.0.0'
+release='3'
+version='3.1.0'
 url='https://libjpeg-turbo.org/'
 description='MMX, SSE, and SSE2 SIMD accelerated JPEG library'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('c84d907ace44d351fcce643c2b9d9492')
+sha256sums=('35fec2e1ddfb05ecf6d93e50bc57c1e54bc81c16d611ddf6eff73fff266d8285')
 group=(media.libs)
 uses=()
 arch=('x86_64')

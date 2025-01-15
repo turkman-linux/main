@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libbsd'
-release='1'
-version='0.11.7'
+release='2'
+version='0.12.2'
 url='https://libbsd.freedesktop.org/wiki/'
 description='Library to provide useful functions commonly found on BSD systems'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://libbsd.freedesktop.org/releases/libbsd-$version.tar.xz")
 depends=()
 makedepends=()
-md5sums=('2c5e63b5bb7771bbe4f572c7788e0bb8')
+sha256sums=('b88cc9163d0c652aaf39a99991d974ddba1c3a9711db8f1b5838af2a14731014')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

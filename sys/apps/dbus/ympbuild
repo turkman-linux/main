@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='dbus'
-release='2'
-version='1.15.10'
+release='3'
+version='1.16.0'
 url='https://dbus.freedesktop.org/releases/dbus/'
 description='A message bus system, a simple way for applications to talk to each other'
 email='aliriza.keskin@pardus.org.tr'
@@ -14,7 +14,7 @@ source=("https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz"
         "dbus.xinit")
 depends=(audit expat libcap-ng elogind)
 makedepends=()
-sha256sums=('f700f2f1d0473f11e52f3f3e179f577f31b85419f9ae1972af8c3db0bcfde178'
+sha256sums=('9f8ca5eb51cbe09951aec8624b86c292990ae2428b41b856e2bed17ec65c8849'
          'SKIP'
          'SKIP'
          'SKIP'
