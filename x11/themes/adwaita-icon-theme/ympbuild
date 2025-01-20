@@ -31,5 +31,7 @@ package(){
     # remove generic icon
     find $DESTDIR -type f -iname '*application-x-generic.*' -exec rm -fv {} \;
     sed -i "s/Inherits=/&gnome,/g"  $DESTDIR/usr/share/icons/Adwaita/index.theme
+    # unhide
+    sed -i "/Hidden=*/d" $DESTDIR/usr/share/icons/Adwaita/index.theme
 }
 
