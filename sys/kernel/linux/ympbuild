@@ -26,5 +26,9 @@ package(){
     rm -rf ${DESTDIR}/usr/include
     # remove broken symlink if exists
     rm -rf ${DESTDIR}/lib/modules/$version/build/linux-$version || true
+    # decompress kernel modules (if gzipped)
+    find ${DESTDIR}/lib/modules -iname "*.ko.gz" -exec gzip -d {} \;
+    # decompress kernel modules (if xzed)
+    find ${DESTDIR}/lib/modules -iname "*.ko.xz" -exec xz -d {} \;
 }
 
