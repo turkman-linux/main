@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='rust'
-release='6'
-version='1.83.0'
+release='7'
+version='1.84.0'
 url='https://www.rust-lang.org'
 description='Systems programming language from Mozilla'
 email='aliriza.keskin@pardus.org.tr'

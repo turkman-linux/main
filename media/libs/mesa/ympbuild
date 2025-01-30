@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mesa'
-release='7'
-version='24.2.3'
+release='8'
+version='24.3.4'
 url='https://gitlab.freedesktop.org/mesa/mesa'
 description='An open-source implementation of the OpenGL specification'
 email='aliriza.keskin@pardus.org.tr'
@@ -9,8 +9,8 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-$version/mesa-mesa-$version.tar.gz")
 depends=(libva libvdpau libdrm llvm glslang elfutils libclc py3-mako libglvnd eudev)
-makedepends=(git directx-headers py3-ply)
-sha256sums=('33d97cbede9917c7e6d1fa8c514dce2867b17ebe26729d0a44672aed53ca0d65')
+makedepends=(git directx-headers py3-ply py3-yaml)
+sha256sums=('966b515c83e6d52f34a151194abd0464b1a7af87158eba4036801a600216288e')
 group=(media.libs)
 uses=(wayland x11)
 wayland_depends=(wayland wayland-protocols)
