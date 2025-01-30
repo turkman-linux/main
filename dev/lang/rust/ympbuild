@@ -7,11 +7,11 @@ description='Systems programming language from Mozilla'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://static.rust-lang.org/dist/rustc-$version-src.tar.gz"
+source=("https://static.rust-lang.org/dist/rustc-$version-src.tar.xz"
         'config.toml')
 depends=(curl gcc libssh llvm)
 makedepends=(cmake ninja perl python lld)
-sha256sums=('722d773bd4eab2d828d7dd35b59f0b017ddf9a97ee2b46c1b7f7fac5c8841c6e'
+sha256sums=('bc2c1639f26814c7b17a323992f1e08c3b01fe88cdff9a27d951987d886e00b3'
          'SKIP')
 group=(dev.lang)
 uses=()
