@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='directx-headers'
-release='3'
-version='1.614.0'
+release='4'
+version='1.614.1'
 url='https://github.com/microsoft/DirectX-Headers'
 description='DirectX headers for using D3D12'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/microsoft/DirectX-Headers/archive/refs/tags/v${version}.tar.gz")
 depends=()
 makedepends=()
-sha256sums=('1cd54449799501a4ad129a4c7ccf0c026bbb699f937ba299d92de3aacd29c5be')
+sha256sums=('344eb454c979ea68d8255d82c818bf7daf01f5109d26ac104f9911d18fae3b21')
 group=(dev.util)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='live-boot'
-release='5'
-version='2.1'
+release='6'
+version='2.2'
 url='https://gitlab.com/turkman/devel/sources/live-boot'
 description='initramfs tools live hooks'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/live-boot/-/archive/$version/live-boot-$version.tar.gz")
 depends=(mkinitrd)
 makedepends=()
-sha256sums=('2d38ca6c431f0bcc2eb6f7f5fd722b8819c559eef36f3e084799c919a3566d55')
+sha256sums=('45d3b8f64ae9b5a3c0288a313d707694e0f3a42adb0ef9d54f20f63465bb2e66')
 group=(sys.kernel)
 uses=()
 arch=('x86_64')

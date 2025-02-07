@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-pluggy'
-release='2'
-version='1.4.0'
+release='3'
+version='1.5.0'
 url='https://pluggy.readthedocs.io/en/latest/'
 description='Plugin management and hook calling for Python'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/54/c6/43f9d44d92aed815e781ca25ba8c174257e27253a94630d21be8725a2b59/pluggy-1.4.0.tar.gz")
+source=("https://files.pythonhosted.org/packages/96/2d/02d4312c973c6050a18b314a5ad0b3210edb65a906f868e31c111dede4a6/pluggy-1.5.0.tar.gz")
 depends=(py3-pdm-pep517)
 makedepends=(py3-setuptools)
-md5sums=('ffb69741271eaeefab3f2ef2435e2d5f')
+sha256sums=('2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -19,11 +19,11 @@ cd "pluggy"-$version
 
 
 build(){
-    python3 setup.py build
+    python3 -m build
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --skip-build
+    python3 -m installer --destdir ${DESTDIR} dist/*.whl
 }
 
 

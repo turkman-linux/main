@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='xfce4-power-manager'
-release='2'
-version='4.18.1'
-_version='4.18'
+release='3'
+version='4.20.0'
+_version='4.20'
 url='https://docs.xfce.org/xfce/xfce4-power-manager/start'
 description='Power Manager for Xfce'
 email='akarsu@protonmail.com'
@@ -11,8 +11,8 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/xfce4-power-manager/${_version}/xfce4-power-manager-${version}.tar.bz2")
 depends=(libnotify  libxfce4ui upower)
 makedepends=(xfce4-panel intltool)
-sha256sums=('6b08b10c4cb7516377dbd32c6cc2296a9faf47022c555f11e75b38fde14aff03')
-group=(xfce.base)
+sha256sums=('971391cef63352833bdd92df28957392e17e1f2b3d486c0f57294fd204d6ed29')
+group=(xfce.extra)
 uses=()
 arch=('x86_64')
 
@@ -25,8 +25,7 @@ setup(){
 		--sbindir=/usr/bin \
 		--localstatedir=/var \
 		--disable-network-manager \
-		--enable-polkit \
-		--disable-debug
+		--enable-polkit
 }
 
 build(){

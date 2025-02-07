@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='xfwm4'
-release='1'
-version='4.18.0'
-_version='4.18'
+release='2'
+version='4.20.0'
+_version='4.20'
 url='https://docs.xfce.org/xfce/xfwm4/start'
 description="Xfce's window manager"
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/xfwm4/${_version}/xfwm4-${version}.tar.bz2")
 depends=(libepoxy libwnck3 libxfce4ui xfconf)
 makedepends=(intltool)
-md5sums=('181415e457c86124fa5f8aa5d715b967')
+sha256sums=('a58b63e49397aa0d8d1dcf0636be93c8bb5926779aef5165e0852890190dcf06')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -26,8 +26,7 @@ setup(){
 		--enable-startup-notification \
 		--enable-randr \
 		--enable-compositor \
-		--enable-xsync \
-		--disable-debug
+		--enable-xsync
 }
 
 build(){

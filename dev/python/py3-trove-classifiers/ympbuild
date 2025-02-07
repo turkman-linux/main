@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-trove-classifiers'
-release='4'
-version='2024.1.31'
+release='5'
+version='2024.10.21.16'
 url='https://github.com/pypa/trove-classifiers'
 description='Canonical source for classifiers on PyPI'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('Apache-2.0')
 source=("https://github.com/pypa/trove-classifiers/archive/refs/tags/${version}.tar.gz")
-depends=()
+depends=(python)
 makedepends=()
-md5sums=('8129d786e5a7e587995ef0b9fe9774e9')
+sha256sums=('4c86dbaacda8ca2bee6891dcf24bc1bab2b58a1d5bc36db6d6910bc3488eacf2')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,11 +18,11 @@ arch=('x86_64')
 cd "trove-classifiers"-$version
 
 build(){
-    python3 setup.py build
+    python3 -m build
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python3 -m installer --destdir "${DESTDIR}" dist/*.whl
 }
 
 

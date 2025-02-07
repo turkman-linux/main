@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='xfconf'
-release='2'
-version='4.18.3'
-_version='4.18'
+release='3'
+version='4.20.0'
+_version='4.20'
 url='https://docs.xfce.org/xfce/xfconf/start'
 description='D-Bus-based configuration storage system'
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/xfconf/${_version}/xfconf-${version}.tar.bz2")
 depends=( libxfce4util)
 makedepends=(gobject-introspection intltool vala)
-sha256sums=('c56cc69056f6947b2c60b165ec1e4c2b0acf26a778da5f86c89ffce24d5ebd98')
+sha256sums=('8bc43c60f1716b13cf35fc899e2a36ea9c6cdc3478a8f051220eef0f53567efd')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -22,8 +22,7 @@ setup(){
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--disable-debug
+		--localstatedir=/var
 }
 
 build(){

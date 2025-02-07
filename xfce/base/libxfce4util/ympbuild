@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 name='libxfce4util'
-release='2'
-version='4.18.2'
-_version='4.18'
+release='3'
+version='4.20.0'
+_version='4.20'
 url='https://www.xfce.org/'
 description='Basic utility non-GUI functions for Xfce'
 email='akarsu@protonmail.com'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/libxfce4util/${_version}/libxfce4util-${version}.tar.bz2")
 depends=(glib)
 makedepends=(gobject-introspection intltool vala)
-sha256sums=('d9a329182b78f7e2520cd4aafcbb276bbbf162f6a89191676539ad2e3889c353')
+sha256sums=('21493f9c9995a282823db93839f6b9f06ae31edb094191ba9acf04d932a2b592')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -23,8 +23,7 @@ setup(){
         --libdir=/usr/lib64/ \
 		--sysconfdir=/etc \
 		--sbindir=/usr/bin \
-		--localstatedir=/var \
-		--disable-debug 
+		--localstatedir=/var
 }
 
 build(){

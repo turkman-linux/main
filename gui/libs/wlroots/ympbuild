@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='wlroots'
-release='3'
-version='0.17.3'
+release='4'
+version='0.18.2'
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
 description='Pluggable, composable, unopinionated modules for building a Wayland compositor'
 email='bayramk@gmail.com'
@@ -13,7 +13,7 @@ depends=(seatd hwdata eudev libxkbcommon wayland xcb-util-wm
          pixman vulkan-loader xcb-util-errors xcb-util-renderutil
 )
 makedepends=()
-sha256sums=('3c2525528ecb5cd64cf410b2d6d140d4fc28d4a5b2ee06bedab3f0154ebc50b4')
+sha256sums=('703c515917d9eb258e44296795f8626190e119b0ee8bfb32fe9f834dab1a1462')
 group=(gui.libs)
 uses=()
 arch=('x86_64')
