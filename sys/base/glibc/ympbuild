@@ -1,7 +1,7 @@
 #!/bin/bash
 name='glibc'
-release='5'
-version='2.40'
+release='6'
+version='2.41'
 url='https://ftp.gnu.org/gnu/glibc'
 description='GNU libc library'
 email='parduscix@yandex.ru'
@@ -20,7 +20,7 @@ source=("https://ftp.gnu.org/gnu/glibc/glibc-${version}.tar.xz"
         'data/disable-ld-preload.patch'
         'data/tr_TR'
 )
-sha256sums=('19a890175e9263d748f627993de6f4b1af9cd21e03f080e4bfb3a1fac10205a2'
+sha256sums=('a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
          'SKIP'
          'SKIP'
          'SKIP'
