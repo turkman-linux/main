@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openrc'
-release='5'
-version='0.55.1'
+release='6'
+version='0.56'
 url='https://github.com/OpenRC/openrc'
 description='The OpenRC init system'
 email='aliriza.keskin@pardus.org.tr'
@@ -16,7 +16,7 @@ source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
     "extras/disable-secondary-gpu.sh")
 depends=()
 makedepends=()
-sha256sums=('62e2c72cd3b10a4db2b0cf2ef25a52fc2b269f50c934329ff5f8e973cd81d5a4'
+sha256sums=('f7eb8631f4cb64d063271667cd25e26fddfcad47ad39f0a10e9c6d6731bfb4a9'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -55,8 +55,8 @@ package(){
     ninja -C build install
     # disable all services
     rm -f ${DESTDIR}/etc/runlevels/*/*
-    rm ${DESTDIR}//etc/init.d/functions.sh
-    ln -s ../../lib/rc/sh/functions.sh ${DESTDIR}/etc/init.d/functions.sh
+    rm ${DESTDIR}/etc/init.d/functions.sh
+    ln -s ../../libexec/rc/sh/functions.sh ${DESTDIR}/etc/init.d/functions.sh
     # install sysconf script
     mkdir -p ${DESTDIR}/etc/sysconf.d/
     install ../openrc.sysconf ${DESTDIR}/etc/sysconf.d/openrc

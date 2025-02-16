@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='elogind'
-release='2'
-version='252.9'
+release='3'
+version='255.17'
 url='https://github.com/elogind/elogind'
 description="he systemd project's logind, extracted to a standalone package"
 email='aliriza.keskin@pardus.org.tr'
@@ -12,7 +12,7 @@ source=("https://github.com/elogind/elogind/archive/refs/tags/v$version.tar.gz"
         "systemd.pc")
 depends=(acl attr audit libcap-ng libcap dbus pam)
 makedepends=()
-md5sums=('2be2c43298e2fc41c5bee33dde605f01'
+sha256sums=('a9725ae3f73f8d910de84c108bc11bfd4c782bef6a4190b2ec70c5d2f22344db'
          'SKIP'
          'SKIP')
 group=(sys.auth)
@@ -24,13 +24,11 @@ cd $name-$version
 setup(){
     meson setup build --prefix=/usr \
         --libdir=/lib64/ \
-        -Drootlibdir=/lib64 \
         -Dudevrulesdir=/lib64/udev/rules.d \
         -Dcgroup-controller=elogind \
         -Dhalt-path=/sbin/halt \
         -Dreboot-path=/sbin/reboot \
         -Dpoweroff-path=/sbin/poweroff \
-        -Drootlibexecdir=/usr/libexec/elogind \
         -Ddefault-hierarchy=hybrid \
         -Ddefault-kill-user-processes=true \
         -Dpam=true \
