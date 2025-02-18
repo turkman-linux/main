@@ -5,7 +5,7 @@ name="System login manager"
 description="System service that manages user logins"
 description_reload="Reload configuration without exiting"
 
-command=/usr/libexec/elogind/elogind
+command=/usr/libexec/elogind
 
 depend() {
 	need dbus
