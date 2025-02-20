@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 name='nano'
-release='4'
+release='5'
 version='8.3'
 url='https://www.nano-editor.org/download.php'
 description='Pico editor clone with enhancements'
