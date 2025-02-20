@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='cryptsetup'
-release='2'
-version='2.7.0'
+release='3'
+version='2.7.5'
 url='https://gitlab.com/cryptsetup/'
 description='Tool to setup encrypted devices with dm-crypt'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.com/cryptsetup/cryptsetup/-/archive/v$version/cryptsetup-v$version.tar.gz")
-depends=(lvm2 json-c)
+depends=(lvm2 json-c openssl util-linux)
 makedepends=()
-md5sums=('b564e09e74d29c38611c12ce9bed3a26')
+sha256sums=('da290c93b17c913540b97ca177f107e22032c56e5371076d2d30e97f1fffa4cf')
 group=(sys.fs)
 uses=()
 arch=('x86_64')
@@ -20,6 +20,9 @@ setup(){
 	autoreconf -fvi
 	./configure --prefix=/usr \
        --libdir=/usr/lib64/ \
+       --with-crypto_backend=openssl \
+		   --disable-external-tokens \
+		   --disable-ssh-token \
        --disable-asciidoc
 }
 
