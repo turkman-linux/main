@@ -27,6 +27,8 @@ prepare(){
     # we remove broken source and extract again without permission and owners
     rm -rf $name-$version
     tar --no-same-owner --no-same-permissions -xvf $name-$version.tar.xz
+    cd $name-$version
+    sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 }
 
 setup(){
@@ -56,6 +58,7 @@ setup(){
       --enable-threads=posix
       --disable-libssp
       --disable-libstdcxx-pch
+      --disable-fixincludes
       --disable-werror
       --without-zstd
       --disable-nls
