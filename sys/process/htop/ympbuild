@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+name='htop'
+release='1'
+version='3.3.0'
+url='https://github.com/htop-dev/htop'
+description='Interactive process viewer'
+email='parduscix@yandex.ru'
+maintainer='sulincix'
+license=('GPLv3')
+source=('https://github.com/htop-dev/htop/releases/download/3.3.0/htop-3.3.0.tar.xz')
+depends=(libcap libnl libunwind ncurses)
+makedepends=()
+sha256sums=('a69acf9b42ff592c4861010fce7d8006805f0d6ef0e8ee647a6ee6e59b743d5c')
+group=(sys.process)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    ./configure --prefix=/usr \
+        --enable-cgroup \
+        --with-os-release=/dev/null \
+        --enable-taskstats
+}
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install pixmapdir=/usr/share/icons/hicolor/128x128/apps $jobs
+}
+
