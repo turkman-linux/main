@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 name='cinnamon'
-release='6'
-version='6.4.2'
+release='7'
+version='6.4.6'
 url='https://github.com/linuxmint/cinnamon'
 description='Linux desktop which provides advanced innovative features and a traditional user experience'
 email='brkt8khn@gmail.com'
 maintainer='brkt8khn'
 license=('GPLv2')
 source=("https://github.com/linuxmint/cinnamon/archive/refs/tags/$version.tar.gz"
+        "10-cinnamon-disable-polkit.patch"
         "99-cinnamon-defaults.gschema.override")
 depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
         cinnamon-session cinnamon-settings-daemon cjs gnome-backgrounds gsound gstreamer libcroco
@@ -16,7 +17,8 @@ depends=(nm-applet accountsservice cinnamon-control-center cinnamon-menus
 		    timezonemap xapp xdg-desktop-portal-xapp caribou
 )
 makedepends=(meson gobject-introspection intltool py3-sass)
-sha256sums=('56e2c5f2449f3fc6b0f378f2da98efdfe7a721b84e3c001fb16a14d85b399a97'
+sha256sums=('e3c0519e9579f7bf12009dff3d8872e33115d6a23f5ab5349079b5abf7c3f3f0'
+            'SKIP'
             'SKIP')
 group=(cinnamon.base)
 uses=()
@@ -24,6 +26,10 @@ arch=('x86_64')
 
 cd $name-$version
 
+
+prepare(){
+    patch -Np1 -i ../10-cinnamon-disable-polkit.patch
+}
 
 setup(){
     meson setup build --prefix=/usr \
