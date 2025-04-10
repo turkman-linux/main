@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openssl'
 release='3'
-version='3.2.0'
+version='3.3.3'
 url='https://www.openssl.org/source/'
 description='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,12 +12,12 @@ source=("https://www.openssl.org/source/openssl-$version.tar.gz"
         "update-certdata.sh")
 depends=()
 makedepends=(coreutils)
-md5sums=('7903549a14abebc5c323ce4e85f2cbb2'
+sha256sums=('712590fd20aaa60ec75d778fe5b810d6b829ca7fb1e530577917a131f9105539'
          'SKIP'
          'SKIP')
 arch=('x86_64')
 group=(dev.libs)
-uses=(legacy)
+uses_extra=(legacy)
 legacy_depends=(openssl-1.1)
 
 cd $name-$version

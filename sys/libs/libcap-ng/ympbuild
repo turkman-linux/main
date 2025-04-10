@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libcap-ng'
-release='1'
-version='0.8.3'
+release='2'
+version='0.8.5'
 url='https://github.com/stevegrubb/libcap-ng/releases'
 description='A library for Linux that makes using posix capabilities easy'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('LGPL2.1')
 source=("https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v${version}.zip")
 depends=()
 makedepends=(python)
-md5sums=('4332df17c41730e487ed3a45af958e7a')
+sha256sums=('3490fe6bf50614f27a9120cd664dbcebc5483d138124df86c1aee922c8e34abc')
 group=(sys.libs)
 uses=(python)
 uses_extra=()
@@ -19,7 +19,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    autoreconf -fvi
+    bash autogen.sh
     ./configure --prefix=/usr \
         --libdir=/usr/lib64 \
         $(use_opt python --with-python --without-python) \
