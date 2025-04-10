@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libayatana-appindicator'
-release='1'
-version='0.5.92'
+release='2'
+version='0.5.94'
 url='https://github.com/AyatanaIndicators'
 description='Ayatana Application Indicators Shared Library'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/AyatanaIndicators/libayatana-appindicator/archive/refs/tags/$version.tar.gz")
 depends=(gtk3 libayatana-indicator libdbusmenu)
 makedepends=()
-md5sums=('58ab97d0c2e1c5941d287ff6164afaaf')
+sha256sums=('884a6bc77994c0b58c961613ca4c4b974dc91aa0f804e70e92f38a542d0d0f90')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
@@ -18,9 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    mkdir build
-    cd build
-    cmake .. -G Ninja \
+    cmake -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib64 \
         -DENABLE_BINDINGS_MONO=OFF

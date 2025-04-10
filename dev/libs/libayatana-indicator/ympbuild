@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libayatana-indicator'
-release='1'
-version='0.9.3'
+release='2'
+version='0.9.4'
 url='https://github.com/AyatanaIndicators/libayatana-indicator'
 description='Ayatana Application Indicators'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,17 +10,15 @@ license=('GPLv3')
 source=("https://github.com/AyatanaIndicators/libayatana-indicator/archive/refs/tags/$version.tar.gz")
 depends=(libayatana-ido)
 makedepends=()
-md5sums=('ca55c642e9fb8192c5f80908b1a74b2f')
-group=(deb.libs)
+sha256sums=('a18d3c682e29afd77db24366f8475b26bda22b0e16ff569a2ec71cd6eb4eac95')
+group=(dev.libs)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
 setup(){
-    mkdir build
-    cd build
-    cmake .. -G Ninja \
+    cmake -G Ninja -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib64
 }
