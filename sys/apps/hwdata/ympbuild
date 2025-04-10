@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='hwdata'
-release='3'
-version='0.387'
+release='4'
+version='0.394'
 url='https://github.com/vcrhonek/hwdata'
 description='Hardware identification and configuration data'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/vcrhonek/hwdata/archive/refs/tags/v$version.tar.gz")
 depends=()
 makedepends=()
-sha256sums=('8c6be8f0863a8ff5c83b2c46aa525b503b30d42792ed57891c40849de543e1ee')
+sha256sums=('b7c3fd7214a3b7c49d2661db127a712dc11cffd1799f793947aa1cb20aaf3298')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
@@ -18,6 +18,8 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
+    # configure is a custom script.
+    # autoreconf not required.
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }

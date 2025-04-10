@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='iso-codes'
-release='3'
-version='4.16.0'
+release='4'
+version='4.17.0'
 url='https://salsa.debian.org/iso-codes-team/iso-codes'
 description='Lists of the country, language, and currency names'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v${version}/iso-codes-v${version}.tar.gz")
 depends=()
 makedepends=()
-md5sums=('841cfc1afcb91e50dc03956ca0a2ad37')
+sha256sums=('dd5ca13db77ec6dd1cc25f5c0184290a870ec1fed245d8e39a04ff34f59076c3')
 group=(app.text)
 uses=()
 arch=('x86_64')
@@ -18,6 +18,7 @@ arch=('x86_64')
 cd $name-"v"$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }

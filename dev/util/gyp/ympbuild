@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gyp'
-release='1'
-version='20220404'
+release='2'
+version='20230301'
 url='https://salsa.debian.org/python-team/packages/gyp'
 description='GYP (Generate Your Projects) meta-build system'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=('https://salsa.debian.org/python-team/packages/gyp/-/archive/debian/0.1+20220404git9ecf45e-2/gyp-debian-0.1+20220404git9ecf45e-2.tar.gz')
 depends=(py3-six)
 makedepends=()
-md5sums=('07aa8e6d6fdfd2791d3963bcc6c57288')
+sha256sums=('c7d3f3cc351ec7aa68e1e00ef6ecfe0d9d8ab8c8fa4cbef0b84b3fe8d18a7738')
 group=(dev.util)
 uses=()
 arch=('x86_64')

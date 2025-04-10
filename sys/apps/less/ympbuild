@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='less'
-release='3'
-version='643'
+release='4'
+version='668'
 url='https://ftp.gnu.org/gnu/less'
 description='Excellent text file viewer'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.gnu.org/gnu/less/less-$version.tar.gz")
 depends=(ncurses)
 makedepends=()
-md5sums=('cf05e2546a3729492b944b4874dd43dd')
+sha256sums=('2819f55564d86d542abbecafd82ff61e819a3eec967faa36cd3e68f1596a44b8')
 uses=(pcre2)
 pcre2_depends=(libpcre2)
 group=(sys.apps)
@@ -19,6 +19,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --sysconfdir=/etc \
         $(use_opt pcre2 "--with-regex=pcre2" "--without-pcre2")

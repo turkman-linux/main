@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='json-glib'
-release='2'
-version='1.8.0'
+release='3'
+version='1.10.6'
 url='https://gitlab.gnome.org/GNOME/json-glib.git/'
 description='Library providing GLib serialization and deserialization for the JSON format'
 email='bayramk@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/json-glib/-/archive/$version/json-glib-$version.tar.gz")
 depends=(glib)
 makedepends=()
-md5sums=('ef92d15e08053de550424564f745c9d4')
+sha256sums=('d23cbd4094a32cc05cf22cd87a83da1f799e182e286133b49fde3c9241a32006')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
@@ -18,8 +18,10 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+    meson setup build \
+        --prefix=/usr \
+        --libdir=/usr/lib64/ \
+       -Ddocumentation=disabled
 }
 
 build(){
