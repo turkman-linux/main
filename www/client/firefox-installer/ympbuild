@@ -1,28 +1,27 @@
 #!/usr/bin/env bash
 name='firefox-installer'
-release='1'
-version='20230419'
-url='https://github.com/my-garbage-stuff/firefox-installer'
+release='2'
+version='1.0'
+url='https://turkman/devel/sources/firefox-installer'
 description='Firefox installer'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/my-garbage-stuff/firefox-installer/archive/refs/tags/$version.tar.gz")
+source=("https://gitlab.com/turkman/devel/sources/firefox-installer/-/archive/$version/firefox-installer-$version.tar.gz")
 depends=(dbus-glib alsa-lib ffmpeg libX11)
 makedepends=()
-md5sums=('519c74fa28038243cf415660997db48f')
+sha256sums=('4f7622269f6da951d691818e0dbfbdbf00ecf2eeac258766c866527f76aefb47')
 group=(www.client)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
-prepare(){
-    # replace /opt with /usr/libexec
-    sed -i "s|/opt|/usr/libexec|g" Makefile firefox firefox-installer.desktop
+setup(){
+    meson setup build --prefix=/usr
 }
 
 package(){
-    make install $jobs
+    ninja -C build install $jobs
 }
 
