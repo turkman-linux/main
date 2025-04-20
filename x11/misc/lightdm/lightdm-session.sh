@@ -1,4 +1,7 @@
 #!/bin/sh
+source /etc/profile
+mkdir -p ~/.cache/
+exec &> ~/.cache/lightdm-user.log
 if [ ${XDG_SESSION_TYPE} == "wayland" ] ; then
     # Wait until the Xorg process for the user finishes
     while pgrep -u 0 Xorg > /dev/null; do
