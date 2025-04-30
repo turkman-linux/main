@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 name='rsync'
-release='1'
-version='3.2.7'
+release='2'
+version='3.4.1'
 url='https://rsync.samba.org/'
 description='File transfer program to keep remote files into sync'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://download.samba.org/pub/rsync/src/rsync-$version.tar.gz")
+source=("https://github.com/RsyncProject/rsync/releases/download/v$version/rsync-$version.tar.gz")
 depends=(acl openssl)
-makedepends=()
-md5sums=('f216f350ef56b9ba61bc313cb6ec2ed6')
+makedepends=(gawk)
+sha256sums=('2924bcb3a1ed8b551fc101f740b9f0fe0a202b115027647cf69850d65fd88c52')
 group=(net.misc)
 uses=()
-uses_extra=(zstd xxhash)
+uses_extra=(xxhash)
 arch=('x86_64')
 
 unset CFLAGS
@@ -21,13 +21,25 @@ unset CXXFLAGS
 
 cd $name-$version
 
+prepare(){
+#https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/main/rsync/APKBUILD
+printf '#!/bin/sh\n\necho "#define RSYNC_GITVER RSYNC_VERSION" >git-version.h\n' >mkgitver
+
+}
+
 setup(){
      ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
-        --with-included-popt \
-        --with-included-zlib \
-	$(use_opt zstd --enable-zstd --disable-zstd) \
+        --disable-debug \
+ 		    --enable-acl-support \
+    		--enable-xattr-support \
+        --with-included-popt=no \
+        --with-included-zlib=no \
+		    --disable-md2man \
+     		--disable-openssl \
+	      --disable-zstd \
     	$(use_opt xxhash --enable-xxhash --disable-xxhash)
+    make reconfigure
 }
 
 build(){

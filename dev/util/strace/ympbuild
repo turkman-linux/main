@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='strace'
-release='1'
-version='6.6'
+release='2'
+version='6.13'
 url='https://gitlab.com/strace/strace'
 description='strace is a diagnostic, debugging and instructional userspace utility for Linux'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,8 +10,8 @@ license=('GPLv3')
 source=("https://github.com/strace/strace/releases/download/v$version/strace-$version.tar.xz")
 depends=(perl libunwind)
 makedepends=()
-md5sums=('e1e791635e89113a78e889bfe070c111')
-group=(sys.util)
+sha256sums=('e209daf0ee038ca5adcc4c277e9273b4d51f46a2ff86da575d36742ac3508a17')
+group=(dev.util)
 uses=()
 arch=('x86_64')
 

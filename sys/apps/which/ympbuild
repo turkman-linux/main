@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='which'
-release='1'
-version='2.21'
-url='https://carlowood.github.io/which/'
+release='2'
+version='2.23'
+url='https://ftp.gnu.org/gnu/which/'
 description='Prints out location of specified executables that are in your path'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://carlowood.github.io/which/which-$version.tar.gz")
+source=("https://ftp.gnu.org/gnu/which/which-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('097ff1a324ae02e0a3b0369f07a7544a')
+sha256sums=('a2c558226fc4d9e4ce331bd2fd3c3f17f955115d2c00e447618a4ef9978a2a73')
 group=(sys.apps)
 uses=()
 arch=('x86_64')

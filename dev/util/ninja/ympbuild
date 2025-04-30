@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ninja'
-release='1'
-version='1.11.1'
+release='2'
+version='1.12.1'
 url='https://github.com/ninja-build/ninja/releases'
 description='Small build system with a focus on speed'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/ninja-build/ninja/archive/refs/tags/v$version.zip")
 depends=(gcc)
 makedepends=(python)
-md5sums=('a72270b93209081955a3631365cb8767')
+sha256sums=('40db6f6c77045efc817209fa72c3f92a399b7e39cf8e4cddfe7e65df2dd5dcbe')
 uses=()
 arch=('x86_64')
 group=(dev.util)
