@@ -1,5 +1,5 @@
 #!/bin/sh
-
+source /etc/profile.d/pipewire.sh
 # We need to kill any existing pipewire instance to restore sound
 pkill -u "${USER}" -fx /usr/bin/pipewire-pulse 1>/dev/null 2>&1
 pkill -u "${USER}" -fx /usr/bin/pipewire-media-session 1>/dev/null 2>&1
