@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 name='lsl'
-release='1'
-version='1.0.1'
+release='2'
+version='1.0.2'
 url='https://sulincix/debian-subsystem'
 description='Linux subsystem for linux'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://gitlab.com/sulincix/debian-subsystem/-/archive/1.0.1/debian-subsystem-$version.tar.gz"
+source=("https://gitlab.com/sulincix/debian-subsystem/-/archive/1.0.2/debian-subsystem-$version.tar.gz"
         "lsl.sysconf")
 depends=(pam make perl)
 makedepends=()
-sha256sums=('c32c2f3ff15ff39ce0ecca851f1f2920985b9fd855e83d20282be7640abc3658'
+sha256sums=('526f8b80b452104a89cbbb42c7cbb655253e621f24c2086a63daab1229c38d89'
             'SKIP')
 group=(app.container)
 uses=()
@@ -27,7 +27,7 @@ build () {
 package () {
     make install DESTDIR=$DESTDIR DISTRO=debian
     # install sysconf file
-    mkdir -p $DESTDIR/etc/sysconf.d/
+    mkdir -p $DESTDIR/etc/sysconf.d/ $DESTDIR/etc/xdg/menus/
     install ../lsl.sysconf $DESTDIR/etc/sysconf.d/lsl
 }
 
