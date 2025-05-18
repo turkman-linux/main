@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='labwc'
-release='1'
-version='0.8.2'
+release='2'
+version='0.8.4'
 url='https://github.com/labwc/labwc'
 description=='A Wayland window-stacking compositor'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/labwc/labwc/archive/$version.tar.gz")
 depends=(libpng libsfdo librsvg pango seatd wlroots wayland xorg-xwayland)
 makedepends=()
-sha256sums=('1adba1c87ec26f2f00409b47a0b79ccfd68bd160e1abc41822fb01f0a76ee947')
+sha256sums=('2d3ded90f78efb5060f7057ea802c78a79dc9b2e82ae7a2ad902af957b8b9797')
 group=(gui.wm)
 uses=()
 arch=('x86_64')

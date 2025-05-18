@@ -11,6 +11,7 @@ source=("https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/$version/wlroo
 depends=(seatd hwdata eudev libxkbcommon wayland xcb-util-wm
          libglvnd libglvnd libinput libxcb libxcb mesa
          pixman vulkan-loader xcb-util-errors xcb-util-renderutil
+         libdisplay-info xorg-xwayland lcms2
 )
 makedepends=()
 sha256sums=('703c515917d9eb258e44296795f8626190e119b0ee8bfb32fe9f834dab1a1462')
