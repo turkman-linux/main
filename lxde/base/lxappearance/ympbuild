@@ -1,33 +1,32 @@
 #!/usr/bin/env bash
 name='lxappearance'
-release='1'
-version='0.6.3'
+release='2'
+version='0.6.4'
 url='Feature-rich GTK+ theme switcher of the LXDE Desktop'
 description='Feature-rich GTK+ theme switcher of the LXDE Desktop'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPL2')
-source=("https://downloads.sourceforge.net/lxde/$name-$version.tar.xz"
+source=("https://github.com/lxde/lxappearance/archive/refs/tags/$version.tar.gz"
        "00-gtk3-fix.patch")
 depends=(gtk3 dbus-glib)
 makedepends=(intltool)
-sha256sums=('7222d858b8fef4b7967c42142d61e82ded6dd42dc5ef1d59caad775795928b38'
+sha256sums=('9f067a8a126b9779ba12648c76136d9ba3e7ec7920c568df7819d128fdf39e03'
          'SKIP')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
+export CC=clang
 cd $name-$version
 
-prepare(){
-    patch -Np1 -i ../00-gtk3-fix.patch
-}
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr --enable-gtk3 \
         --libdir=/usr/lib64/ \
         --enable-dbus
-        
+
 }
 
 build(){

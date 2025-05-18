@@ -1,30 +1,33 @@
 #!/usr/bin/env bash
 name='lxpanel'
-release='1'
-version='0.10.1'
+release='2'
+version='0.11.0'
 url='https://wiki.lxde.org/en/LXPanel'
 description='Lightweight X11 desktop panel for LXDE '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/lxde-team/lxpanel/-/archive/debian/$version-1/lxpanel-debian-$version-1.tar.gz"
+source=("https://github.com/lxde/lxpanel/archive/refs/tags/$version.tar.gz"
         "lxpanel-0.10.1-c99.patch")
-depends=(libwnck3 wireless-tools)
+depends=(libwnck3 wireless-tools libkeybinder3 alsa-lib curl libX11 libfm libxml2)
 makedepends=()
-sha256sums=('e4c6a8c9901f4226160af79c409236fe4e5d1b1ec3aefdb1c43e416698f27811'
+sha256sums=('3a681a0902684457c6c1f7ff7fd1b6c7c16883fba1822e248347f992cf3f9ce2'
             'SKIP')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
-cd $name-debian-$version-1
+cd $name-$version
 
+export CC=clang
 export CFLAGS="-Wno-all -O2 -s"
 export CXXFLAGS="-Wno-all -O2 -s"
 
+
+CFLAGS="$CFLAGS -I/usr/include/libwnck-3.0"
+
 prepare(){
 
-    patch -Np1 -i ../lxpanel-0.10.1-c99.patch
     # Disable pager plugin as it breaks panel layout with GTK+ 3
     # https://sourceforge.net/p/lxde/bugs/773/
     sed -i '/pager.c/d' plugins/Makefile.am

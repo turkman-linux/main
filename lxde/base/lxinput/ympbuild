@@ -1,26 +1,28 @@
 #!/usr/bin/env bash
 name='lxinput'
-release='1'
-version='0.3.5'
+release='2'
+version='0.3.6'
 url='https://github.com/lxde/lxinput'
 description='LXDE keyboard and mouse configuration tool '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/lxde-team/lxinput/-/archive/debian/$version-1/lxinput-debian-$version-1.tar.gz")
+source=("https://github.com/lxde/lxinput/archive/refs/tags/$version.tar.gz")
 depends=(gtk3)
 makedepends=()
-sha256sums=('b78baa9af84ca671b1e2b16387f4d6e452860a1803203fa844f35b93ec97c054')
+sha256sums=('2f15c2a17f970afb152cbd024503da26c1e15135e76e9f516e0ca97e909d6c37')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
-cd $name-debian-$version-1
+export CC=clang
+
+cd $name-$version
 
 setup(){
 	autoreconf -fvi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/ --enable-gtk3 
+        --libdir=/usr/lib64/ --enable-gtk3
 }
 
 build(){

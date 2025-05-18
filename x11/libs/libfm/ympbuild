@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 name='libfm'
-release='1'
-version='1.3.2'
+release='2'
+version='1.4.0'
 url='https://example.org'
 description='Library for file management'
 email='bk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=('https://github.com/lxde/libfm/archive/refs/tags/1.3.2.tar.gz'
+source=("https://github.com/lxde/libfm/archive/refs/tags/$version.tar.gz"
         'libfm-fixes.patch')
 depends=(gtk3 pango intltool menu-cache)
 makedepends=()
-md5sums=('8b2864ba2d21586171ab9616b5610aeb'
+sha256sums=('7d7b616411992389a4b7f35796109d605f30bc2ceab84d4081d1665254ebbf82'
          'SKIP')
 group=(x11.libs)
 uses=()
@@ -20,9 +20,7 @@ arch=('x86_64')
 
 cd $name-$version
 
-prepare(){
-    patch -Np1 -i ../libfm-fixes.patch
-}
+export CC=clang
 
 setup(){
     autoreconf -fvi

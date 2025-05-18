@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='lxmenu-data'
-release='1'
-version='0.1.5'
+release='2'
+version='0.1.6'
 url='https://github.com/lxde/lxmenu-data'
 description='Provides files needed for LXDE application menus '
 email='bayramk@gmail.com'
@@ -10,10 +10,12 @@ license=('GPLv3')
 source=("https://github.com/lxde/lxmenu-data/archive/refs/tags/$version.tar.gz")
 depends=()
 makedepends=()
-sha256sums=('e2417923d16ac1dfce27ec7416d88fbafff5023eeb1f47fa481062cb1d93c855')
+sha256sums=('b237e732609fb2a521a942e08bb825ac7973ee478db7567d3606665a3793b2e8')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
+
+export CC=clang
 
 cd $name-$version
 

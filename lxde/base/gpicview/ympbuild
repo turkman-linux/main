@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='gpicview'
+release='2'
+version='0.3.1'
+url='https://www.lxde.org'
+description='Lightweight image viewer'
+email='akarsu@protonmail.com'
+maintainer='akarsu'
+license=('GPL2')
+source=("https://github.com/lxde/gpicview/archive/refs/tags/$version.tar.gz")
+depends=(gtk3)
+makedepends=(intltool)
+sha256sums=('b65dd991368ed2b08645a50cb6d4831e21e3c0d0f7d72394d40105ddba754533')
+group=(lxde.base)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare() {
+    # Apply only one main category
+    sed -i '/^Categories=/ s/Utility;//' gpicview.desktop.in
+}
+setup(){
+    autoreconf -fvi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/ \
+        --enable-gtk3
+}
+
+build(){
+    make $jobs
+}
+
+package(){
+    make DESTDIR="$DESTDIR" install
+}
+

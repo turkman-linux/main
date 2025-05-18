@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='lxde-common'
-release='1'
-version='0.99.2'
+release='2'
+version='0.99.3'
 url='https://github.com/lxde/lxde-common'
 description='LXDE Session default configuration files and nuoveXT2 iconset '
 email='bayramk@gmail.com'
@@ -10,12 +10,14 @@ license=('GPLv3')
 source=("https://github.com/lxde/lxde-common/archive/refs/tags/$version.tar.gz")
 depends=()
 makedepends=()
-sha256sums=('f62a0a02bfa0837a91916f66336228520d54040674590d4b6dd5ad2efc4e92fd')
+sha256sums=('e55ac4b4406f7538ed5994677c6488c6a0dd9a4b34a0969402aaa4f04b52b26f')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
+
+export CC=clang
 
 setup(){
 	autoreconf -fvi

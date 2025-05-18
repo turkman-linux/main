@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 name='lxrandr'
-release='1'
-version='0.3.2'
+release='2'
+version='0.3.3'
 url='https://lxde.org'
 description='Monitor configuration tool (part of LXDE)'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://downloads.sourceforge.net/lxde/lxrandr-$version.tar.xz")
+source=("https://github.com/lxde/lxrandr/archive/refs/tags/$version.tar.gz")
 depends=(gtk3 xrandr)
 makedepends=(intltool)
-sha256sums=('8b5edfc9718061bc161fe51d388697cbaa819d6f8013ed24ba22f438e0dbc312')
+sha256sums=('24d0abaee830b0b2973ba9d2e46b3c801445342f7d5d3297c021a8a4a471f512')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
+
+export CC=clang
 
 cd $name-$version
 

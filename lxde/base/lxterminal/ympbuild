@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 name='lxterminal'
-release='1'
-version='0.4.0'
+release='2'
+version='0.4.1'
 url='https://wiki.lxde.org/en/LXTerminal'
 description='Lightweight vte-based tabbed terminal emulator for LXDE '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://salsa.debian.org/lxde-team/lxterminal/-/archive/debian/$version-2/lxterminal-debian-$version-2.tar.gz")
+source=("https://github.com/lxde/lxterminal/archive/refs/tags/$version.tar.gz")
 depends=(vte3 gtk3 dejavu)
 makedepends=()
-sha256sums=('6635c50801b4f31e75b14d8c1a9782f8a8a72f624abb2d1ed9547010d0c7b1d5')
+sha256sums=('d5da0646e20ad2be44ef69a9d620be5f1ec43b156dc585ebe203dd7b05c31d88')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
-cd $name-debian-$version-2
+cd $name-$version
 
 export CC="clang"
 export CXX="clang++"

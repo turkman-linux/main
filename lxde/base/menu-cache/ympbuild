@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='menu-cache'
-release='1'
-version='1.1.0'
+release='2'
+version='1.1.1'
 url='https://example.org'
 description='Caching mechanism for freedesktop.org compliant menus'
 email='bk@gmail.com'
@@ -11,17 +11,15 @@ source=("https://github.com/lxde/menu-cache/archive/refs/tags/$version.tar.gz"
         'menu-cache-1.1.0-0001-Support-gcc10-compilation.patch')
 depends=(libfm)
 makedepends=()
-sha256sums=('990857aa61a2894730e3749b6bc0f905967eed0c21aa2b62a7694007bdccbe8d'
+sha256sums=('e8af90467df271c3c8700c840ca470ca2915699c6f213c502a87d74608748f08'
          'SKIP')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+export CC=clang
 
-prepare(){
-    patch -Np1 -i ../menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
-}
+cd $name-$version
 
 setup(){
     autoreconf -fvi

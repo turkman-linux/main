@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='lxlauncher'
-release='1'
-version='0.2.5'
+release='2'
+version='0.2.8'
 url='https://wiki.lxde.org/en/LXLauncher'
 description='Open source clone of the Asus launcher for EeePC'
 email='bayramk@gmail.com'
@@ -10,10 +10,12 @@ license=('GPLv3')
 source=("https://github.com/lxde/lxlauncher/archive/refs/tags/$version.tar.gz")
 depends=(startup-notification gtk3 menu-cache)
 makedepends=()
-sha256sums=('532f1ea27f41311133eb8cb4dcc9bba373150b09ded5a9cddc9ff7360bb86984')
+sha256sums=('f67d9dbf3a130819fd171b621b3683d7d20cd609554756481b965484ac591b49')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
+
+export CC=clang
 
 cd $name-$version
 

@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 name='lxhotkey'
-release='1'
-version='0.1.1'
+release='2'
+version='0.1.2'
 url='https://github.com/lxde/lxhotkey/'
 description='LXDE hotkey'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/lxde/lxhotkey/archive/refs/tags/$version.tar.gz")
-depends=(libfm)
+depends=(libfm libexif)
 makedepends=()
-sha256sums=('c5a9fa01960c1d0d92b1fb6392bc73db7793c7f889ca716c41a46a434bcfff57')
+sha256sums=('f32686d298d86ae1e97c9e3d27ba1f01b6a0f17dbbbbd67dfbf82e7c0080c592')
 group=(lxde.base)
 uses=()
 arch=('x86_64')
+
+export CC=clang
 
 cd $name-$version
 
