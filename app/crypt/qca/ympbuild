@@ -8,12 +8,11 @@ email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('LGPL')
 source=("https://download.kde.org/stable/qca/$version/qca-${version}.tar.xz")
-depends=(make-ca which cyrus-sasl)
+depends=(make-ca which cyrus-sasl qt6-5compat)
 makedepends=(cmake doxygen libgcrypt openssl)
 sha256sums=('48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264')
 group=(app.crypt)
-uses=(qt5 qt6)
-qt5_depends=(qt5-base)
+uses=(qt6)
 qt6_depends=(qt6-base)
 arch=('x86_64')
 
@@ -33,11 +32,6 @@ setup () {
         ${ops[@]} \
         -B build-qt6 \
         -DQT6=ON
-  fi
-  if use qt5 ; then
-        ${ops[@]} \
-        -B build-qt5 \
-        -DQT6=OFF
   fi
 }
 
