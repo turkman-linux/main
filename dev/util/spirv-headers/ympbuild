@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='spirv-headers'
-release='3'
-version='1.3.275.0'
+release='4'
+version='1.4.313.0'
 url='https://github.com/KhronosGroup/SPIRV-Headers'
 description='Machine-readable files for the SPIR-V Registry'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-$version.tar.gz")
 depends=()
 makedepends=()
-md5sums=('f293886617aa816fdbb2b50d5e909681')
+sha256sums=('f68be549d74afb61600a1e3a7d1da1e6b7437758c8e77d664909f88f302c5ac1')
 group=(dev.util)
 uses=()
 arch=('x86_64')

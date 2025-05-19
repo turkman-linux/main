@@ -1,40 +1,42 @@
 #!/usr/bin/env bash
 name='spirv-tools'
-release='2'
-version='1.3.261.1'
+release='3'
+version='1.4.313.0'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
 description='Provides an API and commands for processing SPIR-V modules'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-$version.tar.gz")
+source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/vulkan-sdk-$version.tar.gz")
 depends=(spirv-headers gcc)
 makedepends=()
-md5sums=('461a76f8d68ef0749a0dacfb38a258c4')
+sha256sums=('6b60f723345ceed5291cceebbcfacf7fea9361a69332261fa08ae57e2a562005')
 group=(dev.util)
 uses=()
 arch=('x86_64')
 
-cd SPIRV-Tools-sdk-$version
+cd SPIRV-Tools-vulkan-sdk-$version
 
 setup(){
-    mkdir build && cd build
-    cmake .. \
-        -GNinja \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib64 \
-        -DCMAKE_BUILD_TYPE=None \
-        -DSPIRV_WERROR=Off \
-        -DBUILD_SHARED_LIBS=ON \
-        -DSPIRV_TOOLS_BUILD_STATIC=OFF \
-        -DSPIRV-Headers_SOURCE_DIR=/usr
+local cmake_options=(
+    -D BUILD_SHARED_LIBS=ON
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_INSTALL_SYSCONFDIR=/etc
+    -D CMAKE_SKIP_INSTALL_RPATH=ON
+    -D SPIRV-Headers_SOURCE_DIR=/usr
+    -D SPIRV_TOOLS_BUILD_STATIC=OFF
+    -D SPIRV_WERROR=OFF
+  )
+
+  cmake -B build -G Ninja "${cmake_options[@]}"
 }
 
 build(){
-    ninja -C build
+    ninja -C build $jobs
 }
 
 package(){
-    ninja -C build install
+    ninja -C build install $jobs
 }
 
