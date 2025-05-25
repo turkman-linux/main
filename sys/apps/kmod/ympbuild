@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kmod'
-release='2'
-version='31'
+release='3'
+version='34'
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 description='library and tools for managing linux kernel modules'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz")
 depends=(zlib xz-utils)
 makedepends=()
-md5sums=('6165867e1836d51795a11ea4762ff66a')
+sha256sums=('12e7884484151fbd432b6a520170ea185c159f4393c7a2c2a886ab820313149a')
 group=(sys.apps)
 uses=()
 arch=('x86_64')
@@ -19,29 +19,23 @@ export PATH=$HOME:$PATH
 
 cd $name-$version
 
-prepare(){
-    # skip building gtk doc
-    touch libkmod/docs/gtk-doc.make
-}
-
 setup(){
-    ./configure --prefix=/usr \
-        --libdir=/lib64/ \
-        --bindir=/sbin
-   # remove xsltproc dependency
-   rm -f man/Makefile
-   echo -e "all:\ninstall:" > man/Makefile
+    meson setup build --prefix=/usr \
+        --bindir=/bin \
+        --sbindir=/sbin \
+        --libdir=/lib64 \
+        -Dopenssl=enabled \
+        -Dmanpages=false \
+        -Dxz=enabled \
+        -Dzlib=enabled \
+        -Dzstd=disabled
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install $jobs
-    mkdir -p ${DESTDIR}/usr/bin
-    for tool in {ins,ls,rm,dep}mod mod{probe,info}; do
-        ln -s kmod "${DESTDIR}/sbin/$tool"
-  done
+    ninja -C build install $jobs
 }
 
