@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='mklinux'
-release='3'
-version='20240815'
+release='4'
+version='20250527'
 url='https://gitlab.com/turkman/devel/sources/mklinux'
 description='kernel builder'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://gitlab.com/turkman/devel/sources/mklinux/-/archive/$version/mklinux-$version.zip")
 depends=(bc findutils file tar elfutils gcc binutils bison flex make kmod rsync)
 makedepends=()
-sha256sums=('5dace58267445a79af8b45d4c544f9c594911d9e783eaf2e4db7b5c63a87eea0')
+sha256sums=('3f5a8168e938e8bfc7d176f8587bd03930964379f167f784975b4ccee1530294')
 group=(sys.kernel)
 uses=()
 arch=('x86_64')

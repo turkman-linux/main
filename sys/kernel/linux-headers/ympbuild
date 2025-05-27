@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='linux-headers'
-release='8'
-version='6.13'
+release='9'
+version='6.15'
 url='https://cdn.kernel.org/pub/linux/kernel/'
 description='Linux kernel headers'
 email='aliriza.keskin@pardus.org.tr'
