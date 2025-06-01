@@ -7,4 +7,4 @@ for arg in $@ ; do
         echo o > /proc/sysrq-trigger
     fi
 done
-exec openrc-shutdown -p 0
+exec openrc-shutdown -p 0 "$@"

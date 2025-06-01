@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 name='pipewire'
-release='1'
-version='1.4.1'
+release='2'
+version='1.4.2'
 url='https://pipewire.org/'
-description='Multimedia processing graphs '
+description='Multimedia processing graphs'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
@@ -13,7 +13,7 @@ source=("https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/$version/pip
         "pipewire-launcher.sh")
 depends=(lilv libpulse alsa-lib dbus)
 makedepends=()
-sha256sums=('1eba67c6e5acfa23e32d70bdbabab5a3d221c4bfbb12e17aa29fd5051c095fa4'
+sha256sums=('4712aada64b9b49ad41fbb8b440914481432a560f2619ffbdd49461f8d22994f'
          'SKIP'
          'SKIP'
          'SKIP')

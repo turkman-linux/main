@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openrc'
-release='7'
-version='0.60.1'
+release='8'
+version='0.62.2'
 url='https://github.com/OpenRC/openrc'
 description='The OpenRC init system'
 email='aliriza.keskin@pardus.org.tr'
@@ -16,7 +16,7 @@ source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
     "extras/disable-secondary-gpu.sh")
 depends=()
 makedepends=()
-sha256sums=('98a974b18c6e4029e7575f8e12c728a8a3acfd8b9447eaa4aeaa9d3a837140cf'
+sha256sums=('5006d632fefb4ea546f260509bf3717902c7651987824043b03ba693624c55d2'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -41,7 +41,7 @@ prepare(){
 setup(){
     meson setup build \
         --sysconfdir=/etc \
-        --prefix=/ \
+        --prefix=/usr \
         -Ddefault_library=both \
         -Dzsh-completions=true \
         -Dbash-completions=true \
@@ -58,7 +58,7 @@ package(){
     # disable all services
     rm -f ${DESTDIR}/etc/runlevels/*/*
     rm ${DESTDIR}/etc/init.d/functions.sh
-    ln -s ../../libexec/rc/sh/functions.sh ${DESTDIR}/etc/init.d/functions.sh
+    ln -s ../../usr/libexec/rc/sh/functions.sh ${DESTDIR}/etc/init.d/functions.sh
     # install sysconf script
     mkdir -p ${DESTDIR}/etc/sysconf.d/
     install ../openrc.sysconf ${DESTDIR}/etc/sysconf.d/openrc
@@ -71,7 +71,6 @@ package(){
     echo "uucp:x:14:14:uucp:/var/spool/uucp:/bin/false" > ${DESTDIR}/etc/passwd.d/uucp
     # move /share to /usr/share
     mkdir -p ${DESTDIR}/usr ${DESTDIR}/sbin
-    mv ${DESTDIR}/{,usr}/share
     # reboot and poweroff script
     install ../reboot ${DESTDIR}/sbin/reboot
     install ../poweroff ${DESTDIR}/sbin/poweroff
