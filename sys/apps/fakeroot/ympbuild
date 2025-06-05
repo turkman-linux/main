@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='fakeroot'
-release='4'
-version='1.36'
+release='5'
+version='1.37.1.1'
 url='https://salsa.debian.org/clint/fakeroot/-/tags'
 description='A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_$version.orig.tar.gz")
 depends=(sed util-linux bash)
 makedepends=()
-sha256sums=('7fe3cf3daf95ee93b47e568e85f4d341a1f9ae91766b4f9a9cdc29737dea4988')
+sha256sums=('86b0b75bf319ca42e525c098675b6ed10a06b76e69ec9ccf20ef5e03883b3a14')
 uses=()
 group=(sys.apps)
 arch=('x86_64')
