@@ -28,8 +28,7 @@ build(){
 }
 
 package(){
-    meson install -C build --destdir=${DESTDIR}
-    python -m compileall -d / "$DESTDIR"/usr/lib
-    python -O -m compileall -d / "$DESTDIR"/usr/lib
+    meson install -C build
+    mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-pygobject'
-release='1'
-version='3.43.1'
+release='2'
+version='3.50.1'
 url='Python bindings for GObject Introspection'
 description='Python bindings for GObject Introspection'
 email='bayramk@gmail.com'
@@ -9,19 +9,25 @@ maintainer='bk'
 license=('GPLv3')
 source=("https://gitlab.gnome.org/GNOME/pygobject/-/archive/$version/pygobject-$version.tar.gz")
 pyver=$(python -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
-depends=(python"$pyver" gobject-introspection)
+depends=(python"$pyver" gobject-introspection py3-cairo)
 makedepends=()
-md5sums=('644705774d5cd6b668e95ac33ba64de2')
+sha256sums=('c4f28db7715c674e23577ffc797ef1c37b2c009248c73b69dd577861c889c564')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
 cd pygobject-$version
 
+setup(){
+    meson setup build --prefix=/usr \
+      -Dtests=false \
+      -Dpycairo=enabled
+}
+
 build(){
-    python3 setup.py build
+    ninja -C build
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    ninja -C build install
 }

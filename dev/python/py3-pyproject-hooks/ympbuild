@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-pyproject-hooks'
-release='2'
-version='1.1.0'
+release='3'
+version='1.2.0'
 url='https://github.com/pypa/pyproject-hooks'
 description='Python project hooks'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pypa/pyproject-hooks/archive/refs/tags/v$version.tar.gz")
 depends=(python)
 makedepends=(py3-build)
-sha256sums=('1cbbabcd93ea1ac50cca7f23e5b640904684ae6c85003c6f7cf02b598c33f28f')
+sha256sums=('d993cda99f6c41c2679a0cd5528fc15608cc114df26553deb41db62185c11206')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,16 @@ cd pyproject-hooks-$version
 
 export PYTHONPATH=src/pyproject_hooks
 
+
+## this package require itself. so we must use venv for build
+prepare(){
+    python3 -m venv .
+    source bin/activate
+    pip3 install build installer
+}
+
 build () {
+    source bin/activate
     python -m build --wheel
 }
 

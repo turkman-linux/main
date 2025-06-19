@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-markdown'
-release='3'
-version='3.6'
+release='4'
+version='3.8.2'
 url='https://github.com/Python-Markdown/markdown'
 description='A Python implementation of John Gruber’s Markdown with Extension support.'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/Python-Markdown/markdown/archive/refs/tags/$version.tar.gz")
 depends=(python)
 makedepends=(py3-build py3-installer py3-setuptools py3-wheel)
-sha256sums=('f65f3867f967b4b0ea4acd951bb7f0d9cb4d033c6fc28847a7eeb4d9fe242844')
+sha256sums=('c9573a1ebcbb678c2b1c8b7706380f6dbecc00a97b8324c2ab6037d1ae6b825b')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -23,5 +23,6 @@ build(){
 
 package(){
 	python3 -m installer --destdir="$DESTDIR" dist/*.whl
+  mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

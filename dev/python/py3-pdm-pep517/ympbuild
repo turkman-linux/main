@@ -1,25 +1,23 @@
 #!/usr/bin/env bash
 name='py3-pdm-pep517'
-release='1'
-version='1.1.4'
+release='2'
+version='2.4.4'
 url='https://github.com/pdm-project/pdm-pep517'
 description='A PEP 517 backend for PDM that supports PEP 621 metadata'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('MIT')
-source=("https://github.com/pdm-project/pdm-backend/archive/refs/tags/${version}.tar.gz" "python-pdm-pep517-1.1.2-devendor.patch")
+source=("https://github.com/pdm-project/pdm-backend/archive/refs/tags/${version}.tar.gz")
 depends=(py3-tomli-w)
 makedepends=(py3-tomli py3-cerberus)
-md5sums=('ba5d54bfe72feec5330ab3524870783b' 'SKIP')
+sha256sums=('d77661cd03121a89e323db364863793bf170a93dcb0d7abb328772c386527f93')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
 cd "pdm-backend"-$version
 
-prepare(){
-    patch -Np1 -d ../pdm-backend-$version -i ../python-pdm-pep517-1.1.2-devendor.patch
-}
+export PDM_BUILD_SCM_VERSION="$version"
 
 build(){
     python -m build --wheel --skip-dependency-check --no-isolation
@@ -27,5 +25,6 @@ build(){
 
 package(){
     python -m installer --destdir="$DESTDIR" dist/*.whl
+    mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

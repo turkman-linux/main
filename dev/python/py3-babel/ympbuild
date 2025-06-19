@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-babel'
-release='2'
-version='2.14.0'
+release='3'
+version='2.17.0'
 url='http://babel.pocoo.org/'
 description='Python3 i18n tool'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 source=("https://github.com/python-babel/babel/archive/refs/tags/v${version}.tar.gz")
 depends=(python)
 makedepends=(py3-tz py3-setuptools)
-sha256sums=('ad76eab6905b626d7d4110d2032bc60c69bef225ec94c67d7229425ebe53f659')
+sha256sums=('a52696499d9da7860726444c170f3481dc7409398392f3500783d01c07221bbf')
 group=(dev.python)
 uses=()
 arch=('x86_64')

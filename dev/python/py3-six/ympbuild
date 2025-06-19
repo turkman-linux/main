@@ -2,20 +2,20 @@
 name='py3-six'
 release='1'
 version='1.16.0'
-url='https://salsa.debian.org/python-team/packages/six'
+url='https://github.com/benjaminp/six'
 description='Python 2 and 3 compatibility library'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://salsa.debian.org/python-team/packages/six/-/archive/debian/$version-5/six-debian-$version-5.tar.gz")
+source=("https://github.com/benjaminp/six/archive/refs/tags/$version.tar.gz")
 depends=(python)
 makedepends=()
-md5sums=('bc3e3ae290356f4f6623ce03c9499956')
+sha256sums=('af6745f78dceb1ad5107dc6c2d3646c8cb57cf4668ba7b5427145a71a690f60e')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
-cd six-debian-$version-5
+cd six-$version
 
 build(){
     python setup.py build

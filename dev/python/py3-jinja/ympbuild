@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-jinja'
-release='2'
-version='3.1.4'
+release='3'
+version='3.1.6'
 url='https://github.com/pallets/jinja'
 description='A very fast and expressive template engine.'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pallets/jinja/archive/refs/tags/$version.tar.gz")
 depends=(python)
 makedepends=(py3-markupsafe)
-sha256sums=('ed06f67abd2c8b7697dfb714f80715903ab0507e3c5acc11e92477e4ea51033b')
+sha256sums=('2074b22a72caa65474902234b320d73463d6d4c223ee49f4b433495758356337')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -23,5 +23,6 @@ build(){
 
 package(){
     python3 -m installer -d "$DESTDIR" dist/*.whl
+    mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

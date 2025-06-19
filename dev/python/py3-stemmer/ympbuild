@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 name='py3-stemmer'
-release='1'
-version='2.2.0.1'
+release='2'
+version='3.0.0'
 url='https://github.com/snowballstem/pystemmer'
 description='String processing language for creating stemming algorithms'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://github.com/snowballstem/pystemmer/archive/refs/tags/v$version.tar.gz")
-pyver=$(python -c "import sys; print(str( sys.version_info[0]) +\".\"+ str(sys.version_info[1] ))")
-depends=(python"$pyver")
+depends=(python)
 makedepends=()
-md5sums=('8e4f6e0373a0571ed34cda2c8bf98d22')
+sha256sums=('e00740231deb135855141ef3d568b27c40b34d34e058b775ade6334a5859519f')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -23,12 +22,5 @@ build(){
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
-    pyver=$(python -c "import sys; print(str( sys.version_info[0]) + str(sys.version_info[1] ))")
-    for ver in 311 310 ; do
-        if [[ ! -e ${DESTDIR}/usr/lib64/python3/Stemmer.cpython-$ver-$(uname -m)-linux-gnu.so ]] ; then
-            ln -s Stemmer.cpython-$pyver-$(uname -m)-linux-gnu.so \
-                ${DESTDIR}/usr/lib64/python3/Stemmer.cpython-$ver-$(uname -m)-linux-gnu.so
-        fi
-    done
+    python3 setup.py install --root="${DESTDIR}" --optimize=1 --skip-build
 }

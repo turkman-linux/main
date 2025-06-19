@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-requests'
-release='1'
-version='2.31.0'
+release='3'
+version='2.32.4'
 url='https://requests.readthedocs.io/'
 description='Python HTTP for Humans'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('Apache')
 source=("https://github.com/psf/requests/archive/refs/tags/v${version}.tar.gz")
-depends=(py3-certifi py3-idna py3-urllib3 python)
+depends=(py3-certifi py3-idna py3-urllib3 python py3-urllib3)
 makedepends=(py3-build py3-wheel py3-setuptools)
-md5sums=('fb734df6b273e30f68f9346dbf72aa34')
+sha256sums=('cb4faf6ae4a5a1cee78f08f950c54ef1b03e77dee595ac80f304e96576a48fba')
 group=(dev.python)
 uses=()
 arch=('x86_64')

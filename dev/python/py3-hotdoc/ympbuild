@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 name='py3-hotdoc'
-release='1'
-version='0.14.0'
+release='2'
+version='0.17.4'
 url='https://pypi.org/project/hotdoc/'
 description='A documentation tool micro-framework'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://files.pythonhosted.org/packages/56/ad/c3c7fb2cae9baa369317600d66f41ecbf723867f3e19e5dd56aed09b7ed0/hotdoc-$version.tar.gz")
+#source=("https://github.com/hotdoc/hotdoc/archive/refs/tags/$version.tar.gz")
+source=(https://files.pythonhosted.org/packages/60/fd/32e24a747181e060ace04cd927698b2b5b3b90f6bf2c014e12df630c183a/hotdoc-0.17.4.tar.gz)
+
 depends=(python json-glib)
 makedepends=()
-md5sums=('1cd551b2d565877537ffa0854d6ecaee')
+sha256sums=('c4d5dff647f03aa87a1d2d06035d2819edd099b91635e3b2ee390829357ae9fc')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -22,7 +24,7 @@ build(){
 }
 
 package(){
-    python setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python setup.py install --root="${DESTDIR}" --optimize=1 --skip-build
 
 }
 

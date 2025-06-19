@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-build'
-release='3'
-version='1.2.1'
+release='4'
+version='1.2.2.post1'
 url='https://github.com/pypa/build/'
 description='Easily download, build, install, upgrade, and uninstall Python packages'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,12 +10,13 @@ license=('GPLv3')
 source=("https://github.com/pypa/build/archive/refs/tags/$version.tar.gz")
 depends=(python py3-packaging py3-pyproject-hooks)
 makedepends=()
-sha256sums=('571fbbcd187eed0e7af47dd49e8f25ab22fb9cfbde5ed1daea67c5187dad9df6')
+sha256sums=('25ae1da38e6d071da0d47d7229d58cef24852388669e89ce7500ec26e6261b58')
 uses=()
 group=(dev.python)
 arch=('x86_64')
 
 cd build-$version
+
 
 package(){
     mkdir -p $DESTDIR/usr/lib64/python3/build

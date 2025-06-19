@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-curl'
-release='1'
-version='7.45.2'
+release='3'
+version='7.45.6'
 url='http://pycurl.sourceforge.net/'
 description='A Python 3.x interface to libcurl'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('LGPL' 'MIT')
 source=("https://salsa.debian.org/python-team/packages/pycurl/-/archive/upstream/${version}/pycurl-upstream-${version}.tar.gz")
 depends=(python curl openssl)
 makedepends=(py3-build py3-installer py3-wheel py3-setuptools)
-sha256sums=('5a9eae08252d6e27925d5924593385c78100100461630f7ff2d3ffa7e13a4993')
+sha256sums=('6871308f87f857a9faaef55df5cc4ae05e4ba0adf43405e73488e20cb60606c1')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -22,7 +22,7 @@ build(){
 }
 
 package(){
-    python3 setup.py install --root="${DESTDIR}" --install-lib=/usr/lib64/python3 --optimize=1 --skip-build
+    python3 setup.py install --root="${DESTDIR}" --optimize=1 --skip-build
 }
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-setuptools'
-release='5'
-version='71.1.0'
+release='6'
+version='80.9.0'
 url='https://pypi.org/project/setuptools/'
 description='Easily download, build, install, upgrade, and uninstall Python packages'
 email='aliriza.keskin@pardus.org.tr'
@@ -9,8 +9,8 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://pypi.io/packages/source/s/setuptools/setuptools-$version.tar.gz")
 depends=(python)
-makedepends=( )
-sha256sums=('032d42ee9fb536e33087fb66cac5f840eb9391ed05637b3f2a76a7c8fb477936')
+makedepends=()
+sha256sums=('f36b47402ecde768dbfafc46e8e4207b4360c654f1f3bb84475f0a28628fb19c')
 uses=()
 group=(dev.python)
 arch=('x86_64')

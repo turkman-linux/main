@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 name='py3-dbus'
 _name='dbus-python'
-release='1'
-version='1.3.2'
+release='2'
+version='1.4.0'
 url='https://www.freedesktop.org/wiki/Software/DBusBindings'
 description='Python3 bindings for DBUS'
 email='brkt8khn@gmail.com'
 maintainer='brkt8khn'
 license=('MIT')
-source=("https://dbus.freedesktop.org/releases/dbus-python/$_name-${version}.tar.gz")
+source=("https://dbus.freedesktop.org/releases/dbus-python/$_name-${version}.tar.xz")
 depends=(python dbus)
 makedepends=(py3-sphinx py3-tomli)
-sha256sums=('ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8')
+sha256sums=('c36b28f10ffcc8f1f798aca973bcc132f91f33eb9b6b8904381b4077766043d5')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -19,15 +19,15 @@ arch=('x86_64')
 cd $_name-$version
 
 setup(){
-    ./configure --prefix=/usr \
+    meson setup build --prefix=/usr \
         --libdir=/usr/lib64/
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install $jobs
+    ninja -C build install $jobs
 }
 

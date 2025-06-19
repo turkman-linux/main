@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-cparser'
-release='2'
-version='2.21'
+release='3'
+version='2.22'
 url='https://github.com/eliben/pycparser'
 description='A super-fast templating language that borrows the best ideas from the existing templating languages.'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/eliben/pycparser/archive/refs/tags/release_v$version.tar.gz")
 depends=(python)
 makedepends=(py3-wheel py3-setuptools)
-sha256sums=('3c797eb2eb1ba57772bb99ffa7caed23c3a2c2ae58daef114c9b09d3a6da97e2')
+sha256sums=('b074c239ee828fcb9c97774b942f3ce51f0d2edc00809f49c3c3ef0f3baaf9c1')
 group=(dev.python)
 uses=()
 arch=('x86_64')

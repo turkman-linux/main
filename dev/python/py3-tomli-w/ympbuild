@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-tomli-w'
-release='1'
-version='1.0.0'
+release='2'
+version='1.2.0'
 url='https://github.com/hukkin/tomli-w'
 description="Lil' TOML writer"
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/hukkin/tomli-w/archive/refs/tags/${version}.zip")
 depends=()
 makedepends=()
-md5sums=('4417a3788beaa9111855f069b75366a2')
+sha256sums=('ea8a98d2f854b193607012c80bec65b490f749a6ae9ed2b105332e67dc8ac6f1')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,11 +18,12 @@ arch=('x86_64')
 cd "tomli-w"-$version
 
 build(){
-     python -m build --wheel --no-isolation
+     python -m build --wheel
 }
 
 package(){
     python -m installer --destdir="${DESTDIR}" dist/*.whl
   install -Dm 644 LICENSE -t "${DESTDIR}"/usr/share/licenses/python-tomli-w/
+  mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

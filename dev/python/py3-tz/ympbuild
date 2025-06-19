@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-tz'
-release='2'
-version='2024.1'
+release='3'
+version='2025.2'
 url='https://pypi.python.org/pypi/pytz'
 description='Python3 definitions of world timezone'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://pypi.python.org/packages/source/p/pytz/pytz-${version}.tar.gz")
 depends=(python)
 makedepends=()
-sha256sums=('2a29735ea9c18baf14b448846bde5a48030ed267578472d8955cd0e7443a9812')
+sha256sums=('360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3')
 group=(dev.python)
 uses=()
 arch=('x86_64')

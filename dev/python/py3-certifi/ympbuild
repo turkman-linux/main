@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-certifi'
-release='1'
-version='2024.12.14'
+release='2'
+version='2025.06.15'
 url='https://github.com/certifi/pyhon-certifi'
 description='(Python Distribution) A carefully curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts.'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/certifi/python-certifi/archive/refs/tags/$version.tar.gz")
 depends=(python)
 makedepends=(py3-setuptools)
-sha256sums=('d9045cb5da5ee9678db7020990535a41dfb0779999adbedb375ae7dfdeb4b894')
+sha256sums=('a3759ec1979f9758bafedf8c23cf398dbb93410c308042d272735d1cba8b43d0')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -24,6 +24,7 @@ build(){
 
 package(){
     python3 -m installer --destdir ${DESTDIR} dist/*.whl
+    mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 
 

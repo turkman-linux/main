@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-sphinx'
-release='2'
-version='7.2.2'
+release='3'
+version='8.2.3'
 url='https://www.sphinx-doc.org/'
 description='Python Documentation Generator'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('BSD-2-Clause')
 source=("https://github.com/sphinx-doc/sphinx/archive/refs/tags/v${version}.tar.gz")
 depends=(python py3-babel py3-docutils py3-imagesize py3-jinja py3-packaging py3-pygments py3-requests py3-snowballstemmer)
 makedepends=(py3-build py3-flit py3-installer)
-md5sums=('3885dc10736988363f398b51992d9118')
+sha256sums=('94cd09fa065b819dcc40de329441d53710cf51f6857b39ce20840bb2b5d3ec78')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,7 +18,7 @@ arch=('x86_64')
 cd "sphinx"-$version
 
 build(){
-    python -m build --wheel --skip-dependency-check --no-isolation
+    python -m build --wheel
 }
 
 package(){

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-tomli'
-release='1'
-version='2.0.1'
+release='2'
+version='2.2.1'
 url='https://github.com/hukkin/tomli'
 description="Lil' TOML parser"
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/hukkin/tomli/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=(py3-build py3-flit)
-md5sums=('b32f504876fd88ea1ca0c2fab4ce8e27')
+sha256sums=('3af7c4b571d1ccddaba020c558da0ce5b5e24edc830e478a903d82dc2d9013ae')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -23,5 +23,6 @@ build(){
 
 package(){
     python3 -m installer -d "$DESTDIR" dist/*.whl
+    mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

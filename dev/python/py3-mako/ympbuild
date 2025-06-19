@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
 name='py3-mako'
-release='3'
-version='1.3.5'
-_version='1_3_5'
+release='4'
+version='1.3.10'
 url='https://pypi.org/project/Mako/'
 description='A super-fast templating language that borrows the best ideas from the existing templating languages.'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://github.com/sqlalchemy/mako/archive/refs/tags/rel_${_version}.tar.gz")
+source=("https://github.com/sqlalchemy/mako/archive/refs/tags/rel_${version//./_}.tar.gz")
 depends=(python py3-markupsafe)
 makedepends=()
-sha256sums=('abaf7d76e50d92ce6218a8437ea6ef93905598050099eb125c37dc55a5fffe32')
+sha256sums=('e8f1334904611d5cb357b6396790fd4375ac21ad901f4314d222d5d5758979b9')
 group=(dev.python)
 uses=()
 arch=('x86_64')
 
-cd mako-rel_$_version
+cd mako-rel_${version//./_}
 
 build(){
     python3 setup.py build

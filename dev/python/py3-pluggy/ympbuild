@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='py3-pluggy'
-release='3'
-version='1.5.0'
-url='https://pluggy.readthedocs.io/en/latest/'
+release='4'
+version='1.6.0'
+url='https://github.com/pytest-dev/pluggy/tags'
 description='Plugin management and hook calling for Python'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/96/2d/02d4312c973c6050a18b314a5ad0b3210edb65a906f868e31c111dede4a6/pluggy-1.5.0.tar.gz")
+source=("https://github.com/pytest-dev/pluggy/archive/refs/tags/$version.tar.gz")
 depends=(py3-pdm-pep517)
 makedepends=(py3-setuptools)
-sha256sums=('2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1')
+sha256sums=('d35ec78be56dae9fd736e1378a2c3c176fd2aefd9daefc209abeab569c2732ee')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -18,12 +18,15 @@ arch=('x86_64')
 cd "pluggy"-$version
 
 
+export SETUPTOOLS_SCM_PRETEND_VERSION=$version
+
 build(){
     python3 -m build
 }
 
 package(){
     python3 -m installer --destdir ${DESTDIR} dist/*.whl
+    mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 
 

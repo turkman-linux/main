@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-urllib3'
-release='1'
-version='2.0.3'
+release='2'
+version='2.5.0'
 url='https://github.com/urllib3/urllib3'
 description='HTTP library with thread-safe connection pooling, file post, and more'
 email='akarsu@protonmail.com'
@@ -10,20 +10,23 @@ license=('MIT')
 source=("https://github.com/urllib3/urllib3/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=(py3-build py3-installer py3-setuptools py3-sphinx py3-wheel py3-hatchling)
-md5sums=('395767051ae262775e44ef11ee05bcfe')
+sha256sums=('5ea3e7c3e387e65abe94af551c39c7a207d6bcec7053ae3d2dd643073dffb64b')
 group=(dev.python)
 uses=()
 arch=('x86_64')
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=$version
 
 cd "urllib3"-$version
 
 
 build(){
-	python -m build --wheel --no-isolation
+	python -m build --wheel
 
 }
 
 package(){
 	python -m installer --destdir="$DESTDIR" dist/*.whl
+	mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

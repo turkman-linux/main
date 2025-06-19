@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-wheel'
-release='4'
-version='0.43.0'
+release='5'
+version='0.46.1'
 url='https://pypi.org/project/wheel/'
 description='A built-package format for Python'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pypa/wheel/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=(py3-installer py3-flit)
-sha256sums=('23060d7cc8afafc2930554624b4bae7d58031830672048622c926675ab91e3b0')
+sha256sums=('fec72595437748b92ee9a86cd464936f8902488b1085edb973ec2a6c5a5cb466')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -27,5 +27,6 @@ build(){
 
 package(){
     python3 -m installer --destdir="$DESTDIR" dist/*.whl
+    mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 

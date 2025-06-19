@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-parsing'
-release='2'
-version='3.1.2'
+release='3'
+version='3.2.3'
 url='https://pypi.org/project/pyparsing/'
 description='Python library for creating PEG parsers'
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/pyparsing/pyparsing/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=(py3-build py3-installer py3-flit)
-sha256sums=('a8a6b7db8b837566884b6c5d8d24bf627f85b72c8abce1338e4d7ffe1a88473e')
+sha256sums=('3ad3397385c3f68c89d313529af4cafc9a9117845bc0cb6b38f02e621d151d38')
 group=(dev.python)
 uses=()
 arch=('x86_64')

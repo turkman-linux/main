@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-hatchling'
-release='3'
-version='1.24.2'
+release='4'
+version='1.27.0'
 url='https://github.com/pypa/hatch'
 description=' 	Modern, extensible Python build backend'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://github.com/pypa/hatch/archive/refs/tags/hatchling-v${version}.tar.gz")
 depends=(python)
 makedepends=(py3-build py3-installer)
-sha256sums=('b8e6974a780dc2c5b43676c352f20e19c61a33b7a4e1cb47b05c364ae22f0a8c')
+sha256sums=('c5d576a04bbc3940c71dc899da35a9cfe644044a6e4e70549f41d964d6331625')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -25,7 +25,7 @@ package(){
   python -m installer --destdir="$DESTDIR" backend/dist/*.whl
   install -Dm644 README.md "${DESTDIR}/usr/share/doc/${name}/README.md"
   install -Dm644 backend/LICENSE.txt "${DESTDIR}/usr/share/licenses/${name}/LICENSE.txt"
-
+  mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 
 

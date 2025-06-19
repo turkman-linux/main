@@ -18,12 +18,13 @@ arch=('x86_64')
 cd "python-pam"-$version
 
 build(){
-    python -m build --wheel --no-isolation
+    python -m build --wheel
 }
 
 package(){
 	python -m installer --destdir="${DESTDIR}" dist/*.whl
 	install -Dm644 LICENSE "${DESTDIR}/usr/share/licenses/${name}/LICENSE"
+  mv ${DESTDIR}/usr/lib/python3.*/site-packages ${DESTDIR}/usr/lib/python3
 }
 
 

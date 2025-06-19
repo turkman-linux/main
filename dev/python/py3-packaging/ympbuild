@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='py3-packaging'
-release='3'
-version='24.0'
+release='4'
+version='25.0'
 url='https://pypi.org/project/packaging'
 description='Core utilities for Python3 packages'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('Apache-2.0 AND BSD-2-Clause')
 source=("https://github.com/pypa/packaging/archive/refs/tags/${version}.tar.gz")
 depends=(python)
 makedepends=(py3-build py3-installer)
-sha256sums=('1bf35cf2c2be982f2ae6c905760ae19cb744fadbf56269f2e54f7bdcef64d291')
+sha256sums=('15b6ba95eb12d8f99dcf215ea37cbea16812ef28358e8ef3d9344acb827acac1')
 group=(dev.python)
 uses=()
 arch=('x86_64')
@@ -19,7 +19,16 @@ cd "packaging"-$version
 
 export PYTHONPATH=src/packaging
 
+## this package require itself. so we must use venv for build
+prepare(){
+    python3 -m venv .
+    source bin/activate
+    pip3 install build installer flit
+}
+
+
 build(){
+    source bin/activate
     python -m build -nw
 }
 
