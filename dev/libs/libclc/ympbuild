@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libclc'
-release='4'
-version='19.1.7'
+release='5'
+version='20.1.7'
 url='https://libclc.llvm.org/'
 description='Open source implementation of the library requirements of the OpenCL C programming language'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/libclc-$version.src.tar.xz")
 depends=(spirv-llvm-translator)
 makedepends=()
-sha256sums=('77e2d71f5cea1d0b1014ba88186299d1a0848eb3dc20948baae649db9e7641cb')
+sha256sums=('22b29c1a9f18d8744e5a24f36ce6d4f198d523c126cd7182569c73806e1e1854')
 group=(dev.libs)
 uses=()
 arch=('x86_64')

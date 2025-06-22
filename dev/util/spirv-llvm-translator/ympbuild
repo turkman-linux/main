@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='spirv-llvm-translator'
-release='4'
-version='19.1.2'
+release='5'
+version='20.1.2'
 url='https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
 description='Bi-directional translator between SPIR-V and LLVM IR'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,7 +12,7 @@ source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v$version
 #source=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/${_commit}.zip")
 depends=(spirv-tools llvm)
 makedepends=()
-sha256sums=('67be5fd119a0a575b82289f870064198484eb41f0591f557166a6c1884c906bf')
+sha256sums=('d1b4a55dc457edbd9cc50d23583d4bedda9479176efcd34b3e20166bc7a4a562')
 group=(dev.util)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='llvm'
-release='4'
-version='19.1.7'
+release='5'
+version='20.1.7'
 url='https://llvm.org'
 description='Low Level Virtual Machine'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,8 +12,8 @@ source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$version
         "https://anduin.linuxfromscratch.org/BLFS/llvm/llvm-third-party.src.tar.xz")
 depends=(libffi xz-utils libxml2 zlib)
 makedepends=(git)
-sha256sums=('96f833c6ad99a3e8e1d9aca5f439b8fd2c7efdcf83b664e0af1c0712c5315910'
-            '11c5a28f90053b0c43d0dec3d0ad579347fc277199c005206b963c19aae514e3'
+sha256sums=('10b62d003f16afbd1a5ee0aa6397704c13d9a12a2562103998a8c1eff4a0f1ea'
+            'afdab526c9b337a4eacbb401685beb98a18fb576037ecfaa93171d4c644fe791'
             '640dfceac068374e3dbce3576892712d157705b35dfe13dd17518c256ad29d5e')
 group=(sys.devel)
 uses=()
