@@ -1,42 +1,48 @@
 #!/usr/bin/env bash
 name='librsvg'
-release='4'
-version='2.59.2'
+release='5'
+version='2.40.20'
 url='https://github.com/oaken-source/librsvg-og'
 description='Scalable Vector Graphics (SVG) rendering library '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-#source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
-source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
+source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
+#source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
 depends=(libcroco gobject-introspection pango cairo fontconfig libX11 libXext libXrender libxcb gdk-pixbuf)
-makedepends=(rust cargo-c vala)
-sha256sums=('ecd293fb0cc338c170171bbc7bcfbea6725d041c95f31385dc935409933e4597')
+makedepends=(vala)
+sha256sums=('5bcbd8aa34a81478f990dc62a308ee2a42ff89a4e2bc905c09fd68f525bf5643')
 group=(gnome.base)
 uses=()
 arch=('x86_64')
 
-cd $name-$version
+#cd $name-$version
+cd $name-og-$version
 
 prepare(){
     # convert CRFL files to normal files
     find -type f -exec sed -i "s/\r$//g" {} \;
 }
+export CFLAGS="-Wno-incompatible-pointer-types"
 
 setup(){
-    meson setup build \
-        --prefix=/usr \
-        -Ddocs=disabled \
-        -Dintrospection=enabled \
-        -Dpixbuf=enabled\
-        -Dpixbuf-loader=enabled \
-        -Dvala=enabled
+#    meson setup build \
+#        --prefix=/usr \
+#        -Ddocs=disabled \
+#        -Dintrospection=enabled \
+#        -Dpixbuf=enabled\
+#        -Dpixbuf-loader=enabled \
+#        -Dvala=enabled
+    autoreconf -vfi
+    ./configure --prefix=/usr
 }
 build(){
-    ninja -C build $jobs
+#    ninja -C build $jobs
+    make $jobs
 }
 
 package(){
-    ninja -C build install $jobs
+#    ninja -C build install $jobs
+    make install $jobs
 }
 
