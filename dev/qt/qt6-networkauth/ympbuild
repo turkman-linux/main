@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-networkauth'
-release='3'
-version='6.8.0'
+release='4'
+version='6.9.1'
 url='https://www.qt.io/'
 description='Network authentication module'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtnetworkauth-everywhere-src-${version}.tar.xz")
 depends=(qt6-base)
 makedepends=(cmake ninja)
-sha256sums=('b95d566544c6b35d895be39473fef51985b04df2f16008de54660966ae80cc48')
+sha256sums=('7fadb15b372235546f1585145fd5dbb5d1177d041ef692b0ea232935387339cb')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

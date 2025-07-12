@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-base'
-release='3'
-version='6.8.0'
+release='4'
+version='6.9.1'
 url='https://qt.io/developers/'
 description='A cross-platform application and UI framework'
 email='brkt8khn@gmail.com'
@@ -12,7 +12,7 @@ source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/q
 depends=(sqlite libX11 fontconfig mesa harfbuzz libXi openssl double-conversion libproxy
          xcb-util-cursor xcb-util-wm xcb-util-keysyms)
 makedepends=(vulkan-headers)
-sha256sums=('1bad481710aa27f872de6c9f72651f89a6107f0077003d0ebfcc9fd15cba3c75')
+sha256sums=('40caedbf83cc9a1959610830563565889878bc95f115868bbf545d1914acf28e')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

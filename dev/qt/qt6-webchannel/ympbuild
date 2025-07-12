@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-webchannel'
-release='3'
-version='6.8.0'
+release='4'
+version='6.9.1'
 url='https://www.qt.io/'
 description='Library for seamless integration of C++ +and QML applications with HTML/JavaScript clients.'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtwebchannel-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-declarative)
 makedepends=(cmake)
-sha256sums=('d6250d25bf8a8d2af608239d259ec72db6dc28f08aefc8895492ad09ebaf60c0')
+sha256sums=('19b401d9210afc416c4080b189b0c9940e90d1f7444f5d046f3d8b1ab5fcf9c0')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

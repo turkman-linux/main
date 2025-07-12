@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='qt6-3d'
-release='3'
-version='6.8.0'
+release='4'
+version='6.9.1'
 url='https://www.qt.io/'
 description='Package description missing'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qt3d-everywhere-src-${version}.tar.xz")
 depends=(qt6-base qt6-declarative qt6-shadertools)
 makedepends=(cmake  ninja)
-sha256sums=('3a11919e15437c351b742dbf4e0115ce51aa969cba844dd6388aae14810c7b7d')
+sha256sums=('9c46497a60147bb326a58b67b1f543bdf81b8aceed908b44d3dde896d79c4784')
 group=(dev.qt)
 uses=()
 arch=('x86_64')

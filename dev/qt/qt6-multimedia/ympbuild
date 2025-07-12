@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 name='qt6-multimedia'
-release='3'
-version='6.8.0'
+release='4'
+version='6.9.1'
 url='https://www.qt.io/'
 description='Qt6 - Multimedia support'
 email='brkt8khn@gmail.com'
 maintainer='brkt8khn'
 license=('FDL' 'GPL3' 'LGPL3' 'custom')
 source=("https://download.qt.io/archive/qt/${version%.*}/${version}/submodules/qtmultimedia-everywhere-src-${version}.tar.xz")
-depends=(qt6-base alsa-lib ffmpeg libpulse gst-plugins-base)
+depends=(qt6-base alsa-lib ffmpeg libpulse gst-plugins-base gst-plugins-bad)
 makedepends=(cmake perl qt6-declarative)
-sha256sums=('28766aa562fa7aa7dfa8420defd6ece90a891a0496b8d8a4c51958182d73cfcd')
+sha256sums=('955e36459518ee55f8e2bb79defc6e44aa94dc1edf5ac58a22d7734b2e07391d')
 group=(dev.qt)
 uses=()
 arch=('x86_64')
 
 cd "qtmultimedia-everywhere-src-"${version}
-export PATH=/usr/bin/qt6:$PATH
+export PATH=$PATH:/usr/bin/qt6
 
 
 export CXXFLAGS="$CXXFLAGS -g1 -flto=auto -ffat-lto-objects"
@@ -24,7 +24,6 @@ export CXXFLAGS="$CXXFLAGS -g1 -flto=auto -ffat-lto-objects"
 setup() {
 	cmake -B build -G Ninja \
       -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
-			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 			-DCMAKE_INSTALL_PREFIX=/usr
 
 }
