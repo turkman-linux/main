@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='hyprcursor'
-release='1'
-version='0.1.10'
+release='2'
+version='0.1.12'
 url='https://github.com/hyprwm/hyprcursor'
 description='The hyprland cursor format, library and utilities.'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://github.com/hyprwm/hyprcursor/archive/refs/tags/v$version.zip")
-depends=(librsvg libzip tomlplusplus)
+depends=(librsvg libzip tomlplusplus hyprlang)
 makedepends=()
-sha256sums=('887afdcb96d0617fba228ff18a8b37e53a2b9629b809ef84f69972a7c2da7f57')
+sha256sums=('667f5bbfec649b85e844e85e9e8dccb92a97144b891b587eb956b48bda6625ad')
 group=(hyprland.libs)
 uses=()
 arch=('x86_64')

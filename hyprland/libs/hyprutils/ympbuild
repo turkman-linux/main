@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='hyprutils'
-release='1'
-version='0.2.4'
+release='2'
+version='0.8.1'
 url='https://github.com/hyprwm/hyprutils'
 description='Hyprland utilities library used across the ecosystem'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/hyprwm/hyprutils/archive/refs/tags/v$version.zip")
 depends=(pixman)
 makedepends=()
-sha256sums=('acba6e5153a9e3aaa9eda473ee4f39c302f6eb872254732a731cd6179457d546')
+sha256sums=('374df06d53d01b2c682fb016c0109f9b5b0cdba739cf6f8a603115018a3f7b74')
 group=(hyprland.libs)
 uses=()
 arch=('x86_64')
