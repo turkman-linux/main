@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='vala'
-release='1'
-version='0.56.3'
+release='2'
+version='0.56.18'
 url='https://wiki.gnome.org/Projects/Vala'
 description='Compiler for the GObject type system'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("http://download.gnome.org/sources/vala/0.56/vala-$version.tar.xz")
 depends=(glib gcc)
 makedepends=()
-md5sums=('9d6d0ca3b5403509ead5e6f2a45c61bb')
+sha256sums=('f2affe7d40ab63db8e7b9ecc3f6bdc9c2fc7e3134c84ff2d795f482fe926a382')
 uses=()
 uses_extra=(doc)
 arch=('x86_64')
@@ -19,7 +19,11 @@ group=(dev.lang)
 
 cd $name-$version
 
+# gcc14 build bloken (yet)
+export CC=clang
+
 setup(){
+    autoreconf -vfi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/ \
         $(use_opt doc --enable-valadoc --disable-valadoc)

@@ -1,48 +1,55 @@
 #!/usr/bin/env bash
 name='librsvg'
-release='5'
-version='2.40.20'
-url='https://github.com/oaken-source/librsvg-og'
+release='6'
+version='2.60.0'
+#version='2.40.20'
+#url='https://github.com/oaken-source/librsvg-og'
+url='https://download.gnome.org/sources/librsvg'
 description='Scalable Vector Graphics (SVG) rendering library '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
-#source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
+#source=("https://github.com/oaken-source/librsvg-og/archive/refs/tags/$version.tar.gz")
+source=("https://download.gnome.org/sources/librsvg/${version%.*}/librsvg-${version}.tar.xz")
 depends=(libcroco gobject-introspection pango cairo fontconfig libX11 libXext libXrender libxcb gdk-pixbuf)
 makedepends=(vala)
-sha256sums=('5bcbd8aa34a81478f990dc62a308ee2a42ff89a4e2bc905c09fd68f525bf5643')
+sha256sums=('0b6ffccdf6e70afc9876882f5d2ce9ffcf2c713cbaaf1ad90170daa752e1eec3')
 group=(gnome.base)
 uses=()
 arch=('x86_64')
 
-#cd $name-$version
-cd $name-og-$version
+cd $name-$version
+#cd $name-og-$version
+
+export PATH=$PATH:/usr/lib64/rust/toolchains/stable-$arch-unknown-linux-gnu/bin:$HOME/.cargo/bin
+
 
 prepare(){
+    # local cargo-cbuild installation
+    cargo install cargo-c
     # convert CRFL files to normal files
     find -type f -exec sed -i "s/\r$//g" {} \;
 }
 export CFLAGS="-Wno-incompatible-pointer-types"
 
 setup(){
-#    meson setup build \
-#        --prefix=/usr \
-#        -Ddocs=disabled \
-#        -Dintrospection=enabled \
-#        -Dpixbuf=enabled\
-#        -Dpixbuf-loader=enabled \
-#        -Dvala=enabled
-    autoreconf -vfi
-    ./configure --prefix=/usr
+    meson setup build \
+        --prefix=/usr \
+        -Ddocs=disabled \
+        -Dintrospection=enabled \
+        -Dpixbuf=enabled\
+        -Dpixbuf-loader=enabled \
+        -Dvala=enabled
+#    autoreconf -vfi
+#    ./configure --prefix=/usr
 }
 build(){
-#    ninja -C build $jobs
-    make $jobs
+    ninja -C build $jobs
+#    make $jobs
 }
 
 package(){
-#    ninja -C build install $jobs
-    make install $jobs
+    ninja -C build install $jobs
+#    make install $jobs
 }
 

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='abseil-cpp'
+release='1'
+version='20250512.1'
+url='https://github.com/abseil/abseil-cpp'
+description='Abseil Common Libraries (C++)'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/abseil/abseil-cpp/archive/refs/tags/$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('9b7a064305e9fd94d124ffa6cc358592eb42b5da588fb4e07d09254aa40086db')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -Bbuild \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+

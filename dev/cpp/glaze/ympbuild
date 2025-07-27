@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='glaze'
+release='1'
+version='5.5.4'
+url='https://github.com/stephenberry/glaze'
+description='Extremely fast, in memory, JSON and interface library for modern C++'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/stephenberry/glaze/archive/refs/tags/v$version.tar.gz")
+depends=()
+makedepends=()
+sha256sums=('309184e6cf046669f22b336b85a1ab92278a45ad05fce079be4c0f45e19dcbd2')
+group=(dev.cpp)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+      -D CMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+

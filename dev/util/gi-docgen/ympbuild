@@ -28,5 +28,8 @@ build(){
 
 package(){
     ninja -C build install
+    # move to generic site-packages
+    mv $DESTDIR/usr/lib/python3.*/site-packages $DESTDIR/usr/lib/python3/
+    rmdir $DESTDIR/usr/lib/python3.*
 }
 

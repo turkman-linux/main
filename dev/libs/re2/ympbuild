@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+name='re2'
+release='1'
+version='2025-07-22'
+url='https://github.com/google/re2'
+description='An efficient, principled regular expression library'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/google/re2/archive/refs/tags/$version.tar.gz")
+depends=(abseil-cpp)
+makedepends=()
+sha256sums=('f54c29f1c3e13e12693e3d6d1230554df3ab3a1066b2e1f28c5330bfbf6db1e3')
+group=(dev.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+build () {
+    make $jobs
+}
+
+package () {
+    make install $jobs prefix=/usr
+}
+
