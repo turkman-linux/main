@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='meson'
-release='4'
-version='1.6.1'
+release='5'
+version='1.8.3'
 url='https://github.com/mesonbuild/meson'
 description='High productivity build system'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://github.com/mesonbuild/meson/releases/download/$version/meson-$version.tar.gz")
 depends=(python py3-setuptools)
 makedepends=( )
-sha256sums=('1eca49eb6c26d58bbee67fd3337d8ef557c0804e30a6d16bfdf269db997464de')
+sha256sums=('f118aa910fc0a137cc2dd0122232dbf82153d9a12fb5b0f5bb64896f6a157abf')
 uses=()
 group=(dev.util)
 arch=('x86_64')

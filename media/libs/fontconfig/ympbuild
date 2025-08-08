@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 name='fontconfig'
-release='2'
-version='2.15.0'
+release='4'
+version='2.17.1'
 url='https://www.freedesktop.org/software/fontconfig/'
 description='Fontconfig is a library for configuring and customizing font access.'
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
-source=("https://www.freedesktop.org/software/fontconfig/release/fontconfig-$version.tar.gz"
-        "fontconfig.sysconf")
+source=("https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/$version/fontconfig-$version.tar.gz"
+        "fontconfig.sysconf"
+        "19-enhanced-defaults.conf")
 depends=(freetype expat)
 makedepends=()
-md5sums=('8c0842d84fa1edbde4cf4c2c82e25b66'
+sha256sums=('82e73b26adad651b236e5f5d4b3074daf8ff0910188808496326bd3449e5261d'
+         'SKIP'
          'SKIP')
 group=(media.libs)
 uses=()
@@ -21,7 +23,9 @@ cd $name-$version
 
 setup(){
     meson setup build --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        -Ddefault-hinting=full \
+        -Ddefault-sub-pixel-rendering=rgb
 }
 
 build(){
@@ -39,5 +43,6 @@ package(){
     done
     mkdir -p ${DESTDIR}/etc/sysconf.d/
     install ../fontconfig.sysconf ${DESTDIR}/etc/sysconf.d/fontconfig
+    install ../19-enhanced-defaults.conf ${DESTDIR}/etc/fonts/conf.d/19-enhanced-defaults.conf
 }
 
