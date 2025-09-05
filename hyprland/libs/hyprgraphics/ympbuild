@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+name='hyprgraphics'
+release='1'
+version='0.1.5'
+url='https://github.com/hyprwm/hyprgraphics'
+description='Hyprland graphics / resource utilities'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://github.com/hyprwm/hyprgraphics/archive/refs/tags/v$version.zip")
+depends=(cairo file libjpeg-turbo libjxl libwebp)
+makedepends=()
+sha256sums=('de9a8ecd94ee38c9969c1205da0bd1f00d14ac9f84f2e09f34860b34f3692e56')
+group=(hyprland.libs)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+build () {
+    make -C build $jobs
+}
+
+package () {
+    make -C build install $jobs
+}
+
