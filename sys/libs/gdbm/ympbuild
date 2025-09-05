@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='gdbm'
-release='2'
-version='1.24'
+release='3'
+version='1.26'
 url='https://www.gnu.org.ua/software/gdbm/download.html'
 description=' Standard GNU database libraries'
 email='aliriza.keskin@pardus.org.tr'
