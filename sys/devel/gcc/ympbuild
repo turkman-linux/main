@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='gcc'
-release='4'
-version='14.2.0'
+release='5'
+version='15.2.0'
 url='https://ftp.gnu.org/gnu/gcc/'
 description='GNU Compiler Collection'
 email='parduscix@yandex.ru'
 maintainer='sulincix'
 license=('GPLv3')
-source=("https://ftp.gnu.org/gnu/gcc/gcc-${version}/gcc-${version}.tar.xz")
+source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$version/gcc-$version.tar.xz")
 depends=(binutils libmpc zlib linux-headers)
 makedepends=( )
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9')
+sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e')
 arch=('x86_64')
 group=(sys.devel)
 uses=(multilib)
