@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='networkmanager'
-release='5'
-version='1.50.0'
+release='6'
+version='1.54.0'
 url='https://gitlab.freedesktop.org/NetworkManager/NetworkManager'
 description='network management daemon'
 email='aliriza.keskin@pardus.org.tr'
@@ -14,7 +14,7 @@ source=("https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/
         "networkmanager.initd")
 depends=(libndp nss newt)
 makedepends=(libxslt gobject-introspection)
-sha256sums=('fc1045a453eda9e85465491b99e3a9a924bd6b3e38471b65c9e09baf4de896dc'
+sha256sums=('c5356e5a86b351dc79d23c8685d02b91917d1f107628c97d370c6441a8322a93'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -45,6 +45,7 @@ setup(){
         -Dmodem_manager=false \
         -Dppp=$(use_opt ppp true false) \
         -Dovs=$(use_opt ovs true false) \
+        -Dnbft=false \
         -Dvapi=true \
         -Dtests=no
 }
