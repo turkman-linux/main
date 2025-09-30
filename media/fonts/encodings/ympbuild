@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='encodings'
-release='1'
-version='1.0.6'
+release='2'
+version='1.1.0'
 url='https://gitlab.freedesktop.org/xorg/font/encodings'
 description='X.Org font encodings '
 email='bayramk@gmail.com'
 maintainer='bk'
 license=('GPLv3')
 source=("https://www.x.org/archive/individual/font/encodings-$version.tar.gz")
-depends=(mkfontscale)
+depends=(mkfontscale util-macros)
 makedepends=()
-md5sums=('415c4657f0b3b689d14c9ffcfcd4ef25')
+sha256sums=('7d9b7afedc97c3b29b6262b3346728b877f0a91a4a5802bf091df4cffb43a568')
 group=(media.fonts)
 uses=()
 arch=('x86_64')
@@ -18,6 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
+    autoreconf -vfi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }

@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
 name=pfetch
-release=1
-version=1.7.0
+release="1"
+version="1.9.0"
 url='https://github.com/Un1q32/pfetch'
 description='System information tool written in POSIX sh'
 email='bai@baturax.com'
 maintainer='baturax'
 license=('MIT')
-source=('https://github.com/Un1q32/pfetch/archive/refs/tags/1.7.0.tar.gz')
+source=("https://github.com/Un1q32/pfetch/archive/refs/tags/$version.tar.gz")
 depends=()
 makedepends=()
-sha256sums=('ddfaaa6295804275c1aed594c385af1c41c305f6c8e00bfbd743f79342a998d2')
+sha256sums=('c127bdc21351cc7f462d3b05338ba163cc475481cb5d02cb6372a90272639942')
 group=(app.misc)
 arch=('x86_64')
 
 cd $name-$version
 
 package () {
-   install -Dm755 pfetch "$pkgdir"/usr/bin/pfetch
+  install -Dm755 pfetch "$pkgdir"/usr/bin/pfetch
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 pfetch.1 -t "$pkgdir/usr/share/man/man1/"

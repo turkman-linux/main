@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='pciutils'
-release='1'
-version='3.13.0'
+release='2'
+version='3.14.0'
 url='https://git.kernel.org/pub/scm/utils/pciutils/pciutils.git'
 description='PCI bus configuration space access library and tools'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://git.kernel.org/pub/scm/utils/pciutils/pciutils.git/snapshot/pciutils-$version.tar.gz")
 depends=(hwdata kmod)
 makedepends=(git)
-sha256sums=('861fc26151a4596f5c3cb6f97d6c75c675051fa014959e26fb871c8c932ebc67')
+sha256sums=('9f99bb89876510435fbfc47bbc8653bc57e736a21915ec0404e0610460756cb8')
 group=(sys.apps)
 uses=()
 arch=('x86_64')

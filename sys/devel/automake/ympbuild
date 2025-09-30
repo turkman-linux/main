@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='automake'
-release='2'
-version='1.17'
+release='3'
+version='1.18.1'
 url='https://www.gnu.org/software/automake/'
 description='A GNU tool for automatically configuring source code'
 email='aliriza.keskin@pardus.org.tr'
@@ -11,13 +11,17 @@ source=("https://ftp.gnu.org/gnu/automake/automake-${version}.tar.xz")
 depends=(autoconf)
 makedepends=( )
 group=(sys.devel)
-sha256sums=('8920c1fc411e13b90bf704ef9db6f29d540e76d232cb3b2c9f4dc4cc599bd990')
+sha256sums=('168aa363278351b89af56684448f525a5bce5079d0b6842bd910fdd3f1646887')
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
 prepare(){
+    # empty makeinfo file
+    > $HOME/makeinfo
+    chmod 0755 $HOME/makeinfo
+    # run bootstrap
     ./bootstrap
 }
 

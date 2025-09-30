@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ell'
-release='7'
-version='0.69'
+release='8'
+version='0.80'
 url='https://01.org/ell'
 description='Embedded Linux library'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2.1')
 source=(https://mirrors.edge.kernel.org/pub/linux/libs/$name/$name-$version.tar.{xz,sign})
 depends=()
 makedepends=(glib linux-headers)
-sha256sums=('6cfc0888edc94de9f0623798609587b2cc11b92b892945f317e8d199afe7b12e' 'SKIP')
+sha256sums=('6efc70ae6d3e2ca1ec255ecd855a3d5fadefe59897f4307816e3ba7a771f3d00' 'SKIP')
 group=(dev.libs)
 uses=()
 arch=('x86_64')
@@ -18,6 +18,7 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
+    autoreconf -fvi
     ./configure --prefix=/usr \
         --libdir=/usr/lib64/
 }
