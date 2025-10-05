@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kcompletion'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='Text completion helpers and widgets'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcompletion-${version}.tar.xz")
 depends=(kconfig kcodecs kwidgetsaddons qt6-base)
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('7ed5a96ab0d2ab17bb521ecaaf44d6ec6b7c9a3d6e09403360ba49b24d94560f')
+sha256sums=('6d06881ff2ece4c29df5c3cbe3700cb5e3425064686a667e84f06f2a5732a1c5')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

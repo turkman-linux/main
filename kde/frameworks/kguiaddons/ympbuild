@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kguiaddons'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtGui'
 email='brkt8khn@gmail.com'
 maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kguiaddons-${version}.tar.xz")
-depends=(qt6-base qt6-wayland)
+depends=(qt6-base qt6-wayland qt6-declarative)
 makedepends=(extra-cmake-modules doxygen qt6-tools plasma-wayland-protocols)
-sha256sums=('ac437ca6baf50b0178bc8bf0b4dd1e6e70e0e4ef1ac770259738a1c42d035bcc')
+sha256sums=('2e2b872802d1b27b185512ffa9895906e7aa3438cbf137846ccff8216bbec466')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -18,10 +18,11 @@ arch=('x86_64')
 cd $name-$version
 
 setup () {
-cmake -B build -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_QCH=ON 
+    cmake -B build -G Ninja \
+        -DBUILD_PYTHON_BINDINGS=OFF \
+		    -DCMAKE_INSTALL_PREFIX=/usr \
+		    -DCMAKE_INSTALL_LIBDIR=lib \
+		    -DBUILD_QCH=ON 
 }
 
 build () {

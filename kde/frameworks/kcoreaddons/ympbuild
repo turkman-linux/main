@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kcoreaddons'
-release='6'
-version='6.7.0'
+release='7'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='Addons to QtCore'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kcoreaddons-${version}.tar.xz")
 depends=(qt6-base breeze-icons)
 makedepends=(clang extra-cmake-modules graphviz qt6-tools doxygen)
-sha256sums=('48511e9dab1f2e80b3c4822bb87c2e981186de3b8977d92082d34d003b1283c5')
+sha256sums=('e1d03cfc7d45987ec31f31104f4732812980e0038beab222633da1108eb6f42f')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -19,6 +19,7 @@ cd $name-$version
 
 setup () {
 cmake -B build -G Ninja \
+   -DBUILD_PYTHON_BINDINGS=OFF \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
     	-DBUILD_QCH=ON
