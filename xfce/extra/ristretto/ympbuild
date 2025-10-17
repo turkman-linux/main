@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ristretto'
-release='1'
-version='0.13.2'
+release='2'
+version='0.13.3'
 url='https://docs.xfce.org/apps/ristretto/start'
 description='A fast and lightweight picture viewer for Xfce'
 email='03teknoloji@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://archive.xfce.org/src/apps/$name/0.13/$name-$version.tar.bz2")
 depends=(libxfce4ui xfconf tumbler libexif file)
 makedepends=()
-sha256sums=('779f5ede3016019eec01d64a025583078d3936e35d4288ec2e8433494d757dd9')
+sha256sums=('5b9172ef704ae192a5338df6bee4e91a59edc65618c375bb4433ffb38e2126cb')
 group=(xfce.extra)
 uses=()
 arch=('x86_64')

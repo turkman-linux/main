@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='thunar-archive-plugin'
-release='2'
-version='0.5.2'
+release='3'
+version='0.5.3'
 _version='0.5'
 url='https://docs.xfce.org/xfce/thunar/archive'
 description='Adds archive operations to the Thunar file context menus'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/${_version}/thunar-archive-plugin-${version}.tar.bz2")
 depends=(thunar)
 makedepends=(intltool)
-sha256sums=('6379f877bcfc0ea85db9f43723b6fb317893050c712bd03c2ae3232fb9d5ade3')
+sha256sums=('cc0ffc86dc48e72edc6f6a61ad4345f99018526d5d854360960759ce1ec2ca22')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

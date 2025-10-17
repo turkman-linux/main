@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 name='xfce4-battery-plugin'
-release='1'
-version='1.1.5'
-_version='0.8'
+release='2'
+version='1.2.0'
 url='https://docs.xfce.org/panel-plugins/xfce4-battery-plugin'
 description='A battery monitor plugin for the Xfce panel'
 email='03teknoloji@gmail.com'
 maintainer='mobilturka'
 license=('GPL2')
-source=("https://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.bz2")
-#source=("https://mirror.netcologne.de/xfce/src/panel-plugins/xfce4-xkb-plugin/${_version}/xfce4-xkb-plugin-${version}.tar.bz2")
+source=("https://archive.xfce.org/src/panel-plugins/$name/${version%.*}/$name-$version.tar.xz")
 depends=(xfce4-panel)
 makedepends=(intltool)
-sha256sums=('752233bfb320ee1e26104a656cbb868299f562733063e2b9a18f0966585ce213')
+sha256sums=('1dba8f470d2b12517e7b86d83cd2ebf13eb57ff1a01a4f2d2d156cf5194d97b6')
 group=(xfce.extra)
 uses=()
 arch=('x86_64')
@@ -21,17 +19,17 @@ arch=('x86_64')
 cd $name-$version
 
 setup() {
-     ./configure \
+     meson setup build \
       --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install DESTDIR=$DESTDIR $jobs
+    ninja -C build install $jobs
 }
 

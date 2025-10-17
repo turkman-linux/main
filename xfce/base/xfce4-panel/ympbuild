@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-panel'
-release='3'
-version='4.20.0'
+release='4'
+version='4.20.5'
 _version='4.20'
 url='https://docs.xfce.org/xfce/xfce4-panel/start'
 description='Panel for the Xfce desktop environment'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/xfce4-panel/${_version}/xfce4-panel-${version}.tar.bz2")
 depends=(exo garcon  libxfce4ui xfconf libwnck3 cairo libdbusmenu libxfce4windowing)
 makedepends=(gobject-introspection intltool vala)
-sha256sums=('ff33cd5f5d16c2193fe305f4878d82cd8d2feea92f2594bcd27b2b5c392d43b8')
+sha256sums=('3f91850c9c467680c8081d561f1a3fd83355c07db07be9a96da1764f8c842b2b')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

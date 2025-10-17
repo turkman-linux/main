@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-settings'
-release='3'
-version='4.20.0'
+release='4'
+version='4.20.2'
 _version='4.20'
 url='https://docs.xfce.org/xfce/xfce4-settings/start'
 description="Xfce's Configuration System"
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/xfce4-settings/${_version}/xfce4-settings-${version}.tar.bz2")
 depends=(exo garcon hicolor-icon-theme libnotify gnome-themes-standard libxklavier)
 makedepends=(intltool)
-sha256sums=('23548da3429a296501fbfdbc98a861ee241b9fdd47e8d5de1781f57c6bbce5a9')
+sha256sums=('6e11776e640798a1ac4168d53877f105bb3e8cf93b443c160841e3acdab63939')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

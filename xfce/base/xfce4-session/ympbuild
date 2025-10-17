@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-session'
-release='3'
-version='4.20.0'
+release='4'
+version='4.20.3'
 _version='4.20'
 url='https://docs.xfce.org/xfce/xfce4-session/start'
 description="Xfce's session manager"
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/xfce4-session/${_version}/xfce4-session-${version}.tar.bz2")
 depends=(libxfce4ui libwnck3 xfconf xorg-iceauth labwc)
 makedepends=(intltool)
-sha256sums=('5229233fe6ee692361cc28724886c5b08e0216d89f09c42d273191d38fd64f85')
+sha256sums=('dbf00672c5316a30b7001fe852e6a5ba9f889afeab8a247545a160d4302f1fa2')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

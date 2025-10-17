@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfdesktop'
-release='2'
-version='4.20.0'
+release='3'
+version='4.20.1'
 _version='4.20'
 url='https://docs.xfce.org/xfce/xfdesktop/start'
 description="Xfce's desktop manager"
@@ -11,7 +11,7 @@ license=('GPLv3')
 source=("https://archive.xfce.org/src/xfce/xfdesktop/${_version}/xfdesktop-${version}.tar.bz2")
 depends=(exo garcon libwnck3 libxfce4ui thunar)
 makedepends=(intltool)
-sha256sums=('227041ba80c7f3eb9c99dec817f1132b35d8aec7a4335703f61ba1735cd65632')
+sha256sums=('acccde849265bbf4093925ba847977b7abf70bb2977e4f78216570e887c157b8')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -19,17 +19,17 @@ arch=('x86_64')
 cd $name-$version
 
 setup(){
-    ./configure --prefix=/usr \
+    meson setup build \
+         --prefix=/usr \
         --libdir=/usr/lib64/ \
-		--enable-thunarx \
-		--enable-notifications
+        -Dtests=false
 }
 
 build(){
-    make $jobs
+    ninja -C build $jobs
 }
 
 package(){
-    make install DESTDIR=$DESTDIR $jobs
+    ninja -C build install $jobs
 }
 

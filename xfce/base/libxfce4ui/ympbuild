@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libxfce4ui'
-release='3'
-version='4.20.0'
+release='4'
+version='4.20.2'
 _version='4.20'
 url='https://www.xfce.org/'
 description='Widgets library for the Xfce desktop environment'
@@ -11,7 +11,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/xfce/libxfce4ui/${_version}/libxfce4ui-${version}.tar.bz2")
 depends=(gtk3 xfconf libxfce4util)
 makedepends=(gobject-introspection intltool vala)
-sha256sums=('75e8996984f20375aadecd5c16f5147c211ed0bd26d7861ab0257561eb76eaee')
+sha256sums=('5d3d67b1244a10cee0e89b045766c05fe1035f7938f0410ac6a3d8222b5df907')
 group=(xfce.base)
 uses=()
 arch=('x86_64')
@@ -20,17 +20,18 @@ cd $name-$version
 
 setup(){
     ./configure --prefix=/usr \
+        --enable-x11 \
+        --enable-wayland \
         --libdir=/usr/lib64/ \
-		--sysconfdir=/etc \
-		--sbindir=/usr/bin \
-		--localstatedir=/var
+        --sysconfdir=/etc \
+	      --sbindir=/usr/bin \
+	      --localstatedir=/var
 }
-
 build(){
     make $jobs
 }
 
 package(){
-    make install DESTDIR=$DESTDIR $jobs
+    make install $jobs
 }
 

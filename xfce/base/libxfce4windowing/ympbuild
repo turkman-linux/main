@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libxfce4windowing'
-release='1'
-version='4.20.0'
+release='2'
+version='4.20.3'
 _version='4.20'
 url='https://www.xfce.org/'
 description='Widgets library for the Xfce desktop environment'
@@ -12,7 +12,7 @@ source=("https://archive.xfce.org/src/xfce/libxfce4windowing/${_version}/libxfce
 depends=(glib gobject-introspection	gtk3 libdisplay-info libwnck3
         libX11 libXrandr wayland wlroots)
 makedepends=(gobject-introspection intltool vala xfce4-dev-tools)
-sha256sums=('56f29b1d79606fb00a12c83ef4ece12877d2b22bf1acaaff89537fbe8e939f68')
+sha256sums=('df2419a6bd960c0bfac3307eff593050857524642597eb35a26fb4f8261a017b')
 group=(xfce.base)
 uses=()
 arch=('x86_64')

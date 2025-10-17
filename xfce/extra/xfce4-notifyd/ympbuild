@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='xfce4-notifyd'
-release='3'
-version='0.9.6'
+release='4'
+version='0.9.7'
 url='https://docs.xfce.org/apps/notifyd/start'
 description='Notification daemon for the Xfce desktop'
 email='akarsu@protonmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://archive.xfce.org/src/apps/xfce4-notifyd/${version%.*}/xfce4-notifyd-${version}.tar.bz2")
 depends=(libnotify libxfce4ui)
 makedepends=(intltool python xfce4-panel xfce4-dev-tools)
-sha256sums=('9e53265cca7d835c31b3c2c0d3ae961704870839ef583dcca3e4cc98ae3d2671')
+sha256sums=('170d18fd5f40cce823ffc7ae3d7e21644007c3f45808ab4835f0401d21b3516a')
 group=(xfce.extra)
 uses=()
 arch=('x86_64')
