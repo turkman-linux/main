@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+name='aurorae'
+release='1'
+version='6.4.5'
+url='https://kde.org/plasma-desktop'
+description='Themeable window decoration for KWin'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='sulincix'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/aurorae-${version}.tar.xz")
+depends=()
+makedepends=(extra-cmake-modules)
+sha256sums=('3183eebc476d6763741549c6bd007c650649913d648ccafa303669082d8bf378')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}

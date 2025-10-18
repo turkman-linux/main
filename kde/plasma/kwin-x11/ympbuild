@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+name='kwin-x11'
+release='6'
+version='6.4.5'
+url='https://kde.org/plasma-desktop'
+description='An easy to use, but flexible, X Window Manager'
+email='brkt8khn@gmail.com'
+maintainer='brkt8khn'
+license=('GPLv2')
+source=("https://download.kde.org/stable/plasma/${version}/kwin-x11-${version}.tar.xz")
+depends=(kauth kcmutils kconfig kcoreaddons kcrash kdecoration kglobalaccel kguiaddons
+         ki18n knewstuff kpackage kscreenlocker kservice ksvg kwidgetsaddons kwindowsystem
+         lcms2 libSM libXext libXi libcanberra libdrm libepoxy libqaccessibilityclient
+         libxcb libxkbcommon mesa plasma-activities qt6-base qt6-declarative qt6-sensors
+         qt6-svg qt6-tools wayland xcb-util-cursor xcb-util-wm)
+makedepends=(extra-cmake-modules)
+sha256sums=('cea91879467afdfa2caf0ec6dd7256eae78defa970cdc9a947fefd85d417acb1')
+group=(kde.plasma)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+setup () {
+
+  cmake -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=OFF
+}
+
+build () {
+	cmake --build build
+}
+
+package () {
+    INSTALL_ROOT="$DESTDIR" cmake --install build
+}
