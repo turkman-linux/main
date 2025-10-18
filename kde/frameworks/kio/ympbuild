@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kio'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='Resource and network access abstraction'
 email='brkt8khn@gmail.com'
@@ -9,9 +9,9 @@ maintainer='brkt8khn'
 license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kio-${version}.tar.xz")
 depends=(karchive kbookmarks kcompletion kconfig kconfigwidgets kcoreaddons kcrash kauth
-	kdbusaddons ki18n kiconthemes kitemviews kjobwidgets kservice kwidgetsaddons kwindowsystem solid qt6-base qt6-5compat)
+	kdbusaddons ki18n kiconthemes kitemviews kjobwidgets kservice kwidgetsaddons kwindowsystem solid qt6-base qt6-5compat solid)
 makedepends=(doxygen extra-cmake-modules libxml2 libxslt qt6-tools)
-sha256sums=('df235019a07acd579920f6c655050e02dacf847c706f4b8279e755be46f9d990')
+sha256sums=('a97acec1407e1f00ca74e63964e7608828d4431bfe0aebe9010c296bb6387bda')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

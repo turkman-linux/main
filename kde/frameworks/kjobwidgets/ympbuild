@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kjobwidgets'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='Widgets for tracking KJob instances'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kjobwidgets-${version}.tar.xz")
 depends=(kcoreaddons kwidgetsaddons knotifications qt6-base)
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('16d7e7ab54235d6fa1eb213d3d637182e22fcbdbcb7b4b14032430a02a2f888a')
+sha256sums=('e739ff254c4fa34c0de00aa2d9deee138135d99cd0b46ef5db253c18c02bce98')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -21,6 +21,7 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_PYTHON_BINDINGS=OFF \
 		-DBUILD_QCH=ON 
 }
 

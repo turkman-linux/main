@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='breeze-icons'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='Breeze icon themes'
 description='Addons to QtCore'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/breeze-icons-${version}.tar.xz")
 depends=()
 makedepends=(extra-cmake-modules qt6-base)
-sha256sums=('39037e3fcbbb7a65011685c498cae31ff496a5f2493269c955bb29c94a688b74')
+sha256sums=('4796c4ee6059a777ad8d954a4584e81fdf5047a94a7988fc374052c427bc0b60')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kservice'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='Advanced plugin and service introspection'
 description='Support for unit conversion'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kservice-${version}.tar.xz")
 depends=(ki18n kconfig kcoreaddons qt6-base)
 makedepends=(extra-cmake-modules doxygen kdoctools qt6-tools)
-sha256sums=('39d2542e38fb3434c5405c92d5b45e0d5ba650d265309adf93c787a741d57fa1')
+sha256sums=('d08aca74dcc54da29dd2b7bc404ed9e6ec688acc77839b4b8fbc372b5ea350b8')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
