@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-activities-stats'
-release='4'
-version='6.2.0'
+release='5'
+version='6.4.5'
 url='https://kde.org/plasma-desktop'
 description='Qt Platform Theme integration plugins for the Plasma workspaces'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/plasma-activities-stats-${version}.tar.xz")
 depends=(plasma-activities kconfig qt6-base)
 makedepends=(extra-cmake-modules qt6-tools)
-sha256sums=('215d7728537b890a1f319f13caa6038c02dc4e3e64d99cf40ce08fc82f465dfd')
+sha256sums=('35c64f724c0550f99677f6134849decf76be47971210ca9418582ea38b480c30')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

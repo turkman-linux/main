@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libdisplay-info'
-release='1'
-version='0.1.1'
+release='2'
+version='0.3.0'
 url='https://gitlab.freedesktop.org/emersion/libdisplay-info'
 description='EDID and DisplayID library'
 email='brkt8khn@gmailmail.com'
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://gitlab.freedesktop.org/emersion/libdisplay-info/-/archive/${version}/libdisplay-info-${version}.tar.gz")
 depends=()
 makedepends=(hwdata meson ninja python)
-sha256sums=('a5aeef57817916286526292ec816a5338c4d3c0094ce91e584fc82b57070a44f')
+sha256sums=('2b467e3336aec63819d6aca28d7310d3dc7415b2b3a3c3a5aec9d3727053c078')
 group=(media.libs)
 uses=()
 arch=('x86_64')

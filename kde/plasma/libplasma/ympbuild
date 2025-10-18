@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='libplasma'
-release='4'
-version='6.2.0'
+release='5'
+version='6.4.5'
 url='https://kde.org/plasma-desktop'
 description='Plasma library and runtime components'
 email='brkt8khn@gmailmail.com'
@@ -11,7 +11,7 @@ source=("https://download.kde.org/stable/plasma/${version}/libplasma-${version}.
 depends=(kcmutils kcolorscheme kconfig kcoreaddons kglobalaccel ki18n kiconthemes kio kirigami knotifications kpackage
          ksvg kwidgetsaddons kwindowsystem libglvnd libX11 libxcb  qt6-5compat  qt6-base  qt6-declarative qt6-wayland  wayland plasma-activities)
 makedepends=(doxygen extra-cmake-modules  kdoctools plasma-wayland-protocols qt6-tools)
-sha256sums=('756a1cb01513ca04906a079cc2802dca6f4f610f319261919b3d5e25bd4fda98')
+sha256sums=('945b6c54cfec56080f6b55864e82a7702096d682becf1fd4979d77a4009c4124')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

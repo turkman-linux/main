@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='prison'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='A barcode API to produce QRCode barcodes and DataMatrix barcodes'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/prison-${version}.tar.xz")
 depends=(qt6-base libdmtx qrencode qt6-multimedia zxing-cpp)
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('0a053a80beae232cef5da3f6525b14ee649b275cea64de0c0ffad41c3f2ec260')
+sha256sums=('38a4f154b39b4d2e4b86d16f84846039d27bd70cb26ecd488b591f612dd4141e')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

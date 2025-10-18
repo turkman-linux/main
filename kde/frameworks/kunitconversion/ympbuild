@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kunitconversion'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='Support for unit conversion'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/kunitconversion-${version}.tar.xz")
 depends=(ki18n qt6-base)
 makedepends=(doxygen extra-cmake-modules qt6-tools)
-sha256sums=('b303601c623cd66edb66a66fd72e957415b8dd33e70305be8136fa6b43b1a40a')
+sha256sums=('23a4a5d994666f9db2a5a3c251038f2ef1d978411950925702fb79060ced31c8')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')
@@ -21,7 +21,8 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_QCH=ON 
+    -DBUILD_PYTHON_BINDINGS=OFF \
+		-DBUILD_QCH=ON
 }
 
 build () {

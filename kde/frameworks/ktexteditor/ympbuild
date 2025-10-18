@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='ktexteditor'
-release='4'
-version='6.7.0'
+release='5'
+version='6.18.0'
 url='https://community.kde.org/Frameworks'
 description='Advanced embeddable text editor'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/frameworks/${version%.*}/ktexteditor-${version}.tar.xz")
 depends=(karchive kauth kcodecs kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kguiaddons ki18n kio kitemviews kparts ktextwidgets kwidgetsaddons kxmlgui sonnet syntax-highlighting qt6-base qt6-speech qt6-declarative)
 makedepends=(extra-cmake-modules qt6-tools doxygen)
-sha256sums=('ed76f72324225a926e00c2c970d48d7f11a576e942e48d092e9837bda79d6991')
+sha256sums=('4f8abb0436a0c6ca501f7be391975756cb07f8e403d3afe7ec2f02d12bf7b516')
 group=(kde.frameworks)
 uses=()
 arch=('x86_64')

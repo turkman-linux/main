@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-workspace'
-release='4'
-version='6.2.0'
+release='5'
+version='6.4.5'
 url='https://kde.org/plasma-desktop'
 description='Kde Plasma Workspace'
 email='aliriza.keskin@pardus.org.tr'
@@ -9,11 +9,11 @@ maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-workspace-$version.tar.xz")
 depends=(accountsservice kactivitymanagerd kded  kio
-         kquickcharts kwin milou pipewire phonon
-         plasma-integration qt6-base xdotool qcoro-qt6
-         plasma5support plasma-activities-stats)
+         kquickcharts kwin milou pipewire phonon prison kunitconversion
+         plasma-integration qt6-base xdotool qcoro-qt6 ktexteditor
+         plasma5support plasma-activities-stats knotifyconfig)
 makedepends=(qt6-tools)
-sha256sums=('2d4268cbae757631be57d69d34fc02c8d0204762515370c9679ecb2aa2afdf33')
+sha256sums=('19999ebf3574f539145ba7074019b88d51f2ca952d121394daf6af2e632910fb')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -24,11 +24,9 @@ export LANG="C.UTF-8"
 export LC_ALL=$LANG
 
 prepare(){
-    # Remove bloats from cmakelist.txt
-    ## Main
-    sed -i "/.*KUserFeedback.*/d" CMakeLists.txt
+    sed -i "s/ Location / /g" CMakeLists.txt
     sed -i "s/ Wallet / /g" CMakeLists.txt
-    sed -i "/.*KSysGuard.*/d" CMakeLists.txt
+    sed -i "/find_package(KSysGuard.*/d" CMakeLists.txt
     sed -i "/.*libqalculate.*/d" CMakeLists.txt
     sed -i "/.*systemmonitor.*/d" CMakeLists.txt
     sed -i "/.*soliduiserver.*/d" CMakeLists.txt
@@ -42,7 +40,6 @@ prepare(){
     sed -i "/.*devicenotifier.*/d" applets/CMakeLists.txt
     ## subdir : runners
     sed -i "/.*kill.*/d" runners/CMakeLists.txt
-
 }
 
 setup () {
