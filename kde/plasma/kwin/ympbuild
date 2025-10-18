@@ -14,8 +14,10 @@ depends=(kscreenlocker xcb-util-cursor kcmutils breeze libqaccessibilityclient p
 makedepends=(extra-cmake-modules kdoctools krunner libdisplay-info wayland-protocols plasma-wayland-protocols)
 sha256sums=('decf1cb79127c285c7eda768e7ff4f97c72f314735c82685758f0b956ac151f7')
 group=(kde.plasma)
-uses=()
+uses=(x11)
 arch=('x86_64')
+
+x11_depends=(libxkbcommon)
 
 cd $name-$version
 
@@ -23,7 +25,8 @@ setup () {
 cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_TESTING=OFF
+		-DBUILD_TESTING=OFF \
+    -DKWIN_BUILD_X11=$(use_opt x11 ON OFF)
 }
 
 build () {
