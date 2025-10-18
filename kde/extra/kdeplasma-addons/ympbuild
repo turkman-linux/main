@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 name='kdeplasma-addons'
-release='4'
-version='6.2.0'
+release='5'
+version='6.4.5'
 url='https://kde.org/plasma-desktop'
 description=''
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/kdeplasma-addons-$version.tar.xz")
-depends=(plasma-workspace kunitconversion)
+depends=(plasma-workspace)
 makedepends=()
-sha256sums=('28e678e944cfce1831a974fc4842e9fc9577bfdcd3af106d1b8a8522b56fc20e')
+sha256sums=('4bdbdc2892bbf6211c3be6c02177f7ffdce10ab1546d811a4b59024192b77bce')
 group=(kde.extra)
 uses=()
 arch=('x86_64')

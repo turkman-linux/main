@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='plasma-desktop'
-release='4'
-version='6.2.0'
+release='5'
+version='6.4.5'
 url='https://de.org/plasma-desktop'
 description='KDE Plasma Desktop'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/plasma-desktop-$version.tar.xz")
 depends=(accountsservice plasma-workspace setxkbmap libksysguard)
 makedepends=(xf86-input-evdev xf86-input-libinput xorg-server)
-sha256sums=('0ea38e20b9c4163857db920ea80c9740a29e561886b5feb9f20f938598692709')
+sha256sums=('7552e4c7c7ccbf5b7756726bb9aaabd344630977aaf13f5f305b4477caa17bb7')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -32,7 +32,8 @@ prepare(){
 
 setup () {
     cmake -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_KCM_TABLET=OFF
 }
 
 build () {

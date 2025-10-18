@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='kpipewire'
-release='4'
-version='6.2.0'
+release='5'
+version='6.4.5'
 url='https://kde.org/plasma-desktop'
 description='Components relating to pipewire use in Plasma'
 email='brkt8khn@gmail.com'
@@ -10,7 +10,7 @@ license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/kpipewire-${version}.tar.xz")
 depends=(ki18n kcoreaddons libdrm libva mesa pipewire libepoxy ffmpeg qt6-base qt6-declarative)
 makedepends=(extra-cmake-modules plasma-wayland-protocols)
-sha256sums=('72c07e6c6608b6c5eaa2460d975bf9047489651fb05de5e5b540876529f425b0')
+sha256sums=('d0a704a6a030edb5b4f5d6b99c32bc4e46e1a6ab527dfde9089e11094b6b1a92')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
