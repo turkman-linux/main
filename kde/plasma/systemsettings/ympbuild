@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='systemsettings'
-release='3'
-version='6.2.0'
+release='4'
+version='6.4.5'
 url='https://kde.org/plasma-desktop'
 description='KDE system manager for hardware, software, and workspaces'
 email='aliriza.keskin@pardus.org.tr'
@@ -10,7 +10,7 @@ license=('GPLv3')
 source=("https://download.kde.org/stable/plasma/$version/systemsettings-$version.tar.xz")
 depends=(plasma-workspace)
 makedepends=(extra-cmake-modules kdoctools)
-sha256sums=('6b4675edd4717f7ca88d17700696c38873ff46b3f9063ecfa7cc207eb04ebae0')
+sha256sums=('90d7f097f1a77a400076224cdba45b94c71d0fec43efd2ed737047f2ff2aba8f')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')

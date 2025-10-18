@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
 name='plasma-nm'
-release='4'
-version='6.2.0'
+release='5'
+version='6.4.5'
 url='https://kde.org/plasma-desktop/'
 description='Plasma applet written in QML for managing network connections'
 email='aliriza.keskin@pardus.org.tr'
 maintainer='aliriza'
 license=('GPLv3')
-source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.xz"
-        'no-kwallet.patch')
+source=("https://download.kde.org/stable/plasma/$version/plasma-nm-$version.tar.xz")
 depends=(kcmutils kcolorscheme kcompletion kconfig kcoreaddons kdbusaddons kdeclarative ki18n kio kirigami knotifications kquickcharts
          ksvg kwidgetsaddons kwindowsystem libplasma modemmanager-qt networkmanager-qt prison qca qcoro-qt6 qt6-base qt6-declarative solid)
 makedepends=(extra-cmake-modules)
-sha256sums=('ce72008abf17555d1b20f66480ff21992a7c44b26cf056a133fd2d2ee7421e75' 'SKIP')
+sha256sums=('4a7d2296688e9597eede444de6fe6548131ed69136a6e1c4aadefa0f4a015d16')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -20,16 +19,16 @@ arch=('x86_64')
 cd $name-$version
 
 setup () {
-    cmake -B build \
+    cmake -B build -G Ninja\
         -DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build () {
-	cmake --build build
+    ninja -C build $jobs
 }
 
 package () {
-    INSTALL_ROOT="$DESTDIR" cmake --install build
+    ninja -C build $jobs install
 }
 
