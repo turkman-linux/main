@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='breeze'
-release='4'
-version='6.2.0'
+release='5'
+version='6.2.4'
 url='https://kde.org/plasma-desktop'
 description='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 email='brkt8khn@gmail.com'
@@ -9,9 +9,9 @@ maintainer='brkt8khn'
 license=('GPLv2')
 source=("https://download.kde.org/stable/plasma/${version}/breeze-${version}.tar.xz")
 depends=(breeze-icons frameworkintegration kcmutils kcolorscheme kconfig kcoreaddons kguiaddons ki18n kiconthemes kirigami
-         kwidgetsaddons kwindowsystem qt6-base qt6-declarative kdecoration hicolor-icon-theme)
+         kwidgetsaddons kwindowsystem qt6-base qt6-declarative kdecoration hicolor-icon-theme aurorae)
 makedepends=(extra-cmake-modules)
-sha256sums=('f965a09fe199846d55366c6114ea933673ca4cc7dcb81e240c9c0ae47915ee51')
+sha256sums=('4d9613896082f336413abb24ef8f8d86513f7e99a4c0bcdf2f45cd7c5bbd7c20')
 group=(kde.plasma)
 uses=()
 arch=('x86_64')
@@ -23,7 +23,8 @@ cmake -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_QT5=OFF \
-		-DBUILD_TESTING=OFF
+		-DBUILD_TESTING=OFF \
+    -DWITH_DECORATIONS=OFF # todo: remove this
 }
 
 build () {
