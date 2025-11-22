@@ -1,25 +1,34 @@
 #!/usr/bin/env bash
 name='bash-completion'
-release='1'
-version='2.11'
+release='2'
+version='2.17.0'
 url='https://github.com/scop/bash-completion'
 description='Programmable Completion for bash'
 email='akarsu@protonmail.com'
 maintainer='akarsu'
 license=('GPLv3')
-source=("https://github.com/scop/bash-completion/releases/download/$version/bash-completion-2.11.tar.xz")
+source=("https://github.com/scop/bash-completion/releases/download/$version/bash-completion-$version.tar.xz")
 depends=(bash)
 makedepends=()
-md5sums=('2514c6772d0de6254758b98c53f91861')
+sha256sums=('dd9d825e496435fb3beba3ae7bea9f77e821e894667d07431d1d4c8c570b9e58')
 group=(app.shell)
 uses=()
 arch=('x86_64')
 
 cd $name-$version
 
+prepare(){
+    # TODO: remove this
+    cd ..
+    rm -rf $name-$version
+    tar -xf *.tar.*
+}
+
 setup(){
+    autoreconf -vfi
     ./configure --prefix=/usr \
-        --libdir=/usr/lib64/
+        --libdir=/usr/lib64/ \
+        --sysconfdir=/etc
 }
 
 build(){

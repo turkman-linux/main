@@ -1,7 +1,7 @@
 #!/bin/bash
 name=bash
-version=5.2
-release=2
+version=5.3
+release=3
 url='https://www.gnu.org/software/bash/'
 description="Bash is the GNU Project's shell—the Bourne Again SHell."
 email='parduscix@yandex.ru'
@@ -10,7 +10,7 @@ license=('GPLv3')
 arch=(x86_64)
 depends=(readline ncurses)
 source=("https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz")
-md5sums=(cfb4cf795fc239667f187b3d6b3d396f)
+sha256sums=(0d5cd86965f869a26cf64f4b71be7b96f90a3ba8b3d74e27e8e9d9d5550f31ba)
 group=(app.shell)
 
 cd $name-$version
