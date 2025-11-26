@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+name='gdb'
+release='1'
+version='16.3'
+url='https://sourceware.org/gdb/download/'
+description='GNU Debugger'
+email='aliriza.keskin@pardus.org.tr'
+maintainer='aliriza'
+license=('GPLv3')
+source=("https://ftp.gnu.org/gnu/gdb/gdb-$version.tar.xz")
+depends=(expat mpfr ncurses python3.13 xz-utils)
+makedepends=()
+sha256sums=('bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5')
+group=(dev.debug)
+uses=()
+arch=('x86_64')
+
+cd $name-$version
+
+prepare(){
+    # fake makeinfo
+    > ~/makeinfo
+    chmod 755 ~/makeinfo
+}
+
+setup() {
+#    autoreconf -vfi
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib64/
+}
+
+build() {
+    make $jobs
+}
+
+package() {
+    make install $jobs
+}
+

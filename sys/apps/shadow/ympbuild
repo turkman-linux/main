@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='shadow'
-release='2'
-version='4.16.0'
+release='3'
+version='4.18.0'
 url='https://github.com/shadow-maint/shadow/releases'
 description='Password and account management tool suite with support for shadow files and PAM'
 email='aliriza.keskin@pardus.org.tr'
@@ -13,7 +13,7 @@ source=("https://github.com/shadow-maint/shadow/releases/download/$version/shado
         "system-auth")
 depends=(pam libxcrypt acl attr)
 makedepends=( )
-sha256sums=('b78e3921a95d53282a38e90628880624736bf6235e36eea50c50835f59a3530b'
+sha256sums=('add4604d3bc410344433122a819ee4154b79dd8316a56298c60417e637c07608'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -53,5 +53,7 @@ package(){
     install -vDm 600 ../useradd.defaults "${DESTDIR}/etc/default/useradd"
     install -vDm 600 ../system-auth "${DESTDIR}/etc/pam.d/system-auth.d/50-shadow"
     install -vDm 755 ../shadow.sysconf ${DESTDIR}/etc/sysconf.d/shadow
+    mkdir -p $DESTDIR/etc/suid.d
+    echo "/usr/bin/su" > $DESTDIR/etc/suid.d/shadow
 }
 
