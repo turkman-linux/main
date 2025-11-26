@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+name=nosuid
+description="Disable suid access on root filesystem except listed"
+
+depend() {
+    before dbus
+}
+
+start() {
+    # block all suid binaries
+    mount -o remount,nosuid /
+    # allow suid list
+    while read file ; do
+        mount --bind $file $file -o suid
+    done < /etc/suid /etc/suid.d/*
+}
+

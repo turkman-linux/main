@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 name='openrc'
-release='8'
-version='0.62.2'
+release='9'
+version='0.63'
 url='https://github.com/OpenRC/openrc'
 description='The OpenRC init system'
 email='aliriza.keskin@pardus.org.tr'
@@ -12,11 +12,13 @@ source=("https://github.com/OpenRC/openrc/archive/refs/tags/$version.zip"
     "reboot"
     "poweroff"
     "extras/backlight-restore.initd"
+    "extras/nosuid.initd"
     "extras/disable-secondary-gpu.initd"
     "extras/disable-secondary-gpu.sh")
-depends=()
+depends=(libcap)
 makedepends=()
-sha256sums=('5006d632fefb4ea546f260509bf3717902c7651987824043b03ba693624c55d2'
+sha256sums=('7b3e85813246acde1a562af2b5d34baab5a0e9c5575f86644ff03af84f0bf452'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -80,6 +82,7 @@ package(){
     install ../disable-secondary-gpu.sh ${DESTDIR}/usr/libexec/disable-secondary-gpu
     install ../disable-secondary-gpu.initd ${DESTDIR}/etc/init.d/disable-secondary-gpu
     install ../backlight-restore.initd ${DESTDIR}/etc/init.d/backlight-restore
+    install ../nosuid.initd ${DESTDIR}/etc/init.d/nosuid
     # systemd /proc/1/comm hack
     # move openrc-run as systemd path and symlink
     mkdir -p $DESTDIR/lib/systemd/
