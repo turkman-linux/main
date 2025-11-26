@@ -11,8 +11,8 @@ start() {
     # block all suid binaries
     mount -o remount,nosuid /
     # allow suid list
-    while read file ; do
-        mount --bind $file $file -o suid
-    done < /etc/suid /etc/suid.d/*
+    cat /etc/suid /etc/suid.d/* 2>/dev/null | while read file ; do
+        mount --bind $file $file -o suid || true
+    done
 }
 
